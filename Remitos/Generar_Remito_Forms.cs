@@ -1,3 +1,4 @@
+using Pampazon.MenuPrincipal;
 using Pampazon.Remitos;
 using System.Text;
 
@@ -175,18 +176,21 @@ namespace Pampazon
 
                     // Agregar el nuevo remito a la lista
                     nuevosRemitos.Add(nuevoRemito);
+
+                    // Eliminar la orden seleccionada de DetalleRemitoLTV
+                    foreach (ListViewItem orden in DetalleRemitoLTV.SelectedItems)
+                    {
+                        DetalleRemitoLTV.Items.Remove(orden);
+                    }
+
+                    MessageBox.Show("Remitos generados con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
 
-            // Eliminar la orden seleccionada de DetalleRemitoLTV
-            foreach (ListViewItem item in DetalleRemitoLTV.SelectedItems)
-            {
-                DetalleRemitoLTV.Items.Remove(item);
-            }
 
             // FALTA GUARDARLOS EN JSON
 
-            MessageBox.Show("Remitos generados con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -267,9 +271,12 @@ namespace Pampazon
                 {
                     return; // Si elige "No", no hacer nada y regresar
                 }
+                
             }
-                   
-            Application.Exit();
+
+           
+           Application.Exit();
+            
 
         }
 
