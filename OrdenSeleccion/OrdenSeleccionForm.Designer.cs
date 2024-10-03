@@ -43,6 +43,10 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             label6 = new Label();
+            listBox2 = new ListBox();
+            label7 = new Label();
+            button2 = new Button();
+            button5 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -56,17 +60,17 @@
             // 
             // CrearOrdenSeleccionBTN
             // 
-            CrearOrdenSeleccionBTN.Location = new Point(476, 397);
+            CrearOrdenSeleccionBTN.Location = new Point(454, 397);
             CrearOrdenSeleccionBTN.Name = "CrearOrdenSeleccionBTN";
-            CrearOrdenSeleccionBTN.Size = new Size(190, 29);
+            CrearOrdenSeleccionBTN.Size = new Size(225, 29);
             CrearOrdenSeleccionBTN.TabIndex = 1;
-            CrearOrdenSeleccionBTN.Text = "Crear Orden de Selección";
+            CrearOrdenSeleccionBTN.Text = "Agregar al detalle de seleccion";
             CrearOrdenSeleccionBTN.UseVisualStyleBackColor = true;
-            CrearOrdenSeleccionBTN.Click += this.CrearOrdenSeleccionBTN_Click;
+            CrearOrdenSeleccionBTN.Click += CrearOrdenSeleccionBTN_Click;
             // 
             // button3
             // 
-            button3.Location = new Point(441, 128);
+            button3.Location = new Point(425, 128);
             button3.Name = "button3";
             button3.Size = new Size(238, 29);
             button3.TabIndex = 3;
@@ -75,11 +79,11 @@
             // 
             // button4
             // 
-            button4.Location = new Point(685, 128);
+            button4.Location = new Point(669, 128);
             button4.Name = "button4";
-            button4.Size = new Size(94, 29);
+            button4.Size = new Size(110, 29);
             button4.TabIndex = 2;
-            button4.Text = "Borrar";
+            button4.Text = "Borrar filtros";
             button4.UseVisualStyleBackColor = true;
             // 
             // listBox1
@@ -172,11 +176,50 @@
             label6.TabIndex = 14;
             label6.Text = "Ordenes de Preparación en estado Pendiente: ";
             // 
+            // listBox2
+            // 
+            listBox2.FormattingEnabled = true;
+            listBox2.Location = new Point(12, 465);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(767, 184);
+            listBox2.TabIndex = 15;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(15, 442);
+            label7.Name = "label7";
+            label7.Size = new Size(313, 20);
+            label7.TabIndex = 16;
+            label7.Text = "Detalle de Ordenes de Preparación a insertar: ";
+            // 
+            // button2
+            // 
+            button2.Location = new Point(454, 655);
+            button2.Name = "button2";
+            button2.Size = new Size(225, 29);
+            button2.TabIndex = 17;
+            button2.Text = "Crear Orden de Selección";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(685, 655);
+            button5.Name = "button5";
+            button5.Size = new Size(94, 29);
+            button5.TabIndex = 18;
+            button5.Text = "Cancelar";
+            button5.UseVisualStyleBackColor = true;
+            // 
             // OrdenSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 722);
+            Controls.Add(button5);
+            Controls.Add(button2);
+            Controls.Add(label7);
+            Controls.Add(listBox2);
             Controls.Add(label6);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
@@ -215,5 +258,9 @@
         private TextBox textBox3;
         private TextBox textBox4;
         private Label label6;
+        private ListBox listBox2;
+        private Label label7;
+        private Button button2;
+        private Button button5;
     }
 }
