@@ -258,7 +258,18 @@ namespace Pampazon
                     return; // Si elige "No", no hacer nada y regresar
                 }
             }
-            this.Close();
+            else
+            {
+                DialogResult resultado = MessageBox.Show("¿Está seguro de que desea salir?", "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+
+                if (resultado == DialogResult.No)
+                {
+                    return; // Si elige "No", no hacer nada y regresar
+                }
+            }
+                   
+            Application.Exit();
 
         }
 
