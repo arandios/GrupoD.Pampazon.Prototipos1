@@ -1,3 +1,5 @@
+using Pampazon.MenuPrincipal;
+
 namespace Pampazon
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace Pampazon
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Generar_RemitoForms()); // comentario test //
+            Application.Run(new MenuPrincipal.MenuPrincipal()); // comentario test //
         }
     }
 }

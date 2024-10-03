@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pampazon.Remitos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,29 @@ namespace Pampazon.MenuPrincipal
         public MenuPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void MenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void GenerarRemitoBTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Generar_RemitoForms formRemito = new Generar_RemitoForms();
+                formRemito.Show();
+                this.Hide(); // Hide current form or consider closing it
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while opening the Orders form: " + ex.Message);
+            }
         }
     }
 }

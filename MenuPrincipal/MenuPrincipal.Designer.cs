@@ -34,7 +34,7 @@
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
-            button6 = new Button();
+            GenerarRemitoBTN = new Button();
             SuspendLayout();
             // 
             // label1
@@ -91,21 +91,22 @@
             button5.Text = "Generar Órden de Entrega";
             button5.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // GenerarRemitoBTN
             // 
-            button6.Location = new Point(256, 317);
-            button6.Name = "button6";
-            button6.Size = new Size(271, 38);
-            button6.TabIndex = 6;
-            button6.Text = "Generar Remito";
-            button6.UseVisualStyleBackColor = true;
+            GenerarRemitoBTN.Location = new Point(256, 317);
+            GenerarRemitoBTN.Name = "GenerarRemitoBTN";
+            GenerarRemitoBTN.Size = new Size(271, 38);
+            GenerarRemitoBTN.TabIndex = 6;
+            GenerarRemitoBTN.Text = "Generar Remito";
+            GenerarRemitoBTN.UseVisualStyleBackColor = true;
+            GenerarRemitoBTN.Click += GenerarRemitoBTN_Click;
             // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button6);
+            Controls.Add(GenerarRemitoBTN);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
@@ -114,6 +115,7 @@
             Controls.Add(label1);
             Name = "MenuPrincipal";
             Text = "MenuPrincipal";
+            Load += MenuPrincipal_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -126,6 +128,6 @@
         private Button button3;
         private Button button4;
         private Button button5;
-        private Button button6;
+        private Button GenerarRemitoBTN;
     }
 }
