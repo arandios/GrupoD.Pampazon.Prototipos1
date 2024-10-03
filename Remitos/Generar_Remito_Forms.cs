@@ -7,12 +7,18 @@ namespace Pampazon
     public partial class Generar_RemitoForms : Form
     {
         private GenerarRemitoModelo modelo = new();
-        private List<ListViewItem> todasLasOrdenes = new List<ListViewItem>();
+        
+        
+        
+        
+        //private List<ListViewItem> todasLasOrdenes = new List<ListViewItem>();
         public Generar_RemitoForms()
         {
-            
+
 
             InitializeComponent();
+            /*
+
 
             List<OrdenesDeEntrega> ordenes = GenerarRemitoModelo.ObtenerOrdenes();
 
@@ -29,17 +35,17 @@ namespace Pampazon
                 // Guardar una copia de cada item en la lista todasLasOrdenes de la clase
                 todasLasOrdenes.Add((ListViewItem)item.Clone());
             }
-
+            */
         }
 
-       
 
+        /*
         private void OrdenesListV_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (OrdenesListV.SelectedItems.Count > 0)
             {
                 ListViewItem selectedItem = OrdenesListV.SelectedItems[0];
-                string idOrden = selectedItem.SubItems[0].Text; 
+                string idOrden = selectedItem.SubItems[0].Text;
                 string razonSocial = selectedItem.SubItems[1].Text;
             }
 
@@ -48,11 +54,11 @@ namespace Pampazon
         private void BuscarBtn_Click(object sender, EventArgs e)
         {
             // Limpiar las listas de órdenes y transportistas
-            
+
             TransportistasLTB.Items.Clear();
 
             // Obtener el ID del cliente ingresado
-            string idClienteIngresado = BuscarClienteTxt.Text.Trim(); 
+            string idClienteIngresado = BuscarClienteTxt.Text.Trim();
 
             // Verificar si el ID del cliente ingresado no está vacío
             if (!string.IsNullOrEmpty(idClienteIngresado))
@@ -70,7 +76,7 @@ namespace Pampazon
 
                     // Obtener los transportistas asociados al cliente
                     List<Transportista> transportistas = GenerarRemitoModelo.ObtenerTransportistas();
-                    var transportistasFiltrados = transportistas.Where(t => t.IdCliente == idClienteIngresado).ToList(); 
+                    var transportistasFiltrados = transportistas.Where(t => t.IdCliente == idClienteIngresado).ToList();
 
                     // Verificar si hay transportistas filtrados
                     if (transportistasFiltrados.Count > 0)
@@ -99,7 +105,7 @@ namespace Pampazon
 
         private void ConfirmarBtn_Click(object sender, EventArgs e)
         {
-           
+
             if (TransportistasLTB.SelectedItem == null)
             {
                 MessageBox.Show("Por favor, seleccione un transportista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -154,7 +160,7 @@ namespace Pampazon
             foreach (ListViewItem item in DetalleRemitoLTV.SelectedItems)
             {
                 // Obtener los datos de cada columna
-                string numeroOrden = item.SubItems[0].Text; 
+                string numeroOrden = item.SubItems[0].Text;
                 string razonSocial = item.SubItems[1].Text;
                 string transportista = item.SubItems[2].Text;
 
@@ -172,7 +178,7 @@ namespace Pampazon
                 if (confirmResult == DialogResult.Yes)
                 {
                     // Crear un nuevo remito con la fecha actual
-                    Remito nuevoRemito = new Remito(numeroOrden, razonSocial, transportista, productos); 
+                    Remito nuevoRemito = new Remito(numeroOrden, razonSocial, transportista, productos);
 
                     // Agregar el nuevo remito a la lista
                     nuevosRemitos.Add(nuevoRemito);
@@ -231,17 +237,17 @@ namespace Pampazon
             List<Productos> productos = new List<Productos>();
 
             // Obtener el idCliente basado en el numeroOrden
-            string idCliente = ObtenerIdClientePorOrden(numeroOrden); 
+            string idCliente = ObtenerIdClientePorOrden(numeroOrden);
 
             // Lógica para generar productos de ejemplo
             for (int i = 1; i <= 10; i++) // Suponiendo que cada orden tiene 10 productos
             {
                 // Crear un nuevo producto, usando el constructor de la clase Productos
                 productos.Add(new Productos(
-                    idProducto: $"IP_{i:D4}", 
-                    idCliente: idCliente,      
-                    nombre: $"Producto {i}",   
-                    cantidad: 1                
+                    idProducto: $"IP_{i:D4}",
+                    idCliente: idCliente,
+                    nombre: $"Producto {i}",
+                    cantidad: 1
                 ));
             }
 
@@ -271,12 +277,12 @@ namespace Pampazon
                 {
                     return; // Si elige "No", no hacer nada y regresar
                 }
-                
+
             }
 
-           
-           Application.Exit();
-            
+
+            Application.Exit();
+
 
         }
 
@@ -333,8 +339,13 @@ namespace Pampazon
         {
             using (ReportesForm reportesForm = new ReportesForm())
             {
-                reportesForm.ShowDialog(); 
+                reportesForm.ShowDialog();
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }*/
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pampazon.Remitos
+namespace Pampazon.Reportes
 {
-    internal class Reportes
+    internal class ReporteFormModelo
     {
 
     }

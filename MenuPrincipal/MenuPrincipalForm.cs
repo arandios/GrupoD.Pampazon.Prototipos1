@@ -33,8 +33,7 @@ namespace Pampazon.MenuPrincipal
             try
             {
                 Generar_RemitoForms formRemito = new Generar_RemitoForms();
-                formRemito.Show();
-                this.Hide(); // Hide current form or consider closing it
+                formRemito.ShowDialog();                
             }
             catch (Exception ex)
             {
@@ -47,8 +46,7 @@ namespace Pampazon.MenuPrincipal
             try
             {
                 OrdenSeleccion.OrdenSeleccionForm ordenSeleccionForm = new OrdenSeleccion.OrdenSeleccionForm();
-                ordenSeleccionForm.Show();
-                this.Hide(); // Hide current form or consider closing it
+                ordenSeleccionForm.ShowDialog();                
             }
             catch (Exception ex)
             {

@@ -40,9 +40,9 @@ namespace Pampazon.Remitos
             // 
             // DetalleTexto
             // 
-            DetalleTexto.Location = new Point(12, 84);
+            DetalleTexto.Location = new Point(233, 32);
             DetalleTexto.Name = "DetalleTexto";
-            DetalleTexto.Size = new Size(297, 107);
+            DetalleTexto.Size = new Size(297, 319);
             DetalleTexto.TabIndex = 0;
             DetalleTexto.Text = "";
             // 
@@ -53,7 +53,7 @@ namespace Pampazon.Remitos
             CausaLista.Items.AddRange(new object[] { "No se encontró transportista", "Fallo de sistema", "Incidentes en orden de entrega", "Otros" });
             CausaLista.Location = new Point(17, 32);
             CausaLista.Name = "CausaLista";
-            CausaLista.Size = new Size(210, 19);
+            CausaLista.Size = new Size(210, 319);
             CausaLista.TabIndex = 1;
             // 
             // label1
@@ -68,7 +68,7 @@ namespace Pampazon.Remitos
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(16, 63);
+            label2.Location = new Point(237, 11);
             label2.Name = "label2";
             label2.Size = new Size(100, 15);
             label2.TabIndex = 3;
@@ -76,7 +76,7 @@ namespace Pampazon.Remitos
             // 
             // GenerarReporteBtn
             // 
-            GenerarReporteBtn.Location = new Point(12, 197);
+            GenerarReporteBtn.Location = new Point(226, 368);
             GenerarReporteBtn.Name = "GenerarReporteBtn";
             GenerarReporteBtn.Size = new Size(149, 23);
             GenerarReporteBtn.TabIndex = 4;
@@ -87,7 +87,7 @@ namespace Pampazon.Remitos
             // 
             // CancelarReporteBtn
             // 
-            CancelarReporteBtn.Location = new Point(160, 197);
+            CancelarReporteBtn.Location = new Point(381, 368);
             CancelarReporteBtn.Name = "CancelarReporteBtn";
             CancelarReporteBtn.Size = new Size(149, 23);
             CancelarReporteBtn.TabIndex = 5;
@@ -99,7 +99,7 @@ namespace Pampazon.Remitos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(321, 233);
+            ClientSize = new Size(549, 413);
             Controls.Add(CancelarReporteBtn);
             Controls.Add(GenerarReporteBtn);
             Controls.Add(label2);
