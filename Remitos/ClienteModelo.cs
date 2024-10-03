@@ -8,7 +8,7 @@ namespace Pampazon.Remitos
 {
     internal class ClienteModelo
     {
-        public static List<Clientes> ObtenerClientes()
+       /* public static List<Clientes> ObtenerClientes()
         {
             return new List<Clientes>()
         {
@@ -43,6 +43,6 @@ namespace Pampazon.Remitos
             new Clientes(1029, "20-90123456-7", "Artículos de Cocina"),
             new Clientes(1030, "20-01234567-8", "Electrónica y Computación"),
         };
-        }
+        }*/
     }
 }

@@ -8,7 +8,7 @@ namespace Pampazon.Remitos
 {
     internal class TransportistaModelo
     {
-        public static List<Transportista> ObtenerTransportistas()
+       /* public static List<Transportista> ObtenerTransportistas()
         {
             return new List<Transportista>()
             {
@@ -43,6 +43,6 @@ namespace Pampazon.Remitos
             new Transportista(00998877, "Mariela Peralta", 1029),
             new Transportista(99887700, "Carlos Flores", 1030),
             };
-        }
+        }*/
     }
 }

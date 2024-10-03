@@ -8,16 +8,20 @@ namespace Pampazon.Remitos
 {
     internal class Remito
     {
-        public int NumeroDeOrden { get; set; }     // Número de orden como entero
-        public string RazonSocial { get; set; }     // Razón social de la empresa
-        public string Transportista { get; set; }   // Nombre del transportista
+        public string NumeroDeOrden { get; set; }
+        public string RazonSocial { get; set; }
+        public string Transportista { get; set; }
+        public DateTime Fecha { get; set; } 
+        public List<Productos> Productos { get; set; } 
 
         // Constructor
-        public Remito(int numeroDeOrden, string razonSocial, string transportista)
+        public Remito(string numeroDeOrden, string razonSocial, string transportista, List<Productos> productos)
         {
             NumeroDeOrden = numeroDeOrden;
             RazonSocial = razonSocial;
             Transportista = transportista;
+            Fecha = DateTime.Now; 
+            Productos = productos;
         }
     }
 }

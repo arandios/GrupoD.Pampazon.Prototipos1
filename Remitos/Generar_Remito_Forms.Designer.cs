@@ -69,6 +69,7 @@ namespace Pampazon
             ReportarBtn.TabIndex = 1;
             ReportarBtn.Text = "Reportar";
             ReportarBtn.UseVisualStyleBackColor = true;
+            ReportarBtn.Click += ReportarBtn_Click;
             // 
             // GenerarBtn
             // 
@@ -146,19 +147,20 @@ namespace Pampazon
             // 
             // NroOrdenColumna
             // 
-            NroOrdenColumna.Text = "Nro. Orden";
+            NroOrdenColumna.Text = "ID Orden";
             NroOrdenColumna.Width = 100;
             // 
             // ClienteColumna
             // 
             ClienteColumna.DisplayIndex = 2;
-            ClienteColumna.Text = "Cliente";
+            ClienteColumna.Text = "Fecha de emision";
             ClienteColumna.Width = 250;
             // 
             // CodigoClienteColumna
             // 
             CodigoClienteColumna.DisplayIndex = 1;
-            CodigoClienteColumna.Text = "Codigo";
+            CodigoClienteColumna.Text = "ID Cliente";
+            CodigoClienteColumna.Width = 100;
             // 
             // DetalleRemitoLTV
             // 

@@ -10,7 +10,7 @@ namespace Pampazon.Remitos
     {
 
         // Datos existentes como una lista estática
-        public static List<OrdenesDeEntrega> ObtenerOrdenes()
+      /*  public static List<OrdenesDeEntrega> ObtenerOrdenes()
         {
             return new List<OrdenesDeEntrega>()
             {
@@ -46,6 +46,6 @@ namespace Pampazon.Remitos
                 new OrdenesDeEntrega(30, "Servicios de Traducción", 1030)
             };
 
-        }
+        }*/
     }
 }
