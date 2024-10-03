@@ -1,4 +1,5 @@
-﻿using Pampazon.Remitos;
+﻿using Pampazon.OrdenSeleccion;
+using Pampazon.Remitos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,6 +34,20 @@ namespace Pampazon.MenuPrincipal
             {
                 Generar_RemitoForms formRemito = new Generar_RemitoForms();
                 formRemito.Show();
+                this.Hide(); // Hide current form or consider closing it
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while opening the Orders form: " + ex.Message);
+            }
+        }
+
+        private void GenerarOrdenDeSeleccionBTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OrdenSeleccion.OrdenSeleccion ordenSeleccionForm = new OrdenSeleccion.OrdenSeleccion();
+                ordenSeleccionForm.Show();
                 this.Hide(); // Hide current form or consider closing it
             }
             catch (Exception ex)

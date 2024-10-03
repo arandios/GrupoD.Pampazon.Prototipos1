@@ -31,7 +31,7 @@
             label1 = new Label();
             button1 = new Button();
             button2 = new Button();
-            button3 = new Button();
+            GenerarOrdenDeSeleccionBTN = new Button();
             button4 = new Button();
             button5 = new Button();
             GenerarRemitoBTN = new Button();
@@ -64,14 +64,15 @@
             button2.Text = "Confirmar Órden de Selección";
             button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // GenerarOrdenDeSeleccionBTN
             // 
-            button3.Location = new Point(256, 141);
-            button3.Name = "button3";
-            button3.Size = new Size(271, 38);
-            button3.TabIndex = 3;
-            button3.Text = "2. Generar Órden de Selección";
-            button3.UseVisualStyleBackColor = true;
+            GenerarOrdenDeSeleccionBTN.Location = new Point(256, 141);
+            GenerarOrdenDeSeleccionBTN.Name = "GenerarOrdenDeSeleccionBTN";
+            GenerarOrdenDeSeleccionBTN.Size = new Size(271, 38);
+            GenerarOrdenDeSeleccionBTN.TabIndex = 3;
+            GenerarOrdenDeSeleccionBTN.Text = "2. Generar Órden de Selección";
+            GenerarOrdenDeSeleccionBTN.UseVisualStyleBackColor = true;
+            GenerarOrdenDeSeleccionBTN.Click += GenerarOrdenDeSeleccionBTN_Click;
             // 
             // button4
             // 
@@ -109,7 +110,7 @@
             Controls.Add(GenerarRemitoBTN);
             Controls.Add(button5);
             Controls.Add(button4);
-            Controls.Add(button3);
+            Controls.Add(GenerarOrdenDeSeleccionBTN);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label1);
@@ -125,7 +126,7 @@
         private Label label1;
         private Button button1;
         private Button button2;
-        private Button button3;
+        private Button GenerarOrdenDeSeleccionBTN;
         private Button button4;
         private Button button5;
         private Button GenerarRemitoBTN;
