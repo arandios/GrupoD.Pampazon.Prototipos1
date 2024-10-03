@@ -1,6 +1,6 @@
 ﻿namespace Pampazon.MenuPrincipal
 {
-    partial class MenuPrincipal
+    partial class MenuPrincipalForm
     {
         /// <summary>
         /// Required designer variable.

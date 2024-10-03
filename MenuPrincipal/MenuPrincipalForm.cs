@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Pampazon.MenuPrincipal
 {
-    public partial class MenuPrincipal : Form
+    public partial class MenuPrincipalForm : Form
     {
-        public MenuPrincipal()
+        public MenuPrincipalForm()
         {
             InitializeComponent();
         }
@@ -46,7 +46,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                OrdenSeleccion.OrdenSeleccion ordenSeleccionForm = new OrdenSeleccion.OrdenSeleccion();
+                OrdenSeleccion.OrdenSeleccionForm ordenSeleccionForm = new OrdenSeleccion.OrdenSeleccionForm();
                 ordenSeleccionForm.Show();
                 this.Hide(); // Hide current form or consider closing it
             }

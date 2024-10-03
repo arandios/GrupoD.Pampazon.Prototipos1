@@ -1,6 +1,6 @@
 ﻿namespace Pampazon.OrdenSeleccion
 {
-    partial class OrdenSeleccion
+    partial class OrdenSeleccionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            button2 = new Button();
+            CrearOrdenSeleccionBTN = new Button();
             button3 = new Button();
             button4 = new Button();
             listBox1 = new ListBox();
@@ -54,14 +54,15 @@
             button1.Text = "Cancelar";
             button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // CrearOrdenSeleccionBTN
             // 
-            button2.Location = new Point(476, 397);
-            button2.Name = "button2";
-            button2.Size = new Size(190, 29);
-            button2.TabIndex = 1;
-            button2.Text = "Crear Orden de Selección";
-            button2.UseVisualStyleBackColor = true;
+            CrearOrdenSeleccionBTN.Location = new Point(476, 397);
+            CrearOrdenSeleccionBTN.Name = "CrearOrdenSeleccionBTN";
+            CrearOrdenSeleccionBTN.Size = new Size(190, 29);
+            CrearOrdenSeleccionBTN.TabIndex = 1;
+            CrearOrdenSeleccionBTN.Text = "Crear Orden de Selección";
+            CrearOrdenSeleccionBTN.UseVisualStyleBackColor = true;
+            CrearOrdenSeleccionBTN.Click += this.CrearOrdenSeleccionBTN_Click;
             // 
             // button3
             // 
@@ -171,7 +172,7 @@
             label6.TabIndex = 14;
             label6.Text = "Ordenes de Preparación en estado Pendiente: ";
             // 
-            // OrdenSeleccion
+            // OrdenSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -189,9 +190,9 @@
             Controls.Add(listBox1);
             Controls.Add(button3);
             Controls.Add(button4);
-            Controls.Add(button2);
+            Controls.Add(CrearOrdenSeleccionBTN);
             Controls.Add(button1);
-            Name = "OrdenSeleccion";
+            Name = "OrdenSeleccionForm";
             Text = "OrdenSeleccion";
             ResumeLayout(false);
             PerformLayout();
@@ -200,7 +201,7 @@
         #endregion
 
         private Button button1;
-        private Button button2;
+        private Button CrearOrdenSeleccionBTN;
         private Button button3;
         private Button button4;
         private ListBox listBox1;
