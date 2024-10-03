@@ -1,4 +1,5 @@
-﻿namespace Pampazon
+﻿
+namespace Pampazon
 {
     partial class Generar_RemitoForms
     {
@@ -37,29 +38,32 @@
             label2 = new Label();
             TransportistasLTB = new ListBox();
             label3 = new Label();
-            listView1 = new ListView();
+            OrdenesListV = new ListView();
             NroOrdenColumna = new ColumnHeader();
             ClienteColumna = new ColumnHeader();
+            CodigoClienteColumna = new ColumnHeader();
             DetalleRemitoLTV = new ListView();
             OrdenConfirmadaColumna = new ColumnHeader();
             ClienteConfirmadoColumna = new ColumnHeader();
             TransportistaConfirmadoColumna = new ColumnHeader();
             SalisBtn = new Button();
             label4 = new Label();
+            CancelarBtn = new Button();
             SuspendLayout();
             // 
             // ConfirmarBtn
             // 
-            ConfirmarBtn.Location = new Point(384, 143);
+            ConfirmarBtn.Location = new Point(503, 148);
             ConfirmarBtn.Name = "ConfirmarBtn";
             ConfirmarBtn.Size = new Size(86, 40);
             ConfirmarBtn.TabIndex = 0;
             ConfirmarBtn.Text = "Confirmar transportista";
             ConfirmarBtn.UseVisualStyleBackColor = true;
+            ConfirmarBtn.Click += ConfirmarBtn_Click;
             // 
             // ReportarBtn
             // 
-            ReportarBtn.Location = new Point(472, 143);
+            ReportarBtn.Location = new Point(591, 148);
             ReportarBtn.Name = "ReportarBtn";
             ReportarBtn.Size = new Size(75, 40);
             ReportarBtn.TabIndex = 1;
@@ -68,26 +72,28 @@
             // 
             // GenerarBtn
             // 
-            GenerarBtn.Location = new Point(384, 189);
+            GenerarBtn.Location = new Point(503, 194);
             GenerarBtn.Name = "GenerarBtn";
-            GenerarBtn.Size = new Size(163, 39);
+            GenerarBtn.Size = new Size(163, 24);
             GenerarBtn.TabIndex = 2;
-            GenerarBtn.Text = "Generar remito";
+            GenerarBtn.Text = "Generar nuevo remito";
             GenerarBtn.UseVisualStyleBackColor = true;
+            GenerarBtn.Click += GenerarBtn_Click;
             // 
             // BuscarBtn
             // 
-            BuscarBtn.Location = new Point(278, 72);
+            BuscarBtn.Location = new Point(397, 77);
             BuscarBtn.Name = "BuscarBtn";
             BuscarBtn.Size = new Size(100, 23);
             BuscarBtn.TabIndex = 3;
             BuscarBtn.Text = "Buscar";
             BuscarBtn.UseVisualStyleBackColor = true;
+            BuscarBtn.Click += BuscarBtn_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(384, 25);
+            label1.Location = new Point(503, 30);
             label1.Name = "label1";
             label1.Size = new Size(142, 15);
             label1.TabIndex = 5;
@@ -95,7 +101,7 @@
             // 
             // BuscarClienteTxt
             // 
-            BuscarClienteTxt.Location = new Point(278, 43);
+            BuscarClienteTxt.Location = new Point(397, 48);
             BuscarClienteTxt.Name = "BuscarClienteTxt";
             BuscarClienteTxt.Size = new Size(100, 23);
             BuscarClienteTxt.TabIndex = 6;
@@ -103,18 +109,17 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(278, 25);
+            label2.Location = new Point(397, 30);
             label2.Name = "label2";
-            label2.Size = new Size(44, 15);
+            label2.Size = new Size(84, 15);
             label2.TabIndex = 7;
-            label2.Text = "Cliente";
+            label2.Text = "Codigo cliente";
             // 
             // TransportistasLTB
             // 
             TransportistasLTB.FormattingEnabled = true;
             TransportistasLTB.ItemHeight = 15;
-            TransportistasLTB.Items.AddRange(new object[] { "jorge", "mauro" });
-            TransportistasLTB.Location = new Point(384, 43);
+            TransportistasLTB.Location = new Point(503, 48);
             TransportistasLTB.Name = "TransportistasLTB";
             TransportistasLTB.Size = new Size(163, 94);
             TransportistasLTB.TabIndex = 9;
@@ -128,15 +133,16 @@
             label3.TabIndex = 10;
             label3.Text = "Ordenes de entrega";
             // 
-            // listView1
+            // OrdenesListV
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { NroOrdenColumna, ClienteColumna });
-            listView1.Location = new Point(26, 40);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(204, 97);
-            listView1.TabIndex = 11;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            OrdenesListV.Columns.AddRange(new ColumnHeader[] { NroOrdenColumna, ClienteColumna, CodigoClienteColumna });
+            OrdenesListV.Location = new Point(26, 40);
+            OrdenesListV.Name = "OrdenesListV";
+            OrdenesListV.Size = new Size(353, 97);
+            OrdenesListV.TabIndex = 11;
+            OrdenesListV.UseCompatibleStateImageBehavior = false;
+            OrdenesListV.View = View.Details;
+            OrdenesListV.SelectedIndexChanged += OrdenesListV_SelectedIndexChanged;
             // 
             // NroOrdenColumna
             // 
@@ -145,15 +151,21 @@
             // 
             // ClienteColumna
             // 
+            ClienteColumna.DisplayIndex = 2;
             ClienteColumna.Text = "Cliente";
-            ClienteColumna.Width = 100;
+            ClienteColumna.Width = 250;
+            // 
+            // CodigoClienteColumna
+            // 
+            CodigoClienteColumna.DisplayIndex = 1;
+            CodigoClienteColumna.Text = "Codigo";
             // 
             // DetalleRemitoLTV
             // 
             DetalleRemitoLTV.Columns.AddRange(new ColumnHeader[] { OrdenConfirmadaColumna, ClienteConfirmadoColumna, TransportistaConfirmadoColumna });
             DetalleRemitoLTV.Location = new Point(26, 159);
             DetalleRemitoLTV.Name = "DetalleRemitoLTV";
-            DetalleRemitoLTV.Size = new Size(304, 119);
+            DetalleRemitoLTV.Size = new Size(456, 119);
             DetalleRemitoLTV.TabIndex = 12;
             DetalleRemitoLTV.UseCompatibleStateImageBehavior = false;
             DetalleRemitoLTV.View = View.Details;
@@ -166,7 +178,7 @@
             // ClienteConfirmadoColumna
             // 
             ClienteConfirmadoColumna.Text = "Cliente";
-            ClienteConfirmadoColumna.Width = 100;
+            ClienteConfirmadoColumna.Width = 250;
             // 
             // TransportistaConfirmadoColumna
             // 
@@ -175,12 +187,13 @@
             // 
             // SalisBtn
             // 
-            SalisBtn.Location = new Point(384, 234);
+            SalisBtn.Location = new Point(503, 252);
             SalisBtn.Name = "SalisBtn";
-            SalisBtn.Size = new Size(163, 39);
+            SalisBtn.Size = new Size(163, 26);
             SalisBtn.TabIndex = 13;
             SalisBtn.Text = "Salir";
             SalisBtn.UseVisualStyleBackColor = true;
+            SalisBtn.Click += SalisBtn_Click;
             // 
             // label4
             // 
@@ -191,15 +204,26 @@
             label4.TabIndex = 14;
             label4.Text = "Detalle remito";
             // 
+            // CancelarBtn
+            // 
+            CancelarBtn.Location = new Point(503, 223);
+            CancelarBtn.Name = "CancelarBtn";
+            CancelarBtn.Size = new Size(163, 23);
+            CancelarBtn.TabIndex = 15;
+            CancelarBtn.Text = "Cancelar";
+            CancelarBtn.UseVisualStyleBackColor = true;
+            CancelarBtn.Click += CancelarBtn_Click;
+            // 
             // Generar_RemitoForms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(565, 290);
+            ClientSize = new Size(695, 290);
+            Controls.Add(CancelarBtn);
             Controls.Add(label4);
             Controls.Add(SalisBtn);
             Controls.Add(DetalleRemitoLTV);
-            Controls.Add(listView1);
+            Controls.Add(OrdenesListV);
             Controls.Add(label3);
             Controls.Add(TransportistasLTB);
             Controls.Add(label2);
@@ -210,10 +234,21 @@
             Controls.Add(ReportarBtn);
             Controls.Add(ConfirmarBtn);
             Name = "Generar_RemitoForms";
-            Text = "O";
+            Text = "Remito";
+            Load += Generar_RemitoForms_Load;
             ResumeLayout(false);
             PerformLayout();
         }
+
+        private void Generar_RemitoForms_Load(object sender, EventArgs e)
+        {
+           
+
+            
+
+        }
+
+      
 
         #endregion
 
@@ -226,7 +261,7 @@
         private Label label2;
         private ListBox TransportistasLTB;
         private Label label3;
-        private ListView listView1;
+        private ListView OrdenesListV;
         private ColumnHeader NroOrdenColumna;
         private ColumnHeader ClienteColumna;
         private ListView DetalleRemitoLTV;
@@ -235,5 +270,7 @@
         private ColumnHeader TransportistaConfirmadoColumna;
         private Button SalisBtn;
         private Label label4;
+        private ColumnHeader CodigoClienteColumna;
+        private Button CancelarBtn;
     }
 }
