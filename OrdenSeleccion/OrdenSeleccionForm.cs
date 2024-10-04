@@ -65,7 +65,7 @@ namespace Pampazon.OrdenSeleccion
 
         }
 
-        //----------------------------------------- FOOTER DE PANTALLA
+        //-------------------------------------------------------------- FOOTER DE PANTALLA
         //Cerrar ventana.
         private void CancelarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {

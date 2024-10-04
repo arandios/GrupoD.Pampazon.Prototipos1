@@ -318,7 +318,7 @@
         private TextBox TransportistaTextBoxOrdenSeleccion;
         private TextBox NumeroOrdenPreparacionTextBoxOrdenSeleccion;
         private Label label6;
-        private ListBox DetalleOrdenesDePrepracionAOrdenSeleccionListView;
+        //private ListBox DetalleOrdenesDePrepracionAOrdenSeleccionListView;
         private Label label7;
         private Button CrearOrdenSeleccionBTN;
         private Button CancelarOrdenSeleccionBTN;

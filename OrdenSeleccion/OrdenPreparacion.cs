@@ -31,7 +31,7 @@ namespace Pampazon.OrdenSeleccion
             Mercaderias = mercaderias;
             CantidadMercaderia = cantidadMercaderia;
             FechaOrdenRecepcion = fechaOrdenRecepcion;
-            Estado = estado;
+            EstadoOrdenPreparacion = estado;
             Prioridad = prioridad;
             TransportistaDetalle = transportistaDetalle;
         }

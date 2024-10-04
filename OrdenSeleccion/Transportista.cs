@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pampazon.OrdenSeleccion
 {
-    internal class Transportista
+    public class Transportista
     {
         //PROPIEDADES
         public int DNI { get; set; }

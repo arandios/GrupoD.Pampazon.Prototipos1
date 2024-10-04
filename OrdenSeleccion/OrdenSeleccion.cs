@@ -37,6 +37,16 @@ namespace Pampazon.OrdenSeleccion
             FechaEstados = fechaEstados;
         }
 
+        // Constructor vacío //TODO: Verficar sobrecarga de constructor vacio. Orden de Seleccion.
+        public OrdenSeleccion()
+        {
+            IDOrdenSeleccion = string.Empty;
+            FechaEmision = DateTime.MinValue;
+            OrdenesPreparacion = new List<OrdenPreparacion>();
+            EstadoOrdenDeSeleccion = string.Empty;
+            FechaEstados = DateTime.MinValue;
+        }
+
         // MÉTODOS
 
     }
