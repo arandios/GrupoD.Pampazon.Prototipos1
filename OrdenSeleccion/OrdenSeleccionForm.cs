@@ -45,11 +45,8 @@ namespace Pampazon.OrdenSeleccion
             actualizarListaOrdenDePreparacion();
         }
 
-
-        private void CrearOrdenSeleccionBTN_Click(object sender, EventArgs e)
-        {
-            var ordenSeleccion = new OrdenSeleccion();
-            //TODO: Pasar datos de la Ordenseleccion (lista), al objeto ordenSeleccion.
+        /*
+                     //TODO: Pasar datos de la Ordenseleccion (lista), al objeto ordenSeleccion.
 
             //Carga datos de la Orden de preparacion a la orden de seleccion.
             //ordenSeleccion.Nombre = NombreText.Text;
@@ -63,11 +60,70 @@ namespace Pampazon.OrdenSeleccion
             else{
             Message.Box("Los datos se han ingresado correctamente. ")
             }
-             */
+         
+         
+         */
 
+        private void CrearOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        {
+            // Verificar si hay elementos seleccionados en la lista de detalles de órdenes de preparación
+            if (DetalleOrdenesDePrepracionAOrdenSeleccionListView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Seleccione al menos una orden de preparación para crear una orden de selección.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // Crear una nueva instancia de OrdenSeleccion
+            var ordenSeleccion = new OrdenSeleccion
+            {
+                IDOrdenSeleccion = Guid.NewGuid().ToString(), // Generar un ID único para la orden de selección
+                FechaEmision = DateTime.Now,
+                OrdenesPreparacion = new List<OrdenPreparacion>(),
+                EstadoOrdenDeSeleccion = "Nueva", // Estado inicial de la orden de selección
+                FechaEstados = DateTime.Now
+            };
 
+            // Agregar las órdenes de preparación seleccionadas a la orden de selección
+            foreach (ListViewItem item in DetalleOrdenesDePrepracionAOrdenSeleccionListView.SelectedItems)
+            {
+                var ordenPreparacion = (OrdenPreparacion)item.Tag;
+                ordenSeleccion.OrdenesPreparacion.Add(ordenPreparacion);
+
+                // Crear un nuevo ítem para la lista de órdenes de preparación pendientes
+                ListViewItem newItem = new ListViewItem();
+                newItem.Text = ordenPreparacion.IDOrdenPreparacion;
+                newItem.SubItems.Add(ordenPreparacion.IdCliente.ToString());
+                newItem.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
+                newItem.SubItems.Add(string.Join(", ", ordenPreparacion.Mercaderias.Select(m => m.DescripcionProducto)));
+                newItem.SubItems.Add(ordenPreparacion.CantidadMercaderia.ToString());
+                newItem.SubItems.Add(ordenPreparacion.FechaOrdenRecepcion.ToString());
+                newItem.SubItems.Add(ordenPreparacion.EstadoOrdenPreparacion.ToString());
+                newItem.SubItems.Add(ordenPreparacion.Prioridad.ToString());
+                newItem.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
+
+                newItem.Tag = ordenPreparacion; // Guardar el objeto completo como Tag
+                OrdenesDePreparacionPendientesListView.Items.Add(newItem);
+            }
+
+            // Eliminar los ítems seleccionados de la lista de detalles de órdenes de preparación
+            var itemsToRemove = new List<ListViewItem>();
+            foreach (ListViewItem item in DetalleOrdenesDePrepracionAOrdenSeleccionListView.SelectedItems)
+            {
+                itemsToRemove.Add(item);
+            }
+            foreach (var item in itemsToRemove)
+            {
+                DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Remove(item);
+            }
+
+            // Habilitar OSgroupBox
+            OSgroupBox.Enabled = true;
+
+            MessageBox.Show("Orden de Preparacion agregada al detalle.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+
+
 
 
         private void BorrarFiltrosOrdenSeleccionBTN_Click(object sender, EventArgs e)
