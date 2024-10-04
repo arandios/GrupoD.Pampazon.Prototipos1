@@ -2,12 +2,10 @@
 
 namespace Pampazon.OrdenSeleccion
 {
-    public class OrdenPreparacion
+    public class OrdenPreparacion //DTO - Es un Data Transfer Object
     {
         /*
          -OP: 
- 
-    
         estados (eso lo definen uds) y fecha de estado.
          */
 
@@ -23,6 +21,7 @@ namespace Pampazon.OrdenSeleccion
         public Transportista TransportistaDetalle { get; set; }
 
         //CONSTRUCTOR
+        
         public OrdenPreparacion(string idOrdenPreparacion, string idCliente, string descripcionCliente, List<Mercaderia> mercaderias, int cantidadMercaderia, DateTime fechaOrdenRecepcion, PosiblesEstadosOrdenesGenerales estado, CodigoPrioridad prioridad, Transportista transportistaDetalle)
         {
             IDOrdenPreparacion = idOrdenPreparacion;
@@ -35,10 +34,5 @@ namespace Pampazon.OrdenSeleccion
             Prioridad = prioridad;
             TransportistaDetalle = transportistaDetalle;
         }
-
-
-        //METODOS
-
-
     }
 }

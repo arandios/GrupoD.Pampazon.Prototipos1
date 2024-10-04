@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            button1 = new Button();
             button2 = new Button();
             GenerarOrdenDeSeleccionBTN = new Button();
-            button4 = new Button();
             button5 = new Button();
             GenerarRemitoBTN = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -46,19 +45,9 @@
             label1.TabIndex = 0;
             label1.Text = "Menú inicial Pampazón S.A.";
             // 
-            // button1
-            // 
-            button1.Location = new Point(224, 73);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(237, 28);
-            button1.TabIndex = 1;
-            button1.Text = "1. Registrar Órden de Preparación";
-            button1.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
-            button2.Location = new Point(224, 172);
+            button2.Location = new Point(224, 138);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
             button2.Size = new Size(237, 28);
@@ -73,23 +62,13 @@
             GenerarOrdenDeSeleccionBTN.Name = "GenerarOrdenDeSeleccionBTN";
             GenerarOrdenDeSeleccionBTN.Size = new Size(237, 28);
             GenerarOrdenDeSeleccionBTN.TabIndex = 3;
-            GenerarOrdenDeSeleccionBTN.Text = "2. Generar Órden de Selección";
+            GenerarOrdenDeSeleccionBTN.Text = "Generar Órden de Selección";
             GenerarOrdenDeSeleccionBTN.UseVisualStyleBackColor = true;
             GenerarOrdenDeSeleccionBTN.Click += GenerarOrdenDeSeleccionBTN_Click;
             // 
-            // button4
-            // 
-            button4.Location = new Point(224, 139);
-            button4.Margin = new Padding(3, 2, 3, 2);
-            button4.Name = "button4";
-            button4.Size = new Size(237, 28);
-            button4.TabIndex = 4;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
-            // 
             // button5
             // 
-            button5.Location = new Point(224, 205);
+            button5.Location = new Point(224, 171);
             button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
             button5.Size = new Size(237, 28);
@@ -99,23 +78,32 @@
             // 
             // GenerarRemitoBTN
             // 
-            GenerarRemitoBTN.Location = new Point(224, 238);
+            GenerarRemitoBTN.Location = new Point(224, 204);
             GenerarRemitoBTN.Margin = new Padding(3, 2, 3, 2);
             GenerarRemitoBTN.Name = "GenerarRemitoBTN";
-            GenerarRemitoBTN.Size = new Size(237, 28);
+            GenerarRemitoBTN.Size = new Size(237, 30);
             GenerarRemitoBTN.TabIndex = 6;
             GenerarRemitoBTN.Text = "Generar Remito";
             GenerarRemitoBTN.UseVisualStyleBackColor = true;
             GenerarRemitoBTN.Click += GenerarRemitoBTN_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(224, 73);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(237, 28);
+            button1.TabIndex = 1;
+            button1.Text = "Consultar ordenes";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // MenuPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 312);
+            ClientSize = new Size(705, 321);
             Controls.Add(GenerarRemitoBTN);
             Controls.Add(button5);
-            Controls.Add(button4);
             Controls.Add(GenerarOrdenDeSeleccionBTN);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -132,11 +120,10 @@
         #endregion
 
         private Label label1;
-        private Button button1;
         private Button button2;
         private Button GenerarOrdenDeSeleccionBTN;
-        private Button button4;
         private Button button5;
         private Button GenerarRemitoBTN;
+        private Button button1;
     }
 }
