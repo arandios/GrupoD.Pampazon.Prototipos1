@@ -21,5 +21,10 @@ namespace Pampazon.OrdenEntrega
         {
 
         }
+
+        private void Salirbtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
