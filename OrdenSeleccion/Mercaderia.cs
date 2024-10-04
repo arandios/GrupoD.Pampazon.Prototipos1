@@ -6,7 +6,7 @@
         public string IdCliente { get; set; }
         public string DescripcionProducto { get; set; }
         public int Cantidad { get; set; }
-        //public string Ubicacion { get; set; }
+
         //TODO: Incluir lista de productos?
 
     }
