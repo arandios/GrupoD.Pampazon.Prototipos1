@@ -34,10 +34,10 @@
             IdOrdentxt = new TextBox();
             FechaCMB = new ComboBox();
             LstOrdenesSeleccion = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
+            CLNroOrden = new ColumnHeader();
+            CLEstado = new ColumnHeader();
+            CLFechaEntrega = new ColumnHeader();
+            CLOPAsociada = new ColumnHeader();
             DetallesOrdenBTN = new Button();
             LSTDetalleOrden = new ListView();
             columnHeader5 = new ColumnHeader();
@@ -92,7 +92,7 @@
             // 
             // LstOrdenesSeleccion
             // 
-            LstOrdenesSeleccion.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            LstOrdenesSeleccion.Columns.AddRange(new ColumnHeader[] { CLNroOrden, CLEstado, CLFechaEntrega, CLOPAsociada });
             LstOrdenesSeleccion.Location = new Point(36, 133);
             LstOrdenesSeleccion.Margin = new Padding(4, 5, 4, 5);
             LstOrdenesSeleccion.Name = "LstOrdenesSeleccion";
@@ -101,25 +101,25 @@
             LstOrdenesSeleccion.UseCompatibleStateImageBehavior = false;
             LstOrdenesSeleccion.View = View.Details;
             // 
-            // columnHeader1
+            // CLNroOrden
             // 
-            columnHeader1.Text = "Nro orden";
-            columnHeader1.Width = 120;
+            CLNroOrden.Text = "Nro orden";
+            CLNroOrden.Width = 120;
             // 
-            // columnHeader2
+            // CLEstado
             // 
-            columnHeader2.Text = "Estado";
-            columnHeader2.Width = 80;
+            CLEstado.Text = "Estado";
+            CLEstado.Width = 80;
             // 
-            // columnHeader3
+            // CLFechaEntrega
             // 
-            columnHeader3.Text = "Fecha Entrega";
-            columnHeader3.Width = 140;
+            CLFechaEntrega.Text = "Fecha Entrega";
+            CLFechaEntrega.Width = 140;
             // 
-            // columnHeader4
+            // CLOPAsociada
             // 
-            columnHeader4.Text = "OP asociada";
-            columnHeader4.Width = 120;
+            CLOPAsociada.Text = "OP asociada";
+            CLOPAsociada.Width = 120;
             // 
             // DetallesOrdenBTN
             // 
@@ -143,7 +143,7 @@
             // columnHeader5
             // 
             columnHeader5.Text = "Id Prod";
-            columnHeader5.Width = 55;
+            columnHeader5.Width = 100;
             // 
             // columnHeader6
             // 
@@ -153,7 +153,7 @@
             // columnHeader7
             // 
             columnHeader7.Text = "Cantidad";
-            columnHeader7.Width = 75;
+            columnHeader7.Width = 100;
             // 
             // SalirBTN
             // 
@@ -202,10 +202,10 @@
         private TextBox IdOrdentxt;
         private ComboBox FechaCMB;
         private ListView LstOrdenesSeleccion;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
+        private ColumnHeader CLNroOrden;
+        private ColumnHeader CLEstado;
+        private ColumnHeader CLFechaEntrega;
+        private ColumnHeader CLOPAsociada;
         private Button DetallesOrdenBTN;
         private ListView LSTDetalleOrden;
         private ColumnHeader columnHeader5;

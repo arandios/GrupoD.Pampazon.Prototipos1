@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 namespace Pampazon.ConfirmarOrdenSeleccion
 {
     internal class OrdenesConfirmadas
-    {
-        
-        
+    {        
             public int Nro_OrdenS { get; set; }
             public DateTime FechaEmision { get; set; }
             public int OP_Asociada { get; set; }
