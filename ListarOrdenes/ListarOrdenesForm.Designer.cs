@@ -1,6 +1,6 @@
 ﻿namespace Pampazon.ListarOrdenes
 {
-    partial class ListarOrdenes
+    partial class ListarOrdenesForm
     {
         /// <summary>
         /// Required designer variable.
