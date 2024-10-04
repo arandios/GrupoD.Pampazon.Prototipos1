@@ -146,7 +146,7 @@ namespace Pampazon.OrdenSeleccion
 
         private void QuitarOrdenPreparacionASeleccionBTN_Click(object sender, EventArgs e)
         {
-            if(OrdenesDePreparacionPendientesListView.SelectedItems.Count !=1)
+            if (OrdenesDePreparacionPendientesListView.SelectedItems.Count != 1)
             {
                 MessageBox.Show("Seleccione un y solo una Orden de Preparacion para borrar de la lista.");
                 return;
@@ -155,7 +155,7 @@ namespace Pampazon.OrdenSeleccion
             var ordenDePreparacionSeleccionada = (OrdenPreparacion)item.Tag;
 
             var error = modelo.BorrarOrdenDePreparacion(ordenDePreparacionSeleccionada);
-            if(error != null)
+            if (error != null)
             {
                 MessageBox.Show(error);
                 return;
@@ -199,6 +199,11 @@ namespace Pampazon.OrdenSeleccion
             {
                 DetalleOrdenesDePrepracionAOrdenSeleccionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
+        }
+
+        private void DetalleOrdenesDePrepracionAOrdenSeleccionListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
