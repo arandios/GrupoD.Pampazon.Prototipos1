@@ -44,20 +44,24 @@
             label7 = new Label();
             CrearOrdenSeleccionBTN = new Button();
             CancelarOrdenSeleccionBTN = new Button();
-            groupBox1 = new GroupBox();
+            FiltrosOPgroupBox = new GroupBox();
             PrioridadComboBoxOrdenSeleccion = new ComboBox();
-            groupBox2 = new GroupBox();
-            groupBox3 = new GroupBox();
+            OPgroupBox = new GroupBox();
             DetalleOrdenesDePrepracionAOrdenSeleccionListView = new ListView();
-            OrdenesDePreparacionPendientesListView = new ListView();
-            OrdenDePreparacionNumero = new ColumnHeader();
-            FechaEmision = new ColumnHeader();
-            RazonSocialCliente = new ColumnHeader();
-            Transportista = new ColumnHeader();
+            IDOrdenPreparacion = new ColumnHeader();
+            IdCliente = new ColumnHeader();
+            DescripcionCliente = new ColumnHeader();
+            Mercaderias = new ColumnHeader();
+            CantidadMercaderia = new ColumnHeader();
+            FechaOrdenRecepcion = new ColumnHeader();
+            EstadoOrdenPreparacion = new ColumnHeader();
             Prioridad = new ColumnHeader();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
+            TransportistaDetalle = new ColumnHeader();
+            OSgroupBox = new GroupBox();
+            OrdenesDePreparacionPendientesListView = new ListView();
+            FiltrosOPgroupBox.SuspendLayout();
+            OPgroupBox.SuspendLayout();
+            OSgroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // QuitarOrdenPreparacionASeleccionBTN
@@ -198,15 +202,15 @@
             CancelarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
             CancelarOrdenSeleccionBTN.Click += CancelarOrdenSeleccionBTN_Click;
             // 
-            // groupBox1
+            // FiltrosOPgroupBox
             // 
-            groupBox1.Controls.Add(PrioridadComboBoxOrdenSeleccion);
-            groupBox1.Location = new Point(11, 20);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(768, 146);
-            groupBox1.TabIndex = 19;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Seleccione filtros de búsqueda para Ordenes de Preparación: ";
+            FiltrosOPgroupBox.Controls.Add(PrioridadComboBoxOrdenSeleccion);
+            FiltrosOPgroupBox.Location = new Point(11, 20);
+            FiltrosOPgroupBox.Name = "FiltrosOPgroupBox";
+            FiltrosOPgroupBox.Size = new Size(768, 146);
+            FiltrosOPgroupBox.TabIndex = 19;
+            FiltrosOPgroupBox.TabStop = false;
+            FiltrosOPgroupBox.Text = "Seleccione filtros de búsqueda para Ordenes de Preparación: ";
             // 
             // PrioridadComboBoxOrdenSeleccion
             // 
@@ -218,38 +222,84 @@
             PrioridadComboBoxOrdenSeleccion.Size = new Size(127, 28);
             PrioridadComboBoxOrdenSeleccion.TabIndex = 0;
             // 
-            // groupBox2
+            // OPgroupBox
             // 
-            groupBox2.Controls.Add(DetalleOrdenesDePrepracionAOrdenSeleccionListView);
-            groupBox2.Controls.Add(AgregarOrdenSeleccionADetalleBTN);
-            groupBox2.Location = new Point(11, 172);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(768, 254);
-            groupBox2.TabIndex = 20;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Ordenes de Preparación en estado Pendiente: ";
-            // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(OrdenesDePreparacionPendientesListView);
-            groupBox3.Controls.Add(CrearOrdenSeleccionBTN);
-            groupBox3.Controls.Add(QuitarOrdenPreparacionASeleccionBTN);
-            groupBox3.Location = new Point(12, 442);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(768, 254);
-            groupBox3.TabIndex = 21;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Detalle de Ordenes de Preparación a insertar: ";
+            OPgroupBox.Controls.Add(DetalleOrdenesDePrepracionAOrdenSeleccionListView);
+            OPgroupBox.Controls.Add(AgregarOrdenSeleccionADetalleBTN);
+            OPgroupBox.Location = new Point(11, 172);
+            OPgroupBox.Name = "OPgroupBox";
+            OPgroupBox.Size = new Size(768, 254);
+            OPgroupBox.TabIndex = 20;
+            OPgroupBox.TabStop = false;
+            OPgroupBox.Text = "Ordenes de Preparación en estado Pendiente: ";
             // 
             // DetalleOrdenesDePrepracionAOrdenSeleccionListView
             // 
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { OrdenDePreparacionNumero, FechaEmision, RazonSocialCliente, Transportista, Prioridad });
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacion, IdCliente, DescripcionCliente, Mercaderias, CantidadMercaderia, FechaOrdenRecepcion, EstadoOrdenPreparacion, Prioridad, TransportistaDetalle });
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Location = new Point(6, 26);
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Name = "DetalleOrdenesDePrepracionAOrdenSeleccionListView";
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Size = new Size(756, 190);
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.TabIndex = 2;
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.UseCompatibleStateImageBehavior = false;
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.View = View.Details;
+            // 
+            // IDOrdenPreparacion
+            // 
+            IDOrdenPreparacion.Text = "IDOrdenPreparacion";
+            IDOrdenPreparacion.Width = 31;
+            // 
+            // IdCliente
+            // 
+            IdCliente.Text = "IdCliente";
+            IdCliente.Width = 31;
+            // 
+            // DescripcionCliente
+            // 
+            DescripcionCliente.Text = "DescripcionCliente";
+            DescripcionCliente.Width = 31;
+            // 
+            // Mercaderias
+            // 
+            Mercaderias.Text = "Mercaderias";
+            Mercaderias.Width = 31;
+            // 
+            // CantidadMercaderia
+            // 
+            CantidadMercaderia.Text = "CantidadMercaderia";
+            CantidadMercaderia.Width = 31;
+            // 
+            // FechaOrdenRecepcion
+            // 
+            FechaOrdenRecepcion.Text = "FechaOrdenRecepcion";
+            FechaOrdenRecepcion.Width = 31;
+            // 
+            // EstadoOrdenPreparacion
+            // 
+            EstadoOrdenPreparacion.Text = "EstadoOrdenPreparacion";
+            EstadoOrdenPreparacion.Width = 31;
+            // 
+            // Prioridad
+            // 
+            Prioridad.Text = "Prioridad";
+            Prioridad.Width = 31;
+            // 
+            // TransportistaDetalle
+            // 
+            TransportistaDetalle.Text = "TransportistaDetalle";
+            TransportistaDetalle.Width = 31;
+            // 
+            // OSgroupBox
+            // 
+            OSgroupBox.Controls.Add(OrdenesDePreparacionPendientesListView);
+            OSgroupBox.Controls.Add(CrearOrdenSeleccionBTN);
+            OSgroupBox.Controls.Add(QuitarOrdenPreparacionASeleccionBTN);
+            OSgroupBox.Enabled = false;
+            OSgroupBox.Location = new Point(12, 442);
+            OSgroupBox.Name = "OSgroupBox";
+            OSgroupBox.Size = new Size(768, 254);
+            OSgroupBox.TabIndex = 21;
+            OSgroupBox.TabStop = false;
+            OSgroupBox.Text = "Detalle de Ordenes de Preparación a insertar: ";
             // 
             // OrdenesDePreparacionPendientesListView
             // 
@@ -259,18 +309,6 @@
             OrdenesDePreparacionPendientesListView.TabIndex = 18;
             OrdenesDePreparacionPendientesListView.UseCompatibleStateImageBehavior = false;
             OrdenesDePreparacionPendientesListView.View = View.Details;
-            // 
-            // OrdenDePreparacionNumero
-            // 
-            OrdenDePreparacionNumero.Text = "Orden De Preparacion Numero";
-            // 
-            // FechaEmision
-            // 
-            FechaEmision.Text = "Fecha Emision";
-            // 
-            // RazonSocialCliente
-            // 
-            RazonSocialCliente.Text = "Razon Social Cliente";
             // 
             // OrdenSeleccionForm
             // 
@@ -290,14 +328,15 @@
             Controls.Add(label1);
             Controls.Add(BuscarOrdenSeleccionBTN);
             Controls.Add(BorrarFiltrosOrdenSeleccionBTN);
-            Controls.Add(groupBox1);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox3);
+            Controls.Add(FiltrosOPgroupBox);
+            Controls.Add(OPgroupBox);
+            Controls.Add(OSgroupBox);
             Name = "OrdenSeleccionForm";
             Text = "OrdenSeleccion";
-            groupBox1.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
+            Load += OrdenSeleccionForm_Load_1;
+            FiltrosOPgroupBox.ResumeLayout(false);
+            OPgroupBox.ResumeLayout(false);
+            OSgroupBox.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -322,16 +361,20 @@
         private Label label7;
         private Button CrearOrdenSeleccionBTN;
         private Button CancelarOrdenSeleccionBTN;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private GroupBox groupBox3;
+        private GroupBox FiltrosOPgroupBox;
+        private GroupBox OPgroupBox;
+        private GroupBox OSgroupBox;
         private ComboBox PrioridadComboBoxOrdenSeleccion;
         private ListView DetalleOrdenesDePrepracionAOrdenSeleccionListView;
         private ListView OrdenesDePreparacionPendientesListView;
-        private ColumnHeader OrdenDePreparacionNumero;
-        private ColumnHeader FechaEmision;
-        private ColumnHeader RazonSocialCliente;
-        private ColumnHeader Transportista;
+        private ColumnHeader IDOrdenPreparacion;
+        private ColumnHeader IdCliente;
+        private ColumnHeader DescripcionCliente;
+        private ColumnHeader Mercaderias;
+        private ColumnHeader CantidadMercaderia;
+        private ColumnHeader FechaOrdenRecepcion;
+        private ColumnHeader EstadoOrdenPreparacion;
         private ColumnHeader Prioridad;
+        private ColumnHeader TransportistaDetalle;
     }
 }
