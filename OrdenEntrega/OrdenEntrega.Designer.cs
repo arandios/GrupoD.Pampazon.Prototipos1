@@ -28,76 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button4 = new Button();
-            button3 = new Button();
-            Generar = new Button();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
+            Buscarbtn = new Button();
+            Salirbtn = new Button();
+            GenerarOrdenEntregabtn = new Button();
+            FechaEntregacmb = new ComboBox();
             label1 = new Label();
-            textBox1 = new TextBox();
-            button2 = new Button();
+            txtIdOrden = new TextBox();
+            limpiarbtn = new Button();
             listView1 = new ListView();
-            button1 = new Button();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
+            columnHeader7 = new ColumnHeader();
+            DetalleOrdenbtn = new Button();
             listView2 = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
             SuspendLayout();
             // 
-            // button4
+            // Buscarbtn
             // 
-            button4.Location = new Point(505, 50);
-            button4.Margin = new Padding(2, 2, 2, 2);
-            button4.Name = "button4";
-            button4.Size = new Size(95, 23);
-            button4.TabIndex = 18;
-            button4.Text = "Buscar";
-            button4.UseVisualStyleBackColor = true;
+            Buscarbtn.Location = new Point(505, 50);
+            Buscarbtn.Margin = new Padding(2);
+            Buscarbtn.Name = "Buscarbtn";
+            Buscarbtn.Size = new Size(95, 23);
+            Buscarbtn.TabIndex = 18;
+            Buscarbtn.Text = "Buscar";
+            Buscarbtn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // Salirbtn
             // 
-            button3.Location = new Point(693, 363);
-            button3.Margin = new Padding(2, 2, 2, 2);
-            button3.Name = "button3";
-            button3.Size = new Size(155, 43);
-            button3.TabIndex = 17;
-            button3.Text = "salir";
-            button3.UseVisualStyleBackColor = true;
+            Salirbtn.Location = new Point(693, 363);
+            Salirbtn.Margin = new Padding(2);
+            Salirbtn.Name = "Salirbtn";
+            Salirbtn.Size = new Size(155, 43);
+            Salirbtn.TabIndex = 17;
+            Salirbtn.Text = "salir";
+            Salirbtn.UseVisualStyleBackColor = true;
+            Salirbtn.Click += Salirbtn_Click;
             // 
-            // Generar
+            // GenerarOrdenEntregabtn
             // 
-            Generar.Location = new Point(693, 312);
-            Generar.Margin = new Padding(2, 2, 2, 2);
-            Generar.Name = "Generar";
-            Generar.Size = new Size(155, 47);
-            Generar.TabIndex = 16;
-            Generar.Text = "Generar Orden Entrega";
-            Generar.UseVisualStyleBackColor = true;
+            GenerarOrdenEntregabtn.Location = new Point(693, 312);
+            GenerarOrdenEntregabtn.Margin = new Padding(2);
+            GenerarOrdenEntregabtn.Name = "GenerarOrdenEntregabtn";
+            GenerarOrdenEntregabtn.Size = new Size(155, 47);
+            GenerarOrdenEntregabtn.TabIndex = 16;
+            GenerarOrdenEntregabtn.Text = "Generar Orden Entrega";
+            GenerarOrdenEntregabtn.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // FechaEntregacmb
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(231, 50);
-            comboBox2.Margin = new Padding(2, 2, 2, 2);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(129, 23);
-            comboBox2.TabIndex = 15;
-            comboBox2.Text = "Fecha";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(372, 50);
-            comboBox1.Margin = new Padding(2, 2, 2, 2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(129, 23);
-            comboBox1.TabIndex = 14;
-            comboBox1.Text = "Categoria";
+            FechaEntregacmb.FormattingEnabled = true;
+            FechaEntregacmb.Location = new Point(231, 50);
+            FechaEntregacmb.Margin = new Padding(2);
+            FechaEntregacmb.Name = "FechaEntregacmb";
+            FechaEntregacmb.Size = new Size(129, 23);
+            FechaEntregacmb.TabIndex = 15;
+            FechaEntregacmb.Text = "Fecha entrega";
             // 
             // label1
             // 
@@ -109,45 +99,61 @@
             label1.TabIndex = 13;
             label1.Text = "ID Orden";
             // 
-            // textBox1
+            // txtIdOrden
             // 
-            textBox1.Location = new Point(121, 50);
-            textBox1.Margin = new Padding(2, 2, 2, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(106, 23);
-            textBox1.TabIndex = 12;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtIdOrden.Location = new Point(121, 50);
+            txtIdOrden.Margin = new Padding(2);
+            txtIdOrden.Name = "txtIdOrden";
+            txtIdOrden.Size = new Size(106, 23);
+            txtIdOrden.TabIndex = 12;
+            txtIdOrden.TextChanged += textBox1_TextChanged;
             // 
-            // button2
+            // limpiarbtn
             // 
-            button2.Location = new Point(604, 50);
-            button2.Margin = new Padding(2, 2, 2, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(95, 23);
-            button2.TabIndex = 11;
-            button2.Text = "Limpiar";
-            button2.UseVisualStyleBackColor = true;
+            limpiarbtn.Location = new Point(604, 50);
+            limpiarbtn.Margin = new Padding(2);
+            limpiarbtn.Name = "limpiarbtn";
+            limpiarbtn.Size = new Size(95, 23);
+            limpiarbtn.TabIndex = 11;
+            limpiarbtn.Text = "Limpiar";
+            limpiarbtn.UseVisualStyleBackColor = true;
             // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6, columnHeader7 });
             listView1.Location = new Point(638, 93);
-            listView1.Margin = new Padding(2, 2, 2, 2);
+            listView1.Margin = new Padding(2);
             listView1.Name = "listView1";
             listView1.Size = new Size(240, 214);
             listView1.TabIndex = 19;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
-            // button1
+            // columnHeader5
             // 
-            button1.Location = new Point(41, 312);
-            button1.Margin = new Padding(2, 2, 2, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(155, 38);
-            button1.TabIndex = 20;
-            button1.Text = "Detalles de Orden";
-            button1.UseVisualStyleBackColor = true;
+            columnHeader5.Text = "Id Prod";
+            columnHeader5.Width = 55;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Producto";
+            columnHeader6.Width = 90;
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "Cantidad";
+            columnHeader7.Width = 75;
+            // 
+            // DetalleOrdenbtn
+            // 
+            DetalleOrdenbtn.Location = new Point(41, 312);
+            DetalleOrdenbtn.Margin = new Padding(2);
+            DetalleOrdenbtn.Name = "DetalleOrdenbtn";
+            DetalleOrdenbtn.Size = new Size(155, 38);
+            DetalleOrdenbtn.TabIndex = 20;
+            DetalleOrdenbtn.Text = "Detalles de Orden";
+            DetalleOrdenbtn.UseVisualStyleBackColor = true;
             // 
             // listView2
             // 
@@ -158,6 +164,7 @@
             listView2.TabIndex = 21;
             listView2.UseCompatibleStateImageBehavior = false;
             listView2.View = View.Details;
+            listView2.SelectedIndexChanged += listView2_SelectedIndexChanged;
             // 
             // columnHeader1
             // 
@@ -175,21 +182,6 @@
             columnHeader3.DisplayIndex = 1;
             columnHeader3.Text = "Fecha de entrega";
             columnHeader3.Width = 120;
-            // 
-            // columnHeader5
-            // 
-            columnHeader5.Text = "Id Prod";
-            columnHeader5.Width = 55;
-            // 
-            // columnHeader6
-            // 
-            columnHeader6.Text = "Producto";
-            columnHeader6.Width = 90;
-            // 
-            // columnHeader7
-            // 
-            columnHeader7.Text = "Cantidad";
-            columnHeader7.Width = 75;
             // 
             // columnHeader8
             // 
@@ -209,17 +201,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(899, 451);
             Controls.Add(listView2);
-            Controls.Add(button1);
+            Controls.Add(DetalleOrdenbtn);
             Controls.Add(listView1);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(Generar);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(Buscarbtn);
+            Controls.Add(Salirbtn);
+            Controls.Add(GenerarOrdenEntregabtn);
+            Controls.Add(FechaEntregacmb);
             Controls.Add(label1);
-            Controls.Add(textBox1);
-            Controls.Add(button2);
-            Margin = new Padding(2, 2, 2, 2);
+            Controls.Add(txtIdOrden);
+            Controls.Add(limpiarbtn);
+            Margin = new Padding(2);
             Name = "OrdenEntrega";
             Text = "Orden de entrega";
             ResumeLayout(false);
@@ -228,16 +219,15 @@
 
         #endregion
 
-        private Button button4;
-        private Button button3;
-        private Button Generar;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
+        private Button Buscarbtn;
+        private Button Salirbtn;
+        private Button GenerarOrdenEntregabtn;
+        private ComboBox FechaEntregacmb;
         private Label label1;
-        private TextBox textBox1;
-        private Button button2;
+        private TextBox txtIdOrden;
+        private Button limpiarbtn;
         private ListView listView1;
-        private Button button1;
+        private Button DetalleOrdenbtn;
         private ListView listView2;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;

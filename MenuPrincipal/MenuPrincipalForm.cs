@@ -28,6 +28,21 @@ namespace Pampazon.MenuPrincipal
             Application.Exit();
         }
 
+        private void Menu_ConsultarOrdenesBTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ListarOrdenes.ListarOrdenesForm formOrdenes = new ListarOrdenes.ListarOrdenesForm();
+                formOrdenes.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while opening the Orders form: " + ex.Message);
+            }
+        }
+
+
+
         private void GenerarRemitoBTN_Click(object sender, EventArgs e)
         {
             try
@@ -40,6 +55,8 @@ namespace Pampazon.MenuPrincipal
                 MessageBox.Show("An error occurred while opening the Orders form: " + ex.Message);
             }
         }
+
+
 
         private void GenerarOrdenDeSeleccionBTN_Click(object sender, EventArgs e)
         {
