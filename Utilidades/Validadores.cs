@@ -36,6 +36,15 @@ namespace Pampazon.Utilidades
             }
             else { return -1; }
         }
-    }
+        public static bool esStringVacio(string str)
+        {
+            if(str == "") {  return true; } else { return false; }
+        }
 
+    // corchete de la clase
+     }
+
+    // corchete de namespace
 }
+
+
