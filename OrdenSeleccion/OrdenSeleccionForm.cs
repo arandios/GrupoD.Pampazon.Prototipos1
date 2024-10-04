@@ -123,9 +123,6 @@ namespace Pampazon.OrdenSeleccion
         }
 
 
-
-
-
         private void BorrarFiltrosOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
             //Realizar la busqueda, por los criterios indicados
@@ -140,7 +137,7 @@ namespace Pampazon.OrdenSeleccion
 
         }
 
-        //-------------------------------------------------------------- FOOTER DE PANTALLA
+        //---------------------------------------------------------------------------------------------- FOOTER DE PANTALLA
         //Cerrar ventana.
         private void CancelarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
