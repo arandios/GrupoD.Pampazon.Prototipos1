@@ -66,5 +66,20 @@ namespace Pampazon.MenuPrincipal
                 MessageBox.Show("An error occurred while opening the Confirmation form: " + ex.Message);
             }
         }
+
+        private void GenerarOrdenDeEntregabtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                OrdenEntrega.OrdenEntrega ordenEntregaForm = new OrdenEntrega.OrdenEntrega();
+                ordenEntregaForm.ShowDialog();  
+            }
+            catch (Exception ex)
+            {
+                
+                MessageBox.Show("Ocurrió un error al abrir el formulario de Orden de Entrega: " + ex.Message);
+            }
+        }
     }
 }

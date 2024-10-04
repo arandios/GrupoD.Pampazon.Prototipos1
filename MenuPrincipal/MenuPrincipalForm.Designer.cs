@@ -31,7 +31,7 @@
             label1 = new Label();
             ConfirmarOrdenSeleccionBTN = new Button();
             GenerarOrdenDeSeleccionBTN = new Button();
-            button5 = new Button();
+            GenerarOrdenDeEntregabtn = new Button();
             GenerarRemitoBTN = new Button();
             button1 = new Button();
             SuspendLayout();
@@ -68,15 +68,16 @@
             GenerarOrdenDeSeleccionBTN.UseVisualStyleBackColor = true;
             GenerarOrdenDeSeleccionBTN.Click += GenerarOrdenDeSeleccionBTN_Click;
             // 
-            // button5
+            // GenerarOrdenDeEntregabtn
             // 
-            button5.Location = new Point(320, 285);
-            button5.Margin = new Padding(4, 3, 4, 3);
-            button5.Name = "button5";
-            button5.Size = new Size(339, 47);
-            button5.TabIndex = 5;
-            button5.Text = "Generar Órden de Entrega";
-            button5.UseVisualStyleBackColor = true;
+            GenerarOrdenDeEntregabtn.Location = new Point(320, 285);
+            GenerarOrdenDeEntregabtn.Margin = new Padding(4, 3, 4, 3);
+            GenerarOrdenDeEntregabtn.Name = "GenerarOrdenDeEntregabtn";
+            GenerarOrdenDeEntregabtn.Size = new Size(339, 47);
+            GenerarOrdenDeEntregabtn.TabIndex = 5;
+            GenerarOrdenDeEntregabtn.Text = "Generar Órden de Entrega";
+            GenerarOrdenDeEntregabtn.UseVisualStyleBackColor = true;
+            GenerarOrdenDeEntregabtn.Click += GenerarOrdenDeEntregabtn_Click;
             // 
             // GenerarRemitoBTN
             // 
@@ -105,7 +106,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1007, 535);
             Controls.Add(GenerarRemitoBTN);
-            Controls.Add(button5);
+            Controls.Add(GenerarOrdenDeEntregabtn);
             Controls.Add(GenerarOrdenDeSeleccionBTN);
             Controls.Add(ConfirmarOrdenSeleccionBTN);
             Controls.Add(button1);
@@ -124,7 +125,7 @@
         private Label label1;
         private Button ConfirmarOrdenSeleccionBTN;
         private Button GenerarOrdenDeSeleccionBTN;
-        private Button button5;
+        private Button GenerarOrdenDeEntregabtn;
         private Button GenerarRemitoBTN;
         private Button button1;
     }
