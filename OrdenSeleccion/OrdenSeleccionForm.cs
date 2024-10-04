@@ -31,6 +31,9 @@ namespace Pampazon.OrdenSeleccion
             // Habilitar selección múltiple --> Para Ordenes de Preparacion.
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.MultiSelect = true;
 
+            // Llenar el ComboBox con los valores del enum CodigoPrioridad
+            PrioridadComboBoxOrdenSeleccion.DataSource = Enum.GetValues(typeof(CodigoPrioridad));
+
             // Verificar si la lista de órdenes de preparación no está vacía
             if (modelo.OrdenesDePreparacion == null || !modelo.OrdenesDePreparacion.Any())
             {

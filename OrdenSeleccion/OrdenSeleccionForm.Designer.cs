@@ -217,7 +217,6 @@
             // 
             PrioridadComboBoxOrdenSeleccion.DropDownStyle = ComboBoxStyle.DropDownList;
             PrioridadComboBoxOrdenSeleccion.FormattingEnabled = true;
-            PrioridadComboBoxOrdenSeleccion.Items.AddRange(new object[] { "1", "2", "3" });
             PrioridadComboBoxOrdenSeleccion.Location = new Point(635, 63);
             PrioridadComboBoxOrdenSeleccion.Name = "PrioridadComboBoxOrdenSeleccion";
             PrioridadComboBoxOrdenSeleccion.Size = new Size(127, 28);
