@@ -28,6 +28,9 @@ namespace Pampazon.OrdenSeleccion
             OPgroupBox.Enabled = true;
             OSgroupBox.Enabled = false;
 
+            // Habilitar selección múltiple --> Para Ordenes de Preparacion.
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.MultiSelect = true;
+
             // Verificar si la lista de órdenes de preparación no está vacía
             if (modelo.OrdenesDePreparacion == null || !modelo.OrdenesDePreparacion.Any())
             {
@@ -36,34 +39,7 @@ namespace Pampazon.OrdenSeleccion
             }
 
             // CARGAR DATOS A LA LISTA DE ORDENES DE PREPARACION.
-            foreach (var ordenPreparacion in modelo.OrdenesDePreparacion)
-            {
-                if (ordenPreparacion == null || string.IsNullOrEmpty(ordenPreparacion.IDOrdenPreparacion))
-                {
-                    continue; // Saltar elementos nulos o con ID vacío
-                }
-
-                ListViewItem item = new ListViewItem();
-                item.Text = ordenPreparacion.IDOrdenPreparacion;
-                item.SubItems.Add(ordenPreparacion.IdCliente.ToString());
-                item.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
-                item.SubItems.Add(ordenPreparacion.Mercaderias.ToString());
-                item.SubItems.Add(ordenPreparacion.CantidadMercaderia.ToString());
-                item.SubItems.Add(ordenPreparacion.FechaOrdenRecepcion.ToString());
-                item.SubItems.Add(ordenPreparacion.EstadoOrdenPreparacion.ToString());
-                item.SubItems.Add(ordenPreparacion.Prioridad.ToString());
-                item.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
-                
-
-                item.Tag = ordenPreparacion; // Guardar el objeto completo como Tag
-                DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
-            }
-
-            // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
-            foreach (ColumnHeader column in DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns)
-            {
-                DetalleOrdenesDePrepracionAOrdenSeleccionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
+            actualizarListaOrdenDePreparacion();
         }
 
 
@@ -110,6 +86,63 @@ namespace Pampazon.OrdenSeleccion
         private void CancelarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void QuitarOrdenPreparacionASeleccionBTN_Click(object sender, EventArgs e)
+        {
+            if(OrdenesDePreparacionPendientesListView.SelectedItems.Count !=1)
+            {
+                MessageBox.Show("Seleccione un y solo una Orden de Preparacion para borrar de la lista.");
+                return;
+            }
+            var item = OrdenesDePreparacionPendientesListView.SelectedItems[0];
+            var ordenDePreparacionSeleccionada = (OrdenPreparacion)item.Tag;
+
+            var error = modelo.BorrarOrdenDePreparacion(ordenDePreparacionSeleccionada);
+            if(error != null)
+            {
+                MessageBox.Show(error);
+                return;
+            }
+
+            //La Orden de Preparacion se borro de la lista.
+            actualizarListaOrdenDePreparacion();
+
+        }
+
+        private void actualizarListaOrdenDePreparacion()
+        {
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
+
+            // CARGAR DATOS A LA LISTA DE ORDENES DE PREPARACION.
+            foreach (var ordenPreparacion in modelo.OrdenesDePreparacion)
+            {
+                if (ordenPreparacion == null || string.IsNullOrEmpty(ordenPreparacion.IDOrdenPreparacion))
+                {
+                    continue; // Saltar elementos nulos o con ID vacío
+                }
+
+                ListViewItem item = new ListViewItem();
+                item.Text = ordenPreparacion.IDOrdenPreparacion;
+                item.SubItems.Add(ordenPreparacion.IdCliente.ToString());
+                item.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
+                item.SubItems.Add(ordenPreparacion.Mercaderias.ToString());
+                item.SubItems.Add(ordenPreparacion.CantidadMercaderia.ToString());
+                item.SubItems.Add(ordenPreparacion.FechaOrdenRecepcion.ToString());
+                item.SubItems.Add(ordenPreparacion.EstadoOrdenPreparacion.ToString());
+                item.SubItems.Add(ordenPreparacion.Prioridad.ToString());
+                item.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
+
+
+                item.Tag = ordenPreparacion; // Guardar el objeto completo como Tag
+                DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
+            }
+
+            // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
+            foreach (ColumnHeader column in DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns)
+            {
+                DetalleOrdenesDePrepracionAOrdenSeleccionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
         }
     }
 }

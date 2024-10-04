@@ -72,6 +72,7 @@
             QuitarOrdenPreparacionASeleccionBTN.TabIndex = 0;
             QuitarOrdenPreparacionASeleccionBTN.Text = "&Quitar Orden de Preparación";
             QuitarOrdenPreparacionASeleccionBTN.UseVisualStyleBackColor = true;
+            QuitarOrdenPreparacionASeleccionBTN.Click += QuitarOrdenPreparacionASeleccionBTN_Click;
             // 
             // AgregarOrdenSeleccionADetalleBTN
             // 
