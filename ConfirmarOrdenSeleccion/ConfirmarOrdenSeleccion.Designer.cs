@@ -28,93 +28,78 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button3 = new Button();
-            button2 = new Button();
+            LimpiarBTN = new Button();
+            BuscarBTN = new Button();
             label1 = new Label();
-            textBox1 = new TextBox();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
-            listView2 = new ListView();
+            IdOrdentxt = new TextBox();
+            FechaCMB = new ComboBox();
+            LstOrdenesSeleccion = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
-            button5 = new Button();
-            listView1 = new ListView();
+            DetallesOrdenBTN = new Button();
+            LSTDetalleOrden = new ListView();
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
-            button6 = new Button();
-            Generar = new Button();
+            SalirBTN = new Button();
+            GenerarOrdenEntregaBTN = new Button();
             SuspendLayout();
             // 
-            // button3
+            // LimpiarBTN
             // 
-            button3.Location = new Point(608, 46);
-            button3.Margin = new Padding(2, 2, 2, 2);
-            button3.Name = "button3";
-            button3.Size = new Size(88, 26);
-            button3.TabIndex = 16;
-            button3.Text = "Limpiar";
-            button3.UseVisualStyleBackColor = true;
+            LimpiarBTN.Location = new Point(712, 71);
+            LimpiarBTN.Name = "LimpiarBTN";
+            LimpiarBTN.Size = new Size(126, 43);
+            LimpiarBTN.TabIndex = 16;
+            LimpiarBTN.Text = "Limpiar";
+            LimpiarBTN.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // BuscarBTN
             // 
-            button2.Location = new Point(516, 46);
-            button2.Margin = new Padding(2, 2, 2, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(88, 26);
-            button2.TabIndex = 15;
-            button2.Text = "Buscar:";
-            button2.UseVisualStyleBackColor = true;
+            BuscarBTN.Location = new Point(580, 71);
+            BuscarBTN.Name = "BuscarBTN";
+            BuscarBTN.Size = new Size(126, 43);
+            BuscarBTN.TabIndex = 15;
+            BuscarBTN.Text = "Buscar:";
+            BuscarBTN.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(49, 49);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(70, 82);
             label1.Name = "label1";
-            label1.Size = new Size(73, 15);
+            label1.Size = new Size(115, 25);
             label1.TabIndex = 14;
             label1.Text = "ID de Orden ";
             // 
-            // textBox1
+            // IdOrdentxt
             // 
-            textBox1.Location = new Point(126, 46);
-            textBox1.Margin = new Padding(2, 2, 2, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(106, 23);
-            textBox1.TabIndex = 13;
+            IdOrdentxt.Location = new Point(180, 77);
+            IdOrdentxt.Name = "IdOrdentxt";
+            IdOrdentxt.Size = new Size(150, 31);
+            IdOrdentxt.TabIndex = 13;
             // 
-            // comboBox2
+            // FechaCMB
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(383, 46);
-            comboBox2.Margin = new Padding(2, 2, 2, 2);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(129, 23);
-            comboBox2.TabIndex = 12;
-            comboBox2.Text = "Fecha";
+            FechaCMB.FormattingEnabled = true;
+            FechaCMB.Location = new Point(369, 75);
+            FechaCMB.Name = "FechaCMB";
+            FechaCMB.Size = new Size(183, 33);
+            FechaCMB.TabIndex = 12;
+            FechaCMB.Text = "Fecha de Entrega";
             // 
-            // comboBox1
+            // LstOrdenesSeleccion
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(236, 47);
-            comboBox1.Margin = new Padding(2, 2, 2, 2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(129, 23);
-            comboBox1.TabIndex = 11;
-            comboBox1.Text = "Categoria";
-            // 
-            // listView2
-            // 
-            listView2.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
-            listView2.Location = new Point(25, 80);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(573, 214);
-            listView2.TabIndex = 26;
-            listView2.UseCompatibleStateImageBehavior = false;
-            listView2.View = View.Details;
+            LstOrdenesSeleccion.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            LstOrdenesSeleccion.Location = new Point(36, 133);
+            LstOrdenesSeleccion.Margin = new Padding(4, 5, 4, 5);
+            LstOrdenesSeleccion.Name = "LstOrdenesSeleccion";
+            LstOrdenesSeleccion.Size = new Size(817, 354);
+            LstOrdenesSeleccion.TabIndex = 26;
+            LstOrdenesSeleccion.UseCompatibleStateImageBehavior = false;
+            LstOrdenesSeleccion.View = View.Details;
             // 
             // columnHeader1
             // 
@@ -124,38 +109,36 @@
             // columnHeader2
             // 
             columnHeader2.Text = "Estado";
-            columnHeader2.Width = 120;
+            columnHeader2.Width = 80;
             // 
             // columnHeader3
             // 
-            columnHeader3.Text = "Fecha de entrega";
-            columnHeader3.Width = 120;
+            columnHeader3.Text = "Fecha Entrega";
+            columnHeader3.Width = 140;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "OP asociada";
             columnHeader4.Width = 120;
             // 
-            // button5
+            // DetallesOrdenBTN
             // 
-            button5.Location = new Point(29, 300);
-            button5.Margin = new Padding(2);
-            button5.Name = "button5";
-            button5.Size = new Size(155, 38);
-            button5.TabIndex = 25;
-            button5.Text = "Detalles de Orden";
-            button5.UseVisualStyleBackColor = true;
+            DetallesOrdenBTN.Location = new Point(41, 500);
+            DetallesOrdenBTN.Name = "DetallesOrdenBTN";
+            DetallesOrdenBTN.Size = new Size(221, 63);
+            DetallesOrdenBTN.TabIndex = 25;
+            DetallesOrdenBTN.Text = "Detalles de Orden";
+            DetallesOrdenBTN.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // LSTDetalleOrden
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6, columnHeader7 });
-            listView1.Location = new Point(620, 80);
-            listView1.Margin = new Padding(2);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(240, 216);
-            listView1.TabIndex = 24;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            LSTDetalleOrden.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6, columnHeader7 });
+            LSTDetalleOrden.Location = new Point(886, 133);
+            LSTDetalleOrden.Name = "LSTDetalleOrden";
+            LSTDetalleOrden.Size = new Size(341, 357);
+            LSTDetalleOrden.TabIndex = 24;
+            LSTDetalleOrden.UseCompatibleStateImageBehavior = false;
+            LSTDetalleOrden.View = View.Details;
             // 
             // columnHeader5
             // 
@@ -172,67 +155,63 @@
             columnHeader7.Text = "Cantidad";
             columnHeader7.Width = 75;
             // 
-            // button6
+            // SalirBTN
             // 
-            button6.Location = new Point(658, 353);
-            button6.Margin = new Padding(2);
-            button6.Name = "button6";
-            button6.Size = new Size(155, 43);
-            button6.TabIndex = 23;
-            button6.Text = "salir";
-            button6.UseVisualStyleBackColor = true;
+            SalirBTN.Location = new Point(954, 595);
+            SalirBTN.Name = "SalirBTN";
+            SalirBTN.Size = new Size(178, 58);
+            SalirBTN.TabIndex = 27;
+            SalirBTN.Text = "&Salir";
+            SalirBTN.Click += SalirBTN_Click;
             // 
-            // Generar
+            // GenerarOrdenEntregaBTN
             // 
-            Generar.Location = new Point(658, 300);
-            Generar.Margin = new Padding(2);
-            Generar.Name = "Generar";
-            Generar.Size = new Size(155, 47);
-            Generar.TabIndex = 22;
-            Generar.Text = "Generar Orden Entrega";
-            Generar.UseVisualStyleBackColor = true;
+            GenerarOrdenEntregaBTN.Location = new Point(940, 500);
+            GenerarOrdenEntregaBTN.Name = "GenerarOrdenEntregaBTN";
+            GenerarOrdenEntregaBTN.Size = new Size(221, 78);
+            GenerarOrdenEntregaBTN.TabIndex = 22;
+            GenerarOrdenEntregaBTN.Text = "Generar Orden Entrega";
+            GenerarOrdenEntregaBTN.UseVisualStyleBackColor = true;
             // 
             // ConfirmarOrdenSeleccion
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(899, 429);
-            Controls.Add(listView2);
-            Controls.Add(button5);
-            Controls.Add(listView1);
-            Controls.Add(button6);
-            Controls.Add(Generar);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            ClientSize = new Size(1284, 715);
+            Controls.Add(LstOrdenesSeleccion);
+            Controls.Add(DetallesOrdenBTN);
+            Controls.Add(LSTDetalleOrden);
+            Controls.Add(SalirBTN);
+            Controls.Add(GenerarOrdenEntregaBTN);
+            Controls.Add(LimpiarBTN);
+            Controls.Add(BuscarBTN);
             Controls.Add(label1);
-            Controls.Add(textBox1);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
-            Margin = new Padding(2, 2, 2, 2);
+            Controls.Add(IdOrdentxt);
+            Controls.Add(FechaCMB);
             Name = "ConfirmarOrdenSeleccion";
             Text = "Confirmar orden de seleccion";
+            Load += ConfirmarOrdenSeleccion_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Button button3;
-        private Button button2;
+        private Button LimpiarBTN;
+        private Button BuscarBTN;
         private Label label1;
-        private TextBox textBox1;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
-        private ListView listView2;
+        private TextBox IdOrdentxt;
+        private ComboBox FechaCMB;
+        private ListView LstOrdenesSeleccion;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
-        private Button button5;
-        private ListView listView1;
+        private Button DetallesOrdenBTN;
+        private ListView LSTDetalleOrden;
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
         private ColumnHeader columnHeader7;
-        private Button button6;
-        private Button Generar;
+        private Button SalirBTN;
+        private Button GenerarOrdenEntregaBTN;
     }
 }

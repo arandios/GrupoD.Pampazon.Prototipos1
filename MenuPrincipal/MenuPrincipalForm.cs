@@ -33,7 +33,7 @@ namespace Pampazon.MenuPrincipal
             try
             {
                 Generar_RemitoForms formRemito = new Generar_RemitoForms();
-                formRemito.ShowDialog();                
+                formRemito.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -46,11 +46,24 @@ namespace Pampazon.MenuPrincipal
             try
             {
                 OrdenSeleccion.OrdenSeleccionForm ordenSeleccionForm = new OrdenSeleccion.OrdenSeleccionForm();
-                ordenSeleccionForm.ShowDialog();                
+                ordenSeleccionForm.ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while opening the Orders form: " + ex.Message);
+            }
+        }
+
+        private void ConfirmarOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ConfirmarOrdenSeleccion.ConfirmarOrdenSeleccion confirmarOrdenForm = new ConfirmarOrdenSeleccion.ConfirmarOrdenSeleccion();
+                confirmarOrdenForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while opening the Confirmation form: " + ex.Message);
             }
         }
     }

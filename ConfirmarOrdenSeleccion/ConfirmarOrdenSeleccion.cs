@@ -16,5 +16,16 @@ namespace Pampazon.ConfirmarOrdenSeleccion
         {
             InitializeComponent();
         }
+
+        private void ConfirmarOrdenSeleccion_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SalirBTN_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }
