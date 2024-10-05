@@ -15,6 +15,13 @@ namespace Pampazon
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// A partir del DNI del transportista se buscan las ordenes que hay a su nombre y se listan
+        /// en la lista Detalle Transportista para poder selccionar una.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BuscarTransportistaBtn_Click(object sender, EventArgs e)
         {
             TransportistasListV.Items.Clear();
@@ -44,10 +51,10 @@ namespace Pampazon
                         // Agregar cada transportista encontrado a TransportistasListV
                         foreach (var transportista in transportistasEncontrados)
                         {
-                            ListViewItem item = new ListViewItem(transportista.Nombre); // DNI en la columna
-                            item.SubItems.Add(transportista.DNI.ToString()); // Nombre en la columna
-                            item.SubItems.Add(transportista.Apellido); // Apellido en la columna
-                            item.SubItems.Add(transportista.IdOrden); // Orden en la columna
+                            ListViewItem item = new ListViewItem(transportista.Nombre); 
+                            item.SubItems.Add(transportista.DNI.ToString()); 
+                            item.SubItems.Add(transportista.Apellido); 
+                            item.SubItems.Add(transportista.IdOrden); 
 
                             TransportistasListV.Items.Add(item);
                         }
@@ -68,7 +75,11 @@ namespace Pampazon
             }
         }
 
-
+        /// <summary>
+        /// Agrega la orden seleccionada y la envia a Detalle remito
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AgregarOrdenBtn_Click(object sender, EventArgs e)
         {
             // Verificar si hay un ítem seleccionado en TransportistasListV
@@ -102,8 +113,15 @@ namespace Pampazon
         }
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+           //NO BORRAR PORQUE SE ROMPE LA PANTALLA//
 
         }
+        /// <summary>
+        /// Boton para generar remito a partir de los datos del transportista y la orden
+        /// detalladas en la lista "Detalle Remito"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GenerarRemitoBtn_Click(object sender, EventArgs e)
         {
             // Verificar si hay al menos un ítem en DetalleRemitoLTV
@@ -168,6 +186,11 @@ namespace Pampazon
 
         }
 
+        /// <summary>
+        /// Quita la orden seleccionada de la lista Detalle Remito
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void QuitarOrdenBtn_Click(object sender, EventArgs e)
         {
             // Verificar si hay al menos un ítem en DetalleRemitoLTV
