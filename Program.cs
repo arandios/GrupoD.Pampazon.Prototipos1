@@ -15,7 +15,7 @@ namespace Pampazon
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
            // Application.Run(new MenuPrincipal.MenuPrincipalForm()); // comentario test //
-           Application.Run(new Generar_RemitoForms());
+           Application.Run(new MenuPrincipalForm());
 
         }
     }
