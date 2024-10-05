@@ -30,123 +30,69 @@ namespace Pampazon
         private void InitializeComponent()
         {
             GenerarBtn = new Button();
-            BuscarBtn = new Button();
-            BuscarClienteTxt = new TextBox();
-            label2 = new Label();
-            OrdenesListV = new ListView();
-            NroOrdenColumna = new ColumnHeader();
-            ClienteColumna = new ColumnHeader();
-            CodigoClienteColumna = new ColumnHeader();
             DetalleRemitoLTV = new ListView();
             OrdenConfirmadaColumna = new ColumnHeader();
-            ClienteConfirmadoColumna = new ColumnHeader();
+            FechaRemitoColumna = new ColumnHeader();
             TransportistaConfirmadoColumna = new ColumnHeader();
             SalisBtn = new Button();
             label4 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            buscarOrdenDeEntregaGroupBox = new GroupBox();
-            label1 = new Label();
-            buscarOrdenDeEntregaGroupBox.SuspendLayout();
+            AgregarOrdenBtn = new Button();
+            QuitarOrdenBtn = new Button();
+            TransportistasListV = new ListView();
+            NombreTransportistaColumna = new ColumnHeader();
+            DNITColumna = new ColumnHeader();
+            ApellidoTransportistaColumna = new ColumnHeader();
+            IdOrdenColumna = new ColumnHeader();
+            BuscarTransportistaGroupBox = new GroupBox();
+            BuscarTransportistaBtn = new Button();
+            label3 = new Label();
+            button3 = new Button();
+            DNITtxt = new TextBox();
+            label5 = new Label();
+            GenerarRemitoBtn = new Button();
+            BuscarTransportistaGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // GenerarBtn
             // 
-            GenerarBtn.Location = new Point(391, 874);
-            GenerarBtn.Margin = new Padding(3, 4, 3, 4);
+            GenerarBtn.Location = new Point(342, 656);
             GenerarBtn.Name = "GenerarBtn";
-            GenerarBtn.Size = new Size(186, 32);
+            GenerarBtn.Size = new Size(163, 24);
             GenerarBtn.TabIndex = 2;
             GenerarBtn.Text = "Generar nuevo remito";
             GenerarBtn.UseVisualStyleBackColor = true;
             // 
-            // BuscarBtn
-            // 
-            BuscarBtn.Location = new Point(586, 61);
-            BuscarBtn.Margin = new Padding(3, 4, 3, 4);
-            BuscarBtn.Name = "BuscarBtn";
-            BuscarBtn.Size = new Size(114, 31);
-            BuscarBtn.TabIndex = 3;
-            BuscarBtn.Text = "Buscar";
-            BuscarBtn.UseVisualStyleBackColor = true;
-            // 
-            // BuscarClienteTxt
-            // 
-            BuscarClienteTxt.Location = new Point(23, 61);
-            BuscarClienteTxt.Margin = new Padding(3, 4, 3, 4);
-            BuscarClienteTxt.Name = "BuscarClienteTxt";
-            BuscarClienteTxt.Size = new Size(556, 27);
-            BuscarClienteTxt.TabIndex = 6;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(23, 37);
-            label2.Name = "label2";
-            label2.Size = new Size(106, 20);
-            label2.TabIndex = 7;
-            label2.Text = "Codigo cliente";
-            // 
-            // OrdenesListV
-            // 
-            OrdenesListV.Columns.AddRange(new ColumnHeader[] { NroOrdenColumna, ClienteColumna, CodigoClienteColumna });
-            OrdenesListV.Location = new Point(22, 302);
-            OrdenesListV.Margin = new Padding(3, 4, 3, 4);
-            OrdenesListV.Name = "OrdenesListV";
-            OrdenesListV.Size = new Size(746, 207);
-            OrdenesListV.TabIndex = 11;
-            OrdenesListV.UseCompatibleStateImageBehavior = false;
-            OrdenesListV.View = View.Details;
-            // 
-            // NroOrdenColumna
-            // 
-            NroOrdenColumna.Text = "ID Orden";
-            NroOrdenColumna.Width = 100;
-            // 
-            // ClienteColumna
-            // 
-            ClienteColumna.DisplayIndex = 2;
-            ClienteColumna.Text = "Fecha de emision";
-            ClienteColumna.Width = 250;
-            // 
-            // CodigoClienteColumna
-            // 
-            CodigoClienteColumna.DisplayIndex = 1;
-            CodigoClienteColumna.Text = "ID Cliente";
-            CodigoClienteColumna.Width = 100;
-            // 
             // DetalleRemitoLTV
             // 
-            DetalleRemitoLTV.Columns.AddRange(new ColumnHeader[] { OrdenConfirmadaColumna, ClienteConfirmadoColumna, TransportistaConfirmadoColumna });
-            DetalleRemitoLTV.Location = new Point(22, 595);
-            DetalleRemitoLTV.Margin = new Padding(3, 4, 3, 4);
+            DetalleRemitoLTV.Columns.AddRange(new ColumnHeader[] { OrdenConfirmadaColumna, FechaRemitoColumna, TransportistaConfirmadoColumna });
+            DetalleRemitoLTV.Location = new Point(18, 290);
             DetalleRemitoLTV.Name = "DetalleRemitoLTV";
-            DetalleRemitoLTV.Size = new Size(746, 219);
+            DetalleRemitoLTV.Size = new Size(456, 95);
             DetalleRemitoLTV.TabIndex = 12;
             DetalleRemitoLTV.UseCompatibleStateImageBehavior = false;
             DetalleRemitoLTV.View = View.Details;
             // 
             // OrdenConfirmadaColumna
             // 
-            OrdenConfirmadaColumna.Text = "Nro. Orden";
+            OrdenConfirmadaColumna.Text = "ID Orden";
             OrdenConfirmadaColumna.Width = 100;
             // 
-            // ClienteConfirmadoColumna
+            // FechaRemitoColumna
             // 
-            ClienteConfirmadoColumna.Text = "Cliente";
-            ClienteConfirmadoColumna.Width = 250;
+            FechaRemitoColumna.Text = "Fecha de emisión";
+            FechaRemitoColumna.Width = 105;
             // 
             // TransportistaConfirmadoColumna
             // 
             TransportistaConfirmadoColumna.Text = "Transportista";
-            TransportistaConfirmadoColumna.Width = 100;
+            TransportistaConfirmadoColumna.TextAlign = HorizontalAlignment.Center;
+            TransportistaConfirmadoColumna.Width = 250;
             // 
             // SalisBtn
             // 
-            SalisBtn.Location = new Point(582, 872);
-            SalisBtn.Margin = new Padding(3, 4, 3, 4);
+            SalisBtn.Location = new Point(509, 654);
             SalisBtn.Name = "SalisBtn";
-            SalisBtn.Size = new Size(186, 35);
+            SalisBtn.Size = new Size(163, 26);
             SalisBtn.TabIndex = 13;
             SalisBtn.Text = "Cancelar";
             SalisBtn.UseVisualStyleBackColor = true;
@@ -154,75 +100,153 @@ namespace Pampazon
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(22, 571);
+            label4.Location = new Point(18, 272);
             label4.Name = "label4";
-            label4.Size = new Size(105, 20);
+            label4.Size = new Size(81, 15);
             label4.TabIndex = 14;
             label4.Text = "Detalle remito";
             // 
-            // button1
+            // AgregarOrdenBtn
             // 
-            button1.Location = new Point(487, 529);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(281, 31);
-            button1.TabIndex = 16;
-            button1.Text = "Agregar Orden de Entrega al remito";
-            button1.UseVisualStyleBackColor = true;
+            AgregarOrdenBtn.Location = new Point(18, 246);
+            AgregarOrdenBtn.Name = "AgregarOrdenBtn";
+            AgregarOrdenBtn.Size = new Size(456, 23);
+            AgregarOrdenBtn.TabIndex = 16;
+            AgregarOrdenBtn.Text = "Agregar Orden de Entrega al remito";
+            AgregarOrdenBtn.UseVisualStyleBackColor = true;
+            AgregarOrdenBtn.Click += AgregarOrdenBtn_Click;
             // 
-            // button2
+            // QuitarOrdenBtn
             // 
-            button2.Location = new Point(487, 823);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(282, 31);
-            button2.TabIndex = 17;
-            button2.Text = "Quitar Orden de Entrega del remito";
-            button2.UseVisualStyleBackColor = true;
+            QuitarOrdenBtn.Location = new Point(250, 391);
+            QuitarOrdenBtn.Name = "QuitarOrdenBtn";
+            QuitarOrdenBtn.Size = new Size(224, 23);
+            QuitarOrdenBtn.TabIndex = 17;
+            QuitarOrdenBtn.Text = "Quitar Orden de Entrega del remito";
+            QuitarOrdenBtn.UseVisualStyleBackColor = true;
+            QuitarOrdenBtn.Click += QuitarOrdenBtn_Click;
             // 
-            // buscarOrdenDeEntregaGroupBox
+            // TransportistasListV
             // 
-            buscarOrdenDeEntregaGroupBox.Controls.Add(label2);
-            buscarOrdenDeEntregaGroupBox.Controls.Add(BuscarBtn);
-            buscarOrdenDeEntregaGroupBox.Controls.Add(BuscarClienteTxt);
-            buscarOrdenDeEntregaGroupBox.Location = new Point(22, 57);
-            buscarOrdenDeEntregaGroupBox.Margin = new Padding(3, 4, 3, 4);
-            buscarOrdenDeEntregaGroupBox.Name = "buscarOrdenDeEntregaGroupBox";
-            buscarOrdenDeEntregaGroupBox.Padding = new Padding(3, 4, 3, 4);
-            buscarOrdenDeEntregaGroupBox.Size = new Size(746, 165);
-            buscarOrdenDeEntregaGroupBox.TabIndex = 18;
-            buscarOrdenDeEntregaGroupBox.TabStop = false;
-            buscarOrdenDeEntregaGroupBox.Text = "Buscar ordenes de entrega";
+            TransportistasListV.Columns.AddRange(new ColumnHeader[] { NombreTransportistaColumna, DNITColumna, ApellidoTransportistaColumna, IdOrdenColumna });
+            TransportistasListV.Location = new Point(20, 147);
+            TransportistasListV.Name = "TransportistasListV";
+            TransportistasListV.Size = new Size(454, 96);
+            TransportistasListV.TabIndex = 20;
+            TransportistasListV.UseCompatibleStateImageBehavior = false;
+            TransportistasListV.View = View.Details;
+            TransportistasListV.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
-            // label1
+            // NombreTransportistaColumna
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(22, 278);
-            label1.Name = "label1";
-            label1.Size = new Size(178, 20);
-            label1.TabIndex = 19;
-            label1.Text = "Detalle Orden de Entrega";
+            NombreTransportistaColumna.DisplayIndex = 1;
+            NombreTransportistaColumna.Text = "Nombre";
+            NombreTransportistaColumna.Width = 100;
+            // 
+            // DNITColumna
+            // 
+            DNITColumna.DisplayIndex = 0;
+            DNITColumna.Text = "DNI";
+            DNITColumna.TextAlign = HorizontalAlignment.Center;
+            DNITColumna.Width = 80;
+            // 
+            // ApellidoTransportistaColumna
+            // 
+            ApellidoTransportistaColumna.Text = "Apellido";
+            ApellidoTransportistaColumna.Width = 100;
+            // 
+            // IdOrdenColumna
+            // 
+            IdOrdenColumna.Text = "Id Orden";
+            IdOrdenColumna.Width = 80;
+            // 
+            // BuscarTransportistaGroupBox
+            // 
+            BuscarTransportistaGroupBox.Controls.Add(BuscarTransportistaBtn);
+            BuscarTransportistaGroupBox.Controls.Add(label3);
+            BuscarTransportistaGroupBox.Controls.Add(button3);
+            BuscarTransportistaGroupBox.Controls.Add(DNITtxt);
+            BuscarTransportistaGroupBox.Location = new Point(17, 12);
+            BuscarTransportistaGroupBox.Name = "BuscarTransportistaGroupBox";
+            BuscarTransportistaGroupBox.Size = new Size(457, 114);
+            BuscarTransportistaGroupBox.TabIndex = 21;
+            BuscarTransportistaGroupBox.TabStop = false;
+            BuscarTransportistaGroupBox.Text = "Buscar transportista";
+            // 
+            // BuscarTransportistaBtn
+            // 
+            BuscarTransportistaBtn.Location = new Point(325, 75);
+            BuscarTransportistaBtn.Name = "BuscarTransportistaBtn";
+            BuscarTransportistaBtn.Size = new Size(126, 23);
+            BuscarTransportistaBtn.TabIndex = 8;
+            BuscarTransportistaBtn.Text = "Buscar";
+            BuscarTransportistaBtn.UseVisualStyleBackColor = true;
+            BuscarTransportistaBtn.Click += BuscarTransportistaBtn_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(20, 28);
+            label3.Name = "label3";
+            label3.Size = new Size(96, 15);
+            label3.TabIndex = 7;
+            label3.Text = "DNI transportista";
+            // 
+            // button3
+            // 
+            button3.Location = new Point(513, 46);
+            button3.Name = "button3";
+            button3.Size = new Size(100, 23);
+            button3.TabIndex = 3;
+            button3.Text = "Buscar";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // DNITtxt
+            // 
+            DNITtxt.Location = new Point(20, 46);
+            DNITtxt.Name = "DNITtxt";
+            DNITtxt.Size = new Size(431, 23);
+            DNITtxt.TabIndex = 6;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(18, 129);
+            label5.Name = "label5";
+            label5.Size = new Size(112, 15);
+            label5.TabIndex = 22;
+            label5.Text = "Detalle transportista";
+            // 
+            // GenerarRemitoBtn
+            // 
+            GenerarRemitoBtn.Location = new Point(17, 391);
+            GenerarRemitoBtn.Name = "GenerarRemitoBtn";
+            GenerarRemitoBtn.Size = new Size(224, 23);
+            GenerarRemitoBtn.TabIndex = 23;
+            GenerarRemitoBtn.Text = "Generar nuevo remito";
+            GenerarRemitoBtn.UseVisualStyleBackColor = true;
+            GenerarRemitoBtn.Click += GenerarRemitoBtn_Click;
             // 
             // Generar_RemitoForms
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(815, 936);
-            Controls.Add(label1);
-            Controls.Add(buscarOrdenDeEntregaGroupBox);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            ClientSize = new Size(492, 428);
+            Controls.Add(GenerarRemitoBtn);
+            Controls.Add(label5);
+            Controls.Add(BuscarTransportistaGroupBox);
+            Controls.Add(TransportistasListV);
+            Controls.Add(QuitarOrdenBtn);
+            Controls.Add(AgregarOrdenBtn);
             Controls.Add(label4);
             Controls.Add(SalisBtn);
             Controls.Add(DetalleRemitoLTV);
-            Controls.Add(OrdenesListV);
             Controls.Add(GenerarBtn);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Generar_RemitoForms";
             Text = "Remito";
             Load += Generar_RemitoForms_Load;
-            buscarOrdenDeEntregaGroupBox.ResumeLayout(false);
-            buscarOrdenDeEntregaGroupBox.PerformLayout();
+            BuscarTransportistaGroupBox.ResumeLayout(false);
+            BuscarTransportistaGroupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -237,22 +261,25 @@ namespace Pampazon
 
 #endregion
         private Button GenerarBtn;
-        private Button BuscarBtn;
-        private TextBox BuscarClienteTxt;
-        private Label label2;
-        private ListView OrdenesListV;
-        private ColumnHeader NroOrdenColumna;
-        private ColumnHeader ClienteColumna;
         private ListView DetalleRemitoLTV;
         private ColumnHeader OrdenConfirmadaColumna;
-        private ColumnHeader ClienteConfirmadoColumna;
+        private ColumnHeader FechaRemitoColumna;
         private ColumnHeader TransportistaConfirmadoColumna;
         private Button SalisBtn;
         private Label label4;
-        private ColumnHeader CodigoClienteColumna;
-        private Button button1;
-        private Button button2;
-        private GroupBox buscarOrdenDeEntregaGroupBox;
-        private Label label1;
+        private Button AgregarOrdenBtn;
+        private Button QuitarOrdenBtn;
+        private GroupBox BuscarTransportistaGroupBox;
+        private Label label3;
+        private Button button3;
+        private TextBox DNITtxt;
+        private ColumnHeader NombreTransportistaColumna;
+        private ColumnHeader DNITColumna;
+        private ColumnHeader ApellidoTransportistaColumna;
+        private Button BuscarTransportistaBtn;
+        private Label label5;
+        private Button GenerarRemitoBtn;
+        private ColumnHeader IdOrdenColumna;
+        internal ListView TransportistasListV;
     }
 }
