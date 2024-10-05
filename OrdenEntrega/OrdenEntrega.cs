@@ -12,12 +12,19 @@ namespace Pampazon.OrdenEntrega
 {
     public partial class OrdenEntrega : Form
     {
+        public class OrdenEntregaData
+        {
+            public int NroOrden { get; set; }
+            public string FechaEntrega { get; set; }
+            public int IdTransportista { get; set; }
+            public string NombreTransportista { get; set; }
+            public string Estado { get; set; }
+        }
         public OrdenEntrega()
         {
             InitializeComponent();
             ConfigurarListView();
             AgregarDatos();
-            AgregarDatos2();
             AgregarDatosl3();
             AgregarDatosl2();
         }
@@ -25,32 +32,43 @@ namespace Pampazon.OrdenEntrega
         {
             listView2.View = View.Details;
             listView2.FullRowSelect = true;
-         
-            listView1.View = View.Details;
-            listView1.FullRowSelect = true;
-           
+
+            listView2.Columns.Add("Nro Orden", -2, HorizontalAlignment.Left);
+            listView2.Columns.Add("Fecha de Entrega", -2, HorizontalAlignment.Left);
+            listView2.Columns.Add("ID Transportista", -2, HorizontalAlignment.Left);
+            listView2.Columns.Add("Nombre Transportista", -2, HorizontalAlignment.Left);
+            listView2.Columns.Add("Estado", -2, HorizontalAlignment.Left);       
         }
+
         private void AgregarDatos()
         {
+            List<OrdenEntregaData> datos = new List<OrdenEntregaData>();
+            
+            for (int i = 1; i <= 5; i++)
+            {
+                datos.Add(new OrdenEntregaData
+                {
+                    NroOrden = i*2,
+                    FechaEntrega = "2024-10-0"+i,
+                    IdTransportista = i,
+                    NombreTransportista = "cliente " + i,
+                    Estado = "Entregado"
 
-            ListViewItem item = new ListViewItem("12345");
-            item.SubItems.Add("Entregado");
-            item.SubItems.Add("987");
-            item.SubItems.Add("2024-10-05");
-            item.SubItems.Add("Juan Pérez");
-            listView2.Items.Add(item);
+                });
+            }
+            foreach (var dato in datos)
+            {
+                ListViewItem item = new ListViewItem(dato.NroOrden.ToString());
+                item.SubItems.Add(dato.FechaEntrega);
+                item.SubItems.Add(dato.IdTransportista.ToString());
+                item.SubItems.Add(dato.NombreTransportista);
+                item.SubItems.Add(dato.Estado);
+                listView2.Items.Add(item);
+            }
+
+
         }
-        private void AgregarDatos2()
-        {
-            ListViewItem item = new ListViewItem("12346");
-            item.SubItems.Add("Entregado"); // Cambiado el orden de los subitems
-            item.SubItems.Add("988");
-            item.SubItems.Add("2024-10-06");
-            item.SubItems.Add("Juan Domingo Perón");
-            listView2.Items.Add(item);
-        }
-       
-        
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -63,7 +81,7 @@ namespace Pampazon.OrdenEntrega
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void AgregarDatosl2()
