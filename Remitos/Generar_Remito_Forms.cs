@@ -98,6 +98,13 @@ namespace Pampazon
             string nombreTransportista = selectedItem.SubItems[0].Text;
             string apellidoTransportista = selectedItem.SubItems[2].Text;
 
+            // Verificar si la orden ya fue agregada a DetalleRemitoLTV
+            if (GenerarRemitoModelo.OrdenYaAgregada(idOrden, DetalleRemitoLTV))
+            {
+                MessageBox.Show("Esta orden ya ha sido agregada a Detalle Remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Crear un nuevo ítem para DetalleRemitoLTV
             ListViewItem nuevoItem = new ListViewItem(idOrden);
             nuevoItem.SubItems.Add(fechaHoy.ToShortDateString());
@@ -105,17 +112,15 @@ namespace Pampazon
 
             // Agregar el nuevo ítem a DetalleRemitoLTV
             DetalleRemitoLTV.Items.Add(nuevoItem);
-
-
-
-
-
         }
+
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
            //NO BORRAR PORQUE SE ROMPE LA PANTALLA//
 
         }
+
+
         /// <summary>
         /// Boton para generar remito a partir de los datos del transportista y la orden
         /// detalladas en la lista "Detalle Remito"
@@ -131,28 +136,39 @@ namespace Pampazon
                 return;
             }
 
-            // Aquí tomaremos el primer ítem de DetalleRemitoLTV para la confirmación
-            var primerItem = DetalleRemitoLTV.Items[0];
-            var dniT = TransportistasListV.Items[0];
-            string numeroDeOrden = primerItem.SubItems[0].Text;
-            string transportista = primerItem.SubItems[2].Text;
-       
-            int dni = int.Parse(dniT.SubItems[1].Text);
+            // Verificar si hay un ítem seleccionado en DetalleRemitoLTV
+            if (DetalleRemitoLTV.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione una orden para generar el remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Obtener el ítem seleccionado de DetalleRemitoLTV
+            var selectedItem = DetalleRemitoLTV.SelectedItems[0];
+
+            // Obtener el IdOrden de la orden seleccionada
+            string idOrden = selectedItem.SubItems[0].Text; // Asegúrate de que sea la columna correcta
+
+            // Verificar si hay un ítem seleccionado en TransportistasListV
+            if (TransportistasListV.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione un transportista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string transportista = selectedItem.SubItems[2].Text; // Transportista del ítem seleccionado
 
             DateTime fechaInicio = DateTime.Now.AddDays(-2000);
-
             DateTime fechaVencimiento = DateTime.Now.AddDays(30);
-
             DateTime fechaEmision = DateTime.Now;
 
             // Preguntar al usuario si está seguro de generar el remito
             var result = MessageBox.Show($"¿Está seguro de que desea generar el remito?\n" +
-                                          $"Número de Orden: {numeroDeOrden}\n" +
+                                          $"Número de Orden: {idOrden}\n" /*+
                                           $"Transportista: {transportista}\n" +
-                                          $"DNI: {dni}\n" +
                                           $"Fecha de Inicio de Actividad: {fechaInicio.ToShortDateString()}\n" +
                                           $"Fecha de Emision: {fechaEmision.ToShortDateString()}\n" +
-                                          $"Fecha de Vencimiento del Comprobante: {fechaVencimiento.ToShortDateString()}",
+                                          $"Fecha de Vencimiento del Comprobante: {fechaVencimiento.ToShortDateString()}"*/,
                                           "Confirmar Generación de Remito",
                                           MessageBoxButtons.YesNo,
                                           MessageBoxIcon.Question);
@@ -164,27 +180,31 @@ namespace Pampazon
             }
 
             // Crear un nuevo remito
-            Remito nuevoRemito = new Remito(numeroDeOrden, transportista)
+            Remito nuevoRemito = new Remito(idOrden, transportista)
             {
-                
                 FechaDeInicioActividad = fechaInicio,
-                
                 FechaDeVencimientoDelComprobante = fechaVencimiento
             };
 
             // Mostrar información del remito generado
-            MessageBox.Show($"Remito generado:\nNúmero de Orden: {nuevoRemito.NumeroDeOrden}\nTransportista: {nuevoRemito.Transportista}\n" +
-                            $"Fecha de Inicio: {nuevoRemito.FechaDeInicioActividad.ToShortDateString()}\n" +
-                            $"Fecha de Vencimiento: {nuevoRemito.FechaDeVencimientoDelComprobante.ToShortDateString()}",
+            MessageBox.Show($"Remito generado:\nNúmero de Orden: {nuevoRemito.NumeroDeOrden}\nTransportista: {nuevoRemito.Transportista}",
                             "Remito Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        
-             DetalleRemitoLTV.Items.Remove(primerItem);
-             TransportistasListV.Items.Remove(dniT);
+            // Borrar el ítem seleccionado de DetalleRemitoLTV
+            DetalleRemitoLTV.Items.Remove(selectedItem);
 
-          
-
+            // Eliminar todos los transportistas que tienen el mismo IdOrden
+            foreach (ListViewItem item in TransportistasListV.Items.Cast<ListViewItem>().ToList())
+            {
+                if (item.SubItems[3].Text == idOrden) // Asumiendo que el IdOrden está en la cuarta columna (índice 3)
+                {
+                    TransportistasListV.Items.Remove(item);
+                }
+            }
         }
+
+
+
 
         /// <summary>
         /// Quita la orden seleccionada de la lista Detalle Remito
@@ -200,8 +220,20 @@ namespace Pampazon
                 return;
             }
 
+            // Verificar si hay un ítem seleccionado
+            if (DetalleRemitoLTV.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione una orden para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var ordenSeleccionada = DetalleRemitoLTV.SelectedItems[0];
+
+            // Extraer el número de orden
+            string numeroDeOrden = ordenSeleccionada.SubItems[0].Text;
+
             // Confirmar la acción de eliminación
-            var result = MessageBox.Show("¿Está seguro de que desea eliminar la orden seleccionada?",
+            var result = MessageBox.Show($"¿Está seguro de que desea eliminar la orden: {numeroDeOrden}?",
                                           "Confirmar Eliminación",
                                           MessageBoxButtons.YesNo,
                                           MessageBoxIcon.Question);
@@ -212,15 +244,14 @@ namespace Pampazon
                 return;
             }
 
-           
-            var ordenSeleccionada = DetalleRemitoLTV.SelectedItems[0];
+            // Obtener la orden seleccionada
+  
 
-           
+            // Eliminar la orden seleccionada
             DetalleRemitoLTV.Items.Remove(ordenSeleccionada);
 
-        
             MessageBox.Show("Orden eliminada con éxito.", "Orden Eliminada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
+
     }
 }

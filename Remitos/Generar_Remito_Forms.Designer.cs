@@ -66,6 +66,7 @@ namespace Pampazon
             // 
             DetalleRemitoLTV.Columns.AddRange(new ColumnHeader[] { OrdenConfirmadaColumna, FechaRemitoColumna, TransportistaConfirmadoColumna });
             DetalleRemitoLTV.Location = new Point(18, 290);
+            DetalleRemitoLTV.MultiSelect = false;
             DetalleRemitoLTV.Name = "DetalleRemitoLTV";
             DetalleRemitoLTV.Size = new Size(456, 95);
             DetalleRemitoLTV.TabIndex = 12;

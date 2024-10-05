@@ -20,6 +20,21 @@ public class GenerarRemitoModelo
             return false; // DNI no válido
         }
     }
+
+    public static bool OrdenYaAgregada(string idOrden, ListView detalleRemitoLTV)
+    {
+        // Iterar sobre los items en DetalleRemitoLTV
+        foreach (ListViewItem item in detalleRemitoLTV.Items)
+        {
+            
+            if (item.SubItems[0].Text == idOrden) 
+            {
+                return true; // La orden ya fue agregada
+            }
+        }
+        return false; // La orden no fue encontrada
+    }
+
     internal static List<Transportista> ObtenerTransportistas()
     {
         return new List<Transportista>()
