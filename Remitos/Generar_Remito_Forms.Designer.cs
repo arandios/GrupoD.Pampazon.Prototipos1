@@ -55,10 +55,9 @@ namespace Pampazon
             // 
             // GenerarBtn
             // 
-            GenerarBtn.Location = new Point(391, 875);
-            GenerarBtn.Margin = new Padding(3, 4, 3, 4);
+            GenerarBtn.Location = new Point(342, 656);
             GenerarBtn.Name = "GenerarBtn";
-            GenerarBtn.Size = new Size(186, 32);
+            GenerarBtn.Size = new Size(163, 24);
             GenerarBtn.TabIndex = 2;
             GenerarBtn.Text = "Generar nuevo remito";
             GenerarBtn.UseVisualStyleBackColor = true;
@@ -66,11 +65,10 @@ namespace Pampazon
             // DetalleRemitoLTV
             // 
             DetalleRemitoLTV.Columns.AddRange(new ColumnHeader[] { OrdenConfirmadaColumna, FechaRemitoColumna, TransportistaConfirmadoColumna });
-            DetalleRemitoLTV.Location = new Point(21, 387);
-            DetalleRemitoLTV.Margin = new Padding(3, 4, 3, 4);
+            DetalleRemitoLTV.Location = new Point(18, 290);
             DetalleRemitoLTV.MultiSelect = false;
             DetalleRemitoLTV.Name = "DetalleRemitoLTV";
-            DetalleRemitoLTV.Size = new Size(521, 125);
+            DetalleRemitoLTV.Size = new Size(456, 95);
             DetalleRemitoLTV.TabIndex = 12;
             DetalleRemitoLTV.UseCompatibleStateImageBehavior = false;
             DetalleRemitoLTV.View = View.Details;
@@ -78,12 +76,12 @@ namespace Pampazon
             // OrdenConfirmadaColumna
             // 
             OrdenConfirmadaColumna.Text = "ID Orden";
-            OrdenConfirmadaColumna.Width = 100;
+            OrdenConfirmadaColumna.Width = 120;
             // 
             // FechaRemitoColumna
             // 
             FechaRemitoColumna.Text = "Fecha de emisión";
-            FechaRemitoColumna.Width = 105;
+            FechaRemitoColumna.Width = 120;
             // 
             // TransportistaConfirmadoColumna
             // 
@@ -93,10 +91,9 @@ namespace Pampazon
             // 
             // SalisBtn
             // 
-            SalisBtn.Location = new Point(582, 872);
-            SalisBtn.Margin = new Padding(3, 4, 3, 4);
+            SalisBtn.Location = new Point(509, 654);
             SalisBtn.Name = "SalisBtn";
-            SalisBtn.Size = new Size(186, 35);
+            SalisBtn.Size = new Size(163, 26);
             SalisBtn.TabIndex = 13;
             SalisBtn.Text = "Cancelar";
             SalisBtn.UseVisualStyleBackColor = true;
@@ -104,18 +101,17 @@ namespace Pampazon
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(21, 363);
+            label4.Location = new Point(18, 272);
             label4.Name = "label4";
-            label4.Size = new Size(105, 20);
+            label4.Size = new Size(81, 15);
             label4.TabIndex = 14;
             label4.Text = "Detalle remito";
             // 
             // AgregarOrdenBtn
             // 
-            AgregarOrdenBtn.Location = new Point(21, 328);
-            AgregarOrdenBtn.Margin = new Padding(3, 4, 3, 4);
+            AgregarOrdenBtn.Location = new Point(18, 246);
             AgregarOrdenBtn.Name = "AgregarOrdenBtn";
-            AgregarOrdenBtn.Size = new Size(521, 31);
+            AgregarOrdenBtn.Size = new Size(456, 23);
             AgregarOrdenBtn.TabIndex = 16;
             AgregarOrdenBtn.Text = "&Agregar Orden de Entrega al remito";
             AgregarOrdenBtn.UseVisualStyleBackColor = true;
@@ -123,10 +119,9 @@ namespace Pampazon
             // 
             // QuitarOrdenBtn
             // 
-            QuitarOrdenBtn.Location = new Point(286, 521);
-            QuitarOrdenBtn.Margin = new Padding(3, 4, 3, 4);
+            QuitarOrdenBtn.Location = new Point(250, 391);
             QuitarOrdenBtn.Name = "QuitarOrdenBtn";
-            QuitarOrdenBtn.Size = new Size(256, 31);
+            QuitarOrdenBtn.Size = new Size(224, 23);
             QuitarOrdenBtn.TabIndex = 17;
             QuitarOrdenBtn.Text = "&Quitar Orden de Entrega del remito";
             QuitarOrdenBtn.UseVisualStyleBackColor = true;
@@ -135,10 +130,9 @@ namespace Pampazon
             // TransportistasListV
             // 
             TransportistasListV.Columns.AddRange(new ColumnHeader[] { NombreTransportistaColumna, DNITColumna, ApellidoTransportistaColumna, IdOrdenColumna });
-            TransportistasListV.Location = new Point(23, 196);
-            TransportistasListV.Margin = new Padding(3, 4, 3, 4);
+            TransportistasListV.Location = new Point(20, 147);
             TransportistasListV.Name = "TransportistasListV";
-            TransportistasListV.Size = new Size(518, 127);
+            TransportistasListV.Size = new Size(454, 96);
             TransportistasListV.TabIndex = 20;
             TransportistasListV.UseCompatibleStateImageBehavior = false;
             TransportistasListV.View = View.Details;
@@ -148,24 +142,24 @@ namespace Pampazon
             // 
             NombreTransportistaColumna.DisplayIndex = 1;
             NombreTransportistaColumna.Text = "Nombre";
-            NombreTransportistaColumna.Width = 100;
+            NombreTransportistaColumna.Width = 120;
             // 
             // DNITColumna
             // 
             DNITColumna.DisplayIndex = 0;
             DNITColumna.Text = "DNI";
             DNITColumna.TextAlign = HorizontalAlignment.Center;
-            DNITColumna.Width = 80;
+            DNITColumna.Width = 100;
             // 
             // ApellidoTransportistaColumna
             // 
             ApellidoTransportistaColumna.Text = "Apellido";
-            ApellidoTransportistaColumna.Width = 100;
+            ApellidoTransportistaColumna.Width = 120;
             // 
             // IdOrdenColumna
             // 
             IdOrdenColumna.Text = "Id Orden";
-            IdOrdenColumna.Width = 80;
+            IdOrdenColumna.Width = 120;
             // 
             // BuscarTransportistaGroupBox
             // 
@@ -173,21 +167,18 @@ namespace Pampazon
             BuscarTransportistaGroupBox.Controls.Add(label3);
             BuscarTransportistaGroupBox.Controls.Add(button3);
             BuscarTransportistaGroupBox.Controls.Add(DNITtxt);
-            BuscarTransportistaGroupBox.Location = new Point(19, 16);
-            BuscarTransportistaGroupBox.Margin = new Padding(3, 4, 3, 4);
+            BuscarTransportistaGroupBox.Location = new Point(17, 12);
             BuscarTransportistaGroupBox.Name = "BuscarTransportistaGroupBox";
-            BuscarTransportistaGroupBox.Padding = new Padding(3, 4, 3, 4);
-            BuscarTransportistaGroupBox.Size = new Size(522, 152);
+            BuscarTransportistaGroupBox.Size = new Size(457, 114);
             BuscarTransportistaGroupBox.TabIndex = 21;
             BuscarTransportistaGroupBox.TabStop = false;
             BuscarTransportistaGroupBox.Text = "Buscar transportista";
             // 
             // BuscarTransportistaBtn
             // 
-            BuscarTransportistaBtn.Location = new Point(371, 100);
-            BuscarTransportistaBtn.Margin = new Padding(3, 4, 3, 4);
+            BuscarTransportistaBtn.Location = new Point(325, 75);
             BuscarTransportistaBtn.Name = "BuscarTransportistaBtn";
-            BuscarTransportistaBtn.Size = new Size(144, 31);
+            BuscarTransportistaBtn.Size = new Size(126, 23);
             BuscarTransportistaBtn.TabIndex = 8;
             BuscarTransportistaBtn.Text = "&Buscar";
             BuscarTransportistaBtn.UseVisualStyleBackColor = true;
@@ -196,45 +187,42 @@ namespace Pampazon
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(23, 37);
+            label3.Location = new Point(20, 28);
             label3.Name = "label3";
-            label3.Size = new Size(122, 20);
+            label3.Size = new Size(96, 15);
             label3.TabIndex = 7;
             label3.Text = "DNI transportista";
             // 
             // button3
             // 
-            button3.Location = new Point(586, 61);
-            button3.Margin = new Padding(3, 4, 3, 4);
+            button3.Location = new Point(513, 46);
             button3.Name = "button3";
-            button3.Size = new Size(114, 31);
+            button3.Size = new Size(100, 23);
             button3.TabIndex = 3;
             button3.Text = "Buscar";
             button3.UseVisualStyleBackColor = true;
             // 
             // DNITtxt
             // 
-            DNITtxt.Location = new Point(23, 61);
-            DNITtxt.Margin = new Padding(3, 4, 3, 4);
+            DNITtxt.Location = new Point(20, 46);
             DNITtxt.Name = "DNITtxt";
-            DNITtxt.Size = new Size(492, 27);
+            DNITtxt.Size = new Size(431, 23);
             DNITtxt.TabIndex = 6;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(21, 172);
+            label5.Location = new Point(18, 129);
             label5.Name = "label5";
-            label5.Size = new Size(144, 20);
+            label5.Size = new Size(112, 15);
             label5.TabIndex = 22;
             label5.Text = "Detalle transportista";
             // 
             // GenerarRemitoBtn
             // 
-            GenerarRemitoBtn.Location = new Point(19, 521);
-            GenerarRemitoBtn.Margin = new Padding(3, 4, 3, 4);
+            GenerarRemitoBtn.Location = new Point(17, 391);
             GenerarRemitoBtn.Name = "GenerarRemitoBtn";
-            GenerarRemitoBtn.Size = new Size(256, 31);
+            GenerarRemitoBtn.Size = new Size(224, 23);
             GenerarRemitoBtn.TabIndex = 23;
             GenerarRemitoBtn.Text = "&Generar nuevo remito";
             GenerarRemitoBtn.UseVisualStyleBackColor = true;
@@ -242,9 +230,9 @@ namespace Pampazon
             // 
             // Generar_RemitoForms
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(562, 571);
+            ClientSize = new Size(492, 428);
             Controls.Add(GenerarRemitoBtn);
             Controls.Add(label5);
             Controls.Add(BuscarTransportistaGroupBox);
@@ -255,7 +243,6 @@ namespace Pampazon
             Controls.Add(SalisBtn);
             Controls.Add(DetalleRemitoLTV);
             Controls.Add(GenerarBtn);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Generar_RemitoForms";
             Text = "Remito";
             Load += Generar_RemitoForms_Load;

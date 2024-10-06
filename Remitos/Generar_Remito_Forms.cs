@@ -64,7 +64,7 @@ namespace Pampazon
                 }
                 else
                 {
-                    MessageBox.Show("El DNI ingresado no es válido. Debe tener al menos 8 dígitos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El DNI ingresado no es válido. Debe tener 8 dígitos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -146,13 +146,6 @@ namespace Pampazon
 
             // Obtener el IdOrden de la orden seleccionada
             string idOrden = selectedItem.SubItems[0].Text;
-
-            // Verificar si hay un ítem seleccionado en TransportistasListV
-            if (TransportistasListV.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Por favor, seleccione un transportista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
             // Obtener DNI del transportista (desde el ListView de Transportistas)
             var selectedTransportista = TransportistasListV.SelectedItems[0];
