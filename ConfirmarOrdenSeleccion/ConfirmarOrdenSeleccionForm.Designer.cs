@@ -53,6 +53,7 @@
             LimpiarBTN.TabIndex = 16;
             LimpiarBTN.Text = "Limpiar";
             LimpiarBTN.UseVisualStyleBackColor = true;
+            LimpiarBTN.Click += LimpiarBTN_Click;
             // 
             // BuscarBTN
             // 
@@ -62,6 +63,7 @@
             BuscarBTN.TabIndex = 15;
             BuscarBTN.Text = "Buscar:";
             BuscarBTN.UseVisualStyleBackColor = true;
+            BuscarBTN.Click += BuscarBTN_Click;
             // 
             // label1
             // 

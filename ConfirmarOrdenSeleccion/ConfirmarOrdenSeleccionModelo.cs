@@ -69,7 +69,7 @@ namespace Pampazon.ConfirmarOrdenSeleccion
             orden.Estado = "Confirmada";
             orden.Fecha_Estado = DateTime.Now;
             OrdenesConfirmadas.Add(orden);
-            OrdenesPendientes.Remove(orden); // Eliminar de pendientes
+            OrdenesPendientes.Remove(orden); // Eliminar la orden de la lista pendientes
         }
     }
 }

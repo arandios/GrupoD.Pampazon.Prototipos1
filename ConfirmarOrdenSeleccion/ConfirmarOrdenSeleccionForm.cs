@@ -80,7 +80,7 @@ namespace Pampazon.ConfirmarOrdenSeleccion
             {
                 CargarOrdenSeleccionEnListView(orden);
             }
-        }        
+        }
 
         private void CMBEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -152,20 +152,108 @@ namespace Pampazon.ConfirmarOrdenSeleccion
                         return; // Salir si ya está confirmada
                     }
 
-                    // Confirmar la orden
-                    modelo.ConfirmarOrden(ordenSeleccionada);
+                    // Construir el detalle de la orden con los productos
+                    string detalleOrden = $"Orden N°: {ordenSeleccionada.Nro_OrdenS}\n" +
+                                          $"Estado actual: {ordenSeleccionada.Estado}\n" +                     
+                                          $"Productos:\n";
 
-                    // Notificar al usuario
-                    MessageBox.Show("La orden ha sido confirmada.");
+                    foreach (var producto in ordenSeleccionada.Productos)
+                    {
+                        detalleOrden += $"- {producto.Producto_Nombre}: {producto.Cantidad} unidades\n";
+                    }
 
-                    // Actualizar el ListView según la categoría seleccionada, pero sin depender del ComboBox
-                    ActualizarListViewSegunCategoria();
+                    // Mostrar el MessageBox con opción de Confirmar o Cancelar
+                    DialogResult resultado = MessageBox.Show($"¿Desea confirmar la siguiente orden de selección?\n\n{detalleOrden}",
+                                                              "Confirmación de Orden de Selección",
+                                                              MessageBoxButtons.YesNo,
+                                                              MessageBoxIcon.Question);
+
+                    if (resultado == DialogResult.Yes) // Si el usuario elige confirmar
+                    {
+                        // Confirmar la orden
+                        modelo.ConfirmarOrden(ordenSeleccionada);
+
+                        // Mostrar mensaje de éxito
+                        MessageBox.Show("La orden ha sido confirmada con éxito.");
+
+                        // Actualizar el ListView con las órdenes pendientes
+                        MostrarOrdenesPendientesEnListView();
+                    }
+                    else if (resultado == DialogResult.No) // Si el usuario elige cancelar
+                    {
+                        // Mostrar mensaje de cancelación
+                        MessageBox.Show("La confirmación de la orden ha sido cancelada con éxito.");
+                    }
                 }
             }
             else
             {
                 MessageBox.Show("Por favor, selecciona una orden para confirmar.");
             }
+        }
+
+        private void BuscarBTN_Click(object sender, EventArgs e)
+        {
+            // Validar que la caja de texto no esté vacía
+            if (string.IsNullOrEmpty(IdOrdentxt.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un número de orden.");
+                return;
+            }
+
+            // Validar que el valor ingresado sea un número entero
+            if (!int.TryParse(IdOrdentxt.Text, out int idOrden))
+            {
+                MessageBox.Show("Por favor, ingrese un número válido.");
+                return;
+            }
+
+            // Validar que el número no sea negativo
+            if (idOrden < 0)
+            {
+                MessageBox.Show("El número de orden no puede ser negativo.");
+                return;
+            }
+
+            // Validar que el número no sea demasiado largo
+            if (IdOrdentxt.Text.Length > 3)
+            {
+                MessageBox.Show("El número de orden no puede tener más de 3 dígitos.");
+                return;
+            }
+            // Validar que el número no sea demasiado corto 
+            if (IdOrdentxt.Text.Length < 3)
+            {
+                MessageBox.Show("El número de orden no puede tener menos de 3 dígitos.");
+                return;
+            }
+
+            // Buscar la orden en las listas de pendientes y confirmadas
+            OrdenSeleccion ordenSeleccionada = modelo.OrdenesPendientes.FirstOrDefault(o => o.Nro_OrdenS == idOrden)
+                                                ?? modelo.OrdenesConfirmadas.FirstOrDefault(o => o.Nro_OrdenS == idOrden);
+
+            // Validar si la orden existe
+            if (ordenSeleccionada == null)
+            {
+                MessageBox.Show("No se encontró ninguna orden con ese número.");
+                return;
+            }
+
+            // Limpiar el ListView de órdenes y cargar solo la orden encontrada
+            LstOrdenesSeleccion.Items.Clear();
+            CargarOrdenSeleccionEnListView(ordenSeleccionada);
+        }
+
+        private void LimpiarBTN_Click(object sender, EventArgs e)
+        {
+            // Limpiar la caja de texto de búsqueda
+            IdOrdentxt.Clear();
+
+            // Limpiar el ListView de productos
+            LSTDetalleOrden.Items.Clear();
+
+            // Restaurar siempre las órdenes pendientes
+            MostrarOrdenesPendientesEnListView();
         }
     }
 
