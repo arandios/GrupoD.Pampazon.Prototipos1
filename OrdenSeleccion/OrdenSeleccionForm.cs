@@ -43,6 +43,26 @@ namespace Pampazon.OrdenSeleccion
 
             // CARGAR DATOS A LA LISTA DE ORDENES DE PREPARACION.
             actualizarListaOrdenDePreparacion();
+
+            // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
+            foreach (ColumnHeader column in DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Columns)
+            {
+                DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+
+            // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
+            foreach (ColumnHeader column in OrdenesDePreparacionPendientesListView.Columns)
+            {
+                OrdenesDePreparacionPendientesListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+
+            // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
+            foreach (ColumnHeader column in OrdenesDePreparacionPendientesProductoUbicacionListView.Columns)
+            {
+                OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+
+
         }
 
         /*
@@ -63,6 +83,49 @@ namespace Pampazon.OrdenSeleccion
          
          
          */
+
+        // ==============================================================================
+        // EVENTOS DEL FORMULARIO
+        // ==============================================================================
+
+        private void BorrarFiltrosOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        {
+            //Realizar la busqueda, por los criterios indicados
+
+
+            //Borrar los campos de busqueda, una vez hecha la busqueda.
+            ClienteTextBoxOrdenSeleccion.Text = string.Empty;
+            TransportistaTextBoxOrdenSeleccion.Text = string.Empty;
+            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text = string.Empty;
+            PrioridadComboBoxOrdenSeleccion.SelectedIndex = -1; // Deseleccionar cualquier elemento
+
+            // Restablecer la lista de órdenes de preparación
+            actualizarListaOrdenDePreparacion();
+
+            // Llamar al método para agrupar y mostrar los productos y ubicaciones
+            AgruparOrdenesDePreparacionPendientes();
+        }
+
+        private void QuitarOrdenPreparacionASeleccionBTN_Click(object sender, EventArgs e)
+        {
+            if (OrdenesDePreparacionPendientesListView.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Seleccione un y solo una Orden de Preparacion para borrar de la lista.");
+                return;
+            }
+            var item = OrdenesDePreparacionPendientesListView.SelectedItems[0];
+            var ordenDePreparacionSeleccionada = (OrdenPreparacion)item.Tag;
+
+            var error = modelo.BorrarOrdenDePreparacion(ordenDePreparacionSeleccionada);
+            if (error != null)
+            {
+                MessageBox.Show(error);
+                return;
+            }
+
+            //La Orden de Preparacion se borro de la lista.
+            actualizarListaOrdenDePreparacion();
+        }
 
         private void CrearOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
@@ -120,54 +183,78 @@ namespace Pampazon.OrdenSeleccion
             OSgroupBox.Enabled = true;
 
             MessageBox.Show("Orden de Preparacion agregada al detalle.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Llamar al método para agrupar y mostrar los productos y ubicaciones
+            AgruparOrdenesDePreparacionPendientes();
         }
 
-
-        private void BorrarFiltrosOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
-            //Realizar la busqueda, por los criterios indicados
+            // Limpiar la lista actual
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
 
+            // Obtener los valores de los filtros
+            string cliente = ClienteTextBoxOrdenSeleccion.Text.Trim();
+            string transportista = TransportistaTextBoxOrdenSeleccion.Text.Trim();
+            string numeroOrdenPreparacion = NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Trim();
+            string prioridad = PrioridadComboBoxOrdenSeleccion.SelectedItem?.ToString();
 
-            //Borrar los campos de busqueda, una vez hecha la busqueda.
-            ClienteTextBoxOrdenSeleccion.Text = string.Empty;
-            TransportistaTextBoxOrdenSeleccion.Text = string.Empty;
-            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text = string.Empty;
-            PrioridadComboBoxOrdenSeleccion.SelectedIndex = -1; // Deseleccionar cualquier elemento
+            // Verificar si al menos un filtro está completo
+            if (string.IsNullOrWhiteSpace(cliente) && string.IsNullOrWhiteSpace(transportista) &&
+                string.IsNullOrWhiteSpace(numeroOrdenPreparacion) && string.IsNullOrWhiteSpace(prioridad))
+            {
+                MessageBox.Show("Por favor, ingrese al menos un criterio de búsqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // Restablecer la lista de órdenes de preparación
-            actualizarListaOrdenDePreparacion();
+            // Obtener la lista de órdenes de preparación desde el modelo
+            var ordenesPreparacion = modelo.OrdenesDePreparacion;
 
+            // Filtrar la lista según los criterios ingresados
+            var ordenesFiltradas = ordenesPreparacion.Where(op =>
+                (string.IsNullOrWhiteSpace(cliente) || op.DescripcionCliente.Contains(cliente, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(transportista) || op.TransportistaDetalle.Nombre.Contains(transportista, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(numeroOrdenPreparacion) || op.IDOrdenPreparacion.Contains(numeroOrdenPreparacion, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(prioridad) || op.Prioridad.ToString().Equals(prioridad, StringComparison.OrdinalIgnoreCase))
+            ).ToList();
+
+            // Agregar las órdenes filtradas al ListView
+            foreach (var orden in ordenesFiltradas)
+            {
+                ListViewItem item = new ListViewItem(new[] {
+            orden.IDOrdenPreparacion,
+            orden.DescripcionCliente,
+            orden.FechaOrdenRecepcion.ToString("yyyy-MM-dd"),
+            orden.EstadoOrdenPreparacion.ToString(),
+            orden.Prioridad.ToString(),
+            orden.TransportistaDetalle.Nombre
+        });
+                DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
+            }
+
+            // Verificar si no se encontraron resultados
+            if (!ordenesFiltradas.Any())
+            {
+                MessageBox.Show("No se encontraron órdenes de preparación con los criterios especificados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        //---------------------------------------------------------------------------------------------- FOOTER DE PANTALLA
+
+        // ==============================================================================
+        // FOOTER DE PANTALLA
+        // ==============================================================================
+
         //Cerrar ventana.
         private void CancelarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void QuitarOrdenPreparacionASeleccionBTN_Click(object sender, EventArgs e)
-        {
-            if (OrdenesDePreparacionPendientesListView.SelectedItems.Count != 1)
-            {
-                MessageBox.Show("Seleccione un y solo una Orden de Preparacion para borrar de la lista.");
-                return;
-            }
-            var item = OrdenesDePreparacionPendientesListView.SelectedItems[0];
-            var ordenDePreparacionSeleccionada = (OrdenPreparacion)item.Tag;
 
-            var error = modelo.BorrarOrdenDePreparacion(ordenDePreparacionSeleccionada);
-            if (error != null)
-            {
-                MessageBox.Show(error);
-                return;
-            }
 
-            //La Orden de Preparacion se borro de la lista.
-            actualizarListaOrdenDePreparacion();
-
-        }
-
+        // ==============================================================================
+        // DEFINICION DE METODOS:
+        // ==============================================================================
         private void actualizarListaOrdenDePreparacion()
         {
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
@@ -225,54 +312,44 @@ namespace Pampazon.OrdenSeleccion
             }
         }
 
-        private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        private void AgruparOrdenesDePreparacionPendientes()
         {
             // Limpiar la lista actual
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
+            OrdenesDePreparacionPendientesProductoUbicacionListView.Items.Clear();
 
-            // Obtener los valores de los filtros
-            string cliente = ClienteTextBoxOrdenSeleccion.Text.Trim();
-            string transportista = TransportistaTextBoxOrdenSeleccion.Text.Trim();
-            string numeroOrdenPreparacion = NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Trim();
-            string prioridad = PrioridadComboBoxOrdenSeleccion.SelectedItem?.ToString();
+            // Obtener los elementos de OrdenesDePreparacionPendientesListView
+            var items = OrdenesDePreparacionPendientesListView.Items.Cast<ListViewItem>();
 
-            // Verificar si al menos un filtro está completo
-            if (string.IsNullOrWhiteSpace(cliente) && string.IsNullOrWhiteSpace(transportista) &&
-                string.IsNullOrWhiteSpace(numeroOrdenPreparacion) && string.IsNullOrWhiteSpace(prioridad))
+            // Agrupar por Producto y Ubicación y sumar la cantidad de mercadería
+            var agrupacion = items
+                .SelectMany(item => ((OrdenPreparacion)item.Tag).Mercaderias.Select(m => new
+                {
+                    Producto = m.DescripcionProducto,
+                    Ubicacion = m.Ubicacion, // Asumiendo que Mercaderia tiene una propiedad Ubicacion
+                    Cantidad = m.Cantidad
+                }))
+                .GroupBy(x => new { x.Producto, x.Ubicacion })
+                .Select(g => new
+                {
+                    Producto = g.Key.Producto,
+                    Ubicacion = g.Key.Ubicacion,
+                    CantidadTotal = g.Sum(x => x.Cantidad)
+                })
+                .ToList();
+
+            // Agregar los resultados agrupados a OrdenesDePreparacionPendientesProductoUbicacionListView
+            foreach (var grupo in agrupacion)
             {
-                MessageBox.Show("Por favor, ingrese al menos un criterio de búsqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                ListViewItem item = new ListViewItem(grupo.Producto);
+                item.SubItems.Add(grupo.Ubicacion);
+                item.SubItems.Add(grupo.CantidadTotal.ToString());
+                OrdenesDePreparacionPendientesProductoUbicacionListView.Items.Add(item);
             }
 
-            // Obtener la lista de órdenes de preparación desde el modelo
-            var ordenesPreparacion = modelo.OrdenesDePreparacion;
-
-            // Filtrar la lista según los criterios ingresados
-            var ordenesFiltradas = ordenesPreparacion.Where(op =>
-                (string.IsNullOrWhiteSpace(cliente) || op.DescripcionCliente.Contains(cliente, StringComparison.OrdinalIgnoreCase)) &&
-                (string.IsNullOrWhiteSpace(transportista) || op.TransportistaDetalle.Nombre.Contains(transportista, StringComparison.OrdinalIgnoreCase)) &&
-                (string.IsNullOrWhiteSpace(numeroOrdenPreparacion) || op.IDOrdenPreparacion.Contains(numeroOrdenPreparacion, StringComparison.OrdinalIgnoreCase)) &&
-                (string.IsNullOrWhiteSpace(prioridad) || op.Prioridad.ToString().Equals(prioridad, StringComparison.OrdinalIgnoreCase))
-            ).ToList();
-
-            // Agregar las órdenes filtradas al ListView
-            foreach (var orden in ordenesFiltradas)
+            // Ajustar el ancho de las columnas automáticamente según el contenido
+            foreach (ColumnHeader column in OrdenesDePreparacionPendientesProductoUbicacionListView.Columns)
             {
-                ListViewItem item = new ListViewItem(new[] {
-            orden.IDOrdenPreparacion,
-            orden.DescripcionCliente,
-            orden.FechaOrdenRecepcion.ToString("yyyy-MM-dd"),
-            orden.EstadoOrdenPreparacion.ToString(),
-            orden.Prioridad.ToString(),
-            orden.TransportistaDetalle.Nombre
-        });
-                DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
-            }
-
-            // Verificar si no se encontraron resultados
-            if (!ordenesFiltradas.Any())
-            {
-                MessageBox.Show("No se encontraron órdenes de preparación con los criterios especificados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.ColumnContent);
             }
         }
 

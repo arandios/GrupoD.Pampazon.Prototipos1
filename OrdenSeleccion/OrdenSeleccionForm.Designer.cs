@@ -60,7 +60,6 @@
             OSgroupBox = new GroupBox();
             OrdenesDePreparacionPendientesListView = new ListView();
             OPaOS_IdOP = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
@@ -323,7 +322,7 @@
             // 
             // OrdenesDePreparacionPendientesListView
             // 
-            OrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOP, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader9 });
+            OrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOP, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader9 });
             OrdenesDePreparacionPendientesListView.Location = new Point(10, 27);
             OrdenesDePreparacionPendientesListView.Name = "OrdenesDePreparacionPendientesListView";
             OrdenesDePreparacionPendientesListView.Size = new Size(466, 181);
@@ -335,11 +334,6 @@
             // 
             OPaOS_IdOP.Text = "IDOrdenPreparacion";
             OPaOS_IdOP.Width = 31;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "IdCliente";
-            columnHeader2.Width = 31;
             // 
             // columnHeader3
             // 
@@ -469,7 +463,6 @@
         private ColumnHeader CantidadProductosOP;
         private ListView OrdenesDePreparacionPendientesListView;
         private ColumnHeader OPaOS_IdOP;
-        private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;

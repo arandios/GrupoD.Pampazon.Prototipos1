@@ -19,8 +19,8 @@ namespace Pampazon.OrdenSeleccion
                 "El Miguelon",
                 new List<Mercaderia>
                 {
-                    new Mercaderia { IDProducto = "P1", IdCliente = "123", DescripcionProducto = "Producto 1", Cantidad = 10 },
-                    new Mercaderia { IDProducto = "P2", IdCliente = "123", DescripcionProducto = "Producto 2", Cantidad = 5 }
+                    new Mercaderia { IDProducto = "P1", IdCliente = "123", DescripcionProducto = "Alcachofas", Cantidad = 10 },
+                    new Mercaderia { IDProducto = "P2", IdCliente = "123", DescripcionProducto = "Brocoli", Cantidad = 5 }
                 },
                 15,
                 DateTime.Now,
@@ -34,8 +34,8 @@ namespace Pampazon.OrdenSeleccion
                 "Star Labs",
                 new List<Mercaderia>
                 {
-                    new Mercaderia { IDProducto = "P3", IdCliente = "456", DescripcionProducto = "Producto 3", Cantidad = 20 },
-                    new Mercaderia { IDProducto = "P4", IdCliente = "456", DescripcionProducto = "Producto 4", Cantidad = 10 }
+                    new Mercaderia { IDProducto = "P3", IdCliente = "456", DescripcionProducto = "Manzanas", Cantidad = 20 },
+                    new Mercaderia { IDProducto = "P4", IdCliente = "456", DescripcionProducto = "Brocoli", Cantidad = 10 }
                 },
                 30,
                 DateTime.Now,
@@ -49,7 +49,7 @@ namespace Pampazon.OrdenSeleccion
                 "Acme",
                 new List<Mercaderia>
                 {
-                    new Mercaderia { IDProducto = "P5", IdCliente = "789", DescripcionProducto = "Producto 5", Cantidad = 15 }
+                    new Mercaderia { IDProducto = "P5", IdCliente = "789", DescripcionProducto = "Alcachofas", Cantidad = 15 }
                 },
                 15,
                 DateTime.Now,
@@ -63,7 +63,7 @@ namespace Pampazon.OrdenSeleccion
                 "GeoPlast",
                 new List<Mercaderia>
                 {
-                    new Mercaderia { IDProducto = "P6", IdCliente = "101", DescripcionProducto = "Producto 6", Cantidad = 25 }
+                    new Mercaderia { IDProducto = "P6", IdCliente = "101", DescripcionProducto = "Bananas", Cantidad = 25 }
                 },
                 25,
                 DateTime.Now,
@@ -77,7 +77,7 @@ namespace Pampazon.OrdenSeleccion
                 "Cliente E",
                 new List<Mercaderia>
                 {
-                    new Mercaderia { IDProducto = "P7", IdCliente = "202", DescripcionProducto = "Producto 7", Cantidad = 30 }
+                    new Mercaderia { IDProducto = "P7", IdCliente = "202", DescripcionProducto = "Bananas", Cantidad = 30 }
                 },
                 30,
                 DateTime.Now,
