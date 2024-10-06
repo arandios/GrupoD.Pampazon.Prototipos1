@@ -134,6 +134,8 @@ namespace Pampazon.OrdenSeleccion
             NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text = string.Empty;
             PrioridadComboBoxOrdenSeleccion.SelectedIndex = -1; // Deseleccionar cualquier elemento
 
+            // Restablecer la lista de órdenes de preparación
+            actualizarListaOrdenDePreparacion();
 
         }
 
@@ -180,10 +182,10 @@ namespace Pampazon.OrdenSeleccion
 
                 ListViewItem item = new ListViewItem();
                 item.Text = ordenPreparacion.IDOrdenPreparacion;
-                item.SubItems.Add(ordenPreparacion.IdCliente.ToString());
+                //item.SubItems.Add(ordenPreparacion.IdCliente.ToString()); -->Estos campos los voy a mostrar en la lista de al lado, de detalle. 
                 item.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
-                item.SubItems.Add(ordenPreparacion.Mercaderias.ToString());
-                item.SubItems.Add(ordenPreparacion.CantidadMercaderia.ToString());
+                //item.SubItems.Add(ordenPreparacion.Mercaderias.ToString());
+                //item.SubItems.Add(ordenPreparacion.CantidadMercaderia.ToString());
                 item.SubItems.Add(ordenPreparacion.FechaOrdenRecepcion.ToString());
                 item.SubItems.Add(ordenPreparacion.EstadoOrdenPreparacion.ToString());
                 item.SubItems.Add(ordenPreparacion.Prioridad.ToString());
@@ -223,5 +225,57 @@ namespace Pampazon.OrdenSeleccion
             }
         }
 
+        private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        {
+            // Limpiar la lista actual
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
+
+            // Obtener los valores de los filtros
+            string cliente = ClienteTextBoxOrdenSeleccion.Text.Trim();
+            string transportista = TransportistaTextBoxOrdenSeleccion.Text.Trim();
+            string numeroOrdenPreparacion = NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Trim();
+            string prioridad = PrioridadComboBoxOrdenSeleccion.SelectedItem?.ToString();
+
+            // Verificar si al menos un filtro está completo
+            if (string.IsNullOrWhiteSpace(cliente) && string.IsNullOrWhiteSpace(transportista) &&
+                string.IsNullOrWhiteSpace(numeroOrdenPreparacion) && string.IsNullOrWhiteSpace(prioridad))
+            {
+                MessageBox.Show("Por favor, ingrese al menos un criterio de búsqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Obtener la lista de órdenes de preparación desde el modelo
+            var ordenesPreparacion = modelo.OrdenesDePreparacion;
+
+            // Filtrar la lista según los criterios ingresados
+            var ordenesFiltradas = ordenesPreparacion.Where(op =>
+                (string.IsNullOrWhiteSpace(cliente) || op.DescripcionCliente.Contains(cliente, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(transportista) || op.TransportistaDetalle.Nombre.Contains(transportista, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(numeroOrdenPreparacion) || op.IDOrdenPreparacion.Contains(numeroOrdenPreparacion, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(prioridad) || op.Prioridad.ToString().Equals(prioridad, StringComparison.OrdinalIgnoreCase))
+            ).ToList();
+
+            // Agregar las órdenes filtradas al ListView
+            foreach (var orden in ordenesFiltradas)
+            {
+                ListViewItem item = new ListViewItem(new[] {
+            orden.IDOrdenPreparacion,
+            orden.DescripcionCliente,
+            orden.FechaOrdenRecepcion.ToString("yyyy-MM-dd"),
+            orden.EstadoOrdenPreparacion.ToString(),
+            orden.Prioridad.ToString(),
+            orden.TransportistaDetalle.Nombre
+        });
+                DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
+            }
+
+            // Verificar si no se encontraron resultados
+            if (!ordenesFiltradas.Any())
+            {
+                MessageBox.Show("No se encontraron órdenes de preparación con los criterios especificados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }
+
