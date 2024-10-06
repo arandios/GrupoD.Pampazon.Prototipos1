@@ -45,9 +45,6 @@ namespace Pampazon.ConfirmarOrdenSeleccion
             itemOrden.SubItems.Add(ordenSeleccion.OP_Asociada.ToString()); // OP Asociada
 
             LstOrdenesSeleccion.Items.Add(itemOrden); // Añadir la orden al ListView
-
-            // Agregar los productos relacionados a esta orden en el ListView de productos
-            CargarProductosEnListView(ordenSeleccion.Productos);
         }
 
         // Método para cargar los productos en el ListView de productos
@@ -133,6 +130,30 @@ namespace Pampazon.ConfirmarOrdenSeleccion
             else
             {
                 MessageBox.Show("Por favor, selecciona una categoría.");
+
+            }
+        }
+
+        private void DetallesOrdenBTN_Click(object sender, EventArgs e)
+        {
+            if (LstOrdenesSeleccion.SelectedItems.Count > 0)
+            {
+                // Obtener el índice de la orden seleccionada
+                int selectedIndex = LstOrdenesSeleccion.SelectedIndices[0];
+
+                // Obtener la orden seleccionada
+                OrdenSeleccion ordenSeleccionada = modelo.OrdenesPendientes.FirstOrDefault(o => o.Nro_OrdenS == int.Parse(LstOrdenesSeleccion.SelectedItems[0].Text))
+                                                    ?? modelo.OrdenesConfirmadas.FirstOrDefault(o => o.Nro_OrdenS == int.Parse(LstOrdenesSeleccion.SelectedItems[0].Text));
+
+                if (ordenSeleccionada != null)
+                {
+                    // Cargar los productos de la orden seleccionada en el ListView
+                    CargarProductosEnListView(ordenSeleccionada.Productos);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una orden para ver los detalles.");
             }
         }
     }

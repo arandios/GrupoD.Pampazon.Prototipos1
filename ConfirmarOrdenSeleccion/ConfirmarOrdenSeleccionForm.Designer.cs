@@ -108,6 +108,7 @@
             DetallesOrdenBTN.TabIndex = 25;
             DetallesOrdenBTN.Text = "Detalles de Orden";
             DetallesOrdenBTN.UseVisualStyleBackColor = true;
+            DetallesOrdenBTN.Click += DetallesOrdenBTN_Click;
             // 
             // LSTDetalleOrden
             // 
