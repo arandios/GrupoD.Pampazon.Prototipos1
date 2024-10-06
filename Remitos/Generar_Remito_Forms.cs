@@ -9,8 +9,6 @@ namespace Pampazon
     public partial class Generar_RemitoForms : Form
     {
         private GenerarRemitoModelo modelo = new();
-
-        //private List<ListViewItem> todasLasOrdenes = new List<ListViewItem>();
         public Generar_RemitoForms()
         {
             InitializeComponent();
@@ -41,7 +39,7 @@ namespace Pampazon
                 // Verificar si el DNI es válido
                 if (GenerarRemitoModelo.ComprobarDni(dni))
                 {
-                    // Obtener la lista de transportistas y filtrar los que coinciden con el DNI
+                    // Obtener la lista de transportistas y filtrar los que coinciden con el DNI, lo hace el modelo
                     var transportistasEncontrados = GenerarRemitoModelo.ObtenerTransportistas()
                         .Where(t => t.DNI == dni).ToList();
 
@@ -71,7 +69,7 @@ namespace Pampazon
             }
             else
             {
-                MessageBox.Show("Por favor, ingrese un número de DNI válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, ingrese un número de DNI válido. Tiene que ser numerico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -114,7 +112,7 @@ namespace Pampazon
             DetalleRemitoLTV.Items.Add(nuevoItem);
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e) //NO BORRAR
         {
            //NO BORRAR PORQUE SE ROMPE LA PANTALLA//
 
@@ -147,7 +145,7 @@ namespace Pampazon
             var selectedItem = DetalleRemitoLTV.SelectedItems[0];
 
             // Obtener el IdOrden de la orden seleccionada
-            string idOrden = selectedItem.SubItems[0].Text; // Asegúrate de que sea la columna correcta
+            string idOrden = selectedItem.SubItems[0].Text;
 
             // Verificar si hay un ítem seleccionado en TransportistasListV
             if (TransportistasListV.SelectedItems.Count == 0)
@@ -156,50 +154,52 @@ namespace Pampazon
                 return;
             }
 
-            string transportista = selectedItem.SubItems[2].Text; // Transportista del ítem seleccionado
-
-            DateTime fechaInicio = DateTime.Now.AddDays(-2000);
-            DateTime fechaVencimiento = DateTime.Now.AddDays(30);
-            DateTime fechaEmision = DateTime.Now;
+            // Obtener DNI del transportista (desde el ListView de Transportistas)
+            var selectedTransportista = TransportistasListV.SelectedItems[0];
+            int dniTransportista = int.Parse(selectedTransportista.SubItems[1].Text); // Asegúrate de que la columna es correcta
 
             // Preguntar al usuario si está seguro de generar el remito
-            var result = MessageBox.Show($"¿Está seguro de que desea generar el remito?\n" +
-                                          $"Número de Orden: {idOrden}\n" /*+
-                                          $"Transportista: {transportista}\n" +
-                                          $"Fecha de Inicio de Actividad: {fechaInicio.ToShortDateString()}\n" +
-                                          $"Fecha de Emision: {fechaEmision.ToShortDateString()}\n" +
-                                          $"Fecha de Vencimiento del Comprobante: {fechaVencimiento.ToShortDateString()}"*/,
-                                          "Confirmar Generación de Remito",
-                                          MessageBoxButtons.YesNo,
-                                          MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show(
+                "¿Está seguro de que desea generar el remito?",
+                "Confirmación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
-            // Si el usuario elige No, salir del método
-            if (result == DialogResult.No)
+            // Verificar la respuesta del usuario
+            if (resultado == DialogResult.Yes)
             {
-                return;
-            }
-
-            // Crear un nuevo remito
-            Remito nuevoRemito = new Remito(idOrden, transportista)
-            {
-                FechaDeInicioActividad = fechaInicio,
-                FechaDeVencimientoDelComprobante = fechaVencimiento
-            };
-
-            // Mostrar información del remito generado
-            MessageBox.Show($"Remito generado:\nNúmero de Orden: {nuevoRemito.NumeroDeOrden}\nTransportista: {nuevoRemito.Transportista}",
-                            "Remito Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Borrar el ítem seleccionado de DetalleRemitoLTV
-            DetalleRemitoLTV.Items.Remove(selectedItem);
-
-            // Eliminar todos los transportistas que tienen el mismo IdOrden
-            foreach (ListViewItem item in TransportistasListV.Items.Cast<ListViewItem>().ToList())
-            {
-                if (item.SubItems[3].Text == idOrden) // Asumiendo que el IdOrden está en la cuarta columna (índice 3)
+                try
                 {
-                    TransportistasListV.Items.Remove(item);
+                    // Crear el remito a través del modelo (lógica de negocio)
+                    Remito nuevoRemito = modelo.GenerarRemito(idOrden, dniTransportista);
+
+                    // Mostrar la confirmación del remito
+                    MessageBox.Show($"Remito generado:\nNúmero de Orden: {nuevoRemito.NumeroDeOrden}\nTransportista DNI: {nuevoRemito.DNITransportista}",
+                                    "Remito Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Borrar el ítem seleccionado de DetalleRemitoLTV
+                    DetalleRemitoLTV.Items.Remove(selectedItem);
+
+                    // Eliminar todos los transportistas en Detalle transportista que tienen el mismo IdOrden 
+                    foreach (ListViewItem item in TransportistasListV.Items.Cast<ListViewItem>().ToList())
+                    {
+                        if (item.SubItems[3].Text == idOrden) 
+                        {
+                            TransportistasListV.Items.Remove(item);
+                        }
+                    }
                 }
+                catch (Exception ex)
+                {
+                    // Mostrar mensaje de error si hay un problema con la validación
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            else
+            {
+                // Cancelar la acción o mostrar un mensaje opcional
+                MessageBox.Show("Operación cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -244,7 +244,6 @@ namespace Pampazon
                 return;
             }
 
-            // Obtener la orden seleccionada
   
 
             // Eliminar la orden seleccionada
