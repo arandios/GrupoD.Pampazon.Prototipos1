@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace Pampazon.Remitos
 {
-    internal class Transportista
+    internal class TransportistaRemito
     {
         public int DNI { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string IdOrden { get; set; } 
 
-        public Transportista(int dni, string nombre, string apellido, string orden )
+        public TransportistaRemito(string t) {
+            
+        }
+
+        public TransportistaRemito(int dni, string nombre, string apellido, string orden )
         {
             DNI = dni;
             Nombre = nombre;

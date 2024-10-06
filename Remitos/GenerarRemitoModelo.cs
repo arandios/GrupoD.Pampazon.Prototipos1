@@ -1,4 +1,5 @@
-﻿using Pampazon.Remitos;
+﻿using Pampazon.OrdenSeleccion;
+using Pampazon.Remitos;
 using System;
 
 public class GenerarRemitoModelo
@@ -35,64 +36,145 @@ public class GenerarRemitoModelo
         return false; // La orden no fue encontrada
     }
 
-    internal static List<Transportista> ObtenerTransportistas()
+    internal Remito GenerarRemito(string idOrden, int transportista)
     {
-        return new List<Transportista>()
-        {
-           new Transportista(12345678, "Juan", "Perez", "OD_00001"),
-           new Transportista(12345678, "Juan", "Perez", "OD_00011"),
-           new Transportista(12345678, "Juan", "Perez", "OD_00021"),
-           new Transportista(12345679, "Juan", "Fernando", "OD_00002"),
-           new Transportista(12345680, "Mario", "Paz", "OD_00003"),
-           new Transportista(87654321, "Maria", "Lopez", "OD_00004"),
-           new Transportista(45678901, "Carlos", "Martinez", "OD_00005"),
-           new Transportista(34567890, "Ana", "Gonzalez", "OD_00006"),
-           new Transportista(23456789, "Jorge", "Fernández", "OD_00007"),
-           new Transportista(12312312, "Luis", "Ramirez", "OD_00008"),
-           new Transportista(32132132, "Sofia", "Gutierrez", "OD_00009"),
-           new Transportista(98765432, "Pedro", "Sosa", "OD_00010"),
-           new Transportista(11223344, "Lucía", "Muñoz", "OD_00011"),
-           new Transportista(44556677, "Martín", "Rojas", "OD_00012"),
-           new Transportista(99887766, "Paula", "Diaz", "OD_00013"),
-           new Transportista(77665544, "Federico", "Acosta", "OD_00014"),
-           new Transportista(66554433, "Gabriel", "Molina", "OD_00015"),
-           new Transportista(55443322, "Elena", "Ponce", "OD_00016"),
-           new Transportista(44332211, "Miriam", "Ortega", "OD_00017"),
-           new Transportista(33221100, "Cristian", "Alvarez", "OD_00018"),
-           new Transportista(22110099, "Andrea", "Torres", "OD_00019"),
-           new Transportista(11009988, "Sebastián", "Quiroga", "OD_00020"),
-       
-        };
+        return new Remito(idOrden, transportista);
     }
 
-    internal static List<OrdenesDeEntrega> ObtenerOrdenes()
+    public static void CambiarEstadoOrdenPreparacion(string idOrden)
     {
-        // Crear la lista de órdenes de entrega
-        List<OrdenesDeEntrega> ordenes = new List<OrdenesDeEntrega>
+        // Asumimos que tienes una lista o base de datos de órdenes
+        var orden = ObtenerOrdenPorId(idOrden);
+        if (orden != null)
+        {
+            orden.EstadoDeOrden = "Despachada";
+        }
+    }
+
+    internal static OrdenesDePreparacion ObtenerOrdenPorId(string idOrden)
     {
-            new OrdenesDeEntrega("OD_00001", 12345678),
-            new OrdenesDeEntrega("OD_00002", 87654321),
-            new OrdenesDeEntrega("OD_00003", 45678901),
-            new OrdenesDeEntrega("OD_00004", 34567890),
-            new OrdenesDeEntrega("OD_00005", 23456789),
-            new OrdenesDeEntrega("OD_00006", 12312312),
-            new OrdenesDeEntrega("OD_00007", 32132132),
-            new OrdenesDeEntrega("OD_00008", 98765432),
-            new OrdenesDeEntrega("OD_00009", 11223344),
-            new OrdenesDeEntrega("OD_00010", 44556677),
-            new OrdenesDeEntrega("OD_00011", 99887766),
-            new OrdenesDeEntrega("OD_00012", 77665544),
-            new OrdenesDeEntrega("OD_00013", 66554433),
-            new OrdenesDeEntrega("OD_00014", 55443322),
-            new OrdenesDeEntrega("OD_00015", 44332211),
-            new OrdenesDeEntrega("OD_00016", 33221100),
-            new OrdenesDeEntrega("OD_00017", 22110099),
-            new OrdenesDeEntrega("OD_00018", 11009988),
-            new OrdenesDeEntrega("OD_00019", 00998877),
-            new OrdenesDeEntrega("OD_00020", 99887700)
-        };
+        List<OrdenesDePreparacion> ordenes = ObtenerOrdenes(); 
+     
+        foreach (var orden in ordenes)
+        {
+            if (orden.IdOrden == idOrden)
+            {
+                return orden; // Retorna la orden si se encuentra
+            }
+        }
+
+        // Si no se encuentra la orden, devuelve null
+        return null;
+    }
+
+    public static void EliminarTransportistasPorOrden(ListView transportistasListV, string idOrden)
+    {
+        foreach (ListViewItem item in transportistasListV.Items.Cast<ListViewItem>().ToList())
+        {
+            if (item.SubItems[3].Text == idOrden) // Asumiendo que el IdOrden está en la cuarta columna
+            {
+                transportistasListV.Items.Remove(item);
+            }
+        }
+    }
+
+    internal static List<TransportistaRemito> ObtenerTransportistas()
+    {
+        return new List<TransportistaRemito>()
+    {
+        new TransportistaRemito(12345678, "Juan", "Perez", "OD_00001"),
+        new TransportistaRemito(12345678, "Juan", "Perez", "OD_00002"),
+        new TransportistaRemito(12345678, "Juan", "Perez", "OD_00011"),
+        new TransportistaRemito(12345678, "Juan", "Perez", "OD_00012"),
+        new TransportistaRemito(12345679, "Mario", "Paz", "OD_00003"),
+        new TransportistaRemito(12345679, "Mario", "Paz", "OD_00004"),
+        new TransportistaRemito(12345679, "Mario", "Paz", "OD_00013"),
+        new TransportistaRemito(12345679, "Mario", "Paz", "OD_00014"),
+        new TransportistaRemito(87654321, "Maria", "Lopez", "OD_00005"),
+        new TransportistaRemito(87654321, "Maria", "Lopez", "OD_00006"),
+        new TransportistaRemito(87654321, "Maria", "Lopez", "OD_00015"),
+        new TransportistaRemito(87654321, "Maria", "Lopez", "OD_00016"),
+        new TransportistaRemito(45678901, "Carlos", "Martinez", "OD_00007"),
+        new TransportistaRemito(45678901, "Carlos", "Martinez", "OD_00008"),
+        new TransportistaRemito(45678901, "Carlos", "Martinez", "OD_00017"),
+        new TransportistaRemito(45678901, "Carlos", "Martinez", "OD_00018"),
+        new TransportistaRemito(44556677, "Martín", "Rojas", "OD_00009"),
+        new TransportistaRemito(44556677, "Martín", "Rojas", "OD_00010"),
+        new TransportistaRemito(44556677, "Martín", "Rojas", "OD_00019"),
+        new TransportistaRemito(44556677, "Martín", "Rojas", "OD_00020"),
+        new TransportistaRemito(12345678, "Juan", "Perez", "OD_00021"),
+        new TransportistaRemito(12345678, "Juan", "Perez", "OD_00022"),
+        new TransportistaRemito(12345679, "Mario", "Paz", "OD_00023"),
+        new TransportistaRemito(12345679, "Mario", "Paz", "OD_00024"),
+        new TransportistaRemito(87654321, "Maria", "Lopez", "OD_00025"),
+        new TransportistaRemito(87654321, "Maria", "Lopez", "OD_00026"),
+        new TransportistaRemito(45678901, "Carlos", "Martinez", "OD_00027"),
+        new TransportistaRemito(45678901, "Carlos", "Martinez", "OD_00028"),
+        new TransportistaRemito(44556677, "Martín", "Rojas", "OD_00029"),
+        new TransportistaRemito(44556677, "Martín", "Rojas", "OD_00030"),
+        new TransportistaRemito(12345678, "Juan", "Perez", "OD_00031"),
+        new TransportistaRemito(12345678, "Juan", "Perez", "OD_00032"),
+        new TransportistaRemito(12345679, "Mario", "Paz", "OD_00033"),
+        new TransportistaRemito(12345679, "Mario", "Paz", "OD_00034"),
+        new TransportistaRemito(87654321, "Maria", "Lopez", "OD_00035"),
+        new TransportistaRemito(87654321, "Maria", "Lopez", "OD_00036"),
+        new TransportistaRemito(45678901, "Carlos", "Martinez", "OD_00037"),
+        new TransportistaRemito(45678901, "Carlos", "Martinez", "OD_00038"),
+        new TransportistaRemito(44556677, "Martín", "Rojas", "OD_00039"),
+        new TransportistaRemito(44556677, "Martín", "Rojas", "OD_00040")
+    };
+    }
+
+
+
+    internal static List<OrdenesDePreparacion> ObtenerOrdenes()
+    {
+        List<OrdenesDePreparacion> ordenes = new List<OrdenesDePreparacion>
+    {
+        new OrdenesDePreparacion("OD_00001", 12345678),
+        new OrdenesDePreparacion("OD_00002", 12345678),
+        new OrdenesDePreparacion("OD_00003", 12345679),
+        new OrdenesDePreparacion("OD_00004", 12345679),
+        new OrdenesDePreparacion("OD_00005", 87654321),
+        new OrdenesDePreparacion("OD_00006", 87654321),
+        new OrdenesDePreparacion("OD_00007", 45678901),
+        new OrdenesDePreparacion("OD_00008", 45678901),
+        new OrdenesDePreparacion("OD_00009", 44556677),
+        new OrdenesDePreparacion("OD_00010", 44556677),
+        new OrdenesDePreparacion("OD_00011", 12345678),
+        new OrdenesDePreparacion("OD_00012", 12345678),
+        new OrdenesDePreparacion("OD_00013", 12345679),
+        new OrdenesDePreparacion("OD_00014", 12345679),
+        new OrdenesDePreparacion("OD_00015", 87654321),
+        new OrdenesDePreparacion("OD_00016", 87654321),
+        new OrdenesDePreparacion("OD_00017", 45678901),
+        new OrdenesDePreparacion("OD_00018", 45678901),
+        new OrdenesDePreparacion("OD_00019", 44556677),
+        new OrdenesDePreparacion("OD_00020", 44556677),
+        new OrdenesDePreparacion("OD_00021", 12345678),
+        new OrdenesDePreparacion("OD_00022", 12345678),
+        new OrdenesDePreparacion("OD_00023", 12345679),
+        new OrdenesDePreparacion("OD_00024", 12345679),
+        new OrdenesDePreparacion("OD_00025", 87654321),
+        new OrdenesDePreparacion("OD_00026", 87654321),
+        new OrdenesDePreparacion("OD_00027", 45678901),
+        new OrdenesDePreparacion("OD_00028", 45678901),
+        new OrdenesDePreparacion("OD_00029", 44556677),
+        new OrdenesDePreparacion("OD_00030", 44556677),
+        new OrdenesDePreparacion("OD_00031", 12345678),
+        new OrdenesDePreparacion("OD_00032", 12345678),
+        new OrdenesDePreparacion("OD_00033", 12345679),
+        new OrdenesDePreparacion("OD_00034", 12345679),
+        new OrdenesDePreparacion("OD_00035", 87654321),
+        new OrdenesDePreparacion("OD_00036", 87654321),
+        new OrdenesDePreparacion("OD_00037", 45678901),
+        new OrdenesDePreparacion("OD_00038", 45678901),
+        new OrdenesDePreparacion("OD_00039", 44556677),
+        new OrdenesDePreparacion("OD_00040", 44556677)
+    };
 
         return ordenes;
     }
+
 
 }
