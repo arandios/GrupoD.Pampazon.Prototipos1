@@ -13,10 +13,6 @@ namespace Pampazon.Remitos
         public string Apellido { get; set; }
         public string IdOrden { get; set; } 
 
-        public TransportistaRemito(string t) {
-            
-        }
-
         public TransportistaRemito(int dni, string nombre, string apellido, string orden )
         {
             DNI = dni;

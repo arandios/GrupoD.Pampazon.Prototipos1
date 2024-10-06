@@ -156,7 +156,7 @@ namespace Pampazon
 
             // Obtener DNI del transportista (desde el ListView de Transportistas)
             var selectedTransportista = TransportistasListV.SelectedItems[0];
-            int dniTransportista = int.Parse(selectedTransportista.SubItems[1].Text); // Asegúrate de que la columna es correcta
+            int dniTransportista = int.Parse(selectedTransportista.SubItems[1].Text);
 
             // Preguntar al usuario si está seguro de generar el remito
             DialogResult resultado = MessageBox.Show(

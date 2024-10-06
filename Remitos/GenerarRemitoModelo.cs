@@ -43,7 +43,6 @@ public class GenerarRemitoModelo
 
     public static void CambiarEstadoOrdenPreparacion(string idOrden)
     {
-        // Asumimos que tienes una lista o base de datos de órdenes
         var orden = ObtenerOrdenPorId(idOrden);
         if (orden != null)
         {
@@ -71,7 +70,7 @@ public class GenerarRemitoModelo
     {
         foreach (ListViewItem item in transportistasListV.Items.Cast<ListViewItem>().ToList())
         {
-            if (item.SubItems[3].Text == idOrden) // Asumiendo que el IdOrden está en la cuarta columna
+            if (item.SubItems[3].Text == idOrden) 
             {
                 transportistasListV.Items.Remove(item);
             }
