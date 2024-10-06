@@ -84,8 +84,10 @@
             // LstOrdenesSeleccion
             // 
             LstOrdenesSeleccion.Columns.AddRange(new ColumnHeader[] { CLNroOrden, CLEstado });
+            LstOrdenesSeleccion.FullRowSelect = true;
             LstOrdenesSeleccion.Location = new Point(99, 140);
             LstOrdenesSeleccion.Margin = new Padding(4, 5, 4, 5);
+            LstOrdenesSeleccion.MultiSelect = false;
             LstOrdenesSeleccion.Name = "LstOrdenesSeleccion";
             LstOrdenesSeleccion.Size = new Size(289, 373);
             LstOrdenesSeleccion.TabIndex = 26;
@@ -115,7 +117,9 @@
             // LSTDetalleOrden
             // 
             LSTDetalleOrden.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6, columnHeader7 });
+            LSTDetalleOrden.FullRowSelect = true;
             LSTDetalleOrden.Location = new Point(543, 140);
+            LSTDetalleOrden.MultiSelect = false;
             LSTDetalleOrden.Name = "LSTDetalleOrden";
             LSTDetalleOrden.Size = new Size(326, 373);
             LSTDetalleOrden.TabIndex = 24;
@@ -181,6 +185,7 @@
             Controls.Add(BuscarBTN);
             Controls.Add(label1);
             Controls.Add(IdOrdentxt);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "ConfirmarOrdenSeleccion";
             Text = "Confirmar orden de seleccion";
             Load += ConfirmarOrdenSeleccion_Load;
