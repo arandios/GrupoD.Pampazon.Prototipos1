@@ -13,7 +13,9 @@ namespace Pampazon.ConfirmarOrdenSeleccion
 {
     public partial class ConfirmarOrdenSeleccion : Form
     {
+        private OrdenSeleccion ultimaOrdenCargada;
         private ConfirmarOrdenSeleccionModelo modelo;
+       
 
         public ConfirmarOrdenSeleccion()
         {
@@ -22,12 +24,18 @@ namespace Pampazon.ConfirmarOrdenSeleccion
             CMBEstado.Items.Add("Pendiente");
             CMBEstado.Items.Add("Confirmada");
             modelo = new ConfirmarOrdenSeleccionModelo(); // Inicializar el modelo
+            
+            
+
         }
 
         private void ConfirmarOrdenSeleccion_Load(object sender, EventArgs e)
         {
             // Mostrar las órdenes pendientes inicialmente
             MostrarOrdenesPendientesEnListView();
+
+            // Asegúrate de que el ListView de detalles esté vacío al cargar el formulario
+            LSTDetalleOrden.Items.Clear();
         }
 
         private void SalirBTN_Click(object sender, EventArgs e)
@@ -45,6 +53,9 @@ namespace Pampazon.ConfirmarOrdenSeleccion
             itemOrden.SubItems.Add(ordenSeleccion.OP_Asociada.ToString()); // OP Asociada
 
             LstOrdenesSeleccion.Items.Add(itemOrden); // Añadir la orden al ListView
+
+            // Agregar los productos relacionados a esta orden en el ListView de productos
+            CargarProductosEnListView(ordenSeleccion.Productos); // Solo pasar los productos
         }
 
         // Método para cargar los productos en el ListView de productos
@@ -89,24 +100,25 @@ namespace Pampazon.ConfirmarOrdenSeleccion
 
         private void ActualizarListViewSegunCategoria()
         {
-            if (CMBEstado.SelectedItem != null)
+            
+            
+            if (CMBEstado.SelectedItem.ToString() == "Confirmada")
             {
-                if (CMBEstado.SelectedItem.ToString() == "Confirmada")
-                {
-                    // Mostrar órdenes confirmadas
-                    MostrarOrdenesConfirmadasEnListView();
-                }
-                else if (CMBEstado.SelectedItem.ToString() == "Pendiente")
-                {
-                    // Mostrar órdenes pendientes
-                    MostrarOrdenesPendientesEnListView();
-                }
+                 // Mostrar órdenes confirmadas
+                 MostrarOrdenesConfirmadasEnListView();
+                    
             }
-            else
+            else if (CMBEstado.SelectedItem.ToString() == "Pendiente")
             {
-                MessageBox.Show("Por favor, selecciona una categoría.");
+                 // Mostrar órdenes pendientes
+                 MostrarOrdenesPendientesEnListView();
+                   
+            }
+            // Limpiar el ListView de productos
+            LSTDetalleOrden.Items.Clear();
+            // Colocar el cursor en la caja de texto
+            IdOrdentxt.Focus();
 
-            }
         }
 
         private void DetallesOrdenBTN_Click(object sender, EventArgs e)
@@ -124,12 +136,17 @@ namespace Pampazon.ConfirmarOrdenSeleccion
                 {
                     // Cargar los productos de la orden seleccionada en el ListView
                     CargarProductosEnListView(ordenSeleccionada.Productos);
+
+                    // Almacenar la orden cargada en la variable para verificarla más tarde
+                    ultimaOrdenCargada = ordenSeleccionada; // Almacenar la referencia de la orden cargada
                 }
             }
             else
             {
                 MessageBox.Show("Por favor, selecciona una orden para ver los detalles.");
             }
+            // Colocar el cursor en la caja de texto
+            IdOrdentxt.Focus();
         }
 
         private void ConfirmarOrdenSeleccionBTN_Click(object sender, EventArgs e)
@@ -145,6 +162,16 @@ namespace Pampazon.ConfirmarOrdenSeleccion
 
                 if (ordenSeleccionada != null)
                 {
+                    // Validar que los productos visibles en el ListView correspondan a la orden seleccionada
+                    if (ultimaOrdenCargada == null || ultimaOrdenCargada.Nro_OrdenS != ordenSeleccionada.Nro_OrdenS)
+                    {
+                        MessageBox.Show("Debe visualizar los productos de la orden seleccionada antes de confirmar.",
+                                        "Advertencia",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     // Validar si la orden ya está confirmada
                     if (ordenSeleccionada.Estado == "Confirmada")
                     {
@@ -154,7 +181,7 @@ namespace Pampazon.ConfirmarOrdenSeleccion
 
                     // Construir el detalle de la orden con los productos
                     string detalleOrden = $"Orden N°: {ordenSeleccionada.Nro_OrdenS}\n" +
-                                          $"Estado actual: {ordenSeleccionada.Estado}\n" +                     
+                                          $"Estado actual: {ordenSeleccionada.Estado}\n" +                                
                                           $"Productos:\n";
 
                     foreach (var producto in ordenSeleccionada.Productos)
@@ -178,17 +205,25 @@ namespace Pampazon.ConfirmarOrdenSeleccion
 
                         // Actualizar el ListView con las órdenes pendientes
                         MostrarOrdenesPendientesEnListView();
+                        // Limpiar el ListView de productos
+                        LSTDetalleOrden.Items.Clear();
+                        // Colocar el cursor en la caja de texto
+                        IdOrdentxt.Focus();
                     }
                     else if (resultado == DialogResult.No) // Si el usuario elige cancelar
                     {
                         // Mostrar mensaje de cancelación
                         MessageBox.Show("La confirmación de la orden ha sido cancelada con éxito.");
+                        // Colocar el cursor en la caja de texto
+                        IdOrdentxt.Focus();
                     }
                 }
             }
             else
             {
                 MessageBox.Show("Por favor, selecciona una orden para confirmar.");
+                // Colocar el cursor en la caja de texto
+                IdOrdentxt.Focus();
             }
         }
 
@@ -236,24 +271,33 @@ namespace Pampazon.ConfirmarOrdenSeleccion
             if (ordenSeleccionada == null)
             {
                 MessageBox.Show("No se encontró ninguna orden con ese número.");
+                // Limpiar el ListView de productos
+                LSTDetalleOrden.Items.Clear();             
                 return;
-            }
-
+            }            
             // Limpiar el ListView de órdenes y cargar solo la orden encontrada
             LstOrdenesSeleccion.Items.Clear();
             CargarOrdenSeleccionEnListView(ordenSeleccionada);
+            // Limpiar el ListView de productos
+            LSTDetalleOrden.Items.Clear();
+            // Colocar el cursor en la caja de texto
+            IdOrdentxt.Focus();
         }
 
         private void LimpiarBTN_Click(object sender, EventArgs e)
         {
             // Limpiar la caja de texto de búsqueda
             IdOrdentxt.Clear();
-
-            // Limpiar el ListView de productos
-            LSTDetalleOrden.Items.Clear();
-
+         
             // Restaurar siempre las órdenes pendientes
             MostrarOrdenesPendientesEnListView();
+            // Limpiar el ListView de productos
+            LSTDetalleOrden.Items.Clear();
+            // Colocar el cursor en la caja de texto para que el usuario pueda empezar a escribir
+            IdOrdentxt.Focus();
+
+
+
         }
     }
 
