@@ -47,6 +47,9 @@
             FiltrosOPgroupBox = new GroupBox();
             PrioridadComboBoxOrdenSeleccion = new ComboBox();
             OPgroupBox = new GroupBox();
+            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView = new ListView();
+            DetalleMercaderia = new ColumnHeader();
+            CantidadProductosOP = new ColumnHeader();
             DetalleOrdenesDePrepracionAOrdenSeleccionListView = new ListView();
             IDOrdenPreparacion = new ColumnHeader();
             IdCliente = new ColumnHeader();
@@ -59,6 +62,19 @@
             TransportistaDetalle = new ColumnHeader();
             OSgroupBox = new GroupBox();
             OrdenesDePreparacionPendientesListView = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
+            columnHeader7 = new ColumnHeader();
+            columnHeader8 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            OrdenesDePreparacionPendientesProductoUbicacionListView = new ListView();
+            Producto = new ColumnHeader();
+            Cantidad = new ColumnHeader();
+            Ubicacion = new ColumnHeader();
             FiltrosOPgroupBox.SuspendLayout();
             OPgroupBox.SuspendLayout();
             OSgroupBox.SuspendLayout();
@@ -66,10 +82,9 @@
             // 
             // QuitarOrdenPreparacionASeleccionBTN
             // 
-            QuitarOrdenPreparacionASeleccionBTN.Location = new Point(380, 160);
-            QuitarOrdenPreparacionASeleccionBTN.Margin = new Padding(3, 2, 3, 2);
+            QuitarOrdenPreparacionASeleccionBTN.Location = new Point(434, 213);
             QuitarOrdenPreparacionASeleccionBTN.Name = "QuitarOrdenPreparacionASeleccionBTN";
-            QuitarOrdenPreparacionASeleccionBTN.Size = new Size(204, 22);
+            QuitarOrdenPreparacionASeleccionBTN.Size = new Size(233, 29);
             QuitarOrdenPreparacionASeleccionBTN.TabIndex = 0;
             QuitarOrdenPreparacionASeleccionBTN.Text = "&Quitar Orden de Preparación";
             QuitarOrdenPreparacionASeleccionBTN.UseVisualStyleBackColor = true;
@@ -77,10 +92,9 @@
             // 
             // AgregarOrdenSeleccionADetalleBTN
             // 
-            AgregarOrdenSeleccionADetalleBTN.Location = new Point(470, 166);
-            AgregarOrdenSeleccionADetalleBTN.Margin = new Padding(3, 2, 3, 2);
+            AgregarOrdenSeleccionADetalleBTN.Location = new Point(537, 221);
             AgregarOrdenSeleccionADetalleBTN.Name = "AgregarOrdenSeleccionADetalleBTN";
-            AgregarOrdenSeleccionADetalleBTN.Size = new Size(197, 22);
+            AgregarOrdenSeleccionADetalleBTN.Size = new Size(225, 29);
             AgregarOrdenSeleccionADetalleBTN.TabIndex = 1;
             AgregarOrdenSeleccionADetalleBTN.Text = "&Agregar al detalle de seleccion";
             AgregarOrdenSeleccionADetalleBTN.UseVisualStyleBackColor = true;
@@ -88,20 +102,18 @@
             // 
             // BuscarOrdenSeleccionBTN
             // 
-            BuscarOrdenSeleccionBTN.Location = new Point(372, 96);
-            BuscarOrdenSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
+            BuscarOrdenSeleccionBTN.Location = new Point(425, 128);
             BuscarOrdenSeleccionBTN.Name = "BuscarOrdenSeleccionBTN";
-            BuscarOrdenSeleccionBTN.Size = new Size(208, 22);
+            BuscarOrdenSeleccionBTN.Size = new Size(238, 29);
             BuscarOrdenSeleccionBTN.TabIndex = 3;
             BuscarOrdenSeleccionBTN.Text = "&Buscar Ordenes de Preparación";
             BuscarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
             // 
             // BorrarFiltrosOrdenSeleccionBTN
             // 
-            BorrarFiltrosOrdenSeleccionBTN.Location = new Point(585, 96);
-            BorrarFiltrosOrdenSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
+            BorrarFiltrosOrdenSeleccionBTN.Location = new Point(669, 128);
             BorrarFiltrosOrdenSeleccionBTN.Name = "BorrarFiltrosOrdenSeleccionBTN";
-            BorrarFiltrosOrdenSeleccionBTN.Size = new Size(96, 22);
+            BorrarFiltrosOrdenSeleccionBTN.Size = new Size(110, 29);
             BorrarFiltrosOrdenSeleccionBTN.TabIndex = 2;
             BorrarFiltrosOrdenSeleccionBTN.Text = "&Borrar filtros";
             BorrarFiltrosOrdenSeleccionBTN.UseVisualStyleBackColor = true;
@@ -110,103 +122,98 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(13, 19);
+            label1.Location = new Point(15, 25);
             label1.Name = "label1";
-            label1.Size = new Size(0, 15);
+            label1.Size = new Size(0, 20);
             label1.TabIndex = 5;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(214, 45);
+            label2.Location = new Point(245, 60);
             label2.Name = "label2";
-            label2.Size = new Size(74, 15);
+            label2.Size = new Size(94, 20);
             label2.TabIndex = 6;
             label2.Text = "Transportista";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(565, 45);
+            label3.Location = new Point(646, 60);
             label3.Name = "label3";
-            label3.Size = new Size(55, 15);
+            label3.Size = new Size(70, 20);
             label3.TabIndex = 7;
             label3.Text = "Prioridad";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(13, 45);
+            label4.Location = new Point(15, 60);
             label4.Name = "label4";
-            label4.Size = new Size(112, 15);
+            label4.Size = new Size(142, 20);
             label4.TabIndex = 8;
             label4.Text = "Razón social Cliente";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(374, 45);
+            label5.Location = new Point(427, 60);
             label5.Name = "label5";
-            label5.Size = new Size(169, 15);
+            label5.Size = new Size(212, 20);
             label5.TabIndex = 9;
             label5.Text = "Número de Orden Preparación";
             // 
             // ClienteTextBoxOrdenSeleccion
             // 
-            ClienteTextBoxOrdenSeleccion.Location = new Point(13, 62);
-            ClienteTextBoxOrdenSeleccion.Margin = new Padding(3, 2, 3, 2);
+            ClienteTextBoxOrdenSeleccion.Location = new Point(15, 83);
             ClienteTextBoxOrdenSeleccion.Name = "ClienteTextBoxOrdenSeleccion";
-            ClienteTextBoxOrdenSeleccion.Size = new Size(196, 23);
+            ClienteTextBoxOrdenSeleccion.Size = new Size(223, 27);
             ClienteTextBoxOrdenSeleccion.TabIndex = 10;
             // 
             // TransportistaTextBoxOrdenSeleccion
             // 
-            TransportistaTextBoxOrdenSeleccion.Location = new Point(214, 62);
-            TransportistaTextBoxOrdenSeleccion.Margin = new Padding(3, 2, 3, 2);
+            TransportistaTextBoxOrdenSeleccion.Location = new Point(245, 83);
             TransportistaTextBoxOrdenSeleccion.Name = "TransportistaTextBoxOrdenSeleccion";
-            TransportistaTextBoxOrdenSeleccion.Size = new Size(153, 23);
+            TransportistaTextBoxOrdenSeleccion.Size = new Size(174, 27);
             TransportistaTextBoxOrdenSeleccion.TabIndex = 11;
             // 
             // NumeroOrdenPreparacionTextBoxOrdenSeleccion
             // 
-            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Location = new Point(371, 62);
-            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Margin = new Padding(3, 2, 3, 2);
+            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Location = new Point(424, 83);
             NumeroOrdenPreparacionTextBoxOrdenSeleccion.Name = "NumeroOrdenPreparacionTextBoxOrdenSeleccion";
-            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Size = new Size(190, 23);
+            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Size = new Size(217, 27);
             NumeroOrdenPreparacionTextBoxOrdenSeleccion.TabIndex = 12;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(13, 127);
+            label6.Location = new Point(15, 169);
             label6.Name = "label6";
-            label6.Size = new Size(0, 15);
+            label6.Size = new Size(0, 20);
             label6.TabIndex = 14;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(13, 332);
+            label7.Location = new Point(15, 443);
             label7.Name = "label7";
-            label7.Size = new Size(0, 15);
+            label7.Size = new Size(0, 20);
             label7.TabIndex = 16;
             // 
             // CrearOrdenSeleccionBTN
             // 
-            CrearOrdenSeleccionBTN.Location = new Point(178, 160);
-            CrearOrdenSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
+            CrearOrdenSeleccionBTN.Location = new Point(203, 213);
             CrearOrdenSeleccionBTN.Name = "CrearOrdenSeleccionBTN";
-            CrearOrdenSeleccionBTN.Size = new Size(197, 22);
+            CrearOrdenSeleccionBTN.Size = new Size(225, 29);
             CrearOrdenSeleccionBTN.TabIndex = 17;
             CrearOrdenSeleccionBTN.Text = "&Crear Orden de Selección";
             CrearOrdenSeleccionBTN.UseVisualStyleBackColor = true;
             // 
             // CancelarOrdenSeleccionBTN
             // 
-            CancelarOrdenSeleccionBTN.Location = new Point(599, 491);
-            CancelarOrdenSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
+            CancelarOrdenSeleccionBTN.Location = new Point(685, 655);
             CancelarOrdenSeleccionBTN.Name = "CancelarOrdenSeleccionBTN";
-            CancelarOrdenSeleccionBTN.Size = new Size(82, 22);
+            CancelarOrdenSeleccionBTN.Size = new Size(94, 29);
             CancelarOrdenSeleccionBTN.TabIndex = 18;
             CancelarOrdenSeleccionBTN.Text = "&Cancelar";
             CancelarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
@@ -215,11 +222,9 @@
             // FiltrosOPgroupBox
             // 
             FiltrosOPgroupBox.Controls.Add(PrioridadComboBoxOrdenSeleccion);
-            FiltrosOPgroupBox.Location = new Point(10, 15);
-            FiltrosOPgroupBox.Margin = new Padding(3, 2, 3, 2);
+            FiltrosOPgroupBox.Location = new Point(11, 20);
             FiltrosOPgroupBox.Name = "FiltrosOPgroupBox";
-            FiltrosOPgroupBox.Padding = new Padding(3, 2, 3, 2);
-            FiltrosOPgroupBox.Size = new Size(672, 110);
+            FiltrosOPgroupBox.Size = new Size(768, 147);
             FiltrosOPgroupBox.TabIndex = 19;
             FiltrosOPgroupBox.TabStop = false;
             FiltrosOPgroupBox.Text = "Seleccione filtros de búsqueda para Ordenes de Preparación: ";
@@ -228,36 +233,52 @@
             // 
             PrioridadComboBoxOrdenSeleccion.DropDownStyle = ComboBoxStyle.DropDownList;
             PrioridadComboBoxOrdenSeleccion.FormattingEnabled = true;
-            PrioridadComboBoxOrdenSeleccion.Location = new Point(556, 47);
-            PrioridadComboBoxOrdenSeleccion.Margin = new Padding(3, 2, 3, 2);
+            PrioridadComboBoxOrdenSeleccion.Location = new Point(635, 63);
             PrioridadComboBoxOrdenSeleccion.Name = "PrioridadComboBoxOrdenSeleccion";
-            PrioridadComboBoxOrdenSeleccion.Size = new Size(112, 23);
+            PrioridadComboBoxOrdenSeleccion.Size = new Size(127, 28);
             PrioridadComboBoxOrdenSeleccion.TabIndex = 0;
             // 
             // OPgroupBox
             // 
+            OPgroupBox.Controls.Add(DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView);
             OPgroupBox.Controls.Add(DetalleOrdenesDePrepracionAOrdenSeleccionListView);
             OPgroupBox.Controls.Add(AgregarOrdenSeleccionADetalleBTN);
-            OPgroupBox.Location = new Point(10, 129);
-            OPgroupBox.Margin = new Padding(3, 2, 3, 2);
+            OPgroupBox.Location = new Point(11, 172);
             OPgroupBox.Name = "OPgroupBox";
-            OPgroupBox.Padding = new Padding(3, 2, 3, 2);
-            OPgroupBox.Size = new Size(672, 190);
+            OPgroupBox.Size = new Size(768, 253);
             OPgroupBox.TabIndex = 20;
             OPgroupBox.TabStop = false;
             OPgroupBox.Text = "Ordenes de Preparación en estado Pendiente: ";
             // 
+            // DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView
+            // 
+            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { DetalleMercaderia, CantidadProductosOP });
+            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Location = new Point(482, 27);
+            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Name = "DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView";
+            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Size = new Size(286, 191);
+            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.TabIndex = 3;
+            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.UseCompatibleStateImageBehavior = false;
+            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.View = View.Details;
+            // 
+            // DetalleMercaderia
+            // 
+            DetalleMercaderia.Text = "Mercaderia";
+            // 
+            // CantidadProductosOP
+            // 
+            CantidadProductosOP.Text = "Cantidad";
+            // 
             // DetalleOrdenesDePrepracionAOrdenSeleccionListView
             // 
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacion, IdCliente, DescripcionCliente, Mercaderias, CantidadMercaderia, FechaOrdenRecepcion, EstadoOrdenPreparacion, Prioridad, TransportistaDetalle });
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Location = new Point(5, 20);
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Margin = new Padding(3, 2, 3, 2);
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Location = new Point(6, 27);
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Name = "DetalleOrdenesDePrepracionAOrdenSeleccionListView";
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Size = new Size(662, 144);
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Size = new Size(470, 191);
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.TabIndex = 2;
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.UseCompatibleStateImageBehavior = false;
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.View = View.Details;
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.SelectedIndexChanged += DetalleOrdenesDePrepracionAOrdenSeleccionListView_SelectedIndexChanged;
+
             // 
             // IDOrdenPreparacion
             // 
@@ -307,33 +328,99 @@
             // OSgroupBox
             // 
             OSgroupBox.Controls.Add(OrdenesDePreparacionPendientesListView);
+            OSgroupBox.Controls.Add(OrdenesDePreparacionPendientesProductoUbicacionListView);
             OSgroupBox.Controls.Add(CrearOrdenSeleccionBTN);
             OSgroupBox.Controls.Add(QuitarOrdenPreparacionASeleccionBTN);
             OSgroupBox.Enabled = false;
-            OSgroupBox.Location = new Point(10, 332);
-            OSgroupBox.Margin = new Padding(3, 2, 3, 2);
+            OSgroupBox.Location = new Point(11, 443);
             OSgroupBox.Name = "OSgroupBox";
-            OSgroupBox.Padding = new Padding(3, 2, 3, 2);
-            OSgroupBox.Size = new Size(672, 190);
+            OSgroupBox.Size = new Size(768, 253);
             OSgroupBox.TabIndex = 21;
             OSgroupBox.TabStop = false;
             OSgroupBox.Text = "Detalle de Ordenes de Preparación a insertar: ";
             // 
             // OrdenesDePreparacionPendientesListView
             // 
-            OrdenesDePreparacionPendientesListView.Location = new Point(5, 20);
-            OrdenesDePreparacionPendientesListView.Margin = new Padding(3, 2, 3, 2);
+            OrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader9 });
+            OrdenesDePreparacionPendientesListView.Location = new Point(10, 27);
             OrdenesDePreparacionPendientesListView.Name = "OrdenesDePreparacionPendientesListView";
-            OrdenesDePreparacionPendientesListView.Size = new Size(661, 137);
-            OrdenesDePreparacionPendientesListView.TabIndex = 18;
+            OrdenesDePreparacionPendientesListView.Size = new Size(466, 181);
+            OrdenesDePreparacionPendientesListView.TabIndex = 4;
             OrdenesDePreparacionPendientesListView.UseCompatibleStateImageBehavior = false;
             OrdenesDePreparacionPendientesListView.View = View.Details;
             // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "IDOrdenPreparacion";
+            columnHeader1.Width = 31;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "IdCliente";
+            columnHeader2.Width = 31;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "DescripcionCliente";
+            columnHeader3.Width = 31;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Mercaderias";
+            columnHeader4.Width = 31;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "CantidadMercaderia";
+            columnHeader5.Width = 31;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "FechaOrdenRecepcion";
+            columnHeader6.Width = 31;
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "EstadoOrdenPreparacion";
+            columnHeader7.Width = 31;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Prioridad";
+            columnHeader8.Width = 31;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "TransportistaDetalle";
+            columnHeader9.Width = 31;
+            // 
+            // OrdenesDePreparacionPendientesProductoUbicacionListView
+            // 
+            OrdenesDePreparacionPendientesProductoUbicacionListView.Columns.AddRange(new ColumnHeader[] { Producto, Cantidad, Ubicacion });
+            OrdenesDePreparacionPendientesProductoUbicacionListView.Location = new Point(482, 27);
+            OrdenesDePreparacionPendientesProductoUbicacionListView.Name = "OrdenesDePreparacionPendientesProductoUbicacionListView";
+            OrdenesDePreparacionPendientesProductoUbicacionListView.Size = new Size(286, 181);
+            OrdenesDePreparacionPendientesProductoUbicacionListView.TabIndex = 4;
+            OrdenesDePreparacionPendientesProductoUbicacionListView.UseCompatibleStateImageBehavior = false;
+            OrdenesDePreparacionPendientesProductoUbicacionListView.View = View.Details;
+            // 
+            // Producto
+            // 
+            Producto.Text = "Producto";
+            // 
+            // Cantidad
+            // 
+            Cantidad.Text = "Cantidad";
+            // 
+            // Ubicacion
+            // 
+            Ubicacion.Text = "Ubicacion";
+            // 
             // OrdenSeleccionForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 542);
+            ClientSize = new Size(800, 723);
             Controls.Add(CancelarOrdenSeleccionBTN);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -350,7 +437,6 @@
             Controls.Add(FiltrosOPgroupBox);
             Controls.Add(OPgroupBox);
             Controls.Add(OSgroupBox);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "OrdenSeleccionForm";
             Text = "OrdenSeleccion";
             Load += OrdenSeleccionForm_Load_1;
@@ -386,7 +472,6 @@
         private GroupBox OSgroupBox;
         private ComboBox PrioridadComboBoxOrdenSeleccion;
         private ListView DetalleOrdenesDePrepracionAOrdenSeleccionListView;
-        private ListView OrdenesDePreparacionPendientesListView;
         private ColumnHeader IDOrdenPreparacion;
         private ColumnHeader IdCliente;
         private ColumnHeader DescripcionCliente;
@@ -396,5 +481,22 @@
         private ColumnHeader EstadoOrdenPreparacion;
         private ColumnHeader Prioridad;
         private ColumnHeader TransportistaDetalle;
+        private ListView DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView;
+        private ListView OrdenesDePreparacionPendientesProductoUbicacionListView;
+        private ColumnHeader Producto;
+        private ColumnHeader Cantidad;
+        private ColumnHeader Ubicacion;
+        private ColumnHeader DetalleMercaderia;
+        private ColumnHeader CantidadProductosOP;
+        private ListView OrdenesDePreparacionPendientesListView;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
+        private ColumnHeader columnHeader7;
+        private ColumnHeader columnHeader8;
+        private ColumnHeader columnHeader9;
     }
 }

@@ -203,7 +203,25 @@ namespace Pampazon.OrdenSeleccion
 
         private void DetalleOrdenesDePrepracionAOrdenSeleccionListView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Limpiar la lista de detalles de productos
+            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Items.Clear();
 
+            // Verificar si hay un ítem seleccionado
+            if (DetalleOrdenesDePrepracionAOrdenSeleccionListView.SelectedItems.Count > 0)
+            {
+                // Obtener la orden de preparación seleccionada
+                var selectedItem = DetalleOrdenesDePrepracionAOrdenSeleccionListView.SelectedItems[0];
+                var ordenPreparacion = (OrdenPreparacion)selectedItem.Tag;
+
+                // Agregar los detalles de la mercadería a la lista de productos
+                foreach (var mercaderia in ordenPreparacion.Mercaderias)
+                {
+                    ListViewItem item = new ListViewItem(mercaderia.DescripcionProducto);
+                    item.SubItems.Add(mercaderia.Cantidad.ToString());
+                    DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Items.Add(item);
+                }
+            }
         }
+
     }
 }
