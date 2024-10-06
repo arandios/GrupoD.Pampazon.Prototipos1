@@ -151,6 +151,7 @@
             GenerarOrdenEntregaBTN.TabIndex = 22;
             GenerarOrdenEntregaBTN.Text = "Confirmar Orden de Seleccion";
             GenerarOrdenEntregaBTN.UseVisualStyleBackColor = true;
+            GenerarOrdenEntregaBTN.Click += GenerarOrdenEntregaBTN_Click;
             // 
             // CMBEstado
             // 
@@ -160,6 +161,7 @@
             CMBEstado.Size = new Size(182, 33);
             CMBEstado.TabIndex = 28;
             CMBEstado.Text = "Estado";
+            CMBEstado.SelectedIndexChanged += CMBEstado_SelectedIndexChanged;
             // 
             // ConfirmarOrdenSeleccion
             // 

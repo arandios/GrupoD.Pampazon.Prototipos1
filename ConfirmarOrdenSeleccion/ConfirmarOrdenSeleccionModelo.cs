@@ -8,58 +8,52 @@ namespace Pampazon.ConfirmarOrdenSeleccion
 {
     internal class ConfirmarOrdenSeleccionModelo
     {
-        public List<OrdenSeleccion> Ordenes { get; private set; }
+        // Listas de órdenes
+        public List<OrdenSeleccion> OrdenesPendientes { get; private set; }
+        public List<OrdenSeleccion> OrdenesConfirmadas { get; private set; }
 
         public ConfirmarOrdenSeleccionModelo()
         {
-            Ordenes = new List<OrdenSeleccion>();
-            InicializarOrdenes(); // Cargar datos iniciales
+            // Inicializar las listas
+            OrdenesPendientes = new List<OrdenSeleccion>();
+            OrdenesConfirmadas = new List<OrdenSeleccion>();
+
+            // Cargar datos iniciales en la lista de órdenes pendientes
+            CargarDatosIniciales();
         }
 
-        // Método para inicializar algunas órdenes de ejemplo
-        private void InicializarOrdenes()
+        // Método para cargar órdenes de selección iniciales
+        private void CargarDatosIniciales()
         {
-            Ordenes.Add(new OrdenSeleccion(
-                123, // Nro_OrdenS
-                DateTime.Now, // FechaEmision
-                456, // OP_Asociada
-                "Pendiente", // Estado
-                DateTime.Now, // Fecha_Estado
-                new List<Productos>
-                {
-                    new Productos(123, 1001, "Producto A", 10),
-                    new Productos(123, 1002, "Producto B", 5)
-                }
-            ));
+            OrdenesPendientes.AddRange(new List<OrdenSeleccion>
+            {
+                new OrdenSeleccion(
+                    123, DateTime.Now, 456, "Pendiente", DateTime.Now,
+                    new List<Productos>
+                    {
+                        new Productos(123, 1001, "Producto A", 10),
+                        new Productos(123, 1002, "Producto B", 5)
+                    }
+                ),
+                new OrdenSeleccion(
+                    124, DateTime.Now.AddDays(-1), 457, "Pendiente", DateTime.Now.AddDays(-1),
+                    new List<Productos>
+                    {
+                        new Productos(124, 2001, "Producto C", 2),
+                        new Productos(124, 2002, "Producto D", 3)
+                    }
+                )
+                // Más órdenes si lo deseas...
+            });
+        }
 
-            Ordenes.Add(new OrdenSeleccion(
-                124, // Nro_OrdenS
-                DateTime.Now.AddDays(-1), // FechaEmision
-                457, // OP_Asociada
-                "Pendiente", // Estado
-                DateTime.Now.AddDays(-1), // Fecha_Estado
-                new List<Productos>
-                {
-                    new Productos(124, 2001, "Producto C", 2),
-                    new Productos(124, 2002, "Producto D", 3)
-                }
-            ));
-
-            Ordenes.Add(new OrdenSeleccion(
-                125, // Nro_OrdenS
-                DateTime.Now.AddDays(-2), // FechaEmision
-                458, // OP_Asociada
-                "Pendiente", // Estado
-                DateTime.Now.AddDays(-2), // Fecha_Estado
-                new List<Productos>
-                {
-                    new Productos(125, 3001, "Producto E", 1),
-                    new Productos(125, 3002, "Producto F", 4),
-                    new Productos(125, 3003, "Producto G", 6)
-                }
-            ));
-
-            // Agrega más órdenes según sea necesario
+        // Método para confirmar una orden
+        public void ConfirmarOrden(OrdenSeleccion orden)
+        {
+            orden.Estado = "Confirmada";
+            orden.Fecha_Estado = DateTime.Now;
+            OrdenesConfirmadas.Add(orden);
+            OrdenesPendientes.Remove(orden); // Eliminar de pendientes
         }
     }
 }
