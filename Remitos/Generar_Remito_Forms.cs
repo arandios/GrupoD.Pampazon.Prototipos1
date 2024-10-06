@@ -80,10 +80,15 @@ namespace Pampazon
         /// <param name="e"></param>
         private void AgregarOrdenBtn_Click(object sender, EventArgs e)
         {
+            if (TransportistasListV.Items.Count == 0)
+            {
+                MessageBox.Show("No hay órdenes para agregar. Agregue al menos una orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             // Verificar si hay un ítem seleccionado en TransportistasListV
             if (TransportistasListV.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Por favor, seleccione un transportista de la lista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, seleccione una orden de la lista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

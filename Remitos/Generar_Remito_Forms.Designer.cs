@@ -131,6 +131,7 @@ namespace Pampazon
             // 
             TransportistasListV.Columns.AddRange(new ColumnHeader[] { NombreTransportistaColumna, DNITColumna, ApellidoTransportistaColumna, IdOrdenColumna });
             TransportistasListV.Location = new Point(20, 147);
+            TransportistasListV.MultiSelect = false;
             TransportistasListV.Name = "TransportistasListV";
             TransportistasListV.Size = new Size(454, 96);
             TransportistasListV.TabIndex = 20;
@@ -243,6 +244,7 @@ namespace Pampazon
             Controls.Add(SalisBtn);
             Controls.Add(DetalleRemitoLTV);
             Controls.Add(GenerarBtn);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "Generar_RemitoForms";
             Text = "Remito";
             Load += Generar_RemitoForms_Load;
