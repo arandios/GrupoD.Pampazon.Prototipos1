@@ -205,6 +205,7 @@
             CrearOrdenSeleccionBTN.TabIndex = 17;
             CrearOrdenSeleccionBTN.Text = "&Crear Orden de Selección";
             CrearOrdenSeleccionBTN.UseVisualStyleBackColor = true;
+            CrearOrdenSeleccionBTN.Click += CrearOrdenSeleccionBTN_Click_1;
             // 
             // CancelarOrdenSeleccionBTN
             // 

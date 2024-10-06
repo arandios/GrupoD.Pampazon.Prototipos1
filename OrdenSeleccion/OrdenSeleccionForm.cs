@@ -106,6 +106,8 @@ namespace Pampazon.OrdenSeleccion
             AgruparOrdenesDePreparacionPendientes();
         }
 
+        //---VERSION 1 DEL METODO QuitarOrdenPreparacionASeleccionBTN_Click
+        /*
         private void QuitarOrdenPreparacionASeleccionBTN_Click(object sender, EventArgs e)
         {
             if (OrdenesDePreparacionPendientesListView.SelectedItems.Count != 1)
@@ -126,6 +128,34 @@ namespace Pampazon.OrdenSeleccion
             //La Orden de Preparacion se borro de la lista.
             actualizarListaOrdenDePreparacion();
         }
+        */
+
+        private void QuitarOrdenPreparacionASeleccionBTN_Click(object sender, EventArgs e)
+        {
+            // Obtener los elementos seleccionados en OrdenesDePreparacionPendientesListView
+            var seleccionados = OrdenesDePreparacionPendientesListView.SelectedItems;
+
+            if (seleccionados.Count > 0)
+            {
+                foreach (ListViewItem item in seleccionados)
+                {
+                    // Eliminar el elemento de OrdenesDePreparacionPendientesListView
+                    OrdenesDePreparacionPendientesListView.Items.Remove(item);
+
+                    // Agregar el elemento a DetalleOrdenesDePrepracionAOrdenSeleccionListView
+                    DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
+                }
+
+                // Actualizar la lista OrdenesDePreparacionPendientesProductoUbicacionListView
+                AgruparOrdenesDePreparacionPendientes();
+            }
+            else
+            {
+                MessageBox.Show("No hay elementos seleccionados para quitar.");
+            }
+        }
+
+
 
         private void CrearOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
@@ -240,6 +270,42 @@ namespace Pampazon.OrdenSeleccion
         }
 
 
+        private void CrearOrdenSeleccionBTN_Click_1(object sender, EventArgs e)
+        {
+            // Verificar si hay elementos en la lista OrdenesDePreparacionPendientesListView
+            if (OrdenesDePreparacionPendientesListView.Items.Count == 0)
+            {
+                MessageBox.Show("No hay órdenes de preparación pendientes para crear una orden de selección.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Crear una nueva instancia de OrdenSeleccion
+            var ordenSeleccion = new OrdenSeleccion
+            {
+                IDOrdenSeleccion = Guid.NewGuid().ToString(), // Generar un ID único para la orden de selección
+                FechaEmision = DateTime.Now,
+                OrdenesPreparacion = new List<OrdenPreparacion>(),
+                EstadoOrdenDeSeleccion = "Nueva", // Estado inicial de la orden de selección
+                FechaEstados = DateTime.Now
+            };
+
+            // Agregar las órdenes de preparación a la orden de selección
+            foreach (ListViewItem item in OrdenesDePreparacionPendientesListView.Items)
+            {
+                var ordenPreparacion = (OrdenPreparacion)item.Tag;
+                ordenSeleccion.OrdenesPreparacion.Add(ordenPreparacion);
+            }
+
+            // Eliminar los ítems de OrdenesDePreparacionPendientesListView
+            OrdenesDePreparacionPendientesListView.Items.Clear();
+
+            // Eliminar los ítems de OrdenesDePreparacionPendientesProductoUbicacionListView
+            OrdenesDePreparacionPendientesProductoUbicacionListView.Items.Clear();
+
+            // Mostrar mensaje de confirmación
+            MessageBox.Show($"Se ha creado la orden de selección número {ordenSeleccion.IDOrdenSeleccion} exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         // ==============================================================================
         // FOOTER DE PANTALLA
         // ==============================================================================
@@ -352,7 +418,6 @@ namespace Pampazon.OrdenSeleccion
                 OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.ColumnContent);
             }
         }
-
     }
 }
 
