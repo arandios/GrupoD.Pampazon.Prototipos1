@@ -13,6 +13,8 @@ namespace Pampazon.ConfirmarOrdenSeleccion
 {
     public partial class ConfirmarOrdenSeleccion : Form
     {
+        private List<OrdenSeleccion> OrdenesSeleccionConfirmadas = new List<OrdenSeleccion>();
+        private List<OrdenSeleccion> ordenes = new List<OrdenSeleccion>();
         private ConfirmarOrdenSeleccionModelo modelo; // Instancia del modelo
 
         public ConfirmarOrdenSeleccion()
@@ -45,9 +47,7 @@ namespace Pampazon.ConfirmarOrdenSeleccion
         {
             // Agregar información de la orden al primer ListView
             ListViewItem itemOrden = new ListViewItem(ordenSeleccion.Nro_OrdenS.ToString()); // Nro orden
-            itemOrden.SubItems.Add(ordenSeleccion.Estado); // Estado
-            itemOrden.SubItems.Add(ordenSeleccion.FechaEmision.ToShortDateString()); // Fecha Entrega
-            itemOrden.SubItems.Add(ordenSeleccion.OP_Asociada.ToString()); // OP asociada
+            itemOrden.SubItems.Add(ordenSeleccion.Estado); // Estado            
 
             LstOrdenesSeleccion.Items.Add(itemOrden); // Añadir el ítem de la orden al ListView
 

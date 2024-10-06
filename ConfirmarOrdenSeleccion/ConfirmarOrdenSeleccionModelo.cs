@@ -23,7 +23,7 @@ namespace Pampazon.ConfirmarOrdenSeleccion
                 123, // Nro_OrdenS
                 DateTime.Now, // FechaEmision
                 456, // OP_Asociada
-                "En Proceso", // Estado
+                "Pendiente", // Estado
                 DateTime.Now, // Fecha_Estado
                 new List<Productos>
                 {
@@ -36,7 +36,7 @@ namespace Pampazon.ConfirmarOrdenSeleccion
                 124, // Nro_OrdenS
                 DateTime.Now.AddDays(-1), // FechaEmision
                 457, // OP_Asociada
-                "Entregado", // Estado
+                "Pendiente", // Estado
                 DateTime.Now.AddDays(-1), // Fecha_Estado
                 new List<Productos>
                 {
@@ -49,7 +49,7 @@ namespace Pampazon.ConfirmarOrdenSeleccion
                 125, // Nro_OrdenS
                 DateTime.Now.AddDays(-2), // FechaEmision
                 458, // OP_Asociada
-                "Cancelado", // Estado
+                "Pendiente", // Estado
                 DateTime.Now.AddDays(-2), // Fecha_Estado
                 new List<Productos>
                 {
