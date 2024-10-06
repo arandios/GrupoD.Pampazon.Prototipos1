@@ -80,32 +80,7 @@ namespace Pampazon.ConfirmarOrdenSeleccion
             {
                 CargarOrdenSeleccionEnListView(orden);
             }
-        }
-
-        private void GenerarOrdenEntregaBTN_Click(object sender, EventArgs e)
-        {
-            if (LstOrdenesSeleccion.SelectedItems.Count > 0)
-            {
-                // Obtener el índice de la orden seleccionada
-                int selectedIndex = LstOrdenesSeleccion.SelectedIndices[0];
-
-                // Obtener la orden seleccionada
-                OrdenSeleccion ordenSeleccionada = modelo.OrdenesPendientes[selectedIndex];
-
-                // Confirmar la orden
-                modelo.ConfirmarOrden(ordenSeleccionada);
-
-                // Notificar al usuario
-                MessageBox.Show("La orden ha sido confirmada.");
-
-                // Actualizar el ListView según la categoría seleccionada
-                ActualizarListViewSegunCategoria();
-            }
-            else
-            {
-                MessageBox.Show("Por favor, selecciona una orden para confirmar.");
-            }
-        }
+        }        
 
         private void CMBEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -154,6 +129,42 @@ namespace Pampazon.ConfirmarOrdenSeleccion
             else
             {
                 MessageBox.Show("Por favor, selecciona una orden para ver los detalles.");
+            }
+        }
+
+        private void ConfirmarOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        {
+            if (LstOrdenesSeleccion.SelectedItems.Count > 0)
+            {
+                // Obtener el índice de la orden seleccionada
+                int selectedIndex = LstOrdenesSeleccion.SelectedIndices[0];
+
+                // Obtener la orden seleccionada
+                OrdenSeleccion ordenSeleccionada = modelo.OrdenesPendientes.FirstOrDefault(o => o.Nro_OrdenS == int.Parse(LstOrdenesSeleccion.SelectedItems[0].Text))
+                                                    ?? modelo.OrdenesConfirmadas.FirstOrDefault(o => o.Nro_OrdenS == int.Parse(LstOrdenesSeleccion.SelectedItems[0].Text));
+
+                if (ordenSeleccionada != null)
+                {
+                    // Validar si la orden ya está confirmada
+                    if (ordenSeleccionada.Estado == "Confirmada")
+                    {
+                        MessageBox.Show("La orden ya está confirmada.");
+                        return; // Salir si ya está confirmada
+                    }
+
+                    // Confirmar la orden
+                    modelo.ConfirmarOrden(ordenSeleccionada);
+
+                    // Notificar al usuario
+                    MessageBox.Show("La orden ha sido confirmada.");
+
+                    // Actualizar el ListView según la categoría seleccionada, pero sin depender del ComboBox
+                    ActualizarListViewSegunCategoria();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una orden para confirmar.");
             }
         }
     }

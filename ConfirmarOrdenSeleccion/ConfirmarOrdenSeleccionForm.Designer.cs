@@ -152,7 +152,7 @@
             GenerarOrdenEntregaBTN.TabIndex = 22;
             GenerarOrdenEntregaBTN.Text = "Confirmar Orden de Seleccion";
             GenerarOrdenEntregaBTN.UseVisualStyleBackColor = true;
-            GenerarOrdenEntregaBTN.Click += GenerarOrdenEntregaBTN_Click;
+            GenerarOrdenEntregaBTN.Click += ConfirmarOrdenSeleccionBTN_Click;
             // 
             // CMBEstado
             // 
