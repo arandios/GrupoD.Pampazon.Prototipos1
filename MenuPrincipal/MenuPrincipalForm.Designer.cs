@@ -35,7 +35,7 @@
             GenerarRemitoBTN = new Button();
             Menu_ConsultarOrdenesBTN = new Button();
             button1 = new Button();
-            button2 = new Button();
+            Confirmar_Orden_EntregaBTN = new Button();
             SuspendLayout();
             // 
             // label1
@@ -83,7 +83,7 @@
             // 
             // GenerarRemitoBTN
             // 
-            GenerarRemitoBTN.Location = new Point(319, 387);
+            GenerarRemitoBTN.Location = new Point(319, 455);
             GenerarRemitoBTN.Margin = new Padding(4, 3, 4, 3);
             GenerarRemitoBTN.Name = "GenerarRemitoBTN";
             GenerarRemitoBTN.Size = new Size(339, 50);
@@ -114,21 +114,21 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += GenerarOrderPreparacionBtn;
             // 
-            // button2
+            // Confirmar_Orden_EntregaBTN
             // 
-            button2.Location = new Point(665, 153);
-            button2.Name = "button2";
-            button2.Size = new Size(339, 47);
-            button2.TabIndex = 8;
-            button2.Text = "Confirmar Orden Entrega";
-            button2.UseVisualStyleBackColor = true;
+            Confirmar_Orden_EntregaBTN.Location = new Point(319, 395);
+            Confirmar_Orden_EntregaBTN.Name = "Confirmar_Orden_EntregaBTN";
+            Confirmar_Orden_EntregaBTN.Size = new Size(339, 47);
+            Confirmar_Orden_EntregaBTN.TabIndex = 8;
+            Confirmar_Orden_EntregaBTN.Text = "Confirmar Orden Entrega";
+            Confirmar_Orden_EntregaBTN.UseVisualStyleBackColor = true;
             // 
             // MenuPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1007, 535);
-            Controls.Add(button2);
+            Controls.Add(Confirmar_Orden_EntregaBTN);
             Controls.Add(button1);
             Controls.Add(GenerarRemitoBTN);
             Controls.Add(GenerarOrdenDeEntregabtn);
@@ -154,6 +154,6 @@
         private Button GenerarRemitoBTN;
         private Button Menu_ConsultarOrdenesBTN;
         private Button button1;
-        private Button button2;
+        private Button Confirmar_Orden_EntregaBTN;
     }
 }
