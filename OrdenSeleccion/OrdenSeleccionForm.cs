@@ -197,9 +197,9 @@ namespace Pampazon.OrdenSeleccion
                 }
 
                 // Validar que el número no sea demasiado largo
-                if (NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Length > 3)
+                if (NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Length > 8)
                 {
-                    MessageBox.Show("El número de orden no puede tener más de 3 dígitos.");
+                    MessageBox.Show("El número de orden no puede tener más de 8 dígitos.");
                     return;
                 }
 
