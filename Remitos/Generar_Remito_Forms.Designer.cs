@@ -114,7 +114,7 @@ namespace Pampazon
             AgregarOrdenBtn.Name = "AgregarOrdenBtn";
             AgregarOrdenBtn.Size = new Size(491, 23);
             AgregarOrdenBtn.TabIndex = 16;
-            AgregarOrdenBtn.Text = "&Agregar Orden de Entrega al remito";
+            AgregarOrdenBtn.Text = "Agregar Orden de Preparacion al remito";
             AgregarOrdenBtn.UseVisualStyleBackColor = true;
             AgregarOrdenBtn.Click += AgregarOrdenBtn_Click;
             // 
