@@ -10,7 +10,7 @@ namespace Pampazon.ConfirmarOrdenSeleccion
 {
     internal class Productos
     {
-        public int Nro_OrdenS { get; set; }
+        public int Nro_OrdenP { get; set; }
         public int Producto_Codigo { get; set; }
         public string Producto_Nombre { get; set; }
         public int Cantidad { get; set; }
@@ -19,7 +19,7 @@ namespace Pampazon.ConfirmarOrdenSeleccion
 
         public Productos(int nro_ordens, int producto_codigo, string producto_nombre, int cantidad)
         {
-            Nro_OrdenS = nro_ordens;
+            Nro_OrdenP = nro_ordens;
             Producto_Codigo = producto_codigo;
             Producto_Nombre = producto_nombre;
             Cantidad = cantidad;
