@@ -54,7 +54,7 @@
             // 
             // Salirbtn
             // 
-            Salirbtn.Location = new Point(843, 380);
+            Salirbtn.Location = new Point(651, 380);
             Salirbtn.Margin = new Padding(2);
             Salirbtn.Name = "Salirbtn";
             Salirbtn.Size = new Size(155, 43);
@@ -65,7 +65,7 @@
             // 
             // GenerarOrdenEntregabtn
             // 
-            GenerarOrdenEntregabtn.Location = new Point(843, 312);
+            GenerarOrdenEntregabtn.Location = new Point(651, 312);
             GenerarOrdenEntregabtn.Margin = new Padding(2);
             GenerarOrdenEntregabtn.Name = "GenerarOrdenEntregabtn";
             GenerarOrdenEntregabtn.Size = new Size(155, 47);
@@ -104,7 +104,7 @@
             // 
             // limpiarbtn
             // 
-            limpiarbtn.Location = new Point(438, 33);
+            limpiarbtn.Location = new Point(339, 65);
             limpiarbtn.Margin = new Padding(2);
             limpiarbtn.Name = "limpiarbtn";
             limpiarbtn.Size = new Size(95, 23);
@@ -116,7 +116,7 @@
             // 
             listView2.Location = new Point(12, 93);
             listView2.Name = "listView2";
-            listView2.Size = new Size(521, 214);
+            listView2.Size = new Size(422, 214);
             listView2.TabIndex = 21;
             listView2.UseCompatibleStateImageBehavior = false;
             listView2.View = View.Details;
@@ -124,9 +124,9 @@
             // 
             // listView1
             // 
-            listView1.Location = new Point(558, 93);
+            listView1.Location = new Point(470, 93);
             listView1.Name = "listView1";
-            listView1.Size = new Size(440, 214);
+            listView1.Size = new Size(364, 214);
             listView1.TabIndex = 22;
             listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -143,7 +143,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(558, 75);
+            label3.Location = new Point(470, 75);
             label3.Name = "label3";
             label3.Size = new Size(120, 15);
             label3.TabIndex = 24;
@@ -151,9 +151,9 @@
             // 
             // button1
             // 
-            button1.Location = new Point(448, 312);
+            button1.Location = new Point(349, 312);
             button1.Name = "button1";
-            button1.Size = new Size(85, 35);
+            button1.Size = new Size(85, 47);
             button1.TabIndex = 25;
             button1.Text = "Seleccionar";
             button1.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1010, 434);
+            ClientSize = new Size(846, 434);
             Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(label2);

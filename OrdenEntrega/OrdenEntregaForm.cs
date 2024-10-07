@@ -34,17 +34,13 @@ namespace Pampazon.OrdenEntrega
 
             listView2.Columns.Add("Nro Orden", -2, HorizontalAlignment.Left);
             listView2.Columns.Add("Fecha de Entrega", -2, HorizontalAlignment.Left);
-            listView2.Columns.Add("ID Transportista", -2, HorizontalAlignment.Left);
-            listView2.Columns.Add("Nombre Transportista", -2, HorizontalAlignment.Left);
             listView2.Columns.Add("Estado", -2, HorizontalAlignment.Left);
 
             listView1.View = View.Details;
             listView1.FullRowSelect = true;
 
             listView1.Columns.Add("Nro Orden", -2, HorizontalAlignment.Left);
-            listView1.Columns.Add("Fecha de Entrega", -2, HorizontalAlignment.Left);
-            listView1.Columns.Add("ID Transportista", -2, HorizontalAlignment.Left);
-            listView1.Columns.Add("Nombre Transportista", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("Fecha de Entrega", -2, HorizontalAlignment.Left);     
             listView1.Columns.Add("Estado", -2, HorizontalAlignment.Left);
         }
 
@@ -58,8 +54,6 @@ namespace Pampazon.OrdenEntrega
                 {
                     NroOrden = i * 2,
                     FechaEntrega = "2024-10-0" + i,
-                    IdTransportista = i,
-                    NombreTransportista = "cliente " + i,
                     Estado = "Empaquetado"
 
                 });
@@ -67,9 +61,7 @@ namespace Pampazon.OrdenEntrega
             foreach (var dato in datos)
             {
                 ListViewItem item = new ListViewItem(dato.NroOrden.ToString());
-                item.SubItems.Add(dato.FechaEntrega);
-                item.SubItems.Add(dato.IdTransportista.ToString());
-                item.SubItems.Add(dato.NombreTransportista);
+                item.SubItems.Add(dato.FechaEntrega);             
                 item.SubItems.Add(dato.Estado);
                 listView2.Items.Add(item);
             }
@@ -84,7 +76,7 @@ namespace Pampazon.OrdenEntrega
 
         private void Salirbtn_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,8 +95,6 @@ namespace Pampazon.OrdenEntrega
                 {
                     NroOrden = i * 2,
                     FechaEntrega = "2024-10-0" + i,
-                    IdTransportista = i,
-                    NombreTransportista = "cliente " + i * 2,
                     Estado = "Empaquetado"
 
                 });
@@ -113,8 +103,6 @@ namespace Pampazon.OrdenEntrega
             {
                 ListViewItem item = new ListViewItem(dato.NroOrden.ToString());
                 item.SubItems.Add(dato.FechaEntrega);
-                item.SubItems.Add(dato.IdTransportista.ToString());
-                item.SubItems.Add(dato.NombreTransportista);
                 item.SubItems.Add(dato.Estado);
                 listView1.Items.Add(item);
             }
