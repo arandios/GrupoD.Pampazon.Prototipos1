@@ -1,6 +1,6 @@
 ﻿namespace Pampazon.OrdenEntrega
 {
-    partial class OrdenEntrega
+    partial class OrdenEntregaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,18 +35,16 @@
             label1 = new Label();
             txtIdOrden = new TextBox();
             limpiarbtn = new Button();
-            listView1 = new ListView();
-            columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
-            DetalleOrdenbtn = new Button();
             listView2 = new ListView();
+            listView1 = new ListView();
+            label2 = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
             // Buscarbtn
             // 
-            Buscarbtn.Location = new Point(505, 50);
-            Buscarbtn.Margin = new Padding(2, 2, 2, 2);
+            Buscarbtn.Location = new Point(339, 33);
+            Buscarbtn.Margin = new Padding(2);
             Buscarbtn.Name = "Buscarbtn";
             Buscarbtn.Size = new Size(95, 23);
             Buscarbtn.TabIndex = 18;
@@ -55,8 +53,8 @@
             // 
             // Salirbtn
             // 
-            Salirbtn.Location = new Point(693, 363);
-            Salirbtn.Margin = new Padding(2, 2, 2, 2);
+            Salirbtn.Location = new Point(844, 312);
+            Salirbtn.Margin = new Padding(2);
             Salirbtn.Name = "Salirbtn";
             Salirbtn.Size = new Size(155, 43);
             Salirbtn.TabIndex = 17;
@@ -66,8 +64,8 @@
             // 
             // GenerarOrdenEntregabtn
             // 
-            GenerarOrdenEntregabtn.Location = new Point(693, 312);
-            GenerarOrdenEntregabtn.Margin = new Padding(2, 2, 2, 2);
+            GenerarOrdenEntregabtn.Location = new Point(378, 312);
+            GenerarOrdenEntregabtn.Margin = new Padding(2);
             GenerarOrdenEntregabtn.Name = "GenerarOrdenEntregabtn";
             GenerarOrdenEntregabtn.Size = new Size(155, 47);
             GenerarOrdenEntregabtn.TabIndex = 16;
@@ -77,8 +75,8 @@
             // FechaEntregacmb
             // 
             FechaEntregacmb.FormattingEnabled = true;
-            FechaEntregacmb.Location = new Point(280, 50);
-            FechaEntregacmb.Margin = new Padding(2, 2, 2, 2);
+            FechaEntregacmb.Location = new Point(200, 33);
+            FechaEntregacmb.Margin = new Padding(2);
             FechaEntregacmb.Name = "FechaEntregacmb";
             FechaEntregacmb.Size = new Size(129, 23);
             FechaEntregacmb.TabIndex = 15;
@@ -87,7 +85,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(63, 53);
+            label1.Location = new Point(11, 36);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(54, 15);
@@ -96,8 +94,8 @@
             // 
             // txtIdOrden
             // 
-            txtIdOrden.Location = new Point(121, 50);
-            txtIdOrden.Margin = new Padding(2, 2, 2, 2);
+            txtIdOrden.Location = new Point(90, 33);
+            txtIdOrden.Margin = new Padding(2);
             txtIdOrden.Name = "txtIdOrden";
             txtIdOrden.Size = new Size(106, 23);
             txtIdOrden.TabIndex = 12;
@@ -105,69 +103,60 @@
             // 
             // limpiarbtn
             // 
-            limpiarbtn.Location = new Point(604, 50);
-            limpiarbtn.Margin = new Padding(2, 2, 2, 2);
+            limpiarbtn.Location = new Point(438, 33);
+            limpiarbtn.Margin = new Padding(2);
             limpiarbtn.Name = "limpiarbtn";
             limpiarbtn.Size = new Size(95, 23);
             limpiarbtn.TabIndex = 11;
             limpiarbtn.Text = "Limpiar";
             limpiarbtn.UseVisualStyleBackColor = true;
             // 
-            // listView1
-            // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6, columnHeader7 });
-            listView1.Location = new Point(638, 93);
-            listView1.Margin = new Padding(2, 2, 2, 2);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(240, 214);
-            listView1.TabIndex = 19;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
-            // 
-            // columnHeader5
-            // 
-            columnHeader5.Text = "Id Prod";
-            columnHeader5.Width = 55;
-            // 
-            // columnHeader6
-            // 
-            columnHeader6.Text = "Producto";
-            columnHeader6.Width = 90;
-            // 
-            // columnHeader7
-            // 
-            columnHeader7.Text = "Cantidad";
-            columnHeader7.Width = 75;
-            // 
-            // DetalleOrdenbtn
-            // 
-            DetalleOrdenbtn.Location = new Point(41, 312);
-            DetalleOrdenbtn.Margin = new Padding(2, 2, 2, 2);
-            DetalleOrdenbtn.Name = "DetalleOrdenbtn";
-            DetalleOrdenbtn.Size = new Size(155, 38);
-            DetalleOrdenbtn.TabIndex = 20;
-            DetalleOrdenbtn.Text = "Detalles de Orden";
-            DetalleOrdenbtn.UseVisualStyleBackColor = true;
-            // 
             // listView2
             // 
-            listView2.Location = new Point(41, 93);
+            listView2.Location = new Point(12, 93);
             listView2.Name = "listView2";
-            listView2.Size = new Size(573, 214);
+            listView2.Size = new Size(521, 214);
             listView2.TabIndex = 21;
             listView2.UseCompatibleStateImageBehavior = false;
             listView2.View = View.Details;
             listView2.SelectedIndexChanged += listView2_SelectedIndexChanged;
             // 
-            // OrdenEntrega
+            // listView1
+            // 
+            listView1.Location = new Point(558, 93);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(440, 214);
+            listView1.TabIndex = 22;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 75);
+            label2.Name = "label2";
+            label2.Size = new Size(133, 15);
+            label2.TabIndex = 23;
+            label2.Text = "Ordenes de Preparación";
+            label2.Click += label2_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(558, 75);
+            label3.Name = "label3";
+            label3.Size = new Size(110, 15);
+            label3.TabIndex = 24;
+            label3.Text = "Ordenes de entrega";
+            // 
+            // OrdenEntregaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(899, 451);
-            Controls.Add(listView2);
-            Controls.Add(DetalleOrdenbtn);
+            ClientSize = new Size(1010, 370);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(listView1);
+            Controls.Add(listView2);
             Controls.Add(Buscarbtn);
             Controls.Add(Salirbtn);
             Controls.Add(GenerarOrdenEntregabtn);
@@ -175,8 +164,8 @@
             Controls.Add(label1);
             Controls.Add(txtIdOrden);
             Controls.Add(limpiarbtn);
-            Margin = new Padding(2, 2, 2, 2);
-            Name = "OrdenEntrega";
+            Margin = new Padding(2);
+            Name = "OrdenEntregaForm";
             Text = "Orden de entrega";
             ResumeLayout(false);
             PerformLayout();
@@ -191,11 +180,9 @@
         private Label label1;
         private TextBox txtIdOrden;
         private Button limpiarbtn;
-        private ListView listView1;
-        private Button DetalleOrdenbtn;
         private ListView listView2;
-        private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader7;
+        private ListView listView1;
+        private Label label2;
+        private Label label3;
     }
 }

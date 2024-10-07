@@ -89,7 +89,7 @@ namespace Pampazon.MenuPrincipal
             try
             {
                 
-                OrdenEntrega.OrdenEntrega ordenEntregaForm = new OrdenEntrega.OrdenEntrega();
+                OrdenEntrega.OrdenEntregaForm ordenEntregaForm = new OrdenEntrega.OrdenEntregaForm();
                 ordenEntregaForm.ShowDialog();  
             }
             catch (Exception ex)

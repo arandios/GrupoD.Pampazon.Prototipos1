@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Pampazon.OrdenEntrega
 {
-    public partial class OrdenEntrega : Form
+    public partial class OrdenEntregaForm : Form
     {
         public class OrdenEntregaData
         {
@@ -20,13 +20,12 @@ namespace Pampazon.OrdenEntrega
             public string NombreTransportista { get; set; }
             public string Estado { get; set; }
         }
-        public OrdenEntrega()
+        public OrdenEntregaForm()
         {
             InitializeComponent();
             ConfigurarListView();
             AgregarDatos();
-            AgregarDatosl3();
-            AgregarDatosl2();
+            AgregarDatos2();
         }
         private void ConfigurarListView()
         {
@@ -37,22 +36,31 @@ namespace Pampazon.OrdenEntrega
             listView2.Columns.Add("Fecha de Entrega", -2, HorizontalAlignment.Left);
             listView2.Columns.Add("ID Transportista", -2, HorizontalAlignment.Left);
             listView2.Columns.Add("Nombre Transportista", -2, HorizontalAlignment.Left);
-            listView2.Columns.Add("Estado", -2, HorizontalAlignment.Left);       
+            listView2.Columns.Add("Estado", -2, HorizontalAlignment.Left);
+
+            listView1.View = View.Details;
+            listView1.FullRowSelect = true;
+
+            listView1.Columns.Add("Nro Orden", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("Fecha de Entrega", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("ID Transportista", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("Nombre Transportista", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("Estado", -2, HorizontalAlignment.Left);
         }
 
         private void AgregarDatos()
         {
             List<OrdenEntregaData> datos = new List<OrdenEntregaData>();
-            
+
             for (int i = 1; i <= 5; i++)
             {
                 datos.Add(new OrdenEntregaData
                 {
-                    NroOrden = i*2,
-                    FechaEntrega = "2024-10-0"+i,
+                    NroOrden = i * 2,
+                    FechaEntrega = "2024-10-0" + i,
                     IdTransportista = i,
                     NombreTransportista = "cliente " + i,
-                    Estado = "Entregado"
+                    Estado = "Empaquetado"
 
                 });
             }
@@ -81,28 +89,43 @@ namespace Pampazon.OrdenEntrega
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
-        private void AgregarDatosl2()
+        private void AgregarDatos2()
         {
 
-            ListViewItem item = new ListViewItem("123");
-            item.SubItems.Add("PS5");
-            item.SubItems.Add("11");
-            listView1.Items.Add(item);
-        }
-        private void AgregarDatosl3()
-        {
+            List<OrdenEntregaData> datos = new List<OrdenEntregaData>();
 
-            ListViewItem item = new ListViewItem("124");
-            item.SubItems.Add("Manzana");
-            item.SubItems.Add("9");
-            
-            listView1.Items.Add(item);
+            for (int i = 1; i <= 5; i++)
+            {
+                datos.Add(new OrdenEntregaData
+                {
+                    NroOrden = i * 2,
+                    FechaEntrega = "2024-10-0" + i,
+                    IdTransportista = i,
+                    NombreTransportista = "cliente " + i,
+                    Estado = "Empaquetado"
 
+                });
+            }
+            foreach (var dato in datos)
+            {
+                ListViewItem item = new ListViewItem(dato.NroOrden.ToString());
+                item.SubItems.Add(dato.FechaEntrega);
+                item.SubItems.Add(dato.IdTransportista.ToString());
+                item.SubItems.Add(dato.NombreTransportista);
+                item.SubItems.Add(dato.Estado);
+                listView1.Items.Add(item);
+            }
         }
+
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
