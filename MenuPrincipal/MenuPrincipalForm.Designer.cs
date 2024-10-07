@@ -122,6 +122,7 @@
             Confirmar_Orden_EntregaBTN.TabIndex = 8;
             Confirmar_Orden_EntregaBTN.Text = "Confirmar Orden Entrega";
             Confirmar_Orden_EntregaBTN.UseVisualStyleBackColor = true;
+            Confirmar_Orden_EntregaBTN.Click += Confirmar_Orden_EntregaBTN_Click;
             // 
             // MenuPrincipalForm
             // 
