@@ -36,6 +36,7 @@
             Menu_ConsultarOrdenesBTN = new Button();
             button1 = new Button();
             Confirmar_Orden_EntregaBTN = new Button();
+            EmpaquetarOrdenbtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -50,7 +51,7 @@
             // 
             // ConfirmarOrdenSeleccionBTN
             // 
-            ConfirmarOrdenSeleccionBTN.Location = new Point(319, 277);
+            ConfirmarOrdenSeleccionBTN.Location = new Point(319, 229);
             ConfirmarOrdenSeleccionBTN.Margin = new Padding(4, 3, 4, 3);
             ConfirmarOrdenSeleccionBTN.Name = "ConfirmarOrdenSeleccionBTN";
             ConfirmarOrdenSeleccionBTN.Size = new Size(339, 47);
@@ -61,7 +62,7 @@
             // 
             // GenerarOrdenDeSeleccionBTN
             // 
-            GenerarOrdenDeSeleccionBTN.Location = new Point(319, 223);
+            GenerarOrdenDeSeleccionBTN.Location = new Point(319, 176);
             GenerarOrdenDeSeleccionBTN.Margin = new Padding(4, 3, 4, 3);
             GenerarOrdenDeSeleccionBTN.Name = "GenerarOrdenDeSeleccionBTN";
             GenerarOrdenDeSeleccionBTN.Size = new Size(339, 47);
@@ -83,7 +84,7 @@
             // 
             // GenerarRemitoBTN
             // 
-            GenerarRemitoBTN.Location = new Point(319, 455);
+            GenerarRemitoBTN.Location = new Point(319, 438);
             GenerarRemitoBTN.Margin = new Padding(4, 3, 4, 3);
             GenerarRemitoBTN.Name = "GenerarRemitoBTN";
             GenerarRemitoBTN.Size = new Size(339, 50);
@@ -94,7 +95,7 @@
             // 
             // Menu_ConsultarOrdenesBTN
             // 
-            Menu_ConsultarOrdenesBTN.Location = new Point(319, 170);
+            Menu_ConsultarOrdenesBTN.Location = new Point(319, 123);
             Menu_ConsultarOrdenesBTN.Margin = new Padding(4, 3, 4, 3);
             Menu_ConsultarOrdenesBTN.Name = "Menu_ConsultarOrdenesBTN";
             Menu_ConsultarOrdenesBTN.Size = new Size(339, 47);
@@ -105,7 +106,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(319, 117);
+            button1.Location = new Point(319, 70);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
             button1.Size = new Size(339, 47);
@@ -116,7 +117,7 @@
             // 
             // Confirmar_Orden_EntregaBTN
             // 
-            Confirmar_Orden_EntregaBTN.Location = new Point(319, 395);
+            Confirmar_Orden_EntregaBTN.Location = new Point(319, 385);
             Confirmar_Orden_EntregaBTN.Name = "Confirmar_Orden_EntregaBTN";
             Confirmar_Orden_EntregaBTN.Size = new Size(339, 47);
             Confirmar_Orden_EntregaBTN.TabIndex = 8;
@@ -124,11 +125,22 @@
             Confirmar_Orden_EntregaBTN.UseVisualStyleBackColor = true;
             Confirmar_Orden_EntregaBTN.Click += Confirmar_Orden_EntregaBTN_Click;
             // 
+            // EmpaquetarOrdenbtn
+            // 
+            EmpaquetarOrdenbtn.Location = new Point(319, 282);
+            EmpaquetarOrdenbtn.Name = "EmpaquetarOrdenbtn";
+            EmpaquetarOrdenbtn.Size = new Size(339, 44);
+            EmpaquetarOrdenbtn.TabIndex = 9;
+            EmpaquetarOrdenbtn.Text = "Empaquetar Órden de Preparación";
+            EmpaquetarOrdenbtn.UseVisualStyleBackColor = true;
+            EmpaquetarOrdenbtn.Click += EmpaquetarOrdenbtn_Click;
+            // 
             // MenuPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1007, 535);
+            Controls.Add(EmpaquetarOrdenbtn);
             Controls.Add(Confirmar_Orden_EntregaBTN);
             Controls.Add(button1);
             Controls.Add(GenerarRemitoBTN);
@@ -156,5 +168,6 @@
         private Button Menu_ConsultarOrdenesBTN;
         private Button button1;
         private Button Confirmar_Orden_EntregaBTN;
+        private Button EmpaquetarOrdenbtn;
     }
 }
