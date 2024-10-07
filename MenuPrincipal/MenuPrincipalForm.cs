@@ -88,13 +88,28 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                
+
                 OrdenEntrega.OrdenEntregaForm ordenEntregaForm = new OrdenEntrega.OrdenEntregaForm();
-                ordenEntregaForm.ShowDialog();  
+                ordenEntregaForm.ShowDialog();
             }
             catch (Exception ex)
             {
-                
+
+                MessageBox.Show("Ocurrió un error al abrir el formulario de Orden de Entrega: " + ex.Message);
+            }
+        }
+
+
+        private void GenerarOrderPreparacionBtn(object sender, EventArgs e)
+        {
+            try
+            {
+                GenerarOrdenPreparacionForm generarOrden = new  GenerarOrdenPreparacionForm();
+                generarOrden.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+
                 MessageBox.Show("Ocurrió un error al abrir el formulario de Orden de Entrega: " + ex.Message);
             }
         }

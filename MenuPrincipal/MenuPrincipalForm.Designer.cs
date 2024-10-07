@@ -34,23 +34,24 @@
             GenerarOrdenDeEntregabtn = new Button();
             GenerarRemitoBTN = new Button();
             Menu_ConsultarOrdenesBTN = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(304, 26);
+            label1.Location = new Point(266, 20);
             label1.Name = "label1";
-            label1.Size = new Size(190, 20);
+            label1.Size = new Size(154, 15);
             label1.TabIndex = 0;
             label1.Text = "Menú inicial Pampazón S.A.";
             // 
             // ConfirmarOrdenSeleccionBTN
             // 
-            ConfirmarOrdenSeleccionBTN.Location = new Point(256, 184);
+            ConfirmarOrdenSeleccionBTN.Location = new Point(223, 166);
             ConfirmarOrdenSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
             ConfirmarOrdenSeleccionBTN.Name = "ConfirmarOrdenSeleccionBTN";
-            ConfirmarOrdenSeleccionBTN.Size = new Size(271, 38);
+            ConfirmarOrdenSeleccionBTN.Size = new Size(237, 28);
             ConfirmarOrdenSeleccionBTN.TabIndex = 2;
             ConfirmarOrdenSeleccionBTN.Text = "Confirmar Órden de Selección";
             ConfirmarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
@@ -58,10 +59,10 @@
             // 
             // GenerarOrdenDeSeleccionBTN
             // 
-            GenerarOrdenDeSeleccionBTN.Location = new Point(256, 142);
+            GenerarOrdenDeSeleccionBTN.Location = new Point(223, 134);
             GenerarOrdenDeSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
             GenerarOrdenDeSeleccionBTN.Name = "GenerarOrdenDeSeleccionBTN";
-            GenerarOrdenDeSeleccionBTN.Size = new Size(271, 38);
+            GenerarOrdenDeSeleccionBTN.Size = new Size(237, 28);
             GenerarOrdenDeSeleccionBTN.TabIndex = 3;
             GenerarOrdenDeSeleccionBTN.Text = "Generar Órden de Selección";
             GenerarOrdenDeSeleccionBTN.UseVisualStyleBackColor = true;
@@ -69,10 +70,10 @@
             // 
             // GenerarOrdenDeEntregabtn
             // 
-            GenerarOrdenDeEntregabtn.Location = new Point(256, 228);
+            GenerarOrdenDeEntregabtn.Location = new Point(223, 199);
             GenerarOrdenDeEntregabtn.Margin = new Padding(3, 2, 3, 2);
             GenerarOrdenDeEntregabtn.Name = "GenerarOrdenDeEntregabtn";
-            GenerarOrdenDeEntregabtn.Size = new Size(271, 38);
+            GenerarOrdenDeEntregabtn.Size = new Size(237, 28);
             GenerarOrdenDeEntregabtn.TabIndex = 5;
             GenerarOrdenDeEntregabtn.Text = "Generar Órden de Entrega";
             GenerarOrdenDeEntregabtn.UseVisualStyleBackColor = true;
@@ -80,10 +81,10 @@
             // 
             // GenerarRemitoBTN
             // 
-            GenerarRemitoBTN.Location = new Point(256, 272);
+            GenerarRemitoBTN.Location = new Point(223, 232);
             GenerarRemitoBTN.Margin = new Padding(3, 2, 3, 2);
             GenerarRemitoBTN.Name = "GenerarRemitoBTN";
-            GenerarRemitoBTN.Size = new Size(271, 40);
+            GenerarRemitoBTN.Size = new Size(237, 30);
             GenerarRemitoBTN.TabIndex = 6;
             GenerarRemitoBTN.Text = "Generar Remito";
             GenerarRemitoBTN.UseVisualStyleBackColor = true;
@@ -91,20 +92,32 @@
             // 
             // Menu_ConsultarOrdenesBTN
             // 
-            Menu_ConsultarOrdenesBTN.Location = new Point(256, 98);
+            Menu_ConsultarOrdenesBTN.Location = new Point(223, 102);
             Menu_ConsultarOrdenesBTN.Margin = new Padding(3, 2, 3, 2);
             Menu_ConsultarOrdenesBTN.Name = "Menu_ConsultarOrdenesBTN";
-            Menu_ConsultarOrdenesBTN.Size = new Size(271, 38);
+            Menu_ConsultarOrdenesBTN.Size = new Size(237, 28);
             Menu_ConsultarOrdenesBTN.TabIndex = 1;
             Menu_ConsultarOrdenesBTN.Text = "Consultar ordenes";
             Menu_ConsultarOrdenesBTN.UseVisualStyleBackColor = true;
-            Menu_ConsultarOrdenesBTN.Click += this.Menu_ConsultarOrdenesBTN_Click;
+            Menu_ConsultarOrdenesBTN.Click += Menu_ConsultarOrdenesBTN_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(223, 70);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(237, 28);
+            button1.TabIndex = 7;
+            button1.Text = "Generar Order Preparacion";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += GenerarOrderPreparacionBtn;
             // 
             // MenuPrincipalForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(806, 428);
+            ClientSize = new Size(705, 321);
+            Controls.Add(button1);
             Controls.Add(GenerarRemitoBTN);
             Controls.Add(GenerarOrdenDeEntregabtn);
             Controls.Add(GenerarOrdenDeSeleccionBTN);
@@ -128,5 +141,6 @@
         private Button GenerarOrdenDeEntregabtn;
         private Button GenerarRemitoBTN;
         private Button Menu_ConsultarOrdenesBTN;
+        private Button button1;
     }
 }
