@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            listView1 = new ListView();
+            btnBuscar = new Button();
+            OrdenesParaPrepararlst = new ListView();
             CodigoOrdenColumna = new ColumnHeader();
             PrioridadColumna = new ColumnHeader();
-            btnBuscar = new Button();
-            listView2 = new ListView();
+            OrdenesPreparacionlst = new ListView();
+            IdProductoColumna = new ColumnHeader();
             ProductoColumna = new ColumnHeader();
             DetalleColumna = new ColumnHeader();
             CantidadColumna = new ColumnHeader();
-            IdProductoColumna = new ColumnHeader();
             ConfirmarOrdenPreparadabtn = new Button();
             VolverMenubtn = new Button();
             groupBox1.SuspendLayout();
@@ -46,7 +46,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(btnBuscar);
-            groupBox1.Controls.Add(listView1);
+            groupBox1.Controls.Add(OrdenesParaPrepararlst);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(363, 419);
@@ -54,15 +54,27 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Ordenes de preparacion para empaquetar";
             // 
-            // listView1
+            // btnBuscar
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { CodigoOrdenColumna, PrioridadColumna });
-            listView1.Location = new Point(16, 30);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(327, 331);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            btnBuscar.Location = new Point(145, 374);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(197, 32);
+            btnBuscar.TabIndex = 1;
+            btnBuscar.Text = "Ver detalle de la orden";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
+            // OrdenesParaPrepararlst
+            // 
+            OrdenesParaPrepararlst.Columns.AddRange(new ColumnHeader[] { CodigoOrdenColumna, PrioridadColumna });
+            OrdenesParaPrepararlst.FullRowSelect = true;
+            OrdenesParaPrepararlst.Location = new Point(16, 30);
+            OrdenesParaPrepararlst.MultiSelect = false;
+            OrdenesParaPrepararlst.Name = "OrdenesParaPrepararlst";
+            OrdenesParaPrepararlst.Size = new Size(327, 331);
+            OrdenesParaPrepararlst.TabIndex = 0;
+            OrdenesParaPrepararlst.UseCompatibleStateImageBehavior = false;
+            OrdenesParaPrepararlst.View = View.Details;
             // 
             // CodigoOrdenColumna
             // 
@@ -74,24 +86,21 @@
             PrioridadColumna.Text = "Prioridad";
             PrioridadColumna.Width = 100;
             // 
-            // btnBuscar
+            // OrdenesPreparacionlst
             // 
-            btnBuscar.Location = new Point(145, 374);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(197, 32);
-            btnBuscar.TabIndex = 1;
-            btnBuscar.Text = "Ver detalle de la orden";
-            btnBuscar.UseVisualStyleBackColor = true;
+            OrdenesPreparacionlst.Columns.AddRange(new ColumnHeader[] { IdProductoColumna, ProductoColumna, DetalleColumna, CantidadColumna });
+            OrdenesPreparacionlst.Location = new Point(397, 33);
+            OrdenesPreparacionlst.MultiSelect = false;
+            OrdenesPreparacionlst.Name = "OrdenesPreparacionlst";
+            OrdenesPreparacionlst.Size = new Size(765, 258);
+            OrdenesPreparacionlst.TabIndex = 1;
+            OrdenesPreparacionlst.UseCompatibleStateImageBehavior = false;
+            OrdenesPreparacionlst.View = View.Details;
             // 
-            // listView2
+            // IdProductoColumna
             // 
-            listView2.Columns.AddRange(new ColumnHeader[] { IdProductoColumna, ProductoColumna, DetalleColumna, CantidadColumna });
-            listView2.Location = new Point(397, 33);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(765, 258);
-            listView2.TabIndex = 1;
-            listView2.UseCompatibleStateImageBehavior = false;
-            listView2.View = View.Details;
+            IdProductoColumna.Text = "Id Producto";
+            IdProductoColumna.Width = 130;
             // 
             // ProductoColumna
             // 
@@ -108,11 +117,6 @@
             CantidadColumna.Text = "Cantidad";
             CantidadColumna.Width = 110;
             // 
-            // IdProductoColumna
-            // 
-            IdProductoColumna.Text = "Id Producto";
-            IdProductoColumna.Width = 130;
-            // 
             // ConfirmarOrdenPreparadabtn
             // 
             ConfirmarOrdenPreparadabtn.Location = new Point(859, 313);
@@ -121,6 +125,7 @@
             ConfirmarOrdenPreparadabtn.TabIndex = 2;
             ConfirmarOrdenPreparadabtn.Text = "Confirmar orden como preparada";
             ConfirmarOrdenPreparadabtn.UseVisualStyleBackColor = true;
+            ConfirmarOrdenPreparadabtn.Click += ConfirmarOrdenPreparadabtn_Click;
             // 
             // VolverMenubtn
             // 
@@ -130,6 +135,7 @@
             VolverMenubtn.TabIndex = 3;
             VolverMenubtn.Text = "Salir";
             VolverMenubtn.UseVisualStyleBackColor = true;
+            VolverMenubtn.Click += VolverMenubtn_Click;
             // 
             // EmpaquetarOrdenesForm
             // 
@@ -138,10 +144,12 @@
             ClientSize = new Size(1174, 450);
             Controls.Add(VolverMenubtn);
             Controls.Add(ConfirmarOrdenPreparadabtn);
-            Controls.Add(listView2);
+            Controls.Add(OrdenesPreparacionlst);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "EmpaquetarOrdenesForm";
             Text = "EmpaquetarOrdenesForm";
+            Load += EmpaquetarOrdenesForm_Load;
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -150,10 +158,10 @@
 
         private GroupBox groupBox1;
         private Button btnBuscar;
-        private ListView listView1;
+        private ListView OrdenesParaPrepararlst;
         private ColumnHeader CodigoOrdenColumna;
         private ColumnHeader PrioridadColumna;
-        private ListView listView2;
+        private ListView OrdenesPreparacionlst;
         private ColumnHeader IdProductoColumna;
         private ColumnHeader ProductoColumna;
         private ColumnHeader DetalleColumna;
