@@ -25,23 +25,22 @@ namespace Pampazon.OrdenEntrega
             InitializeComponent();
             ConfigurarListView();
             AgregarDatos();
-            AgregarDatos2();
         }
         private void ConfigurarListView()
         {
-            listView2.View = View.Details;
-            listView2.FullRowSelect = true;
+            Ordenes_Preparacion.View = View.Details;
+            Ordenes_Preparacion.FullRowSelect = true;
 
-            listView2.Columns.Add("Nro Orden", -2, HorizontalAlignment.Left);
-            listView2.Columns.Add("Fecha de Entrega", -2, HorizontalAlignment.Left);
-            listView2.Columns.Add("Estado", -2, HorizontalAlignment.Left);
+            Ordenes_Preparacion.Columns.Add("Nro Orden", -2, HorizontalAlignment.Left);
+            Ordenes_Preparacion.Columns.Add("Fecha de Entrega", -2, HorizontalAlignment.Left);
+            Ordenes_Preparacion.Columns.Add("Estado", -2, HorizontalAlignment.Left);
 
-            listView1.View = View.Details;
-            listView1.FullRowSelect = true;
+            Orden_Entrega.View = View.Details;
+            Orden_Entrega.FullRowSelect = true;
 
-            listView1.Columns.Add("Nro Orden", -2, HorizontalAlignment.Left);
-            listView1.Columns.Add("Fecha de Entrega", -2, HorizontalAlignment.Left);     
-            listView1.Columns.Add("Estado", -2, HorizontalAlignment.Left);
+            Orden_Entrega.Columns.Add("Nro Orden", -2, HorizontalAlignment.Left);
+            Orden_Entrega.Columns.Add("Fecha de Entrega", -2, HorizontalAlignment.Left);
+            Orden_Entrega.Columns.Add("Estado", -2, HorizontalAlignment.Left);
         }
 
         private void AgregarDatos()
@@ -61,15 +60,15 @@ namespace Pampazon.OrdenEntrega
             foreach (var dato in datos)
             {
                 ListViewItem item = new ListViewItem(dato.NroOrden.ToString());
-                item.SubItems.Add(dato.FechaEntrega);             
+                item.SubItems.Add(dato.FechaEntrega);
                 item.SubItems.Add(dato.Estado);
-                listView2.Items.Add(item);
+                Ordenes_Preparacion.Items.Add(item);
             }
 
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void Buscar_ID(object sender, EventArgs e)
         {
 
         }
@@ -79,7 +78,7 @@ namespace Pampazon.OrdenEntrega
             this.Close();
         }
 
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        private void Ordenes_Preparacion_listView_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -104,7 +103,7 @@ namespace Pampazon.OrdenEntrega
                 ListViewItem item = new ListViewItem(dato.NroOrden.ToString());
                 item.SubItems.Add(dato.FechaEntrega);
                 item.SubItems.Add(dato.Estado);
-                listView1.Items.Add(item);
+                Orden_Entrega.Items.Add(item);
             }
         }
 
@@ -121,6 +120,88 @@ namespace Pampazon.OrdenEntrega
         private void OrdenEntregaForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtIdOrden_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Buscarbtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtIdOrden.Text))
+            {
+                MessageBox.Show("El campo de ID de Orden no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(txtIdOrden.Text, out int idOrden))
+            {
+                MessageBox.Show("El campo de ID de Orden debe ser un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Seleccionar_Click(object sender, EventArgs e)
+        {
+            if (Ordenes_Preparacion.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = Ordenes_Preparacion.SelectedItems[0];
+                ListViewItem itemToMove = (ListViewItem)selectedItem.Clone();
+                Orden_Entrega.Items.Add(itemToMove);
+                Ordenes_Preparacion.Items.Remove(selectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una orden para mover.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Seleccionar_Click_1(object sender, EventArgs e)
+        {
+            if (Ordenes_Preparacion.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = Ordenes_Preparacion.SelectedItems[0];
+                ListViewItem itemToMove = (ListViewItem)selectedItem.Clone();
+                Orden_Entrega.Items.Add(itemToMove);
+                Ordenes_Preparacion.Items.Remove(selectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una orden para mover.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GenerarOrdenEntregabtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+       "¿Está seguro de que desea generar la orden de entrega?",
+       "Confirmación",
+       MessageBoxButtons.YesNo,
+       MessageBoxIcon.Question
+   );
+            if (Orden_Entrega.Items.Count == 0)
+            {
+                MessageBox.Show("No se puede generar la orden de entrega porque la lista está vacía.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (result == DialogResult.Yes)
+            {
+                GenerarOrdenDeEntrega();
+            }
+            else
+            {
+                MessageBox.Show("La generación de la orden de entrega ha sido cancelada.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void GenerarOrdenDeEntrega()
+        {
+            MessageBox.Show("La orden de entrega ha sido generada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

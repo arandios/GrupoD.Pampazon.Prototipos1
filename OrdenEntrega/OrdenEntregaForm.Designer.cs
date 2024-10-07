@@ -35,11 +35,11 @@
             label1 = new Label();
             txtIdOrden = new TextBox();
             limpiarbtn = new Button();
-            listView2 = new ListView();
-            listView1 = new ListView();
+            Ordenes_Preparacion = new ListView();
+            Orden_Entrega = new ListView();
             label2 = new Label();
             label3 = new Label();
-            button1 = new Button();
+            Seleccionar = new Button();
             SuspendLayout();
             // 
             // Buscarbtn
@@ -51,6 +51,7 @@
             Buscarbtn.TabIndex = 18;
             Buscarbtn.Text = "Buscar";
             Buscarbtn.UseVisualStyleBackColor = true;
+            Buscarbtn.Click += Buscarbtn_Click;
             // 
             // Salirbtn
             // 
@@ -72,6 +73,7 @@
             GenerarOrdenEntregabtn.TabIndex = 16;
             GenerarOrdenEntregabtn.Text = "Generar Orden Entrega";
             GenerarOrdenEntregabtn.UseVisualStyleBackColor = true;
+            GenerarOrdenEntregabtn.Click += GenerarOrdenEntregabtn_Click;
             // 
             // FechaEntregacmb
             // 
@@ -100,7 +102,7 @@
             txtIdOrden.Name = "txtIdOrden";
             txtIdOrden.Size = new Size(106, 23);
             txtIdOrden.TabIndex = 12;
-            txtIdOrden.TextChanged += textBox1_TextChanged;
+            txtIdOrden.TextChanged += txtIdOrden_TextChanged;
             // 
             // limpiarbtn
             // 
@@ -112,23 +114,23 @@
             limpiarbtn.Text = "Limpiar";
             limpiarbtn.UseVisualStyleBackColor = true;
             // 
-            // listView2
+            // Ordenes_Preparacion
             // 
-            listView2.Location = new Point(12, 93);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(422, 214);
-            listView2.TabIndex = 21;
-            listView2.UseCompatibleStateImageBehavior = false;
-            listView2.View = View.Details;
-            listView2.SelectedIndexChanged += listView2_SelectedIndexChanged;
+            Ordenes_Preparacion.Location = new Point(12, 93);
+            Ordenes_Preparacion.Name = "Ordenes_Preparacion";
+            Ordenes_Preparacion.Size = new Size(422, 214);
+            Ordenes_Preparacion.TabIndex = 21;
+            Ordenes_Preparacion.UseCompatibleStateImageBehavior = false;
+            Ordenes_Preparacion.View = View.Details;
+            Ordenes_Preparacion.SelectedIndexChanged += listView2_SelectedIndexChanged;
             // 
-            // listView1
+            // Orden_Entrega
             // 
-            listView1.Location = new Point(470, 93);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(364, 214);
-            listView1.TabIndex = 22;
-            listView1.UseCompatibleStateImageBehavior = false;
+            Orden_Entrega.Location = new Point(470, 93);
+            Orden_Entrega.Name = "Orden_Entrega";
+            Orden_Entrega.Size = new Size(364, 214);
+            Orden_Entrega.TabIndex = 22;
+            Orden_Entrega.UseCompatibleStateImageBehavior = false;
             // 
             // label2
             // 
@@ -149,25 +151,26 @@
             label3.TabIndex = 24;
             label3.Text = "A la orden de entrega";
             // 
-            // button1
+            // Seleccionar
             // 
-            button1.Location = new Point(349, 312);
-            button1.Name = "button1";
-            button1.Size = new Size(85, 47);
-            button1.TabIndex = 25;
-            button1.Text = "Seleccionar";
-            button1.UseVisualStyleBackColor = true;
+            Seleccionar.Location = new Point(349, 312);
+            Seleccionar.Name = "Seleccionar";
+            Seleccionar.Size = new Size(85, 47);
+            Seleccionar.TabIndex = 25;
+            Seleccionar.Text = "Seleccionar";
+            Seleccionar.UseVisualStyleBackColor = true;
+            Seleccionar.Click += Seleccionar_Click_1;
             // 
             // OrdenEntregaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(846, 434);
-            Controls.Add(button1);
+            Controls.Add(Seleccionar);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(listView1);
-            Controls.Add(listView2);
+            Controls.Add(Orden_Entrega);
+            Controls.Add(Ordenes_Preparacion);
             Controls.Add(Buscarbtn);
             Controls.Add(Salirbtn);
             Controls.Add(GenerarOrdenEntregabtn);
@@ -192,10 +195,10 @@
         private Label label1;
         private TextBox txtIdOrden;
         private Button limpiarbtn;
-        private ListView listView2;
-        private ListView listView1;
+        private ListView Ordenes_Preparacion;
+        private ListView Orden_Entrega;
         private Label label2;
         private Label label3;
-        private Button button1;
+        private Button Seleccionar;
     }
 }
