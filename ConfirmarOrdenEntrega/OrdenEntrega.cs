@@ -11,7 +11,7 @@ namespace Pampazon.ConfirmarOrdenEntrega
 
         public int Nro_OrdenP { get; set; }
         public DateTime FechaEmision { get; set; }
-        OP_asociada
+        
         public string Estado { get; set; }
         public DateTime Fecha_Estado { get; set; }
         
