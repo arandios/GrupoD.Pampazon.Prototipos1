@@ -33,6 +33,7 @@
             Stock = new ColumnHeader();
             DepositoID = new ColumnHeader();
             DepositoDir = new ColumnHeader();
+            columnHeader1 = new ColumnHeader();
             OrdenTempLista = new ListView();
             Producto = new ColumnHeader();
             Cantidad = new ColumnHeader();
@@ -63,15 +64,15 @@
             label6 = new Label();
             TransportistaSeleccionadoTxt = new TextBox();
             label7 = new Label();
-            columnHeader1 = new ColumnHeader();
             SuspendLayout();
             // 
             // ProductosStockLista
             // 
             ProductosStockLista.Columns.AddRange(new ColumnHeader[] { ProductosCliente, Stock, DepositoID, DepositoDir, columnHeader1 });
-            ProductosStockLista.Location = new Point(43, 170);
+            ProductosStockLista.Location = new Point(49, 227);
+            ProductosStockLista.Margin = new Padding(3, 4, 3, 4);
             ProductosStockLista.Name = "ProductosStockLista";
-            ProductosStockLista.Size = new Size(431, 248);
+            ProductosStockLista.Size = new Size(492, 329);
             ProductosStockLista.TabIndex = 32;
             ProductosStockLista.UseCompatibleStateImageBehavior = false;
             ProductosStockLista.View = View.Details;
@@ -95,13 +96,17 @@
             // 
             DepositoDir.Text = "Direccion Deposito";
             // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Localidad";
+            // 
             // OrdenTempLista
             // 
             OrdenTempLista.Columns.AddRange(new ColumnHeader[] { Producto, Cantidad, Deposito });
-            OrdenTempLista.Location = new Point(34, 467);
-            OrdenTempLista.Margin = new Padding(2);
+            OrdenTempLista.Location = new Point(39, 623);
+            OrdenTempLista.Margin = new Padding(2, 3, 2, 3);
             OrdenTempLista.Name = "OrdenTempLista";
-            OrdenTempLista.Size = new Size(556, 166);
+            OrdenTempLista.Size = new Size(635, 220);
             OrdenTempLista.TabIndex = 30;
             OrdenTempLista.UseCompatibleStateImageBehavior = false;
             OrdenTempLista.View = View.Details;
@@ -122,10 +127,10 @@
             // 
             // ProductoBuscar
             // 
-            ProductoBuscar.Location = new Point(278, 57);
-            ProductoBuscar.Margin = new Padding(2);
+            ProductoBuscar.Location = new Point(318, 76);
+            ProductoBuscar.Margin = new Padding(2, 3, 2, 3);
             ProductoBuscar.Name = "ProductoBuscar";
-            ProductoBuscar.Size = new Size(187, 23);
+            ProductoBuscar.Size = new Size(214, 31);
             ProductoBuscar.TabIndex = 29;
             ProductoBuscar.Text = "Buscar Producto";
             ProductoBuscar.UseVisualStyleBackColor = true;
@@ -133,10 +138,10 @@
             // 
             // button3
             // 
-            button3.Location = new Point(872, 625);
-            button3.Margin = new Padding(2);
+            button3.Location = new Point(997, 833);
+            button3.Margin = new Padding(2, 3, 2, 3);
             button3.Name = "button3";
-            button3.Size = new Size(155, 43);
+            button3.Size = new Size(177, 57);
             button3.TabIndex = 28;
             button3.Text = "Volver";
             button3.UseVisualStyleBackColor = true;
@@ -145,10 +150,10 @@
             // Generar
             // 
             Generar.BackColor = Color.FromArgb(128, 255, 128);
-            Generar.Location = new Point(34, 637);
-            Generar.Margin = new Padding(2);
+            Generar.Location = new Point(39, 849);
+            Generar.Margin = new Padding(2, 3, 2, 3);
             Generar.Name = "Generar";
-            Generar.Size = new Size(374, 40);
+            Generar.Size = new Size(427, 53);
             Generar.TabIndex = 27;
             Generar.Text = "Generar Orden Preparacion";
             Generar.UseVisualStyleBackColor = false;
@@ -157,10 +162,10 @@
             // button2
             // 
             button2.BackColor = Color.Salmon;
-            button2.Location = new Point(422, 637);
-            button2.Margin = new Padding(2);
+            button2.Location = new Point(482, 849);
+            button2.Margin = new Padding(2, 3, 2, 3);
             button2.Name = "button2";
-            button2.Size = new Size(168, 40);
+            button2.Size = new Size(192, 53);
             button2.TabIndex = 22;
             button2.Text = "Cancelar Orden";
             button2.UseVisualStyleBackColor = false;
@@ -168,18 +173,18 @@
             // 
             // ProdNombreBox
             // 
-            ProdNombreBox.Location = new Point(34, 58);
-            ProdNombreBox.Margin = new Padding(2);
+            ProdNombreBox.Location = new Point(39, 77);
+            ProdNombreBox.Margin = new Padding(2, 3, 2, 3);
             ProdNombreBox.Name = "ProdNombreBox";
-            ProdNombreBox.Size = new Size(221, 23);
+            ProdNombreBox.Size = new Size(252, 27);
             ProdNombreBox.TabIndex = 23;
             // 
             // BuscarDepositoBtn
             // 
-            BuscarDepositoBtn.Location = new Point(278, 94);
-            BuscarDepositoBtn.Margin = new Padding(2);
+            BuscarDepositoBtn.Location = new Point(318, 125);
+            BuscarDepositoBtn.Margin = new Padding(2, 3, 2, 3);
             BuscarDepositoBtn.Name = "BuscarDepositoBtn";
-            BuscarDepositoBtn.Size = new Size(187, 23);
+            BuscarDepositoBtn.Size = new Size(214, 31);
             BuscarDepositoBtn.TabIndex = 33;
             BuscarDepositoBtn.Text = "Buscar Deposito";
             BuscarDepositoBtn.UseVisualStyleBackColor = true;
@@ -187,18 +192,18 @@
             // 
             // DepositoBuscarTextBox
             // 
-            DepositoBuscarTextBox.Location = new Point(34, 94);
-            DepositoBuscarTextBox.Margin = new Padding(2);
+            DepositoBuscarTextBox.Location = new Point(39, 125);
+            DepositoBuscarTextBox.Margin = new Padding(2, 3, 2, 3);
             DepositoBuscarTextBox.Name = "DepositoBuscarTextBox";
-            DepositoBuscarTextBox.Size = new Size(221, 23);
+            DepositoBuscarTextBox.Size = new Size(252, 27);
             DepositoBuscarTextBox.TabIndex = 34;
             // 
             // button5
             // 
-            button5.Location = new Point(322, 142);
-            button5.Margin = new Padding(2);
+            button5.Location = new Point(368, 189);
+            button5.Margin = new Padding(2, 3, 2, 3);
             button5.Name = "button5";
-            button5.Size = new Size(143, 23);
+            button5.Size = new Size(163, 31);
             button5.TabIndex = 36;
             button5.Text = "Limpiar Filtros";
             button5.UseVisualStyleBackColor = true;
@@ -206,20 +211,20 @@
             // 
             // ProductoSeleccionadoTxt
             // 
-            ProductoSeleccionadoTxt.Location = new Point(482, 196);
-            ProductoSeleccionadoTxt.Margin = new Padding(2);
+            ProductoSeleccionadoTxt.Location = new Point(551, 261);
+            ProductoSeleccionadoTxt.Margin = new Padding(2, 3, 2, 3);
             ProductoSeleccionadoTxt.Name = "ProductoSeleccionadoTxt";
             ProductoSeleccionadoTxt.ReadOnly = true;
-            ProductoSeleccionadoTxt.Size = new Size(187, 23);
+            ProductoSeleccionadoTxt.Size = new Size(213, 27);
             ProductoSeleccionadoTxt.TabIndex = 38;
             ProductoSeleccionadoTxt.TextChanged += textBox1_TextChanged;
             // 
             // button4
             // 
-            button4.Location = new Point(482, 389);
-            button4.Margin = new Padding(2);
+            button4.Location = new Point(551, 519);
+            button4.Margin = new Padding(2, 3, 2, 3);
             button4.Name = "button4";
-            button4.Size = new Size(187, 29);
+            button4.Size = new Size(214, 39);
             button4.TabIndex = 39;
             button4.Text = "Agregar Productos a la Orden";
             button4.UseVisualStyleBackColor = true;
@@ -228,9 +233,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(509, 180);
+            label1.Location = new Point(582, 240);
             label1.Name = "label1";
-            label1.Size = new Size(129, 15);
+            label1.Size = new Size(162, 20);
             label1.TabIndex = 40;
             label1.Text = "Producto Seleccionado";
             label1.Click += label1_Click;
@@ -238,75 +243,75 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(521, 237);
+            label2.Location = new Point(595, 316);
             label2.Name = "label2";
-            label2.Size = new Size(87, 15);
+            label2.Size = new Size(112, 20);
             label2.TabIndex = 41;
             label2.Text = "N° de Deposito";
             // 
             // DepositoTxt
             // 
-            DepositoTxt.Location = new Point(479, 254);
-            DepositoTxt.Margin = new Padding(2);
+            DepositoTxt.Location = new Point(547, 339);
+            DepositoTxt.Margin = new Padding(2, 3, 2, 3);
             DepositoTxt.Name = "DepositoTxt";
             DepositoTxt.ReadOnly = true;
-            DepositoTxt.Size = new Size(190, 23);
+            DepositoTxt.Size = new Size(217, 27);
             DepositoTxt.TabIndex = 42;
             DepositoTxt.TextChanged += DepositoTxt_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(494, 345);
+            label3.Location = new Point(565, 460);
             label3.Name = "label3";
-            label3.Size = new Size(144, 15);
+            label3.Size = new Size(183, 20);
             label3.TabIndex = 43;
             label3.Text = "Indique Cantidad a Retirar";
             // 
             // AgregarCantidadTextBox
             // 
             AgregarCantidadTextBox.Enabled = false;
-            AgregarCantidadTextBox.Location = new Point(482, 362);
-            AgregarCantidadTextBox.Margin = new Padding(2);
+            AgregarCantidadTextBox.Location = new Point(551, 483);
+            AgregarCantidadTextBox.Margin = new Padding(2, 3, 2, 3);
             AgregarCantidadTextBox.MaxLength = 50;
             AgregarCantidadTextBox.Name = "AgregarCantidadTextBox";
-            AgregarCantidadTextBox.Size = new Size(187, 23);
+            AgregarCantidadTextBox.Size = new Size(213, 27);
             AgregarCantidadTextBox.TabIndex = 44;
             // 
             // MaxCantidadTxt
             // 
-            MaxCantidadTxt.Location = new Point(482, 308);
-            MaxCantidadTxt.Margin = new Padding(2);
+            MaxCantidadTxt.Location = new Point(551, 411);
+            MaxCantidadTxt.Margin = new Padding(2, 3, 2, 3);
             MaxCantidadTxt.Name = "MaxCantidadTxt";
             MaxCantidadTxt.ReadOnly = true;
-            MaxCantidadTxt.Size = new Size(187, 23);
+            MaxCantidadTxt.Size = new Size(213, 27);
             MaxCantidadTxt.TabIndex = 45;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(509, 291);
+            label4.Location = new Point(582, 388);
             label4.Name = "label4";
-            label4.Size = new Size(117, 15);
+            label4.Size = new Size(150, 20);
             label4.TabIndex = 46;
             label4.Text = "Cantidad Depositada";
             // 
             // OrdenNdepo
             // 
             OrdenNdepo.AutoSize = true;
-            OrdenNdepo.Location = new Point(215, 449);
+            OrdenNdepo.Location = new Point(246, 599);
             OrdenNdepo.Name = "OrdenNdepo";
-            OrdenNdepo.Size = new Size(40, 15);
+            OrdenNdepo.Size = new Size(50, 20);
             OrdenNdepo.TabIndex = 47;
             OrdenNdepo.Text = "Orden";
             // 
             // TransportistasComboBox
             // 
             TransportistasComboBox.Columns.AddRange(new ColumnHeader[] { NombreTranspor, ApellidoTranspor, DniTranspor });
-            TransportistasComboBox.Location = new Point(700, 170);
-            TransportistasComboBox.Margin = new Padding(2);
+            TransportistasComboBox.Location = new Point(800, 227);
+            TransportistasComboBox.Margin = new Padding(2, 3, 2, 3);
             TransportistasComboBox.Name = "TransportistasComboBox";
-            TransportistasComboBox.Size = new Size(332, 191);
+            TransportistasComboBox.Size = new Size(379, 253);
             TransportistasComboBox.TabIndex = 48;
             TransportistasComboBox.UseCompatibleStateImageBehavior = false;
             TransportistasComboBox.View = View.Details;
@@ -328,9 +333,9 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(805, 142);
+            label5.Location = new Point(920, 189);
             label5.Name = "label5";
-            label5.Size = new Size(79, 15);
+            label5.Size = new Size(100, 20);
             label5.TabIndex = 49;
             label5.Text = "Transportistas";
             label5.Click += label5_Click;
@@ -338,39 +343,35 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(172, 142);
+            label6.Location = new Point(197, 189);
             label6.Name = "label6";
-            label6.Size = new Size(132, 15);
+            label6.Size = new Size(169, 20);
             label6.TabIndex = 50;
             label6.Text = "Mercaderia en Deposito";
             // 
             // TransportistaSeleccionadoTxt
             // 
-            TransportistaSeleccionadoTxt.Location = new Point(729, 420);
-            TransportistaSeleccionadoTxt.Margin = new Padding(2);
+            TransportistaSeleccionadoTxt.Location = new Point(833, 560);
+            TransportistaSeleccionadoTxt.Margin = new Padding(2, 3, 2, 3);
             TransportistaSeleccionadoTxt.Name = "TransportistaSeleccionadoTxt";
             TransportistaSeleccionadoTxt.ReadOnly = true;
-            TransportistaSeleccionadoTxt.Size = new Size(257, 23);
+            TransportistaSeleccionadoTxt.Size = new Size(293, 27);
             TransportistaSeleccionadoTxt.TabIndex = 51;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(790, 389);
+            label7.Location = new Point(903, 519);
             label7.Name = "label7";
-            label7.Size = new Size(141, 15);
+            label7.Size = new Size(180, 20);
             label7.TabIndex = 52;
             label7.Text = "Transportista Selecionado";
             // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "Localidad";
-            // 
             // GenerarOrdenPreparacionForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1046, 705);
+            ClientSize = new Size(1195, 940);
             Controls.Add(label7);
             Controls.Add(TransportistaSeleccionadoTxt);
             Controls.Add(label6);
@@ -396,8 +397,9 @@
             Controls.Add(Generar);
             Controls.Add(ProdNombreBox);
             Controls.Add(button2);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "GenerarOrdenPreparacionForm";
-            Text = "GenerarPedido";
+            Text = "GenerarOrdenPreparacion";
             Load += TransportistasComboBox_SelectedIndexChanged;
             ResumeLayout(false);
             PerformLayout();
