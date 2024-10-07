@@ -39,7 +39,7 @@ namespace Pampazon.OrdenSeleccion
                 },
                 30,
                 DateTime.Now,
-                PosiblesEstadosOrdenesGenerales.Procesamiento,
+                PosiblesEstadosOrdenesGenerales.Pendiente,
                 CodigoPrioridad.Urgente,
                 new Transportista(87654321, "Transportista B", "456")
             ),
@@ -53,7 +53,7 @@ namespace Pampazon.OrdenSeleccion
                 },
                 15,
                 DateTime.Now,
-                PosiblesEstadosOrdenesGenerales.Procesada,
+                PosiblesEstadosOrdenesGenerales.Pendiente,
                 CodigoPrioridad.Baja,
                 new Transportista(11223344, "Transportista C", "789")
             ),
@@ -67,7 +67,7 @@ namespace Pampazon.OrdenSeleccion
                 },
                 25,
                 DateTime.Now,
-                PosiblesEstadosOrdenesGenerales.Preparada,
+                PosiblesEstadosOrdenesGenerales.Pendiente,
                 CodigoPrioridad.Media,
                 new Transportista(55667788, "Transportista D", "101")
             ),
@@ -81,7 +81,7 @@ namespace Pampazon.OrdenSeleccion
                 },
                 30,
                 DateTime.Now,
-                PosiblesEstadosOrdenesGenerales.Entregada,
+                PosiblesEstadosOrdenesGenerales.Pendiente,
                 CodigoPrioridad.Urgente,
                 new Transportista(99887766, "Transportista E", "202")
             )
