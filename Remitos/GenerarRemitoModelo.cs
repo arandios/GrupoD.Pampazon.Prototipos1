@@ -25,7 +25,7 @@ public class GenerarRemitoModelo
         }
         else
         {
-            return "El número de DNI debe tener exactamente 8 dígitos.";
+            return "El número de DNI debe tener 8 dígitos.";
         }
     }
 
