@@ -104,7 +104,7 @@ namespace Pampazon.OrdenEntrega
                     NroOrden = i * 2,
                     FechaEntrega = "2024-10-0" + i,
                     IdTransportista = i,
-                    NombreTransportista = "cliente " + i,
+                    NombreTransportista = "cliente " + i * 2,
                     Estado = "Empaquetado"
 
                 });
@@ -126,6 +126,11 @@ namespace Pampazon.OrdenEntrega
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OrdenEntregaForm_Load(object sender, EventArgs e)
         {
 
         }

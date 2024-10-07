@@ -39,6 +39,7 @@
             listView1 = new ListView();
             label2 = new Label();
             label3 = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
             // Buscarbtn
@@ -53,7 +54,7 @@
             // 
             // Salirbtn
             // 
-            Salirbtn.Location = new Point(844, 312);
+            Salirbtn.Location = new Point(843, 380);
             Salirbtn.Margin = new Padding(2);
             Salirbtn.Name = "Salirbtn";
             Salirbtn.Size = new Size(155, 43);
@@ -64,7 +65,7 @@
             // 
             // GenerarOrdenEntregabtn
             // 
-            GenerarOrdenEntregabtn.Location = new Point(378, 312);
+            GenerarOrdenEntregabtn.Location = new Point(843, 312);
             GenerarOrdenEntregabtn.Margin = new Padding(2);
             GenerarOrdenEntregabtn.Name = "GenerarOrdenEntregabtn";
             GenerarOrdenEntregabtn.Size = new Size(155, 47);
@@ -144,15 +145,25 @@
             label3.AutoSize = true;
             label3.Location = new Point(558, 75);
             label3.Name = "label3";
-            label3.Size = new Size(110, 15);
+            label3.Size = new Size(120, 15);
             label3.TabIndex = 24;
-            label3.Text = "Ordenes de entrega";
+            label3.Text = "A la orden de entrega";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(448, 312);
+            button1.Name = "button1";
+            button1.Size = new Size(85, 35);
+            button1.TabIndex = 25;
+            button1.Text = "Seleccionar";
+            button1.UseVisualStyleBackColor = true;
             // 
             // OrdenEntregaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1010, 370);
+            ClientSize = new Size(1010, 434);
+            Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(listView1);
@@ -167,6 +178,7 @@
             Margin = new Padding(2);
             Name = "OrdenEntregaForm";
             Text = "Orden de entrega";
+            Load += OrdenEntregaForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -184,5 +196,6 @@
         private ListView listView1;
         private Label label2;
         private Label label3;
+        private Button button1;
     }
 }
