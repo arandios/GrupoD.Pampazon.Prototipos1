@@ -63,18 +63,19 @@
             label6 = new Label();
             TransportistaSeleccionadoTxt = new TextBox();
             label7 = new Label();
+            columnHeader1 = new ColumnHeader();
             SuspendLayout();
             // 
             // ProductosStockLista
             // 
-            ProductosStockLista.Columns.AddRange(new ColumnHeader[] { ProductosCliente, Stock, DepositoID, DepositoDir });
-            ProductosStockLista.Location = new Point(34, 170);
+            ProductosStockLista.Columns.AddRange(new ColumnHeader[] { ProductosCliente, Stock, DepositoID, DepositoDir, columnHeader1 });
+            ProductosStockLista.Location = new Point(43, 170);
             ProductosStockLista.Name = "ProductosStockLista";
             ProductosStockLista.Size = new Size(431, 248);
             ProductosStockLista.TabIndex = 32;
             ProductosStockLista.UseCompatibleStateImageBehavior = false;
             ProductosStockLista.View = View.Details;
-            ProductosStockLista.SelectedIndexChanged += listView2_SelectedIndexChanged;
+            ProductosStockLista.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
             // 
             // ProductosCliente
             // 
@@ -92,7 +93,7 @@
             // 
             // DepositoDir
             // 
-            DepositoDir.Text = "Provincia";
+            DepositoDir.Text = "Direccion Deposito";
             // 
             // OrdenTempLista
             // 
@@ -139,6 +140,7 @@
             button3.TabIndex = 28;
             button3.Text = "Volver";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += VolverBtn;
             // 
             // Generar
             // 
@@ -360,6 +362,10 @@
             label7.TabIndex = 52;
             label7.Text = "Transportista Selecionado";
             // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Localidad";
+            // 
             // GenerarOrdenPreparacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -434,5 +440,6 @@
         private Label label6;
         protected TextBox TransportistaSeleccionadoTxt;
         private Label label7;
+        private ColumnHeader columnHeader1;
     }
 }

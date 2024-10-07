@@ -38,14 +38,17 @@ namespace Pampazon
             ProductosStockLista.Items.Clear();
             foreach (var Prod in model.obtenerProdFiltrados(nombreProd.ToUpper(), idDeposito))
             {
+                if(Prod.Stock > 0) {
                 //agregar a la lista.
                 ListViewItem item = new ListViewItem();
                 item.Text = Prod.NombreProducto;
                 item.SubItems.Add(Prod.Stock.ToString());
                 item.SubItems.Add(Prod.IdDeposito.ToString());
                 item.SubItems.Add(Prod.DirDeposito);
+                item.SubItems.Add(Prod.Localidad);
                 item.Tag = Prod;
                 ProductosStockLista.Items.Add(item);
+                }
             }
         } // fin metodo act Lista
         private void ActualizarListaOrden()
@@ -101,11 +104,6 @@ namespace Pampazon
 
         }
 
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void BuscarProductoBtn(object sender, EventArgs e)
         {
             //
@@ -123,7 +121,9 @@ namespace Pampazon
                         MessageBox.Show("Ingrese un numero valido mayor a 0", "Deposito ID", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DepositoBuscarTextBox.Text = "";
                     }
-                    else { ActualizarLista(ProdNombreBox.Text.ToUpper(), n); }
+                    else { 
+                      ActualizarLista(ProdNombreBox.Text.ToUpper(), n);
+                    }
                 }
                 else
                 {
@@ -163,12 +163,16 @@ namespace Pampazon
             bool esNumero = int.TryParse(AgregarCantidadTextBox.Text, out cantidad);
             int cantidadMax;
             bool esNumeroMax = int.TryParse(MaxCantidadTxt.Text.ToString(), out cantidadMax);
-            if (!esNumero)
+            if(ProductoSeleccionadoTxt.Text == "")
+            {
+                MessageBox.Show("Seleccione un Producto", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (!esNumero)
             {
                 MessageBox.Show("Ingrese un numero Valido", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DepositoBuscarTextBox.Text = "";
             }
-            if (esNumero)
+            else if (esNumero)
             {
                 if (cantidad <= 0)
                 {
@@ -176,7 +180,7 @@ namespace Pampazon
                 }
                 else if (cantidad > cantidadMax)
                 {
-                    MessageBox.Show("Cantidad tiene que ser menos que Max", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cantidad a retirar no puede ser mayor a la cantidad depositada", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
                 else
@@ -205,6 +209,7 @@ namespace Pampazon
                         {
                             model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
                             ActualizarListaOrden();
+                      
                         }
                     }
 
@@ -213,6 +218,8 @@ namespace Pampazon
             ProductoSeleccionadoTxt.Text = "";
             DepositoTxt.Text = "";
             MaxCantidadTxt.Text = "";
+            //model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
+            AgregarCantidadTextBox.Text = "";
             ActualizarListaOrden();
             ActualizarLista();
 
@@ -252,7 +259,7 @@ namespace Pampazon
             {
                 ListViewItem transportistaSelecionado = TransportistasComboBox.SelectedItems[0];
                 TransportistaSeleccionadoTxt.Text = transportistaSelecionado.Text.ToUpper() + " " + transportistaSelecionado.SubItems[1].Text.ToUpper() + "  DNI " + transportistaSelecionado.SubItems[2].Text.ToUpper();
-                model.Orden.DNITransportista = int.Parse(transportistaSelecionado.SubItems[2].Text); 
+                model.Orden.DNITransportista = int.Parse(transportistaSelecionado.SubItems[2].Text);
                 // Puedes acceder a otros valores aquí si es necesario
             }
 
@@ -285,21 +292,34 @@ namespace Pampazon
 
         private void GenerarOrderPreparacionBtn(object sender, EventArgs e)
         {
-            if(model.Orden.DNITransportista == -1)
+             if (model.Orden.Productos.Count == 0)
             {
-                DialogResult result = MessageBox.Show($"Seleccione un transportista", "Confirmation", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show($"Ingrese Productos para generar Orden", "Confirmation");
             }
-            else if (model.Orden.Productos.Count == 0)
+            else if (model.Orden.DNITransportista == -1)
             {
-                DialogResult result = MessageBox.Show($"Ingrese Productos para generar Orden", "Confirmation", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show($"Seleccione un transportista", "Confirmation");
             }
+
             else
             {
-                DialogResult result = MessageBox.Show($"Orden ingresada con exitos, le enviaremos un mail con los detalles", "Confirmation", MessageBoxButtons.YesNo);
-                // faltaria mandar la info a la base de datos
-                model.Orden.borrarOrden();
-                ActualizarListaOrden();
+                DialogResult resultOrden = MessageBox.Show($"Confirmar Orden", "Confirmation", MessageBoxButtons.YesNo);
+                if (resultOrden == DialogResult.Yes)
+                {
+                    DialogResult result = MessageBox.Show($"Orden ingresada con exitos, le enviaremos un mail con los detalles", "Confirmation");
+                    model.Orden.borrarOrden();
+                    ActualizarListaOrden();
+                } else
+                {
+                    DialogResult result = MessageBox.Show($"Continuar con la orden", "Confirmation");
+                }
+         
             }
+        }
+
+        private void VolverBtn(object sender, EventArgs e)
+        {
+           this.Close();
         }
 
         //fin de clase
