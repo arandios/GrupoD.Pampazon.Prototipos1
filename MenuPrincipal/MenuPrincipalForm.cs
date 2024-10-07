@@ -1,4 +1,6 @@
-﻿using Pampazon.OrdenSeleccion;
+﻿using Pampazon.ConfirmarOrdenEntrega;
+using Pampazon.EmpaquetarOrden;
+using Pampazon.OrdenSeleccion;
 using Pampazon.Remitos;
 using System;
 using System.Collections.Generic;
@@ -104,13 +106,40 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                GenerarOrdenPreparacionForm generarOrden = new  GenerarOrdenPreparacionForm();
+                GenerarOrdenPreparacionForm generarOrden = new GenerarOrdenPreparacionForm();
                 generarOrden.ShowDialog();
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show("Ocurrió un error al abrir el formulario de Orden de Entrega: " + ex.Message);
+            }
+        }
+
+        private void Confirmar_Orden_EntregaBTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ConfirmarOrdenEntregaForm confirmarOrden = new ConfirmarOrdenEntregaForm();
+                confirmarOrden.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al abrir el formulario de Confirmar Orden de Entrega: " + ex.Message);
+            }
+
+        }
+
+        private void EmpaquetarOrdenbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EmpaquetarOrdenesForm empaquetarOrdenForm = new EmpaquetarOrdenesForm();
+                empaquetarOrdenForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
     }

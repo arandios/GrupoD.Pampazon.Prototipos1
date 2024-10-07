@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -19,7 +19,7 @@ namespace Pampazon.OrdenSeleccion
 
          */
         //PROPIEDADES
-        public string IDOrdenSeleccion { get; set; }
+        public int IDOrdenSeleccion { get; set; }
         public DateTime FechaEmision { get; set; }
         public List<OrdenPreparacion> OrdenesPreparacion { get; set; } //Conjunto de OP asociadas a una OS
 
@@ -27,10 +27,13 @@ namespace Pampazon.OrdenSeleccion
         public DateTime FechaEstados{get;set;}
 
 
+        // Contador estático para generar IDs únicos
+        private static int contadorID = 0;
+
         // CONSTRUCTOR
         public OrdenSeleccion(string idOrdenSeleccion, DateTime fechaEmision, List<OrdenPreparacion> ordenesPreparacion, int cantidad, string detalleMercaderia, string ubicacionEnAlmacen, string estados, DateTime fechaEstados)
         {
-            IDOrdenSeleccion = idOrdenSeleccion;
+            IDOrdenSeleccion = ++contadorID;
             FechaEmision = fechaEmision;
             OrdenesPreparacion = ordenesPreparacion;
             EstadoOrdenDeSeleccion = estados;
@@ -40,7 +43,7 @@ namespace Pampazon.OrdenSeleccion
         // Constructor vacío //TODO: Verficar sobrecarga de constructor vacio. Orden de Seleccion.
         public OrdenSeleccion()
         {
-            IDOrdenSeleccion = string.Empty;
+            IDOrdenSeleccion = ++contadorID;
             FechaEmision = DateTime.MinValue;
             OrdenesPreparacion = new List<OrdenPreparacion>();
             EstadoOrdenDeSeleccion = string.Empty;

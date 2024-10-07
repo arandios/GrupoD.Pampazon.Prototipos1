@@ -14,8 +14,8 @@ namespace Pampazon.ConfirmarOrdenSeleccion
         public int Producto_Codigo { get; set; }
         public string Producto_Nombre { get; set; }
         public int Cantidad { get; set; }
+       
 
-        
 
         public Productos(int nro_ordens, int producto_codigo, string producto_nombre, int cantidad)
         {

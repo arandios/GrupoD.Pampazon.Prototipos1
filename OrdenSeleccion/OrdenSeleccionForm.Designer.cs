@@ -48,27 +48,27 @@
             PrioridadComboBoxOrdenSeleccion = new ComboBox();
             OPgroupBox = new GroupBox();
             DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView = new ListView();
-            DetalleMercaderia = new ColumnHeader();
-            CantidadProductosOP = new ColumnHeader();
+            DetalleMercaderiaColumna = new ColumnHeader();
+            CantidadProductosOPColumna = new ColumnHeader();
             DetalleOrdenesDePrepracionAOrdenSeleccionListView = new ListView();
-            IDOrdenPreparacion = new ColumnHeader();
-            DescripcionCliente = new ColumnHeader();
-            FechaOrdenRecepcion = new ColumnHeader();
-            EstadoOrdenPreparacion = new ColumnHeader();
-            Prioridad = new ColumnHeader();
-            TransportistaDetalle = new ColumnHeader();
+            IDOrdenPreparacionColumna = new ColumnHeader();
+            DescripcionClienteColumna = new ColumnHeader();
+            FechaOrdenRecepcionColumna = new ColumnHeader();
+            EstadoOrdenPreparacionColumna = new ColumnHeader();
+            PrioridadColumna = new ColumnHeader();
+            TransportistaDetalleColumna = new ColumnHeader();
             OSgroupBox = new GroupBox();
             OrdenesDePreparacionPendientesListView = new ListView();
-            OPaOS_IdOP = new ColumnHeader();
-            OPaOS_RazonSocialCliente = new ColumnHeader();
-            OPaOS_FechaOR = new ColumnHeader();
-            OPaOS_EstadoOP = new ColumnHeader();
-            OPaOS_Prioridad = new ColumnHeader();
-            OPaOS_Transportista = new ColumnHeader();
+            OPaOS_IdOPColumna = new ColumnHeader();
+            OPaOS_RazonSocialClienteColumna = new ColumnHeader();
+            OPaOS_FechaORColumna = new ColumnHeader();
+            OPaOS_EstadoOPColumna = new ColumnHeader();
+            OPaOS_PrioridadColumna = new ColumnHeader();
+            OPaOS_TransportistaColumna = new ColumnHeader();
             OrdenesDePreparacionPendientesProductoUbicacionListView = new ListView();
-            Producto = new ColumnHeader();
-            Ubicacion = new ColumnHeader();
-            Cantidad = new ColumnHeader();
+            ProductoColumna = new ColumnHeader();
+            UbicacionColumna = new ColumnHeader();
+            CantidadColumna = new ColumnHeader();
             FiltrosOPgroupBox.SuspendLayout();
             OPgroupBox.SuspendLayout();
             OSgroupBox.SuspendLayout();
@@ -92,7 +92,7 @@
             AgregarOrdenSeleccionADetalleBTN.TabIndex = 1;
             AgregarOrdenSeleccionADetalleBTN.Text = "&Agregar al detalle de seleccion";
             AgregarOrdenSeleccionADetalleBTN.UseVisualStyleBackColor = true;
-            AgregarOrdenSeleccionADetalleBTN.Click += CrearOrdenSeleccionBTN_Click;
+            AgregarOrdenSeleccionADetalleBTN.Click += AgregarAOrdenSeleccionBTN_Click_1;
             // 
             // BuscarOrdenSeleccionBTN
             // 
@@ -211,7 +211,7 @@
             CancelarOrdenSeleccionBTN.Name = "CancelarOrdenSeleccionBTN";
             CancelarOrdenSeleccionBTN.Size = new Size(94, 29);
             CancelarOrdenSeleccionBTN.TabIndex = 18;
-            CancelarOrdenSeleccionBTN.Text = "&Cancelar";
+            CancelarOrdenSeleccionBTN.Text = "&Salir";
             CancelarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
             CancelarOrdenSeleccionBTN.Click += CancelarOrdenSeleccionBTN_Click;
             // 
@@ -248,7 +248,7 @@
             // 
             // DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView
             // 
-            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { DetalleMercaderia, CantidadProductosOP });
+            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { DetalleMercaderiaColumna, CantidadProductosOPColumna });
             DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Location = new Point(482, 27);
             DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Name = "DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView";
             DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Size = new Size(286, 191);
@@ -256,17 +256,17 @@
             DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.UseCompatibleStateImageBehavior = false;
             DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.View = View.Details;
             // 
-            // DetalleMercaderia
+            // DetalleMercaderiaColumna
             // 
-            DetalleMercaderia.Text = "Mercaderia";
+            DetalleMercaderiaColumna.Text = "Mercaderia";
             // 
-            // CantidadProductosOP
+            // CantidadProductosOPColumna
             // 
-            CantidadProductosOP.Text = "Cantidad";
+            CantidadProductosOPColumna.Text = "Cantidad";
             // 
             // DetalleOrdenesDePrepracionAOrdenSeleccionListView
             // 
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacion, DescripcionCliente, FechaOrdenRecepcion, EstadoOrdenPreparacion, Prioridad, TransportistaDetalle });
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacionColumna, DescripcionClienteColumna, FechaOrdenRecepcionColumna, EstadoOrdenPreparacionColumna, PrioridadColumna, TransportistaDetalleColumna });
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Location = new Point(6, 27);
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Name = "DetalleOrdenesDePrepracionAOrdenSeleccionListView";
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Size = new Size(470, 191);
@@ -275,35 +275,35 @@
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.View = View.Details;
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.SelectedIndexChanged += DetalleOrdenesDePrepracionAOrdenSeleccionListView_SelectedIndexChanged;
             // 
-            // IDOrdenPreparacion
+            // IDOrdenPreparacionColumna
             // 
-            IDOrdenPreparacion.Text = "IDOrdenPreparacion";
-            IDOrdenPreparacion.Width = 31;
+            IDOrdenPreparacionColumna.Text = "IDOrdenPreparacion";
+            IDOrdenPreparacionColumna.Width = 31;
             // 
-            // DescripcionCliente
+            // DescripcionClienteColumna
             // 
-            DescripcionCliente.Text = "DescripcionCliente";
-            DescripcionCliente.Width = 31;
+            DescripcionClienteColumna.Text = "DescripcionCliente";
+            DescripcionClienteColumna.Width = 31;
             // 
-            // FechaOrdenRecepcion
+            // FechaOrdenRecepcionColumna
             // 
-            FechaOrdenRecepcion.Text = "FechaOrdenRecepcion";
-            FechaOrdenRecepcion.Width = 31;
+            FechaOrdenRecepcionColumna.Text = "FechaOrdenRecepcion";
+            FechaOrdenRecepcionColumna.Width = 31;
             // 
-            // EstadoOrdenPreparacion
+            // EstadoOrdenPreparacionColumna
             // 
-            EstadoOrdenPreparacion.Text = "EstadoOrdenPreparacion";
-            EstadoOrdenPreparacion.Width = 31;
+            EstadoOrdenPreparacionColumna.Text = "EstadoOrdenPreparacion";
+            EstadoOrdenPreparacionColumna.Width = 31;
             // 
-            // Prioridad
+            // PrioridadColumna
             // 
-            Prioridad.Text = "Prioridad";
-            Prioridad.Width = 31;
+            PrioridadColumna.Text = "Prioridad";
+            PrioridadColumna.Width = 31;
             // 
-            // TransportistaDetalle
+            // TransportistaDetalleColumna
             // 
-            TransportistaDetalle.Text = "TransportistaDetalle";
-            TransportistaDetalle.Width = 31;
+            TransportistaDetalleColumna.Text = "TransportistaDetalle";
+            TransportistaDetalleColumna.Width = 31;
             // 
             // OSgroupBox
             // 
@@ -321,7 +321,7 @@
             // 
             // OrdenesDePreparacionPendientesListView
             // 
-            OrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOP, OPaOS_RazonSocialCliente, OPaOS_FechaOR, OPaOS_EstadoOP, OPaOS_Prioridad, OPaOS_Transportista });
+            OrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOPColumna, OPaOS_RazonSocialClienteColumna, OPaOS_FechaORColumna, OPaOS_EstadoOPColumna, OPaOS_PrioridadColumna, OPaOS_TransportistaColumna });
             OrdenesDePreparacionPendientesListView.Location = new Point(10, 27);
             OrdenesDePreparacionPendientesListView.Name = "OrdenesDePreparacionPendientesListView";
             OrdenesDePreparacionPendientesListView.Size = new Size(466, 181);
@@ -329,39 +329,39 @@
             OrdenesDePreparacionPendientesListView.UseCompatibleStateImageBehavior = false;
             OrdenesDePreparacionPendientesListView.View = View.Details;
             // 
-            // OPaOS_IdOP
+            // OPaOS_IdOPColumna
             // 
-            OPaOS_IdOP.Text = "IDOrdenPreparacion";
-            OPaOS_IdOP.Width = 31;
+            OPaOS_IdOPColumna.Text = "IDOrdenPreparacion";
+            OPaOS_IdOPColumna.Width = 31;
             // 
-            // OPaOS_RazonSocialCliente
+            // OPaOS_RazonSocialClienteColumna
             // 
-            OPaOS_RazonSocialCliente.Text = "DescripcionCliente";
-            OPaOS_RazonSocialCliente.Width = 31;
+            OPaOS_RazonSocialClienteColumna.Text = "DescripcionCliente";
+            OPaOS_RazonSocialClienteColumna.Width = 31;
             // 
-            // OPaOS_FechaOR
+            // OPaOS_FechaORColumna
             // 
-            OPaOS_FechaOR.Text = "FechaOrdenRecepcion";
-            OPaOS_FechaOR.Width = 31;
+            OPaOS_FechaORColumna.Text = "FechaOrdenRecepcion";
+            OPaOS_FechaORColumna.Width = 31;
             // 
-            // OPaOS_EstadoOP
+            // OPaOS_EstadoOPColumna
             // 
-            OPaOS_EstadoOP.Text = "EstadoOrdenPreparacion";
-            OPaOS_EstadoOP.Width = 31;
+            OPaOS_EstadoOPColumna.Text = "EstadoOrdenPreparacion";
+            OPaOS_EstadoOPColumna.Width = 31;
             // 
-            // OPaOS_Prioridad
+            // OPaOS_PrioridadColumna
             // 
-            OPaOS_Prioridad.Text = "Prioridad";
-            OPaOS_Prioridad.Width = 31;
+            OPaOS_PrioridadColumna.Text = "Prioridad";
+            OPaOS_PrioridadColumna.Width = 31;
             // 
-            // OPaOS_Transportista
+            // OPaOS_TransportistaColumna
             // 
-            OPaOS_Transportista.Text = "TransportistaDetalle";
-            OPaOS_Transportista.Width = 31;
+            OPaOS_TransportistaColumna.Text = "TransportistaDetalle";
+            OPaOS_TransportistaColumna.Width = 31;
             // 
             // OrdenesDePreparacionPendientesProductoUbicacionListView
             // 
-            OrdenesDePreparacionPendientesProductoUbicacionListView.Columns.AddRange(new ColumnHeader[] { Producto, Ubicacion, Cantidad });
+            OrdenesDePreparacionPendientesProductoUbicacionListView.Columns.AddRange(new ColumnHeader[] { ProductoColumna, UbicacionColumna, CantidadColumna });
             OrdenesDePreparacionPendientesProductoUbicacionListView.Location = new Point(482, 27);
             OrdenesDePreparacionPendientesProductoUbicacionListView.Name = "OrdenesDePreparacionPendientesProductoUbicacionListView";
             OrdenesDePreparacionPendientesProductoUbicacionListView.Size = new Size(286, 181);
@@ -369,19 +369,19 @@
             OrdenesDePreparacionPendientesProductoUbicacionListView.UseCompatibleStateImageBehavior = false;
             OrdenesDePreparacionPendientesProductoUbicacionListView.View = View.Details;
             // 
-            // Producto
+            // ProductoColumna
             // 
-            Producto.Text = "Producto";
+            ProductoColumna.Text = "Producto";
             // 
-            // Ubicacion
+            // UbicacionColumna
             // 
-            Ubicacion.DisplayIndex = 2;
-            Ubicacion.Text = "Ubicacion";
+            UbicacionColumna.DisplayIndex = 2;
+            UbicacionColumna.Text = "Ubicacion";
             // 
-            // Cantidad
+            // CantidadColumna
             // 
-            Cantidad.DisplayIndex = 1;
-            Cantidad.Text = "Cantidad";
+            CantidadColumna.DisplayIndex = 1;
+            CantidadColumna.Text = "Cantidad";
             // 
             // OrdenSeleccionForm
             // 
@@ -439,25 +439,25 @@
         private GroupBox OSgroupBox;
         private ComboBox PrioridadComboBoxOrdenSeleccion;
         private ListView DetalleOrdenesDePrepracionAOrdenSeleccionListView;
-        private ColumnHeader IDOrdenPreparacion;
-        private ColumnHeader DescripcionCliente;
-        private ColumnHeader FechaOrdenRecepcion;
-        private ColumnHeader EstadoOrdenPreparacion;
-        private ColumnHeader Prioridad;
-        private ColumnHeader TransportistaDetalle;
+        private ColumnHeader IDOrdenPreparacionColumna;
+        private ColumnHeader DescripcionClienteColumna;
+        private ColumnHeader FechaOrdenRecepcionColumna;
+        private ColumnHeader EstadoOrdenPreparacionColumna;
+        private ColumnHeader PrioridadColumna;
+        private ColumnHeader TransportistaDetalleColumna;
         private ListView DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView;
         private ListView OrdenesDePreparacionPendientesProductoUbicacionListView;
-        private ColumnHeader Producto;
-        private ColumnHeader Cantidad;
-        private ColumnHeader Ubicacion;
-        private ColumnHeader DetalleMercaderia;
-        private ColumnHeader CantidadProductosOP;
+        private ColumnHeader ProductoColumna;
+        private ColumnHeader CantidadColumna;
+        private ColumnHeader UbicacionColumna;
+        private ColumnHeader DetalleMercaderiaColumna;
+        private ColumnHeader CantidadProductosOPColumna;
         private ListView OrdenesDePreparacionPendientesListView;
-        private ColumnHeader OPaOS_IdOP;
-        private ColumnHeader OPaOS_RazonSocialCliente;
-        private ColumnHeader OPaOS_FechaOR;
-        private ColumnHeader OPaOS_EstadoOP;
-        private ColumnHeader OPaOS_Prioridad;
-        private ColumnHeader OPaOS_Transportista;
+        private ColumnHeader OPaOS_IdOPColumna;
+        private ColumnHeader OPaOS_RazonSocialClienteColumna;
+        private ColumnHeader OPaOS_FechaORColumna;
+        private ColumnHeader OPaOS_EstadoOPColumna;
+        private ColumnHeader OPaOS_PrioridadColumna;
+        private ColumnHeader OPaOS_TransportistaColumna;
     }
 }
