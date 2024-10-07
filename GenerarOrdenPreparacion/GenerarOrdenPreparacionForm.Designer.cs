@@ -63,10 +63,6 @@
             label6 = new Label();
             TransportistaSeleccionadoTxt = new TextBox();
             label7 = new Label();
-            NombreTransportistaTxt = new TextBox();
-            buscarNombreTransportistaBtn = new Button();
-            button1 = new Button();
-            textBox2 = new TextBox();
             SuspendLayout();
             // 
             // ProductosStockLista
@@ -364,51 +360,11 @@
             label7.TabIndex = 52;
             label7.Text = "Transportista Selecionado";
             // 
-            // NombreTransportistaTxt
-            // 
-            NombreTransportistaTxt.Location = new Point(700, 57);
-            NombreTransportistaTxt.Margin = new Padding(2);
-            NombreTransportistaTxt.Name = "NombreTransportistaTxt";
-            NombreTransportistaTxt.Size = new Size(163, 23);
-            NombreTransportistaTxt.TabIndex = 53;
-            // 
-            // buscarNombreTransportistaBtn
-            // 
-            buscarNombreTransportistaBtn.Location = new Point(872, 58);
-            buscarNombreTransportistaBtn.Margin = new Padding(2);
-            buscarNombreTransportistaBtn.Name = "buscarNombreTransportistaBtn";
-            buscarNombreTransportistaBtn.Size = new Size(160, 23);
-            buscarNombreTransportistaBtn.TabIndex = 54;
-            buscarNombreTransportistaBtn.Text = "Buscar Nombre";
-            buscarNombreTransportistaBtn.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(872, 95);
-            button1.Margin = new Padding(2);
-            button1.Name = "button1";
-            button1.Size = new Size(160, 23);
-            button1.TabIndex = 56;
-            button1.Text = "Buscar DNI";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(700, 95);
-            textBox2.Margin = new Padding(2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(163, 23);
-            textBox2.TabIndex = 55;
-            // 
             // GenerarOrdenPreparacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1046, 705);
-            Controls.Add(button1);
-            Controls.Add(textBox2);
-            Controls.Add(buscarNombreTransportistaBtn);
-            Controls.Add(NombreTransportistaTxt);
             Controls.Add(label7);
             Controls.Add(TransportistaSeleccionadoTxt);
             Controls.Add(label6);
@@ -478,9 +434,5 @@
         private Label label6;
         protected TextBox TransportistaSeleccionadoTxt;
         private Label label7;
-        private TextBox NombreTransportistaTxt;
-        private Button buscarNombreTransportistaBtn;
-        private Button button1;
-        private TextBox textBox2;
     }
 }
