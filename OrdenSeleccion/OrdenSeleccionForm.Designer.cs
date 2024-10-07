@@ -92,7 +92,7 @@
             AgregarOrdenSeleccionADetalleBTN.TabIndex = 1;
             AgregarOrdenSeleccionADetalleBTN.Text = "&Agregar al detalle de seleccion";
             AgregarOrdenSeleccionADetalleBTN.UseVisualStyleBackColor = true;
-            AgregarOrdenSeleccionADetalleBTN.Click += CrearOrdenSeleccionBTN_Click;
+            AgregarOrdenSeleccionADetalleBTN.Click += AgregarAOrdenSeleccionBTN_Click_1;
             // 
             // BuscarOrdenSeleccionBTN
             // 
@@ -211,7 +211,7 @@
             CancelarOrdenSeleccionBTN.Name = "CancelarOrdenSeleccionBTN";
             CancelarOrdenSeleccionBTN.Size = new Size(94, 29);
             CancelarOrdenSeleccionBTN.TabIndex = 18;
-            CancelarOrdenSeleccionBTN.Text = "&Cancelar";
+            CancelarOrdenSeleccionBTN.Text = "&Salir";
             CancelarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
             CancelarOrdenSeleccionBTN.Click += CancelarOrdenSeleccionBTN_Click;
             // 

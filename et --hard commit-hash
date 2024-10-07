@@ -1,0 +1,244 @@
+[33mcommit 0e21c284e3d557b629ab8097e6de15805871948b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Mon Oct 7 12:26:17 2024 -0300
+
+    a
+
+[33mcommit 5e9367b3ef5ff905721be9a236d9dd7e2e7ffc6c[m
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Mon Oct 7 12:10:01 2024 -0300
+
+    Validadores de numero a  OrdenSeleccion
+
+[33mcommit 0be93b8f315a023f1b1765b91b3bf0b964cb305f[m
+Merge: 4992d46 0b1ad41
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Mon Oct 7 11:32:33 2024 -0300
+
+    Merge branch 'master' of https://github.com/arandios/GrupoD.Pampazon.Prototipos1
+
+[33mcommit 4992d46850fd26ad2a404e911541ac33463606d3[m
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Mon Oct 7 11:32:28 2024 -0300
+
+    extras 1
+
+[33mcommit 0b1ad41e931d06a585d2288725348a07a1e780f1[m
+Author: AlanPrado03 <pradoalan47@gmail.com>
+Date:   Mon Oct 7 10:44:02 2024 -0300
+
+    Generar orden entrega
+
+[33mcommit 9db05f7a6f73702699afaf54608211073502caa6[m
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Mon Oct 7 00:20:21 2024 -0300
+
+    extras
+
+[33mcommit 948e6616ee0105ec377ffd1fd9c3867a55de5f81[m
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Sun Oct 6 22:11:34 2024 -0300
+
+    agregar datos de ubicacion. Ajustes a listas.
+
+[33mcommit 7cb6998b10c9fa077b763623a6067e84be1a8fa5[m
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Sun Oct 6 19:11:45 2024 -0300
+
+    d
+
+[33mcommit ffb82046a447268033c8527a90f6ebe9906052fe[m
+Author: EZEQUIEL MARCELO ARANDA <65AR43000399@campus.economicas.uba.ar>
+Date:   Sun Oct 6 18:38:09 2024 -0300
+
+    Correcciones de Remito
+
+[33mcommit 2c5f3b10b3fa0313024114888b9af0b4785e3ea9[m
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Sun Oct 6 18:34:24 2024 -0300
+
+    terminado
+
+[33mcommit c95f0d4fdb17c64b41a6f8599b94a3cba0976dc8[m
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Sun Oct 6 17:28:25 2024 -0300
+
+    funcionamiento boton Crear OS
+
+[33mcommit 67b274ff30eea4f8c3841bedb73073796bd394d4[m
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Sun Oct 6 17:01:09 2024 -0300
+
+    Agregado de funcionamiento Listas Inferiores Orden Seleccion.
+
+[33mcommit bf244d2bfa79214f888a3e942bcdb84139d70e13[m
+Author: EZEQUIEL MARCELO ARANDA <65AR43000399@campus.economicas.uba.ar>
+Date:   Sun Oct 6 14:17:35 2024 -0300
+
+    Correcciones
+
+[33mcommit 36d4fe560957a788e71c41d4e0051411ac4d8ca5[m
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Sun Oct 6 12:28:34 2024 -0300
+
+    - Borrar filtros.
+    - ajustes extras
+
+[33mcommit 932b1326c4464f80d88045eadc8e571d21297415[m
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Sun Oct 6 11:58:19 2024 -0300
+
+    Agregado de listas de detalle, y funcionamiento de la primera a Pantalla ORDENSELECCION.
+
+[33mcommit f7a27e6573f35f2e4f11b4d24adfa8683f6435de[m
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Sun Oct 6 01:06:10 2024 -0300
+
+    finalisar pantalla
+
+[33mcommit f83cd5de3c5c57946132cf958ce1d33ab1575aba[m
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Sun Oct 6 00:37:14 2024 -0300
+
+    dd
+
+[33mcommit 2ad65e58728cb358b57cbb3ad922618a1513aa8a[m
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Sun Oct 6 00:26:48 2024 -0300
+
+    d
+
+[33mcommit 3130525a4d59be73dbb56a6e94289c073ed890e7[m
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Sun Oct 6 00:11:49 2024 -0300
+
+    probando cargar datos
+
+[33mcommit e797658deaf469a31278a19ac8a33be9a3b6fb38[m
+Author: EZEQUIEL MARCELO ARANDA <65AR43000399@campus.economicas.uba.ar>
+Date:   Sat Oct 5 23:28:06 2024 -0300
+
+    Actualizacion y correcciones
+
+[33mcommit 148db34ed55e42bce9ddbd78f7ee67e6aad892fa[m
+Merge: 5b70349 16a0ddd
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Sat Oct 5 23:26:22 2024 -0300
+
+    Merge branch 'master' of https://github.com/arandios/GrupoD.Pampazon.Prototipos1
+
+[33mcommit 5b703493958d5f14fda73b24a9f1f5a8b46a2132[m
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Sat Oct 5 23:26:01 2024 -0300
+
+    un poco de detalle
+
+[33mcommit 16a0dddf2f945c1e4cafa7d91ebae308396b2126[m
+Author: EZEQUIEL MARCELO ARANDA <65AR43000399@campus.economicas.uba.ar>
+Date:   Sat Oct 5 23:24:11 2024 -0300
+
+    Correciones en el modelo
+
+[33mcommit 793e8aed82d621f1483cde94e77667a357abd7d3[m
+Author: AlanPrado03 <pradoalan47@gmail.com>
+Date:   Sat Oct 5 19:58:03 2024 -0300
+
+    Ordenes entrega
+
+[33mcommit 57f8249d8a4f71ee582f6adec1622e5ac361f67c[m
+Author: AlanPrado03 <pradoalan47@gmail.com>
+Date:   Sat Oct 5 19:08:10 2024 -0300
+
+    Menu Principal
+
+[33mcommit d1292c6633730bbaf21c5e0196685b034506c0e7[m
+Author: EZEQUIEL MARCELO ARANDA <65AR43000399@campus.economicas.uba.ar>
+Date:   Sat Oct 5 17:14:40 2024 -0300
+
+    Nuevo remito
+
+[33mcommit 72ac50b0b75fc16df7510b2ac0ab1e344f0d179a[m
+Author: EZEQUIEL MARCELO ARANDA <65AR43000399@campus.economicas.uba.ar>
+Date:   Sat Oct 5 16:34:48 2024 -0300
+
+    Remitos Nuevo
+
+[33mcommit 51c153bf167610a0bed6c9e77165631969dd8f68[m
+Author: EZEQUIEL MARCELO ARANDA <65AR43000399@campus.economicas.uba.ar>
+Date:   Sat Oct 5 16:30:24 2024 -0300
+
+    Actualizacion de remito
+
+[33mcommit f782de8f8b2620a903c9ed1247fc14b07f3fb812[m
+Merge: 3f42a59 04e62dd
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Fri Oct 4 19:47:15 2024 -0300
+
+    Merge branch 'master' of https://github.com/arandios/GrupoD.Pampazon.Prototipos1
+
+[33mcommit 3f42a5948f8f5663b6465402b024c99e7dc6a5f8[m
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Fri Oct 4 19:46:00 2024 -0300
+
+    cambio
+
+[33mcommit 04e62dd2ed289548ece27da40511552a914cd353[m
+Merge: 717d470 d7bf83c
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Fri Oct 4 19:02:59 2024 -0300
+
+    Merge branch 'master' of https://github.com/arandios/GrupoD.Pampazon.Prototipos1
+
+[33mcommit 717d4706333b1c63485c962ffcc869d7140df4d8[m
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Fri Oct 4 19:02:56 2024 -0300
+
+    +
+
+[33mcommit d7bf83cf031841d1e2484836bbd7bcbecabcd3d7[m
+Merge: 788f80a 82dcca5
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Fri Oct 4 19:00:57 2024 -0300
+
+    Merge branch 'master' of https://github.com/arandios/GrupoD.Pampazon.Prototipos1
+
+[33mcommit 788f80a559a63919983627892e860448b506d3de[m
+Author: DANIEL ANGEL CLAUDIO PONCE <47CL96096669@campus.economicas.uba.ar>
+Date:   Fri Oct 4 19:00:41 2024 -0300
+
+    Agregar lista
+
+[33mcommit 82dcca59f71c93ba5a1ec6af915644620449ca7d[m
+Merge: 389b99b 1551154
+Author: AlanPrado03 <pradoalan47@gmail.com>
+Date:   Fri Oct 4 18:59:47 2024 -0300
+
+    Merge branch 'master' of https://github.com/arandios/GrupoD.Pampazon.Prototipos1
+
+[33mcommit 389b99b2eaaccfb20ca7a0f3e93c87d8eb2a21f1[m
+Author: AlanPrado03 <pradoalan47@gmail.com>
+Date:   Fri Oct 4 18:59:40 2024 -0300
+
+    Datos
+
+[33mcommit 155115429b50b13168aa12a5ca680f2f374f9042[m
+Merge: 5274127 21ba8fb
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Fri Oct 4 18:31:55 2024 -0300
+
+    Merge branch 'master' of https://github.com/arandios/GrupoD.Pampazon.Prototipos1
+
+[33mcommit 5274127867b1d13bdcb995723082bc386d897491[m
+Author: TOMAS IGNACIO SAMPIETRO <08SA42645963@campus.economicas.uba.ar>
+Date:   Fri Oct 4 18:31:44 2024 -0300
+
+    ajustes
+
+[33mcommit 21ba8fb3b2b84e75b53cd3d34cda40ab2bf97c12[m
+Merge: be20135 8ef7846
+Author: lorena mazzalupo <lorenamazzalupo@gmail.com>
+Date:   Fri Oct 4 18:01:58 2024 -0300
+
+    Merge branch 'master' of https://github.com/arandios/GrupoD.Pampazon.Prototipos1
+
+[33mcommit be2013

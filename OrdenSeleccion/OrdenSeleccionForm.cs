@@ -15,6 +15,8 @@ namespace Pampazon.OrdenSeleccion
     {
         //El formulario tiene una referencia al modelo.
         private OrdenSeleccionModelo modelo = new OrdenSeleccionModelo();
+        private List<OrdenPreparacion> ordenesDisponibles = new List<OrdenPreparacion>();
+        private List<OrdenPreparacion> ordenesAgregadas = new List<OrdenPreparacion>();
 
         public OrdenSeleccionForm()
         {
@@ -33,6 +35,7 @@ namespace Pampazon.OrdenSeleccion
 
             // Llenar el ComboBox con los valores del enum CodigoPrioridad
             PrioridadComboBoxOrdenSeleccion.DataSource = Enum.GetValues(typeof(CodigoPrioridad));
+
 
             // Verificar si la lista de órdenes de preparación no está vacía
             if (modelo.OrdenesDePreparacion == null || !modelo.OrdenesDePreparacion.Any())
@@ -61,20 +64,17 @@ namespace Pampazon.OrdenSeleccion
             {
                 OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
-
-
         }
+
 
         // ==============================================================================
         // EVENTOS DEL FORMULARIO
         // ==============================================================================
 
+        /* V1
         private void BorrarFiltrosOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
-            //Realizar la busqueda, por los criterios indicados
-
-
-            //Borrar los campos de busqueda, una vez hecha la busqueda.
+            // Limpiar los campos de búsqueda
             ClienteTextBoxOrdenSeleccion.Text = string.Empty;
             TransportistaTextBoxOrdenSeleccion.Text = string.Empty;
             NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text = string.Empty;
@@ -83,9 +83,54 @@ namespace Pampazon.OrdenSeleccion
             // Restablecer la lista de órdenes de preparación
             actualizarListaOrdenDePreparacion();
 
+            // Filtrar las órdenes de preparación que no han sido agregadas
+            foreach (ListViewItem item in DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items)
+            {
+                var ordenPreparacion = (OrdenPreparacion)item.Tag;
+                if (ordenesAgregadas.Contains(ordenPreparacion))
+                {
+                    DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Remove(item);
+                }
+            }
+
             // Llamar al método para agrupar y mostrar los productos y ubicaciones
             AgruparOrdenesDePreparacionPendientes();
         }
+        */
+
+        private void BorrarFiltrosOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        {
+            // Limpiar los campos de búsqueda
+            ClienteTextBoxOrdenSeleccion.Text = string.Empty;
+            TransportistaTextBoxOrdenSeleccion.Text = string.Empty;
+            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text = string.Empty;
+            PrioridadComboBoxOrdenSeleccion.SelectedIndex = -1; // Deseleccionar cualquier elemento
+
+            // Restablecer la lista de órdenes de preparación
+            actualizarListaOrdenDePreparacion();
+
+            // Filtrar las órdenes de preparación que no han sido agregadas
+            var itemsToRemove = new List<ListViewItem>();
+            foreach (ListViewItem item in DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items)
+            {
+                var ordenPreparacion = (OrdenPreparacion)item.Tag;
+                if (ordenesAgregadas.Contains(ordenPreparacion))
+                {
+                    itemsToRemove.Add(item);
+                }
+            }
+
+            // Remover los ítems que han sido agregados
+            foreach (var item in itemsToRemove)
+            {
+                DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Remove(item);
+            }
+
+            // Llamar al método para agrupar y mostrar los productos y ubicaciones
+            AgruparOrdenesDePreparacionPendientes();
+        }
+
+
 
         private void QuitarOrdenPreparacionASeleccionBTN_Click(object sender, EventArgs e)
         {
@@ -101,6 +146,10 @@ namespace Pampazon.OrdenSeleccion
 
                     // Agregar el elemento a DetalleOrdenesDePrepracionAOrdenSeleccionListView
                     DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
+
+                    // Eliminar el elemento de la lista de órdenes disponibles
+                    var ordenPreparacion = (OrdenPreparacion)item.Tag;
+                    ordenesDisponibles.Remove(ordenPreparacion);
                 }
 
                 // Actualizar la lista OrdenesDePreparacionPendientesProductoUbicacionListView
@@ -112,9 +161,7 @@ namespace Pampazon.OrdenSeleccion
             }
         }
 
-
-
-        private void CrearOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        private void AgregarAOrdenSeleccionBTN_Click_1(object sender, EventArgs e)
         {
             // Verificar si hay elementos seleccionados en la lista de detalles de órdenes de preparación
             if (DetalleOrdenesDePrepracionAOrdenSeleccionListView.SelectedItems.Count == 0)
@@ -126,7 +173,6 @@ namespace Pampazon.OrdenSeleccion
             // Crear una nueva instancia de OrdenSeleccion
             var ordenSeleccion = new OrdenSeleccion
             {
-                IDOrdenSeleccion = Guid.NewGuid().ToString(), // Generar un ID único para la orden de selección
                 FechaEmision = DateTime.Now,
                 OrdenesPreparacion = new List<OrdenPreparacion>(),
                 EstadoOrdenDeSeleccion = "Nueva", // Estado inicial de la orden de selección
@@ -139,20 +185,24 @@ namespace Pampazon.OrdenSeleccion
                 var ordenPreparacion = (OrdenPreparacion)item.Tag;
                 ordenSeleccion.OrdenesPreparacion.Add(ordenPreparacion);
 
-                // Crear un nuevo ítem para la lista de órdenes de preparación pendientes
-                ListViewItem newItem = new ListViewItem();
-                newItem.Text = ordenPreparacion.IDOrdenPreparacion;
-                //newItem.SubItems.Add(ordenPreparacion.IdCliente.ToString());
-                newItem.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
-                //newItem.SubItems.Add(string.Join(", ", ordenPreparacion.Mercaderias.Select(m => m.DescripcionProducto)));
-                //newItem.SubItems.Add(ordenPreparacion.CantidadMercaderia.ToString());
-                newItem.SubItems.Add(ordenPreparacion.FechaOrdenRecepcion.ToString());
-                newItem.SubItems.Add(ordenPreparacion.EstadoOrdenPreparacion.ToString());
-                newItem.SubItems.Add(ordenPreparacion.Prioridad.ToString());
-                newItem.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
+                // Verificar si el ítem ya existe en OrdenesDePreparacionPendientesListView
+                if (!OrdenesDePreparacionPendientesListView.Items.Cast<ListViewItem>().Any(existingItem => existingItem.Tag == ordenPreparacion))
+                {
+                    // Crear un nuevo ítem para la lista de órdenes de preparación pendientes
+                    ListViewItem newItem = new ListViewItem();
+                    newItem.Text = ordenPreparacion.IDOrdenPreparacion;
+                    newItem.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
+                    newItem.SubItems.Add(ordenPreparacion.FechaOrdenRecepcion.ToString());
+                    newItem.SubItems.Add(ordenPreparacion.EstadoOrdenPreparacion.ToString());
+                    newItem.SubItems.Add(ordenPreparacion.Prioridad.ToString());
+                    newItem.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
 
-                newItem.Tag = ordenPreparacion; // Guardar el objeto completo como Tag
-                OrdenesDePreparacionPendientesListView.Items.Add(newItem);
+                    newItem.Tag = ordenPreparacion; // Guardar el objeto completo como Tag
+                    OrdenesDePreparacionPendientesListView.Items.Add(newItem);
+
+                    // Agregar a la lista de órdenes agregadas
+                    ordenesAgregadas.Add(ordenPreparacion);
+                }
             }
 
             // Eliminar los ítems seleccionados de la lista de detalles de órdenes de preparación
@@ -175,90 +225,151 @@ namespace Pampazon.OrdenSeleccion
             AgruparOrdenesDePreparacionPendientes();
         }
 
+        /*
         private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
-            //Agrego validadores para datos ingresados por el usuario. 
-            // Validar que el valor ingresado sea un número entero valido.
-            // Verificar si el campo NumeroOrdenPreparacionTextBoxOrdenSeleccion no está vacío
-            if (!string.IsNullOrEmpty(NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text))
-            {
-                // Validar que el valor ingresado sea un número entero
-                if (!int.TryParse(NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text, out int idOrden))
-                {
-                    MessageBox.Show("Por favor, ingrese un número válido.");
-                    return;
-                }
-
-                // Validar que el número no sea negativo
-                if (idOrden < 0)
-                {
-                    MessageBox.Show("El número de orden no puede ser negativo.");
-                    return;
-                }
-
-                // Validar que el número no sea demasiado largo
-                if (NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Length > 8)
-                {
-                    MessageBox.Show("El número de orden no puede tener más de 8 dígitos.");
-                    return;
-                }
-
-                // Validar que el número no sea demasiado corto
-                if (NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Length < 3)
-                {
-                    MessageBox.Show("El número de orden no puede tener menos de 3 dígitos.");
-                    return;
-                }
-            }
-
-                // Limpiar la lista actual
-                DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
+            // Limpiar la lista actual
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
 
             // Obtener los valores de los filtros
-            string cliente = ClienteTextBoxOrdenSeleccion.Text.Trim();
-            string transportista = TransportistaTextBoxOrdenSeleccion.Text.Trim();
-            string numeroOrdenPreparacion = NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Trim();
-            string prioridad = PrioridadComboBoxOrdenSeleccion.SelectedItem?.ToString();
+            string clienteAFiltrar = ClienteTextBoxOrdenSeleccion.Text.Trim();
+            string transportistaAFiltrar = TransportistaTextBoxOrdenSeleccion.Text.Trim();
+            string idOrdenAFiltrar = NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Trim();
+            string prioridadAFiltrar = PrioridadComboBoxOrdenSeleccion.SelectedItem?.ToString();
 
             // Verificar si al menos un filtro está completo
-            if (string.IsNullOrWhiteSpace(cliente) && string.IsNullOrWhiteSpace(transportista) &&
-                string.IsNullOrWhiteSpace(numeroOrdenPreparacion) && string.IsNullOrWhiteSpace(prioridad))
+            if (string.IsNullOrWhiteSpace(clienteAFiltrar) &&
+                string.IsNullOrWhiteSpace(transportistaAFiltrar) &&
+                string.IsNullOrWhiteSpace(idOrdenAFiltrar) &&
+                string.IsNullOrWhiteSpace(prioridadAFiltrar))
             {
                 MessageBox.Show("Por favor, ingrese al menos un criterio de búsqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            // Validar que el valor ingresado en NumeroOrdenPreparacionTextBoxOrdenSeleccion sea un número válido (si es que se ha ingresado algo)
+            if (!string.IsNullOrEmpty(idOrdenAFiltrar))
+            {
+                if (!int.TryParse(idOrdenAFiltrar, out int idOrden) || idOrden < 0 || idOrdenAFiltrar.Length < 3 || idOrdenAFiltrar.Length > 8)
+                {
+                    MessageBox.Show("Por favor, ingrese un número de orden válido (entre 3 y 8 dígitos).");
+                    return;
+                }
             }
 
             // Obtener la lista de órdenes de preparación desde el modelo
             var ordenesPreparacion = modelo.OrdenesDePreparacion;
 
             // Filtrar la lista según los criterios ingresados
-            var ordenesFiltradas = ordenesPreparacion.Where(op =>
-                (string.IsNullOrWhiteSpace(cliente) || op.DescripcionCliente.Contains(cliente, StringComparison.OrdinalIgnoreCase)) &&
-                (string.IsNullOrWhiteSpace(transportista) || op.TransportistaDetalle.Nombre.Contains(transportista, StringComparison.OrdinalIgnoreCase)) &&
-                (string.IsNullOrWhiteSpace(numeroOrdenPreparacion) || op.IDOrdenPreparacion.Contains(numeroOrdenPreparacion, StringComparison.OrdinalIgnoreCase)) &&
-                (string.IsNullOrWhiteSpace(prioridad) || op.Prioridad.ToString().Equals(prioridad, StringComparison.OrdinalIgnoreCase))
-            ).ToList();
+            var ordenesFiltradas = ordenesPreparacion
+                .Where(op =>
+                    (string.IsNullOrEmpty(clienteAFiltrar) || op.DescripcionCliente.Contains(clienteAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
+                    (string.IsNullOrEmpty(transportistaAFiltrar) || op.TransportistaDetalle.Nombre.Contains(transportistaAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
+                    (string.IsNullOrEmpty(idOrdenAFiltrar) || op.IDOrdenPreparacion.Contains(idOrdenAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
+                    (string.IsNullOrEmpty(prioridadAFiltrar) || op.Prioridad.ToString() == prioridadAFiltrar)
+                )
+                .ToList();
 
-            // Agregar las órdenes filtradas al ListView
-            foreach (var orden in ordenesFiltradas)
+            if (ordenesFiltradas.Any())
             {
-                ListViewItem item = new ListViewItem(new[] {
-            orden.IDOrdenPreparacion,
-            orden.DescripcionCliente,
-            orden.FechaOrdenRecepcion.ToString("yyyy-MM-dd"),
-            orden.EstadoOrdenPreparacion.ToString(),
-            orden.Prioridad.ToString(),
-            orden.TransportistaDetalle.Nombre
-        });
-                DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
+                // Agregar las órdenes filtradas al ListView
+                foreach (var orden in ordenesFiltradas)
+                {
+                    var item = new ListViewItem(new[]
+                    {
+                orden.IDOrdenPreparacion,
+                orden.DescripcionCliente,
+                orden.FechaOrdenRecepcion.ToString("yyyy-MM-dd"),
+                orden.EstadoOrdenPreparacion.ToString(),
+                orden.Prioridad.ToString(),
+                orden.TransportistaDetalle.Nombre
+            });
+
+                    // Asociar el objeto orden como Tag del ListViewItem
+                    item.Tag = orden;
+                    DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron órdenes de preparación con los criterios especificados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }*/
+
+        private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        {
+            // Limpiar la lista actual
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
+
+            // Obtener los valores de los filtros
+            string clienteAFiltrar = ClienteTextBoxOrdenSeleccion.Text.Trim();
+            string transportistaAFiltrar = TransportistaTextBoxOrdenSeleccion.Text.Trim();
+            string idOrdenAFiltrar = NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Trim();
+            string prioridadAFiltrar = PrioridadComboBoxOrdenSeleccion.SelectedItem?.ToString();
+
+            // Verificar si al menos un filtro está completo
+            if (string.IsNullOrWhiteSpace(clienteAFiltrar) &&
+                string.IsNullOrWhiteSpace(transportistaAFiltrar) &&
+                string.IsNullOrWhiteSpace(idOrdenAFiltrar) &&
+                string.IsNullOrWhiteSpace(prioridadAFiltrar))
+            {
+                MessageBox.Show("Por favor, ingrese al menos un criterio de búsqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            // Verificar si no se encontraron resultados
-            if (!ordenesFiltradas.Any())
+            // Validar que el valor ingresado en NumeroOrdenPreparacionTextBoxOrdenSeleccion sea un número válido (si es que se ha ingresado algo)
+            if (!string.IsNullOrEmpty(idOrdenAFiltrar))
+            {
+                if (!int.TryParse(idOrdenAFiltrar, out int idOrden) || idOrden < 0 || idOrdenAFiltrar.Length < 3 || idOrdenAFiltrar.Length > 8)
+                {
+                    MessageBox.Show("Por favor, ingrese un número de orden válido (entre 3 y 8 dígitos).");
+                    return;
+                }
+            }
+
+            // Obtener la lista de órdenes de preparación desde el modelo
+            var ordenesPreparacion = modelo.OrdenesDePreparacion;
+
+            // Filtrar la lista según los criterios ingresados
+            var ordenesFiltradas = ordenesPreparacion
+                .Where(op =>
+                    (string.IsNullOrEmpty(clienteAFiltrar) || op.DescripcionCliente.Contains(clienteAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
+                    (string.IsNullOrEmpty(transportistaAFiltrar) || op.TransportistaDetalle.Nombre.Contains(transportistaAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
+                    (string.IsNullOrEmpty(idOrdenAFiltrar) || op.IDOrdenPreparacion.Contains(idOrdenAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
+                    (string.IsNullOrEmpty(prioridadAFiltrar) || op.Prioridad.ToString() == prioridadAFiltrar)
+                )
+                .ToList();
+
+            if (ordenesFiltradas.Any())
+            {
+                // Agregar las órdenes filtradas al ListView
+                foreach (var orden in ordenesFiltradas)
+                {
+                    // Verificar si el ítem ya existe en DetalleOrdenesDePrepracionAOrdenSeleccionListView
+                    if (!DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Cast<ListViewItem>().Any(item => item.Tag == orden))
+                    {
+                        var item = new ListViewItem(new[]
+                        {
+                    orden.IDOrdenPreparacion,
+                    orden.DescripcionCliente,
+                    orden.FechaOrdenRecepcion.ToString("yyyy-MM-dd"),
+                    orden.EstadoOrdenPreparacion.ToString(),
+                    orden.Prioridad.ToString(),
+                    orden.TransportistaDetalle.Nombre
+                });
+
+                        // Asociar el objeto orden como Tag del ListViewItem
+                        item.Tag = orden;
+                        DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
+                    }
+                }
+            }
+            else
             {
                 MessageBox.Show("No se encontraron órdenes de preparación con los criterios especificados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
 
         private void CrearOrdenSeleccionBTN_Click_1(object sender, EventArgs e)
@@ -273,7 +384,7 @@ namespace Pampazon.OrdenSeleccion
             // Crear una nueva instancia de OrdenSeleccion
             var ordenSeleccion = new OrdenSeleccion
             {
-                IDOrdenSeleccion = Guid.NewGuid().ToString(), // Generar un ID único para la orden de selección
+                //IDOrdenSeleccion = Guid.NewGuid().ToString(), // Generar un ID único para la orden de selección
                 FechaEmision = DateTime.Now,
                 OrdenesPreparacion = new List<OrdenPreparacion>(),
                 EstadoOrdenDeSeleccion = "Nueva", // Estado inicial de la orden de selección
@@ -287,8 +398,12 @@ namespace Pampazon.OrdenSeleccion
                 ordenSeleccion.OrdenesPreparacion.Add(ordenPreparacion);
             }
 
-            // Eliminar los ítems de OrdenesDePreparacionPendientesListView
-            OrdenesDePreparacionPendientesListView.Items.Clear();
+            // Eliminar las órdenes de preparación que se han agregado a la orden de selección de la lista de órdenes disponibles
+            foreach (ListViewItem item in OrdenesDePreparacionPendientesListView.Items)
+            {
+                var ordenPreparacion = (OrdenPreparacion)item.Tag;
+                ordenesDisponibles.Remove(ordenPreparacion);
+            }
 
             // Eliminar los ítems de OrdenesDePreparacionPendientesProductoUbicacionListView
             OrdenesDePreparacionPendientesProductoUbicacionListView.Items.Clear();
@@ -303,6 +418,7 @@ namespace Pampazon.OrdenSeleccion
             }
 
         }
+
 
         // ==============================================================================
         // FOOTER DE PANTALLA
@@ -319,6 +435,8 @@ namespace Pampazon.OrdenSeleccion
         // ==============================================================================
         // DEFINICION DE METODOS:
         // ==============================================================================
+        
+        
         private void actualizarListaOrdenDePreparacion()
         {
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
@@ -354,6 +472,7 @@ namespace Pampazon.OrdenSeleccion
             }
         }
 
+        
         private void DetalleOrdenesDePrepracionAOrdenSeleccionListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Limpiar la lista de detalles de productos
@@ -375,6 +494,8 @@ namespace Pampazon.OrdenSeleccion
                 }
             }
         }
+
+
 
         private void AgruparOrdenesDePreparacionPendientes()
         {
@@ -419,4 +540,3 @@ namespace Pampazon.OrdenSeleccion
 
     }
 }
-
