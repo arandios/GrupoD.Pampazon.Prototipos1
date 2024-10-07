@@ -8,68 +8,79 @@ namespace Pampazon.ConfirmarOrdenSeleccion
 {
     internal class ConfirmarOrdenSeleccionModelo
     {
-        // Listas de órdenes
         public List<OrdenSeleccion> OrdenesPendientes { get; private set; }
         public List<OrdenSeleccion> OrdenesConfirmadas { get; private set; }
 
         public ConfirmarOrdenSeleccionModelo()
         {
-            // Inicializar las listas
             OrdenesPendientes = new List<OrdenSeleccion>();
             OrdenesConfirmadas = new List<OrdenSeleccion>();
-
-            // Cargar datos iniciales en la lista de órdenes pendientes
             CargarDatosIniciales();
         }
 
-        // Método para cargar órdenes de selección iniciales
         private void CargarDatosIniciales()
         {
-            OrdenesPendientes.AddRange(new List<OrdenSeleccion>
+            // Crear algunas OrdenesPreparacion con productos
+            var op1 = new OrdenPreparacion(1, DateTime.Now.AddDays(-5), 1001, "Cliente 1", "Alta", 2001, "Transporte 1", "Pendiente", DateTime.Now.AddDays(-5),
+                new List<Productos>
+                {
+                    new Productos(1, 101, "Producto A", 5),
+                    new Productos(1, 102, "Producto B", 7)
+                });
+
+            var op2 = new OrdenPreparacion(2, DateTime.Now.AddDays(-4), 1002, "Cliente 2", "Media", 2002, "Transporte 2", "Pendiente", DateTime.Now.AddDays(-4),
+                new List<Productos>
+                {
+                    new Productos(2, 103, "Producto C", 4),
+                    new Productos(2, 104, "Producto D", 6)
+                });
+
+            var op3 = new OrdenPreparacion(3, DateTime.Now.AddDays(-3), 1003, "Cliente 3", "Baja", 2003, "Transporte 3", "Pendiente", DateTime.Now.AddDays(-3),
+                new List<Productos>
+                {
+                    new Productos(3, 105, "Producto E", 3),
+                    new Productos(3, 106, "Producto F", 8)
+                });
+
+            // Crear OrdenSeleccion combinando productos de las OrdenesPreparacion
+            OrdenesPendientes.Add(new OrdenSeleccion(123, DateTime.Now, new List<int> { 1, 2 }, "Pendiente", DateTime.Now,
+                new List<Productos>
+                {
+                    op1.Productos[0], // Producto A de OP1
+                    op1.Productos[1], // Producto B de OP1
+                    op2.Productos[0], // Producto C de OP2
+                    op2.Productos[1],  // Producto D de OP2
+                    
+                })) ;
+
+            OrdenesPendientes.Add(new OrdenSeleccion(124, DateTime.Now, new List<int> { 2, 3 }, "Pendiente", DateTime.Now,
+                new List<Productos>
+                {                    
+                    op3.Productos[0], // Producto E de OP3
+                    op3.Productos[1]  // Producto F de OP3
+                }));
+        }
+        public bool ValidarOrden(int codigoOrden, out OrdenSeleccion ordenSeleccionada, out string mensajeError)
+        {
+            ordenSeleccionada = OrdenesPendientes.FirstOrDefault(o => o.Nro_OrdenS == codigoOrden)
+                                ?? OrdenesConfirmadas.FirstOrDefault(o => o.Nro_OrdenS == codigoOrden);
+
+            if (ordenSeleccionada == null)
             {
-                new OrdenSeleccion(
-                123, DateTime.Now, 456, "Pendiente", DateTime.Now,
-                new List<Productos>
-                {
-                    new Productos(123, 1001, "Producto A", 10),
-                    new Productos(123, 1002, "Producto B", 5)
-                }
-                ),
-                new OrdenSeleccion(
-                124, DateTime.Now.AddDays(-1), 457, "Pendiente", DateTime.Now.AddDays(-1),
-                new List<Productos>
-                {
-                new Productos(124, 2001, "Producto C", 2),
-                new Productos(124, 2002, "Producto D", 3)
-                }
-                ),
-                new OrdenSeleccion(
-                125, DateTime.Now.AddDays(-2), 458, "Pendiente", DateTime.Now.AddDays(-2),
-                new List<Productos>
-                {
-                new Productos(125, 3001, "Producto E", 8),
-                new Productos(125, 3002, "Producto F", 6)
-                }
-                ),
-                new OrdenSeleccion(
-                126, DateTime.Now.AddDays(-3), 459, "Pendiente", DateTime.Now.AddDays(-3),
-                new List<Productos>
-                {
-                new Productos(126, 4001, "Producto G", 4),
-                new Productos(126, 4002, "Producto H", 7)
-                }
-                )
-            });
+                mensajeError = "No se encontró ninguna orden con ese número.";
+                return false;
+            }
+
+            mensajeError = string.Empty;
+            return true;
         }
 
-
-        // Método para confirmar una orden
         public void ConfirmarOrden(OrdenSeleccion orden)
         {
             orden.Estado = "Confirmada";
             orden.Fecha_Estado = DateTime.Now;
             OrdenesConfirmadas.Add(orden);
-            OrdenesPendientes.Remove(orden); // Eliminar la orden de la lista pendientes
+            OrdenesPendientes.Remove(orden);
         }
     }
 }

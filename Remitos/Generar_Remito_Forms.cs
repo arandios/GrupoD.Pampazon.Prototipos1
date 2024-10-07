@@ -36,40 +36,42 @@ namespace Pampazon
             // Verificar si el valor ingresado es un número entero
             if (int.TryParse(dniTexto, out int dni))
             {
-                // Verificar si el DNI es válido
-                if (GenerarRemitoModelo.ComprobarDni(dni))
+                // Llamar a ComprobarDni para obtener el mensaje de error (si lo hay)
+                string error = GenerarRemitoModelo.ComprobarDni(dni);
+
+                // Si hay un error, mostrarlo
+                if (!string.IsNullOrEmpty(error))
                 {
-                    // Obtener la lista de transportistas y filtrar los que coinciden con el DNI, lo hace el modelo
-                    var transportistasEncontrados = GenerarRemitoModelo.ObtenerTransportistas()
-                        .Where(t => t.DNI == dni).ToList();
+                    MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                    // Verificar si se encontraron transportistas
-                    if (transportistasEncontrados.Any())
-                    {
-                        // Agregar cada transportista encontrado a TransportistasListV
-                        foreach (var transportista in transportistasEncontrados)
-                        {
-                            ListViewItem item = new ListViewItem(transportista.Nombre); 
-                            item.SubItems.Add(transportista.DNI.ToString()); 
-                            item.SubItems.Add(transportista.Apellido); 
-                            item.SubItems.Add(transportista.IdOrden); 
+                // Obtener la lista de transportistas y filtrar los que coinciden con el DNI, lo hace el modelo
+                var transportistasEncontrados = GenerarRemitoModelo.ObtenerTransportistas()
+                    .Where(t => t.DNI == dni).ToList();
 
-                            TransportistasListV.Items.Add(item);
-                        }
-                    }
-                    else
+                // Verificar si se encontraron transportistas
+                if (transportistasEncontrados.Any())
+                {
+                    // Agregar cada transportista encontrado a TransportistasListV
+                    foreach (var transportista in transportistasEncontrados)
                     {
-                        MessageBox.Show("No se encontró un transportista con ese DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ListViewItem item = new ListViewItem(transportista.Nombre);
+                        item.SubItems.Add(transportista.DNI.ToString());
+                        item.SubItems.Add(transportista.Apellido);
+                        item.SubItems.Add(transportista.IdOrden);
+
+                        TransportistasListV.Items.Add(item);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("El DNI ingresado no es válido. Debe tener 8 dígitos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se encontró un transportista con ese DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Por favor, ingrese un número de DNI válido. Tiene que ser numerico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, ingrese un número de DNI válido. Tiene que ser numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -119,7 +121,7 @@ namespace Pampazon
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e) //NO BORRAR
         {
-           //NO BORRAR PORQUE SE ROMPE LA PANTALLA//
+            //NO BORRAR PORQUE SE ROMPE LA PANTALLA//
 
         }
 
@@ -181,7 +183,7 @@ namespace Pampazon
                     // Eliminar todos los transportistas en Detalle transportista que tienen el mismo IdOrden 
                     foreach (ListViewItem item in TransportistasListV.Items.Cast<ListViewItem>().ToList())
                     {
-                        if (item.SubItems[3].Text == idOrden) 
+                        if (item.SubItems[3].Text == idOrden)
                         {
                             TransportistasListV.Items.Remove(item);
                         }
@@ -192,7 +194,7 @@ namespace Pampazon
                     // Mostrar mensaje de error si hay un problema con la validación
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
             }
             else
             {
@@ -242,7 +244,7 @@ namespace Pampazon
                 return;
             }
 
-  
+
 
             // Eliminar la orden seleccionada
             DetalleRemitoLTV.Items.Remove(ordenSeleccionada);
@@ -250,5 +252,20 @@ namespace Pampazon
             MessageBox.Show("Orden eliminada con éxito.", "Orden Eliminada", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void CancelarBtn_Click(object sender, EventArgs e)
+        {
+            // Confirmar la acción
+            var result = MessageBox.Show("¿Está seguro que desea cancelar?",
+                                          "Confirmar Eliminación",
+                                          MessageBoxButtons.YesNo,
+                                          MessageBoxIcon.Question);
+
+            // Si el usuario elige No, salir del método
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            this.Close();
+        }
     }
 }

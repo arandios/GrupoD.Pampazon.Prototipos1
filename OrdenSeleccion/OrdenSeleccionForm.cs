@@ -177,8 +177,42 @@ namespace Pampazon.OrdenSeleccion
 
         private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
-            // Limpiar la lista actual
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
+            //Agrego validadores para datos ingresados por el usuario. 
+            // Validar que el valor ingresado sea un número entero valido.
+            // Verificar si el campo NumeroOrdenPreparacionTextBoxOrdenSeleccion no está vacío
+            if (!string.IsNullOrEmpty(NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text))
+            {
+                // Validar que el valor ingresado sea un número entero
+                if (!int.TryParse(NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text, out int idOrden))
+                {
+                    MessageBox.Show("Por favor, ingrese un número válido.");
+                    return;
+                }
+
+                // Validar que el número no sea negativo
+                if (idOrden < 0)
+                {
+                    MessageBox.Show("El número de orden no puede ser negativo.");
+                    return;
+                }
+
+                // Validar que el número no sea demasiado largo
+                if (NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Length > 8)
+                {
+                    MessageBox.Show("El número de orden no puede tener más de 8 dígitos.");
+                    return;
+                }
+
+                // Validar que el número no sea demasiado corto
+                if (NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Length < 3)
+                {
+                    MessageBox.Show("El número de orden no puede tener menos de 3 dígitos.");
+                    return;
+                }
+            }
+
+                // Limpiar la lista actual
+                DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
 
             // Obtener los valores de los filtros
             string cliente = ClienteTextBoxOrdenSeleccion.Text.Trim();

@@ -60,15 +60,15 @@
             OSgroupBox = new GroupBox();
             OrdenesDePreparacionPendientesListView = new ListView();
             OPaOS_IdOP = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
-            columnHeader8 = new ColumnHeader();
-            columnHeader9 = new ColumnHeader();
+            OPaOS_RazonSocialCliente = new ColumnHeader();
+            OPaOS_FechaOR = new ColumnHeader();
+            OPaOS_EstadoOP = new ColumnHeader();
+            OPaOS_Prioridad = new ColumnHeader();
+            OPaOS_Transportista = new ColumnHeader();
             OrdenesDePreparacionPendientesProductoUbicacionListView = new ListView();
             Producto = new ColumnHeader();
-            Cantidad = new ColumnHeader();
             Ubicacion = new ColumnHeader();
+            Cantidad = new ColumnHeader();
             FiltrosOPgroupBox.SuspendLayout();
             OPgroupBox.SuspendLayout();
             OSgroupBox.SuspendLayout();
@@ -321,7 +321,7 @@
             // 
             // OrdenesDePreparacionPendientesListView
             // 
-            OrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOP, columnHeader3, columnHeader6, columnHeader7, columnHeader8, columnHeader9 });
+            OrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOP, OPaOS_RazonSocialCliente, OPaOS_FechaOR, OPaOS_EstadoOP, OPaOS_Prioridad, OPaOS_Transportista });
             OrdenesDePreparacionPendientesListView.Location = new Point(10, 27);
             OrdenesDePreparacionPendientesListView.Name = "OrdenesDePreparacionPendientesListView";
             OrdenesDePreparacionPendientesListView.Size = new Size(466, 181);
@@ -334,30 +334,30 @@
             OPaOS_IdOP.Text = "IDOrdenPreparacion";
             OPaOS_IdOP.Width = 31;
             // 
-            // columnHeader3
+            // OPaOS_RazonSocialCliente
             // 
-            columnHeader3.Text = "DescripcionCliente";
-            columnHeader3.Width = 31;
+            OPaOS_RazonSocialCliente.Text = "DescripcionCliente";
+            OPaOS_RazonSocialCliente.Width = 31;
             // 
-            // columnHeader6
+            // OPaOS_FechaOR
             // 
-            columnHeader6.Text = "FechaOrdenRecepcion";
-            columnHeader6.Width = 31;
+            OPaOS_FechaOR.Text = "FechaOrdenRecepcion";
+            OPaOS_FechaOR.Width = 31;
             // 
-            // columnHeader7
+            // OPaOS_EstadoOP
             // 
-            columnHeader7.Text = "EstadoOrdenPreparacion";
-            columnHeader7.Width = 31;
+            OPaOS_EstadoOP.Text = "EstadoOrdenPreparacion";
+            OPaOS_EstadoOP.Width = 31;
             // 
-            // columnHeader8
+            // OPaOS_Prioridad
             // 
-            columnHeader8.Text = "Prioridad";
-            columnHeader8.Width = 31;
+            OPaOS_Prioridad.Text = "Prioridad";
+            OPaOS_Prioridad.Width = 31;
             // 
-            // columnHeader9
+            // OPaOS_Transportista
             // 
-            columnHeader9.Text = "TransportistaDetalle";
-            columnHeader9.Width = 31;
+            OPaOS_Transportista.Text = "TransportistaDetalle";
+            OPaOS_Transportista.Width = 31;
             // 
             // OrdenesDePreparacionPendientesProductoUbicacionListView
             // 
@@ -373,15 +373,15 @@
             // 
             Producto.Text = "Producto";
             // 
-            // Cantidad
-            // 
-            Cantidad.DisplayIndex = 1;
-            Cantidad.Text = "Cantidad";
-            // 
             // Ubicacion
             // 
             Ubicacion.DisplayIndex = 2;
             Ubicacion.Text = "Ubicacion";
+            // 
+            // Cantidad
+            // 
+            Cantidad.DisplayIndex = 1;
+            Cantidad.Text = "Cantidad";
             // 
             // OrdenSeleccionForm
             // 
@@ -454,10 +454,10 @@
         private ColumnHeader CantidadProductosOP;
         private ListView OrdenesDePreparacionPendientesListView;
         private ColumnHeader OPaOS_IdOP;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader7;
-        private ColumnHeader columnHeader8;
-        private ColumnHeader columnHeader9;
+        private ColumnHeader OPaOS_RazonSocialCliente;
+        private ColumnHeader OPaOS_FechaOR;
+        private ColumnHeader OPaOS_EstadoOP;
+        private ColumnHeader OPaOS_Prioridad;
+        private ColumnHeader OPaOS_Transportista;
     }
 }

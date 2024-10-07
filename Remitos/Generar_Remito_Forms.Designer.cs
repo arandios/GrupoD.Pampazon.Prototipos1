@@ -50,6 +50,7 @@ namespace Pampazon
             DNITtxt = new TextBox();
             label5 = new Label();
             GenerarRemitoBtn = new Button();
+            CancelarBtn = new Button();
             BuscarTransportistaGroupBox.SuspendLayout();
             SuspendLayout();
             // 
@@ -119,11 +120,11 @@ namespace Pampazon
             // 
             // QuitarOrdenBtn
             // 
-            QuitarOrdenBtn.Location = new Point(250, 391);
+            QuitarOrdenBtn.Location = new Point(159, 391);
             QuitarOrdenBtn.Name = "QuitarOrdenBtn";
-            QuitarOrdenBtn.Size = new Size(224, 23);
+            QuitarOrdenBtn.Size = new Size(164, 46);
             QuitarOrdenBtn.TabIndex = 17;
-            QuitarOrdenBtn.Text = "&Quitar Orden de Entrega del remito";
+            QuitarOrdenBtn.Text = "Quitar Orden de Entrega del remito";
             QuitarOrdenBtn.UseVisualStyleBackColor = true;
             QuitarOrdenBtn.Click += QuitarOrdenBtn_Click;
             // 
@@ -223,17 +224,28 @@ namespace Pampazon
             // 
             GenerarRemitoBtn.Location = new Point(17, 391);
             GenerarRemitoBtn.Name = "GenerarRemitoBtn";
-            GenerarRemitoBtn.Size = new Size(224, 23);
+            GenerarRemitoBtn.Size = new Size(136, 46);
             GenerarRemitoBtn.TabIndex = 23;
             GenerarRemitoBtn.Text = "&Generar nuevo remito";
             GenerarRemitoBtn.UseVisualStyleBackColor = true;
             GenerarRemitoBtn.Click += GenerarRemitoBtn_Click;
             // 
+            // CancelarBtn
+            // 
+            CancelarBtn.Location = new Point(329, 391);
+            CancelarBtn.Name = "CancelarBtn";
+            CancelarBtn.Size = new Size(145, 46);
+            CancelarBtn.TabIndex = 24;
+            CancelarBtn.Text = "Cancelar";
+            CancelarBtn.UseVisualStyleBackColor = true;
+            CancelarBtn.Click += CancelarBtn_Click;
+            // 
             // Generar_RemitoForms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(492, 428);
+            ClientSize = new Size(492, 449);
+            Controls.Add(CancelarBtn);
             Controls.Add(GenerarRemitoBtn);
             Controls.Add(label5);
             Controls.Add(BuscarTransportistaGroupBox);
@@ -284,5 +296,6 @@ namespace Pampazon
         private Button GenerarRemitoBtn;
         private ColumnHeader IdOrdenColumna;
         internal ListView TransportistasListV;
+        private Button CancelarBtn;
     }
 }
