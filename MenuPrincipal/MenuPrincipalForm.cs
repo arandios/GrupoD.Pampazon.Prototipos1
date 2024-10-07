@@ -34,7 +34,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                ListarOrdenes.ListarOrdenesForm formOrdenes = new ListarOrdenes.ListarOrdenesForm();
+                ListarOrdenes.ConsultarOrdenesForm formOrdenes = new ListarOrdenes.ConsultarOrdenesForm();
                 formOrdenes.ShowDialog();
             }
             catch (Exception ex)
