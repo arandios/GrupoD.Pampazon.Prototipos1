@@ -113,6 +113,7 @@
             limpiarbtn.TabIndex = 11;
             limpiarbtn.Text = "Limpiar";
             limpiarbtn.UseVisualStyleBackColor = true;
+            limpiarbtn.Click += limpiarbtn_Click;
             // 
             // Ordenes_Preparacion
             // 
@@ -122,7 +123,6 @@
             Ordenes_Preparacion.TabIndex = 21;
             Ordenes_Preparacion.UseCompatibleStateImageBehavior = false;
             Ordenes_Preparacion.View = View.Details;
-            Ordenes_Preparacion.SelectedIndexChanged += listView2_SelectedIndexChanged;
             // 
             // Orden_Entrega
             // 
@@ -140,7 +140,6 @@
             label2.Size = new Size(133, 15);
             label2.TabIndex = 23;
             label2.Text = "Ordenes de Preparación";
-            label2.Click += label2_Click;
             // 
             // label3
             // 

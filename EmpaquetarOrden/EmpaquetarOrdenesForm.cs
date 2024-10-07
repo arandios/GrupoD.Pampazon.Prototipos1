@@ -30,10 +30,14 @@ namespace Pampazon.EmpaquetarOrden
                 item.Tag = orden; // Almacenar el objeto completo en la propiedad Tag del item
                 OrdenesParaPrepararlst.Items.Add(item);
             }
+
+            Codigogrb.Enabled = true;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            OrdenesParaPrepararlst.Enabled = false;
+
             // Verificar si hay un ítem seleccionado
             if (OrdenesParaPrepararlst.SelectedItems.Count == 0)
             {
@@ -77,19 +81,27 @@ namespace Pampazon.EmpaquetarOrden
                 OrdenesParaPrepararlst.Items.Remove(itemSeleccionado);
                 MessageBox.Show($"La orden número {idOrden} ha sido confirmada y eliminada.");
                 OrdenesPreparacionlst.Items.Clear();
+                OrdenesParaPrepararlst.Enabled = true;
 
             }
             else
             {
-                
+
                 OrdenesPreparacionlst.Items.Clear();
-  
+                OrdenesParaPrepararlst.Enabled = true;
+
             }
         }
 
         private void VolverMenubtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void SeleccionarOtraOrdenbtn_Click(object sender, EventArgs e)
+        {
+            OrdenesParaPrepararlst.Enabled = true;
+            OrdenesPreparacionlst.Items.Clear();
         }
     }
 }

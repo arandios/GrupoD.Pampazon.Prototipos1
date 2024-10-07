@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             CMBEstado = new ComboBox();
-            LstOrdenesSeleccion = new ListView();
+            LstOrdenesEntrega = new ListView();
             IDOrdenEntregaCOLUMNA = new ColumnHeader();
             EstadoCOLUMNA = new ColumnHeader();
+            CantidadClolumna = new ColumnHeader();
             DetallesOrdenBTN = new Button();
-            LSTDetalleOrden = new ListView();
+            LSTDetalle = new ListView();
             IdOrdenPreparacionCOLUMNA = new ColumnHeader();
             SalirBTN = new Button();
             ConfirmarOrdenEntregaBTN = new Button();
@@ -41,30 +42,36 @@
             BuscarBTN = new Button();
             label1 = new Label();
             IdOrdentxt = new TextBox();
-            CantidadClolumna = new ColumnHeader();
+            ListadoOrdenesEntregaGRP = new GroupBox();
+            FiltrosLBL = new GroupBox();
+            DetalleLBL = new GroupBox();
+            ListadoOrdenesEntregaGRP.SuspendLayout();
+            FiltrosLBL.SuspendLayout();
+            DetalleLBL.SuspendLayout();
             SuspendLayout();
             // 
             // CMBEstado
             // 
             CMBEstado.FormattingEnabled = true;
-            CMBEstado.Location = new Point(282, 65);
+            CMBEstado.Location = new Point(260, 41);
             CMBEstado.Name = "CMBEstado";
             CMBEstado.Size = new Size(182, 33);
             CMBEstado.TabIndex = 38;
             CMBEstado.Text = "Estado";
+            CMBEstado.SelectedIndexChanged += CMBEstado_SelectedIndexChanged;
             // 
-            // LstOrdenesSeleccion
+            // LstOrdenesEntrega
             // 
-            LstOrdenesSeleccion.Columns.AddRange(new ColumnHeader[] { IDOrdenEntregaCOLUMNA, EstadoCOLUMNA, CantidadClolumna });
-            LstOrdenesSeleccion.FullRowSelect = true;
-            LstOrdenesSeleccion.Location = new Point(99, 123);
-            LstOrdenesSeleccion.Margin = new Padding(4, 5, 4, 5);
-            LstOrdenesSeleccion.MultiSelect = false;
-            LstOrdenesSeleccion.Name = "LstOrdenesSeleccion";
-            LstOrdenesSeleccion.Size = new Size(434, 373);
-            LstOrdenesSeleccion.TabIndex = 36;
-            LstOrdenesSeleccion.UseCompatibleStateImageBehavior = false;
-            LstOrdenesSeleccion.View = View.Details;
+            LstOrdenesEntrega.Columns.AddRange(new ColumnHeader[] { IDOrdenEntregaCOLUMNA, EstadoCOLUMNA, CantidadClolumna });
+            LstOrdenesEntrega.FullRowSelect = true;
+            LstOrdenesEntrega.Location = new Point(48, 51);
+            LstOrdenesEntrega.Margin = new Padding(4, 5, 4, 5);
+            LstOrdenesEntrega.MultiSelect = false;
+            LstOrdenesEntrega.Name = "LstOrdenesEntrega";
+            LstOrdenesEntrega.Size = new Size(436, 373);
+            LstOrdenesEntrega.TabIndex = 36;
+            LstOrdenesEntrega.UseCompatibleStateImageBehavior = false;
+            LstOrdenesEntrega.View = View.Details;
             // 
             // IDOrdenEntregaCOLUMNA
             // 
@@ -76,26 +83,32 @@
             EstadoCOLUMNA.Text = "Estado";
             EstadoCOLUMNA.Width = 110;
             // 
+            // CantidadClolumna
+            // 
+            CantidadClolumna.Text = "Cantidad";
+            CantidadClolumna.Width = 120;
+            // 
             // DetallesOrdenBTN
             // 
-            DetallesOrdenBTN.Location = new Point(157, 526);
+            DetallesOrdenBTN.Location = new Point(161, 443);
             DetallesOrdenBTN.Name = "DetallesOrdenBTN";
             DetallesOrdenBTN.Size = new Size(221, 63);
             DetallesOrdenBTN.TabIndex = 35;
             DetallesOrdenBTN.Text = "Detalles de Orden";
             DetallesOrdenBTN.UseVisualStyleBackColor = true;
+            DetallesOrdenBTN.Click += DetallesOrdenBTN_Click;
             // 
-            // LSTDetalleOrden
+            // LSTDetalle
             // 
-            LSTDetalleOrden.Columns.AddRange(new ColumnHeader[] { IdOrdenPreparacionCOLUMNA });
-            LSTDetalleOrden.FullRowSelect = true;
-            LSTDetalleOrden.Location = new Point(633, 123);
-            LSTDetalleOrden.MultiSelect = false;
-            LSTDetalleOrden.Name = "LSTDetalleOrden";
-            LSTDetalleOrden.Size = new Size(212, 373);
-            LSTDetalleOrden.TabIndex = 34;
-            LSTDetalleOrden.UseCompatibleStateImageBehavior = false;
-            LSTDetalleOrden.View = View.Details;
+            LSTDetalle.Columns.AddRange(new ColumnHeader[] { IdOrdenPreparacionCOLUMNA });
+            LSTDetalle.FullRowSelect = true;
+            LSTDetalle.Location = new Point(80, 39);
+            LSTDetalle.MultiSelect = false;
+            LSTDetalle.Name = "LSTDetalle";
+            LSTDetalle.Size = new Size(212, 373);
+            LSTDetalle.TabIndex = 34;
+            LSTDetalle.UseCompatibleStateImageBehavior = false;
+            LSTDetalle.View = View.Details;
             // 
             // IdOrdenPreparacionCOLUMNA
             // 
@@ -104,43 +117,47 @@
             // 
             // SalirBTN
             // 
-            SalirBTN.Location = new Point(660, 618);
+            SalirBTN.Location = new Point(685, 655);
             SalirBTN.Name = "SalirBTN";
-            SalirBTN.Size = new Size(178, 58);
+            SalirBTN.Size = new Size(212, 58);
             SalirBTN.TabIndex = 37;
             SalirBTN.Text = "&Salir";
+            SalirBTN.Click += SalirBTN_Click;
             // 
             // ConfirmarOrdenEntregaBTN
             // 
-            ConfirmarOrdenEntregaBTN.Location = new Point(633, 518);
+            ConfirmarOrdenEntregaBTN.Location = new Point(80, 418);
             ConfirmarOrdenEntregaBTN.Name = "ConfirmarOrdenEntregaBTN";
-            ConfirmarOrdenEntregaBTN.Size = new Size(221, 78);
+            ConfirmarOrdenEntregaBTN.Size = new Size(212, 65);
             ConfirmarOrdenEntregaBTN.TabIndex = 33;
             ConfirmarOrdenEntregaBTN.Text = "Confirmar Orden de Entrega";
             ConfirmarOrdenEntregaBTN.UseVisualStyleBackColor = true;
+            ConfirmarOrdenEntregaBTN.Click += ConfirmarOrdenEntregaBTN_Click;
             // 
             // LimpiarBTN
             // 
-            LimpiarBTN.Location = new Point(746, 59);
+            LimpiarBTN.Location = new Point(683, 35);
             LimpiarBTN.Name = "LimpiarBTN";
             LimpiarBTN.Size = new Size(126, 43);
             LimpiarBTN.TabIndex = 32;
             LimpiarBTN.Text = "Limpiar";
             LimpiarBTN.UseVisualStyleBackColor = true;
+            LimpiarBTN.Click += LimpiarBTN_Click;
             // 
             // BuscarBTN
             // 
-            BuscarBTN.Location = new Point(588, 59);
+            BuscarBTN.Location = new Point(525, 36);
             BuscarBTN.Name = "BuscarBTN";
             BuscarBTN.Size = new Size(126, 43);
             BuscarBTN.TabIndex = 31;
             BuscarBTN.Text = "Buscar:";
             BuscarBTN.UseVisualStyleBackColor = true;
+            BuscarBTN.Click += BuscarBTN_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(83, 27);
+            label1.Location = new Point(20, 21);
             label1.Name = "label1";
             label1.Size = new Size(175, 25);
             label1.TabIndex = 30;
@@ -148,45 +165,72 @@
             // 
             // IdOrdentxt
             // 
-            IdOrdentxt.Location = new Point(99, 65);
+            IdOrdentxt.Location = new Point(36, 59);
             IdOrdentxt.Name = "IdOrdentxt";
             IdOrdentxt.Size = new Size(150, 31);
             IdOrdentxt.TabIndex = 29;
             // 
-            // CantidadClolumna
+            // ListadoOrdenesEntregaGRP
             // 
-            CantidadClolumna.Text = "Cantidad";
-            CantidadClolumna.Width = 120;
+            ListadoOrdenesEntregaGRP.Controls.Add(LstOrdenesEntrega);
+            ListadoOrdenesEntregaGRP.Controls.Add(DetallesOrdenBTN);
+            ListadoOrdenesEntregaGRP.Location = new Point(50, 145);
+            ListadoOrdenesEntregaGRP.Name = "ListadoOrdenesEntregaGRP";
+            ListadoOrdenesEntregaGRP.Size = new Size(523, 530);
+            ListadoOrdenesEntregaGRP.TabIndex = 39;
+            ListadoOrdenesEntregaGRP.TabStop = false;
+            ListadoOrdenesEntregaGRP.Text = "Listado de Ordenes de Entrega";
+            // 
+            // FiltrosLBL
+            // 
+            FiltrosLBL.Controls.Add(CMBEstado);
+            FiltrosLBL.Controls.Add(IdOrdentxt);
+            FiltrosLBL.Controls.Add(label1);
+            FiltrosLBL.Controls.Add(BuscarBTN);
+            FiltrosLBL.Controls.Add(LimpiarBTN);
+            FiltrosLBL.Location = new Point(110, 21);
+            FiltrosLBL.Name = "FiltrosLBL";
+            FiltrosLBL.Size = new Size(842, 109);
+            FiltrosLBL.TabIndex = 40;
+            FiltrosLBL.TabStop = false;
+            // 
+            // DetalleLBL
+            // 
+            DetalleLBL.Controls.Add(ConfirmarOrdenEntregaBTN);
+            DetalleLBL.Controls.Add(LSTDetalle);
+            DetalleLBL.Location = new Point(605, 138);
+            DetalleLBL.Name = "DetalleLBL";
+            DetalleLBL.Size = new Size(373, 492);
+            DetalleLBL.TabIndex = 41;
+            DetalleLBL.TabStop = false;
+            DetalleLBL.Text = "Detalle";
             // 
             // ConfirmarOrdenEntregaForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1031, 706);
-            Controls.Add(CMBEstado);
-            Controls.Add(LstOrdenesSeleccion);
-            Controls.Add(DetallesOrdenBTN);
-            Controls.Add(LSTDetalleOrden);
+            ClientSize = new Size(1079, 744);
+            Controls.Add(DetalleLBL);
+            Controls.Add(FiltrosLBL);
+            Controls.Add(ListadoOrdenesEntregaGRP);
             Controls.Add(SalirBTN);
-            Controls.Add(ConfirmarOrdenEntregaBTN);
-            Controls.Add(LimpiarBTN);
-            Controls.Add(BuscarBTN);
-            Controls.Add(label1);
-            Controls.Add(IdOrdentxt);
             Name = "ConfirmarOrdenEntregaForm";
             Text = "Confirmar Orden de Entrega";
+            ListadoOrdenesEntregaGRP.ResumeLayout(false);
+            FiltrosLBL.ResumeLayout(false);
+            FiltrosLBL.PerformLayout();
+            DetalleLBL.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private ComboBox CMBEstado;
-        private ListView LstOrdenesSeleccion;
+        private ListView LstOrdenesEntrega;
         private ColumnHeader IDOrdenEntregaCOLUMNA;
         private ColumnHeader EstadoCOLUMNA;
         private Button DetallesOrdenBTN;
-        private ListView LSTDetalleOrden;
+        private ListView LSTDetalle;
         private ColumnHeader IdOrdenPreparacionCOLUMNA;
         private Button SalirBTN;
         private Button ConfirmarOrdenEntregaBTN;
@@ -195,5 +239,8 @@
         private Label label1;
         private TextBox IdOrdentxt;
         private ColumnHeader CantidadClolumna;
+        private GroupBox ListadoOrdenesEntregaGRP;
+        private GroupBox FiltrosLBL;
+        private GroupBox DetalleLBL;
     }
 }

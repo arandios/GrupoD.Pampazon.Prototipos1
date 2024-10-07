@@ -12,6 +12,7 @@ namespace Pampazon.OrdenEntrega
 {
     public partial class OrdenEntregaForm : Form
     {
+        private List<ListViewItem> Items;
         public class OrdenEntregaData
         {
             public int NroOrden { get; set; }
@@ -25,6 +26,11 @@ namespace Pampazon.OrdenEntrega
             InitializeComponent();
             ConfigurarListView();
             AgregarDatos();
+            Items = new List<ListViewItem>();
+            foreach (ListViewItem item in Ordenes_Preparacion.Items)
+            {
+                Items.Add((ListViewItem)item.Clone());
+            }
         }
         private void ConfigurarListView()
         {
@@ -106,16 +112,7 @@ namespace Pampazon.OrdenEntrega
                 Orden_Entrega.Items.Add(item);
             }
         }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+    
 
         private void OrdenEntregaForm_Load(object sender, EventArgs e)
         {
@@ -133,21 +130,42 @@ namespace Pampazon.OrdenEntrega
             {
                 MessageBox.Show("El campo de ID de Orden no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+                RestaurarElementos();
             }
 
             if (!int.TryParse(txtIdOrden.Text, out int idOrden))
             {
                 MessageBox.Show("El campo de ID de Orden debe ser un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+                FiltrarElementos(idOrden);
+            }
+            FiltrarElementos(idOrden);
+        }
+
+        private void FiltrarElementos(int idOrden)
+        {
+            Ordenes_Preparacion.Items.Clear();
+            foreach (var item in Items)
+            {
+                if (item.Text == idOrden.ToString())
+                {
+                    Ordenes_Preparacion.Items.Add((ListViewItem)item.Clone());
+                }
             }
         }
 
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        private void RestaurarElementos()
         {
-
+            Ordenes_Preparacion.Items.Clear();
+            foreach (var item in Items)
+            {
+                Ordenes_Preparacion.Items.Add((ListViewItem)item.Clone());
+            }
         }
+    
 
-        private void Seleccionar_Click(object sender, EventArgs e)
+
+    private void Seleccionar_Click(object sender, EventArgs e)
         {
             if (Ordenes_Preparacion.SelectedItems.Count > 0)
             {
@@ -180,11 +198,11 @@ namespace Pampazon.OrdenEntrega
         private void GenerarOrdenEntregabtn_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-       "¿Está seguro de que desea generar la orden de entrega?",
-       "Confirmación",
-       MessageBoxButtons.YesNo,
-       MessageBoxIcon.Question
-   );
+            "¿Está seguro de que desea generar la orden de entrega?",
+            "Confirmación",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
             if (Orden_Entrega.Items.Count == 0)
             {
                 MessageBox.Show("No se puede generar la orden de entrega porque la lista está vacía.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -202,6 +220,12 @@ namespace Pampazon.OrdenEntrega
         private void GenerarOrdenDeEntrega()
         {
             MessageBox.Show("La orden de entrega ha sido generada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void limpiarbtn_Click(object sender, EventArgs e)
+        {
+            txtIdOrden.Text = string.Empty;
+            RestaurarElementos();
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
+            Codigogrb = new GroupBox();
             btnBuscar = new Button();
             OrdenesParaPrepararlst = new ListView();
             CodigoOrdenColumna = new ColumnHeader();
@@ -40,19 +40,20 @@
             CantidadColumna = new ColumnHeader();
             ConfirmarOrdenPreparadabtn = new Button();
             VolverMenubtn = new Button();
-            groupBox1.SuspendLayout();
+            SeleccionarOtraOrdenbtn = new Button();
+            Codigogrb.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox1
+            // Codigogrb
             // 
-            groupBox1.Controls.Add(btnBuscar);
-            groupBox1.Controls.Add(OrdenesParaPrepararlst);
-            groupBox1.Location = new Point(12, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(363, 419);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Ordenes de preparacion para empaquetar";
+            Codigogrb.Controls.Add(btnBuscar);
+            Codigogrb.Controls.Add(OrdenesParaPrepararlst);
+            Codigogrb.Location = new Point(12, 12);
+            Codigogrb.Name = "Codigogrb";
+            Codigogrb.Size = new Size(363, 419);
+            Codigogrb.TabIndex = 0;
+            Codigogrb.TabStop = false;
+            Codigogrb.Text = "Ordenes de preparacion para empaquetar";
             // 
             // btnBuscar
             // 
@@ -137,26 +138,37 @@
             VolverMenubtn.UseVisualStyleBackColor = true;
             VolverMenubtn.Click += VolverMenubtn_Click;
             // 
+            // SeleccionarOtraOrdenbtn
+            // 
+            SeleccionarOtraOrdenbtn.Location = new Point(617, 313);
+            SeleccionarOtraOrdenbtn.Name = "SeleccionarOtraOrdenbtn";
+            SeleccionarOtraOrdenbtn.Size = new Size(231, 40);
+            SeleccionarOtraOrdenbtn.TabIndex = 4;
+            SeleccionarOtraOrdenbtn.Text = "Seleccionar otra orden";
+            SeleccionarOtraOrdenbtn.UseVisualStyleBackColor = true;
+            SeleccionarOtraOrdenbtn.Click += SeleccionarOtraOrdenbtn_Click;
+            // 
             // EmpaquetarOrdenesForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1174, 450);
+            Controls.Add(SeleccionarOtraOrdenbtn);
             Controls.Add(VolverMenubtn);
             Controls.Add(ConfirmarOrdenPreparadabtn);
             Controls.Add(OrdenesPreparacionlst);
-            Controls.Add(groupBox1);
+            Controls.Add(Codigogrb);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "EmpaquetarOrdenesForm";
             Text = "EmpaquetarOrdenesForm";
             Load += EmpaquetarOrdenesForm_Load;
-            groupBox1.ResumeLayout(false);
+            Codigogrb.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupBox1;
+        private GroupBox Codigogrb;
         private Button btnBuscar;
         private ListView OrdenesParaPrepararlst;
         private ColumnHeader CodigoOrdenColumna;
@@ -168,5 +180,6 @@
         private ColumnHeader CantidadColumna;
         private Button ConfirmarOrdenPreparadabtn;
         private Button VolverMenubtn;
+        private Button SeleccionarOtraOrdenbtn;
     }
 }
