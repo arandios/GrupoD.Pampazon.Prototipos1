@@ -38,16 +38,17 @@ namespace Pampazon
             ProductosStockLista.Items.Clear();
             foreach (var Prod in model.obtenerProdFiltrados(nombreProd.ToUpper(), idDeposito))
             {
-                if(Prod.Stock > 0) {
-                //agregar a la lista.
-                ListViewItem item = new ListViewItem();
-                item.Text = Prod.NombreProducto;
-                item.SubItems.Add(Prod.Stock.ToString());
-                item.SubItems.Add(Prod.IdDeposito.ToString());
-                item.SubItems.Add(Prod.DirDeposito);
-                item.SubItems.Add(Prod.Localidad);
-                item.Tag = Prod;
-                ProductosStockLista.Items.Add(item);
+                if (Prod.Stock > 0)
+                {
+                    //agregar a la lista.
+                    ListViewItem item = new ListViewItem();
+                    item.Text = Prod.NombreProducto;
+                    item.SubItems.Add(Prod.Stock.ToString());
+                    item.SubItems.Add(Prod.IdDeposito.ToString());
+                    item.SubItems.Add(Prod.DirDeposito);
+                    item.SubItems.Add(Prod.Localidad);
+                    item.Tag = Prod;
+                    ProductosStockLista.Items.Add(item);
                 }
             }
         } // fin metodo act Lista
@@ -121,8 +122,9 @@ namespace Pampazon
                         MessageBox.Show("Ingrese un numero valido mayor a 0", "Deposito ID", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DepositoBuscarTextBox.Text = "";
                     }
-                    else { 
-                      ActualizarLista(ProdNombreBox.Text.ToUpper(), n);
+                    else
+                    {
+                        ActualizarLista(ProdNombreBox.Text.ToUpper(), n);
                     }
                 }
                 else
@@ -163,7 +165,7 @@ namespace Pampazon
             bool esNumero = int.TryParse(AgregarCantidadTextBox.Text, out cantidad);
             int cantidadMax;
             bool esNumeroMax = int.TryParse(MaxCantidadTxt.Text.ToString(), out cantidadMax);
-            if(ProductoSeleccionadoTxt.Text == "")
+            if (ProductoSeleccionadoTxt.Text == "")
             {
                 MessageBox.Show("Seleccione un Producto", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -209,7 +211,7 @@ namespace Pampazon
                         {
                             model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
                             ActualizarListaOrden();
-                      
+
                         }
                     }
 
@@ -292,7 +294,7 @@ namespace Pampazon
 
         private void GenerarOrderPreparacionBtn(object sender, EventArgs e)
         {
-             if (model.Orden.Productos.Count == 0)
+            if (model.Orden.Productos.Count == 0)
             {
                 DialogResult result = MessageBox.Show($"Ingrese Productos para generar Orden", "Confirmation");
             }
@@ -309,17 +311,18 @@ namespace Pampazon
                     DialogResult result = MessageBox.Show($"Orden ingresada con exitos, le enviaremos un mail con los detalles", "Confirmation");
                     model.Orden.borrarOrden();
                     ActualizarListaOrden();
-                } else
+                }
+                else
                 {
                     DialogResult result = MessageBox.Show($"Continuar con la orden", "Confirmation");
                 }
-         
+
             }
         }
 
         private void VolverBtn(object sender, EventArgs e)
         {
-           this.Close();
+            this.Close();
         }
 
         //fin de clase

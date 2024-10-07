@@ -64,6 +64,8 @@
             label6 = new Label();
             TransportistaSeleccionadoTxt = new TextBox();
             label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
             SuspendLayout();
             // 
             // ProductosStockLista
@@ -367,11 +369,31 @@
             label7.TabIndex = 52;
             label7.Text = "Transportista Selecionado";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(41, 58);
+            label8.Name = "label8";
+            label8.Size = new Size(69, 20);
+            label8.TabIndex = 53;
+            label8.Text = "Producto";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(41, 107);
+            label9.Name = "label9";
+            label9.Size = new Size(70, 20);
+            label9.TabIndex = 54;
+            label9.Text = "Deposito";
+            // 
             // GenerarOrdenPreparacionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1195, 940);
+            Controls.Add(label9);
+            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(TransportistaSeleccionadoTxt);
             Controls.Add(label6);
@@ -443,5 +465,7 @@
         protected TextBox TransportistaSeleccionadoTxt;
         private Label label7;
         private ColumnHeader columnHeader1;
+        private Label label8;
+        private Label label9;
     }
 }
