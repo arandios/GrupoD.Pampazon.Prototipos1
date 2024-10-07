@@ -8,23 +8,18 @@ namespace Pampazon.ConfirmarOrdenEntrega
 {
     internal class OrdenEntrega
     {
-
-        public int Nro_OrdenP { get; set; }
+        public int Nro_OrdenE { get; set; }
         public DateTime FechaEmision { get; set; }
-        
         public string Estado { get; set; }
         public DateTime Fecha_Estado { get; set; }
-        
-
-
-        public OrdenEntrega(int nro_orden, DateTime fechaemision, List<int> op_asociadas, string estado, DateTime fecha_estado)
+        public List<OrdenPreparacion> OrdenesPreparacionAsociadas { get; set; }
+        public OrdenEntrega(int nro_orden, DateTime fechaemision, string estado, DateTime fecha_estado, List<OrdenPreparacion> ordenesPreparacion)
         {
-            Nro_OrdenP = nro_orden;
+            Nro_OrdenE = nro_orden;
             FechaEmision = fechaemision;
-            
             Estado = estado;
             Fecha_Estado = fecha_estado;
-            
+            OrdenesPreparacionAsociadas = ordenesPreparacion;
         }
     }
 }
