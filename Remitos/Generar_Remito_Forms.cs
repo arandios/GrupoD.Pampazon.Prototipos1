@@ -252,11 +252,16 @@ namespace Pampazon
             MessageBox.Show("Orden eliminada con éxito.", "Orden Eliminada", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void CancelarBtn_Click(object sender, EventArgs e)
+        /// <summary>
+        /// BOTON DE SALIR
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CancelarBtn_Click(object sender, EventArgs e) //boton SALIR
         {
             // Confirmar la acción
-            var result = MessageBox.Show("¿Está seguro que desea cancelar?",
-                                          "Confirmar Eliminación",
+            var result = MessageBox.Show("¿Está seguro que desea salir?",
+                                          "Confirmar",
                                           MessageBoxButtons.YesNo,
                                           MessageBoxIcon.Question);
 
