@@ -106,30 +106,6 @@ namespace Pampazon.OrdenSeleccion
             AgruparOrdenesDePreparacionPendientes();
         }
 
-        //---VERSION 1 DEL METODO QuitarOrdenPreparacionASeleccionBTN_Click
-        /*
-        private void QuitarOrdenPreparacionASeleccionBTN_Click(object sender, EventArgs e)
-        {
-            if (OrdenesDePreparacionPendientesListView.SelectedItems.Count != 1)
-            {
-                MessageBox.Show("Seleccione un y solo una Orden de Preparacion para borrar de la lista.");
-                return;
-            }
-            var item = OrdenesDePreparacionPendientesListView.SelectedItems[0];
-            var ordenDePreparacionSeleccionada = (OrdenPreparacion)item.Tag;
-
-            var error = modelo.BorrarOrdenDePreparacion(ordenDePreparacionSeleccionada);
-            if (error != null)
-            {
-                MessageBox.Show(error);
-                return;
-            }
-
-            //La Orden de Preparacion se borro de la lista.
-            actualizarListaOrdenDePreparacion();
-        }
-        */
-
         private void QuitarOrdenPreparacionASeleccionBTN_Click(object sender, EventArgs e)
         {
             // Obtener los elementos seleccionados en OrdenesDePreparacionPendientesListView
@@ -185,10 +161,10 @@ namespace Pampazon.OrdenSeleccion
                 // Crear un nuevo ítem para la lista de órdenes de preparación pendientes
                 ListViewItem newItem = new ListViewItem();
                 newItem.Text = ordenPreparacion.IDOrdenPreparacion;
-                newItem.SubItems.Add(ordenPreparacion.IdCliente.ToString());
+                //newItem.SubItems.Add(ordenPreparacion.IdCliente.ToString());
                 newItem.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
-                newItem.SubItems.Add(string.Join(", ", ordenPreparacion.Mercaderias.Select(m => m.DescripcionProducto)));
-                newItem.SubItems.Add(ordenPreparacion.CantidadMercaderia.ToString());
+                //newItem.SubItems.Add(string.Join(", ", ordenPreparacion.Mercaderias.Select(m => m.DescripcionProducto)));
+                //newItem.SubItems.Add(ordenPreparacion.CantidadMercaderia.ToString());
                 newItem.SubItems.Add(ordenPreparacion.FechaOrdenRecepcion.ToString());
                 newItem.SubItems.Add(ordenPreparacion.EstadoOrdenPreparacion.ToString());
                 newItem.SubItems.Add(ordenPreparacion.Prioridad.ToString());
@@ -304,6 +280,13 @@ namespace Pampazon.OrdenSeleccion
 
             // Mostrar mensaje de confirmación
             MessageBox.Show($"Se ha creado la orden de selección número {ordenSeleccion.IDOrdenSeleccion} exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Ajustar el ancho de las columnas automáticamente según el contenido
+            foreach (ColumnHeader column in OrdenesDePreparacionPendientesProductoUbicacionListView.Columns)
+            {
+                OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.ColumnContent);
+            }
+
         }
 
         // ==============================================================================
@@ -418,6 +401,7 @@ namespace Pampazon.OrdenSeleccion
                 OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.ColumnContent);
             }
         }
+
     }
 }
 

@@ -19,8 +19,8 @@ namespace Pampazon.OrdenSeleccion
                 "El Miguelon",
                 new List<Mercaderia>
                 {
-                    new Mercaderia { IDProducto = "P1", IdCliente = "123", DescripcionProducto = "Alcachofas", Cantidad = 10 },
-                    new Mercaderia { IDProducto = "P2", IdCliente = "123", DescripcionProducto = "Brocoli", Cantidad = 5 }
+                    new Mercaderia { IDProducto = "P1", IdCliente = "123", DescripcionProducto = "Alcachofas", Cantidad = 10, Ubicacion = "1-1-1" },
+                    new Mercaderia { IDProducto = "P2", IdCliente = "123", DescripcionProducto = "Brocoli", Cantidad = 5, Ubicacion = "1-1-2" }
                 },
                 15,
                 DateTime.Now,
@@ -34,8 +34,8 @@ namespace Pampazon.OrdenSeleccion
                 "Star Labs",
                 new List<Mercaderia>
                 {
-                    new Mercaderia { IDProducto = "P3", IdCliente = "456", DescripcionProducto = "Manzanas", Cantidad = 20 },
-                    new Mercaderia { IDProducto = "P4", IdCliente = "456", DescripcionProducto = "Brocoli", Cantidad = 10 }
+                    new Mercaderia { IDProducto = "P3", IdCliente = "456", DescripcionProducto = "Manzanas", Cantidad = 20, Ubicacion = "2-2-1" },
+                    new Mercaderia { IDProducto = "P4", IdCliente = "456", DescripcionProducto = "Brocoli", Cantidad = 10, Ubicacion = "2-2-2" }
                 },
                 30,
                 DateTime.Now,
@@ -49,7 +49,7 @@ namespace Pampazon.OrdenSeleccion
                 "Acme",
                 new List<Mercaderia>
                 {
-                    new Mercaderia { IDProducto = "P5", IdCliente = "789", DescripcionProducto = "Alcachofas", Cantidad = 15 }
+                    new Mercaderia { IDProducto = "P5", IdCliente = "789", DescripcionProducto = "Alcachofas", Cantidad = 15, Ubicacion = "3-3-1" }
                 },
                 15,
                 DateTime.Now,
@@ -63,7 +63,7 @@ namespace Pampazon.OrdenSeleccion
                 "GeoPlast",
                 new List<Mercaderia>
                 {
-                    new Mercaderia { IDProducto = "P6", IdCliente = "101", DescripcionProducto = "Bananas", Cantidad = 25 }
+                    new Mercaderia { IDProducto = "P6", IdCliente = "101", DescripcionProducto = "Bananas", Cantidad = 25, Ubicacion = "3-3-3" }
                 },
                 25,
                 DateTime.Now,
@@ -77,7 +77,7 @@ namespace Pampazon.OrdenSeleccion
                 "Cliente E",
                 new List<Mercaderia>
                 {
-                    new Mercaderia { IDProducto = "P7", IdCliente = "202", DescripcionProducto = "Bananas", Cantidad = 30 }
+                    new Mercaderia { IDProducto = "P7", IdCliente = "202", DescripcionProducto = "Bananas", Cantidad = 30, Ubicacion = "3-3-3" }
                 },
                 30,
                 DateTime.Now,
@@ -86,12 +86,6 @@ namespace Pampazon.OrdenSeleccion
                 new Transportista(99887766, "Transportista E", "202")
             )
         };
-
-
-
-
-
-
 
         /*TODO: Validar los datos de una Orden de Seleccion.
         Devolver mensaje de error si algo esta mal. 
@@ -102,16 +96,13 @@ namespace Pampazon.OrdenSeleccion
             return null;
         }
 
-
         public string BorrarOrdenDePreparacion(OrdenPreparacion OrdenDePreparacionSeleccionada)
         {
             //Validaciones.
             //TODO: Reveer que validaciones serian necesarias aqui. Limitaciones antes de borrar. (No deberia haber?)
 
-            
             OrdenesDePreparacion.Remove(OrdenDePreparacionSeleccionada);
             return null; //todo ok.
         }
-
     }
 }

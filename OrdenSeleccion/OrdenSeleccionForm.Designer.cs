@@ -61,8 +61,6 @@
             OrdenesDePreparacionPendientesListView = new ListView();
             OPaOS_IdOP = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
@@ -323,7 +321,7 @@
             // 
             // OrdenesDePreparacionPendientesListView
             // 
-            OrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOP, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader9 });
+            OrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOP, columnHeader3, columnHeader6, columnHeader7, columnHeader8, columnHeader9 });
             OrdenesDePreparacionPendientesListView.Location = new Point(10, 27);
             OrdenesDePreparacionPendientesListView.Name = "OrdenesDePreparacionPendientesListView";
             OrdenesDePreparacionPendientesListView.Size = new Size(466, 181);
@@ -340,16 +338,6 @@
             // 
             columnHeader3.Text = "DescripcionCliente";
             columnHeader3.Width = 31;
-            // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Mercaderias";
-            columnHeader4.Width = 31;
-            // 
-            // columnHeader5
-            // 
-            columnHeader5.Text = "CantidadMercaderia";
-            columnHeader5.Width = 31;
             // 
             // columnHeader6
             // 
@@ -373,7 +361,7 @@
             // 
             // OrdenesDePreparacionPendientesProductoUbicacionListView
             // 
-            OrdenesDePreparacionPendientesProductoUbicacionListView.Columns.AddRange(new ColumnHeader[] { Producto, Cantidad, Ubicacion });
+            OrdenesDePreparacionPendientesProductoUbicacionListView.Columns.AddRange(new ColumnHeader[] { Producto, Ubicacion, Cantidad });
             OrdenesDePreparacionPendientesProductoUbicacionListView.Location = new Point(482, 27);
             OrdenesDePreparacionPendientesProductoUbicacionListView.Name = "OrdenesDePreparacionPendientesProductoUbicacionListView";
             OrdenesDePreparacionPendientesProductoUbicacionListView.Size = new Size(286, 181);
@@ -387,10 +375,12 @@
             // 
             // Cantidad
             // 
+            Cantidad.DisplayIndex = 1;
             Cantidad.Text = "Cantidad";
             // 
             // Ubicacion
             // 
+            Ubicacion.DisplayIndex = 2;
             Ubicacion.Text = "Ubicacion";
             // 
             // OrdenSeleccionForm
@@ -465,8 +455,6 @@
         private ListView OrdenesDePreparacionPendientesListView;
         private ColumnHeader OPaOS_IdOP;
         private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
         private ColumnHeader columnHeader7;
         private ColumnHeader columnHeader8;
