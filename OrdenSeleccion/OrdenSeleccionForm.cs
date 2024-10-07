@@ -65,25 +65,6 @@ namespace Pampazon.OrdenSeleccion
 
         }
 
-        /*
-                     //TODO: Pasar datos de la Ordenseleccion (lista), al objeto ordenSeleccion.
-
-            //Carga datos de la Orden de preparacion a la orden de seleccion.
-            //ordenSeleccion.Nombre = NombreText.Text;
-
-            //Se lo paso al modelo. 
-            /*var error =modelo.IngresarOrdenSeleccion(ordenSeleccion);
-             if(error !=null)
-            {
-            Message.Box(error)
-            }
-            else{
-            Message.Box("Los datos se han ingresado correctamente. ")
-            }
-         
-         
-         */
-
         // ==============================================================================
         // EVENTOS DEL FORMULARIO
         // ==============================================================================
