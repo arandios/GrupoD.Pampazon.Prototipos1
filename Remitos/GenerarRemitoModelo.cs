@@ -9,16 +9,23 @@ public class GenerarRemitoModelo
         
     }
 
-    public static bool ComprobarDni(int DNI)
+    public static string ComprobarDni(int DNI)
     {
-        // Verificar que el DNI sea un número positivo y esté dentro del rango permitido
-        if (DNI > 11111111 && DNI < 99999999)
+        // Verificar que no sea negativo
+        if (DNI < 0)
         {
-            return true; // DNI válido
+            return "El número de DNI no puede ser negativo.";
+        }
+
+        // Convertir el DNI a string y verificar su longitud
+        string dniString = DNI.ToString();
+        if (dniString.Length == 8)
+        {
+            return ""; // DNI válido
         }
         else
         {
-            return false; // DNI no válido
+            return "El número de DNI debe tener exactamente 8 dígitos.";
         }
     }
 
