@@ -96,7 +96,7 @@
             // 
             // CLNroOrden
             // 
-            CLNroOrden.Text = "Orden Seleccion";
+            CLNroOrden.Text = "ID Orden Seleccion";
             CLNroOrden.Width = 175;
             // 
             // CLEstado
