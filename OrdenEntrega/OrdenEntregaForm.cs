@@ -225,6 +225,7 @@ namespace Pampazon.OrdenEntrega
         private void limpiarbtn_Click(object sender, EventArgs e)
         {
             txtIdOrden.Text = string.Empty;
+            RestaurarElementos();
         }
     }
 }
