@@ -160,7 +160,7 @@
             Controls.Add(Codigogrb);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "EmpaquetarOrdenesForm";
-            Text = "EmpaquetarOrdenesForm";
+            Text = "Empaquetar Ordenes";
             Load += EmpaquetarOrdenesForm_Load;
             Codigogrb.ResumeLayout(false);
             ResumeLayout(false);

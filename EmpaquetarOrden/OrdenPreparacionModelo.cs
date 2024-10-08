@@ -41,7 +41,7 @@ namespace Pampazon.EmpaquetarOrden
                     {
                         Producto = new Producto
                         {
-                            IdProducto = 2,
+                            IdProducto = 3,
                             DescripcionProducto = "Zapatilla Adidas",
                             Detalle = "Modelos surtidos Adidas"
                         },
