@@ -225,76 +225,6 @@ namespace Pampazon.OrdenSeleccion
             AgruparOrdenesDePreparacionPendientes();
         }
 
-        /*
-        private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
-        {
-            // Limpiar la lista actual
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
-
-            // Obtener los valores de los filtros
-            string clienteAFiltrar = ClienteTextBoxOrdenSeleccion.Text.Trim();
-            string transportistaAFiltrar = TransportistaTextBoxOrdenSeleccion.Text.Trim();
-            string idOrdenAFiltrar = NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Trim();
-            string prioridadAFiltrar = PrioridadComboBoxOrdenSeleccion.SelectedItem?.ToString();
-
-            // Verificar si al menos un filtro está completo
-            if (string.IsNullOrWhiteSpace(clienteAFiltrar) &&
-                string.IsNullOrWhiteSpace(transportistaAFiltrar) &&
-                string.IsNullOrWhiteSpace(idOrdenAFiltrar) &&
-                string.IsNullOrWhiteSpace(prioridadAFiltrar))
-            {
-                MessageBox.Show("Por favor, ingrese al menos un criterio de búsqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Validar que el valor ingresado en NumeroOrdenPreparacionTextBoxOrdenSeleccion sea un número válido (si es que se ha ingresado algo)
-            if (!string.IsNullOrEmpty(idOrdenAFiltrar))
-            {
-                if (!int.TryParse(idOrdenAFiltrar, out int idOrden) || idOrden < 0 || idOrdenAFiltrar.Length < 3 || idOrdenAFiltrar.Length > 8)
-                {
-                    MessageBox.Show("Por favor, ingrese un número de orden válido (entre 3 y 8 dígitos).");
-                    return;
-                }
-            }
-
-            // Obtener la lista de órdenes de preparación desde el modelo
-            var ordenesPreparacion = modelo.OrdenesDePreparacion;
-
-            // Filtrar la lista según los criterios ingresados
-            var ordenesFiltradas = ordenesPreparacion
-                .Where(op =>
-                    (string.IsNullOrEmpty(clienteAFiltrar) || op.DescripcionCliente.Contains(clienteAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
-                    (string.IsNullOrEmpty(transportistaAFiltrar) || op.TransportistaDetalle.Nombre.Contains(transportistaAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
-                    (string.IsNullOrEmpty(idOrdenAFiltrar) || op.IDOrdenPreparacion.Contains(idOrdenAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
-                    (string.IsNullOrEmpty(prioridadAFiltrar) || op.Prioridad.ToString() == prioridadAFiltrar)
-                )
-                .ToList();
-
-            if (ordenesFiltradas.Any())
-            {
-                // Agregar las órdenes filtradas al ListView
-                foreach (var orden in ordenesFiltradas)
-                {
-                    var item = new ListViewItem(new[]
-                    {
-                orden.IDOrdenPreparacion,
-                orden.DescripcionCliente,
-                orden.FechaOrdenRecepcion.ToString("yyyy-MM-dd"),
-                orden.EstadoOrdenPreparacion.ToString(),
-                orden.Prioridad.ToString(),
-                orden.TransportistaDetalle.Nombre
-            });
-
-                    // Asociar el objeto orden como Tag del ListViewItem
-                    item.Tag = orden;
-                    DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se encontraron órdenes de preparación con los criterios especificados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }*/
 
         private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
@@ -317,6 +247,7 @@ namespace Pampazon.OrdenSeleccion
                 return;
             }
 
+            /*
             // Validar que el valor ingresado en NumeroOrdenPreparacionTextBoxOrdenSeleccion sea un número válido (si es que se ha ingresado algo)
             if (!string.IsNullOrEmpty(idOrdenAFiltrar))
             {
@@ -326,6 +257,7 @@ namespace Pampazon.OrdenSeleccion
                     return;
                 }
             }
+            */
 
             // Obtener la lista de órdenes de preparación desde el modelo
             var ordenesPreparacion = modelo.OrdenesDePreparacion;
