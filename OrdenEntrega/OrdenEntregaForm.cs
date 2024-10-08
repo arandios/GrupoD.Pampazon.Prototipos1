@@ -112,7 +112,7 @@ namespace Pampazon.OrdenEntrega
                 Orden_Entrega.Items.Add(item);
             }
         }
-    
+
 
         private void OrdenEntregaForm_Load(object sender, EventArgs e)
         {
@@ -126,23 +126,32 @@ namespace Pampazon.OrdenEntrega
 
         private void Buscarbtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtIdOrden.Text))
+            bool isIdOrdenEmpty = string.IsNullOrWhiteSpace(txtIdOrden.Text);
+            bool isFechaEntregaEmpty = string.IsNullOrWhiteSpace(FechaEntregacmb.Text);
+
+            if (isIdOrdenEmpty && isFechaEntregaEmpty)
             {
-                MessageBox.Show("El campo de ID de Orden no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Debe ingresar un ID de Orden o seleccionar una Fecha de Entrega.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 RestaurarElementos();
+                return;
             }
 
-            if (!int.TryParse(txtIdOrden.Text, out int idOrden))
+            if (!isIdOrdenEmpty && int.TryParse(txtIdOrden.Text, out int idOrden))
+            {
+                FiltrarElementosID(idOrden);
+            }
+            else if (!isFechaEntregaEmpty)
+            {
+                FiltrarElementosPorFecha(FechaEntregacmb.Text);
+            }
+            else
             {
                 MessageBox.Show("El campo de ID de Orden debe ser un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-                FiltrarElementos(idOrden);
+                RestaurarElementos();
             }
-            FiltrarElementos(idOrden);
         }
 
-        private void FiltrarElementos(int idOrden)
+        private void FiltrarElementosID(int idOrden)
         {
             Ordenes_Preparacion.Items.Clear();
             foreach (var item in Items)
@@ -154,6 +163,17 @@ namespace Pampazon.OrdenEntrega
             }
         }
 
+        private void FiltrarElementosPorFecha(string fechaEntrega)
+        {
+            Ordenes_Preparacion.Items.Clear();
+            foreach (var item in Items)
+            {
+                if (item.SubItems[1].Text == fechaEntrega)
+                {
+                    Ordenes_Preparacion.Items.Add((ListViewItem)item.Clone());
+                }
+            }
+        }
         private void RestaurarElementos()
         {
             Ordenes_Preparacion.Items.Clear();
@@ -162,10 +182,10 @@ namespace Pampazon.OrdenEntrega
                 Ordenes_Preparacion.Items.Add((ListViewItem)item.Clone());
             }
         }
-    
 
 
-    private void Seleccionar_Click(object sender, EventArgs e)
+
+        private void Seleccionar_Click(object sender, EventArgs e)
         {
             if (Ordenes_Preparacion.SelectedItems.Count > 0)
             {
@@ -220,12 +240,35 @@ namespace Pampazon.OrdenEntrega
         private void GenerarOrdenDeEntrega()
         {
             MessageBox.Show("La orden de entrega ha sido generada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Orden_Entrega.Items.Clear();
         }
 
         private void limpiarbtn_Click(object sender, EventArgs e)
         {
             txtIdOrden.Text = string.Empty;
+            FechaEntregacmb.Text = string.Empty;
             RestaurarElementos();
+        }
+
+        private void Eliminar_Click(object sender, EventArgs e)
+        {
+
+            if (Orden_Entrega.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = Orden_Entrega.SelectedItems[0];
+                ListViewItem itemToMove = (ListViewItem)selectedItem.Clone();
+                Ordenes_Preparacion.Items.Add(itemToMove);
+                Orden_Entrega.Items.Remove(selectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una orden para devolver.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FechaEntregacmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

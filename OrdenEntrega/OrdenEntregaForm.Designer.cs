@@ -40,6 +40,7 @@
             label2 = new Label();
             label3 = new Label();
             Seleccionar = new Button();
+            Eliminar = new Button();
             SuspendLayout();
             // 
             // Buscarbtn
@@ -55,7 +56,7 @@
             // 
             // Salirbtn
             // 
-            Salirbtn.Location = new Point(651, 380);
+            Salirbtn.Location = new Point(679, 363);
             Salirbtn.Margin = new Padding(2);
             Salirbtn.Name = "Salirbtn";
             Salirbtn.Size = new Size(155, 43);
@@ -66,7 +67,7 @@
             // 
             // GenerarOrdenEntregabtn
             // 
-            GenerarOrdenEntregabtn.Location = new Point(651, 312);
+            GenerarOrdenEntregabtn.Location = new Point(679, 312);
             GenerarOrdenEntregabtn.Margin = new Padding(2);
             GenerarOrdenEntregabtn.Name = "GenerarOrdenEntregabtn";
             GenerarOrdenEntregabtn.Size = new Size(155, 47);
@@ -78,12 +79,14 @@
             // FechaEntregacmb
             // 
             FechaEntregacmb.FormattingEnabled = true;
+            FechaEntregacmb.Items.AddRange(new object[] { "2024-10-01", "2024-10-02", "2024-10-03" });
             FechaEntregacmb.Location = new Point(200, 33);
             FechaEntregacmb.Margin = new Padding(2);
             FechaEntregacmb.Name = "FechaEntregacmb";
             FechaEntregacmb.Size = new Size(129, 23);
             FechaEntregacmb.TabIndex = 15;
             FechaEntregacmb.Text = "Fecha entrega";
+            FechaEntregacmb.SelectedIndexChanged += FechaEntregacmb_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -160,11 +163,22 @@
             Seleccionar.UseVisualStyleBackColor = true;
             Seleccionar.Click += Seleccionar_Click_1;
             // 
+            // Eliminar
+            // 
+            Eliminar.Location = new Point(470, 313);
+            Eliminar.Name = "Eliminar";
+            Eliminar.Size = new Size(89, 46);
+            Eliminar.TabIndex = 26;
+            Eliminar.Text = "Eliminar";
+            Eliminar.UseVisualStyleBackColor = true;
+            Eliminar.Click += Eliminar_Click;
+            // 
             // OrdenEntregaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(846, 434);
+            ClientSize = new Size(846, 417);
+            Controls.Add(Eliminar);
             Controls.Add(Seleccionar);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -199,5 +213,6 @@
         private Label label2;
         private Label label3;
         private Button Seleccionar;
+        private Button Eliminar;
     }
 }

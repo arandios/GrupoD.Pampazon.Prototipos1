@@ -308,13 +308,13 @@ namespace Pampazon
                 DialogResult resultOrden = MessageBox.Show($"Confirmar Orden", "Confirmation", MessageBoxButtons.YesNo);
                 if (resultOrden == DialogResult.Yes)
                 {
-                    DialogResult result = MessageBox.Show($"Orden ingresada con exitos, le enviaremos un mail con los detalles", "Confirmation");
+                    DialogResult result = MessageBox.Show($"Orden ingresada con exitos, le enviaremos un mail con los detalles", "Confirmar Orden");
                     model.Orden.borrarOrden();
                     ActualizarListaOrden();
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show($"Continuar con la orden", "Confirmation");
+                    DialogResult result = MessageBox.Show($"Continuar con la orden");
                 }
 
             }
@@ -323,6 +323,11 @@ namespace Pampazon
         private void VolverBtn(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
 
         //fin de clase
