@@ -112,7 +112,7 @@ namespace Pampazon.OrdenEntrega
                 Orden_Entrega.Items.Add(item);
             }
         }
-    
+
 
         private void OrdenEntregaForm_Load(object sender, EventArgs e)
         {
@@ -162,10 +162,10 @@ namespace Pampazon.OrdenEntrega
                 Ordenes_Preparacion.Items.Add((ListViewItem)item.Clone());
             }
         }
-    
 
 
-    private void Seleccionar_Click(object sender, EventArgs e)
+
+        private void Seleccionar_Click(object sender, EventArgs e)
         {
             if (Ordenes_Preparacion.SelectedItems.Count > 0)
             {
@@ -220,12 +220,29 @@ namespace Pampazon.OrdenEntrega
         private void GenerarOrdenDeEntrega()
         {
             MessageBox.Show("La orden de entrega ha sido generada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Orden_Entrega.Items.Clear();
         }
 
         private void limpiarbtn_Click(object sender, EventArgs e)
         {
             txtIdOrden.Text = string.Empty;
             RestaurarElementos();
+        }
+
+        private void Eliminar_Click(object sender, EventArgs e)
+        {
+
+            if (Orden_Entrega.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = Orden_Entrega.SelectedItems[0];
+                ListViewItem itemToMove = (ListViewItem)selectedItem.Clone();
+                Ordenes_Preparacion.Items.Add(itemToMove);
+                Orden_Entrega.Items.Remove(selectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una orden para devolver.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
