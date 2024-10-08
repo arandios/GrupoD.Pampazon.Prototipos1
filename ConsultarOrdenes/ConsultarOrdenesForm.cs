@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Pampazon.ListarOrdenes
 {
-    public partial class ListarOrdenesForm : Form
+    public partial class ConsultarOrdenesForm : Form
     {
-        public ListarOrdenesForm()
+        public ConsultarOrdenesForm()
         {
             InitializeComponent();
         }

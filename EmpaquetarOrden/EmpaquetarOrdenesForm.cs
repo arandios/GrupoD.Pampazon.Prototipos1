@@ -42,6 +42,7 @@ namespace Pampazon.EmpaquetarOrden
             if (OrdenesParaPrepararlst.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Seleccione una orden para ver el detalle.");
+                OrdenesParaPrepararlst.Enabled = true;
                 return;
             }
 

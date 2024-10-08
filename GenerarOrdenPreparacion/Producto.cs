@@ -12,7 +12,8 @@ namespace Pampazon.GenerarOrdenPreparacion
 
         public int Stock { get; set; }
         public int IdDeposito { get; set; }
-        public string DirDeposito { get; set; }// esto es para datos de prueba, claramente no Id deposito no va a aca
+        public string DirDeposito { get; set; }
+        public string Localidad { get; set; }// esto es para datos de prueba, claramente no Id deposito no va a aca
 
 
         public void cambiarStock(int sacarCantidad)

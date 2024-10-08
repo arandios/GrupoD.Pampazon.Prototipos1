@@ -1,6 +1,6 @@
 ﻿namespace Pampazon.ListarOrdenes
 {
-    partial class ListarOrdenesForm
+    partial class ConsultarOrdenesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -52,79 +52,79 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(9, 7);
+            label1.Location = new Point(10, 9);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(133, 15);
+            label1.Size = new Size(170, 20);
             label1.TabIndex = 0;
             label1.Text = "Id orden de preparación";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(189, 7);
+            label2.Location = new Point(216, 9);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(55, 15);
+            label2.Size = new Size(70, 20);
             label2.TabIndex = 2;
             label2.Text = "Id cliente";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(530, 9);
+            label3.Location = new Point(606, 12);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(38, 15);
+            label3.Size = new Size(47, 20);
             label3.TabIndex = 5;
             label3.Text = "Fecha";
             // 
             // comboBox4
             // 
             comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(12, 70);
-            comboBox4.Margin = new Padding(2, 2, 2, 2);
+            comboBox4.Location = new Point(14, 93);
+            comboBox4.Margin = new Padding(2, 3, 2, 3);
             comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(146, 23);
+            comboBox4.Size = new Size(166, 28);
             comboBox4.TabIndex = 6;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(9, 52);
+            label4.Location = new Point(10, 69);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(42, 15);
+            label4.Size = new Size(54, 20);
             label4.TabIndex = 7;
             label4.Text = "Estado";
             // 
             // button1
             // 
-            button1.Location = new Point(288, 104);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Location = new Point(329, 139);
+            button1.Margin = new Padding(2, 3, 2, 3);
             button1.Name = "button1";
-            button1.Size = new Size(158, 21);
+            button1.Size = new Size(181, 28);
             button1.TabIndex = 8;
             button1.Text = "Buscar";
             button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            button2.Location = new Point(455, 103);
-            button2.Margin = new Padding(2, 2, 2, 2);
+            button2.Location = new Point(520, 137);
+            button2.Margin = new Padding(2, 3, 2, 3);
             button2.Name = "button2";
             button2.RightToLeft = RightToLeft.No;
-            button2.Size = new Size(158, 22);
+            button2.Size = new Size(181, 29);
             button2.TabIndex = 9;
             button2.Text = "Limpiar";
             button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            button3.Location = new Point(761, 326);
-            button3.Margin = new Padding(2, 2, 2, 2);
+            button3.Location = new Point(870, 435);
+            button3.Margin = new Padding(2, 3, 2, 3);
             button3.Name = "button3";
-            button3.Size = new Size(158, 21);
+            button3.Size = new Size(181, 28);
             button3.TabIndex = 11;
             button3.Text = "Volver al menu principal";
             button3.UseVisualStyleBackColor = true;
@@ -132,80 +132,81 @@
             // comboBox5
             // 
             comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(711, 26);
-            comboBox5.Margin = new Padding(2, 2, 2, 2);
+            comboBox5.Location = new Point(813, 35);
+            comboBox5.Margin = new Padding(2, 3, 2, 3);
             comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(146, 23);
+            comboBox5.Size = new Size(166, 28);
             comboBox5.TabIndex = 12;
             comboBox5.SelectedIndexChanged += comboBox5_SelectedIndexChanged;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(709, 9);
+            label5.Location = new Point(810, 12);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(51, 15);
+            label5.Size = new Size(63, 20);
             label5.TabIndex = 13;
             label5.Text = "Sucursal";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(192, 26);
-            textBox1.Margin = new Padding(2, 2, 2, 2);
+            textBox1.Location = new Point(219, 35);
+            textBox1.Margin = new Padding(2, 3, 2, 3);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(149, 23);
+            textBox1.Size = new Size(170, 27);
             textBox1.TabIndex = 14;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(12, 26);
-            textBox2.Margin = new Padding(2, 2, 2, 2);
+            textBox2.Location = new Point(14, 35);
+            textBox2.Margin = new Padding(2, 3, 2, 3);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(149, 23);
+            textBox2.Size = new Size(170, 27);
             textBox2.TabIndex = 15;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(534, 26);
-            textBox3.Margin = new Padding(2, 2, 2, 2);
+            textBox3.Location = new Point(610, 35);
+            textBox3.Margin = new Padding(2, 3, 2, 3);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(149, 23);
+            textBox3.Size = new Size(170, 27);
             textBox3.TabIndex = 16;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(362, 26);
-            textBox4.Margin = new Padding(2, 2, 2, 2);
+            textBox4.Location = new Point(414, 35);
+            textBox4.Margin = new Padding(2, 3, 2, 3);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(149, 23);
+            textBox4.Size = new Size(170, 27);
             textBox4.TabIndex = 17;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(359, 9);
+            label6.Location = new Point(410, 12);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(69, 15);
+            label6.Size = new Size(87, 20);
             label6.TabIndex = 18;
             label6.Text = "Id producto";
             // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            listView1.Location = new Point(9, 130);
+            listView1.Location = new Point(10, 173);
+            listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(918, 185);
+            listView1.Size = new Size(1049, 245);
             listView1.TabIndex = 19;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
             // 
-            // ListarOrdenes
+            // ConsultarOrdenesForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(953, 404);
+            ClientSize = new Size(1089, 539);
             Controls.Add(listView1);
             Controls.Add(label6);
             Controls.Add(textBox4);
@@ -223,9 +224,9 @@
             Controls.Add(label2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(2, 2, 2, 2);
-            Name = "ListarOrdenes";
-            Text = "Listar Ordenes";
+            Margin = new Padding(2, 3, 2, 3);
+            Name = "ConsultarOrdenesForm";
+            Text = "ConsultarOrdenes";
             Load += ListarOrdenes_Load;
             ResumeLayout(false);
             PerformLayout();

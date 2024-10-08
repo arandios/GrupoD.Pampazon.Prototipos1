@@ -21,16 +21,16 @@ namespace Pampazon.GenerarOrdenPreparacion
 
         public List<Producto> Productos { get; private set; } =
         [
-            new Producto { NombreProducto = "Producto A", Stock = 5, IdDeposito = 1, DirDeposito = "Dirección A" },
-            new Producto { NombreProducto = "Producto B", Stock = 5, IdDeposito = 1, DirDeposito = "Dirección A" },
-            new Producto { NombreProducto = "Producto C", Stock = 8, IdDeposito = 1, DirDeposito = "Dirección A" },
-            new Producto { NombreProducto = "Producto D", Stock = 8, IdDeposito = 2, DirDeposito = "Dirección B" },
-            new Producto { NombreProducto = "Producto E", Stock = 6, IdDeposito = 2, DirDeposito = "Dirección B" },
-            new Producto { NombreProducto = "Producto A", Stock = 7, IdDeposito = 2, DirDeposito = "Dirección B" },
-            new Producto { NombreProducto = "Producto G", Stock = 7, IdDeposito = 3, DirDeposito = "Dirección C" },
-            new Producto { NombreProducto = "Producto H", Stock = 8, IdDeposito = 3, DirDeposito = "Dirección C" },
-            new Producto { NombreProducto = "Producto I", Stock = 1, IdDeposito = 3, DirDeposito = "Dirección C" },
-            new Producto { NombreProducto = "Producto B", Stock = 2, IdDeposito = 4, DirDeposito = "Dirección D" },
+            new Producto { NombreProducto = "Producto A", Stock = 5, IdDeposito = 1, DirDeposito = "Dirección A", Localidad = "CABA" },
+            new Producto { NombreProducto = "Producto B", Stock = 5, IdDeposito = 1, DirDeposito = "Dirección A", Localidad = "CABA" },
+            new Producto { NombreProducto = "Producto C", Stock = 8, IdDeposito = 1, DirDeposito = "Dirección A" , Localidad = "CABA" },
+            new Producto { NombreProducto = "Producto D", Stock = 8, IdDeposito = 2, DirDeposito = "Dirección B", Localidad = "Las Toninas" },
+            new Producto { NombreProducto = "Producto E", Stock = 6, IdDeposito = 2, DirDeposito = "Dirección B",Localidad = "Las Toninas" },
+            new Producto { NombreProducto = "Producto A", Stock = 7, IdDeposito = 2, DirDeposito = "Dirección B",Localidad = "Las Toninas" },
+            new Producto { NombreProducto = "Producto G", Stock = 7, IdDeposito = 3, DirDeposito = "Dirección C",Localidad = "Mar del Plata"  },
+            new Producto { NombreProducto = "Producto H", Stock = 8, IdDeposito = 3, DirDeposito = "Dirección C",Localidad = "Mar del Plata"  },
+            new Producto { NombreProducto = "Producto I", Stock = 1, IdDeposito = 3, DirDeposito = "Dirección C",Localidad = "Mar del Plata"  },
+            new Producto { NombreProducto = "Producto B", Stock = 2, IdDeposito = 4, DirDeposito = "Dirección D",Localidad = "Bariloche" },
         ];
 
 
