@@ -49,6 +49,17 @@ namespace Pampazon.ConfirmarOrdenEntrega
             mensajeError = string.Empty;
             return true;
         }
+        public bool ValidarOrdenNoConfirmada(OrdenEntrega orden, out string mensajeError)
+        {
+            if (orden.Estado == "Confirmada")
+            {
+                mensajeError = $"La orden de entrega N° {orden.Nro_OrdenE} ya ha sido confirmada anteriormente.";
+                return false;
+            }
+
+            mensajeError = string.Empty;
+            return true;
+        }
 
         // Método para confirmar una orden de entrega
         public void ConfirmarOrden(OrdenEntrega ordenEntrega)

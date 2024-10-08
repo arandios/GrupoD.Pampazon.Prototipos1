@@ -216,6 +216,7 @@
             Controls.Add(SalirBTN);
             Name = "ConfirmarOrdenEntregaForm";
             Text = "Confirmar Orden de Entrega";
+            Load += ConfirmarOrdenEntregaForm_Load_1;
             ListadoOrdenesEntregaGRP.ResumeLayout(false);
             FiltrosLBL.ResumeLayout(false);
             FiltrosLBL.PerformLayout();

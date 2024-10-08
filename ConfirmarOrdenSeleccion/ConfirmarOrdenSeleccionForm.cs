@@ -43,12 +43,9 @@ namespace Pampazon.ConfirmarOrdenSeleccion
         // Método para cargar la orden y los productos en los ListView
         private void CargarOrdenSeleccionEnListView(OrdenSeleccion ordenSeleccion)
         {
-            // Cargar en el ListView de órdenes
+            // Cargar en el ListView de ordenes
             ListViewItem itemOrden = new ListViewItem(ordenSeleccion.Nro_OrdenS.ToString()); // Nro orden
-            itemOrden.SubItems.Add(ordenSeleccion.Estado); // Estado
-            
-            
-
+            itemOrden.SubItems.Add(ordenSeleccion.Estado); // Estado                        
             LstOrdenesSeleccion.Items.Add(itemOrden); // Añadir la orden al ListView
 
             // Agregar los productos de la orden en el ListView de productos

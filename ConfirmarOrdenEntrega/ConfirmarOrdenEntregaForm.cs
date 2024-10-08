@@ -22,27 +22,26 @@ namespace Pampazon.ConfirmarOrdenEntrega
             CMBEstado.Items.Add("Pendiente");
             CMBEstado.Items.Add("Confirmada");
             modelo = new ConfirmarOrdenEntregaModelo();
+            
         }
-        private void ConfirmarOrdenEntregaForm_Load(object sender, EventArgs e)
-        {
-            MostrarOrdenesPendientesEnListView();
-            LSTDetalle.Items.Clear();
-        }
+        
         private void CargarOrdenEntregaEnListView(OrdenEntrega ordenEntrega)
         {
-            ListViewItem itemOrden = new ListViewItem(ordenEntrega.Nro_OrdenE.ToString());
-            itemOrden.SubItems.Add(ordenEntrega.Estado);
-            itemOrden.SubItems.Add(ordenEntrega.OrdenesPreparacionAsociadas.Count.ToString());
+            // Cargar en el ListView de ordenes
+            ListViewItem itemOrden = new ListViewItem(ordenEntrega.Nro_OrdenE.ToString());// Nro Orden
+            itemOrden.SubItems.Add(ordenEntrega.Estado);// estado
+            itemOrden.SubItems.Add(ordenEntrega.OrdenesPreparacionAsociadas.Count.ToString());// cantidad
+            // Agregar los productos de la orden en el ListView de productos
             LstOrdenesEntrega.Items.Add(itemOrden);
         }
 
         private void CargarOrdenesPreparacionEnListView(List<OrdenPreparacion> ordenesPreparacion)
         {
-            LSTDetalle.Items.Clear();
+            LSTDetalle.Items.Clear(); // Limpiar el ListView de detalles
             foreach (var ordenPreparacion in ordenesPreparacion)
             {
-                ListViewItem itemDetalle = new ListViewItem(ordenPreparacion.Nro_OrdenP.ToString());
-                LSTDetalle.Items.Add(itemDetalle);
+                ListViewItem itemDetalle = new ListViewItem(ordenPreparacion.Nro_OrdenP.ToString()); // Solo mostrar el Nro_OrdenP
+                LSTDetalle.Items.Add(itemDetalle); // Agregar el Nro_OrdenP al ListView de detalles
             }
         }
 
@@ -65,14 +64,27 @@ namespace Pampazon.ConfirmarOrdenEntrega
         }
         private void ActualizarListViewSegunCategoria()
         {
-            if (CMBEstado.SelectedItem.ToString() == "Confirmada")
+            // Verificar si el ComboBox tiene un valor seleccionado
+            if (CMBEstado.SelectedItem != null)
             {
-                MostrarOrdenesConfirmadasEnListView();
+                string estadoSeleccionado = CMBEstado.SelectedItem.ToString();
+
+                if (estadoSeleccionado == "Confirmada")
+                {
+                    MostrarOrdenesConfirmadasEnListView();
+                }
+                else
+                {
+                    MostrarOrdenesPendientesEnListView();
+                }
             }
             else
             {
-                MostrarOrdenesPendientesEnListView();
+                // Si no hay nada seleccionadose muestra todas las ordenes pendientes
+                MostrarOrdenesPendientesEnListView(); 
             }
+
+            // Limpiar el ListView de detalles siempre
             LSTDetalle.Items.Clear();
             IdOrdentxt.Focus();
         }
@@ -82,14 +94,14 @@ namespace Pampazon.ConfirmarOrdenEntrega
         {
             if (LstOrdenesEntrega.SelectedItems.Count > 0)
             {
-                int selectedIndex = LstOrdenesEntrega.SelectedIndices[0];
-                OrdenEntrega ordenSeleccionada = modelo.OrdenesPendientes.FirstOrDefault(o => o.Nro_OrdenE == int.Parse(LstOrdenesEntrega.SelectedItems[0].Text))
-                                                  ?? modelo.OrdenesConfirmadas.FirstOrDefault(o => o.Nro_OrdenE == int.Parse(LstOrdenesEntrega.SelectedItems[0].Text));
+                int nroOrdenSeleccionada = int.Parse(LstOrdenesEntrega.SelectedItems[0].Text);
+                OrdenEntrega ordenSeleccionada = modelo.OrdenesPendientes.FirstOrDefault(o => o.Nro_OrdenE == nroOrdenSeleccionada)
+                                                  ?? modelo.OrdenesConfirmadas.FirstOrDefault(o => o.Nro_OrdenE == nroOrdenSeleccionada);
 
                 if (ordenSeleccionada != null)
                 {
                     CargarOrdenesPreparacionEnListView(ordenSeleccionada.OrdenesPreparacionAsociadas);
-                    ultimaOrdenCargada = ordenSeleccionada;
+                    ultimaOrdenCargada = ordenSeleccionada; // Actualizar la última orden cargada
                 }
             }
             else
@@ -109,6 +121,13 @@ namespace Pampazon.ConfirmarOrdenEntrega
 
                 if (ordenSeleccionada != null)
                 {
+                    // Validar que la orden no haya sido confirmada previamente
+                    if (!modelo.ValidarOrdenNoConfirmada(ordenSeleccionada, out string mensajeError))
+                    {
+                        MessageBox.Show(mensajeError);
+                        return;
+                    }
+
                     if (ultimaOrdenCargada == null || ultimaOrdenCargada.Nro_OrdenE != ordenSeleccionada.Nro_OrdenE)
                     {
                         MessageBox.Show("Debe visualizar los detalles de la orden seleccionada antes de confirmar.");
@@ -154,12 +173,30 @@ namespace Pampazon.ConfirmarOrdenEntrega
 
         private void LimpiarBTN_Click(object sender, EventArgs e)
         {
+            // Limpiar la caja de texto de búsqueda
+            IdOrdentxt.Clear();
 
+            // Restaurar siempre las órdenes pendientes
+            MostrarOrdenesPendientesEnListView();
+            // Limpiar el ListView de productos
+            LSTDetalle.Items.Clear();
+
+            // Colocar el cursor en la caja de texto
+            IdOrdentxt.Focus();
         }
 
         private void CMBEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarListViewSegunCategoria();
+        }
+
+        private void ConfirmarOrdenEntregaForm_Load_1(object sender, EventArgs e)
+        {
+            // Mostrar las órdenes pendientes inicialmente en el ListView
+            MostrarOrdenesPendientesEnListView();
+
+            // Asegurarse de que el ListView de detalles (LSTDetalle) esté vacío al cargar el formulario
+            LSTDetalle.Items.Clear();
         }
     }
 }
