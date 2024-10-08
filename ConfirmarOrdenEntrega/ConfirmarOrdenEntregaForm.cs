@@ -134,9 +134,33 @@ namespace Pampazon.ConfirmarOrdenEntrega
                         return;
                     }
 
-                    modelo.ConfirmarOrden(ordenSeleccionada);
-                    MessageBox.Show("Orden confirmada exitosamente.");
-                    ActualizarListViewSegunCategoria();
+                    // Obtener los números de las órdenes de preparación asociadas
+                    string numerosOrdenesPreparacion = string.Join(", ",
+                        ordenSeleccionada.OrdenesPreparacionAsociadas.Select(op => op.Nro_OrdenP.ToString()));
+
+                    // Cantidad de órdenes de preparación asociadas
+                    int cantidadOrdenesPreparacion = ordenSeleccionada.OrdenesPreparacionAsociadas.Count;
+
+                    // Preguntar al usuario si está seguro de confirmar la orden con formato corto
+                    DialogResult result = MessageBox.Show(
+                    $"Confirmar Orden Entrega N° {ordenSeleccionada.Nro_OrdenE}.\n" +
+                    $"Cantidad de Órdenes de Preparación: {cantidadOrdenesPreparacion} Detalle: ({numerosOrdenesPreparacion})",
+                    "Confirmar Orden",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Si el usuario selecciona "Sí", confirmar la orden
+                        modelo.ConfirmarOrden(ordenSeleccionada);
+                        MessageBox.Show("Orden confirmada exitosamente.");
+                        ActualizarListViewSegunCategoria();
+                    }
+                    else
+                    {
+                        // Si el usuario selecciona "No", cancelar la operación
+                        MessageBox.Show("La confirmación de la orden ha sido cancelada.");
+                    }
                 }
             }
             else
@@ -152,22 +176,57 @@ namespace Pampazon.ConfirmarOrdenEntrega
 
         private void BuscarBTN_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(IdOrdentxt.Text, out int idOrden))
+            // Validar que la caja de texto no esté vacía
+            if (string.IsNullOrEmpty(IdOrdentxt.Text))
             {
-                if (modelo.ValidarOrden(idOrden, out OrdenEntrega orden, out string mensajeError))
-                {
-                    MessageBox.Show($"Orden N° {idOrden} encontrada en estado {orden.Estado}");
-                }
-                else
-                {
-                    MessageBox.Show(mensajeError);
-                }
+                MessageBox.Show("Por favor, ingrese un número de orden.");
+                return;
             }
-            else
+
+            // Validar que el valor ingresado sea un número entero
+            if (!int.TryParse(IdOrdentxt.Text, out int idOrden))
             {
-                MessageBox.Show("Por favor, ingrese un número de orden válido.");
+                MessageBox.Show("Por favor, ingrese un número válido.");
+                return;
             }
-            IdOrdentxt.Clear();
+
+            // Validar que el número no sea negativo
+            if (idOrden < 0)
+            {
+                MessageBox.Show("El número de orden no puede ser negativo.");
+                return;
+            }
+
+            // Validar que el número no sea demasiado largo
+            if (IdOrdentxt.Text.Length > 3)
+            {
+                MessageBox.Show("El número de orden no puede tener más de 3 dígitos.");
+                return;
+            }
+
+            // Validar que el número no sea demasiado corto 
+            if (IdOrdentxt.Text.Length < 3)
+            {
+                MessageBox.Show("El número de orden no puede tener menos de 3 dígitos.");
+                return;
+            }
+
+            // Llamar al modelo para validar si la orden existe
+            if (!modelo.ValidarOrden(idOrden, out OrdenEntrega orden, out string mensajeError))
+            {
+                MessageBox.Show(mensajeError);
+                
+                // Limpiar el ListView de productos
+                LSTDetalle.Items.Clear();
+                return;
+            }
+
+            // Limpiar el ListView de órdenes y cargar solo la orden encontrada
+            LstOrdenesEntrega.Items.Clear();
+            CargarOrdenEntregaEnListView(orden);
+            // Limpiar el ListView de detalles
+            LSTDetalle.Items.Clear();
+            // Colocar el cursor en la caja de texto
             IdOrdentxt.Focus();
         }
 
