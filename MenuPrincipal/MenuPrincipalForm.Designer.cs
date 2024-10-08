@@ -110,14 +110,14 @@
             button1.Name = "button1";
             button1.Size = new Size(271, 38);
             button1.TabIndex = 7;
-            button1.Text = "Generar Order Preparacion";
+            button1.Text = "Generar Orden Preparacion";
             button1.UseVisualStyleBackColor = true;
             button1.Click += GenerarOrderPreparacionBtn;
             // 
             // Confirmar_Orden_EntregaBTN
             // 
             Confirmar_Orden_EntregaBTN.Location = new Point(255, 308);
-            Confirmar_Orden_EntregaBTN.Margin = new Padding(2, 2, 2, 2);
+            Confirmar_Orden_EntregaBTN.Margin = new Padding(2);
             Confirmar_Orden_EntregaBTN.Name = "Confirmar_Orden_EntregaBTN";
             Confirmar_Orden_EntregaBTN.Size = new Size(271, 38);
             Confirmar_Orden_EntregaBTN.TabIndex = 8;
@@ -128,7 +128,7 @@
             // EmpaquetarOrdenbtn
             // 
             EmpaquetarOrdenbtn.Location = new Point(255, 226);
-            EmpaquetarOrdenbtn.Margin = new Padding(2, 2, 2, 2);
+            EmpaquetarOrdenbtn.Margin = new Padding(2);
             EmpaquetarOrdenbtn.Name = "EmpaquetarOrdenbtn";
             EmpaquetarOrdenbtn.Size = new Size(271, 35);
             EmpaquetarOrdenbtn.TabIndex = 9;
