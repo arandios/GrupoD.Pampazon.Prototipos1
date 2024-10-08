@@ -79,12 +79,14 @@
             // FechaEntregacmb
             // 
             FechaEntregacmb.FormattingEnabled = true;
+            FechaEntregacmb.Items.AddRange(new object[] { "2024-10-01", "2024-10-02", "2024-10-03" });
             FechaEntregacmb.Location = new Point(200, 33);
             FechaEntregacmb.Margin = new Padding(2);
             FechaEntregacmb.Name = "FechaEntregacmb";
             FechaEntregacmb.Size = new Size(129, 23);
             FechaEntregacmb.TabIndex = 15;
             FechaEntregacmb.Text = "Fecha entrega";
+            FechaEntregacmb.SelectedIndexChanged += FechaEntregacmb_SelectedIndexChanged;
             // 
             // label1
             // 

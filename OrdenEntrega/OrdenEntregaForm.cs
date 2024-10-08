@@ -126,23 +126,32 @@ namespace Pampazon.OrdenEntrega
 
         private void Buscarbtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtIdOrden.Text))
+            bool isIdOrdenEmpty = string.IsNullOrWhiteSpace(txtIdOrden.Text);
+            bool isFechaEntregaEmpty = string.IsNullOrWhiteSpace(FechaEntregacmb.Text);
+
+            if (isIdOrdenEmpty && isFechaEntregaEmpty)
             {
-                MessageBox.Show("El campo de ID de Orden no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Debe ingresar un ID de Orden o seleccionar una Fecha de Entrega.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 RestaurarElementos();
+                return;
             }
 
-            if (!int.TryParse(txtIdOrden.Text, out int idOrden))
+            if (!isIdOrdenEmpty && int.TryParse(txtIdOrden.Text, out int idOrden))
+            {
+                FiltrarElementosID(idOrden);
+            }
+            else if (!isFechaEntregaEmpty)
+            {
+                FiltrarElementosPorFecha(FechaEntregacmb.Text);
+            }
+            else
             {
                 MessageBox.Show("El campo de ID de Orden debe ser un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-                FiltrarElementos(idOrden);
+                RestaurarElementos();
             }
-            FiltrarElementos(idOrden);
         }
 
-        private void FiltrarElementos(int idOrden)
+        private void FiltrarElementosID(int idOrden)
         {
             Ordenes_Preparacion.Items.Clear();
             foreach (var item in Items)
@@ -154,6 +163,17 @@ namespace Pampazon.OrdenEntrega
             }
         }
 
+        private void FiltrarElementosPorFecha(string fechaEntrega)
+        {
+            Ordenes_Preparacion.Items.Clear();
+            foreach (var item in Items)
+            {
+                if (item.SubItems[1].Text == fechaEntrega)
+                {
+                    Ordenes_Preparacion.Items.Add((ListViewItem)item.Clone());
+                }
+            }
+        }
         private void RestaurarElementos()
         {
             Ordenes_Preparacion.Items.Clear();
@@ -226,6 +246,7 @@ namespace Pampazon.OrdenEntrega
         private void limpiarbtn_Click(object sender, EventArgs e)
         {
             txtIdOrden.Text = string.Empty;
+            FechaEntregacmb.Text = string.Empty;
             RestaurarElementos();
         }
 
@@ -243,6 +264,11 @@ namespace Pampazon.OrdenEntrega
             {
                 MessageBox.Show("Por favor, seleccione una orden para devolver.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void FechaEntregacmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
