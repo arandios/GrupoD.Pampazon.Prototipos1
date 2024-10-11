@@ -35,15 +35,10 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
-            comboBox5 = new ComboBox();
-            label5 = new Label();
             textBox1 = new TextBox();
-            textBox4 = new TextBox();
-            label6 = new Label();
             listView1 = new ListView();
             CodCliente_Columna = new ColumnHeader();
             RazonSocial_Columna = new ColumnHeader();
-            DomicilioCli_Columna = new ColumnHeader();
             Cuit = new ColumnHeader();
             groupBox1 = new GroupBox();
             textBox3 = new TextBox();
@@ -56,11 +51,12 @@
             SKU_Columna = new ColumnHeader();
             Producto_Columna = new ColumnHeader();
             Cantidad_Columna = new ColumnHeader();
-            listView2 = new ListView();
-            FechaOrden_Columna = new ColumnHeader();
-            Deposito_Columna = new ColumnHeader();
-            EstadoOrden_Columna = new ColumnHeader();
-            Codigo_de_OrdenColumna = new ColumnHeader();
+            FechaOP_Columna = new ColumnHeader();
+            Estado_Columna = new ColumnHeader();
+            Prioridad_Columna = new ColumnHeader();
+            label8 = new Label();
+            comboBox1 = new ComboBox();
+            Ubicacion_Columna = new ColumnHeader();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -68,7 +64,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(14, 41);
+            label2.Location = new Point(4, 27);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(106, 20);
@@ -78,7 +74,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(203, 33);
+            label3.Location = new Point(565, 24);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(47, 20);
@@ -88,16 +84,16 @@
             // comboBox4
             // 
             comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(567, 59);
+            comboBox4.Location = new Point(4, 100);
             comboBox4.Margin = new Padding(2, 3, 2, 3);
             comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(159, 28);
+            comboBox4.Size = new Size(140, 28);
             comboBox4.TabIndex = 6;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(567, 35);
+            label4.Location = new Point(4, 76);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(54, 20);
@@ -106,7 +102,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(468, 108);
+            button1.Location = new Point(462, 112);
             button1.Margin = new Padding(2, 3, 2, 3);
             button1.Name = "button1";
             button1.Size = new Size(149, 28);
@@ -116,7 +112,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(621, 108);
+            button2.Location = new Point(615, 112);
             button2.Margin = new Padding(2, 3, 2, 3);
             button2.Name = "button2";
             button2.RightToLeft = RightToLeft.No;
@@ -127,67 +123,29 @@
             // 
             // button3
             // 
-            button3.Location = new Point(664, 723);
+            button3.Location = new Point(647, 726);
             button3.Margin = new Padding(2, 3, 2, 3);
             button3.Name = "button3";
-            button3.Size = new Size(96, 28);
+            button3.Size = new Size(106, 28);
             button3.TabIndex = 11;
             button3.Text = "&Salir";
             button3.UseVisualStyleBackColor = true;
             // 
-            // comboBox5
-            // 
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(389, 59);
-            comboBox5.Margin = new Padding(2, 3, 2, 3);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(166, 28);
-            comboBox5.TabIndex = 12;
-            comboBox5.SelectedIndexChanged += comboBox5_SelectedIndexChanged;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(389, 33);
-            label5.Margin = new Padding(2, 0, 2, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(70, 20);
-            label5.TabIndex = 13;
-            label5.Text = "Deposito";
-            // 
             // textBox1
             // 
-            textBox1.Location = new Point(14, 63);
+            textBox1.Location = new Point(4, 49);
             textBox1.Margin = new Padding(2, 3, 2, 3);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(206, 27);
+            textBox1.Size = new Size(200, 27);
             textBox1.TabIndex = 14;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(15, 56);
-            textBox4.Margin = new Padding(2, 3, 2, 3);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(170, 27);
-            textBox4.TabIndex = 17;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(15, 32);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(100, 20);
-            label6.TabIndex = 18;
-            label6.Text = "SKU Producto";
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { CodCliente_Columna, RazonSocial_Columna, DomicilioCli_Columna, Cuit });
-            listView1.Location = new Point(10, 161);
+            listView1.Columns.AddRange(new ColumnHeader[] { CodCliente_Columna, RazonSocial_Columna, Cuit, FechaOP_Columna, Estado_Columna, Prioridad_Columna });
+            listView1.Location = new Point(14, 176);
             listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(750, 193);
+            listView1.Size = new Size(740, 257);
             listView1.TabIndex = 19;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -200,45 +158,45 @@
             // 
             RazonSocial_Columna.Text = "Razón Social";
             // 
-            // DomicilioCli_Columna
-            // 
-            DomicilioCli_Columna.DisplayIndex = 3;
-            DomicilioCli_Columna.Text = "Domicilio";
-            // 
             // Cuit
             // 
-            Cuit.DisplayIndex = 2;
             Cuit.Text = "Cuit";
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(comboBox1);
             groupBox1.Controls.Add(textBox3);
             groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(comboBox4);
+            groupBox1.Controls.Add(dateTimePicker1);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(label2);
             groupBox1.Location = new Point(10, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(750, 357);
+            groupBox1.Size = new Size(750, 146);
             groupBox1.TabIndex = 20;
             groupBox1.TabStop = false;
             groupBox1.Text = "Seleccione filtros de búsqueda para Clientes: ";
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(468, 63);
+            textBox3.Location = new Point(396, 50);
             textBox3.Margin = new Padding(2, 3, 2, 3);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(276, 27);
+            textBox3.Size = new Size(164, 27);
             textBox3.TabIndex = 18;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(468, 41);
+            label7.Location = new Point(400, 27);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
             label7.Size = new Size(35, 20);
@@ -247,16 +205,16 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(224, 63);
+            textBox2.Location = new Point(208, 49);
             textBox2.Margin = new Padding(2, 3, 2, 3);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(235, 27);
+            textBox2.Size = new Size(184, 27);
             textBox2.TabIndex = 16;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(235, 41);
+            label1.Location = new Point(219, 27);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(94, 20);
@@ -265,7 +223,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(203, 56);
+            dateTimePicker1.Location = new Point(565, 50);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(179, 27);
             dateTimePicker1.TabIndex = 19;
@@ -273,28 +231,20 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(listView3);
-            groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(dateTimePicker1);
-            groupBox2.Controls.Add(comboBox4);
-            groupBox2.Controls.Add(textBox4);
-            groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(label3);
-            groupBox2.Controls.Add(comboBox5);
-            groupBox2.Location = new Point(10, 376);
+            groupBox2.Location = new Point(14, 440);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(750, 333);
+            groupBox2.Size = new Size(750, 280);
             groupBox2.TabIndex = 21;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Seleccione filtros para búsqueda de Ordenes del cliente seleccionado: ";
+            groupBox2.Text = "Detalle productos en la Orden del cliente seleccionado: ";
             // 
             // listView3
             // 
-            listView3.Columns.AddRange(new ColumnHeader[] { SKU_Columna, Producto_Columna, Cantidad_Columna });
-            listView3.Location = new Point(427, 94);
+            listView3.Columns.AddRange(new ColumnHeader[] { SKU_Columna, Producto_Columna, Cantidad_Columna, Ubicacion_Columna });
+            listView3.Location = new Point(4, 27);
             listView3.Margin = new Padding(3, 4, 3, 4);
             listView3.Name = "listView3";
-            listView3.Size = new Size(316, 232);
+            listView3.Size = new Size(739, 210);
             listView3.TabIndex = 23;
             listView3.UseCompatibleStateImageBehavior = false;
             listView3.View = View.Details;
@@ -312,53 +262,57 @@
             // 
             Cantidad_Columna.Text = "Cantidad";
             // 
-            // listView2
+            // FechaOP_Columna
             // 
-            listView2.Columns.AddRange(new ColumnHeader[] { FechaOrden_Columna, Deposito_Columna, EstadoOrden_Columna, Codigo_de_OrdenColumna });
-            listView2.Location = new Point(10, 469);
-            listView2.Margin = new Padding(3, 4, 3, 4);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(422, 232);
-            listView2.TabIndex = 22;
-            listView2.UseCompatibleStateImageBehavior = false;
-            listView2.View = View.Details;
+            FechaOP_Columna.Text = "Fecha generación Orden Preparación";
             // 
-            // FechaOrden_Columna
+            // Estado_Columna
             // 
-            FechaOrden_Columna.Text = "Fecha";
+            Estado_Columna.Text = "Estado";
             // 
-            // Deposito_Columna
+            // Prioridad_Columna
             // 
-            Deposito_Columna.DisplayIndex = 2;
-            Deposito_Columna.Text = "Deposito";
+            Prioridad_Columna.Text = "Prioridad";
             // 
-            // EstadoOrden_Columna
+            // label8
             // 
-            EstadoOrden_Columna.DisplayIndex = 1;
-            EstadoOrden_Columna.Text = "Estado";
+            label8.AutoSize = true;
+            label8.Location = new Point(150, 76);
+            label8.Margin = new Padding(2, 0, 2, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(70, 20);
+            label8.TabIndex = 21;
+            label8.Text = "Prioridad";
             // 
-            // Codigo_de_OrdenColumna
+            // comboBox1
             // 
-            Codigo_de_OrdenColumna.Text = "Código de Orden";
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(150, 100);
+            comboBox1.Margin = new Padding(2, 3, 2, 3);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(143, 28);
+            comboBox1.TabIndex = 20;
+            // 
+            // Ubicacion_Columna
+            // 
+            Ubicacion_Columna.Text = "Ubicación";
             // 
             // ConsultarOrdenesForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(770, 766);
-            Controls.Add(listView2);
             Controls.Add(listView1);
             Controls.Add(button3);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             Margin = new Padding(2, 3, 2, 3);
             Name = "ConsultarOrdenesForm";
-            Text = "Consultar Ordenes";
+            Text = "Consultar Ordenes de Preparación";
             Load += ListarOrdenes_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -370,31 +324,27 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label6;
         private ListView listView1;
         private ColumnHeader CodCliente_Columna;
         private ColumnHeader RazonSocial_Columna;
         private ColumnHeader Cuit;
         private GroupBox groupBox1;
         private DateTimePicker dateTimePicker1;
-        private ColumnHeader DomicilioCli_Columna;
         private TextBox textBox3;
         private Label label7;
         private TextBox textBox2;
         private Label label1;
         private GroupBox groupBox2;
-        private ListView listView2;
-        private ColumnHeader FechaOrden_Columna;
-        private ColumnHeader Deposito_Columna;
-        private ColumnHeader EstadoOrden_Columna;
         private ListView listView3;
         private ColumnHeader SKU_Columna;
         private ColumnHeader Producto_Columna;
         private ColumnHeader Cantidad_Columna;
-        private ColumnHeader Codigo_de_OrdenColumna;
+        private ColumnHeader FechaOP_Columna;
+        private ColumnHeader Estado_Columna;
+        private ColumnHeader Prioridad_Columna;
+        private Label label8;
+        private ComboBox comboBox1;
+        private ColumnHeader Ubicacion_Columna;
     }
 }
