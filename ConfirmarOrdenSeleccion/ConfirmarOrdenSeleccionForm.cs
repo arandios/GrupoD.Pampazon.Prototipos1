@@ -21,9 +21,9 @@ namespace Pampazon.ConfirmarOrdenSeleccion
         public ConfirmarOrdenSeleccion()
         {
             InitializeComponent();
-            // Agregar las opciones al ComboBox
-            CMBEstado.Items.Add("Pendiente");
-            CMBEstado.Items.Add("Confirmada");
+            // Agregar las opciones al ComboBox ------- Se supone que a este punto estan todas las ordenes en Pendiente.
+           // CMBEstado.Items.Add("Pendiente");
+            //CMBEstado.Items.Add("Confirmada");
             modelo = new ConfirmarOrdenSeleccionModelo(); // iniciamos el modelo                      
         }
 
@@ -87,11 +87,13 @@ namespace Pampazon.ConfirmarOrdenSeleccion
             }
         }
         // Metodo para llamar a una lista dependiendo si es pendiente o confirmada
+        /*
         private void CMBEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarListViewSegunCategoria();
         }
 
+        
         private void ActualizarListViewSegunCategoria()
         {
             
@@ -112,7 +114,7 @@ namespace Pampazon.ConfirmarOrdenSeleccion
             // Colocar el cursor en la caja de texto
             IdOrdentxt.Focus();
 
-        }
+        }*/
 
         private void DetallesOrdenBTN_Click(object sender, EventArgs e)
         {
