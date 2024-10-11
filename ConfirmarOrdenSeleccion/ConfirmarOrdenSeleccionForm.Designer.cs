@@ -43,53 +43,60 @@
             SalirBTN = new Button();
             GenerarOrdenEntregaBTN = new Button();
             CMBEstado = new ComboBox();
+            groupBox1 = new GroupBox();
+            label2 = new Label();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // LimpiarBTN
             // 
-            LimpiarBTN.Location = new Point(725, 76);
+            LimpiarBTN.Location = new Point(616, 100);
+            LimpiarBTN.Margin = new Padding(2, 2, 2, 2);
             LimpiarBTN.Name = "LimpiarBTN";
-            LimpiarBTN.Size = new Size(126, 43);
+            LimpiarBTN.Size = new Size(101, 34);
             LimpiarBTN.TabIndex = 16;
-            LimpiarBTN.Text = "Limpiar";
+            LimpiarBTN.Text = "Borrar filtros";
             LimpiarBTN.UseVisualStyleBackColor = true;
             LimpiarBTN.Click += LimpiarBTN_Click;
             // 
             // BuscarBTN
             // 
-            BuscarBTN.Location = new Point(567, 76);
+            BuscarBTN.Location = new Point(376, 100);
+            BuscarBTN.Margin = new Padding(2, 2, 2, 2);
             BuscarBTN.Name = "BuscarBTN";
-            BuscarBTN.Size = new Size(126, 43);
+            BuscarBTN.Size = new Size(236, 34);
             BuscarBTN.TabIndex = 15;
-            BuscarBTN.Text = "Buscar:";
+            BuscarBTN.Text = "Buscar Ordenes de Selección";
             BuscarBTN.UseVisualStyleBackColor = true;
             BuscarBTN.Click += BuscarBTN_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(62, 44);
+            label1.Location = new Point(14, 33);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(188, 25);
+            label1.Size = new Size(157, 20);
             label1.TabIndex = 14;
             label1.Text = "ID de Orden Seleccion";
             // 
             // IdOrdentxt
             // 
-            IdOrdentxt.Location = new Point(78, 82);
+            IdOrdentxt.Location = new Point(14, 55);
+            IdOrdentxt.Margin = new Padding(2, 2, 2, 2);
             IdOrdentxt.Name = "IdOrdentxt";
-            IdOrdentxt.Size = new Size(150, 31);
+            IdOrdentxt.Size = new Size(358, 27);
             IdOrdentxt.TabIndex = 13;
             // 
             // LstOrdenesSeleccion
             // 
             LstOrdenesSeleccion.Columns.AddRange(new ColumnHeader[] { CLNroOrden, CLEstado });
             LstOrdenesSeleccion.FullRowSelect = true;
-            LstOrdenesSeleccion.Location = new Point(99, 140);
-            LstOrdenesSeleccion.Margin = new Padding(4, 5, 4, 5);
+            LstOrdenesSeleccion.Location = new Point(79, 212);
+            LstOrdenesSeleccion.Margin = new Padding(3, 4, 3, 4);
             LstOrdenesSeleccion.MultiSelect = false;
             LstOrdenesSeleccion.Name = "LstOrdenesSeleccion";
-            LstOrdenesSeleccion.Size = new Size(289, 373);
+            LstOrdenesSeleccion.Size = new Size(679, 222);
             LstOrdenesSeleccion.TabIndex = 26;
             LstOrdenesSeleccion.UseCompatibleStateImageBehavior = false;
             LstOrdenesSeleccion.View = View.Details;
@@ -106,9 +113,10 @@
             // 
             // DetallesOrdenBTN
             // 
-            DetallesOrdenBTN.Location = new Point(136, 543);
+            DetallesOrdenBTN.Location = new Point(582, 440);
+            DetallesOrdenBTN.Margin = new Padding(2, 2, 2, 2);
             DetallesOrdenBTN.Name = "DetallesOrdenBTN";
-            DetallesOrdenBTN.Size = new Size(221, 63);
+            DetallesOrdenBTN.Size = new Size(177, 50);
             DetallesOrdenBTN.TabIndex = 25;
             DetallesOrdenBTN.Text = "Detalles de Orden";
             DetallesOrdenBTN.UseVisualStyleBackColor = true;
@@ -118,10 +126,11 @@
             // 
             LSTDetalleOrden.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6, columnHeader7 });
             LSTDetalleOrden.FullRowSelect = true;
-            LSTDetalleOrden.Location = new Point(543, 140);
+            LSTDetalleOrden.Location = new Point(79, 510);
+            LSTDetalleOrden.Margin = new Padding(2, 2, 2, 2);
             LSTDetalleOrden.MultiSelect = false;
             LSTDetalleOrden.Name = "LSTDetalleOrden";
-            LSTDetalleOrden.Size = new Size(326, 373);
+            LSTDetalleOrden.Size = new Size(680, 179);
             LSTDetalleOrden.TabIndex = 24;
             LSTDetalleOrden.UseCompatibleStateImageBehavior = false;
             LSTDetalleOrden.View = View.Details;
@@ -143,18 +152,20 @@
             // 
             // SalirBTN
             // 
-            SalirBTN.Location = new Point(639, 635);
+            SalirBTN.Location = new Point(678, 707);
+            SalirBTN.Margin = new Padding(2, 2, 2, 2);
             SalirBTN.Name = "SalirBTN";
-            SalirBTN.Size = new Size(178, 58);
+            SalirBTN.Size = new Size(81, 31);
             SalirBTN.TabIndex = 27;
             SalirBTN.Text = "&Salir";
             SalirBTN.Click += SalirBTN_Click;
             // 
             // GenerarOrdenEntregaBTN
             // 
-            GenerarOrdenEntregaBTN.Location = new Point(612, 535);
+            GenerarOrdenEntregaBTN.Location = new Point(456, 707);
+            GenerarOrdenEntregaBTN.Margin = new Padding(2, 2, 2, 2);
             GenerarOrdenEntregaBTN.Name = "GenerarOrdenEntregaBTN";
-            GenerarOrdenEntregaBTN.Size = new Size(221, 78);
+            GenerarOrdenEntregaBTN.Size = new Size(218, 31);
             GenerarOrdenEntregaBTN.TabIndex = 22;
             GenerarOrdenEntregaBTN.Text = "Confirmar Orden de Seleccion";
             GenerarOrdenEntregaBTN.UseVisualStyleBackColor = true;
@@ -163,34 +174,58 @@
             // CMBEstado
             // 
             CMBEstado.FormattingEnabled = true;
-            CMBEstado.Location = new Point(261, 82);
+            CMBEstado.Location = new Point(376, 54);
+            CMBEstado.Margin = new Padding(2, 2, 2, 2);
             CMBEstado.Name = "CMBEstado";
-            CMBEstado.Size = new Size(182, 33);
+            CMBEstado.Size = new Size(341, 28);
             CMBEstado.TabIndex = 28;
             CMBEstado.Text = "Estado";
             CMBEstado.SelectedIndexChanged += CMBEstado_SelectedIndexChanged;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(CMBEstado);
+            groupBox1.Controls.Add(LimpiarBTN);
+            groupBox1.Controls.Add(BuscarBTN);
+            groupBox1.Controls.Add(IdOrdentxt);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Location = new Point(36, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(722, 139);
+            groupBox1.TabIndex = 29;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Seleccione filtros de búsqueda para Ordenes de Selección:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(376, 33);
+            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(54, 20);
+            label2.TabIndex = 29;
+            label2.Text = "Estado";
+            // 
             // ConfirmarOrdenSeleccion
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(963, 718);
-            Controls.Add(CMBEstado);
+            ClientSize = new Size(789, 749);
             Controls.Add(LstOrdenesSeleccion);
             Controls.Add(DetallesOrdenBTN);
             Controls.Add(LSTDetalleOrden);
             Controls.Add(SalirBTN);
             Controls.Add(GenerarOrdenEntregaBTN);
-            Controls.Add(LimpiarBTN);
-            Controls.Add(BuscarBTN);
-            Controls.Add(label1);
-            Controls.Add(IdOrdentxt);
+            Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(2, 2, 2, 2);
             Name = "ConfirmarOrdenSeleccion";
             Text = "Confirmar orden de seleccion";
             Load += ConfirmarOrdenSeleccion_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -209,5 +244,7 @@
         private Button SalirBTN;
         private Button GenerarOrdenEntregaBTN;
         private ComboBox CMBEstado;
+        private GroupBox groupBox1;
+        private Label label2;
     }
 }

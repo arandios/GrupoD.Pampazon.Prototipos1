@@ -17,6 +17,7 @@ namespace Pampazon.ListarOrdenes
             InitializeComponent();
         }
 
+        //TODO: Borrar eventos:
         private void ListarOrdenes_Load(object sender, EventArgs e)
         {
 
@@ -28,6 +29,11 @@ namespace Pampazon.ListarOrdenes
         }
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

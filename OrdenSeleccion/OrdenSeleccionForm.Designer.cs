@@ -38,13 +38,13 @@
             label4 = new Label();
             label5 = new Label();
             ClienteTextBoxOrdenSeleccion = new TextBox();
-            TransportistaTextBoxOrdenSeleccion = new TextBox();
             NumeroOrdenPreparacionTextBoxOrdenSeleccion = new TextBox();
             label6 = new Label();
             label7 = new Label();
             CrearOrdenSeleccionBTN = new Button();
             CancelarOrdenSeleccionBTN = new Button();
             FiltrosOPgroupBox = new GroupBox();
+            dateTimePicker1 = new DateTimePicker();
             PrioridadComboBoxOrdenSeleccion = new ComboBox();
             OPgroupBox = new GroupBox();
             DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView = new ListView();
@@ -127,9 +127,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(245, 60);
             label2.Name = "label2";
-            label2.Size = new Size(94, 20);
+            label2.Size = new Size(47, 20);
             label2.TabIndex = 6;
-            label2.Text = "Transportista";
+            label2.Text = "Fecha";
             // 
             // label3
             // 
@@ -164,13 +164,6 @@
             ClienteTextBoxOrdenSeleccion.Name = "ClienteTextBoxOrdenSeleccion";
             ClienteTextBoxOrdenSeleccion.Size = new Size(223, 27);
             ClienteTextBoxOrdenSeleccion.TabIndex = 10;
-            // 
-            // TransportistaTextBoxOrdenSeleccion
-            // 
-            TransportistaTextBoxOrdenSeleccion.Location = new Point(245, 83);
-            TransportistaTextBoxOrdenSeleccion.Name = "TransportistaTextBoxOrdenSeleccion";
-            TransportistaTextBoxOrdenSeleccion.Size = new Size(174, 27);
-            TransportistaTextBoxOrdenSeleccion.TabIndex = 11;
             // 
             // NumeroOrdenPreparacionTextBoxOrdenSeleccion
             // 
@@ -217,6 +210,7 @@
             // 
             // FiltrosOPgroupBox
             // 
+            FiltrosOPgroupBox.Controls.Add(dateTimePicker1);
             FiltrosOPgroupBox.Controls.Add(PrioridadComboBoxOrdenSeleccion);
             FiltrosOPgroupBox.Location = new Point(11, 20);
             FiltrosOPgroupBox.Name = "FiltrosOPgroupBox";
@@ -224,6 +218,13 @@
             FiltrosOPgroupBox.TabIndex = 19;
             FiltrosOPgroupBox.TabStop = false;
             FiltrosOPgroupBox.Text = "Seleccione filtros de búsqueda para Ordenes de Preparación: ";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(233, 64);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(173, 27);
+            dateTimePicker1.TabIndex = 1;
             // 
             // PrioridadComboBoxOrdenSeleccion
             // 
@@ -387,12 +388,11 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 723);
+            ClientSize = new Size(883, 758);
             Controls.Add(CancelarOrdenSeleccionBTN);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(NumeroOrdenPreparacionTextBoxOrdenSeleccion);
-            Controls.Add(TransportistaTextBoxOrdenSeleccion);
             Controls.Add(ClienteTextBoxOrdenSeleccion);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -405,7 +405,7 @@
             Controls.Add(OPgroupBox);
             Controls.Add(OSgroupBox);
             Name = "OrdenSeleccionForm";
-            Text = "OrdenSeleccion";
+            Text = "GenerarOrdenSeleccion";
             Load += OrdenSeleccionForm_Load_1;
             FiltrosOPgroupBox.ResumeLayout(false);
             OPgroupBox.ResumeLayout(false);
@@ -427,7 +427,6 @@
         private Label label4;
         private Label label5;
         private TextBox ClienteTextBoxOrdenSeleccion;
-        private TextBox TransportistaTextBoxOrdenSeleccion;
         private TextBox NumeroOrdenPreparacionTextBoxOrdenSeleccion;
         private Label label6;
         //private ListBox DetalleOrdenesDePrepracionAOrdenSeleccionListView;
@@ -459,5 +458,6 @@
         private ColumnHeader OPaOS_EstadoOPColumna;
         private ColumnHeader OPaOS_PrioridadColumna;
         private ColumnHeader OPaOS_TransportistaColumna;
+        private DateTimePicker dateTimePicker1;
     }
 }
