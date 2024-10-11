@@ -48,12 +48,6 @@ namespace Pampazon
             }
 
             // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
-            foreach (ColumnHeader column in DetalleProductosStockLista.Columns)
-            {
-                DetalleProductosStockLista.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-
-            // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
             foreach (ColumnHeader column in OrdenTempLista.Columns)
             {
                 OrdenTempLista.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
