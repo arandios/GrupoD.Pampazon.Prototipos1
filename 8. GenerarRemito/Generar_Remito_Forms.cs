@@ -13,10 +13,21 @@ namespace Pampazon
         public Generar_RemitoForms()
         {
             InitializeComponent();
+          
             OrdenesDelTransportistaGBX.Enabled = false;
             DetalleRemitoGBX.Enabled = false;
-        }
+            DetalleRemitoLTV.ColumnWidthChanging += (sender, e) =>
+            {
+                e.NewWidth = DetalleRemitoLTV.Columns[e.ColumnIndex].Width; // Mantener el ancho actual
+                e.Cancel = true; // Cancelar el cambio
+            };
 
+            TransportistasListV.ColumnWidthChanging += (sender, e) =>
+            {
+                e.NewWidth = DetalleRemitoLTV.Columns[e.ColumnIndex].Width; // Mantener el ancho actual
+                e.Cancel = true; // Cancelar el cambio
+            };
+        }
         /// <summary>
         /// A partir del DNI del transportista se buscan las ordenes que hay a su nombre y se listan
         /// en la lista Detalle Transportista para poder selccionar una.
@@ -25,8 +36,7 @@ namespace Pampazon
         /// <param name="e"></param>
         private void BuscarTransportistaBtn_Click(object sender, EventArgs e)
         {
-            BuscarTransportistaGBX.Enabled = false;
-            OrdenesDelTransportistaGBX.Enabled ^= true;
+
             TransportistasListV.Items.Clear();
 
             // Verificar si el campo de texto está vacío
@@ -68,6 +78,9 @@ namespace Pampazon
 
                         TransportistasListV.Items.Add(item);
                     }
+
+                    BuscarTransportistaGBX.Enabled = false;
+                    OrdenesDelTransportistaGBX.Enabled ^= true;
                 }
                 else
                 {
@@ -87,44 +100,79 @@ namespace Pampazon
         /// <param name="e"></param>
         private void AgregarOrdenBtn_Click(object sender, EventArgs e)
         {
+            // Verificar si hay ítems en TransportistasListV
             if (TransportistasListV.Items.Count == 0)
             {
-                MessageBox.Show("No hay órdenes para agregar. Agregue al menos una orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No hay transportistas para agregar. Agregue al menos uno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Verificar si hay un ítem seleccionado en TransportistasListV
-            if (TransportistasListV.SelectedItems.Count == 0)
+
+            // Verificar si al menos un ítem tiene el checkbox marcado
+            bool hayOrdenesSeleccionadas = false;
+
+            // Crear una lista para almacenar los ítems que se agregarán
+            List<ListViewItem> ordenesAAgregar = new List<ListViewItem>();
+
+            // Iterar sobre los ítems de TransportistasListV
+            foreach (ListViewItem item in TransportistasListV.Items)
             {
-                MessageBox.Show("Por favor, seleccione una orden de la lista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                // Verificar si el checkbox está marcado
+                if (item.Checked)
+                {
+                    hayOrdenesSeleccionadas = true;
+
+                    // Extraer los datos necesarios del ítem
+                    string idOrden = item.SubItems[0].Text;
+                    DateTime fechaHoy = DateTime.Now.Date;
+                    string nombreTransportista = item.SubItems[2].Text;
+                    string apellidoTransportista = item.SubItems[3].Text;
+
+
+
+                    // Crear un nuevo ítem para DetalleRemitoLTV
+                    ListViewItem nuevoItem = new ListViewItem(idOrden);
+                    nuevoItem.SubItems.Add(fechaHoy.ToShortDateString());
+                    nuevoItem.SubItems.Add($"{nombreTransportista} {apellidoTransportista}");
+
+                    // Agregar el nuevo ítem a la lista de órdenes a agregar
+                    ordenesAAgregar.Add(nuevoItem);
+                }
             }
 
-            // Obtener el ítem seleccionado
-            ListViewItem selectedItem = TransportistasListV.SelectedItems[0];
-
-            // Extraer los datos necesarios del ítem seleccionado
-            string idOrden = selectedItem.SubItems[0].Text;
-            DateTime fechaHoy = DateTime.Now.Date;
-            string nombreTransportista = selectedItem.SubItems[2].Text;
-            string apellidoTransportista = selectedItem.SubItems[3].Text;
-
-            // Verificar si la orden ya fue agregada a DetalleRemitoLTV
-            if (GenerarRemitoModelo.OrdenYaAgregada(idOrden, DetalleRemitoLTV))
+            // Verificar si no se seleccionó ninguna orden
+            if (!hayOrdenesSeleccionadas)
             {
-                MessageBox.Show("Esta orden ya ha sido agregada a Detalle Remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, seleccione al menos una orden usando los checkboxes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Crear un nuevo ítem para DetalleRemitoLTV
-            ListViewItem nuevoItem = new ListViewItem(idOrden);
-            nuevoItem.SubItems.Add(fechaHoy.ToShortDateString());
-            nuevoItem.SubItems.Add($"{nombreTransportista} {apellidoTransportista}");
-            TransportistasListV.Items.Remove(selectedItem);
+            // Agregar todos los ítems seleccionados a DetalleRemitoLTV
+            foreach (var orden in ordenesAAgregar)
+            {
+                DetalleRemitoLTV.Items.Add(orden);
+            }
 
-            // Agregar el nuevo ítem a DetalleRemitoLTV
-            DetalleRemitoLTV.Items.Add(nuevoItem);
+            // Eliminar los ítems que fueron agregados de TransportistasListV
+            foreach (var orden in ordenesAAgregar)
+            {
+                // Encontrar el ítem correspondiente en TransportistasListV y eliminarlo
+                ListViewItem itemToRemove = TransportistasListV.Items
+                    .Cast<ListViewItem>()
+                    .FirstOrDefault(item => item.SubItems[0].Text == orden.Text); // Usar el ID de la orden para encontrar el ítem
+                if (itemToRemove != null)
+                {
+                    TransportistasListV.Items.Remove(itemToRemove);
+                }
+            }
+
+
+            // Habilitar el grupo de detalles
             DetalleRemitoGBX.Enabled = true;
+
+            // Mensaje de éxito
+            MessageBox.Show("Órdenes agregadas exitosamente a Detalle Remito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e) //NO BORRAR
         {
@@ -150,20 +198,44 @@ namespace Pampazon
                 return;
             }
 
-            // Obtener todas las órdenes de DetalleRemitoLTV
+            // Lista para almacenar las órdenes a incluir en el remito
             var ordenesParaRemito = new List<OrdenesDePreparacion>();
+            var ordenesEliminadas = new List<ListViewItem>(); // Para almacenar las órdenes que se eliminarán
+            bool hayOrdenesSeleccionadas = false;
+
+            // Iterar sobre los ítems de DetalleRemitoLTV
             foreach (ListViewItem item in DetalleRemitoLTV.Items)
             {
-                string idOrden = item.SubItems[0].Text;
-                OrdenesDePreparacion orden = GenerarRemitoModelo.ObtenerOrdenPorId(idOrden);
-                if (orden != null)
+                // Verificar si el checkbox está marcado
+                if (item.Checked)
                 {
-                    ordenesParaRemito.Add(orden);
+                    string idOrden = item.SubItems[0].Text;
+                    OrdenesDePreparacion orden = GenerarRemitoModelo.ObtenerOrdenPorId(idOrden);
+                    if (orden != null)
+                    {
+                        ordenesParaRemito.Add(orden);
+                        ordenesEliminadas.Add(item); // Agregar a la lista de órdenes a eliminar
+                        hayOrdenesSeleccionadas = true; // Se ha encontrado al menos una orden seleccionada
+                    }
+                }
+            }
+
+            // Si no hay órdenes seleccionadas, agregar todas las órdenes
+            if (!hayOrdenesSeleccionadas)
+            {
+                foreach (ListViewItem item in DetalleRemitoLTV.Items)
+                {
+                    string idOrden = item.SubItems[0].Text;
+                    OrdenesDePreparacion orden = GenerarRemitoModelo.ObtenerOrdenPorId(idOrden);
+                    if (orden != null)
+                    {
+                        ordenesParaRemito.Add(orden);
+                        ordenesEliminadas.Add(item); // Agregar a la lista de órdenes a eliminar
+                    }
                 }
             }
 
             // Obtener el DNI del transportista desde un control de entrada
-            // Supongamos que tienes un TextBox para ingresar el DNI
             int dniTransportista;
             if (!int.TryParse(DNITtxt.Text, out dniTransportista))
             {
@@ -190,13 +262,21 @@ namespace Pampazon
                     MessageBox.Show($"Remito generado:\nTransportista DNI: {nuevoRemito.DNITransportista}\nÓrdenes: {string.Join(", ", nuevoRemito.Ordenes.Select(o => o.IdOrden))}",
                                     "Remito Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    // Eliminar las órdenes seleccionadas de DetalleRemitoLTV
+                    foreach (var ordenEliminada in ordenesEliminadas)
+                    {
+                        DetalleRemitoLTV.Items.Remove(ordenEliminada);
+                    }
 
-                    TransportistasListV.Items.Clear();
-                    DetalleRemitoLTV.Items.Clear();
-                    DNITtxt.Clear();
-                    BuscarTransportistaGBX.Enabled = true;
-                    OrdenesDelTransportistaGBX.Enabled = false;
-                    DetalleRemitoGBX.Enabled = false;
+                    // Limpiar las listas y deshabilitar los GroupBox si no quedan órdenes en DetalleRemitoLTV
+                    if (DetalleRemitoLTV.Items.Count == 0)
+                    {
+                        TransportistasListV.Items.Clear();
+                        DNITtxt.Clear();
+                        BuscarTransportistaGBX.Enabled = true;
+                        OrdenesDelTransportistaGBX.Enabled = false;
+                        DetalleRemitoGBX.Enabled = false;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -212,6 +292,12 @@ namespace Pampazon
         }
 
 
+
+
+
+
+
+
         /// <summary>
         /// Quita la orden seleccionada de la lista Detalle Remito
         /// </summary>
@@ -225,56 +311,65 @@ namespace Pampazon
                 return;
             }
 
-            if (DetalleRemitoLTV.SelectedIndices.Count == 0)
+            // Verificar si hay al menos un ítem con checkbox marcado
+            bool hayOrdenesSeleccionadas = false;
+
+            // Lista para almacenar las órdenes a eliminar
+            List<ListViewItem> ordenesAEliminar = new List<ListViewItem>();
+
+            // Iterar sobre los ítems de DetalleRemitoLTV
+            foreach (ListViewItem item in DetalleRemitoLTV.Items)
             {
-                MessageBox.Show("Por favor seleccione una orden para quitar.");
+                // Verificar si el checkbox está marcado
+                if (item.Checked)
+                {
+                    hayOrdenesSeleccionadas = true;
+                    ordenesAEliminar.Add(item);
+                }
+            }
+
+            // Si no se seleccionó ninguna orden, mostrar mensaje de advertencia
+            if (!hayOrdenesSeleccionadas)
+            {
+                MessageBox.Show("Por favor seleccione al menos una orden usando los checkboxes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var ordenSeleccionada = DetalleRemitoLTV.SelectedItems[0];
-            string numeroDeOrden = ordenSeleccionada.SubItems[0].Text;
-
-            var result = MessageBox.Show($"¿Está seguro de que desea eliminar la orden: {numeroDeOrden}?",
+            // Confirmación para eliminar
+            var result = MessageBox.Show($"¿Está seguro de que desea eliminar las órdenes seleccionadas?",
                                          "Confirmar Eliminación",
                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.No)
             {
-                return;
+                return; // Cancelar si el usuario no confirma
             }
 
-            // Eliminar de DetalleRemitoLTV
-            DetalleRemitoLTV.Items.Remove(ordenSeleccionada);
-
-            // Devolver la orden a TransportistasListV
-            var itemTransportista = GenerarRemitoModelo.DevolverOrdenALista(numeroDeOrden);
-            if (itemTransportista != null)
+            // Eliminar las órdenes seleccionadas de DetalleRemitoLTV
+            foreach (var orden in ordenesAEliminar)
             {
-                TransportistasListV.Items.Add(itemTransportista);
+                // Devolver la orden a TransportistasListV
+                var itemTransportista = GenerarRemitoModelo.DevolverOrdenALista(orden.SubItems[0].Text);
+                if (itemTransportista != null)
+                {
+                    TransportistasListV.Items.Add(itemTransportista);
+                }
+                DetalleRemitoLTV.Items.Remove(orden); // Eliminar de DetalleRemitoLTV
             }
 
-            MessageBox.Show("Orden devuelta a la lista de transportistas.", "Orden Devuelta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Órdenes devueltas a la lista de transportistas.", "Órdenes Devueltas", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-
-
-        /// <summary>
-        /// BOTON DE SALIR
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CancelarBtn_Click(object sender, EventArgs e) //boton SALIR
+        private void SalirBtn_Click(object sender, EventArgs e)
         {
-            // Confirmar la acción
-            var result = MessageBox.Show("¿Está seguro que desea salir?",
-                                          "Confirmar",
-                                          MessageBoxButtons.YesNo,
-                                          MessageBoxIcon.Question);
+            // Confirmación para eliminar
+            var result = MessageBox.Show($"¿Está seguro de que desea salir?",
+                                         "Confirmar Eliminación",
+                                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            // Si el usuario elige No, salir del método
             if (result == DialogResult.No)
             {
-                return;
+                return; // Cancelar si el usuario no confirma
             }
             this.Close();
         }

@@ -46,9 +46,9 @@ namespace Pampazon
             label3 = new Label();
             DNITtxt = new TextBox();
             GenerarRemitoBtn = new Button();
-            CancelarBtn = new Button();
             OrdenesDelTransportistaGBX = new GroupBox();
             DetalleRemitoGBX = new GroupBox();
+            SalirBtn = new Button();
             BuscarTransportistaGBX.SuspendLayout();
             OrdenesDelTransportistaGBX.SuspendLayout();
             DetalleRemitoGBX.SuspendLayout();
@@ -56,6 +56,7 @@ namespace Pampazon
             // 
             // DetalleRemitoLTV
             // 
+            DetalleRemitoLTV.CheckBoxes = true;
             DetalleRemitoLTV.Columns.AddRange(new ColumnHeader[] { OrdenConfirmadaColumna, FechaRemitoColumna, TransportistaConfirmadoColumna });
             DetalleRemitoLTV.Location = new Point(6, 22);
             DetalleRemitoLTV.MultiSelect = false;
@@ -64,6 +65,7 @@ namespace Pampazon
             DetalleRemitoLTV.TabIndex = 12;
             DetalleRemitoLTV.UseCompatibleStateImageBehavior = false;
             DetalleRemitoLTV.View = View.Details;
+            
             // 
             // OrdenConfirmadaColumna
             // 
@@ -112,9 +114,12 @@ namespace Pampazon
             // 
             // TransportistasListV
             // 
+            TransportistasListV.Alignment = ListViewAlignment.Default;
+            TransportistasListV.AutoArrange = false;
+            TransportistasListV.CheckBoxes = true;
             TransportistasListV.Columns.AddRange(new ColumnHeader[] { IdOrdenColumna, DNITColumna, NombreTransportistaColumna, ApellidoTransportistaColumna });
+            TransportistasListV.FullRowSelect = true;
             TransportistasListV.Location = new Point(6, 16);
-            TransportistasListV.MultiSelect = false;
             TransportistasListV.Name = "TransportistasListV";
             TransportistasListV.Size = new Size(500, 165);
             TransportistasListV.TabIndex = 20;
@@ -191,16 +196,6 @@ namespace Pampazon
             GenerarRemitoBtn.UseVisualStyleBackColor = true;
             GenerarRemitoBtn.Click += GenerarRemitoBtn_Click;
             // 
-            // CancelarBtn
-            // 
-            CancelarBtn.Location = new Point(23, 651);
-            CancelarBtn.Name = "CancelarBtn";
-            CancelarBtn.Size = new Size(500, 45);
-            CancelarBtn.TabIndex = 24;
-            CancelarBtn.Text = "Salir";
-            CancelarBtn.UseVisualStyleBackColor = true;
-            CancelarBtn.Click += CancelarBtn_Click;
-            // 
             // OrdenesDelTransportistaGBX
             // 
             OrdenesDelTransportistaGBX.Controls.Add(AgregarOrdenBtn);
@@ -225,14 +220,24 @@ namespace Pampazon
             DetalleRemitoGBX.TabStop = false;
             DetalleRemitoGBX.Text = "Detalle del remito";
             // 
+            // SalirBtn
+            // 
+            SalirBtn.Location = new Point(25, 647);
+            SalirBtn.Name = "SalirBtn";
+            SalirBtn.Size = new Size(500, 45);
+            SalirBtn.TabIndex = 27;
+            SalirBtn.Text = "Salir";
+            SalirBtn.UseVisualStyleBackColor = true;
+            SalirBtn.Click += SalirBtn_Click;
+            // 
             // Generar_RemitoForms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(551, 704);
+            Controls.Add(SalirBtn);
             Controls.Add(DetalleRemitoGBX);
             Controls.Add(OrdenesDelTransportistaGBX);
-            Controls.Add(CancelarBtn);
             Controls.Add(BuscarTransportistaGBX);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "Generar_RemitoForms";
@@ -244,6 +249,7 @@ namespace Pampazon
             DetalleRemitoGBX.ResumeLayout(false);
             DetalleRemitoGBX.PerformLayout();
             ResumeLayout(false);
+
         }
 
         private void Generar_RemitoForms_Load(object sender, EventArgs e)
@@ -273,8 +279,8 @@ namespace Pampazon
         private Button GenerarRemitoBtn;
         private ColumnHeader IdOrdenColumna;
         internal ListView TransportistasListV;
-        private Button CancelarBtn;
         private GroupBox OrdenesDelTransportistaGBX;
         private GroupBox DetalleRemitoGBX;
+        private Button SalirBtn;
     }
 }
