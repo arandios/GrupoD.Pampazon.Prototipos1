@@ -29,50 +29,42 @@
         private void InitializeComponent()
         {
             Codigogrb = new GroupBox();
-            btnBuscar = new Button();
             OrdenesParaPrepararlst = new ListView();
             CodigoOrdenColumna = new ColumnHeader();
             PrioridadColumna = new ColumnHeader();
             OrdenesPreparacionlst = new ListView();
             IdProductoColumna = new ColumnHeader();
             ProductoColumna = new ColumnHeader();
-            DetalleColumna = new ColumnHeader();
             CantidadColumna = new ColumnHeader();
             ConfirmarOrdenPreparadabtn = new Button();
             VolverMenubtn = new Button();
-            SeleccionarOtraOrdenbtn = new Button();
+            label1 = new Label();
             Codigogrb.SuspendLayout();
             SuspendLayout();
             // 
             // Codigogrb
             // 
-            Codigogrb.Controls.Add(btnBuscar);
             Codigogrb.Controls.Add(OrdenesParaPrepararlst);
-            Codigogrb.Location = new Point(12, 12);
+            Codigogrb.Enabled = false;
+            Codigogrb.Location = new Point(8, 7);
+            Codigogrb.Margin = new Padding(2);
             Codigogrb.Name = "Codigogrb";
-            Codigogrb.Size = new Size(363, 419);
+            Codigogrb.Padding = new Padding(2);
+            Codigogrb.Size = new Size(244, 301);
             Codigogrb.TabIndex = 0;
             Codigogrb.TabStop = false;
             Codigogrb.Text = "Ordenes de preparacion para empaquetar";
             // 
-            // btnBuscar
-            // 
-            btnBuscar.Location = new Point(145, 374);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(197, 32);
-            btnBuscar.TabIndex = 1;
-            btnBuscar.Text = "Ver detalle de la orden";
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
-            // 
             // OrdenesParaPrepararlst
             // 
             OrdenesParaPrepararlst.Columns.AddRange(new ColumnHeader[] { CodigoOrdenColumna, PrioridadColumna });
+            OrdenesParaPrepararlst.Enabled = false;
             OrdenesParaPrepararlst.FullRowSelect = true;
-            OrdenesParaPrepararlst.Location = new Point(16, 30);
+            OrdenesParaPrepararlst.Location = new Point(11, 18);
+            OrdenesParaPrepararlst.Margin = new Padding(2);
             OrdenesParaPrepararlst.MultiSelect = false;
             OrdenesParaPrepararlst.Name = "OrdenesParaPrepararlst";
-            OrdenesParaPrepararlst.Size = new Size(327, 331);
+            OrdenesParaPrepararlst.Size = new Size(224, 283);
             OrdenesParaPrepararlst.TabIndex = 0;
             OrdenesParaPrepararlst.UseCompatibleStateImageBehavior = false;
             OrdenesParaPrepararlst.View = View.Details;
@@ -80,20 +72,23 @@
             // CodigoOrdenColumna
             // 
             CodigoOrdenColumna.Text = "Codigo Orden";
-            CodigoOrdenColumna.Width = 200;
+            CodigoOrdenColumna.Width = 120;
             // 
             // PrioridadColumna
             // 
             PrioridadColumna.Text = "Prioridad";
+            PrioridadColumna.TextAlign = HorizontalAlignment.Center;
             PrioridadColumna.Width = 100;
             // 
             // OrdenesPreparacionlst
             // 
-            OrdenesPreparacionlst.Columns.AddRange(new ColumnHeader[] { IdProductoColumna, ProductoColumna, DetalleColumna, CantidadColumna });
-            OrdenesPreparacionlst.Location = new Point(397, 33);
+            OrdenesPreparacionlst.Columns.AddRange(new ColumnHeader[] { IdProductoColumna, ProductoColumna, CantidadColumna });
+            OrdenesPreparacionlst.Enabled = false;
+            OrdenesPreparacionlst.Location = new Point(256, 25);
+            OrdenesPreparacionlst.Margin = new Padding(2);
             OrdenesPreparacionlst.MultiSelect = false;
             OrdenesPreparacionlst.Name = "OrdenesPreparacionlst";
-            OrdenesPreparacionlst.Size = new Size(765, 258);
+            OrdenesPreparacionlst.Size = new Size(626, 241);
             OrdenesPreparacionlst.TabIndex = 1;
             OrdenesPreparacionlst.UseCompatibleStateImageBehavior = false;
             OrdenesPreparacionlst.View = View.Details;
@@ -101,28 +96,26 @@
             // IdProductoColumna
             // 
             IdProductoColumna.Text = "Id Producto";
-            IdProductoColumna.Width = 130;
+            IdProductoColumna.Width = 120;
             // 
             // ProductoColumna
             // 
             ProductoColumna.Text = "Producto";
-            ProductoColumna.Width = 150;
-            // 
-            // DetalleColumna
-            // 
-            DetalleColumna.Text = "Detalle";
-            DetalleColumna.Width = 200;
+            ProductoColumna.TextAlign = HorizontalAlignment.Center;
+            ProductoColumna.Width = 400;
             // 
             // CantidadColumna
             // 
             CantidadColumna.Text = "Cantidad";
-            CantidadColumna.Width = 110;
+            CantidadColumna.TextAlign = HorizontalAlignment.Center;
+            CantidadColumna.Width = 100;
             // 
             // ConfirmarOrdenPreparadabtn
             // 
-            ConfirmarOrdenPreparadabtn.Location = new Point(859, 313);
+            ConfirmarOrdenPreparadabtn.Location = new Point(571, 270);
+            ConfirmarOrdenPreparadabtn.Margin = new Padding(2);
             ConfirmarOrdenPreparadabtn.Name = "ConfirmarOrdenPreparadabtn";
-            ConfirmarOrdenPreparadabtn.Size = new Size(303, 40);
+            ConfirmarOrdenPreparadabtn.Size = new Size(311, 38);
             ConfirmarOrdenPreparadabtn.TabIndex = 2;
             ConfirmarOrdenPreparadabtn.Text = "Confirmar orden como preparada";
             ConfirmarOrdenPreparadabtn.UseVisualStyleBackColor = true;
@@ -130,56 +123,56 @@
             // 
             // VolverMenubtn
             // 
-            VolverMenubtn.Location = new Point(1014, 372);
+            VolverMenubtn.Location = new Point(256, 270);
+            VolverMenubtn.Margin = new Padding(2);
             VolverMenubtn.Name = "VolverMenubtn";
-            VolverMenubtn.Size = new Size(148, 32);
+            VolverMenubtn.Size = new Size(311, 38);
             VolverMenubtn.TabIndex = 3;
             VolverMenubtn.Text = "Salir";
             VolverMenubtn.UseVisualStyleBackColor = true;
             VolverMenubtn.Click += VolverMenubtn_Click;
             // 
-            // SeleccionarOtraOrdenbtn
+            // label1
             // 
-            SeleccionarOtraOrdenbtn.Location = new Point(617, 313);
-            SeleccionarOtraOrdenbtn.Name = "SeleccionarOtraOrdenbtn";
-            SeleccionarOtraOrdenbtn.Size = new Size(231, 40);
-            SeleccionarOtraOrdenbtn.TabIndex = 4;
-            SeleccionarOtraOrdenbtn.Text = "Seleccionar otra orden";
-            SeleccionarOtraOrdenbtn.UseVisualStyleBackColor = true;
-            SeleccionarOtraOrdenbtn.Click += SeleccionarOtraOrdenbtn_Click;
+            label1.AutoSize = true;
+            label1.Location = new Point(259, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(43, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Detalle";
             // 
             // EmpaquetarOrdenesForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1174, 450);
-            Controls.Add(SeleccionarOtraOrdenbtn);
+            ClientSize = new Size(917, 319);
+            Controls.Add(label1);
             Controls.Add(VolverMenubtn);
             Controls.Add(ConfirmarOrdenPreparadabtn);
             Controls.Add(OrdenesPreparacionlst);
             Controls.Add(Codigogrb);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(2);
             Name = "EmpaquetarOrdenesForm";
             Text = "Empaquetar Ordenes";
             Load += EmpaquetarOrdenesForm_Load;
             Codigogrb.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private GroupBox Codigogrb;
-        private Button btnBuscar;
         private ListView OrdenesParaPrepararlst;
         private ColumnHeader CodigoOrdenColumna;
         private ColumnHeader PrioridadColumna;
         private ListView OrdenesPreparacionlst;
         private ColumnHeader IdProductoColumna;
         private ColumnHeader ProductoColumna;
-        private ColumnHeader DetalleColumna;
         private ColumnHeader CantidadColumna;
         private Button ConfirmarOrdenPreparadabtn;
         private Button VolverMenubtn;
-        private Button SeleccionarOtraOrdenbtn;
+        private Label label1;
     }
 }
