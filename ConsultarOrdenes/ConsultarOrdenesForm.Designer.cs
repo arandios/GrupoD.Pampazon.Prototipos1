@@ -52,6 +52,7 @@
             label1 = new Label();
             dateTimePicker1 = new DateTimePicker();
             groupBox2 = new GroupBox();
+            label8 = new Label();
             listView3 = new ListView();
             SKU_Columna = new ColumnHeader();
             Producto_Columna = new ColumnHeader();
@@ -61,7 +62,6 @@
             Deposito_Columna = new ColumnHeader();
             EstadoOrden_Columna = new ColumnHeader();
             Codigo_de_OrdenColumna = new ColumnHeader();
-            label8 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -107,23 +107,23 @@
             // 
             // button1
             // 
-            button1.Location = new Point(371, 109);
+            button1.Location = new Point(472, 109);
             button1.Margin = new Padding(2, 3, 2, 3);
             button1.Name = "button1";
             button1.Size = new Size(149, 28);
             button1.TabIndex = 8;
-            button1.Text = "Buscar orden";
+            button1.Text = "&Buscar orden";
             button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            button2.Location = new Point(524, 108);
+            button2.Location = new Point(622, 108);
             button2.Margin = new Padding(2, 3, 2, 3);
             button2.Name = "button2";
             button2.RightToLeft = RightToLeft.No;
             button2.Size = new Size(128, 29);
             button2.TabIndex = 9;
-            button2.Text = "Borrar filtros";
+            button2.Text = "&Borrar filtros";
             button2.UseVisualStyleBackColor = true;
             // 
             // button3
@@ -133,7 +133,7 @@
             button3.Name = "button3";
             button3.Size = new Size(96, 28);
             button3.TabIndex = 11;
-            button3.Text = "Salir";
+            button3.Text = "&Salir";
             button3.UseVisualStyleBackColor = true;
             // 
             // comboBox5
@@ -290,6 +290,15 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Seleccione filtros para búsqueda de Ordenes del cliente seleccionado: ";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(428, 109);
+            label8.Name = "label8";
+            label8.Size = new Size(217, 20);
+            label8.TabIndex = 24;
+            label8.Text = "Detalle de productos en Orden:";
+            // 
             // listView3
             // 
             listView3.Columns.AddRange(new ColumnHeader[] { SKU_Columna, Producto_Columna, Cantidad_Columna });
@@ -342,15 +351,6 @@
             // Codigo_de_OrdenColumna
             // 
             Codigo_de_OrdenColumna.Text = "Código de Orden";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(428, 109);
-            label8.Name = "label8";
-            label8.Size = new Size(217, 20);
-            label8.TabIndex = 24;
-            label8.Text = "Detalle de productos en Orden:";
             // 
             // ConsultarOrdenesForm
             // 

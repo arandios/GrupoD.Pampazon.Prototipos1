@@ -81,7 +81,6 @@
             ProductosStockLista.TabIndex = 32;
             ProductosStockLista.UseCompatibleStateImageBehavior = false;
             ProductosStockLista.View = View.Details;
-            //ProductosStockLista.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
             // 
             // ProductosCliente
             // 
@@ -137,7 +136,7 @@
             ProductoBuscar.Name = "ProductoBuscar";
             ProductoBuscar.Size = new Size(150, 31);
             ProductoBuscar.TabIndex = 29;
-            ProductoBuscar.Text = "Buscar Producto";
+            ProductoBuscar.Text = "&Buscar Producto";
             ProductoBuscar.UseVisualStyleBackColor = true;
             ProductoBuscar.Click += BuscarProductoBtn;
             // 
@@ -149,7 +148,7 @@
             button3.Name = "button3";
             button3.Size = new Size(88, 31);
             button3.TabIndex = 28;
-            button3.Text = "Salir";
+            button3.Text = "&Salir";
             button3.UseVisualStyleBackColor = false;
             button3.Click += VolverBtn;
             // 
@@ -161,7 +160,7 @@
             Generar.Name = "Generar";
             Generar.Size = new Size(204, 31);
             Generar.TabIndex = 27;
-            Generar.Text = "Generar Orden Preparacion";
+            Generar.Text = "&Generar Orden Preparacion";
             Generar.UseVisualStyleBackColor = false;
             Generar.Click += GenerarOrderPreparacionBtn;
             // 
@@ -173,7 +172,7 @@
             button2.Name = "button2";
             button2.Size = new Size(127, 31);
             button2.TabIndex = 22;
-            button2.Text = "Cancelar Orden";
+            button2.Text = "&Cancelar Orden";
             button2.UseVisualStyleBackColor = false;
             button2.Click += CancelarOrderBtn;
             // 
@@ -200,7 +199,7 @@
             button5.Name = "button5";
             button5.Size = new Size(118, 31);
             button5.TabIndex = 36;
-            button5.Text = "Borrar Filtros";
+            button5.Text = "&Borrar Filtros";
             button5.UseVisualStyleBackColor = true;
             button5.Click += LimpiarFiltros;
             // 
@@ -211,9 +210,8 @@
             button4.Name = "button4";
             button4.Size = new Size(321, 27);
             button4.TabIndex = 39;
-            button4.Text = "Agregar Productos a la Orden de Preparación";
+            button4.Text = "&Agregar Productos a la Orden de Preparación";
             button4.UseVisualStyleBackColor = true;
-            //button4.Click += AgregarProductosOrdenBtn_Click;
             // 
             // label1
             // 
@@ -234,7 +232,6 @@
             TransportistasComboBox.TabIndex = 48;
             TransportistasComboBox.UseCompatibleStateImageBehavior = false;
             TransportistasComboBox.View = View.Details;
-            //TransportistasComboBox.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
             // 
             // NombreTranspor
             // 
@@ -394,7 +391,6 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "GenerarOrdenPreparacionForm";
             Text = "GenerarOrdenPreparacion";
-           // Load += TransportistasComboBox_SelectedIndexChanged;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
