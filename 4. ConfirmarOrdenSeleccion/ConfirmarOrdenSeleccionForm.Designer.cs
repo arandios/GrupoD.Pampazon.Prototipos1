@@ -37,9 +37,12 @@
             CLEstado = new ColumnHeader();
             DetallesOrdenBTN = new Button();
             LSTDetalleOrden = new ListView();
-            columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
+            CodCliente_Columna = new ColumnHeader();
+            RazonSocialCli_Columna = new ColumnHeader();
+            SKUProducto_Columna = new ColumnHeader();
+            DetalleProducto_Columna = new ColumnHeader();
+            Cantidad_Columna = new ColumnHeader();
+            Ubicacion_columna = new ColumnHeader();
             SalirBTN = new Button();
             GenerarOrdenEntregaBTN = new Button();
             groupBox1 = new GroupBox();
@@ -47,11 +50,12 @@
             groupBox3 = new GroupBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // LimpiarBTN
             // 
-            LimpiarBTN.Location = new Point(616, 100);
+            LimpiarBTN.Location = new Point(613, 88);
             LimpiarBTN.Margin = new Padding(2);
             LimpiarBTN.Name = "LimpiarBTN";
             LimpiarBTN.Size = new Size(101, 34);
@@ -62,7 +66,7 @@
             // 
             // BuscarBTN
             // 
-            BuscarBTN.Location = new Point(376, 100);
+            BuscarBTN.Location = new Point(376, 88);
             BuscarBTN.Margin = new Padding(2);
             BuscarBTN.Name = "BuscarBTN";
             BuscarBTN.Size = new Size(236, 34);
@@ -86,7 +90,7 @@
             IdOrdentxt.Location = new Point(14, 55);
             IdOrdentxt.Margin = new Padding(2);
             IdOrdentxt.Name = "IdOrdentxt";
-            IdOrdentxt.Size = new Size(358, 27);
+            IdOrdentxt.Size = new Size(700, 27);
             IdOrdentxt.TabIndex = 13;
             // 
             // LstOrdenesSeleccion
@@ -114,20 +118,20 @@
             // 
             // DetallesOrdenBTN
             // 
-            DetallesOrdenBTN.Location = new Point(582, 415);
+            DetallesOrdenBTN.Location = new Point(450, 234);
             DetallesOrdenBTN.Margin = new Padding(2);
             DetallesOrdenBTN.Name = "DetallesOrdenBTN";
-            DetallesOrdenBTN.Size = new Size(147, 32);
+            DetallesOrdenBTN.Size = new Size(266, 32);
             DetallesOrdenBTN.TabIndex = 25;
-            DetallesOrdenBTN.Text = "&Detalles de Orden";
+            DetallesOrdenBTN.Text = "&Ver detalles de Orden de Selección";
             DetallesOrdenBTN.UseVisualStyleBackColor = true;
             DetallesOrdenBTN.Click += DetallesOrdenBTN_Click;
             // 
             // LSTDetalleOrden
             // 
-            LSTDetalleOrden.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6, columnHeader7 });
+            LSTDetalleOrden.Columns.AddRange(new ColumnHeader[] { CodCliente_Columna, RazonSocialCli_Columna, SKUProducto_Columna, DetalleProducto_Columna, Cantidad_Columna, Ubicacion_columna });
             LSTDetalleOrden.FullRowSelect = true;
-            LSTDetalleOrden.Location = new Point(16, 482);
+            LSTDetalleOrden.Location = new Point(2, 25);
             LSTDetalleOrden.Margin = new Padding(2);
             LSTDetalleOrden.MultiSelect = false;
             LSTDetalleOrden.Name = "LSTDetalleOrden";
@@ -136,20 +140,34 @@
             LSTDetalleOrden.UseCompatibleStateImageBehavior = false;
             LSTDetalleOrden.View = View.Details;
             // 
-            // columnHeader5
+            // CodCliente_Columna
             // 
-            columnHeader5.Text = "Id Producto";
-            columnHeader5.Width = 110;
+            CodCliente_Columna.Text = "Código Cliente";
             // 
-            // columnHeader6
+            // RazonSocialCli_Columna
             // 
-            columnHeader6.Text = "Producto";
-            columnHeader6.Width = 110;
+            RazonSocialCli_Columna.Text = "Razón Social Cliente";
             // 
-            // columnHeader7
+            // SKUProducto_Columna
             // 
-            columnHeader7.Text = "Cantidad";
-            columnHeader7.Width = 100;
+            SKUProducto_Columna.Text = "SKU Producto";
+            SKUProducto_Columna.Width = 110;
+            // 
+            // DetalleProducto_Columna
+            // 
+            DetalleProducto_Columna.Text = "Producto";
+            DetalleProducto_Columna.Width = 110;
+            // 
+            // Cantidad_Columna
+            // 
+            Cantidad_Columna.DisplayIndex = 5;
+            Cantidad_Columna.Text = "Cantidad";
+            Cantidad_Columna.Width = 100;
+            // 
+            // Ubicacion_columna
+            // 
+            Ubicacion_columna.DisplayIndex = 4;
+            Ubicacion_columna.Text = "Ubicación";
             // 
             // SalirBTN
             // 
@@ -168,7 +186,7 @@
             GenerarOrdenEntregaBTN.Name = "GenerarOrdenEntregaBTN";
             GenerarOrdenEntregaBTN.Size = new Size(218, 31);
             GenerarOrdenEntregaBTN.TabIndex = 22;
-            GenerarOrdenEntregaBTN.Text = "&Confirmar Orden de Seleccion";
+            GenerarOrdenEntregaBTN.Text = "&Confirmar Orden de Selección";
             GenerarOrdenEntregaBTN.UseVisualStyleBackColor = true;
             GenerarOrdenEntregaBTN.Click += ConfirmarOrdenSeleccionBTN_Click;
             // 
@@ -178,17 +196,18 @@
             groupBox1.Controls.Add(BuscarBTN);
             groupBox1.Controls.Add(IdOrdentxt);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(12, 29);
+            groupBox1.Location = new Point(11, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(722, 139);
+            groupBox1.Size = new Size(722, 126);
             groupBox1.TabIndex = 29;
             groupBox1.TabStop = false;
             groupBox1.Text = "Seleccione filtros de búsqueda para Ordenes de Selección:";
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(DetallesOrdenBTN);
             groupBox2.Controls.Add(LstOrdenesSeleccion);
-            groupBox2.Location = new Point(12, 181);
+            groupBox2.Location = new Point(9, 144);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(724, 266);
             groupBox2.TabIndex = 30;
@@ -197,9 +216,10 @@
             // 
             // groupBox3
             // 
-            groupBox3.Location = new Point(11, 457);
+            groupBox3.Controls.Add(LSTDetalleOrden);
+            groupBox3.Location = new Point(12, 416);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(725, 241);
+            groupBox3.Size = new Size(725, 266);
             groupBox3.TabIndex = 31;
             groupBox3.TabStop = false;
             groupBox3.Text = "Detalle de Orden de Seleccion a confirmar: ";
@@ -208,22 +228,20 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(748, 749);
-            Controls.Add(DetallesOrdenBTN);
-            Controls.Add(LSTDetalleOrden);
+            ClientSize = new Size(743, 738);
             Controls.Add(SalirBTN);
             Controls.Add(GenerarOrdenEntregaBTN);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox3);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(2);
             Name = "ConfirmarOrdenSeleccion";
-            Text = "Confirmar orden de seleccion";
+            Text = "Confirmar Orden de Selección";
             Load += ConfirmarOrdenSeleccion_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -237,13 +255,16 @@
         private ColumnHeader CLEstado;
         private Button DetallesOrdenBTN;
         private ListView LSTDetalleOrden;
-        private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader7;
+        private ColumnHeader SKUProducto_Columna;
+        private ColumnHeader DetalleProducto_Columna;
+        private ColumnHeader Cantidad_Columna;
         private Button SalirBTN;
         private Button GenerarOrdenEntregaBTN;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
+        private ColumnHeader CodCliente_Columna;
+        private ColumnHeader RazonSocialCli_Columna;
+        private ColumnHeader Ubicacion_columna;
     }
 }
