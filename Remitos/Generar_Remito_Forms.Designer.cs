@@ -130,7 +130,7 @@ namespace Pampazon
             // 
             // TransportistasListV
             // 
-            TransportistasListV.Columns.AddRange(new ColumnHeader[] { NombreTransportistaColumna, DNITColumna, ApellidoTransportistaColumna, IdOrdenColumna });
+            TransportistasListV.Columns.AddRange(new ColumnHeader[] { DNITColumna, ApellidoTransportistaColumna, IdOrdenColumna, NombreTransportistaColumna });
             TransportistasListV.Location = new Point(20, 147);
             TransportistasListV.MultiSelect = false;
             TransportistasListV.Name = "TransportistasListV";
@@ -148,18 +148,19 @@ namespace Pampazon
             // 
             // DNITColumna
             // 
-            DNITColumna.DisplayIndex = 0;
             DNITColumna.Text = "DNI";
             DNITColumna.TextAlign = HorizontalAlignment.Center;
             DNITColumna.Width = 100;
             // 
             // ApellidoTransportistaColumna
             // 
+            ApellidoTransportistaColumna.DisplayIndex = 2;
             ApellidoTransportistaColumna.Text = "Apellido";
             ApellidoTransportistaColumna.Width = 120;
             // 
             // IdOrdenColumna
             // 
+            IdOrdenColumna.DisplayIndex = 3;
             IdOrdenColumna.Text = "Id Orden de Preparacion";
             IdOrdenColumna.Width = 150;
             // 

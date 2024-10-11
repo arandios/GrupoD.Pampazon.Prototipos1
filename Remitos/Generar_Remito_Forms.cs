@@ -125,6 +125,8 @@ namespace Pampazon
 
         }
 
+      
+
 
         /// <summary>
         /// Boton para generar remito a partir de los datos del transportista y la orden
@@ -220,12 +222,7 @@ namespace Pampazon
                 return;
             }
 
-            // Verificar si hay un ítem seleccionado
-            if (DetalleRemitoLTV.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Por favor, seleccione una orden para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+           
 
             var ordenSeleccionada = DetalleRemitoLTV.SelectedItems[0];
 
