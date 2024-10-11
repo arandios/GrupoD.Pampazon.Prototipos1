@@ -38,14 +38,14 @@ namespace Pampazon.OrdenSeleccion
 
 
             // Verificar si la lista de órdenes de preparación no está vacía
-            if (modelo.OrdenesDePreparacion == null || !modelo.OrdenesDePreparacion.Any())
+            if (modelo.OrdenesDePreparacion == null || modelo.OrdenesDePreparacion.Count == 0)
             {
                 MessageBox.Show("No hay órdenes de preparación disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             // CARGAR DATOS A LA LISTA DE ORDENES DE PREPARACION.
-            actualizarListaOrdenDePreparacion();
+            ActualizarListaOrdenDePreparacion();
 
             // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
             foreach (ColumnHeader column in DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Columns)
@@ -107,7 +107,7 @@ namespace Pampazon.OrdenSeleccion
             PrioridadComboBoxOrdenSeleccion.SelectedIndex = -1; // Deseleccionar cualquier elemento
 
             // Restablecer la lista de órdenes de preparación
-            actualizarListaOrdenDePreparacion();
+            ActualizarListaOrdenDePreparacion();
 
             // Filtrar las órdenes de preparación que no han sido agregadas
             var itemsToRemove = new List<ListViewItem>();
@@ -369,7 +369,7 @@ namespace Pampazon.OrdenSeleccion
         // ==============================================================================
         
         
-        private void actualizarListaOrdenDePreparacion()
+        private void ActualizarListaOrdenDePreparacion()
         {
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
 

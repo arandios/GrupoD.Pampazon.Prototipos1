@@ -41,7 +41,7 @@ namespace Pampazon
                 if (Prod.Stock > 0)
                 {
                     //agregar a la lista.
-                    ListViewItem item = new ListViewItem();
+                    ListViewItem item = new();
                     item.Text = Prod.NombreProducto;
                     item.SubItems.Add(Prod.Stock.ToString());
                     item.SubItems.Add(Prod.IdDeposito.ToString());
@@ -59,7 +59,7 @@ namespace Pampazon
             {
                 foreach (var ProdOrden in model.Orden.Productos)
                 {
-                    ListViewItem itemOrden = new ListViewItem();
+                    ListViewItem itemOrden = new();
                     itemOrden.Text = ProdOrden.NombreProducto;
                     itemOrden.SubItems.Add(ProdOrden.Stock.ToString());
                     itemOrden.SubItems.Add(ProdOrden.IdDeposito.ToString());

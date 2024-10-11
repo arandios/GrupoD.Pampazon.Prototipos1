@@ -34,7 +34,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                ListarOrdenes.ConsultarOrdenesForm formOrdenes = new ListarOrdenes.ConsultarOrdenesForm();
+                ListarOrdenes.ConsultarOrdenesForm formOrdenes = new();
                 formOrdenes.ShowDialog();
             }
             catch (Exception ex)
@@ -49,7 +49,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                Generar_RemitoForms formRemito = new Generar_RemitoForms();
+                Generar_RemitoForms formRemito = new();
                 formRemito.ShowDialog();
             }
             catch (Exception ex)
@@ -64,7 +64,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                OrdenSeleccion.OrdenSeleccionForm ordenSeleccionForm = new OrdenSeleccion.OrdenSeleccionForm();
+                OrdenSeleccion.OrdenSeleccionForm ordenSeleccionForm = new ();
                 ordenSeleccionForm.ShowDialog();
             }
             catch (Exception ex)
@@ -77,7 +77,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                ConfirmarOrdenSeleccion.ConfirmarOrdenSeleccion confirmarOrdenForm = new ConfirmarOrdenSeleccion.ConfirmarOrdenSeleccion();
+                ConfirmarOrdenSeleccion.ConfirmarOrdenSeleccion confirmarOrdenForm = new();
                 confirmarOrdenForm.ShowDialog();
             }
             catch (Exception ex)
@@ -91,7 +91,7 @@ namespace Pampazon.MenuPrincipal
             try
             {
 
-                OrdenEntrega.OrdenEntregaForm ordenEntregaForm = new OrdenEntrega.OrdenEntregaForm();
+                OrdenEntrega.GenerarOrdenEntregaForm ordenEntregaForm = new ();
                 ordenEntregaForm.ShowDialog();
             }
             catch (Exception ex)
@@ -106,7 +106,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                GenerarOrdenPreparacionForm generarOrden = new GenerarOrdenPreparacionForm();
+                GenerarOrdenPreparacionForm generarOrden = new ();
                 generarOrden.ShowDialog();
             }
             catch (Exception ex)
@@ -120,7 +120,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                ConfirmarOrdenEntregaForm confirmarOrden = new ConfirmarOrdenEntregaForm();
+                ConfirmarOrdenEntregaForm confirmarOrden = new ();
                 confirmarOrden.ShowDialog();
             }
             catch (Exception ex)
@@ -134,7 +134,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                EmpaquetarOrdenesForm empaquetarOrdenForm = new EmpaquetarOrdenesForm();
+                EmpaquetarOrdenesForm empaquetarOrdenForm = new ();
                 empaquetarOrdenForm.ShowDialog();
             }
             catch (Exception ex)
