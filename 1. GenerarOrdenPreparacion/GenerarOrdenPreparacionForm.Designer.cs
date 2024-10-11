@@ -34,6 +34,7 @@
             DepositoID = new ColumnHeader();
             DepositoDir = new ColumnHeader();
             Localidad_Columna = new ColumnHeader();
+            SKU_columna = new ColumnHeader();
             OrdenTempLista = new ListView();
             Producto = new ColumnHeader();
             Cantidad = new ColumnHeader();
@@ -47,15 +48,12 @@
             button5 = new Button();
             button4 = new Button();
             label1 = new Label();
-            OPTransportistasListView = new ListView();
-            NombreTranspor = new ColumnHeader();
-            ApellidoTranspor = new ColumnHeader();
-            DniTranspor = new ColumnHeader();
-            label5 = new Label();
             label6 = new Label();
             label8 = new Label();
             label9 = new Label();
             groupBox1 = new GroupBox();
+            label11 = new Label();
+            textBox6 = new TextBox();
             label10 = new Label();
             textBox5 = new TextBox();
             label7 = new Label();
@@ -69,9 +67,10 @@
             label3 = new Label();
             textBox2 = new TextBox();
             OPDetalleMercaderiaGroupBox = new GroupBox();
-            label11 = new Label();
-            textBox6 = new TextBox();
-            SKU_columna = new ColumnHeader();
+            textBox7 = new TextBox();
+            label12 = new Label();
+            textBox9 = new TextBox();
+            label14 = new Label();
             groupBox1.SuspendLayout();
             OPMercaderiaGroupBox.SuspendLayout();
             OPDetalleMercaderiaGroupBox.SuspendLayout();
@@ -112,13 +111,18 @@
             // 
             Localidad_Columna.Text = "Localidad";
             // 
+            // SKU_columna
+            // 
+            SKU_columna.DisplayIndex = 0;
+            SKU_columna.Text = "SKU";
+            // 
             // OrdenTempLista
             // 
             OrdenTempLista.Columns.AddRange(new ColumnHeader[] { Producto, Cantidad, Deposito });
             OrdenTempLista.Location = new Point(5, 37);
             OrdenTempLista.Margin = new Padding(2, 3, 2, 3);
             OrdenTempLista.Name = "OrdenTempLista";
-            OrdenTempLista.Size = new Size(563, 245);
+            OrdenTempLista.Size = new Size(883, 201);
             OrdenTempLista.TabIndex = 30;
             OrdenTempLista.UseCompatibleStateImageBehavior = false;
             OrdenTempLista.View = View.Details;
@@ -151,7 +155,7 @@
             // button3
             // 
             button3.BackColor = SystemColors.ButtonHighlight;
-            button3.Location = new Point(807, 288);
+            button3.Location = new Point(801, 247);
             button3.Margin = new Padding(2, 3, 2, 3);
             button3.Name = "button3";
             button3.Size = new Size(88, 31);
@@ -163,7 +167,7 @@
             // Generar
             // 
             Generar.BackColor = SystemColors.ButtonHighlight;
-            Generar.Location = new Point(468, 288);
+            Generar.Location = new Point(462, 247);
             Generar.Margin = new Padding(2, 3, 2, 3);
             Generar.Name = "Generar";
             Generar.Size = new Size(203, 31);
@@ -175,7 +179,7 @@
             // button2
             // 
             button2.BackColor = SystemColors.ButtonHighlight;
-            button2.Location = new Point(676, 288);
+            button2.Location = new Point(670, 247);
             button2.Margin = new Padding(2, 3, 2, 3);
             button2.Name = "button2";
             button2.Size = new Size(127, 31);
@@ -213,7 +217,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(578, 351);
+            button4.Location = new Point(580, 392);
             button4.Margin = new Padding(2, 3, 2, 3);
             button4.Name = "button4";
             button4.Size = new Size(321, 28);
@@ -230,44 +234,10 @@
             label1.TabIndex = 40;
             label1.Click += label1_Click;
             // 
-            // OPTransportistasListView
-            // 
-            OPTransportistasListView.Columns.AddRange(new ColumnHeader[] { NombreTranspor, ApellidoTranspor, DniTranspor });
-            OPTransportistasListView.Location = new Point(572, 37);
-            OPTransportistasListView.Margin = new Padding(2, 3, 2, 3);
-            OPTransportistasListView.Name = "OPTransportistasListView";
-            OPTransportistasListView.Size = new Size(321, 245);
-            OPTransportistasListView.TabIndex = 48;
-            OPTransportistasListView.UseCompatibleStateImageBehavior = false;
-            OPTransportistasListView.View = View.Details;
-            // 
-            // NombreTranspor
-            // 
-            NombreTranspor.Text = "Nombre";
-            NombreTranspor.Width = 55;
-            // 
-            // ApellidoTranspor
-            // 
-            ApellidoTranspor.Text = "Apellido";
-            // 
-            // DniTranspor
-            // 
-            DniTranspor.Text = "DNI";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(574, 14);
-            label5.Name = "label5";
-            label5.Size = new Size(192, 20);
-            label5.TabIndex = 49;
-            label5.Text = "Seleccione un Transportista:";
-            label5.Click += label5_Click;
-            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(11, 329);
+            label6.Location = new Point(11, 314);
             label6.Name = "label6";
             label6.Size = new Size(128, 20);
             label6.TabIndex = 50;
@@ -311,6 +281,23 @@
             groupBox1.TabIndex = 55;
             groupBox1.TabStop = false;
             groupBox1.Text = "Seleccione filtros de búsqueda para sus productos en los depositos:";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(385, 24);
+            label11.Name = "label11";
+            label11.Size = new Size(106, 20);
+            label11.TabIndex = 62;
+            label11.Text = "Código cliente";
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(383, 43);
+            textBox6.Margin = new Padding(2, 3, 2, 3);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(500, 27);
+            textBox6.TabIndex = 61;
             // 
             // label10
             // 
@@ -365,6 +352,10 @@
             // 
             // OPMercaderiaGroupBox
             // 
+            OPMercaderiaGroupBox.Controls.Add(textBox9);
+            OPMercaderiaGroupBox.Controls.Add(label14);
+            OPMercaderiaGroupBox.Controls.Add(textBox7);
+            OPMercaderiaGroupBox.Controls.Add(label12);
             OPMercaderiaGroupBox.Controls.Add(comboBox1);
             OPMercaderiaGroupBox.Controls.Add(textBox3);
             OPMercaderiaGroupBox.Controls.Add(label4);
@@ -376,7 +367,7 @@
             OPMercaderiaGroupBox.Controls.Add(ProductosStockLista);
             OPMercaderiaGroupBox.Location = new Point(16, 196);
             OPMercaderiaGroupBox.Name = "OPMercaderiaGroupBox";
-            OPMercaderiaGroupBox.Size = new Size(902, 402);
+            OPMercaderiaGroupBox.Size = new Size(902, 436);
             OPMercaderiaGroupBox.TabIndex = 57;
             OPMercaderiaGroupBox.TabStop = false;
             OPMercaderiaGroupBox.Text = "Productos en deposito";
@@ -384,14 +375,14 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(409, 351);
+            comboBox1.Location = new Point(409, 333);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(151, 28);
             comboBox1.TabIndex = 61;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(186, 352);
+            textBox3.Location = new Point(186, 334);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(217, 27);
             textBox3.TabIndex = 60;
@@ -399,7 +390,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(409, 328);
+            label4.Location = new Point(409, 313);
             label4.Name = "label4";
             label4.Size = new Size(73, 20);
             label4.TabIndex = 59;
@@ -409,7 +400,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(186, 328);
+            label3.Location = new Point(186, 313);
             label3.Name = "label3";
             label3.Size = new Size(106, 20);
             label3.TabIndex = 58;
@@ -417,47 +408,55 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(11, 352);
+            textBox2.Location = new Point(11, 334);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(169, 27);
             textBox2.TabIndex = 57;
             // 
             // OPDetalleMercaderiaGroupBox
             // 
-            OPDetalleMercaderiaGroupBox.Controls.Add(label5);
             OPDetalleMercaderiaGroupBox.Controls.Add(OrdenTempLista);
             OPDetalleMercaderiaGroupBox.Controls.Add(Generar);
-            OPDetalleMercaderiaGroupBox.Controls.Add(OPTransportistasListView);
             OPDetalleMercaderiaGroupBox.Controls.Add(button2);
             OPDetalleMercaderiaGroupBox.Controls.Add(button3);
-            OPDetalleMercaderiaGroupBox.Location = new Point(22, 604);
+            OPDetalleMercaderiaGroupBox.Location = new Point(22, 638);
             OPDetalleMercaderiaGroupBox.Name = "OPDetalleMercaderiaGroupBox";
-            OPDetalleMercaderiaGroupBox.Size = new Size(896, 325);
+            OPDetalleMercaderiaGroupBox.Size = new Size(896, 291);
             OPDetalleMercaderiaGroupBox.TabIndex = 58;
             OPDetalleMercaderiaGroupBox.TabStop = false;
             OPDetalleMercaderiaGroupBox.Text = "Detalle Orden de Preparación";
             // 
-            // label11
+            // textBox7
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(385, 24);
-            label11.Name = "label11";
-            label11.Size = new Size(106, 20);
-            label11.TabIndex = 62;
-            label11.Text = "Código cliente";
+            textBox7.Location = new Point(11, 392);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(281, 27);
+            textBox7.TabIndex = 63;
             // 
-            // textBox6
+            // label12
             // 
-            textBox6.Location = new Point(383, 43);
-            textBox6.Margin = new Padding(2, 3, 2, 3);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(500, 27);
-            textBox6.TabIndex = 61;
+            label12.AutoSize = true;
+            label12.Location = new Point(11, 369);
+            label12.Name = "label12";
+            label12.Size = new Size(165, 20);
+            label12.TabIndex = 62;
+            label12.Text = "Transportista que retira:";
             // 
-            // SKU_columna
+            // textBox9
             // 
-            SKU_columna.DisplayIndex = 0;
-            SKU_columna.Text = "SKU";
+            textBox9.Location = new Point(298, 392);
+            textBox9.Name = "textBox9";
+            textBox9.Size = new Size(262, 27);
+            textBox9.TabIndex = 67;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(297, 370);
+            label14.Name = "label14";
+            label14.Size = new Size(127, 20);
+            label14.TabIndex = 66;
+            label14.Text = "DNI Transportista:";
             // 
             // GenerarOrdenPreparacionForm
             // 
@@ -477,7 +476,6 @@
             OPMercaderiaGroupBox.ResumeLayout(false);
             OPMercaderiaGroupBox.PerformLayout();
             OPDetalleMercaderiaGroupBox.ResumeLayout(false);
-            OPDetalleMercaderiaGroupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -502,11 +500,6 @@
         private Button button5;
         private Button button4;
         private Label label1;
-        private ListView OPTransportistasListView;
-        private ColumnHeader NombreTranspor;
-        private ColumnHeader ApellidoTranspor;
-        private ColumnHeader DniTranspor;
-        private Label label5;
         private Label label6;
         private ColumnHeader Localidad_Columna;
         private Label label8;
@@ -528,5 +521,9 @@
         private Label label11;
         private TextBox textBox6;
         private ColumnHeader SKU_columna;
+        private TextBox textBox9;
+        private Label label14;
+        private TextBox textBox7;
+        private Label label12;
     }
 }
