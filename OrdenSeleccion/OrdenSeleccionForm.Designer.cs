@@ -53,7 +53,7 @@
             DetalleOrdenesDePrepracionAOrdenSeleccionListView = new ListView();
             IDOrdenPreparacionColumna = new ColumnHeader();
             DescripcionClienteColumna = new ColumnHeader();
-            FechaOrdenRecepcionColumna = new ColumnHeader();
+            //FechaOrdenRecepcionColumna = new ColumnHeader();
             EstadoOrdenPreparacionColumna = new ColumnHeader();
             PrioridadColumna = new ColumnHeader();
             TransportistaDetalleColumna = new ColumnHeader();
@@ -287,8 +287,8 @@
             // 
             // FechaOrdenRecepcionColumna
             // 
-            FechaOrdenRecepcionColumna.Text = "FechaOrdenRecepcion";
-            FechaOrdenRecepcionColumna.Width = 31;
+            //FechaOrdenRecepcionColumna.Text = "FechaOrdenRecepcion";
+            //FechaOrdenRecepcionColumna.Width = 31;
             // 
             // PrioridadColumna
             // 
