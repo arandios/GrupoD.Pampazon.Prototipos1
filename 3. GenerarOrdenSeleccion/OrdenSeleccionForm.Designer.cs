@@ -53,7 +53,7 @@
             DetalleOrdenesDePrepracionAOrdenSeleccionListView = new ListView();
             IDOrdenPreparacionColumna = new ColumnHeader();
             DescripcionClienteColumna = new ColumnHeader();
-            FechaOrdenRecepcionColumna = new ColumnHeader();
+            FechaOrdenPreparacionColumna = new ColumnHeader();
             EstadoOrdenPreparacionColumna = new ColumnHeader();
             PrioridadColumna = new ColumnHeader();
             TransportistaDetalleColumna = new ColumnHeader();
@@ -267,7 +267,7 @@
             // 
             // DetalleOrdenesDePrepracionAOrdenSeleccionListView
             // 
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacionColumna, DescripcionClienteColumna, FechaOrdenRecepcionColumna, EstadoOrdenPreparacionColumna, PrioridadColumna, TransportistaDetalleColumna });
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacionColumna, DescripcionClienteColumna, FechaOrdenPreparacionColumna, EstadoOrdenPreparacionColumna, PrioridadColumna, TransportistaDetalleColumna });
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Location = new Point(6, 27);
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Name = "DetalleOrdenesDePrepracionAOrdenSeleccionListView";
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Size = new Size(470, 191);
@@ -286,10 +286,10 @@
             DescripcionClienteColumna.Text = "DescripcionCliente";
             DescripcionClienteColumna.Width = 31;
             // 
-            // FechaOrdenRecepcionColumna
+            // FechaOrdenPreparacionColumna
             // 
-            FechaOrdenRecepcionColumna.Text = "FechaOrdenRecepcion";
-            FechaOrdenRecepcionColumna.Width = 31;
+            FechaOrdenPreparacionColumna.Text = "FechaOrdenPreparacion";
+            FechaOrdenPreparacionColumna.Width = 31;
             // 
             // EstadoOrdenPreparacionColumna
             // 
@@ -440,7 +440,7 @@
         private ListView DetalleOrdenesDePrepracionAOrdenSeleccionListView;
         private ColumnHeader IDOrdenPreparacionColumna;
         private ColumnHeader DescripcionClienteColumna;
-        private ColumnHeader FechaOrdenRecepcionColumna;
+        private ColumnHeader FechaOrdenPreparacionColumna;
         private ColumnHeader EstadoOrdenPreparacionColumna;
         private ColumnHeader PrioridadColumna;
         private ColumnHeader TransportistaDetalleColumna;

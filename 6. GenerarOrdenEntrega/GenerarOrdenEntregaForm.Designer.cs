@@ -264,7 +264,7 @@
             groupBox2.Size = new Size(690, 301);
             groupBox2.TabIndex = 29;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Ordenes de Preparación";
+            groupBox2.Text = "Ordenes de Preparación en estado \"Empaquetado\":";
             // 
             // groupBox3
             // 

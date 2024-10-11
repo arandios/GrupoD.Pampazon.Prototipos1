@@ -34,7 +34,6 @@
             IdOrdentxt = new TextBox();
             LstOrdenesSeleccion = new ListView();
             CLNroOrden = new ColumnHeader();
-            CLEstado = new ColumnHeader();
             DetallesOrdenBTN = new Button();
             LSTDetalleOrden = new ListView();
             CodCliente_Columna = new ColumnHeader();
@@ -95,7 +94,7 @@
             // 
             // LstOrdenesSeleccion
             // 
-            LstOrdenesSeleccion.Columns.AddRange(new ColumnHeader[] { CLNroOrden, CLEstado });
+            LstOrdenesSeleccion.Columns.AddRange(new ColumnHeader[] { CLNroOrden });
             LstOrdenesSeleccion.FullRowSelect = true;
             LstOrdenesSeleccion.Location = new Point(0, 27);
             LstOrdenesSeleccion.Margin = new Padding(3, 4, 3, 4);
@@ -110,11 +109,6 @@
             // 
             CLNroOrden.Text = "ID Orden Seleccion";
             CLNroOrden.Width = 175;
-            // 
-            // CLEstado
-            // 
-            CLEstado.Text = "Estado";
-            CLEstado.Width = 110;
             // 
             // DetallesOrdenBTN
             // 
@@ -252,7 +246,6 @@
         private TextBox IdOrdentxt;
         private ListView LstOrdenesSeleccion;
         private ColumnHeader CLNroOrden;
-        private ColumnHeader CLEstado;
         private Button DetallesOrdenBTN;
         private ListView LSTDetalleOrden;
         private ColumnHeader SKUProducto_Columna;
