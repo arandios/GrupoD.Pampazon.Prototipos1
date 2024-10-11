@@ -102,7 +102,7 @@ namespace Pampazon.OrdenSeleccion
         {
             // Limpiar los campos de búsqueda
             ClienteTextBoxOrdenSeleccion.Text = string.Empty;
-            TransportistaTextBoxOrdenSeleccion.Text = string.Empty;
+            //TransportistaTextBoxOrdenSeleccion.Text = string.Empty;
             NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text = string.Empty;
             PrioridadComboBoxOrdenSeleccion.SelectedIndex = -1; // Deseleccionar cualquier elemento
 
@@ -233,13 +233,13 @@ namespace Pampazon.OrdenSeleccion
 
             // Obtener los valores de los filtros
             string clienteAFiltrar = ClienteTextBoxOrdenSeleccion.Text.Trim();
-            string transportistaAFiltrar = TransportistaTextBoxOrdenSeleccion.Text.Trim();
+          //  string transportistaAFiltrar = TransportistaTextBoxOrdenSeleccion.Text.Trim();
             string idOrdenAFiltrar = NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Trim();
             string prioridadAFiltrar = PrioridadComboBoxOrdenSeleccion.SelectedItem?.ToString();
 
             // Verificar si al menos un filtro está completo
             if (string.IsNullOrWhiteSpace(clienteAFiltrar) &&
-                string.IsNullOrWhiteSpace(transportistaAFiltrar) &&
+               // string.IsNullOrWhiteSpace(transportistaAFiltrar) &&
                 string.IsNullOrWhiteSpace(idOrdenAFiltrar) &&
                 string.IsNullOrWhiteSpace(prioridadAFiltrar))
             {
@@ -266,7 +266,7 @@ namespace Pampazon.OrdenSeleccion
             var ordenesFiltradas = ordenesPreparacion
                 .Where(op =>
                     (string.IsNullOrEmpty(clienteAFiltrar) || op.DescripcionCliente.Contains(clienteAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
-                    (string.IsNullOrEmpty(transportistaAFiltrar) || op.TransportistaDetalle.Nombre.Contains(transportistaAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
+               //     (string.IsNullOrEmpty(transportistaAFiltrar) || op.TransportistaDetalle.Nombre.Contains(transportistaAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
                     (string.IsNullOrEmpty(idOrdenAFiltrar) || op.IDOrdenPreparacion.Contains(idOrdenAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
                     (string.IsNullOrEmpty(prioridadAFiltrar) || op.Prioridad.ToString() == prioridadAFiltrar)
                 )

@@ -81,7 +81,7 @@
             ProductosStockLista.TabIndex = 32;
             ProductosStockLista.UseCompatibleStateImageBehavior = false;
             ProductosStockLista.View = View.Details;
-            ProductosStockLista.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
+            //ProductosStockLista.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
             // 
             // ProductosCliente
             // 
@@ -213,7 +213,7 @@
             button4.TabIndex = 39;
             button4.Text = "Agregar Productos a la Orden de Preparación";
             button4.UseVisualStyleBackColor = true;
-            button4.Click += AgregarProductosOrdenBtn_Click;
+            //button4.Click += AgregarProductosOrdenBtn_Click;
             // 
             // label1
             // 
@@ -234,7 +234,7 @@
             TransportistasComboBox.TabIndex = 48;
             TransportistasComboBox.UseCompatibleStateImageBehavior = false;
             TransportistasComboBox.View = View.Details;
-            TransportistasComboBox.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
+            //TransportistasComboBox.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
             // 
             // NombreTranspor
             // 
@@ -394,7 +394,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "GenerarOrdenPreparacionForm";
             Text = "GenerarOrdenPreparacion";
-            Load += TransportistasComboBox_SelectedIndexChanged;
+           // Load += TransportistasComboBox_SelectedIndexChanged;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);

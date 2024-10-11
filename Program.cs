@@ -16,6 +16,7 @@ namespace Pampazon
             ApplicationConfiguration.Initialize();
            // Application.Run(new MenuPrincipal.MenuPrincipalForm()); // comentario test //
            Application.Run(new MenuPrincipalForm());
+           
 
         }
     }

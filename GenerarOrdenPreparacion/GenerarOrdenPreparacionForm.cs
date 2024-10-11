@@ -22,9 +22,9 @@ namespace Pampazon
             InitializeComponent();
             ActualizarLista();
             ActualizarListaTransportista();
-            this.ProductosStockLista.SelectedIndexChanged += new EventHandler(this.ProductosStockLista_SelectedIndexChanged);
-            this.OrdenTempLista.SelectedIndexChanged += new EventHandler(this.OrdenTempLista_SelectedIndexChanged);
-            this.TransportistasComboBox.SelectedIndexChanged += new EventHandler(this.TransportistasComboBox_SelectedIndexChanged);
+            /* this.ProductosStockLista.SelectedIndexChanged += new EventHandler(this.ProductosStockLista_SelectedIndexChanged);
+             this.OrdenTempLista.SelectedIndexChanged += new EventHandler(this.OrdenTempLista_SelectedIndexChanged);
+             this.TransportistasComboBox.SelectedIndexChanged += new EventHandler(this.TransportistasComboBox_SelectedIndexChanged);*/
 
         }
         private void GenerarOrdenPreparacionForm_Load(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace Pampazon
         }
         //TransportistasComboBox
 
-        private void ProductosStockLista_SelectedIndexChanged(object sender, EventArgs e)
+       /* private void ProductosStockLista_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ProductosStockLista.SelectedItems.Count > 0)
             {
@@ -98,7 +98,7 @@ namespace Pampazon
                 // Puedes acceder a otros valores aquí si es necesario
             }
         }
-        //
+        */
 
         private void Generar_Click(object sender, EventArgs e)
         {
@@ -157,7 +157,7 @@ namespace Pampazon
             //  ProductosStockLista.item.
         }
 
-        private void AgregarProductosOrdenBtn_Click(object sender, EventArgs e)
+      /*  private void AgregarProductosOrdenBtn_Click(object sender, EventArgs e)
         {
             int deposito;
             bool esInt = int.TryParse(DepositoTxt.Text, out deposito);
@@ -225,7 +225,7 @@ namespace Pampazon
             ActualizarListaOrden();
             ActualizarLista();
 
-        }
+        }*/
 
 
         //TODO: Eliminar metodo:
@@ -255,7 +255,7 @@ namespace Pampazon
         } // fin metodo act Lista
 
 
-        private void TransportistasComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        /*private void TransportistasComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (TransportistasComboBox.SelectedItems.Count > 0)
             {
@@ -266,7 +266,7 @@ namespace Pampazon
             }
 
 
-        }
+        }*/
 
         private void CancelarOrderBtn(object sender, EventArgs e)
         {
