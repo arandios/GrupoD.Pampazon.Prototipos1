@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Pampazon
 {
@@ -26,12 +27,43 @@ namespace Pampazon
              this.OrdenTempLista.SelectedIndexChanged += new EventHandler(this.OrdenTempLista_SelectedIndexChanged);
              this.TransportistasComboBox.SelectedIndexChanged += new EventHandler(this.TransportistasComboBox_SelectedIndexChanged);*/
 
+
+            // Deshabilitar el GroupBox inferior (Detalle) al cargar el formulario
+            OPMercaderiaGroupBox.Enabled = true;
+            OPDetalleMercaderiaGroupBox.Enabled = false;
+
         }
         private void GenerarOrdenPreparacionForm_Load(object sender, EventArgs e)
         {
             ActualizarLista();
             ActualizarListaOrden();
             ActualizarListaTransportista();
+
+
+
+            // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
+            foreach (ColumnHeader column in ProductosStockLista.Columns)
+            {
+                ProductosStockLista.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+
+            // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
+            foreach (ColumnHeader column in DetalleProductosStockLista.Columns)
+            {
+                DetalleProductosStockLista.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+
+            // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
+            foreach (ColumnHeader column in OrdenTempLista.Columns)
+            {
+                OrdenTempLista.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+
+            foreach (ColumnHeader column in OPTransportistasListView.Columns)
+            {
+                OPTransportistasListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+
         }
         private void ActualizarLista(string nombreProd = "", int idDeposito = -1)
         {
@@ -66,7 +98,6 @@ namespace Pampazon
                     itemOrden.Tag = ProdOrden;
                     OrdenTempLista.Items.Add(itemOrden);
                 }
-
             }
         }
         private int previousSelectedIndex = -1; // Store the previous selected index
@@ -86,19 +117,19 @@ namespace Pampazon
         }
         //TransportistasComboBox
 
-       /* private void ProductosStockLista_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ProductosStockLista.SelectedItems.Count > 0)
-            {
-                ListViewItem selectedItem = ProductosStockLista.SelectedItems[0];
-                ProductoSeleccionadoTxt.Text = selectedItem.Text;
-                DepositoTxt.Text = selectedItem.SubItems[2].Text;
-                MaxCantidadTxt.Text = selectedItem.SubItems[1].Text;
-                AgregarCantidadTextBox.Enabled = true; ;
-                // Puedes acceder a otros valores aquí si es necesario
-            }
-        }
-        */
+        /* private void ProductosStockLista_SelectedIndexChanged(object sender, EventArgs e)
+         {
+             if (ProductosStockLista.SelectedItems.Count > 0)
+             {
+                 ListViewItem selectedItem = ProductosStockLista.SelectedItems[0];
+                 ProductoSeleccionadoTxt.Text = selectedItem.Text;
+                 DepositoTxt.Text = selectedItem.SubItems[2].Text;
+                 MaxCantidadTxt.Text = selectedItem.SubItems[1].Text;
+                 AgregarCantidadTextBox.Enabled = true; ;
+                 // Puedes acceder a otros valores aquí si es necesario
+             }
+         }
+         */
 
         private void Generar_Click(object sender, EventArgs e)
         {
@@ -157,75 +188,75 @@ namespace Pampazon
             //  ProductosStockLista.item.
         }
 
-      /*  private void AgregarProductosOrdenBtn_Click(object sender, EventArgs e)
-        {
-            int deposito;
-            bool esInt = int.TryParse(DepositoTxt.Text, out deposito);
-            int cantidad;
-            bool esNumero = int.TryParse(AgregarCantidadTextBox.Text, out cantidad);
-            int cantidadMax;
-            bool esNumeroMax = int.TryParse(MaxCantidadTxt.Text.ToString(), out cantidadMax);
-            if (ProductoSeleccionadoTxt.Text == "")
-            {
-                MessageBox.Show("Seleccione un Producto", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (!esNumero)
-            {
-                MessageBox.Show("Ingrese un numero Valido", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DepositoBuscarTextBox.Text = "";
-            }
-            else if (esNumero)
-            {
-                if (cantidad <= 0)
-                {
-                    MessageBox.Show("Cantidad tiene que ser mayor que 0", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else if (cantidad > cantidadMax)
-                {
-                    MessageBox.Show("Cantidad a retirar no puede ser mayor a la cantidad depositada", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        /*  private void AgregarProductosOrdenBtn_Click(object sender, EventArgs e)
+          {
+              int deposito;
+              bool esInt = int.TryParse(DepositoTxt.Text, out deposito);
+              int cantidad;
+              bool esNumero = int.TryParse(AgregarCantidadTextBox.Text, out cantidad);
+              int cantidadMax;
+              bool esNumeroMax = int.TryParse(MaxCantidadTxt.Text.ToString(), out cantidadMax);
+              if (ProductoSeleccionadoTxt.Text == "")
+              {
+                  MessageBox.Show("Seleccione un Producto", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+              }
+              else if (!esNumero)
+              {
+                  MessageBox.Show("Ingrese un numero Valido", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  DepositoBuscarTextBox.Text = "";
+              }
+              else if (esNumero)
+              {
+                  if (cantidad <= 0)
+                  {
+                      MessageBox.Show("Cantidad tiene que ser mayor que 0", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  }
+                  else if (cantidad > cantidadMax)
+                  {
+                      MessageBox.Show("Cantidad a retirar no puede ser mayor a la cantidad depositada", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                }
-                else
-                {
-                    var prod = model.obtenerProdIndividual(ProductoSeleccionadoTxt.Text.ToUpper(), Convert.ToInt32(DepositoTxt.Text));
-                    if (prod == null)
-                    {
-                        MessageBox.Show("Error producto no encontrado en deposito", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  }
+                  else
+                  {
+                      var prod = model.obtenerProdIndividual(ProductoSeleccionadoTxt.Text.ToUpper(), Convert.ToInt32(DepositoTxt.Text));
+                      if (prod == null)
+                      {
+                          MessageBox.Show("Error producto no encontrado en deposito", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    }
-                    else
-                    {
-                        prod.Stock = cantidadMax - cantidad;
-                        MaxCantidadTxt.Text = (cantidadMax - cantidad).ToString();
-                        ActualizarLista();
-                        if (model.Orden.Productos.Count == 0)
-                        {
-                            model.Orden.renameDeposito(deposito);
-                            model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
-                        }
-                        else if (model.Orden.DepositoID != deposito)
-                        {
-                            MessageBox.Show("Selecione productos del mismo deposito, genere una orden nueva para productos de otros depositos", "No coincide numero de deposito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
-                            ActualizarListaOrden();
+                      }
+                      else
+                      {
+                          prod.Stock = cantidadMax - cantidad;
+                          MaxCantidadTxt.Text = (cantidadMax - cantidad).ToString();
+                          ActualizarLista();
+                          if (model.Orden.Productos.Count == 0)
+                          {
+                              model.Orden.renameDeposito(deposito);
+                              model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
+                          }
+                          else if (model.Orden.DepositoID != deposito)
+                          {
+                              MessageBox.Show("Selecione productos del mismo deposito, genere una orden nueva para productos de otros depositos", "No coincide numero de deposito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                          }
+                          else
+                          {
+                              model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
+                              ActualizarListaOrden();
 
-                        }
-                    }
+                          }
+                      }
 
-                }
-            }
-            ProductoSeleccionadoTxt.Text = "";
-            DepositoTxt.Text = "";
-            MaxCantidadTxt.Text = "";
-            //model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
-            AgregarCantidadTextBox.Text = "";
-            ActualizarListaOrden();
-            ActualizarLista();
+                  }
+              }
+              ProductoSeleccionadoTxt.Text = "";
+              DepositoTxt.Text = "";
+              MaxCantidadTxt.Text = "";
+              //model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
+              AgregarCantidadTextBox.Text = "";
+              ActualizarListaOrden();
+              ActualizarLista();
 
-        }*/
+          }*/
 
 
         //TODO: Eliminar metodo:
@@ -241,7 +272,7 @@ namespace Pampazon
 
         private void ActualizarListaTransportista()
         {
-            TransportistasComboBox.Items.Clear();
+            OPTransportistasListView.Items.Clear();
             foreach (var transportista in model.Transportistas)
             {
                 //agregar a la lista.
@@ -250,7 +281,7 @@ namespace Pampazon
                 item.SubItems.Add(transportista.Apellido.ToString().ToUpper());
                 item.SubItems.Add(transportista.DNI.ToString().ToUpper());
                 item.Tag = transportista;
-                TransportistasComboBox.Items.Add(item);
+                OPTransportistasListView.Items.Add(item);
             }
         } // fin metodo act Lista
 
@@ -325,7 +356,14 @@ namespace Pampazon
             this.Close();
         }
 
+
+        //TODO: Eliminar metodos de eventos que no existen
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
         {
 
         }
