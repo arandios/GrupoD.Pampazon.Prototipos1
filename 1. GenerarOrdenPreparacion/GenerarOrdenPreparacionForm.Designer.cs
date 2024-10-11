@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             ProductosStockLista = new ListView();
+            SKU_columna = new ColumnHeader();
             ProductosCliente = new ColumnHeader();
             Cant_Columna = new ColumnHeader();
-            SKU_columna = new ColumnHeader();
             OrdenTempLista = new ListView();
             Producto = new ColumnHeader();
             Cantidad = new ColumnHeader();
@@ -44,7 +44,6 @@
             button5 = new Button();
             button4 = new Button();
             label1 = new Label();
-            label6 = new Label();
             label8 = new Label();
             groupBox1 = new GroupBox();
             label11 = new Label();
@@ -60,12 +59,15 @@
             textBox3 = new TextBox();
             label4 = new Label();
             label3 = new Label();
-            textBox2 = new TextBox();
             OPDetalleMercaderiaGroupBox = new GroupBox();
             comboBox2 = new ComboBox();
             comboBox3 = new ComboBox();
-            label2 = new Label();
-            comboBox4 = new ComboBox();
+            label5 = new Label();
+            MaxCantidadTxt = new TextBox();
+            label15 = new Label();
+            ProductoSeleccionadoTxt = new TextBox();
+            label9 = new Label();
+            AgregarCantidadTextBox = new TextBox();
             groupBox1.SuspendLayout();
             OPMercaderiaGroupBox.SuspendLayout();
             OPDetalleMercaderiaGroupBox.SuspendLayout();
@@ -77,10 +79,14 @@
             ProductosStockLista.Location = new Point(11, 27);
             ProductosStockLista.Margin = new Padding(3, 4, 3, 4);
             ProductosStockLista.Name = "ProductosStockLista";
-            ProductosStockLista.Size = new Size(883, 281);
+            ProductosStockLista.Size = new Size(556, 281);
             ProductosStockLista.TabIndex = 32;
             ProductosStockLista.UseCompatibleStateImageBehavior = false;
             ProductosStockLista.View = View.Details;
+            // 
+            // SKU_columna
+            // 
+            SKU_columna.Text = "SKU";
             // 
             // ProductosCliente
             // 
@@ -92,17 +98,13 @@
             Cant_Columna.Text = "Cantidad disponible";
             Cant_Columna.Width = 100;
             // 
-            // SKU_columna
-            // 
-            SKU_columna.Text = "SKU";
-            // 
             // OrdenTempLista
             // 
             OrdenTempLista.Columns.AddRange(new ColumnHeader[] { Producto, Cantidad, Deposito });
             OrdenTempLista.Location = new Point(6, 40);
             OrdenTempLista.Margin = new Padding(2, 3, 2, 3);
             OrdenTempLista.Name = "OrdenTempLista";
-            OrdenTempLista.Size = new Size(883, 201);
+            OrdenTempLista.Size = new Size(556, 201);
             OrdenTempLista.TabIndex = 30;
             OrdenTempLista.UseCompatibleStateImageBehavior = false;
             OrdenTempLista.View = View.Details;
@@ -134,11 +136,11 @@
             // 
             // button3
             // 
-            button3.BackColor = SystemColors.ButtonHighlight;
-            button3.Location = new Point(839, 999);
+            button3.BackColor = Color.White;
+            button3.Location = new Point(810, 862);
             button3.Margin = new Padding(2, 3, 2, 3);
             button3.Name = "button3";
-            button3.Size = new Size(88, 31);
+            button3.Size = new Size(107, 44);
             button3.TabIndex = 28;
             button3.Text = "&Salir";
             button3.UseVisualStyleBackColor = false;
@@ -146,11 +148,11 @@
             // 
             // Generar
             // 
-            Generar.BackColor = SystemColors.ButtonHighlight;
-            Generar.Location = new Point(500, 999);
+            Generar.BackColor = Color.FromArgb(192, 255, 192);
+            Generar.Location = new Point(546, 812);
             Generar.Margin = new Padding(2, 3, 2, 3);
             Generar.Name = "Generar";
-            Generar.Size = new Size(203, 31);
+            Generar.Size = new Size(222, 44);
             Generar.TabIndex = 27;
             Generar.Text = "&Generar Orden Preparacion";
             Generar.UseVisualStyleBackColor = false;
@@ -158,11 +160,11 @@
             // 
             // button2
             // 
-            button2.BackColor = SystemColors.ButtonHighlight;
-            button2.Location = new Point(708, 999);
+            button2.BackColor = Color.FromArgb(255, 192, 192);
+            button2.Location = new Point(772, 812);
             button2.Margin = new Padding(2, 3, 2, 3);
             button2.Name = "button2";
-            button2.Size = new Size(127, 31);
+            button2.Size = new Size(146, 44);
             button2.TabIndex = 22;
             button2.Text = "&Cancelar Orden";
             button2.UseVisualStyleBackColor = false;
@@ -189,10 +191,10 @@
             // 
             // button4
             // 
-            button4.Location = new Point(567, 321);
+            button4.Location = new Point(625, 257);
             button4.Margin = new Padding(2, 3, 2, 3);
             button4.Name = "button4";
-            button4.Size = new Size(321, 51);
+            button4.Size = new Size(190, 51);
             button4.TabIndex = 39;
             button4.Text = "&Agregar Productos a la Orden de Preparación";
             button4.UseVisualStyleBackColor = true;
@@ -205,15 +207,6 @@
             label1.Size = new Size(0, 20);
             label1.TabIndex = 40;
             label1.Click += label1_Click;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(12, 325);
-            label6.Name = "label6";
-            label6.Size = new Size(128, 20);
-            label6.TabIndex = 50;
-            label6.Text = "Cantidad a retirar:";
             // 
             // label8
             // 
@@ -296,14 +289,18 @@
             // 
             // OPMercaderiaGroupBox
             // 
-            OPMercaderiaGroupBox.Controls.Add(textBox2);
+            OPMercaderiaGroupBox.Controls.Add(label5);
             OPMercaderiaGroupBox.Controls.Add(label1);
             OPMercaderiaGroupBox.Controls.Add(button4);
-            OPMercaderiaGroupBox.Controls.Add(label6);
+            OPMercaderiaGroupBox.Controls.Add(MaxCantidadTxt);
+            OPMercaderiaGroupBox.Controls.Add(AgregarCantidadTextBox);
             OPMercaderiaGroupBox.Controls.Add(ProductosStockLista);
+            OPMercaderiaGroupBox.Controls.Add(label9);
+            OPMercaderiaGroupBox.Controls.Add(ProductoSeleccionadoTxt);
+            OPMercaderiaGroupBox.Controls.Add(label15);
             OPMercaderiaGroupBox.Location = new Point(16, 196);
             OPMercaderiaGroupBox.Name = "OPMercaderiaGroupBox";
-            OPMercaderiaGroupBox.Size = new Size(902, 383);
+            OPMercaderiaGroupBox.Size = new Size(902, 318);
             OPMercaderiaGroupBox.TabIndex = 57;
             OPMercaderiaGroupBox.TabStop = false;
             OPMercaderiaGroupBox.Text = "Productos en deposito";
@@ -311,7 +308,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(21, 917);
+            label14.Location = new Point(582, 159);
             label14.Name = "label14";
             label14.Size = new Size(127, 20);
             label14.TabIndex = 66;
@@ -320,7 +317,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(281, 979);
+            label12.Location = new Point(582, 214);
             label12.Name = "label12";
             label12.Size = new Size(165, 20);
             label12.TabIndex = 62;
@@ -329,22 +326,22 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(366, 948);
+            comboBox1.Location = new Point(582, 115);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
+            comboBox1.Size = new Size(279, 28);
             comboBox1.TabIndex = 61;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(88, 258);
+            textBox3.Location = new Point(582, 64);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(217, 27);
+            textBox3.Size = new Size(279, 27);
             textBox3.TabIndex = 60;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(366, 928);
+            label4.Location = new Point(582, 95);
             label4.Name = "label4";
             label4.Size = new Size(73, 20);
             label4.TabIndex = 59;
@@ -354,35 +351,34 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(88, 237);
+            label3.Location = new Point(582, 43);
             label3.Name = "label3";
             label3.Size = new Size(106, 20);
             label3.TabIndex = 58;
             label3.Text = "Fecha a retirar:";
             // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(12, 345);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(550, 27);
-            textBox2.TabIndex = 57;
-            // 
             // OPDetalleMercaderiaGroupBox
             // 
+            OPDetalleMercaderiaGroupBox.Controls.Add(comboBox3);
             OPDetalleMercaderiaGroupBox.Controls.Add(OrdenTempLista);
             OPDetalleMercaderiaGroupBox.Controls.Add(textBox3);
             OPDetalleMercaderiaGroupBox.Controls.Add(label3);
-            OPDetalleMercaderiaGroupBox.Location = new Point(21, 585);
+            OPDetalleMercaderiaGroupBox.Controls.Add(comboBox1);
+            OPDetalleMercaderiaGroupBox.Controls.Add(label4);
+            OPDetalleMercaderiaGroupBox.Controls.Add(comboBox2);
+            OPDetalleMercaderiaGroupBox.Controls.Add(label14);
+            OPDetalleMercaderiaGroupBox.Controls.Add(label12);
+            OPDetalleMercaderiaGroupBox.Location = new Point(21, 520);
             OPDetalleMercaderiaGroupBox.Name = "OPDetalleMercaderiaGroupBox";
-            OPDetalleMercaderiaGroupBox.Size = new Size(896, 291);
+            OPDetalleMercaderiaGroupBox.Size = new Size(896, 286);
             OPDetalleMercaderiaGroupBox.TabIndex = 58;
             OPDetalleMercaderiaGroupBox.TabStop = false;
-            OPDetalleMercaderiaGroupBox.Text = "Detalle Orden de Preparación";
+            OPDetalleMercaderiaGroupBox.Text = "Orden:";
             // 
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(281, 1002);
+            comboBox2.Location = new Point(582, 237);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(279, 28);
             comboBox2.TabIndex = 68;
@@ -390,47 +386,77 @@
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(21, 940);
+            comboBox3.Location = new Point(582, 182);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(265, 28);
+            comboBox3.Size = new Size(279, 28);
             comboBox3.TabIndex = 69;
             // 
-            // label2
+            // label5
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(27, 979);
-            label2.Name = "label2";
-            label2.Size = new Size(127, 20);
-            label2.TabIndex = 66;
-            label2.Text = "DNI Transportista:";
+            label5.AutoSize = true;
+            label5.Location = new Point(643, 103);
+            label5.Name = "label5";
+            label5.Size = new Size(150, 20);
+            label5.TabIndex = 71;
+            label5.Text = "Cantidad Depositada";
             // 
-            // comboBox4
+            // MaxCantidadTxt
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(27, 1002);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(265, 28);
-            comboBox4.TabIndex = 69;
+            MaxCantidadTxt.Location = new Point(612, 126);
+            MaxCantidadTxt.Margin = new Padding(2, 3, 2, 3);
+            MaxCantidadTxt.Name = "MaxCantidadTxt";
+            MaxCantidadTxt.ReadOnly = true;
+            MaxCantidadTxt.Size = new Size(213, 27);
+            MaxCantidadTxt.TabIndex = 70;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(642, 32);
+            label15.Name = "label15";
+            label15.Size = new Size(162, 20);
+            label15.TabIndex = 65;
+            label15.Text = "Producto Seleccionado";
+            // 
+            // ProductoSeleccionadoTxt
+            // 
+            ProductoSeleccionadoTxt.Location = new Point(611, 53);
+            ProductoSeleccionadoTxt.Margin = new Padding(2, 3, 2, 3);
+            ProductoSeleccionadoTxt.Name = "ProductoSeleccionadoTxt";
+            ProductoSeleccionadoTxt.ReadOnly = true;
+            ProductoSeleccionadoTxt.Size = new Size(213, 27);
+            ProductoSeleccionadoTxt.TabIndex = 63;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(625, 182);
+            label9.Name = "label9";
+            label9.Size = new Size(183, 20);
+            label9.TabIndex = 68;
+            label9.Text = "Indique Cantidad a Retirar";
+            // 
+            // AgregarCantidadTextBox
+            // 
+            AgregarCantidadTextBox.Enabled = false;
+            AgregarCantidadTextBox.Location = new Point(612, 205);
+            AgregarCantidadTextBox.Margin = new Padding(2, 3, 2, 3);
+            AgregarCantidadTextBox.MaxLength = 50;
+            AgregarCantidadTextBox.Name = "AgregarCantidadTextBox";
+            AgregarCantidadTextBox.Size = new Size(213, 27);
+            AgregarCantidadTextBox.TabIndex = 69;
             // 
             // GenerarOrdenPreparacionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(930, 1057);
-            Controls.Add(comboBox3);
+            ClientSize = new Size(969, 927);
             Controls.Add(Generar);
-            Controls.Add(comboBox4);
             Controls.Add(button2);
             Controls.Add(button3);
             Controls.Add(OPMercaderiaGroupBox);
-            Controls.Add(label14);
             Controls.Add(groupBox1);
-            Controls.Add(comboBox2);
             Controls.Add(OPDetalleMercaderiaGroupBox);
-            Controls.Add(label2);
-            Controls.Add(comboBox1);
-            Controls.Add(label12);
-            Controls.Add(label4);
             Margin = new Padding(3, 4, 3, 4);
             Name = "GenerarOrdenPreparacionForm";
             Text = "Generar Orden Preparacion";
@@ -441,7 +467,6 @@
             OPDetalleMercaderiaGroupBox.ResumeLayout(false);
             OPDetalleMercaderiaGroupBox.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -461,11 +486,9 @@
         private Button button5;
         private Button button4;
         private Label label1;
-        private Label label6;
         private Label label8;
         private GroupBox groupBox1;
         private GroupBox OPMercaderiaGroupBox;
-        private TextBox textBox2;
         private GroupBox OPDetalleMercaderiaGroupBox;
         private ComboBox comboBox1;
         private TextBox textBox3;
@@ -482,7 +505,11 @@
         private Label label12;
         private ComboBox comboBox2;
         private ComboBox comboBox3;
-        private Label label2;
-        private ComboBox comboBox4;
+        private Label label5;
+        protected TextBox MaxCantidadTxt;
+        private TextBox AgregarCantidadTextBox;
+        private Label label9;
+        protected TextBox ProductoSeleccionadoTxt;
+        private Label label15;
     }
 }
