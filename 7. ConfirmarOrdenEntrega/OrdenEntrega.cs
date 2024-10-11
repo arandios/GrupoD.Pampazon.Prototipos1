@@ -21,5 +21,12 @@ namespace Pampazon.ConfirmarOrdenEntrega
             Fecha_Estado = fecha_estado;
             OrdenesPreparacionAsociadas = ordenesPreparacion;
         }
+
+        //NUEVO
+        public void Confirmar()
+        {
+            Estado = "Confirmada";
+            Fecha_Estado = DateTime.Now; // Actualiza la fecha de estado 
+        }
     }
 }

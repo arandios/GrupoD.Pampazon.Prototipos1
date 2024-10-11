@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Pampazon.OrdenEntrega
 {
-    public partial class OrdenEntregaForm : Form
+    public partial class GenerarOrdenEntregaForm : Form
     {
         private List<ListViewItem> Items;
         public class OrdenEntregaData
@@ -21,7 +21,7 @@ namespace Pampazon.OrdenEntrega
             public string NombreTransportista { get; set; }
             public string Estado { get; set; }
         }
-        public OrdenEntregaForm()
+        public GenerarOrdenEntregaForm()
         {
             InitializeComponent();
             ConfigurarListView();

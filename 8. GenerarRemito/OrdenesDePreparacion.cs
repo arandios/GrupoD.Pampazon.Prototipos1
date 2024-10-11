@@ -12,7 +12,7 @@ namespace Pampazon.Remitos
         public string IdOrden { get; set; } 
         public DateTime Fecha { get; set; } 
         public int DNItransportista { get; set; }
-        public string EstadoDeOrden = "Preparadas";
+        public string EstadoDeOrden { get; set; } = "Preparadas";
 
         // Constructor
         public OrdenesDePreparacion(string idOrden, int dniTransportista)

@@ -1,4 +1,5 @@
-﻿using Pampazon.OrdenSeleccion;
+﻿using Pampazon.ConfirmarOrdenEntrega;
+using Pampazon.OrdenSeleccion;
 using Pampazon.Remitos;
 using System;
 
@@ -43,9 +44,15 @@ public class GenerarRemitoModelo
         return false; // La orden no fue encontrada
     }
 
-    internal Remito GenerarRemito(string idOrden, int transportista)
+    internal Remito GenerarRemito(List<OrdenesDePreparacion> ordenes, int transportista)
     {
-        return new Remito(idOrden, transportista);
+        // Cambiar el estado de cada orden a "Despachada"
+        foreach (var orden in ordenes)
+        {
+            CambiarEstadoOrdenPreparacion(orden.IdOrden);
+        }
+
+        return new Remito(ordenes, transportista);
     }
 
     public static void CambiarEstadoOrdenPreparacion(string idOrden)
@@ -73,16 +80,35 @@ public class GenerarRemitoModelo
         return null;
     }
 
-    public static void EliminarTransportistasPorOrden(ListView transportistasListV, string idOrden)
+    public static ListViewItem DevolverOrdenALista(string idOrden)
     {
-        foreach (ListViewItem item in transportistasListV.Items.Cast<ListViewItem>().ToList())
+        // Obtener los detalles de la orden y del transportista usando el IdOrden
+        var orden = ObtenerOrdenPorId(idOrden);
+        var transportista = ObtenerTransportistas().FirstOrDefault(t => t.IdOrden == idOrden);
+
+        if (orden == null || transportista == null)
         {
-            if (item.SubItems[3].Text == idOrden) 
-            {
-                transportistasListV.Items.Remove(item);
-            }
+            return null; // Si no se encuentra la orden o transportista, devolver null
         }
+
+        // Crear un nuevo ListViewItem con los datos correctos en las columnas
+        ListViewItem item = new ListViewItem(idOrden); // La primera columna es el ID de la orden
+        item.SubItems.Add(transportista.DNI.ToString()); // DNI del transportista
+        item.SubItems.Add(transportista.Nombre); // Nombre del transportista
+        item.SubItems.Add(transportista.Apellido); // Apellido del transportista
+
+        return item;
     }
+
+    public int ObtenerTransportistaParaRemito(string idOrden)
+    {
+        // Obtener los detalles de la orden y del transportista usando el IdOrden
+        var orden = ObtenerOrdenPorId(idOrden);
+        var transportista = ObtenerTransportistas().FirstOrDefault(t => t.IdOrden == idOrden);
+        
+        return transportista.DNI;
+    }
+
 
     internal static List<TransportistaRemito> ObtenerTransportistas()
     {
@@ -181,6 +207,8 @@ public class GenerarRemitoModelo
 
         return ordenes;
     }
+
+   
 
 
 }

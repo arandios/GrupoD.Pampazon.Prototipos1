@@ -1,6 +1,6 @@
 ﻿namespace Pampazon.OrdenEntrega
 {
-    partial class OrdenEntregaForm
+    partial class GenerarOrdenEntregaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -141,7 +141,6 @@
             Orden_Entrega.Size = new Size(357, 196);
             Orden_Entrega.TabIndex = 22;
             Orden_Entrega.UseCompatibleStateImageBehavior = false;
-            //Orden_Entrega.SelectedIndexChanged += Orden_Entrega_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -228,7 +227,7 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Ordenes de Entrega";
             // 
-            // OrdenEntregaForm
+            // GenerarOrdenEntregaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -239,7 +238,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Margin = new Padding(2);
-            Name = "OrdenEntregaForm";
+            Name = "GenerarOrdenEntregaForm";
             Text = "Orden de entrega";
             Load += OrdenEntregaForm_Load;
             groupBox1.ResumeLayout(false);
