@@ -214,6 +214,7 @@
             Controls.Add(FiltrosLBL);
             Controls.Add(ListadoOrdenesEntregaGRP);
             Controls.Add(SalirBTN);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "ConfirmarOrdenEntregaForm";
             Text = "Confirmar Orden de Entrega";
             Load += ConfirmarOrdenEntregaForm_Load_1;
