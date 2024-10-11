@@ -43,12 +43,12 @@
             Eliminar = new Button();
             label4 = new Label();
             groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
-            groupBox3 = new GroupBox();
+            textBox2 = new TextBox();
             textBox1 = new TextBox();
             label5 = new Label();
             label6 = new Label();
-            textBox2 = new TextBox();
+            groupBox2 = new GroupBox();
+            groupBox3 = new GroupBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -78,12 +78,12 @@
             // 
             // GenerarOrdenEntregabtn
             // 
-            GenerarOrdenEntregabtn.Location = new Point(332, 313);
+            GenerarOrdenEntregabtn.Location = new Point(187, 313);
             GenerarOrdenEntregabtn.Margin = new Padding(2, 3, 2, 3);
             GenerarOrdenEntregabtn.Name = "GenerarOrdenEntregabtn";
-            GenerarOrdenEntregabtn.Size = new Size(172, 29);
+            GenerarOrdenEntregabtn.Size = new Size(194, 29);
             GenerarOrdenEntregabtn.TabIndex = 16;
-            GenerarOrdenEntregabtn.Text = "&Generar Orden Entrega";
+            GenerarOrdenEntregabtn.Text = "&Generar Orden de Entrega";
             GenerarOrdenEntregabtn.UseVisualStyleBackColor = true;
             GenerarOrdenEntregabtn.Click += GenerarOrdenEntregabtn_Click;
             // 
@@ -179,12 +179,12 @@
             // 
             // Eliminar
             // 
-            Eliminar.Location = new Point(509, 313);
+            Eliminar.Location = new Point(386, 313);
             Eliminar.Margin = new Padding(3, 4, 3, 4);
             Eliminar.Name = "Eliminar";
-            Eliminar.Size = new Size(90, 29);
+            Eliminar.Size = new Size(213, 29);
             Eliminar.TabIndex = 26;
-            Eliminar.Text = "&Quitar";
+            Eliminar.Text = "&Quitar Orden de Preparación";
             Eliminar.UseVisualStyleBackColor = true;
             Eliminar.Click += Eliminar_Click;
             // 
@@ -218,37 +218,17 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Busqueda de ordenes";
             // 
-            // groupBox2
+            // textBox2
             // 
-            groupBox2.Controls.Add(Ordenes_Preparacion);
-            groupBox2.Controls.Add(Seleccionar);
-            groupBox2.Location = new Point(12, 165);
-            groupBox2.Margin = new Padding(3, 4, 3, 4);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(690, 319);
-            groupBox2.TabIndex = 29;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Ordenes de Preparación";
-            // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(Orden_Entrega);
-            groupBox3.Controls.Add(GenerarOrdenEntregabtn);
-            groupBox3.Controls.Add(Eliminar);
-            groupBox3.Controls.Add(Salirbtn);
-            groupBox3.Location = new Point(12, 492);
-            groupBox3.Margin = new Padding(3, 4, 3, 4);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(3, 4, 3, 4);
-            groupBox3.Size = new Size(690, 353);
-            groupBox3.TabIndex = 26;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Ordenes de Entrega";
+            textBox2.Location = new Point(341, 54);
+            textBox2.Margin = new Padding(2, 3, 2, 3);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(188, 27);
+            textBox2.TabIndex = 30;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(533, 53);
+            textBox1.Location = new Point(533, 54);
             textBox1.Margin = new Padding(2, 3, 2, 3);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(148, 27);
@@ -273,13 +253,33 @@
             label6.TabIndex = 27;
             label6.Text = "Código Cliente";
             // 
-            // textBox2
+            // groupBox2
             // 
-            textBox2.Location = new Point(341, 53);
-            textBox2.Margin = new Padding(2, 3, 2, 3);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(188, 27);
-            textBox2.TabIndex = 30;
+            groupBox2.Controls.Add(Ordenes_Preparacion);
+            groupBox2.Controls.Add(Seleccionar);
+            groupBox2.Location = new Point(12, 165);
+            groupBox2.Margin = new Padding(3, 4, 3, 4);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new Padding(3, 4, 3, 4);
+            groupBox2.Size = new Size(690, 301);
+            groupBox2.TabIndex = 29;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Ordenes de Preparación";
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(Orden_Entrega);
+            groupBox3.Controls.Add(GenerarOrdenEntregabtn);
+            groupBox3.Controls.Add(Eliminar);
+            groupBox3.Controls.Add(Salirbtn);
+            groupBox3.Location = new Point(12, 478);
+            groupBox3.Margin = new Padding(3, 4, 3, 4);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new Padding(3, 4, 3, 4);
+            groupBox3.Size = new Size(690, 353);
+            groupBox3.TabIndex = 26;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Ordenes de Entrega";
             // 
             // GenerarOrdenEntregaForm
             // 
@@ -293,7 +293,7 @@
             Controls.Add(label2);
             Margin = new Padding(2, 3, 2, 3);
             Name = "GenerarOrdenEntregaForm";
-            Text = "Orden de entrega";
+            Text = "Generar Orden de Entrega";
             Load += OrdenEntregaForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

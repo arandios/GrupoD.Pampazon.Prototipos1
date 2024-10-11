@@ -194,7 +194,7 @@
             CrearOrdenSeleccionBTN.Name = "CrearOrdenSeleccionBTN";
             CrearOrdenSeleccionBTN.Size = new Size(225, 29);
             CrearOrdenSeleccionBTN.TabIndex = 17;
-            CrearOrdenSeleccionBTN.Text = "&Crear Orden de Selección";
+            CrearOrdenSeleccionBTN.Text = "&Generar Orden de Selección";
             CrearOrdenSeleccionBTN.UseVisualStyleBackColor = true;
             CrearOrdenSeleccionBTN.Click += CrearOrdenSeleccionBTN_Click_1;
             // 

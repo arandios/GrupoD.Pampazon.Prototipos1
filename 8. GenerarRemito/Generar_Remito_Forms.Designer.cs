@@ -58,11 +58,11 @@ namespace Pampazon
             // 
             DetalleRemitoLTV.CheckBoxes = true;
             DetalleRemitoLTV.Columns.AddRange(new ColumnHeader[] { OrdenConfirmadaColumna, FechaRemitoColumna, TransportistaConfirmadoColumna });
-            DetalleRemitoLTV.Location = new Point(7, 29);
+            DetalleRemitoLTV.Location = new Point(5, 28);
             DetalleRemitoLTV.Margin = new Padding(3, 4, 3, 4);
             DetalleRemitoLTV.MultiSelect = false;
             DetalleRemitoLTV.Name = "DetalleRemitoLTV";
-            DetalleRemitoLTV.Size = new Size(571, 219);
+            DetalleRemitoLTV.Size = new Size(705, 309);
             DetalleRemitoLTV.TabIndex = 12;
             DetalleRemitoLTV.UseCompatibleStateImageBehavior = false;
             DetalleRemitoLTV.View = View.Details;
@@ -94,23 +94,23 @@ namespace Pampazon
             // 
             // AgregarOrdenBtn
             // 
-            AgregarOrdenBtn.Location = new Point(8, 249);
+            AgregarOrdenBtn.Location = new Point(428, 248);
             AgregarOrdenBtn.Margin = new Padding(3, 4, 3, 4);
             AgregarOrdenBtn.Name = "AgregarOrdenBtn";
-            AgregarOrdenBtn.Size = new Size(571, 60);
+            AgregarOrdenBtn.Size = new Size(286, 32);
             AgregarOrdenBtn.TabIndex = 16;
-            AgregarOrdenBtn.Text = "Agregar Orden de Preparacion al remito";
+            AgregarOrdenBtn.Text = "&Agregar Orden de Preparacion al remito";
             AgregarOrdenBtn.UseVisualStyleBackColor = true;
             AgregarOrdenBtn.Click += AgregarOrdenBtn_Click;
             // 
             // QuitarOrdenBtn
             // 
-            QuitarOrdenBtn.Location = new Point(299, 257);
+            QuitarOrdenBtn.Location = new Point(348, 798);
             QuitarOrdenBtn.Margin = new Padding(3, 4, 3, 4);
             QuitarOrdenBtn.Name = "QuitarOrdenBtn";
-            QuitarOrdenBtn.Size = new Size(280, 60);
+            QuitarOrdenBtn.Size = new Size(295, 27);
             QuitarOrdenBtn.TabIndex = 17;
-            QuitarOrdenBtn.Text = "Quitar Orden de Preparacion del remito";
+            QuitarOrdenBtn.Text = "&Quitar Orden de Preparacion del Remito";
             QuitarOrdenBtn.UseVisualStyleBackColor = true;
             QuitarOrdenBtn.Click += QuitarOrdenBtn_Click;
             // 
@@ -124,7 +124,7 @@ namespace Pampazon
             TransportistasListV.Location = new Point(7, 21);
             TransportistasListV.Margin = new Padding(3, 4, 3, 4);
             TransportistasListV.Name = "TransportistasListV";
-            TransportistasListV.Size = new Size(571, 219);
+            TransportistasListV.Size = new Size(707, 219);
             TransportistasListV.TabIndex = 20;
             TransportistasListV.UseCompatibleStateImageBehavior = false;
             TransportistasListV.View = View.Details;
@@ -160,26 +160,26 @@ namespace Pampazon
             BuscarTransportistaGBX.Margin = new Padding(3, 4, 3, 4);
             BuscarTransportistaGBX.Name = "BuscarTransportistaGBX";
             BuscarTransportistaGBX.Padding = new Padding(3, 4, 3, 4);
-            BuscarTransportistaGBX.Size = new Size(595, 176);
+            BuscarTransportistaGBX.Size = new Size(720, 136);
             BuscarTransportistaGBX.TabIndex = 21;
             BuscarTransportistaGBX.TabStop = false;
-            BuscarTransportistaGBX.Text = "Buscar transportista";
+            BuscarTransportistaGBX.Text = "Seleccione filtros de búsqueda para Transportista: ";
             // 
             // BuscarTransportistaBtn
             // 
-            BuscarTransportistaBtn.Location = new Point(351, 101);
+            BuscarTransportistaBtn.Location = new Point(564, 92);
             BuscarTransportistaBtn.Margin = new Padding(3, 4, 3, 4);
             BuscarTransportistaBtn.Name = "BuscarTransportistaBtn";
-            BuscarTransportistaBtn.Size = new Size(229, 60);
+            BuscarTransportistaBtn.Size = new Size(150, 36);
             BuscarTransportistaBtn.TabIndex = 8;
-            BuscarTransportistaBtn.Text = "&Buscar";
+            BuscarTransportistaBtn.Text = "&Buscar Transportista";
             BuscarTransportistaBtn.UseVisualStyleBackColor = true;
             BuscarTransportistaBtn.Click += BuscarTransportistaBtn_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(23, 37);
+            label3.Location = new Point(2, 31);
             label3.Name = "label3";
             label3.Size = new Size(122, 20);
             label3.TabIndex = 7;
@@ -187,20 +187,20 @@ namespace Pampazon
             // 
             // DNITtxt
             // 
-            DNITtxt.Location = new Point(23, 63);
+            DNITtxt.Location = new Point(2, 57);
             DNITtxt.Margin = new Padding(3, 4, 3, 4);
             DNITtxt.Name = "DNITtxt";
-            DNITtxt.Size = new Size(555, 27);
+            DNITtxt.Size = new Size(712, 27);
             DNITtxt.TabIndex = 6;
             // 
             // GenerarRemitoBtn
             // 
-            GenerarRemitoBtn.Location = new Point(8, 257);
+            GenerarRemitoBtn.Location = new Point(168, 798);
             GenerarRemitoBtn.Margin = new Padding(3, 4, 3, 4);
             GenerarRemitoBtn.Name = "GenerarRemitoBtn";
-            GenerarRemitoBtn.Size = new Size(280, 60);
+            GenerarRemitoBtn.Size = new Size(174, 27);
             GenerarRemitoBtn.TabIndex = 23;
-            GenerarRemitoBtn.Text = "&Generar nuevo remito";
+            GenerarRemitoBtn.Text = "&Generar Remito";
             GenerarRemitoBtn.UseVisualStyleBackColor = true;
             GenerarRemitoBtn.Click += GenerarRemitoBtn_Click;
             // 
@@ -208,11 +208,11 @@ namespace Pampazon
             // 
             OrdenesDelTransportistaGBX.Controls.Add(AgregarOrdenBtn);
             OrdenesDelTransportistaGBX.Controls.Add(TransportistasListV);
-            OrdenesDelTransportistaGBX.Location = new Point(19, 200);
+            OrdenesDelTransportistaGBX.Location = new Point(19, 160);
             OrdenesDelTransportistaGBX.Margin = new Padding(3, 4, 3, 4);
             OrdenesDelTransportistaGBX.Name = "OrdenesDelTransportistaGBX";
             OrdenesDelTransportistaGBX.Padding = new Padding(3, 4, 3, 4);
-            OrdenesDelTransportistaGBX.Size = new Size(595, 315);
+            OrdenesDelTransportistaGBX.Size = new Size(720, 285);
             OrdenesDelTransportistaGBX.TabIndex = 25;
             OrdenesDelTransportistaGBX.TabStop = false;
             OrdenesDelTransportistaGBX.Text = "Ordenes del Transportista";
@@ -220,26 +220,24 @@ namespace Pampazon
             // DetalleRemitoGBX
             // 
             DetalleRemitoGBX.Controls.Add(DetalleRemitoLTV);
-            DetalleRemitoGBX.Controls.Add(QuitarOrdenBtn);
             DetalleRemitoGBX.Controls.Add(label4);
-            DetalleRemitoGBX.Controls.Add(GenerarRemitoBtn);
-            DetalleRemitoGBX.Location = new Point(21, 523);
+            DetalleRemitoGBX.Location = new Point(21, 453);
             DetalleRemitoGBX.Margin = new Padding(3, 4, 3, 4);
             DetalleRemitoGBX.Name = "DetalleRemitoGBX";
             DetalleRemitoGBX.Padding = new Padding(3, 4, 3, 4);
-            DetalleRemitoGBX.Size = new Size(595, 337);
+            DetalleRemitoGBX.Size = new Size(718, 389);
             DetalleRemitoGBX.TabIndex = 26;
             DetalleRemitoGBX.TabStop = false;
             DetalleRemitoGBX.Text = "Detalle del remito";
             // 
             // SalirBtn
             // 
-            SalirBtn.Location = new Point(29, 863);
+            SalirBtn.Location = new Point(649, 798);
             SalirBtn.Margin = new Padding(3, 4, 3, 4);
             SalirBtn.Name = "SalirBtn";
-            SalirBtn.Size = new Size(571, 60);
+            SalirBtn.Size = new Size(82, 27);
             SalirBtn.TabIndex = 27;
-            SalirBtn.Text = "Salir";
+            SalirBtn.Text = "&Salir";
             SalirBtn.UseVisualStyleBackColor = true;
             SalirBtn.Click += SalirBtn_Click;
             // 
@@ -247,8 +245,10 @@ namespace Pampazon
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(630, 939);
+            ClientSize = new Size(751, 855);
             Controls.Add(SalirBtn);
+            Controls.Add(QuitarOrdenBtn);
+            Controls.Add(GenerarRemitoBtn);
             Controls.Add(DetalleRemitoGBX);
             Controls.Add(OrdenesDelTransportistaGBX);
             Controls.Add(BuscarTransportistaGBX);

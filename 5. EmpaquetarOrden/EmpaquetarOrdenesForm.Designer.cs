@@ -116,7 +116,7 @@
             ConfirmarOrdenPreparadabtn.Location = new Point(384, 595);
             ConfirmarOrdenPreparadabtn.Margin = new Padding(2, 3, 2, 3);
             ConfirmarOrdenPreparadabtn.Name = "ConfirmarOrdenPreparadabtn";
-            ConfirmarOrdenPreparadabtn.Size = new Size(249, 47);
+            ConfirmarOrdenPreparadabtn.Size = new Size(249, 29);
             ConfirmarOrdenPreparadabtn.TabIndex = 2;
             ConfirmarOrdenPreparadabtn.Text = "&Confirmar orden como preparada";
             ConfirmarOrdenPreparadabtn.UseVisualStyleBackColor = true;
@@ -127,7 +127,7 @@
             VolverMenubtn.Location = new Point(637, 595);
             VolverMenubtn.Margin = new Padding(2, 3, 2, 3);
             VolverMenubtn.Name = "VolverMenubtn";
-            VolverMenubtn.Size = new Size(93, 47);
+            VolverMenubtn.Size = new Size(93, 29);
             VolverMenubtn.TabIndex = 3;
             VolverMenubtn.Text = "&Salir";
             VolverMenubtn.UseVisualStyleBackColor = true;
@@ -154,7 +154,7 @@
             Controls.Add(groupBox1);
             Margin = new Padding(2, 3, 2, 3);
             Name = "EmpaquetarOrdenesForm";
-            Text = "Empaquetar Ordenes";
+            Text = "Empaquetar Ordenes de Preparación";
             Load += EmpaquetarOrdenesForm_Load;
             Codigogrb.ResumeLayout(false);
             groupBox1.ResumeLayout(false);

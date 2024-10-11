@@ -228,7 +228,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(743, 738);
+            ClientSize = new Size(745, 751);
             Controls.Add(SalirBTN);
             Controls.Add(GenerarOrdenEntregaBTN);
             Controls.Add(groupBox1);
