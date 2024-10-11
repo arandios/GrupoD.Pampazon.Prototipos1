@@ -53,10 +53,6 @@ namespace Pampazon
                 OrdenTempLista.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
 
-            foreach (ColumnHeader column in OPTransportistasListView.Columns)
-            {
-                OPTransportistasListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
 
         }
         private void ActualizarLista(string nombreProd = "", int idDeposito = -1)
@@ -266,7 +262,7 @@ namespace Pampazon
 
         private void ActualizarListaTransportista()
         {
-            OPTransportistasListView.Items.Clear();
+            //OPTransportistasListView.Items.Clear();
             foreach (var transportista in model.Transportistas)
             {
                 //agregar a la lista.
@@ -275,7 +271,7 @@ namespace Pampazon
                 item.SubItems.Add(transportista.Apellido.ToString().ToUpper());
                 item.SubItems.Add(transportista.DNI.ToString().ToUpper());
                 item.Tag = transportista;
-                OPTransportistasListView.Items.Add(item);
+                //OPTransportistasListView.Items.Add(item);
             }
         } // fin metodo act Lista
 
