@@ -1,0 +1,13 @@
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.MenuPrincipal.MenuPrincipalForm.resources
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.GenerarOrdenPreparacionForm.resources
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.ListarOrdenes.ConsultarOrdenesForm.resources
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.OrdenSeleccion.OrdenSeleccionForm.resources
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.EmpaquetarOrden.EmpaquetarOrdenesForm.resources
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.OrdenEntrega.GenerarOrdenEntregaForm.resources
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.Generar_RemitoForms.resources
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.csproj.GenerateResource.cache
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.AssemblyInfoInputs.cache
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.AssemblyInfo.cs
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.csproj.CoreCompileInputs.cache
+C:\Users\lucas\Source\Repos\GrupoD.Pampazon.Prototipos1\obj\Debug\net8.0-windows\Pampazon.sourcelink.json
