@@ -266,7 +266,7 @@
             // 
             // DetalleOrdenesDePrepracionAOrdenSeleccionListView
             // 
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacionColumna, DescripcionClienteColumna, FechaOrdenPreparacionColumna, PrioridadColumna, TransportistaDetalleColumna });
+            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacionColumna, DescripcionClienteColumna, FechaOrdenRecepcionColumna, EstadoOrdenPreparacionColumna, PrioridadColumna, TransportistaDetalleColumna });
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Location = new Point(6, 27);
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Name = "DetalleOrdenesDePrepracionAOrdenSeleccionListView";
             DetalleOrdenesDePrepracionAOrdenSeleccionListView.Size = new Size(756, 191);
@@ -287,8 +287,13 @@
             // 
             // FechaOrdenPreparacionColumna
             // 
-            FechaOrdenPreparacionColumna.Text = "Fecha ";
-            FechaOrdenPreparacionColumna.Width = 100;
+            FechaOrdenRecepcionColumna.Text = "FechaOrdenRecepcion";
+            FechaOrdenRecepcionColumna.Width = 31;
+            // 
+            // EstadoOrdenPreparacionColumna
+            // 
+            EstadoOrdenPreparacionColumna.Text = "EstadoOrdenPreparacion";
+            EstadoOrdenPreparacionColumna.Width = 31;
             // 
             // PrioridadColumna
             // 
@@ -400,7 +405,8 @@
         private ListView DetalleOrdenesDePrepracionAOrdenSeleccionListView;
         private ColumnHeader IDOrdenPreparacionColumna;
         private ColumnHeader DescripcionClienteColumna;
-        private ColumnHeader FechaOrdenPreparacionColumna;
+        private ColumnHeader FechaOrdenRecepcionColumna;
+        private ColumnHeader EstadoOrdenPreparacionColumna;
         private ColumnHeader PrioridadColumna;
         private ColumnHeader TransportistaDetalleColumna;
         private ListView OrdenesDePreparacionPendientesListView;
