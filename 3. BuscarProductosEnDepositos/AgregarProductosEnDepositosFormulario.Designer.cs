@@ -41,17 +41,19 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(37, 52);
+            comboBox1.Location = new Point(12, 39);
+            comboBox1.Margin = new Padding(3, 2, 3, 2);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(509, 28);
+            comboBox1.Size = new Size(488, 23);
             comboBox1.TabIndex = 1;
             // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { Ubicacion_Columna, Sku_Columna, CantidadColumna });
-            listView1.Location = new Point(37, 110);
+            listView1.Location = new Point(12, 82);
+            listView1.Margin = new Padding(3, 2, 3, 2);
             listView1.Name = "listView1";
-            listView1.Size = new Size(509, 417);
+            listView1.Size = new Size(488, 314);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -59,29 +61,35 @@
             // Ubicacion_Columna
             // 
             Ubicacion_Columna.Text = "Ubicacición";
+            Ubicacion_Columna.Width = 150;
             // 
             // Sku_Columna
             // 
             Sku_Columna.Text = "SKU Producto";
+            Sku_Columna.TextAlign = HorizontalAlignment.Center;
+            Sku_Columna.Width = 190;
             // 
             // CantidadColumna
             // 
             CantidadColumna.Text = "Cantidad";
+            CantidadColumna.TextAlign = HorizontalAlignment.Center;
+            CantidadColumna.Width = 140;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(39, 25);
+            label1.Location = new Point(12, 22);
             label1.Name = "label1";
-            label1.Size = new Size(141, 20);
+            label1.Size = new Size(112, 15);
             label1.TabIndex = 3;
             label1.Text = "Orden de Selección:";
             // 
             // CancelarOrdenSeleccionBTN
             // 
-            CancelarOrdenSeleccionBTN.Location = new Point(444, 592);
+            CancelarOrdenSeleccionBTN.Location = new Point(393, 400);
+            CancelarOrdenSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
             CancelarOrdenSeleccionBTN.Name = "CancelarOrdenSeleccionBTN";
-            CancelarOrdenSeleccionBTN.Size = new Size(94, 29);
+            CancelarOrdenSeleccionBTN.Size = new Size(107, 43);
             CancelarOrdenSeleccionBTN.TabIndex = 21;
             CancelarOrdenSeleccionBTN.Text = "&Salir";
             CancelarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
@@ -89,25 +97,27 @@
             // CrearOrdenSeleccionBTN
             // 
             CrearOrdenSeleccionBTN.BackColor = Color.FromArgb(192, 255, 192);
-            CrearOrdenSeleccionBTN.Location = new Point(313, 545);
+            CrearOrdenSeleccionBTN.Location = new Point(190, 400);
+            CrearOrdenSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
             CrearOrdenSeleccionBTN.Name = "CrearOrdenSeleccionBTN";
-            CrearOrdenSeleccionBTN.Size = new Size(225, 41);
+            CrearOrdenSeleccionBTN.Size = new Size(197, 43);
             CrearOrdenSeleccionBTN.TabIndex = 20;
             CrearOrdenSeleccionBTN.Text = "&Confirmar Orden de Selección";
             CrearOrdenSeleccionBTN.UseVisualStyleBackColor = false;
             // 
             // AgregarProductosEnDepositosFormulario
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(585, 633);
+            ClientSize = new Size(512, 454);
             Controls.Add(CancelarOrdenSeleccionBTN);
             Controls.Add(CrearOrdenSeleccionBTN);
             Controls.Add(label1);
             Controls.Add(listView1);
             Controls.Add(comboBox1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AgregarProductosEnDepositosFormulario";
-            Text = "AgregarProductosEnDepositosFormulario";
+            Text = "Buscar productos en depósito";
             ResumeLayout(false);
             PerformLayout();
         }

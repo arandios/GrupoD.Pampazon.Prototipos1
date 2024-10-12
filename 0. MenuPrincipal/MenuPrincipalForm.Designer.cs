@@ -41,57 +41,62 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(304, 27);
+            label1.Location = new Point(87, 15);
             label1.Name = "label1";
-            label1.Size = new Size(190, 20);
+            label1.Size = new Size(154, 15);
             label1.TabIndex = 0;
             label1.Text = "Menú inicial Pampazón S.A.";
             // 
             // GenerarOrdenDeSeleccionBTN
             // 
-            GenerarOrdenDeSeleccionBTN.Location = new Point(255, 128);
+            GenerarOrdenDeSeleccionBTN.Location = new Point(44, 91);
+            GenerarOrdenDeSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
             GenerarOrdenDeSeleccionBTN.Name = "GenerarOrdenDeSeleccionBTN";
-            GenerarOrdenDeSeleccionBTN.Size = new Size(271, 37);
-            GenerarOrdenDeSeleccionBTN.TabIndex = 3;
+            GenerarOrdenDeSeleccionBTN.Size = new Size(230, 40);
+            GenerarOrdenDeSeleccionBTN.TabIndex = 2;
             GenerarOrdenDeSeleccionBTN.Text = "Generar Orden de Selección";
             GenerarOrdenDeSeleccionBTN.UseVisualStyleBackColor = true;
             GenerarOrdenDeSeleccionBTN.Click += GenerarOrdenDeSeleccionBTN_Click;
             // 
             // GenerarOrdenDeEntregabtn
             // 
-            GenerarOrdenDeEntregabtn.Location = new Point(255, 347);
+            GenerarOrdenDeEntregabtn.Location = new Point(44, 255);
+            GenerarOrdenDeEntregabtn.Margin = new Padding(3, 2, 3, 2);
             GenerarOrdenDeEntregabtn.Name = "GenerarOrdenDeEntregabtn";
-            GenerarOrdenDeEntregabtn.Size = new Size(271, 37);
-            GenerarOrdenDeEntregabtn.TabIndex = 6;
+            GenerarOrdenDeEntregabtn.Size = new Size(230, 40);
+            GenerarOrdenDeEntregabtn.TabIndex = 5;
             GenerarOrdenDeEntregabtn.Text = "Generar Orden de Entrega";
             GenerarOrdenDeEntregabtn.UseVisualStyleBackColor = true;
             GenerarOrdenDeEntregabtn.Click += GenerarOrdenDeEntregabtn_Click;
             // 
             // GenerarRemitoBTN
             // 
-            GenerarRemitoBTN.Location = new Point(255, 430);
+            GenerarRemitoBTN.Location = new Point(44, 317);
+            GenerarRemitoBTN.Margin = new Padding(3, 2, 3, 2);
             GenerarRemitoBTN.Name = "GenerarRemitoBTN";
-            GenerarRemitoBTN.Size = new Size(271, 40);
-            GenerarRemitoBTN.TabIndex = 8;
+            GenerarRemitoBTN.Size = new Size(230, 40);
+            GenerarRemitoBTN.TabIndex = 6;
             GenerarRemitoBTN.Text = "Generar Remito";
             GenerarRemitoBTN.UseVisualStyleBackColor = true;
             GenerarRemitoBTN.Click += GenerarRemitoBTN_Click;
             // 
             // Menu_ConsultarOrdenesBTN
             // 
-            Menu_ConsultarOrdenesBTN.Location = new Point(255, 631);
+            Menu_ConsultarOrdenesBTN.Location = new Point(44, 468);
+            Menu_ConsultarOrdenesBTN.Margin = new Padding(3, 2, 3, 2);
             Menu_ConsultarOrdenesBTN.Name = "Menu_ConsultarOrdenesBTN";
-            Menu_ConsultarOrdenesBTN.Size = new Size(271, 37);
-            Menu_ConsultarOrdenesBTN.TabIndex = 2;
+            Menu_ConsultarOrdenesBTN.Size = new Size(230, 40);
+            Menu_ConsultarOrdenesBTN.TabIndex = 7;
             Menu_ConsultarOrdenesBTN.Text = "Consultar ordenes";
             Menu_ConsultarOrdenesBTN.UseVisualStyleBackColor = true;
             Menu_ConsultarOrdenesBTN.Click += Menu_ConsultarOrdenesBTN_Click;
             // 
             // button1
             // 
-            button1.Location = new Point(255, 56);
+            button1.Location = new Point(44, 37);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(271, 37);
+            button1.Size = new Size(230, 40);
             button1.TabIndex = 1;
             button1.Text = "Generar Orden Preparacion";
             button1.UseVisualStyleBackColor = true;
@@ -99,29 +104,30 @@
             // 
             // EmpaquetarOrdenbtn
             // 
-            EmpaquetarOrdenbtn.Location = new Point(255, 271);
-            EmpaquetarOrdenbtn.Margin = new Padding(2, 3, 2, 3);
+            EmpaquetarOrdenbtn.Location = new Point(44, 198);
+            EmpaquetarOrdenbtn.Margin = new Padding(2, 2, 2, 2);
             EmpaquetarOrdenbtn.Name = "EmpaquetarOrdenbtn";
-            EmpaquetarOrdenbtn.Size = new Size(271, 35);
-            EmpaquetarOrdenbtn.TabIndex = 5;
+            EmpaquetarOrdenbtn.Size = new Size(230, 40);
+            EmpaquetarOrdenbtn.TabIndex = 4;
             EmpaquetarOrdenbtn.Text = "Empaquetar Orden de Preparación";
             EmpaquetarOrdenbtn.UseVisualStyleBackColor = true;
             EmpaquetarOrdenbtn.Click += EmpaquetarOrdenbtn_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(255, 200);
+            button2.Location = new Point(44, 145);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(271, 37);
-            button2.TabIndex = 9;
+            button2.Size = new Size(230, 40);
+            button2.TabIndex = 3;
             button2.Text = "Buscar productos en depósitos";
             button2.UseVisualStyleBackColor = true;
             // 
             // MenuPrincipalForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(806, 693);
+            ClientSize = new Size(319, 520);
             Controls.Add(button2);
             Controls.Add(EmpaquetarOrdenbtn);
             Controls.Add(button1);
@@ -131,8 +137,9 @@
             Controls.Add(Menu_ConsultarOrdenesBTN);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MenuPrincipalForm";
-            Text = "MenuPrincipal";
+            Text = "3";
             Load += MenuPrincipal_Load;
             ResumeLayout(false);
             PerformLayout();

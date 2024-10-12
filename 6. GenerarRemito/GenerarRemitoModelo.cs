@@ -1,5 +1,4 @@
-﻿using Pampazon.ConfirmarOrdenEntrega;
-using Pampazon.OrdenSeleccion;
+﻿using Pampazon.OrdenSeleccion;
 using Pampazon.Remitos;
 using System;
 

@@ -42,11 +42,11 @@
             // 
             OrdenesPreparacionlst.Columns.AddRange(new ColumnHeader[] { SKUProductoColumna, ProductoColumna, CantidadColumna });
             OrdenesPreparacionlst.Enabled = false;
-            OrdenesPreparacionlst.Location = new Point(10, 26);
-            OrdenesPreparacionlst.Margin = new Padding(2, 3, 2, 3);
+            OrdenesPreparacionlst.Location = new Point(9, 20);
+            OrdenesPreparacionlst.Margin = new Padding(2, 2, 2, 2);
             OrdenesPreparacionlst.MultiSelect = false;
             OrdenesPreparacionlst.Name = "OrdenesPreparacionlst";
-            OrdenesPreparacionlst.Size = new Size(715, 307);
+            OrdenesPreparacionlst.Size = new Size(626, 231);
             OrdenesPreparacionlst.TabIndex = 1;
             OrdenesPreparacionlst.UseCompatibleStateImageBehavior = false;
             OrdenesPreparacionlst.View = View.Details;
@@ -71,10 +71,10 @@
             // ConfirmarOrdenPreparadabtn
             // 
             ConfirmarOrdenPreparadabtn.BackColor = Color.FromArgb(192, 255, 192);
-            ConfirmarOrdenPreparadabtn.Location = new Point(471, 404);
-            ConfirmarOrdenPreparadabtn.Margin = new Padding(2, 3, 2, 3);
+            ConfirmarOrdenPreparadabtn.Location = new Point(198, 273);
+            ConfirmarOrdenPreparadabtn.Margin = new Padding(2, 2, 2, 2);
             ConfirmarOrdenPreparadabtn.Name = "ConfirmarOrdenPreparadabtn";
-            ConfirmarOrdenPreparadabtn.Size = new Size(259, 42);
+            ConfirmarOrdenPreparadabtn.Size = new Size(296, 45);
             ConfirmarOrdenPreparadabtn.TabIndex = 2;
             ConfirmarOrdenPreparadabtn.Text = "&Confirmar orden como preparada";
             ConfirmarOrdenPreparadabtn.UseVisualStyleBackColor = false;
@@ -82,10 +82,10 @@
             // 
             // VolverMenubtn
             // 
-            VolverMenubtn.Location = new Point(632, 464);
-            VolverMenubtn.Margin = new Padding(2, 3, 2, 3);
+            VolverMenubtn.Location = new Point(498, 273);
+            VolverMenubtn.Margin = new Padding(2, 2, 2, 2);
             VolverMenubtn.Name = "VolverMenubtn";
-            VolverMenubtn.Size = new Size(93, 29);
+            VolverMenubtn.Size = new Size(137, 45);
             VolverMenubtn.TabIndex = 3;
             VolverMenubtn.Text = "&Salir";
             VolverMenubtn.UseVisualStyleBackColor = true;
@@ -94,22 +94,24 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(OrdenesPreparacionlst);
-            groupBox1.Location = new Point(0, 37);
+            groupBox1.Location = new Point(0, 11);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(745, 344);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(650, 258);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Detalle productos a empaquetar";
             // 
             // EmpaquetarOrdenesForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(757, 508);
+            ClientSize = new Size(662, 328);
             Controls.Add(VolverMenubtn);
             Controls.Add(ConfirmarOrdenPreparadabtn);
             Controls.Add(groupBox1);
-            Margin = new Padding(2, 3, 2, 3);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "EmpaquetarOrdenesForm";
             Text = "Empaquetar Ordenes de Preparación";
             Load += EmpaquetarOrdenesForm_Load;
