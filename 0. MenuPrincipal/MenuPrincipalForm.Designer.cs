@@ -41,7 +41,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(269, 28);
+            label1.Location = new Point(394, 143);
             label1.Name = "label1";
             label1.Size = new Size(190, 20);
             label1.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             // GenerarOrdenDeSeleccionBTN
             // 
-            GenerarOrdenDeSeleccionBTN.Location = new Point(121, 140);
+            GenerarOrdenDeSeleccionBTN.Location = new Point(246, 255);
             GenerarOrdenDeSeleccionBTN.Name = "GenerarOrdenDeSeleccionBTN";
             GenerarOrdenDeSeleccionBTN.Size = new Size(473, 76);
             GenerarOrdenDeSeleccionBTN.TabIndex = 2;
@@ -59,7 +59,7 @@
             // 
             // GenerarOrdenDeEntregabtn
             // 
-            GenerarOrdenDeEntregabtn.Location = new Point(121, 386);
+            GenerarOrdenDeEntregabtn.Location = new Point(246, 501);
             GenerarOrdenDeEntregabtn.Name = "GenerarOrdenDeEntregabtn";
             GenerarOrdenDeEntregabtn.Size = new Size(473, 76);
             GenerarOrdenDeEntregabtn.TabIndex = 5;
@@ -69,7 +69,7 @@
             // 
             // GenerarRemitoBTN
             // 
-            GenerarRemitoBTN.Location = new Point(121, 468);
+            GenerarRemitoBTN.Location = new Point(246, 583);
             GenerarRemitoBTN.Name = "GenerarRemitoBTN";
             GenerarRemitoBTN.Size = new Size(473, 76);
             GenerarRemitoBTN.TabIndex = 6;
@@ -79,7 +79,7 @@
             // 
             // Menu_ConsultarOrdenesBTN
             // 
-            Menu_ConsultarOrdenesBTN.Location = new Point(121, 605);
+            Menu_ConsultarOrdenesBTN.Location = new Point(246, 720);
             Menu_ConsultarOrdenesBTN.Name = "Menu_ConsultarOrdenesBTN";
             Menu_ConsultarOrdenesBTN.Size = new Size(473, 76);
             Menu_ConsultarOrdenesBTN.TabIndex = 7;
@@ -89,7 +89,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(121, 58);
+            button1.Location = new Point(246, 173);
             button1.Name = "button1";
             button1.Size = new Size(473, 76);
             button1.TabIndex = 1;
@@ -99,7 +99,7 @@
             // 
             // EmpaquetarOrdenbtn
             // 
-            EmpaquetarOrdenbtn.Location = new Point(121, 304);
+            EmpaquetarOrdenbtn.Location = new Point(246, 419);
             EmpaquetarOrdenbtn.Margin = new Padding(2, 3, 2, 3);
             EmpaquetarOrdenbtn.Name = "EmpaquetarOrdenbtn";
             EmpaquetarOrdenbtn.Size = new Size(473, 76);
@@ -110,7 +110,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(121, 222);
+            button2.Location = new Point(246, 337);
             button2.Name = "button2";
             button2.Size = new Size(473, 76);
             button2.TabIndex = 3;
@@ -122,7 +122,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(735, 693);
+            ClientSize = new Size(982, 953);
             Controls.Add(button2);
             Controls.Add(EmpaquetarOrdenbtn);
             Controls.Add(button1);

@@ -44,10 +44,10 @@
             // 
             // Salirbtn
             // 
-            Salirbtn.Location = new Point(855, 275);
-            Salirbtn.Margin = new Padding(2, 2, 2, 2);
+            Salirbtn.Location = new Point(977, 367);
+            Salirbtn.Margin = new Padding(2, 3, 2, 3);
             Salirbtn.Name = "Salirbtn";
-            Salirbtn.Size = new Size(117, 38);
+            Salirbtn.Size = new Size(134, 51);
             Salirbtn.TabIndex = 17;
             Salirbtn.Text = "&Salir";
             Salirbtn.UseVisualStyleBackColor = true;
@@ -56,10 +56,10 @@
             // GenerarOrdenEntregabtn
             // 
             GenerarOrdenEntregabtn.BackColor = Color.FromArgb(192, 255, 192);
-            GenerarOrdenEntregabtn.Location = new Point(595, 274);
-            GenerarOrdenEntregabtn.Margin = new Padding(2, 2, 2, 2);
+            GenerarOrdenEntregabtn.Location = new Point(680, 365);
+            GenerarOrdenEntregabtn.Margin = new Padding(2, 3, 2, 3);
             GenerarOrdenEntregabtn.Name = "GenerarOrdenEntregabtn";
-            GenerarOrdenEntregabtn.Size = new Size(256, 38);
+            GenerarOrdenEntregabtn.Size = new Size(293, 51);
             GenerarOrdenEntregabtn.TabIndex = 16;
             GenerarOrdenEntregabtn.Text = "&Generar/ Confirmar Orden de Entrega";
             GenerarOrdenEntregabtn.UseVisualStyleBackColor = false;
@@ -68,9 +68,9 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 164);
+            label2.Location = new Point(14, 219);
             label2.Name = "label2";
-            label2.Size = new Size(0, 15);
+            label2.Size = new Size(0, 20);
             label2.TabIndex = 23;
             // 
             // groupBox3
@@ -78,9 +78,11 @@
             groupBox3.Controls.Add(Orden_Entrega);
             groupBox3.Controls.Add(GenerarOrdenEntregabtn);
             groupBox3.Controls.Add(Salirbtn);
-            groupBox3.Location = new Point(8, 19);
+            groupBox3.Location = new Point(9, 25);
+            groupBox3.Margin = new Padding(3, 4, 3, 4);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(989, 318);
+            groupBox3.Padding = new Padding(3, 4, 3, 4);
+            groupBox3.Size = new Size(1130, 424);
             groupBox3.TabIndex = 26;
             groupBox3.TabStop = false;
             groupBox3.Text = "Ordenes a despacho:";
@@ -88,9 +90,10 @@
             // Orden_Entrega
             // 
             Orden_Entrega.Columns.AddRange(new ColumnHeader[] { CodOrdenColumna, RazonClienteColumna, TransportistaColumna, fechaOPColumna, fechaOEColumna, OPColumna });
-            Orden_Entrega.Location = new Point(6, 22);
+            Orden_Entrega.Location = new Point(7, 29);
+            Orden_Entrega.Margin = new Padding(3, 4, 3, 4);
             Orden_Entrega.Name = "Orden_Entrega";
-            Orden_Entrega.Size = new Size(966, 248);
+            Orden_Entrega.Size = new Size(1103, 329);
             Orden_Entrega.TabIndex = 22;
             Orden_Entrega.UseCompatibleStateImageBehavior = false;
             Orden_Entrega.View = View.Details;
@@ -127,12 +130,12 @@
             // 
             // GenerarOrdenEntregaForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1013, 346);
+            ClientSize = new Size(982, 953);
             Controls.Add(groupBox3);
             Controls.Add(label2);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "GenerarOrdenEntregaForm";
             Text = "Generar Orden de Entrega";
             Load += OrdenEntregaForm_Load;

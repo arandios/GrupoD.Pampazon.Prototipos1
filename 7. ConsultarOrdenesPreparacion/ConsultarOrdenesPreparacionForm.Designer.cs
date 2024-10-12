@@ -65,48 +65,48 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(4, 20);
+            label2.Location = new Point(5, 27);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(84, 15);
+            label2.Size = new Size(106, 20);
             label2.TabIndex = 2;
             label2.Text = "Código cliente";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(544, 71);
+            label3.Location = new Point(622, 95);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(38, 15);
+            label3.Size = new Size(47, 20);
             label3.TabIndex = 5;
             label3.Text = "Fecha";
             // 
             // EstadoComboBox
             // 
             EstadoComboBox.FormattingEnabled = true;
-            EstadoComboBox.Location = new Point(8, 85);
-            EstadoComboBox.Margin = new Padding(2, 2, 2, 2);
+            EstadoComboBox.Location = new Point(9, 113);
+            EstadoComboBox.Margin = new Padding(2, 3, 2, 3);
             EstadoComboBox.Name = "EstadoComboBox";
-            EstadoComboBox.Size = new Size(266, 23);
+            EstadoComboBox.Size = new Size(303, 28);
             EstadoComboBox.TabIndex = 6;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(6, 68);
+            label4.Location = new Point(7, 91);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(42, 15);
+            label4.Size = new Size(54, 20);
             label4.TabIndex = 7;
             label4.Text = "Estado";
             // 
             // BuscarOrdenBtn
             // 
-            BuscarOrdenBtn.Location = new Point(8, 126);
-            BuscarOrdenBtn.Margin = new Padding(2, 2, 2, 2);
+            BuscarOrdenBtn.Location = new Point(9, 168);
+            BuscarOrdenBtn.Margin = new Padding(2, 3, 2, 3);
             BuscarOrdenBtn.Name = "BuscarOrdenBtn";
-            BuscarOrdenBtn.Size = new Size(532, 40);
+            BuscarOrdenBtn.Size = new Size(608, 53);
             BuscarOrdenBtn.TabIndex = 8;
             BuscarOrdenBtn.Text = "&Buscar orden";
             BuscarOrdenBtn.UseVisualStyleBackColor = true;
@@ -114,39 +114,40 @@
             // 
             // BorrarFiltrosBtn
             // 
-            BorrarFiltrosBtn.Location = new Point(544, 126);
-            BorrarFiltrosBtn.Margin = new Padding(2, 2, 2, 2);
+            BorrarFiltrosBtn.Location = new Point(622, 168);
+            BorrarFiltrosBtn.Margin = new Padding(2, 3, 2, 3);
             BorrarFiltrosBtn.Name = "BorrarFiltrosBtn";
             BorrarFiltrosBtn.RightToLeft = RightToLeft.No;
-            BorrarFiltrosBtn.Size = new Size(248, 40);
+            BorrarFiltrosBtn.Size = new Size(283, 53);
             BorrarFiltrosBtn.TabIndex = 9;
             BorrarFiltrosBtn.Text = "&Borrar filtros";
             BorrarFiltrosBtn.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            button3.Location = new Point(649, 612);
-            button3.Margin = new Padding(2, 2, 2, 2);
+            button3.Location = new Point(742, 816);
+            button3.Margin = new Padding(2, 3, 2, 3);
             button3.Name = "button3";
-            button3.Size = new Size(171, 36);
+            button3.Size = new Size(195, 48);
             button3.TabIndex = 11;
             button3.Text = "&Salir";
             button3.UseVisualStyleBackColor = true;
             // 
             // CodigoClienteTxt
             // 
-            CodigoClienteTxt.Location = new Point(6, 37);
-            CodigoClienteTxt.Margin = new Padding(2, 2, 2, 2);
+            CodigoClienteTxt.Location = new Point(7, 49);
+            CodigoClienteTxt.Margin = new Padding(2, 3, 2, 3);
             CodigoClienteTxt.Name = "CodigoClienteTxt";
-            CodigoClienteTxt.Size = new Size(268, 23);
+            CodigoClienteTxt.Size = new Size(306, 27);
             CodigoClienteTxt.TabIndex = 14;
             // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { CodCliente_Columna, RazonSocial_Columna, Cuit, FechaOP_Columna, Estado_Columna, Prioridad_Columna });
-            listView1.Location = new Point(17, 220);
+            listView1.Location = new Point(19, 293);
+            listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(794, 194);
+            listView1.Size = new Size(907, 257);
             listView1.TabIndex = 19;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -202,11 +203,9 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(BorrarFiltrosBtn);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(9, 9);
-            groupBox1.Margin = new Padding(3, 2, 3, 2);
+            groupBox1.Location = new Point(10, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(802, 179);
+            groupBox1.Size = new Size(917, 239);
             groupBox1.TabIndex = 20;
             groupBox1.TabStop = false;
             groupBox1.Text = "Seleccione filtros de búsqueda para Clientes: ";
@@ -215,74 +214,71 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(288, 71);
+            label8.Location = new Point(329, 95);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(55, 15);
+            label8.Size = new Size(70, 20);
             label8.TabIndex = 21;
             label8.Text = "Prioridad";
             // 
             // PrioridadComboBox
             // 
             PrioridadComboBox.FormattingEnabled = true;
-            PrioridadComboBox.Location = new Point(288, 86);
-            PrioridadComboBox.Margin = new Padding(2, 2, 2, 2);
+            PrioridadComboBox.Location = new Point(329, 115);
+            PrioridadComboBox.Margin = new Padding(2, 3, 2, 3);
             PrioridadComboBox.Name = "PrioridadComboBox";
-            PrioridadComboBox.Size = new Size(252, 23);
+            PrioridadComboBox.Size = new Size(287, 28);
             PrioridadComboBox.TabIndex = 20;
             // 
             // CuitTxt
             // 
-            CuitTxt.Location = new Point(544, 37);
-            CuitTxt.Margin = new Padding(2, 2, 2, 2);
+            CuitTxt.Location = new Point(622, 49);
+            CuitTxt.Margin = new Padding(2, 3, 2, 3);
             CuitTxt.Name = "CuitTxt";
-            CuitTxt.Size = new Size(252, 23);
+            CuitTxt.Size = new Size(287, 27);
             CuitTxt.TabIndex = 18;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(553, 20);
+            label7.Location = new Point(632, 27);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(29, 15);
+            label7.Size = new Size(35, 20);
             label7.TabIndex = 17;
             label7.Text = "Cuit";
             // 
             // RazonSocialTxt
             // 
-            RazonSocialTxt.Location = new Point(288, 37);
-            RazonSocialTxt.Margin = new Padding(2, 2, 2, 2);
+            RazonSocialTxt.Location = new Point(329, 49);
+            RazonSocialTxt.Margin = new Padding(2, 3, 2, 3);
             RazonSocialTxt.Name = "RazonSocialTxt";
-            RazonSocialTxt.Size = new Size(252, 23);
+            RazonSocialTxt.Size = new Size(287, 27);
             RazonSocialTxt.TabIndex = 16;
             // 
             // FechaTimePicker
             // 
-            FechaTimePicker.Location = new Point(544, 86);
-            FechaTimePicker.Margin = new Padding(3, 2, 3, 2);
+            FechaTimePicker.Location = new Point(622, 115);
             FechaTimePicker.Name = "FechaTimePicker";
-            FechaTimePicker.Size = new Size(252, 23);
+            FechaTimePicker.Size = new Size(287, 27);
             FechaTimePicker.TabIndex = 19;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(288, 20);
+            label1.Location = new Point(329, 27);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(73, 15);
+            label1.Size = new Size(94, 20);
             label1.TabIndex = 15;
             label1.Text = "Razón Social";
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(listView3);
-            groupBox2.Location = new Point(9, 419);
-            groupBox2.Margin = new Padding(3, 2, 3, 2);
+            groupBox2.Location = new Point(10, 559);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(811, 189);
+            groupBox2.Size = new Size(927, 252);
             groupBox2.TabIndex = 21;
             groupBox2.TabStop = false;
             groupBox2.Text = "Detalle productos en la Orden del cliente seleccionado: ";
@@ -290,9 +286,10 @@
             // listView3
             // 
             listView3.Columns.AddRange(new ColumnHeader[] { SKU_Columna, Producto_Columna, Cantidad_Columna, Ubicacion_Columna });
-            listView3.Location = new Point(6, 21);
+            listView3.Location = new Point(7, 28);
+            listView3.Margin = new Padding(3, 4, 3, 4);
             listView3.Name = "listView3";
-            listView3.Size = new Size(796, 158);
+            listView3.Size = new Size(909, 209);
             listView3.TabIndex = 23;
             listView3.UseCompatibleStateImageBehavior = false;
             listView3.View = View.Details;
@@ -324,23 +321,23 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(17, 202);
+            label5.Location = new Point(19, 269);
             label5.Name = "label5";
-            label5.Size = new Size(108, 15);
+            label5.Size = new Size(135, 20);
             label5.TabIndex = 22;
             label5.Text = "Cliente encontrado";
             // 
             // ConsultarOrdenesForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(829, 659);
+            ClientSize = new Size(982, 953);
             Controls.Add(label5);
             Controls.Add(listView1);
             Controls.Add(button3);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "ConsultarOrdenesForm";
             Text = "Consultar Ordenes de Preparación";
             Load += ListarOrdenes_Load;
