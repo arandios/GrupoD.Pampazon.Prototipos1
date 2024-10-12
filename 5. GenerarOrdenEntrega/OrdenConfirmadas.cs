@@ -25,7 +25,7 @@ namespace Pampazon.OrdenEntrega
                 OP_Asociada = op_asociada;
                 Estado = estado;
                 Fecha_Estado = fecha_estado;
-                Productos = productos;
+                Productos = productos; //cambios
             }
            
         }
