@@ -47,6 +47,7 @@ namespace Pampazon.OrdenSeleccion
             // CARGAR DATOS A LA LISTA DE ORDENES DE PREPARACION.
             ActualizarListaOrdenDePreparacion();
 
+            /*
             // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
             foreach (ColumnHeader column in DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Columns)
             {
@@ -64,6 +65,8 @@ namespace Pampazon.OrdenSeleccion
             {
                 OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
+
+            */
         }
 
 
@@ -338,16 +341,19 @@ namespace Pampazon.OrdenSeleccion
             }
 
             // Eliminar los ítems de OrdenesDePreparacionPendientesProductoUbicacionListView
-            OrdenesDePreparacionPendientesProductoUbicacionListView.Items.Clear();
+            //OrdenesDePreparacionPendientesProductoUbicacionListView.Items.Clear();
 
             // Mostrar mensaje de confirmación
             MessageBox.Show($"Se ha creado la orden de selección número {ordenSeleccion.IDOrdenSeleccion} exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Ajustar el ancho de las columnas automáticamente según el contenido
+
+            /*
             foreach (ColumnHeader column in OrdenesDePreparacionPendientesProductoUbicacionListView.Columns)
             {
                 OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.ColumnContent);
             }
+            */
 
         }
 
@@ -407,6 +413,8 @@ namespace Pampazon.OrdenSeleccion
         
         private void DetalleOrdenesDePrepracionAOrdenSeleccionListView_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            /*
             // Limpiar la lista de detalles de productos
             DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Items.Clear();
 
@@ -425,12 +433,14 @@ namespace Pampazon.OrdenSeleccion
                     DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Items.Add(item);
                 }
             }
+            */
         }
 
 
 
         private void AgruparOrdenesDePreparacionPendientes()
         {
+            /*
             // Limpiar la lista actual
             OrdenesDePreparacionPendientesProductoUbicacionListView.Items.Clear();
 
@@ -468,6 +478,7 @@ namespace Pampazon.OrdenSeleccion
             {
                 OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.ColumnContent);
             }
+            */
         }
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pampazon.BuscarProductosEnDepositos
 {
-    internal class AgregarProductosEnDepositosModelo
+    internal class BuscarProductosEnDepositosModelo
     {
     }
 }

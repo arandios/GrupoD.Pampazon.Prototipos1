@@ -1,4 +1,5 @@
-﻿using Pampazon.EmpaquetarOrden;
+﻿using Pampazon.BuscarProductosEnDepositos;
+using Pampazon.EmpaquetarOrden;
 using Pampazon.OrdenSeleccion;
 using Pampazon.Remitos;
 using System;
@@ -63,7 +64,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                OrdenSeleccion.OrdenSeleccionForm ordenSeleccionForm = new ();
+                OrdenSeleccion.OrdenSeleccionForm ordenSeleccionForm = new();
                 ordenSeleccionForm.ShowDialog();
             }
             catch (Exception ex)
@@ -74,7 +75,7 @@ namespace Pampazon.MenuPrincipal
 
         private void ConfirmarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void GenerarOrdenDeEntregabtn_Click(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace Pampazon.MenuPrincipal
             try
             {
 
-                OrdenEntrega.GenerarOrdenEntregaForm ordenEntregaForm = new ();
+                OrdenEntrega.GenerarOrdenEntregaForm ordenEntregaForm = new();
                 ordenEntregaForm.ShowDialog();
             }
             catch (Exception ex)
@@ -97,7 +98,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                GenerarOrdenPreparacionForm generarOrden = new ();
+                GenerarOrdenPreparacionForm generarOrden = new();
                 generarOrden.ShowDialog();
             }
             catch (Exception ex)
@@ -109,15 +110,30 @@ namespace Pampazon.MenuPrincipal
 
         private void Confirmar_Orden_EntregaBTN_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void EmpaquetarOrdenbtn_Click(object sender, EventArgs e)
         {
             try
             {
-                EmpaquetarOrdenesForm empaquetarOrdenForm = new ();
+                EmpaquetarOrdenesForm empaquetarOrdenForm = new();
                 empaquetarOrdenForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+
+
+        private void BuscarProductosEnDepositosBTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AgregarProductosEnDepositosFormulario AgregarProductosEnDepositosFormulario = new();
+                AgregarProductosEnDepositosFormulario.ShowDialog();
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pampazon.GenerarOrdenPreparacion;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace Pampazon.EmpaquetarOrden
     public partial class EmpaquetarOrdenesForm : Form
     {
         private OrdenPreparacionModelo modelo = new OrdenPreparacionModelo();
+        private List<Orden> ordenes = new List<Orden>();
         public EmpaquetarOrdenesForm()
         {
             InitializeComponent();

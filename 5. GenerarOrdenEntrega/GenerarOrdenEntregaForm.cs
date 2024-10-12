@@ -24,14 +24,17 @@ namespace Pampazon.OrdenEntrega
         public GenerarOrdenEntregaForm()
         {
             InitializeComponent();
-            ConfigurarListView();
+            //ConfigurarListView();
             AgregarDatos();
             Items = new List<ListViewItem>();
+            /*
             foreach (ListViewItem item in Ordenes_Preparacion.Items)
             {
                 Items.Add((ListViewItem)item.Clone());
-            }
+            }*/
         }
+
+        /* -----------CAMBIAR EL NOMBRE DE LA LISTA
         private void ConfigurarListView()
         {
             Ordenes_Preparacion.View = View.Details;
@@ -48,6 +51,7 @@ namespace Pampazon.OrdenEntrega
             Orden_Entrega.Columns.Add("Fecha de Entrega", -2, HorizontalAlignment.Left);
             Orden_Entrega.Columns.Add("Estado", -2, HorizontalAlignment.Left);
         }
+        */
 
         private void AgregarDatos()
         {
@@ -63,6 +67,8 @@ namespace Pampazon.OrdenEntrega
 
                 });
             }
+            
+            /*
             foreach (var dato in datos)
             {
                 ListViewItem item = new ListViewItem(dato.NroOrden.ToString());
@@ -70,7 +76,7 @@ namespace Pampazon.OrdenEntrega
                 item.SubItems.Add(dato.Estado);
                 Ordenes_Preparacion.Items.Add(item);
             }
-
+            */
 
         }
 
@@ -124,6 +130,8 @@ namespace Pampazon.OrdenEntrega
 
         }
 
+
+        /*
         private void Buscarbtn_Click(object sender, EventArgs e)
         {
             bool isIdOrdenEmpty = string.IsNullOrWhiteSpace(txtIdOrden.Text);
@@ -151,6 +159,8 @@ namespace Pampazon.OrdenEntrega
             }
         }
 
+        */
+        /*
         private void FiltrarElementosID(int idOrden)
         {
             Ordenes_Preparacion.Items.Clear();
@@ -163,6 +173,8 @@ namespace Pampazon.OrdenEntrega
             }
         }
 
+        */
+        /*
         private void FiltrarElementosPorFecha(string fechaEntrega)
         {
             Ordenes_Preparacion.Items.Clear();
@@ -214,8 +226,12 @@ namespace Pampazon.OrdenEntrega
                 MessageBox.Show("Por favor, seleccione una orden para mover.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        */
 
         private void GenerarOrdenEntregabtn_Click(object sender, EventArgs e)
+        { }
+        /*
+            private void GenerarOrdenEntregabtn_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
             "¿Está seguro de que desea generar la orden de entrega?",
@@ -270,5 +286,7 @@ namespace Pampazon.OrdenEntrega
         {
 
         }
+        */
     }
+
 }

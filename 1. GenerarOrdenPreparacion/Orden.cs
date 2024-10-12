@@ -36,7 +36,7 @@ namespace Pampazon.GenerarOrdenPreparacion
         public void renameDeposito(int deposito)
         {
             DepositoID = deposito;
-        }|
+        }
         public void AddProducto(string producto, int cantidad, int deposito)
         {
             if (producto == null)

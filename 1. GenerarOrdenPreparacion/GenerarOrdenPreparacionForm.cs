@@ -126,41 +126,12 @@ namespace Pampazon
 
         }
 
-        private void BuscarProductoBtn(object sender, EventArgs e)
-        {
-            //
-            if (DepositoBuscarTextBox.Text == "")
-            {
-                ActualizarLista(ProdNombreBox.Text.ToUpper(), -1);
-            }
-            else if (DepositoBuscarTextBox.Text != "")
-            {
-                int n;
-                if (int.TryParse(DepositoBuscarTextBox.Text, out n))
-                {
-                    if (n <= 0)
-                    {
-                        MessageBox.Show("Ingrese un numero valido mayor a 0", "Deposito ID", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DepositoBuscarTextBox.Text = "";
-                    }
-                    else
-                    {
-                        ActualizarLista(ProdNombreBox.Text.ToUpper(), n);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Ingrese un numero valido", "Deposito ID", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DepositoBuscarTextBox.Text = "";
-                }
-            }
-        }
+       
 
         private void LimpiarFiltros(object sender, EventArgs e)
         {
             ActualizarLista();
             ProdNombreBox.Text = "";
-            DepositoBuscarTextBox.Text = "";
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -171,6 +142,11 @@ namespace Pampazon
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+                private void BuscarProductoBtn(object sender, EventArgs e)
+        {
+            //  ProductosStockLista.item.
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

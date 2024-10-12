@@ -14,9 +14,8 @@ namespace Pampazon
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-           // Application.Run(new MenuPrincipal.MenuPrincipalForm()); // comentario test //
-            //Application.Run(new MenuPrincipalForm());
-            Application.Run(new Generar_RemitoForms());
+            Application.Run(new MenuPrincipal.MenuPrincipalForm()); // comentario test //
+            //Application.Run(new Generar_RemitoForms());
            
 
         }
