@@ -1,6 +1,6 @@
 ﻿namespace Pampazon._6._GenerarRemito
 {
-    partial class GenerarRemitoForms
+    partial class GenerarRemitoForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -37,7 +37,7 @@
             TransportistasListV = new ListView();
             IdOrdenColumna = new ColumnHeader();
             BuscarTransportistaGBX = new GroupBox();
-            ProductoSeleccionadoTxt = new TextBox();
+            NomApellTransportistaTxt = new TextBox();
             label15 = new Label();
             BuscarTransportistaBtn = new Button();
             label3 = new Label();
@@ -58,7 +58,7 @@
             DetalleRemitoLTV.Location = new Point(23, 32);
             DetalleRemitoLTV.MultiSelect = false;
             DetalleRemitoLTV.Name = "DetalleRemitoLTV";
-            DetalleRemitoLTV.Size = new Size(892, 222);
+            DetalleRemitoLTV.Size = new Size(892, 186);
             DetalleRemitoLTV.TabIndex = 12;
             DetalleRemitoLTV.UseCompatibleStateImageBehavior = false;
             DetalleRemitoLTV.View = View.Details;
@@ -96,7 +96,7 @@
             // QuitarOrdenBtn
             // 
             QuitarOrdenBtn.BackColor = Color.FromArgb(255, 192, 192);
-            QuitarOrdenBtn.Location = new Point(514, 260);
+            QuitarOrdenBtn.Location = new Point(514, 224);
             QuitarOrdenBtn.Name = "QuitarOrdenBtn";
             QuitarOrdenBtn.Size = new Size(401, 40);
             QuitarOrdenBtn.TabIndex = 17;
@@ -126,7 +126,7 @@
             // 
             // BuscarTransportistaGBX
             // 
-            BuscarTransportistaGBX.Controls.Add(ProductoSeleccionadoTxt);
+            BuscarTransportistaGBX.Controls.Add(NomApellTransportistaTxt);
             BuscarTransportistaGBX.Controls.Add(label15);
             BuscarTransportistaGBX.Controls.Add(BuscarTransportistaBtn);
             BuscarTransportistaGBX.Controls.Add(label3);
@@ -138,14 +138,14 @@
             BuscarTransportistaGBX.TabStop = false;
             BuscarTransportistaGBX.Text = "Seleccione filtros de búsqueda para Transportista: ";
             // 
-            // ProductoSeleccionadoTxt
+            // NomApellTransportistaTxt
             // 
-            ProductoSeleccionadoTxt.Location = new Point(4, 91);
-            ProductoSeleccionadoTxt.Margin = new Padding(2);
-            ProductoSeleccionadoTxt.Name = "ProductoSeleccionadoTxt";
-            ProductoSeleccionadoTxt.ReadOnly = true;
-            ProductoSeleccionadoTxt.Size = new Size(754, 23);
-            ProductoSeleccionadoTxt.TabIndex = 66;
+            NomApellTransportistaTxt.Location = new Point(4, 91);
+            NomApellTransportistaTxt.Margin = new Padding(2);
+            NomApellTransportistaTxt.Name = "NomApellTransportistaTxt";
+            NomApellTransportistaTxt.ReadOnly = true;
+            NomApellTransportistaTxt.Size = new Size(754, 23);
+            NomApellTransportistaTxt.TabIndex = 66;
             // 
             // label15
             // 
@@ -160,11 +160,12 @@
             // 
             BuscarTransportistaBtn.Location = new Point(784, 28);
             BuscarTransportistaBtn.Name = "BuscarTransportistaBtn";
-            BuscarTransportistaBtn.Size = new Size(131, 40);
+            BuscarTransportistaBtn.Size = new Size(130, 40);
             BuscarTransportistaBtn.TabIndex = 8;
             BuscarTransportistaBtn.Text = "&Buscar Transportista";
             BuscarTransportistaBtn.UseVisualStyleBackColor = true;
             BuscarTransportistaBtn.Click += BuscarTransportistaBtn_Click;
+            BuscarTransportistaBtn.Enter += BuscarTransportistaBtn_Click;
             // 
             // label3
             // 
@@ -185,11 +186,11 @@
             // GenerarRemitoBtn
             // 
             GenerarRemitoBtn.BackColor = Color.FromArgb(192, 255, 192);
-            GenerarRemitoBtn.Location = new Point(23, 260);
+            GenerarRemitoBtn.Location = new Point(23, 224);
             GenerarRemitoBtn.Name = "GenerarRemitoBtn";
             GenerarRemitoBtn.Size = new Size(485, 40);
             GenerarRemitoBtn.TabIndex = 23;
-            GenerarRemitoBtn.Text = "&Generar Remito";
+            GenerarRemitoBtn.Text = "Generar Remito";
             GenerarRemitoBtn.UseVisualStyleBackColor = false;
             GenerarRemitoBtn.Click += GenerarRemitoBtn_Click;
             // 
@@ -212,31 +213,32 @@
             DetalleRemitoGBX.Controls.Add(GenerarRemitoBtn);
             DetalleRemitoGBX.Location = new Point(24, 383);
             DetalleRemitoGBX.Name = "DetalleRemitoGBX";
-            DetalleRemitoGBX.Size = new Size(936, 306);
+            DetalleRemitoGBX.Size = new Size(936, 281);
             DetalleRemitoGBX.TabIndex = 26;
             DetalleRemitoGBX.TabStop = false;
             DetalleRemitoGBX.Text = "Detalle del remito";
             // 
             // SalirBtn
             // 
-            SalirBtn.Location = new Point(742, 697);
+            SalirBtn.Location = new Point(738, 669);
             SalirBtn.Name = "SalirBtn";
-            SalirBtn.Size = new Size(197, 40);
+            SalirBtn.Size = new Size(200, 40);
             SalirBtn.TabIndex = 27;
             SalirBtn.Text = "&Salir";
             SalirBtn.UseVisualStyleBackColor = true;
             SalirBtn.Click += SalirBtn_Click;
             // 
-            // GenerarRemitoForms
+            // GenerarRemitoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(984, 749);
+            ClientSize = new Size(984, 721);
             Controls.Add(SalirBtn);
             Controls.Add(DetalleRemitoGBX);
             Controls.Add(OrdenesDelTransportistaGBX);
             Controls.Add(BuscarTransportistaGBX);
-            Name = "GenerarRemitoForms";
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Name = "GenerarRemitoForm";
             Text = "Generar remito";
             Load += Generar_RemitoForms_Load;
             BuscarTransportistaGBX.ResumeLayout(false);
@@ -273,7 +275,7 @@
         private GroupBox OrdenesDelTransportistaGBX;
         private GroupBox DetalleRemitoGBX;
         private Button SalirBtn;
-        protected TextBox ProductoSeleccionadoTxt;
+        protected TextBox NomApellTransportistaTxt;
         private Label label15;
 
     }

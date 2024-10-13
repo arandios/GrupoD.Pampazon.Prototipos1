@@ -9,8 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="6. GenerarRemito\GenerarRemitoForms.resx">
+    <Compile Update="6. GenerarRemito\GenerarRemitoForm.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="6. GenerarRemito\GenerarRemitoForm.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GenerarRemitoForms.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

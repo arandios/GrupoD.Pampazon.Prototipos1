@@ -50,7 +50,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                GenerarRemitoForms formRemito = new();
+                GenerarRemitoForm formRemito = new();
                 formRemito.ShowDialog();
             }
             catch (Exception ex)
