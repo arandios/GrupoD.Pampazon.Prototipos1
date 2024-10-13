@@ -171,8 +171,14 @@ namespace Pampazon._6._GenerarRemito
             // Recoger el DNI del transportista desde el control, sin validación porque ya se hizo antes
             int dniTransportista = int.Parse(DNITtxt.Text);
 
-            // Crear la lista de órdenes desde DetalleRemitoLTV
+            // Verificar si hay ítems seleccionados (con checkbox marcado)
+            bool hayItemsSeleccionados = DetalleRemitoLTV.Items.Cast<ListViewItem>().Any(item => item.Checked);
+
+            // Crear la lista de órdenes:
+            // - Si hay items seleccionados (checkbox activado), solo esas órdenes
+            // - Si no hay ítems seleccionados, se toman todas las órdenes de DetalleRemitoLTV
             var ordenesParaRemito = DetalleRemitoLTV.Items.Cast<ListViewItem>()
+                .Where(item => !hayItemsSeleccionados || item.Checked) // Si no hay seleccionados, se toman todos
                 .Select(item =>
                 {
                     string idOrden = item.SubItems[0].Text; // Suponiendo que el IdOrden está en la primera columna
@@ -192,9 +198,6 @@ namespace Pampazon._6._GenerarRemito
 
                 // Aquí viene la lógica para eliminar las órdenes seleccionadas
                 var itemsAEliminar = new List<ListViewItem>();
-
-                // Verificar si hay ítems seleccionados
-                bool hayItemsSeleccionados = DetalleRemitoLTV.Items.Cast<ListViewItem>().Any(item => item.Checked);
 
                 if (hayItemsSeleccionados)
                 {
@@ -238,6 +241,8 @@ namespace Pampazon._6._GenerarRemito
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
         /// <summary>
         /// Quita la orden seleccionada de la lista Detalle Remito
