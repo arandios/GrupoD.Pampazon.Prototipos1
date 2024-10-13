@@ -53,6 +53,7 @@
             // 
             // DetalleRemitoLTV
             // 
+            DetalleRemitoLTV.BorderStyle = BorderStyle.FixedSingle;
             DetalleRemitoLTV.CheckBoxes = true;
             DetalleRemitoLTV.Columns.AddRange(new ColumnHeader[] { OrdenConfirmadaColumna, FechaRemitoColumna });
             DetalleRemitoLTV.Location = new Point(26, 43);
@@ -121,7 +122,6 @@
             TransportistasListV.TabIndex = 20;
             TransportistasListV.UseCompatibleStateImageBehavior = false;
             TransportistasListV.View = View.Details;
-            TransportistasListV.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
             // IdOrdenColumna
             // 

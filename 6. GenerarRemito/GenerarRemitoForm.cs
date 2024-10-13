@@ -14,8 +14,6 @@ namespace Pampazon._6._GenerarRemito
             DetalleRemitoGBX.Enabled = false;
         }
 
-
-
         private void BuscarTransportistaBtn_Click(object sender, EventArgs e)
         {
             // Obtener el DNI ingresado en el TextBox
@@ -72,9 +70,6 @@ namespace Pampazon._6._GenerarRemito
             }
 
         }
-
-
-
 
 
         /// <summary>
@@ -143,15 +138,6 @@ namespace Pampazon._6._GenerarRemito
             // Habilitar el grupo de detalles del remito
             DetalleRemitoGBX.Enabled = true;
         }
-
-
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e) //NO BORRAR
-        {
-            //NO BORRAR PORQUE SE ROMPE LA PANTALLA//
-
-        }
-
 
         /// <summary>
         /// Boton para generar remito a partir de los datos del transportista y la orden
@@ -253,17 +239,6 @@ namespace Pampazon._6._GenerarRemito
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
         /// <summary>
         /// Quita la orden seleccionada de la lista Detalle Remito
         /// </summary>
@@ -341,7 +316,6 @@ namespace Pampazon._6._GenerarRemito
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void SalirBtn_Click(object sender, EventArgs e)
         {
             // Confirmar la acci�n
