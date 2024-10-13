@@ -1,4 +1,5 @@
-﻿using Pampazon.BuscarProductosEnDepositos;
+﻿using Pampazon._6._GenerarRemito;
+using Pampazon.BuscarProductosEnDepositos;
 using Pampazon.EmpaquetarOrden;
 using Pampazon.OrdenSeleccion;
 using Pampazon.Remitos;
@@ -49,7 +50,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                Generar_RemitoForms formRemito = new();
+                GenerarRemitoForms formRemito = new();
                 formRemito.ShowDialog();
             }
             catch (Exception ex)
