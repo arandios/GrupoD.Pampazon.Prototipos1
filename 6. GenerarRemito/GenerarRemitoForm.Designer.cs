@@ -55,10 +55,11 @@
             // 
             DetalleRemitoLTV.CheckBoxes = true;
             DetalleRemitoLTV.Columns.AddRange(new ColumnHeader[] { OrdenConfirmadaColumna, FechaRemitoColumna });
-            DetalleRemitoLTV.Location = new Point(23, 32);
+            DetalleRemitoLTV.Location = new Point(26, 43);
+            DetalleRemitoLTV.Margin = new Padding(3, 4, 3, 4);
             DetalleRemitoLTV.MultiSelect = false;
             DetalleRemitoLTV.Name = "DetalleRemitoLTV";
-            DetalleRemitoLTV.Size = new Size(892, 186);
+            DetalleRemitoLTV.Size = new Size(889, 247);
             DetalleRemitoLTV.TabIndex = 12;
             DetalleRemitoLTV.UseCompatibleStateImageBehavior = false;
             DetalleRemitoLTV.View = View.Details;
@@ -77,17 +78,18 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(114, -18);
+            label4.Location = new Point(130, -24);
             label4.Name = "label4";
-            label4.Size = new Size(81, 15);
+            label4.Size = new Size(105, 20);
             label4.TabIndex = 14;
             label4.Text = "Detalle remito";
             // 
             // AgregarOrdenBtn
             // 
-            AgregarOrdenBtn.Location = new Point(23, 190);
+            AgregarOrdenBtn.Location = new Point(457, 254);
+            AgregarOrdenBtn.Margin = new Padding(3, 4, 3, 4);
             AgregarOrdenBtn.Name = "AgregarOrdenBtn";
-            AgregarOrdenBtn.Size = new Size(401, 40);
+            AgregarOrdenBtn.Size = new Size(458, 53);
             AgregarOrdenBtn.TabIndex = 16;
             AgregarOrdenBtn.Text = "&Agregar Orden de Preparacion al remito";
             AgregarOrdenBtn.UseVisualStyleBackColor = true;
@@ -96,9 +98,10 @@
             // QuitarOrdenBtn
             // 
             QuitarOrdenBtn.BackColor = Color.FromArgb(255, 192, 192);
-            QuitarOrdenBtn.Location = new Point(514, 224);
+            QuitarOrdenBtn.Location = new Point(622, 298);
+            QuitarOrdenBtn.Margin = new Padding(3, 4, 3, 4);
             QuitarOrdenBtn.Name = "QuitarOrdenBtn";
-            QuitarOrdenBtn.Size = new Size(401, 40);
+            QuitarOrdenBtn.Size = new Size(293, 59);
             QuitarOrdenBtn.TabIndex = 17;
             QuitarOrdenBtn.Text = "&Quitar Orden de Preparacion del Remito";
             QuitarOrdenBtn.UseVisualStyleBackColor = false;
@@ -111,9 +114,10 @@
             TransportistasListV.CheckBoxes = true;
             TransportistasListV.Columns.AddRange(new ColumnHeader[] { IdOrdenColumna });
             TransportistasListV.FullRowSelect = true;
-            TransportistasListV.Location = new Point(23, 22);
+            TransportistasListV.Location = new Point(26, 29);
+            TransportistasListV.Margin = new Padding(3, 4, 3, 4);
             TransportistasListV.Name = "TransportistasListV";
-            TransportistasListV.Size = new Size(892, 162);
+            TransportistasListV.Size = new Size(889, 215);
             TransportistasListV.TabIndex = 20;
             TransportistasListV.UseCompatibleStateImageBehavior = false;
             TransportistasListV.View = View.Details;
@@ -131,36 +135,39 @@
             BuscarTransportistaGBX.Controls.Add(BuscarTransportistaBtn);
             BuscarTransportistaGBX.Controls.Add(label3);
             BuscarTransportistaGBX.Controls.Add(DNITtxt);
-            BuscarTransportistaGBX.Location = new Point(24, 12);
+            BuscarTransportistaGBX.Location = new Point(27, 16);
+            BuscarTransportistaGBX.Margin = new Padding(3, 4, 3, 4);
             BuscarTransportistaGBX.Name = "BuscarTransportistaGBX";
-            BuscarTransportistaGBX.Size = new Size(936, 119);
+            BuscarTransportistaGBX.Padding = new Padding(3, 4, 3, 4);
+            BuscarTransportistaGBX.Size = new Size(932, 159);
             BuscarTransportistaGBX.TabIndex = 21;
             BuscarTransportistaGBX.TabStop = false;
             BuscarTransportistaGBX.Text = "Seleccione filtros de búsqueda para Transportista: ";
             // 
             // NomApellTransportistaTxt
             // 
-            NomApellTransportistaTxt.Location = new Point(4, 91);
-            NomApellTransportistaTxt.Margin = new Padding(2);
+            NomApellTransportistaTxt.Location = new Point(5, 121);
+            NomApellTransportistaTxt.Margin = new Padding(2, 3, 2, 3);
             NomApellTransportistaTxt.Name = "NomApellTransportistaTxt";
             NomApellTransportistaTxt.ReadOnly = true;
-            NomApellTransportistaTxt.Size = new Size(754, 23);
+            NomApellTransportistaTxt.Size = new Size(742, 27);
             NomApellTransportistaTxt.TabIndex = 66;
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(6, 74);
+            label15.Location = new Point(7, 99);
             label15.Name = "label15";
-            label15.Size = new Size(121, 15);
+            label15.Size = new Size(153, 20);
             label15.TabIndex = 67;
             label15.Text = "Nombre Transportista";
             // 
             // BuscarTransportistaBtn
             // 
-            BuscarTransportistaBtn.Location = new Point(784, 28);
+            BuscarTransportistaBtn.Location = new Point(753, 35);
+            BuscarTransportistaBtn.Margin = new Padding(3, 4, 3, 4);
             BuscarTransportistaBtn.Name = "BuscarTransportistaBtn";
-            BuscarTransportistaBtn.Size = new Size(130, 40);
+            BuscarTransportistaBtn.Size = new Size(149, 53);
             BuscarTransportistaBtn.TabIndex = 8;
             BuscarTransportistaBtn.Text = "&Buscar Transportista";
             BuscarTransportistaBtn.UseVisualStyleBackColor = true;
@@ -170,27 +177,29 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(7, 26);
+            label3.Location = new Point(8, 35);
             label3.Name = "label3";
-            label3.Size = new Size(96, 15);
+            label3.Size = new Size(122, 20);
             label3.TabIndex = 7;
             label3.Text = "DNI transportista";
             // 
             // DNITtxt
             // 
-            DNITtxt.Location = new Point(7, 45);
+            DNITtxt.Location = new Point(8, 60);
+            DNITtxt.Margin = new Padding(3, 4, 3, 4);
             DNITtxt.Name = "DNITtxt";
-            DNITtxt.Size = new Size(751, 23);
+            DNITtxt.Size = new Size(739, 27);
             DNITtxt.TabIndex = 6;
             // 
             // GenerarRemitoBtn
             // 
             GenerarRemitoBtn.BackColor = Color.FromArgb(192, 255, 192);
-            GenerarRemitoBtn.Location = new Point(23, 224);
+            GenerarRemitoBtn.Location = new Point(297, 298);
+            GenerarRemitoBtn.Margin = new Padding(3, 4, 3, 4);
             GenerarRemitoBtn.Name = "GenerarRemitoBtn";
-            GenerarRemitoBtn.Size = new Size(485, 40);
+            GenerarRemitoBtn.Size = new Size(319, 59);
             GenerarRemitoBtn.TabIndex = 23;
-            GenerarRemitoBtn.Text = "Generar Remito";
+            GenerarRemitoBtn.Text = "&Generar Remito";
             GenerarRemitoBtn.UseVisualStyleBackColor = false;
             GenerarRemitoBtn.Click += GenerarRemitoBtn_Click;
             // 
@@ -198,9 +207,11 @@
             // 
             OrdenesDelTransportistaGBX.Controls.Add(AgregarOrdenBtn);
             OrdenesDelTransportistaGBX.Controls.Add(TransportistasListV);
-            OrdenesDelTransportistaGBX.Location = new Point(24, 137);
+            OrdenesDelTransportistaGBX.Location = new Point(27, 183);
+            OrdenesDelTransportistaGBX.Margin = new Padding(3, 4, 3, 4);
             OrdenesDelTransportistaGBX.Name = "OrdenesDelTransportistaGBX";
-            OrdenesDelTransportistaGBX.Size = new Size(936, 236);
+            OrdenesDelTransportistaGBX.Padding = new Padding(3, 4, 3, 4);
+            OrdenesDelTransportistaGBX.Size = new Size(932, 315);
             OrdenesDelTransportistaGBX.TabIndex = 25;
             OrdenesDelTransportistaGBX.TabStop = false;
             OrdenesDelTransportistaGBX.Text = "Ordenes del Transportista";
@@ -211,18 +222,21 @@
             DetalleRemitoGBX.Controls.Add(QuitarOrdenBtn);
             DetalleRemitoGBX.Controls.Add(label4);
             DetalleRemitoGBX.Controls.Add(GenerarRemitoBtn);
-            DetalleRemitoGBX.Location = new Point(24, 383);
+            DetalleRemitoGBX.Location = new Point(27, 511);
+            DetalleRemitoGBX.Margin = new Padding(3, 4, 3, 4);
             DetalleRemitoGBX.Name = "DetalleRemitoGBX";
-            DetalleRemitoGBX.Size = new Size(936, 281);
+            DetalleRemitoGBX.Padding = new Padding(3, 4, 3, 4);
+            DetalleRemitoGBX.Size = new Size(932, 375);
             DetalleRemitoGBX.TabIndex = 26;
             DetalleRemitoGBX.TabStop = false;
             DetalleRemitoGBX.Text = "Detalle del remito";
             // 
             // SalirBtn
             // 
-            SalirBtn.Location = new Point(738, 669);
+            SalirBtn.Location = new Point(728, 894);
+            SalirBtn.Margin = new Padding(3, 4, 3, 4);
             SalirBtn.Name = "SalirBtn";
-            SalirBtn.Size = new Size(200, 40);
+            SalirBtn.Size = new Size(214, 53);
             SalirBtn.TabIndex = 27;
             SalirBtn.Text = "&Salir";
             SalirBtn.UseVisualStyleBackColor = true;
@@ -230,14 +244,15 @@
             // 
             // GenerarRemitoForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(984, 721);
+            ClientSize = new Size(982, 953);
             Controls.Add(SalirBtn);
             Controls.Add(DetalleRemitoGBX);
             Controls.Add(OrdenesDelTransportistaGBX);
             Controls.Add(BuscarTransportistaGBX);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "GenerarRemitoForm";
             Text = "Generar remito";
             Load += Generar_RemitoForms_Load;

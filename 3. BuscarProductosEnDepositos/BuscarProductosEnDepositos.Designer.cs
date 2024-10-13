@@ -41,7 +41,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(14, 52);
+            comboBox1.Location = new Point(219, 55);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(557, 28);
             comboBox1.TabIndex = 1;
@@ -49,9 +49,9 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { Ubicacion_Columna, Sku_Columna, CantidadColumna });
-            listView1.Location = new Point(14, 109);
+            listView1.Location = new Point(85, 120);
             listView1.Name = "listView1";
-            listView1.Size = new Size(557, 417);
+            listView1.Size = new Size(802, 695);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -76,7 +76,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(14, 29);
+            label1.Location = new Point(219, 32);
             label1.Name = "label1";
             label1.Size = new Size(141, 20);
             label1.TabIndex = 3;
@@ -84,9 +84,9 @@
             // 
             // CancelarOrdenSeleccionBTN
             // 
-            CancelarOrdenSeleccionBTN.Location = new Point(449, 533);
+            CancelarOrdenSeleccionBTN.Location = new Point(673, 830);
             CancelarOrdenSeleccionBTN.Name = "CancelarOrdenSeleccionBTN";
-            CancelarOrdenSeleccionBTN.Size = new Size(122, 57);
+            CancelarOrdenSeleccionBTN.Size = new Size(214, 53);
             CancelarOrdenSeleccionBTN.TabIndex = 21;
             CancelarOrdenSeleccionBTN.Text = "&Salir";
             CancelarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
@@ -94,9 +94,9 @@
             // CrearOrdenSeleccionBTN
             // 
             CrearOrdenSeleccionBTN.BackColor = Color.FromArgb(192, 255, 192);
-            CrearOrdenSeleccionBTN.Location = new Point(217, 533);
+            CrearOrdenSeleccionBTN.Location = new Point(371, 830);
             CrearOrdenSeleccionBTN.Name = "CrearOrdenSeleccionBTN";
-            CrearOrdenSeleccionBTN.Size = new Size(225, 57);
+            CrearOrdenSeleccionBTN.Size = new Size(280, 53);
             CrearOrdenSeleccionBTN.TabIndex = 20;
             CrearOrdenSeleccionBTN.Text = "&Confirmar Orden de Selección";
             CrearOrdenSeleccionBTN.UseVisualStyleBackColor = false;

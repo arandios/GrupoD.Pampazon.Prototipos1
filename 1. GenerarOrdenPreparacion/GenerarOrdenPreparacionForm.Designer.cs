@@ -132,10 +132,10 @@
             // 
             // ProductoBuscar
             // 
-            ProductoBuscar.Location = new Point(605, 139);
+            ProductoBuscar.Location = new Point(449, 134);
             ProductoBuscar.Margin = new Padding(2, 3, 2, 3);
             ProductoBuscar.Name = "ProductoBuscar";
-            ProductoBuscar.Size = new Size(150, 48);
+            ProductoBuscar.Size = new Size(214, 53);
             ProductoBuscar.TabIndex = 29;
             ProductoBuscar.Text = "&Buscar Productos";
             ProductoBuscar.UseVisualStyleBackColor = true;
@@ -144,10 +144,10 @@
             // button3
             // 
             button3.BackColor = Color.White;
-            button3.Location = new Point(776, 881);
+            button3.Location = new Point(734, 882);
             button3.Margin = new Padding(2, 3, 2, 3);
             button3.Name = "button3";
-            button3.Size = new Size(146, 52);
+            button3.Size = new Size(214, 53);
             button3.TabIndex = 28;
             button3.Text = "&Salir";
             button3.UseVisualStyleBackColor = false;
@@ -187,10 +187,10 @@
             // 
             // button5
             // 
-            button5.Location = new Point(759, 139);
+            button5.Location = new Point(667, 134);
             button5.Margin = new Padding(2, 3, 2, 3);
             button5.Name = "button5";
-            button5.Size = new Size(118, 48);
+            button5.Size = new Size(214, 53);
             button5.TabIndex = 36;
             button5.Text = "&Borrar Filtros";
             button5.UseVisualStyleBackColor = true;
@@ -236,9 +236,9 @@
             groupBox1.Controls.Add(textBox4);
             groupBox1.Controls.Add(ProductoBuscar);
             groupBox1.Controls.Add(button5);
-            groupBox1.Location = new Point(27, 12);
+            groupBox1.Location = new Point(46, 27);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(889, 199);
+            groupBox1.Size = new Size(902, 199);
             groupBox1.TabIndex = 55;
             groupBox1.TabStop = false;
             groupBox1.Text = "Seleccione filtros de búsqueda para sus productos en los depositos:";
@@ -305,7 +305,7 @@
             OPMercaderiaGroupBox.Controls.Add(label9);
             OPMercaderiaGroupBox.Controls.Add(ProductoSeleccionadoTxt);
             OPMercaderiaGroupBox.Controls.Add(label15);
-            OPMercaderiaGroupBox.Location = new Point(21, 232);
+            OPMercaderiaGroupBox.Location = new Point(46, 232);
             OPMercaderiaGroupBox.Name = "OPMercaderiaGroupBox";
             OPMercaderiaGroupBox.Size = new Size(902, 317);
             OPMercaderiaGroupBox.TabIndex = 57;
@@ -432,9 +432,9 @@
             OPDetalleMercaderiaGroupBox.Controls.Add(comboBox2);
             OPDetalleMercaderiaGroupBox.Controls.Add(label14);
             OPDetalleMercaderiaGroupBox.Controls.Add(label12);
-            OPDetalleMercaderiaGroupBox.Location = new Point(21, 555);
+            OPDetalleMercaderiaGroupBox.Location = new Point(43, 555);
             OPDetalleMercaderiaGroupBox.Name = "OPDetalleMercaderiaGroupBox";
-            OPDetalleMercaderiaGroupBox.Size = new Size(902, 321);
+            OPDetalleMercaderiaGroupBox.Size = new Size(905, 321);
             OPDetalleMercaderiaGroupBox.TabIndex = 58;
             OPDetalleMercaderiaGroupBox.TabStop = false;
             OPDetalleMercaderiaGroupBox.Text = "Orden:";

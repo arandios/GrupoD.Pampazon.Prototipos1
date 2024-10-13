@@ -46,7 +46,7 @@
             OrdenesPreparacionlst.Margin = new Padding(2, 3, 2, 3);
             OrdenesPreparacionlst.MultiSelect = false;
             OrdenesPreparacionlst.Name = "OrdenesPreparacionlst";
-            OrdenesPreparacionlst.Size = new Size(715, 307);
+            OrdenesPreparacionlst.Size = new Size(802, 695);
             OrdenesPreparacionlst.TabIndex = 1;
             OrdenesPreparacionlst.UseCompatibleStateImageBehavior = false;
             OrdenesPreparacionlst.View = View.Details;
@@ -71,10 +71,10 @@
             // ConfirmarOrdenPreparadabtn
             // 
             ConfirmarOrdenPreparadabtn.BackColor = Color.FromArgb(192, 255, 192);
-            ConfirmarOrdenPreparadabtn.Location = new Point(226, 364);
+            ConfirmarOrdenPreparadabtn.Location = new Point(365, 820);
             ConfirmarOrdenPreparadabtn.Margin = new Padding(2, 3, 2, 3);
             ConfirmarOrdenPreparadabtn.Name = "ConfirmarOrdenPreparadabtn";
-            ConfirmarOrdenPreparadabtn.Size = new Size(338, 60);
+            ConfirmarOrdenPreparadabtn.Size = new Size(280, 53);
             ConfirmarOrdenPreparadabtn.TabIndex = 2;
             ConfirmarOrdenPreparadabtn.Text = "&Confirmar orden como preparada";
             ConfirmarOrdenPreparadabtn.UseVisualStyleBackColor = false;
@@ -82,10 +82,10 @@
             // 
             // VolverMenubtn
             // 
-            VolverMenubtn.Location = new Point(569, 364);
+            VolverMenubtn.Location = new Point(667, 820);
             VolverMenubtn.Margin = new Padding(2, 3, 2, 3);
             VolverMenubtn.Name = "VolverMenubtn";
-            VolverMenubtn.Size = new Size(157, 60);
+            VolverMenubtn.Size = new Size(214, 53);
             VolverMenubtn.TabIndex = 3;
             VolverMenubtn.Text = "&Salir";
             VolverMenubtn.UseVisualStyleBackColor = true;
@@ -94,9 +94,9 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(OrdenesPreparacionlst);
-            groupBox1.Location = new Point(0, 15);
+            groupBox1.Location = new Point(75, 54);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(743, 344);
+            groupBox1.Size = new Size(823, 734);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Detalle productos a empaquetar";
