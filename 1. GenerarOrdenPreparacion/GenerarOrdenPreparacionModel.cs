@@ -19,60 +19,83 @@ namespace Pampazon.GenerarOrdenPreparacion
             new Transportista { DNI = 10000014, Nombre = "Patricia", Apellido = "Castro"},
         ];
 
+        List<Producto> productosCliente = new List<Producto>();
+
         public List<Producto> Productos { get; private set; } =
         [
-            new Producto { NombreProducto = "Producto A", Stock = 5, IdDeposito = 1, DirDeposito = "Dirección A", Localidad = "CABA" },
-            new Producto { NombreProducto = "Producto B", Stock = 5, IdDeposito = 1, DirDeposito = "Dirección A", Localidad = "CABA" },
-            new Producto { NombreProducto = "Producto C", Stock = 8, IdDeposito = 1, DirDeposito = "Dirección A" , Localidad = "CABA" },
-            new Producto { NombreProducto = "Producto D", Stock = 8, IdDeposito = 2, DirDeposito = "Dirección B", Localidad = "Las Toninas" },
-            new Producto { NombreProducto = "Producto E", Stock = 6, IdDeposito = 2, DirDeposito = "Dirección B",Localidad = "Las Toninas" },
-            new Producto { NombreProducto = "Producto A", Stock = 7, IdDeposito = 2, DirDeposito = "Dirección B",Localidad = "Las Toninas" },
-            new Producto { NombreProducto = "Producto G", Stock = 7, IdDeposito = 3, DirDeposito = "Dirección C",Localidad = "Mar del Plata"  },
-            new Producto { NombreProducto = "Producto H", Stock = 8, IdDeposito = 3, DirDeposito = "Dirección C",Localidad = "Mar del Plata"  },
-            new Producto { NombreProducto = "Producto I", Stock = 1, IdDeposito = 3, DirDeposito = "Dirección C",Localidad = "Mar del Plata"  },
-            new Producto { NombreProducto = "Producto B", Stock = 2, IdDeposito = 4, DirDeposito = "Dirección D",Localidad = "Bariloche" },
+            new Producto { Id = "1" ,NombreProducto = "Producto A", Stock = 5, IdCliente  = 1,  },
+            new Producto { Id = "2" ,NombreProducto = "Producto B", Stock = 5, IdCliente  = 1, },
+            new Producto { Id = "3",NombreProducto = "Producto C", Stock = 8, IdCliente  = 1,  },
+            new Producto {Id = "1", NombreProducto = "Producto D", Stock = 8, IdCliente  = 2,  },
+            new Producto {Id = "19", NombreProducto = "Producto E", Stock = 6, IdCliente  = 2,  },
+            new Producto {Id ="15" ,NombreProducto = "Producto A", Stock = 7, IdCliente  = 2, },
+            new Producto {Id = "1" ,NombreProducto = "Producto G", Stock = 7, IdCliente  = 3,  },
+            new Producto {Id = "2" ,NombreProducto = "Producto H", Stock = 8, IdCliente  = 3,  },
+            new Producto {Id = "5" ,NombreProducto = "Producto I", Stock = 1, IdCliente  = 3, },
+            new Producto {Id = "3" ,NombreProducto = "Producto B", Stock = 2, IdCliente  = 4,  },
         ];
 
+  
+        public List<Producto> obtenerProdCliente(int IdCliente)
+        {
+            List<Producto> productosCliente = new List<Producto>();
 
-        public List<Producto> obtenerProdFiltrados(string NombreProc = "", int IdDeposito = -1)
+            if (IdCliente == 0) { return productosCliente; }
+            foreach (Producto Producto in Productos)
+                {
+                    if (Producto.IdCliente == IdCliente )
+                    {
+                        productosCliente.Add(Producto);
+                    }
+                }          
+            return productosCliente;
+        } // fin method
+        public List<Producto> obtenerProdFiltrados(string idProducto = "", string NombreProducto = "")
         {
             List<Producto> ProductosTraer = new List<Producto>();
-
-            if (NombreProc == "" && IdDeposito == -1) { return Productos; }
-
-            if (IdDeposito == -1)
-            {
-                foreach (Producto Producto in Productos)
+            if (idProducto == "" || NombreProducto == "") { 
+                return productosCliente; }
+            else if(idProducto != "" || NombreProducto == "")
+                foreach (Producto Producto in productosCliente)
                 {
-                    if (Producto.NombreProducto.ToUpper().Contains(NombreProc.ToUpper()))
+                    if (Producto.Id.ToUpper().Contains(idProducto.ToUpper()))
                     {
                         ProductosTraer.Add(Producto);
                     }
                 }
-                return ProductosTraer;
-            }
-            else if (NombreProc == "")
+            else if (idProducto != "" & NombreProducto == "")
             {
-                foreach (Producto Producto in Productos)
+                foreach (Producto Producto in productosCliente)
                 {
-                    if (Producto.IdDeposito == IdDeposito)
+                    if (Producto.Id.ToUpper().Contains(idProducto.ToUpper()))
                     {
                         ProductosTraer.Add(Producto);
                     }
+                    return ProductosTraer;
                 }
             }
-            else
+            else if (idProducto == "" & NombreProducto != "")
             {
-                foreach (Producto Producto in Productos)
+                foreach (Producto Producto in productosCliente)
                 {
-                    if (Producto.IdDeposito == IdDeposito && Producto.NombreProducto.ToUpper().Contains(NombreProc.ToUpper()))
+                    if (Producto.NombreProducto.ToUpper().Contains(NombreProducto.ToUpper()))
                     {
                         ProductosTraer.Add(Producto);
                     }
-
+                    return ProductosTraer;
+                }
+            }else
+            {
+                foreach (Producto Producto in productosCliente)
+                {
+                    if (Producto.NombreProducto.ToUpper().Contains(NombreProducto.ToUpper()) & Producto.Id.ToUpper().Contains(idProducto.ToUpper()))
+                    {
+                        ProductosTraer.Add(Producto);
+                    }
+                    return ProductosTraer;
                 }
             }
-        return ProductosTraer;
+            return ProductosTraer;            
         } // fin method
 
         public Producto obtenerProdIndividual(string NombreProc , int IdDeposito)
@@ -81,10 +104,10 @@ namespace Pampazon.GenerarOrdenPreparacion
 
            foreach (Producto Producto in Productos)
                 {
-                    if (Producto.IdDeposito == IdDeposito && Producto.NombreProducto.ToUpper() == NombreProc.ToUpper())
-                    {
-                        return Producto;
-                    }
+                    //if (Producto.IdDeposito == IdDeposito && Producto.NombreProducto.ToUpper() == NombreProc.ToUpper())
+                    //{
+                      //  return Producto;
+                    //}
 
                 }
             return null;
@@ -95,12 +118,12 @@ namespace Pampazon.GenerarOrdenPreparacion
             Orden OrderTemp = new Orden(); 
         }
 
-        public void retirarProductoDeOrdenYAgregarloDevuelta(string producto)
+        public void retirarProductoDeOrdenYAgregarloDevuelta(string idProducto)
         {
-            Producto prodReponer = Orden.retirarProductoOrden(producto);
+            Producto prodReponer = Orden.retirarProductoOrden(idProducto);
             if (prodReponer != null)
             {
-                obtenerProdIndividual(producto, Orden.DepositoID).Stock += prodReponer.Stock ;
+                obtenerProdIndividual(idProducto, Orden.IDClient).Stock += prodReponer.Stock ;
             }
 
         }
@@ -110,19 +133,12 @@ namespace Pampazon.GenerarOrdenPreparacion
             if(Orden.Productos.Count > 0) {
                 foreach (Producto Producto in this.Orden.Productos)
                 {
-                    obtenerProdIndividual(Producto.NombreProducto.ToUpper(), Orden.DepositoID).Stock += Producto.Stock;       
+                    obtenerProdIndividual(Producto.NombreProducto.ToUpper(), Orden.IDClient).Stock += Producto.Stock;       
                 }
             }
             Orden.borrarOrden();
 
         }
-
-
-
-
-
-
-
 
         // corchete de fin de clase
     }

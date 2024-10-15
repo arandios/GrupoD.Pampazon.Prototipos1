@@ -11,8 +11,9 @@ namespace Pampazon.GenerarOrdenPreparacion
     internal class Orden
     {
         public int ID { get; set; }
-        public bool EsPrioridad { get; set; }
         public int IDClient { get; set; }
+
+        public string Prioridad { get; set; }
         public int DNITransportista { get; set; }
         public string Fecha { get; set; }
 
@@ -34,7 +35,7 @@ namespace Pampazon.GenerarOrdenPreparacion
             return Productos.Any(p => p.NombreProducto == productName);
         }
  
-        public void AddProducto(string producto, int cantidad, int deposito)
+        public void AddProducto(string producto, int cantidad)
         {
             if (producto == null)
             {
@@ -50,7 +51,6 @@ namespace Pampazon.GenerarOrdenPreparacion
                 Producto nuevoProd = new Producto();
                 nuevoProd.NombreProducto = producto;
                 nuevoProd.Stock = cantidad;
-                nuevoProd.IdDeposito = deposito;
                 Productos.Add(nuevoProd);
             }
         }

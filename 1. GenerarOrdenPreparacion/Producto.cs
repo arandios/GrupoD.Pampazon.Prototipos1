@@ -8,14 +8,13 @@ namespace Pampazon.GenerarOrdenPreparacion
 {
     internal class Producto
     {
+        public string  Id { get; set; }
+
+        public  int IdCliente { get; set; }
         public string NombreProducto { get; set; }
 
         public int Stock { get; set; }
-        public int IdDeposito { get; set; }
-        public string DirDeposito { get; set; }
-        public string Localidad { get; set; }// esto es para datos de prueba, claramente no Id deposito no va a aca
-
-
+  
         public void cambiarStock(int sacarCantidad)
         {
             Stock = Stock - sacarCantidad;
