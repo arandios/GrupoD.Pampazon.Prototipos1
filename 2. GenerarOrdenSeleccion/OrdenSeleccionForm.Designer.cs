@@ -45,20 +45,20 @@
             CancelarOrdenSeleccionBTN = new Button();
             FiltrosOPgroupBox = new GroupBox();
             label9 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            textBox1 = new TextBox();
+            TransportistaTextBoxOrdenSeleccion = new TextBox();
             label8 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            FechaFinal_dateTimePicker_OrdenSeleccion = new DateTimePicker();
+            FechaInicio_dateTimePicker_OrdenSeleccion = new DateTimePicker();
             PrioridadComboBoxOrdenSeleccion = new ComboBox();
             OPgroupBox = new GroupBox();
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView = new ListView();
+            OrdenesDePrepracionAOrdenSeleccionListView = new ListView();
             IDOrdenPreparacionColumna = new ColumnHeader();
             DescripcionClienteColumna = new ColumnHeader();
             FechaOrdenPreparacionColumna = new ColumnHeader();
             PrioridadColumna = new ColumnHeader();
             TransportistaDetalleColumna = new ColumnHeader();
             OSgroupBox = new GroupBox();
-            OrdenesDePreparacionPendientesListView = new ListView();
+            DetalleOrdenesDePreparacionPendientesListView = new ListView();
             OPaOS_IdOPColumna = new ColumnHeader();
             OPaOS_RazonSocialClienteColumna = new ColumnHeader();
             OPaOS_FechaOPColumna = new ColumnHeader();
@@ -208,10 +208,10 @@
             // FiltrosOPgroupBox
             // 
             FiltrosOPgroupBox.Controls.Add(label9);
-            FiltrosOPgroupBox.Controls.Add(textBox1);
+            FiltrosOPgroupBox.Controls.Add(TransportistaTextBoxOrdenSeleccion);
             FiltrosOPgroupBox.Controls.Add(label8);
-            FiltrosOPgroupBox.Controls.Add(dateTimePicker2);
-            FiltrosOPgroupBox.Controls.Add(dateTimePicker1);
+            FiltrosOPgroupBox.Controls.Add(FechaFinal_dateTimePicker_OrdenSeleccion);
+            FiltrosOPgroupBox.Controls.Add(FechaInicio_dateTimePicker_OrdenSeleccion);
             FiltrosOPgroupBox.Controls.Add(NumeroOrdenPreparacionTextBoxOrdenSeleccion);
             FiltrosOPgroupBox.Controls.Add(label2);
             FiltrosOPgroupBox.Controls.Add(label5);
@@ -235,19 +235,12 @@
             label9.TabIndex = 25;
             label9.Text = "Fecha final";
             // 
-            // dateTimePicker2
+            // TransportistaTextBoxOrdenSeleccion
             // 
-            dateTimePicker2.Location = new Point(739, 62);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(212, 27);
-            dateTimePicker2.TabIndex = 24;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(0, 131);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(223, 27);
-            textBox1.TabIndex = 23;
+            TransportistaTextBoxOrdenSeleccion.Location = new Point(0, 131);
+            TransportistaTextBoxOrdenSeleccion.Name = "TransportistaTextBoxOrdenSeleccion";
+            TransportistaTextBoxOrdenSeleccion.Size = new Size(223, 27);
+            TransportistaTextBoxOrdenSeleccion.TabIndex = 23;
             // 
             // label8
             // 
@@ -258,12 +251,19 @@
             label8.TabIndex = 22;
             label8.Text = "Transportista";
             // 
-            // dateTimePicker1
+            // FechaFinal_dateTimePicker_OrdenSeleccion
             // 
-            dateTimePicker1.Location = new Point(515, 62);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(218, 27);
-            dateTimePicker1.TabIndex = 1;
+            FechaFinal_dateTimePicker_OrdenSeleccion.Location = new Point(739, 62);
+            FechaFinal_dateTimePicker_OrdenSeleccion.Name = "FechaFinal_dateTimePicker_OrdenSeleccion";
+            FechaFinal_dateTimePicker_OrdenSeleccion.Size = new Size(212, 27);
+            FechaFinal_dateTimePicker_OrdenSeleccion.TabIndex = 24;
+            // 
+            // FechaInicio_dateTimePicker_OrdenSeleccion
+            // 
+            FechaInicio_dateTimePicker_OrdenSeleccion.Location = new Point(515, 62);
+            FechaInicio_dateTimePicker_OrdenSeleccion.Name = "FechaInicio_dateTimePicker_OrdenSeleccion";
+            FechaInicio_dateTimePicker_OrdenSeleccion.Size = new Size(218, 27);
+            FechaInicio_dateTimePicker_OrdenSeleccion.TabIndex = 1;
             // 
             // PrioridadComboBoxOrdenSeleccion
             // 
@@ -276,7 +276,7 @@
             // 
             // OPgroupBox
             // 
-            OPgroupBox.Controls.Add(DetalleOrdenesDePrepracionAOrdenSeleccionListView);
+            OPgroupBox.Controls.Add(OrdenesDePrepracionAOrdenSeleccionListView);
             OPgroupBox.Controls.Add(AgregarOrdenSeleccionADetalleBTN);
             OPgroupBox.Location = new Point(11, 216);
             OPgroupBox.Name = "OPgroupBox";
@@ -285,16 +285,16 @@
             OPgroupBox.TabStop = false;
             OPgroupBox.Text = "Ordenes de Preparación en estado Pendiente: ";
             // 
-            // DetalleOrdenesDePrepracionAOrdenSeleccionListView
+            // OrdenesDePrepracionAOrdenSeleccionListView
             // 
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacionColumna, DescripcionClienteColumna, FechaOrdenPreparacionColumna, PrioridadColumna, TransportistaDetalleColumna });
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Location = new Point(4, 26);
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Name = "DetalleOrdenesDePrepracionAOrdenSeleccionListView";
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.Size = new Size(947, 221);
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.TabIndex = 2;
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.UseCompatibleStateImageBehavior = false;
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.View = View.Details;
-            DetalleOrdenesDePrepracionAOrdenSeleccionListView.SelectedIndexChanged += DetalleOrdenesDePrepracionAOrdenSeleccionListView_SelectedIndexChanged;
+            OrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacionColumna, DescripcionClienteColumna, FechaOrdenPreparacionColumna, PrioridadColumna, TransportistaDetalleColumna });
+            OrdenesDePrepracionAOrdenSeleccionListView.Location = new Point(4, 26);
+            OrdenesDePrepracionAOrdenSeleccionListView.Name = "OrdenesDePrepracionAOrdenSeleccionListView";
+            OrdenesDePrepracionAOrdenSeleccionListView.Size = new Size(947, 221);
+            OrdenesDePrepracionAOrdenSeleccionListView.TabIndex = 2;
+            OrdenesDePrepracionAOrdenSeleccionListView.UseCompatibleStateImageBehavior = false;
+            OrdenesDePrepracionAOrdenSeleccionListView.View = View.Details;
+            OrdenesDePrepracionAOrdenSeleccionListView.SelectedIndexChanged += DetalleOrdenesDePrepracionAOrdenSeleccionListView_SelectedIndexChanged;
             // 
             // IDOrdenPreparacionColumna
             // 
@@ -323,7 +323,7 @@
             // 
             // OSgroupBox
             // 
-            OSgroupBox.Controls.Add(OrdenesDePreparacionPendientesListView);
+            OSgroupBox.Controls.Add(DetalleOrdenesDePreparacionPendientesListView);
             OSgroupBox.Controls.Add(QuitarOrdenPreparacionASeleccionBTN);
             OSgroupBox.Enabled = false;
             OSgroupBox.Location = new Point(11, 542);
@@ -333,15 +333,15 @@
             OSgroupBox.TabStop = false;
             OSgroupBox.Text = "Detalle de Ordenes de Preparación a insertar: ";
             // 
-            // OrdenesDePreparacionPendientesListView
+            // DetalleOrdenesDePreparacionPendientesListView
             // 
-            OrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOPColumna, OPaOS_RazonSocialClienteColumna, OPaOS_FechaOPColumna, OPaOS_PrioridadColumna, OPaOS_TransportistaColumna });
-            OrdenesDePreparacionPendientesListView.Location = new Point(6, 43);
-            OrdenesDePreparacionPendientesListView.Name = "OrdenesDePreparacionPendientesListView";
-            OrdenesDePreparacionPendientesListView.Size = new Size(947, 216);
-            OrdenesDePreparacionPendientesListView.TabIndex = 4;
-            OrdenesDePreparacionPendientesListView.UseCompatibleStateImageBehavior = false;
-            OrdenesDePreparacionPendientesListView.View = View.Details;
+            DetalleOrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOPColumna, OPaOS_RazonSocialClienteColumna, OPaOS_FechaOPColumna, OPaOS_PrioridadColumna, OPaOS_TransportistaColumna });
+            DetalleOrdenesDePreparacionPendientesListView.Location = new Point(6, 43);
+            DetalleOrdenesDePreparacionPendientesListView.Name = "DetalleOrdenesDePreparacionPendientesListView";
+            DetalleOrdenesDePreparacionPendientesListView.Size = new Size(947, 216);
+            DetalleOrdenesDePreparacionPendientesListView.TabIndex = 4;
+            DetalleOrdenesDePreparacionPendientesListView.UseCompatibleStateImageBehavior = false;
+            DetalleOrdenesDePreparacionPendientesListView.View = View.Details;
             // 
             // OPaOS_IdOPColumna
             // 
@@ -417,22 +417,22 @@
         private GroupBox OPgroupBox;
         private GroupBox OSgroupBox;
         private ComboBox PrioridadComboBoxOrdenSeleccion;
-        private ListView DetalleOrdenesDePrepracionAOrdenSeleccionListView;
+        private ListView OrdenesDePrepracionAOrdenSeleccionListView;
         private ColumnHeader IDOrdenPreparacionColumna;
         private ColumnHeader DescripcionClienteColumna;
         private ColumnHeader FechaOrdenPreparacionColumna;
         private ColumnHeader PrioridadColumna;
         private ColumnHeader TransportistaDetalleColumna;
-        private ListView OrdenesDePreparacionPendientesListView;
+        private ListView DetalleOrdenesDePreparacionPendientesListView;
         private ColumnHeader OPaOS_IdOPColumna;
         private ColumnHeader OPaOS_RazonSocialClienteColumna;
         private ColumnHeader OPaOS_FechaOPColumna;
         private ColumnHeader OPaOS_PrioridadColumna;
         private ColumnHeader OPaOS_TransportistaColumna;
-        private DateTimePicker dateTimePicker1;
-        private TextBox textBox1;
+        private DateTimePicker FechaInicio_dateTimePicker_OrdenSeleccion;
+        private TextBox TransportistaTextBoxOrdenSeleccion;
         private Label label8;
         private Label label9;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker FechaFinal_dateTimePicker_OrdenSeleccion;
     }
 }

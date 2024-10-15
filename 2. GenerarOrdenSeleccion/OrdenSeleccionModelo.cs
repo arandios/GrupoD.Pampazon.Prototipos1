@@ -84,7 +84,91 @@ namespace Pampazon.OrdenSeleccion
                 PosiblesEstadosOrdenesGenerales.Pendiente,
                 CodigoPrioridad.Urgente,
                 new Transportista(99887766, "Transportista E", "202")
-            )
+            ),
+
+        new OrdenPreparacion(
+        "6",
+        "303",
+        "Cliente F",
+        new List<Mercaderia>
+        {
+            new Mercaderia { IDProducto = "P8", IdCliente = "303", DescripcionProducto = "Tomates", Cantidad = 20, Ubicacion = "4-4-1" }
+        },
+        20,
+        new DateTime(2023, 8, 15),  // Fecha en el pasado
+        PosiblesEstadosOrdenesGenerales.Pendiente,
+        CodigoPrioridad.Media,
+        new Transportista(11112222, "Transportista F", "303")),
+new OrdenPreparacion(
+    "10",
+    "303",
+    "Cliente F",
+    new List<Mercaderia>
+    {
+        new Mercaderia { IDProducto = "P8", IdCliente = "303", DescripcionProducto = "Tomates", Cantidad = 20, Ubicacion = "4-4-1" }
+    },
+    20,
+    DateTime.Now.AddDays(3),  // Fecha 3 días en el futuro desde hoy
+    PosiblesEstadosOrdenesGenerales.Pendiente,
+    CodigoPrioridad.Media,
+    new Transportista(11112222, "Transportista F", "303")
+),
+new OrdenPreparacion(
+    "7",
+    "404",
+    "Cliente G",
+    new List<Mercaderia>
+    {
+        new Mercaderia { IDProducto = "P9", IdCliente = "404", DescripcionProducto = "Zanahorias", Cantidad = 10, Ubicacion = "4-4-2" }
+    },
+    10,
+    DateTime.Now.AddDays(10),  // Fecha 10 días en el futuro desde hoy
+    PosiblesEstadosOrdenesGenerales.Pendiente,
+    CodigoPrioridad.Baja,
+    new Transportista(33334444, "Transportista G", "404")
+),
+new OrdenPreparacion(
+    "8",
+    "505",
+    "Cliente H",
+    new List<Mercaderia>
+    {
+        new Mercaderia { IDProducto = "P10", IdCliente = "505", DescripcionProducto = "Peras", Cantidad = 40, Ubicacion = "5-5-1" }
+    },
+    40,
+    DateTime.Now.AddDays(20),  // Fecha 20 días en el futuro desde hoy
+    PosiblesEstadosOrdenesGenerales.Pendiente,
+    CodigoPrioridad.Urgente,
+    new Transportista(55556666, "Transportista H", "505")
+),
+new OrdenPreparacion(
+    "9",
+    "606",
+    "Cliente I",
+    new List<Mercaderia>
+    {
+        new Mercaderia { IDProducto = "P11", IdCliente = "606", DescripcionProducto = "Naranjas", Cantidad = 50, Ubicacion = "5-5-2" }
+    },
+    50,
+    DateTime.Now.AddMonths(1),  // Fecha 1 mes en el futuro desde hoy
+    PosiblesEstadosOrdenesGenerales.Pendiente,
+    CodigoPrioridad.Media,
+    new Transportista(77778888, "Transportista I", "606")
+),
+new OrdenPreparacion(
+    "10",
+    "707",
+    "Cliente J",
+    new List<Mercaderia>
+    {
+        new Mercaderia { IDProducto = "P12", IdCliente = "707", DescripcionProducto = "Uvas", Cantidad = 35, Ubicacion = "6-6-1" }
+    },
+    35,
+    DateTime.Now.AddMonths(2),  // Fecha 2 meses en el futuro desde hoy
+    PosiblesEstadosOrdenesGenerales.Pendiente,
+    CodigoPrioridad.Baja,
+    new Transportista(99990000, "Transportista J", "707")
+)
         };
 
         /*TODO: Validar los datos de una Orden de Seleccion.

@@ -12,10 +12,11 @@ namespace Pampazon.GenerarOrdenPreparacion
     {
         public int ID { get; set; }
         public bool EsPrioridad { get; set; }
-        public int DepositoID { get; set; }
-
+        public int IDClient { get; set; }
         public int DNITransportista { get; set; }
-        public string Fecha { get; set; } // For test data
+        public string Fecha { get; set; }
+
+        public string FechaDeEntrega { get; set; }// For test data
         public List<Producto> Productos { get; set; }
 
         // Constructor
@@ -23,7 +24,6 @@ namespace Pampazon.GenerarOrdenPreparacion
         {
         
             Productos = new List<Producto>(); // Initialize the list
-            DepositoID = -1;
             DNITransportista = -1;
             Fecha = DateTime.Now.ToString("yyyy-MM-dd"); // Set current date as an example
         }
@@ -33,10 +33,7 @@ namespace Pampazon.GenerarOrdenPreparacion
         {
             return Productos.Any(p => p.NombreProducto == productName);
         }
-        public void renameDeposito(int deposito)
-        {
-            DepositoID = deposito;
-        }
+ 
         public void AddProducto(string producto, int cantidad, int deposito)
         {
             if (producto == null)
