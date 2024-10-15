@@ -1,6 +1,7 @@
 ﻿using Pampazon.Remitos;
 using System.Data;
 using System.Net;
+using System.Text;
 
 namespace Pampazon._6._GenerarRemito
 {
@@ -181,7 +182,7 @@ namespace Pampazon._6._GenerarRemito
                 .Where(item => !hayItemsSeleccionados || item.Checked) // Si no hay seleccionados, se toman todos
                 .Select(item =>
                 {
-                    string idOrden = item.SubItems[0].Text; // Suponiendo que el IdOrden está en la primera columna
+                    string idOrden = item.SubItems[0].Text;
                     return modelo.ObtenerOrdenPorId(idOrden);
                 })
                 .Where(orden => orden != null) // Filtrar órdenes válidas
@@ -196,7 +197,7 @@ namespace Pampazon._6._GenerarRemito
                 MessageBox.Show($"Remito generado:\nTransportista DNI: {nuevoRemito.DNITransportista}\nÓrdenes: {string.Join(", ", nuevoRemito.Ordenes.Select(o => o.IdOrden))}",
                                 "Remito Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Aquí viene la lógica para eliminar las órdenes seleccionadas
+                
                 var itemsAEliminar = new List<ListViewItem>();
 
                 if (hayItemsSeleccionados)
@@ -204,9 +205,9 @@ namespace Pampazon._6._GenerarRemito
                     // Solo eliminar ítems que estén marcados
                     foreach (ListViewItem item in DetalleRemitoLTV.Items)
                     {
-                        if (item.Checked) // Verificar si el checkbox está seleccionado
+                        if (item.Checked) 
                         {
-                            itemsAEliminar.Add(item); // Agregar a la lista de eliminación
+                            itemsAEliminar.Add(item);
                         }
                     }
                 }
@@ -225,9 +226,7 @@ namespace Pampazon._6._GenerarRemito
                 // Comprobar si DetalleRemitoLTV está vacío
                 if (DetalleRemitoLTV.Items.Count == 0)
                 {
-                    // Limpiar la lista de transportistas
                     TransportistasListV.Items.Clear();
-                    // Limpiar el campo de DNI y deshabilitar los grupos
                     DNITtxt.Clear();
                     BuscarTransportistaGBX.Enabled = true;
                     OrdenesDelTransportistaGBX.Enabled = false;
@@ -264,9 +263,9 @@ namespace Pampazon._6._GenerarRemito
             // Verificar si hay ítems seleccionados mediante el checkbox
             foreach (ListViewItem item in DetalleRemitoLTV.Items)
             {
-                if (item.Checked) // Comprobar si el checkbox está seleccionado
+                if (item.Checked)
                 {
-                    itemsAEliminar.Add(item); // Añadir el ítem a la lista de eliminación
+                    itemsAEliminar.Add(item); 
                 }
             }
 
@@ -277,8 +276,16 @@ namespace Pampazon._6._GenerarRemito
                 return;
             }
 
+            var mensaje = new StringBuilder("¿Está seguro de que desea eliminar las siguientes órdenes?\n");
+
+            // Agregar cada ítem seleccionado al mensaje
+            foreach (var item in itemsAEliminar)
+            {
+                mensaje.AppendLine(item.Text); // Aquí asumo que el texto del ítem se encuentra en item.Text
+            }
+
             // Confirmar la acción de eliminación
-            var result = MessageBox.Show($"¿Está seguro de que desea eliminar las {itemsAEliminar.Count} órdenes seleccionadas?",
+            var result = MessageBox.Show(mensaje.ToString(),
                                           "Confirmar Eliminación",
                                           MessageBoxButtons.YesNo,
                                           MessageBoxIcon.Question);

@@ -7,41 +7,35 @@ using System.Windows.Forms;
 
 public class GenerarRemitoModelo
 {
-    // Lista de transportistas
-   
-
     // Lista de órdenes de preparación
     private static List<OrdenesDePreparacion> ordenes = ObtenerOrdenes();
 
-        public static string ComprobarDni(int DNI)
+    //metodos para el boton BUSCAR
+    //para comprobar la validez del tipo de dato ingresado
+    public static string ComprobarDni(int DNI)
+    {
+        if (DNI < 0)
         {
-            if (DNI < 0)
+            return "El número de DNI no puede ser negativo.";
+        }
+
+        return DNI.ToString().Length == 8 ? "" : "El número de DNI debe tener 8 dígitos."; // Retorna mensaje si no es válido
+    }    
+
+    //para verificar la existencia del transportista
+     internal static bool ExisteTransportistaPorDni(int dni)
+     {
+        foreach (OrdenesDePreparacion orden in ordenes)
+        {
+            if (orden.DNItransportista == dni)
             {
-                return "El número de DNI no puede ser negativo.";
+                return true;
             }
+        } 
+        return false;
+     }
 
-            return DNI.ToString().Length == 8 ? "" : "El número de DNI debe tener 8 dígitos."; // Retorna mensaje si no es válido
-        }
-
-        public static bool OrdenYaAgregada(string idOrden, ListView detalleRemitoLTV)
-        {
-            return detalleRemitoLTV.Items.Cast<ListViewItem>().Any(item => item.SubItems[0].Text == idOrden);
-        }
-
-    // Método para verificar la existencia del transportista
-         internal static bool ExisteTransportistaPorDni(int dni)
-         {
-            foreach (OrdenesDePreparacion orden in ordenes)
-            {
-                if (orden.DNItransportista == dni)
-                {
-                    return true;
-                }
-            } 
-            return false;
-         }
-
-    // Método para obtener el nombre y apellido del transportista
+    //para obtener el nombre y apellido del transportista
     internal static string ObtenerNombreTransportistaPorDni(int dni)
     {
         foreach (OrdenesDePreparacion orden in ordenes)
@@ -54,31 +48,26 @@ public class GenerarRemitoModelo
              return string.Empty; // O puedes devolver null;
     }
 
-
-        internal static List<OrdenesDePreparacion> ObtenerOrdenesDePreparacionPorDni(int dni)
-        {
-            return ordenes.Where(o => o.DNItransportista == dni).ToList();
-        }
+    //para ver si el transportista tiene al menos una orden
+    internal static List<OrdenesDePreparacion> ObtenerOrdenesDePreparacionPorDni(int dni)
+    {
+        return ordenes.Where(o => o.DNItransportista == dni).ToList();
+    }
     
 
+    //metodos para GENERAR REMITO
+    // Crea un nuevo remito utilizando las órdenes seleccionadas y el DNI del transportista
     internal Remito GenerarRemito(List<OrdenesDePreparacion> ordenesSeleccionadas, int dniTransportista)
     {
-        // Crea un nuevo remito utilizando las órdenes seleccionadas y el DNI del transportista
         Remito nuevoRemito = new Remito(ordenesSeleccionadas, dniTransportista);
 
-        // Aquí puedes agregar cualquier lógica adicional que necesites
-
-        return nuevoRemito; // Devuelve el nuevo remito
+        return nuevoRemito;
     }
 
-        internal OrdenesDePreparacion ObtenerOrdenPorId(string idOrden)
-        {
-            return ordenes.FirstOrDefault(o => o.IdOrden == idOrden);
-        }
-
-
-
-   
+    internal OrdenesDePreparacion ObtenerOrdenPorId(string idOrden)
+    {
+        return ordenes.FirstOrDefault(o => o.IdOrden == idOrden);
+    }
 
     internal static List<OrdenesDePreparacion> ObtenerOrdenes()
     {
