@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pampazon.ConsultarOrdenes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,13 @@ namespace Pampazon.ListarOrdenes
 {
     public partial class ConsultarOrdenesForm : Form
     {
+        ConsultarOrdenesPreparacionModelo modelo = new();
+
         public ConsultarOrdenesForm()
         {
             InitializeComponent();
+            modelo.InicializarDatos();
+            
         }
 
         //TODO: Borrar eventos:
