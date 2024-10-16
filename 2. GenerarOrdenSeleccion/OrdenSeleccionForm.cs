@@ -71,86 +71,6 @@ namespace Pampazon.OrdenSeleccion
         // EVENTOS DEL FORMULARIO
         // ==============================================================================
 
-
-        /*
-        private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
-        {
-            // Limpiar la lista actual
-            OrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
-
-            // Obtener los valores de los filtros
-            string clienteAFiltrar = ClienteTextBoxOrdenSeleccion.Text.Trim(); //Razon social cliente
-            string transportistaAFiltrar = TransportistaTextBoxOrdenSeleccion.Text.Trim();
-            string idOrdenAFiltrar = NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Trim();
-            string prioridadAFiltrar = PrioridadComboBoxOrdenSeleccion.SelectedItem?.ToString();
-
-            // Verificar si al menos un filtro está completo
-            if (string.IsNullOrWhiteSpace(clienteAFiltrar) &&
-                string.IsNullOrWhiteSpace(transportistaAFiltrar) &&
-                string.IsNullOrWhiteSpace(idOrdenAFiltrar) &&
-                string.IsNullOrWhiteSpace(prioridadAFiltrar))
-            {
-                MessageBox.Show("Por favor, ingrese al menos un criterio de búsqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            /*
-            // Validar que el valor ingresado en NumeroOrdenPreparacionTextBoxOrdenSeleccion sea un número válido (si es que se ha ingresado algo)
-            if (!string.IsNullOrEmpty(idOrdenAFiltrar))
-            {
-                if (!int.TryParse(idOrdenAFiltrar, out int idOrden) || idOrden < 0 || idOrdenAFiltrar.Length < 3 || idOrdenAFiltrar.Length > 8)
-                {
-                    MessageBox.Show("Por favor, ingrese un número de orden válido (entre 3 y 8 dígitos).");
-                    return;
-                }
-            }
-            
-
-            // Obtener la lista de órdenes de preparación desde el modelo
-            var ordenesPreparacion = modelo.OrdenesDePreparacion;
-
-            // Filtrar la lista según los criterios ingresados
-            var ordenesFiltradas = ordenesPreparacion
-                .Where(op =>
-                    (string.IsNullOrEmpty(clienteAFiltrar) || op.DescripcionCliente.Contains(clienteAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
-                    (string.IsNullOrEmpty(transportistaAFiltrar) || op.TransportistaDetalle.Nombre.Contains(transportistaAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
-                    (string.IsNullOrEmpty(idOrdenAFiltrar) || op.IDOrdenPreparacion.Contains(idOrdenAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
-                    (string.IsNullOrEmpty(prioridadAFiltrar) || op.Prioridad.ToString() == prioridadAFiltrar)
-                )
-                .ToList();
-
-            if (ordenesFiltradas.Any())
-            {
-                // Agregar las órdenes filtradas al ListView
-                foreach (var orden in ordenesFiltradas)
-                {
-                    // Verificar si el ítem ya existe en DetalleOrdenesDePrepracionAOrdenSeleccionListView
-                    if (!OrdenesDePrepracionAOrdenSeleccionListView.Items.Cast<ListViewItem>().Any(item => item.Tag == orden))
-                    {
-                        var item = new ListViewItem(new[]
-                        {
-                    orden.IDOrdenPreparacion,
-                    orden.DescripcionCliente,
-                    orden.FechaOrdenRecepcion.ToString("yyyy-MM-dd"),
-                    orden.EstadoOrdenPreparacion.ToString(),
-                    orden.Prioridad.ToString(),
-                    orden.TransportistaDetalle.Nombre
-                });
-
-                        // Asociar el objeto orden como Tag del ListViewItem
-                        item.Tag = orden;
-                        OrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se encontraron órdenes de preparación con los criterios especificados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        */
-        //V2
-
         private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
             // Limpiar la lista actual
@@ -186,8 +106,8 @@ namespace Pampazon.OrdenSeleccion
                     (string.IsNullOrEmpty(transportistaAFiltrar) || op.TransportistaDetalle.Nombre.Contains(transportistaAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
                     (string.IsNullOrEmpty(idOrdenAFiltrar) || op.IDOrdenPreparacion.Contains(idOrdenAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
                     (string.IsNullOrEmpty(prioridadAFiltrar) || op.Prioridad.ToString() == prioridadAFiltrar) &&
-                    (!fechaInicioAFiltrar.HasValue || op.FechaOrdenRecepcion.Date >= fechaInicioAFiltrar.Value) &&  // Filtro inclusivo para la fecha de inicio
-                    (!fechaFinalAFiltrar.HasValue || op.FechaOrdenRecepcion.Date <= fechaFinalAFiltrar.Value)        // Filtro inclusivo para la fecha final
+                    (!fechaInicioAFiltrar.HasValue || op.fechaOrdenPreparacion.Date >= fechaInicioAFiltrar.Value) &&  // Filtro inclusivo para la fecha de inicio
+                    (!fechaFinalAFiltrar.HasValue || op.fechaOrdenPreparacion.Date <= fechaFinalAFiltrar.Value)        // Filtro inclusivo para la fecha final
                 )
                 .ToList();
 
@@ -203,7 +123,7 @@ namespace Pampazon.OrdenSeleccion
                         {
                     orden.IDOrdenPreparacion,
                     orden.DescripcionCliente,
-                    orden.FechaOrdenRecepcion.ToString("dd/MM/yyyy"), // Formato de fecha cambiado a DIA/MES/AÑO
+                    orden.fechaOrdenPreparacion.ToString("dd/MM/yyyy"), // Formato de fecha cambiado a DIA/MES/AÑO
                     orden.EstadoOrdenPreparacion.ToString(),
                     orden.Prioridad.ToString(),
                     orden.TransportistaDetalle.Nombre
@@ -319,7 +239,7 @@ namespace Pampazon.OrdenSeleccion
                     ListViewItem newItem = new ListViewItem();
                     newItem.Text = ordenPreparacion.IDOrdenPreparacion;
                     newItem.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
-                    newItem.SubItems.Add(ordenPreparacion.FechaOrdenRecepcion.ToString());
+                    newItem.SubItems.Add(ordenPreparacion.fechaOrdenPreparacion.ToString());
                     newItem.SubItems.Add(ordenPreparacion.EstadoOrdenPreparacion.ToString());
                     newItem.SubItems.Add(ordenPreparacion.Prioridad.ToString());
                     newItem.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
@@ -389,8 +309,9 @@ namespace Pampazon.OrdenSeleccion
                 ordenesDisponibles.Remove(ordenPreparacion);
             }
 
-            // Eliminar los ítems de OrdenesDePreparacionPendientesProductoUbicacionListView
-            //OrdenesDePreparacionPendientesProductoUbicacionListView.Items.Clear();
+
+            // Vaciar la lista DetalleOrdenesDePreparacionPendientesListView
+            DetalleOrdenesDePreparacionPendientesListView.Items.Clear();
 
             // Mostrar mensaje de confirmación
             MessageBox.Show($"Se ha creado la orden de selección número {ordenSeleccion.IDOrdenSeleccion} exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -442,7 +363,7 @@ namespace Pampazon.OrdenSeleccion
                 item.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
                 //item.SubItems.Add(ordenPreparacion.Mercaderias.ToString());
                 //item.SubItems.Add(ordenPreparacion.CantidadMercaderia.ToString());
-                item.SubItems.Add(ordenPreparacion.FechaOrdenRecepcion.ToString("dd/MM/yyyy"));  // Formatear solo la fecha
+                item.SubItems.Add(ordenPreparacion.fechaOrdenPreparacion.ToString("dd/MM/yyyy"));  // Formatear solo la fecha
                 item.SubItems.Add(ordenPreparacion.EstadoOrdenPreparacion.ToString());
                 item.SubItems.Add(ordenPreparacion.Prioridad.ToString());
                 item.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
