@@ -82,6 +82,7 @@
             ProductosStockLista.TabIndex = 32;
             ProductosStockLista.UseCompatibleStateImageBehavior = false;
             ProductosStockLista.View = View.Details;
+            ProductosStockLista.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
             // 
             // SKU_columna
             // 

@@ -19,13 +19,11 @@ namespace Pampazon
         public GenerarOrdenPreparacionForm()
         {
             InitializeComponent();
-            ActualizarListaTransportista();
 
         }
 
         private void GenerarOrdenPreparacionForm_Load(object sender, EventArgs e)
         {
-            ActualizarListaTransportista();
             AjustarColumnas();
         }
 
@@ -60,9 +58,53 @@ namespace Pampazon
 
         private void BuscarProductoBtn(object sender, EventArgs e)
         {
-            // Implement product search logic
-        }
+            if(model.Orden.IDCliente == -1) { 
+            if(CodigoClienteInput.Text == "" & RazonSocialClienteInput.Text == "")
+            {
+               DialogResult result = MessageBox.Show($"Ingrese ID cliente o Razon Social");
+            }
+            else if(CodigoClienteInput.Text != "" & RazonSocialClienteInput.Text != "")
+            {
+                DialogResult result = MessageBox.Show($"Busque cliente por ID o por Razon Social. Elija una");
+                CodigoClienteInput.Text = "";
+                RazonSocialClienteInput.Text = "";
+            }
+            else if(CodigoClienteInput.Text != "" & RazonSocialClienteInput.Text == "")
+            {
+                int clienteNumber;
+                if(!int.TryParse(CodigoClienteInput.Text, out clienteNumber))
+                {
+                    MessageBox.Show($"Ingrese un numero para buscar ID cliente");
+                    CodigoClienteInput.Text = "";
+                }
+                else if (model.obtenerCliente(clienteNumber) == -1)
+                {
+                    MessageBox.Show($"ID Cliente seleccionado {CodigoClienteInput.Text} no existe. Busque devuelta o por razon Social");
+                }
+                else
+                {
+                   model.Orden.changeIDCliente(model.obtenerCliente(clienteNumber));
+                   MessageBox.Show($"ID Cliente seleccionado {CodigoClienteInput.Text}");
+                }
+            }else if (CodigoClienteInput.Text == "" & RazonSocialClienteInput.Text != "")
+            {
+                if(model.obtenerCliente(-1, RazonSocialClienteInput.Text) == -1)
+                {
+                    MessageBox.Show($"Razon Social {RazonSocialClienteInput.Text} no existe. Busque devuelta o por ID Cliente");
+                }
+                else
+                {
+                    model.Orden.changeIDCliente(model.obtenerCliente(-1, RazonSocialClienteInput.Text));
+                    CodigoClienteInput.Text = model.Orden.IDCliente.ToString().ToUpper();
+                    MessageBox.Show($"ID Cliente seleccionado {CodigoClienteInput.Text}. Razon Social {RazonSocialClienteInput.Text}");
+                }
+            }
+            } // hasta aca llega la seleccioan de cliente
 
+
+
+        }
+        
         private void ActualizarListaTransportista()
         {
             // Implement transportista list update logic
@@ -96,5 +138,12 @@ namespace Pampazon
         {
 
         }
+
+        private void ProductosStockLista_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

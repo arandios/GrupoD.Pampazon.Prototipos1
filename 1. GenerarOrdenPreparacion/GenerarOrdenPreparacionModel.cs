@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pampazon._1._GenerarOrdenPreparacion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -10,6 +11,8 @@ namespace Pampazon.GenerarOrdenPreparacion
     internal class GenerarOrdenPreparacionModel
     {
         public Orden Orden = new Orden() ;
+
+        public int IDCliente { get; set; }
         public List<Transportista> Transportistas { get; private set; } =
         [
             new Transportista { DNI = 10000010, Nombre = "Mónica", Apellido = "Torres" },
@@ -17,6 +20,12 @@ namespace Pampazon.GenerarOrdenPreparacion
             new Transportista { DNI = 10000012, Nombre = "Natalia", Apellido = "Mendoza"},
             new Transportista { DNI = 10000013, Nombre = "Daniel", Apellido = "Silva" },
             new Transportista { DNI = 10000014, Nombre = "Patricia", Apellido = "Castro"},
+        ];
+        public List<Cliente> Clientes { get; private set; } =
+        [
+            new Cliente { IDCliente = 1, Nombre = "Coca Cola", RazonSocial = "1" },
+            new Cliente {  IDCliente  = 2, Nombre = "Pepsi", RazonSocial = "2"},
+            new Cliente {  IDCliente  = 2, Nombre = "El comandante", RazonSocial = "3"},
         ];
 
         List<Producto> productosCliente = new List<Producto>();
@@ -98,6 +107,31 @@ namespace Pampazon.GenerarOrdenPreparacion
             return ProductosTraer;            
         } // fin method
 
+
+        public int obtenerCliente(int idCliente = -1, string razonSocial = "")
+        {
+            if (idCliente != -1 & razonSocial == "")
+                foreach (Cliente Cliente in Clientes)
+                {
+                    if (Cliente.IDCliente == idCliente)
+                    {
+                        return idCliente;
+                    }
+                }
+            else if (idCliente == -1 & razonSocial != "")
+            {
+                foreach (Cliente Cliente in Clientes)
+                {
+                    if (Cliente.RazonSocial.ToUpper() == razonSocial.ToUpper() )
+                    {
+                        return idCliente;
+                    }
+        
+                }
+            }
+            return -1;
+        } // fin method
+
         public Producto obtenerProdIndividual(string NombreProc , int IdDeposito)
         {
             if (NombreProc == "" || IdDeposito <= 0) { return null; }
@@ -123,7 +157,7 @@ namespace Pampazon.GenerarOrdenPreparacion
             Producto prodReponer = Orden.retirarProductoOrden(idProducto);
             if (prodReponer != null)
             {
-                obtenerProdIndividual(idProducto, Orden.IDClient).Stock += prodReponer.Stock ;
+                obtenerProdIndividual(idProducto, Orden.IDCliente).Stock += prodReponer.Stock ;
             }
 
         }
@@ -133,7 +167,7 @@ namespace Pampazon.GenerarOrdenPreparacion
             if(Orden.Productos.Count > 0) {
                 foreach (Producto Producto in this.Orden.Productos)
                 {
-                    obtenerProdIndividual(Producto.NombreProducto.ToUpper(), Orden.IDClient).Stock += Producto.Stock;       
+                    obtenerProdIndividual(Producto.NombreProducto.ToUpper(), Orden.IDCliente).Stock += Producto.Stock;       
                 }
             }
             Orden.borrarOrden();

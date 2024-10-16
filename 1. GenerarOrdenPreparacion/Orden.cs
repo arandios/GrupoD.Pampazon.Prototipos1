@@ -11,7 +11,7 @@ namespace Pampazon.GenerarOrdenPreparacion
     internal class Orden
     {
         public int ID { get; set; }
-        public int IDClient { get; set; }
+        public int IDCliente { get; set; } = -1;
 
         public string Prioridad { get; set; }
         public int DNITransportista { get; set; }
@@ -27,6 +27,10 @@ namespace Pampazon.GenerarOrdenPreparacion
             Productos = new List<Producto>(); // Initialize the list
             DNITransportista = -1;
             Fecha = DateTime.Now.ToString("yyyy-MM-dd"); // Set current date as an example
+        }
+        public void changeIDCliente(int IDNuevoCliente)
+        {
+            IDCliente = IDNuevoCliente;
         }
 
         // Method to add a product to the list
