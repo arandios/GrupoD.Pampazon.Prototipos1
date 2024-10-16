@@ -16,7 +16,6 @@ namespace Pampazon.OrdenSeleccion
         cantidad y tipo de mercadería (cod y denominación), 
         ubicación en el almacén, estados (eso lo definen uds) 
         y fecha de estados.
-
          */
         //PROPIEDADES
         public int IDOrdenSeleccion { get; set; }

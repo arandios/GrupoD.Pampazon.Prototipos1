@@ -16,5 +16,7 @@ namespace Pampazon.BuscarProductosEnDepositos
         {
             InitializeComponent();
         }
+
+
     }
 }

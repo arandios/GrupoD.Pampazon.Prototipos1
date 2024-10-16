@@ -25,10 +25,10 @@ namespace Pampazon.GenerarOrdenPreparacion
         [
             new Cliente { IDCliente = 1, Nombre = "Coca Cola", RazonSocial = "1" },
             new Cliente {  IDCliente  = 2, Nombre = "Pepsi", RazonSocial = "2"},
-            new Cliente {  IDCliente  = 2, Nombre = "El comandante", RazonSocial = "3"},
+            new Cliente {  IDCliente  = 3, Nombre = "El comandante", RazonSocial = "3"},
         ];
 
-        List<Producto> productosCliente = new List<Producto>();
+        public List<Producto> ProductosCliente { get; set; } = new List<Producto>();
 
         public List<Producto> Productos { get; private set; } =
         [
@@ -49,7 +49,7 @@ namespace Pampazon.GenerarOrdenPreparacion
         {
             List<Producto> productosCliente = new List<Producto>();
 
-            if (IdCliente == 0) { return productosCliente; }
+            if (IdCliente == -1) { return productosCliente; }
             foreach (Producto Producto in Productos)
                 {
                     if (Producto.IdCliente == IdCliente )
@@ -59,13 +59,25 @@ namespace Pampazon.GenerarOrdenPreparacion
                 }          
             return productosCliente;
         } // fin method
+
+
+        public void setProductosClientes(int IdCliente)
+        {
+            if (IdCliente == -1)
+            {
+                ProductosCliente = new List<Producto>();
+            }
+            ProductosCliente = obtenerProdCliente(IdCliente);
+        }
+
+
         public List<Producto> obtenerProdFiltrados(string idProducto = "", string NombreProducto = "")
         {
             List<Producto> ProductosTraer = new List<Producto>();
-            if (idProducto == "" || NombreProducto == "") { 
-                return productosCliente; }
-            else if(idProducto != "" || NombreProducto == "")
-                foreach (Producto Producto in productosCliente)
+            if (idProducto == "" & NombreProducto == "") { 
+                return ProductosCliente; }
+            else if(idProducto != "" & NombreProducto == "")
+                foreach (Producto Producto in ProductosCliente)
                 {
                     if (Producto.Id.ToUpper().Contains(idProducto.ToUpper()))
                     {
@@ -74,34 +86,33 @@ namespace Pampazon.GenerarOrdenPreparacion
                 }
             else if (idProducto != "" & NombreProducto == "")
             {
-                foreach (Producto Producto in productosCliente)
+                foreach (Producto Producto in ProductosCliente)
                 {
                     if (Producto.Id.ToUpper().Contains(idProducto.ToUpper()))
                     {
                         ProductosTraer.Add(Producto);
                     }
-                    return ProductosTraer;
                 }
             }
             else if (idProducto == "" & NombreProducto != "")
             {
-                foreach (Producto Producto in productosCliente)
+                foreach (Producto Producto in ProductosCliente)
                 {
                     if (Producto.NombreProducto.ToUpper().Contains(NombreProducto.ToUpper()))
                     {
                         ProductosTraer.Add(Producto);
                     }
-                    return ProductosTraer;
+     
                 }
             }else
             {
-                foreach (Producto Producto in productosCliente)
+                foreach (Producto Producto in ProductosCliente)
                 {
                     if (Producto.NombreProducto.ToUpper().Contains(NombreProducto.ToUpper()) & Producto.Id.ToUpper().Contains(idProducto.ToUpper()))
                     {
                         ProductosTraer.Add(Producto);
                     }
-                    return ProductosTraer;
+          
                 }
             }
             return ProductosTraer;            
@@ -124,7 +135,7 @@ namespace Pampazon.GenerarOrdenPreparacion
                 {
                     if (Cliente.RazonSocial.ToUpper() == razonSocial.ToUpper() )
                     {
-                        return idCliente;
+                        return Cliente.IDCliente;
                     }
         
                 }
@@ -132,47 +143,50 @@ namespace Pampazon.GenerarOrdenPreparacion
             return -1;
         } // fin method
 
-        public Producto obtenerProdIndividual(string NombreProc , int IdDeposito)
+        public Producto obtenerProdIndividual( string Id)
         {
-            if (NombreProc == "" || IdDeposito <= 0) { return null; }
+            if (Id == null || Id == "") { return null; }
 
-           foreach (Producto Producto in Productos)
+           foreach (Producto Producto in ProductosCliente)
                 {
-                    //if (Producto.IdDeposito == IdDeposito && Producto.NombreProducto.ToUpper() == NombreProc.ToUpper())
-                    //{
-                      //  return Producto;
-                    //}
+                    if (Producto.Id == Id)
+                    {
+                       return Producto;
+                    }
 
                 }
             return null;
-        }        // fin method
+        }
+         
+        
+        public void modificarStock(string idProd, int cantidad)
+        {
+            foreach(Producto producto in ProductosCliente)
+            {
+                if(producto.Id == idProd)
+                {
+                    producto.Stock = producto.Stock + cantidad;
+                    return;
+                }
+            }
+        }
+        // fin method
 
         public void crearOrden(int idDeposito)
         {
             Orden OrderTemp = new Orden(); 
         }
-
-        public void retirarProductoDeOrdenYAgregarloDevuelta(string idProducto)
+        public void retirarProductoDeOrdenYAgregarloDevuelta(string producto)
         {
-            Producto prodReponer = Orden.retirarProductoOrden(idProducto);
+            Producto prodReponer = Orden.retirarProductoOrden(producto);
             if (prodReponer != null)
             {
-                obtenerProdIndividual(idProducto, Orden.IDCliente).Stock += prodReponer.Stock ;
+              //  obtenerProdIndividual(producto, Orden.DepositoID).Stock += prodReponer.Stock;
             }
 
         }
 
-        public void cancelarOrden()
-        {
-            if(Orden.Productos.Count > 0) {
-                foreach (Producto Producto in this.Orden.Productos)
-                {
-                    obtenerProdIndividual(Producto.NombreProducto.ToUpper(), Orden.IDCliente).Stock += Producto.Stock;       
-                }
-            }
-            Orden.borrarOrden();
 
-        }
 
         // corchete de fin de clase
     }

@@ -34,26 +34,26 @@ namespace Pampazon.GenerarOrdenPreparacion
         }
 
         // Method to add a product to the list
-        public bool ContainsProducto(string productName)
+        public bool ContainsProducto(string idProd)
         {
-            return Productos.Any(p => p.NombreProducto == productName);
+            return Productos.Any(p => p.Id == idProd);
         }
  
-        public void AddProducto(string producto, int cantidad)
+        public void AddProducto(string idProd, int cantidad)
         {
-            if (producto == null)
+            if (idProd == null)
             {
-                throw new ArgumentNullException(nameof(producto), "Cannot add a null product.");
+                throw new ArgumentNullException(nameof(idProd), "Cannot add a null product.");
       
             }
-            else if (ContainsProducto(producto))
+            else if (ContainsProducto(idProd))
             {
-                Productos.FirstOrDefault(p => p.NombreProducto == producto).Stock = Productos.FirstOrDefault(p => p.NombreProducto == producto).Stock + cantidad;
+                Productos.FirstOrDefault(p => p.Id == idProd).Stock = Productos.FirstOrDefault(p => p.Id == idProd).Stock + cantidad;
             }
             else
             {
                 Producto nuevoProd = new Producto();
-                nuevoProd.NombreProducto = producto;
+                nuevoProd.Id = idProd;
                 nuevoProd.Stock = cantidad;
                 Productos.Add(nuevoProd);
             }

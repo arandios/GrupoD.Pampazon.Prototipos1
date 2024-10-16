@@ -35,14 +35,13 @@
             OrdenTempLista = new ListView();
             ProductoColumna = new ColumnHeader();
             CantidadColumna = new ColumnHeader();
-            DepositoColumna = new ColumnHeader();
             ProductoBuscar = new Button();
             button3 = new Button();
             Generar = new Button();
             button2 = new Button();
             NombreProductoInput = new TextBox();
             button5 = new Button();
-            button4 = new Button();
+            AgregarProductoBtn = new Button();
             label1 = new Label();
             label8 = new Label();
             groupBox1 = new GroupBox();
@@ -103,7 +102,7 @@
             // 
             // OrdenTempLista
             // 
-            OrdenTempLista.Columns.AddRange(new ColumnHeader[] { ProductoColumna, CantidadColumna, DepositoColumna });
+            OrdenTempLista.Columns.AddRange(new ColumnHeader[] { ProductoColumna, CantidadColumna });
             OrdenTempLista.Location = new Point(10, 30);
             OrdenTempLista.Margin = new Padding(2);
             OrdenTempLista.Name = "OrdenTempLista";
@@ -123,12 +122,6 @@
             CantidadColumna.Text = "Cantidad";
             CantidadColumna.TextAlign = HorizontalAlignment.Center;
             CantidadColumna.Width = 120;
-            // 
-            // DepositoColumna
-            // 
-            DepositoColumna.Text = "Deposito";
-            DepositoColumna.TextAlign = HorizontalAlignment.Center;
-            DepositoColumna.Width = 180;
             // 
             // ProductoBuscar
             // 
@@ -196,15 +189,16 @@
             button5.UseVisualStyleBackColor = true;
             button5.Click += LimpiarFiltros;
             // 
-            // button4
+            // AgregarProductoBtn
             // 
-            button4.Location = new Point(536, 181);
-            button4.Margin = new Padding(2);
-            button4.Name = "button4";
-            button4.Size = new Size(237, 51);
-            button4.TabIndex = 39;
-            button4.Text = "&Agregar Productos a la Orden de Preparación";
-            button4.UseVisualStyleBackColor = true;
+            AgregarProductoBtn.Location = new Point(536, 181);
+            AgregarProductoBtn.Margin = new Padding(2);
+            AgregarProductoBtn.Name = "AgregarProductoBtn";
+            AgregarProductoBtn.Size = new Size(237, 51);
+            AgregarProductoBtn.TabIndex = 39;
+            AgregarProductoBtn.Text = "&Agregar Productos a la Orden de Preparación";
+            AgregarProductoBtn.UseVisualStyleBackColor = true;
+            AgregarProductoBtn.Click += AgregarProductoBtn_Click;
             // 
             // label1
             // 
@@ -301,7 +295,7 @@
             // 
             OPMercaderiaGroupBox.Controls.Add(label5);
             OPMercaderiaGroupBox.Controls.Add(label1);
-            OPMercaderiaGroupBox.Controls.Add(button4);
+            OPMercaderiaGroupBox.Controls.Add(AgregarProductoBtn);
             OPMercaderiaGroupBox.Controls.Add(MaxCantidadTxt);
             OPMercaderiaGroupBox.Controls.Add(AgregarCantidadTextBox);
             OPMercaderiaGroupBox.Controls.Add(ProductosStockLista);
@@ -478,6 +472,7 @@
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "GenerarOrdenPreparacionForm";
             Text = "Generar Orden Preparacion";
+            Load += GenerarOrdenPreparacionForm_Load_1;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             OPMercaderiaGroupBox.ResumeLayout(false);
@@ -500,9 +495,8 @@
         private Button button2;
         private ColumnHeader CantidadColumna;
         private TextBox NombreProductoInput;
-        private ColumnHeader DepositoColumna;
         private Button button5;
-        private Button button4;
+        private Button AgregarProductoBtn;
         private Label label1;
         private Label label8;
         private GroupBox groupBox1;
