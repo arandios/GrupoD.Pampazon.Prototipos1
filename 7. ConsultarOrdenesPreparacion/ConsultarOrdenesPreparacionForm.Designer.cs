@@ -1,4 +1,5 @@
-﻿namespace Pampazon.ListarOrdenes
+﻿
+namespace Pampazon.ListarOrdenes
 {
     partial class ConsultarOrdenesForm
     {
@@ -112,7 +113,7 @@
             BuscarOrdenBtn.TabIndex = 8;
             BuscarOrdenBtn.Text = "&Buscar orden";
             BuscarOrdenBtn.UseVisualStyleBackColor = true;
-            BuscarOrdenBtn.Click += button1_Click;
+            BuscarOrdenBtn.Click += BuscarOrdenes_Click;
             // 
             // BorrarFiltrosBtn
             // 
@@ -124,6 +125,7 @@
             BorrarFiltrosBtn.TabIndex = 9;
             BorrarFiltrosBtn.Text = "&Borrar filtros";
             BorrarFiltrosBtn.UseVisualStyleBackColor = true;
+            BorrarFiltrosBtn.Click += BorrarFiltrosBtn_Click;
             // 
             // SalirBtn
             // 
@@ -134,6 +136,7 @@
             SalirBtn.TabIndex = 11;
             SalirBtn.Text = "&Salir";
             SalirBtn.UseVisualStyleBackColor = true;
+            SalirBtn.Click += SalirBtn_Click;
             // 
             // CodigoClienteTxt
             // 
@@ -214,7 +217,6 @@
             FiltrosGBX.TabIndex = 20;
             FiltrosGBX.TabStop = false;
             FiltrosGBX.Text = "Seleccione filtros de búsqueda para Clientes: ";
-            FiltrosGBX.Enter += groupBox1_Enter;
             // 
             // FechaFinDTP
             // 
@@ -318,7 +320,6 @@
             ProductoLTV.TabIndex = 23;
             ProductoLTV.UseCompatibleStateImageBehavior = false;
             ProductoLTV.View = View.Details;
-            ProductoLTV.SelectedIndexChanged += listView3_SelectedIndexChanged;
             // 
             // SKU_Columna
             // 
@@ -372,6 +373,11 @@
             FiltrosGBX.PerformLayout();
             DetallesGBX.ResumeLayout(false);
             ResumeLayout(false);
+        }
+
+        private void ListarOrdenes_Load(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

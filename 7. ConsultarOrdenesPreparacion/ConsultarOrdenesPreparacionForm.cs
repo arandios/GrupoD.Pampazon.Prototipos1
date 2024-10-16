@@ -19,36 +19,27 @@ namespace Pampazon.ListarOrdenes
         {
             InitializeComponent();
             modelo.InicializarDatos();
-            
+
         }
 
-        //TODO: Borrar eventos:
-        private void ListarOrdenes_Load(object sender, EventArgs e)
+        private void BuscarOrdenes_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(CodigoClienteTxt.Text, out int CodCliente))
+            {
+                MessageBox.Show("Por favor ingrese un codigo de cliente valido");
+                return;
+            }
+
+
+
+        }
+
+        private void BorrarFiltrosBtn_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void SalirBtn_Click(object sender, EventArgs e)
         {
 
         }
