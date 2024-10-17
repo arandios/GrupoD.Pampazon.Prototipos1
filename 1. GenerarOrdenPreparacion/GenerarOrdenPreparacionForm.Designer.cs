@@ -60,13 +60,13 @@
             label15 = new Label();
             label14 = new Label();
             label12 = new Label();
-            comboBox1 = new ComboBox();
-            textBox3 = new TextBox();
+            PrioridadComboBox = new ComboBox();
             label4 = new Label();
             label3 = new Label();
             OPDetalleMercaderiaGroupBox = new GroupBox();
-            comboBox3 = new ComboBox();
-            comboBox2 = new ComboBox();
+            FechaSelecter = new DateTimePicker();
+            DniTransportistaComboBox = new ComboBox();
+            NombreTransportistaComboBox = new ComboBox();
             groupBox1.SuspendLayout();
             OPMercaderiaGroupBox.SuspendLayout();
             OPDetalleMercaderiaGroupBox.SuspendLayout();
@@ -77,7 +77,7 @@
             ProductosStockLista.Columns.AddRange(new ColumnHeader[] { SKU_columna, ProductosCliente, Cant_Columna });
             ProductosStockLista.Location = new Point(10, 20);
             ProductosStockLista.Name = "ProductosStockLista";
-            ProductosStockLista.Size = new Size(487, 212);
+            ProductosStockLista.Size = new Size(503, 212);
             ProductosStockLista.TabIndex = 32;
             ProductosStockLista.UseCompatibleStateImageBehavior = false;
             ProductosStockLista.View = View.Details;
@@ -137,10 +137,10 @@
             // button3
             // 
             button3.BackColor = Color.White;
-            button3.Location = new Point(642, 662);
+            button3.Location = new Point(872, 674);
             button3.Margin = new Padding(2);
             button3.Name = "button3";
-            button3.Size = new Size(187, 40);
+            button3.Size = new Size(103, 40);
             button3.TabIndex = 28;
             button3.Text = "&Salir";
             button3.UseVisualStyleBackColor = false;
@@ -191,7 +191,7 @@
             // 
             // AgregarProductoBtn
             // 
-            AgregarProductoBtn.Location = new Point(536, 181);
+            AgregarProductoBtn.Location = new Point(574, 178);
             AgregarProductoBtn.Margin = new Padding(2);
             AgregarProductoBtn.Name = "AgregarProductoBtn";
             AgregarProductoBtn.Size = new Size(237, 51);
@@ -230,7 +230,7 @@
             groupBox1.Controls.Add(SKUProductoInput);
             groupBox1.Controls.Add(ProductoBuscar);
             groupBox1.Controls.Add(button5);
-            groupBox1.Location = new Point(40, 20);
+            groupBox1.Location = new Point(56, 20);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
@@ -302,11 +302,11 @@
             OPMercaderiaGroupBox.Controls.Add(label9);
             OPMercaderiaGroupBox.Controls.Add(ProductoSeleccionadoTxt);
             OPMercaderiaGroupBox.Controls.Add(label15);
-            OPMercaderiaGroupBox.Location = new Point(40, 174);
+            OPMercaderiaGroupBox.Location = new Point(50, 173);
             OPMercaderiaGroupBox.Margin = new Padding(3, 2, 3, 2);
             OPMercaderiaGroupBox.Name = "OPMercaderiaGroupBox";
             OPMercaderiaGroupBox.Padding = new Padding(3, 2, 3, 2);
-            OPMercaderiaGroupBox.Size = new Size(789, 238);
+            OPMercaderiaGroupBox.Size = new Size(867, 238);
             OPMercaderiaGroupBox.TabIndex = 57;
             OPMercaderiaGroupBox.TabStop = false;
             OPMercaderiaGroupBox.Text = "Productos en deposito";
@@ -314,7 +314,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(541, 77);
+            label5.Location = new Point(579, 74);
             label5.Name = "label5";
             label5.Size = new Size(117, 15);
             label5.TabIndex = 71;
@@ -322,7 +322,7 @@
             // 
             // MaxCantidadTxt
             // 
-            MaxCantidadTxt.Location = new Point(536, 94);
+            MaxCantidadTxt.Location = new Point(574, 91);
             MaxCantidadTxt.Margin = new Padding(2);
             MaxCantidadTxt.Name = "MaxCantidadTxt";
             MaxCantidadTxt.ReadOnly = true;
@@ -332,7 +332,7 @@
             // AgregarCantidadTextBox
             // 
             AgregarCantidadTextBox.Enabled = false;
-            AgregarCantidadTextBox.Location = new Point(536, 154);
+            AgregarCantidadTextBox.Location = new Point(574, 151);
             AgregarCantidadTextBox.Margin = new Padding(2);
             AgregarCantidadTextBox.MaxLength = 50;
             AgregarCantidadTextBox.Name = "AgregarCantidadTextBox";
@@ -342,7 +342,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(536, 137);
+            label9.Location = new Point(574, 134);
             label9.Name = "label9";
             label9.Size = new Size(144, 15);
             label9.TabIndex = 68;
@@ -350,7 +350,7 @@
             // 
             // ProductoSeleccionadoTxt
             // 
-            ProductoSeleccionadoTxt.Location = new Point(535, 40);
+            ProductoSeleccionadoTxt.Location = new Point(573, 37);
             ProductoSeleccionadoTxt.Margin = new Padding(2);
             ProductoSeleccionadoTxt.Name = "ProductoSeleccionadoTxt";
             ProductoSeleccionadoTxt.ReadOnly = true;
@@ -360,7 +360,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(547, 23);
+            label15.Location = new Point(585, 20);
             label15.Name = "label15";
             label15.Size = new Size(129, 15);
             label15.TabIndex = 65;
@@ -369,7 +369,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(528, 100);
+            label14.Location = new Point(568, 133);
             label14.Name = "label14";
             label14.Size = new Size(100, 15);
             label14.TabIndex = 66;
@@ -378,33 +378,26 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(528, 141);
+            label12.Location = new Point(568, 191);
             label12.Name = "label12";
             label12.Size = new Size(130, 15);
             label12.TabIndex = 62;
             label12.Text = "Transportista que retira:";
             // 
-            // comboBox1
+            // PrioridadComboBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(528, 67);
-            comboBox1.Margin = new Padding(3, 2, 3, 2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(245, 23);
-            comboBox1.TabIndex = 61;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(528, 29);
-            textBox3.Margin = new Padding(3, 2, 3, 2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(245, 23);
-            textBox3.TabIndex = 60;
+            PrioridadComboBox.FormattingEnabled = true;
+            PrioridadComboBox.Location = new Point(568, 105);
+            PrioridadComboBox.Margin = new Padding(3, 2, 3, 2);
+            PrioridadComboBox.Name = "PrioridadComboBox";
+            PrioridadComboBox.Size = new Size(245, 23);
+            PrioridadComboBox.TabIndex = 61;
+            PrioridadComboBox.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(528, 52);
+            label4.Location = new Point(568, 88);
             label4.Name = "label4";
             label4.Size = new Size(58, 15);
             label4.TabIndex = 59;
@@ -414,7 +407,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(528, 13);
+            label3.Location = new Point(568, 24);
             label3.Name = "label3";
             label3.Size = new Size(84, 15);
             label3.TabIndex = 58;
@@ -422,49 +415,64 @@
             // 
             // OPDetalleMercaderiaGroupBox
             // 
+            OPDetalleMercaderiaGroupBox.Controls.Add(FechaSelecter);
             OPDetalleMercaderiaGroupBox.Controls.Add(button2);
             OPDetalleMercaderiaGroupBox.Controls.Add(Generar);
-            OPDetalleMercaderiaGroupBox.Controls.Add(comboBox3);
+            OPDetalleMercaderiaGroupBox.Controls.Add(DniTransportistaComboBox);
             OPDetalleMercaderiaGroupBox.Controls.Add(OrdenTempLista);
-            OPDetalleMercaderiaGroupBox.Controls.Add(textBox3);
             OPDetalleMercaderiaGroupBox.Controls.Add(label3);
-            OPDetalleMercaderiaGroupBox.Controls.Add(comboBox1);
+            OPDetalleMercaderiaGroupBox.Controls.Add(PrioridadComboBox);
             OPDetalleMercaderiaGroupBox.Controls.Add(label4);
-            OPDetalleMercaderiaGroupBox.Controls.Add(comboBox2);
+            OPDetalleMercaderiaGroupBox.Controls.Add(NombreTransportistaComboBox);
             OPDetalleMercaderiaGroupBox.Controls.Add(label14);
             OPDetalleMercaderiaGroupBox.Controls.Add(label12);
-            OPDetalleMercaderiaGroupBox.Location = new Point(38, 416);
+            OPDetalleMercaderiaGroupBox.Location = new Point(50, 429);
             OPDetalleMercaderiaGroupBox.Margin = new Padding(3, 2, 3, 2);
             OPDetalleMercaderiaGroupBox.Name = "OPDetalleMercaderiaGroupBox";
             OPDetalleMercaderiaGroupBox.Padding = new Padding(3, 2, 3, 2);
-            OPDetalleMercaderiaGroupBox.Size = new Size(792, 241);
+            OPDetalleMercaderiaGroupBox.Size = new Size(869, 241);
             OPDetalleMercaderiaGroupBox.TabIndex = 58;
             OPDetalleMercaderiaGroupBox.TabStop = false;
             OPDetalleMercaderiaGroupBox.Text = "Orden:";
             // 
-            // comboBox3
+            // FechaSelecter
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(528, 117);
-            comboBox3.Margin = new Padding(3, 2, 3, 2);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(245, 23);
-            comboBox3.TabIndex = 69;
+            FechaSelecter.AllowDrop = true;
+            FechaSelecter.Location = new Point(568, 41);
+            FechaSelecter.Margin = new Padding(3, 2, 3, 2);
+            FechaSelecter.MaxDate = new DateTime(2025, 12, 31, 0, 0, 0, 0);
+            FechaSelecter.MinDate = new DateTime(2024, 10, 17, 0, 16, 31, 0);
+            FechaSelecter.Name = "FechaSelecter";
+            FechaSelecter.Size = new Size(245, 23);
+            FechaSelecter.TabIndex = 59;
+            FechaSelecter.Value = new DateTime(2024, 10, 18, 0, 0, 0, 0);
+            FechaSelecter.ValueChanged += FechaSelecter_ValueChanged;
             // 
-            // comboBox2
+            // DniTransportistaComboBox
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(528, 159);
-            comboBox2.Margin = new Padding(3, 2, 3, 2);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(245, 23);
-            comboBox2.TabIndex = 68;
+            DniTransportistaComboBox.FormattingEnabled = true;
+            DniTransportistaComboBox.Location = new Point(568, 153);
+            DniTransportistaComboBox.Margin = new Padding(3, 2, 3, 2);
+            DniTransportistaComboBox.Name = "DniTransportistaComboBox";
+            DniTransportistaComboBox.Size = new Size(245, 23);
+            DniTransportistaComboBox.TabIndex = 69;
+            DniTransportistaComboBox.SelectedIndexChanged += DniTransportistaComboBox_SelectedIndexChanged;
+            // 
+            // NombreTransportistaComboBox
+            // 
+            NombreTransportistaComboBox.FormattingEnabled = true;
+            NombreTransportistaComboBox.Location = new Point(568, 208);
+            NombreTransportistaComboBox.Margin = new Padding(3, 2, 3, 2);
+            NombreTransportistaComboBox.Name = "NombreTransportistaComboBox";
+            NombreTransportistaComboBox.Size = new Size(245, 23);
+            NombreTransportistaComboBox.TabIndex = 68;
+            NombreTransportistaComboBox.SelectedIndexChanged += NombreTransportistaComboBox_SelectedIndexChanged;
             // 
             // GenerarOrdenPreparacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(859, 715);
+            ClientSize = new Size(1004, 725);
             Controls.Add(button3);
             Controls.Add(OPMercaderiaGroupBox);
             Controls.Add(groupBox1);
@@ -502,8 +510,7 @@
         private GroupBox groupBox1;
         private GroupBox OPMercaderiaGroupBox;
         private GroupBox OPDetalleMercaderiaGroupBox;
-        private ComboBox comboBox1;
-        private TextBox textBox3;
+        private ComboBox PrioridadComboBox;
         private Label label4;
         private Label label3;
         private Label label7;
@@ -515,8 +522,7 @@
         private ColumnHeader SKU_columna;
         private Label label14;
         private Label label12;
-        private ComboBox comboBox2;
-        private ComboBox comboBox3;
+        private ComboBox DniTransportistaComboBox;
         private Label label5;
         protected TextBox MaxCantidadTxt;
         private TextBox AgregarCantidadTextBox;
@@ -524,5 +530,7 @@
         protected TextBox ProductoSeleccionadoTxt;
         private Label label15;
         private TextBox CodigoClienteInput;
+        private DateTimePicker FechaSelecter;
+        private ComboBox NombreTransportistaComboBox;
     }
 }

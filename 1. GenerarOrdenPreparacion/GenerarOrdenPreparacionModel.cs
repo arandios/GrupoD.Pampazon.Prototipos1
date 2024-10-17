@@ -12,21 +12,31 @@ namespace Pampazon.GenerarOrdenPreparacion
     {
         public Orden Orden = new Orden() ;
 
-        public int IDCliente { get; set; }
-        public List<Transportista> Transportistas { get; private set; } =
-        [
+        public int IDCliente { get; set; } = -1;
+        public List<Cliente> Clientes { get; private set; } = new List<Cliente>
+{
+         new Cliente { IDCliente = 1, Nombre = "Coca Cola", RazonSocial = "1", Transportistas = new List<Transportista>
+        {
             new Transportista { DNI = 10000010, Nombre = "Mónica", Apellido = "Torres" },
-            new Transportista { DNI = 10000011, Nombre = "Jorge", Apellido = "Domínguez"},
-            new Transportista { DNI = 10000012, Nombre = "Natalia", Apellido = "Mendoza"},
+            new Transportista { DNI = 10000011, Nombre = "Jorge", Apellido = "Domínguez" },
+            new Transportista { DNI = 10000015, Nombre = "Luis", Apellido = "Fernández" }
+        }
+        },
+        new Cliente { IDCliente = 2, Nombre = "Pepsi", RazonSocial = "2", Transportistas = new List<Transportista>
+        {
+            new Transportista { DNI = 10000012, Nombre = "Natalia", Apellido = "Mendoza" },
+            new Transportista { DNI = 10000016, Nombre = "Ana", Apellido = "García" }
+        }
+         },
+        new Cliente { IDCliente = 3, Nombre = "El comandante", RazonSocial = "3", Transportistas = new List<Transportista>
+        {
             new Transportista { DNI = 10000013, Nombre = "Daniel", Apellido = "Silva" },
-            new Transportista { DNI = 10000014, Nombre = "Patricia", Apellido = "Castro"},
-        ];
-        public List<Cliente> Clientes { get; private set; } =
-        [
-            new Cliente { IDCliente = 1, Nombre = "Coca Cola", RazonSocial = "1" },
-            new Cliente {  IDCliente  = 2, Nombre = "Pepsi", RazonSocial = "2"},
-            new Cliente {  IDCliente  = 3, Nombre = "El comandante", RazonSocial = "3"},
-        ];
+            new Transportista { DNI = 10000014, Nombre = "Patricia", Apellido = "Castro" },
+            new Transportista { DNI = 10000017, Nombre = "Carlos", Apellido = "Hernández" },
+            new Transportista { DNI = 10000018, Nombre = "Sofía", Apellido = "López" }
+            }
+        }
+        };
 
         public List<Producto> ProductosCliente { get; set; } = new List<Producto>();
 
@@ -196,6 +206,37 @@ namespace Pampazon.GenerarOrdenPreparacion
             }
             Orden.borrarOrden();
 
+        }
+
+        public List<Transportista>  ObtenerTransportistas()
+        {
+            List < Transportista > list = new List<Transportista>();
+            if (IDCliente != -1)
+            {
+                foreach(Cliente cliente in Clientes)
+                {
+                    if(cliente.IDCliente == IDCliente)
+                    {
+                        return cliente.Transportistas;
+                    }
+                }
+            }
+            return list;
+        }
+        public string ObtenerNombreTransportista(int dni = -1)
+        {
+            Transportista vacio = new Transportista();
+            if (dni != -1)
+            {
+                foreach (Transportista transportista in ObtenerTransportistas())
+                {
+                    if (transportista.DNI == dni)
+                    {
+                        return transportista.Nombre + " " + transportista.Apellido;
+                    }
+                }
+            }
+            return "";
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pampazon.GenerarOrdenPreparacion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace Pampazon._1._GenerarOrdenPreparacion
         public int IDCliente { get; set; }
         public string Nombre { get; set; }
         public string RazonSocial { get; set; }
+
+        public List<Transportista> Transportistas { get; set; }
 
     }
 }

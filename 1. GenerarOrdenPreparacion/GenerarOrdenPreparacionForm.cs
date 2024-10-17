@@ -1,10 +1,12 @@
 ﻿using Pampazon.GenerarOrdenPreparacion;
+using Pampazon.OrdenSeleccion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +21,12 @@ namespace Pampazon
         public GenerarOrdenPreparacionForm()
         {
             InitializeComponent();
+            FechaSelecter.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            PrioridadComboBox.Items.Add("Alta");
+            PrioridadComboBox.Items.Add("Media");
+            PrioridadComboBox.Items.Add("Baja");
             this.ProductosStockLista.SelectedIndexChanged += new EventHandler(this.ProductosStockLista_SelectedIndexChanged);
+  
 
         }
 
@@ -70,11 +77,6 @@ namespace Pampazon
                 }
 
             }
-        }
-
-        private void Generar_Click(object sender, EventArgs e)
-        {
-            // Logic for generating the preparation order
         }
 
         private void LimpiarFiltros(object sender, EventArgs e)
@@ -190,10 +192,12 @@ namespace Pampazon
                 if (result == DialogResult.Yes)
                 {
                     model.cancelarOrden();
-                    MessageBox.Show("Orden Cancelada", "Info");
-                    ActualizarListaOrden();
+                    cargarTransportistas(); 
+                    cargarNombreTransportistas(); 
                     CodigoClienteInput.Enabled = true;
                     RazonSocialClienteInput.Enabled = true;
+                    ActualizarListaOrden();
+                    MessageBox.Show("Orden Cancelada", "Info");
 
                 }
                 else
@@ -275,12 +279,17 @@ namespace Pampazon
                     else
                     {
                         prod.Stock = cantidadMax - cantidad;
-                        MaxCantidadTxt.Text = (cantidadMax - cantidad).ToString();     
+                        MaxCantidadTxt.Text = (cantidadMax - cantidad).ToString();
                         model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad);
                         ActualizarListaOrden();
                         ProductosStockLista.Items.Clear();
                         CodigoClienteInput.Enabled = false;
-                        RazonSocialClienteInput.Enabled= false;
+                        RazonSocialClienteInput.Enabled = false;
+                        if(NombreTransportistaComboBox.SelectedItem == null) {
+                            cargarTransportistas();
+                            cargarNombreTransportistas();
+                        }
+        
                     }
 
                 }
@@ -289,6 +298,95 @@ namespace Pampazon
             MaxCantidadTxt.Text = "";
             //model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
             AgregarCantidadTextBox.Text = "";
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FechaSelecter_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void cargarTransportistas()
+        {
+            if (model.Orden.Productos.Count > 0)
+            {
+                DniTransportistaComboBox.SelectedIndex = -1;
+                DniTransportistaComboBox.DisplayMember = "DNI"; // Show DNI in the ComboBox
+                DniTransportistaComboBox.DataSource = new BindingSource(model.ObtenerTransportistas(), null);
+                //foreach (Transportista transportista in model.ObtenerTransportistas())
+                //{
+                //  DniTransportistaComboBox.Items.Add(transportista.DNI);
+                //}
+            }
+            else
+            {
+                DniTransportistaComboBox.DataSource = null; // Clear the DataSource
+                DniTransportistaComboBox.Items.Clear(); // Clear the Items (if needed)
+            }
+
+        }
+        public void cargarNombreTransportistas()
+        {
+
+            if (model.Orden.Productos.Count > 0)
+            {
+                 NombreTransportistaComboBox.DisplayMember = "NombreCompleto"; // Show combined Nombre and Apellido
+                 NombreTransportistaComboBox.DataSource = new BindingSource(model.ObtenerTransportistas(), null);
+                 NombreTransportistaComboBox.SelectedIndex = -1; // Clear selection
+            }else
+            {
+                NombreTransportistaComboBox.DataSource = null; // Clear the DataSource
+                NombreTransportistaComboBox.Items.Clear(); // Clear the Items (if needed)
+
+            }
+
+        }
+
+        private void DniTransportistaComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DniTransportistaComboBox.SelectedItem != null)
+            {
+                var selectedTransportista = (GenerarOrdenPreparacion.Transportista)DniTransportistaComboBox.SelectedItem;
+
+                // Ensure that selectedTransportista is not null
+                if (selectedTransportista != null)
+                {
+                    // Now you can safely access properties like selectedTransportista.Nombre
+                    // For example:
+                    NombreTransportistaComboBox.Text = selectedTransportista.Nombre + " " + selectedTransportista.Apellido;
+                }
+            }
+            else
+            {
+                // Handle the case where no item is selected
+                NombreTransportistaComboBox.Text = string.Empty; // Clear the text or handle appropriately
+            }
+        }
+
+        private void NombreTransportistaComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (NombreTransportistaComboBox.SelectedItem != null)
+            {
+                var selectedNombreTransportista = (GenerarOrdenPreparacion.Transportista)NombreTransportistaComboBox.SelectedItem;
+
+                // Ensure that selectedTransportista is not null
+                if (selectedNombreTransportista != null)
+                {
+                    // Now you can safely access properties like selectedTransportista.Nombre
+                    // For example:
+                    DniTransportistaComboBox.Text = selectedNombreTransportista.DNI.ToString();
+                }
+            }
+            else
+            {
+                // Handle the case where no item is selected
+                    DniTransportistaComboBox.Text = string.Empty; // Clear the text or handle appropriately
+            }
+
         }
     }
 }
