@@ -33,43 +33,43 @@ namespace Pampazon.ConsultarOrdenes
         public List<Cliente> CrearClientes()
         {
             return new List<Cliente>
-        {
-            new Cliente(1, "Zapatillas S.A.", "30-12345678-9"),
-            new Cliente(2, "Camisas SRL", "30-98765432-1"),
-            new Cliente(3, "Pantalones Ltda.", "30-11112222-3")
-        };
+            {
+                new Cliente(1, "Zapatillas S.A.", "30-12345678-9"),
+                new Cliente(2, "Camisas SRL", "30-98765432-1"),
+                new Cliente(3, "Pantalones Ltda.", "30-11112222-3")
+            };
         }
 
         public List<Producto> CrearProductosConUbicacion()
         {
             return new List<Producto>
-        {
-            new Producto("SKU001", "Zapatilla", 10, new PosicionProducto(12, 43, 2)),
-            new Producto("SKU002", "Remera", 5, new PosicionProducto(15, 10, 1)),
-            new Producto("SKU003", "Pantalón", 3, new PosicionProducto(20, 25, 3)),
-            new Producto("SKU004", "Camisa", 7, new PosicionProducto(30, 50, 4)),
-            new Producto("SKU005", "Buzo", 6, new PosicionProducto(10, 12, 1)),
-            new Producto("SKU006", "Gorra", 15, new PosicionProducto(5, 23, 2)),
-            new Producto("SKU007", "Medias", 50, new PosicionProducto(22, 32, 3)),
-            new Producto("SKU008", "Campera", 8, new PosicionProducto(18, 40, 4)),
-            new Producto("SKU009", "Short", 12, new PosicionProducto(11, 44, 2)),
-            new Producto("SKU010", "Bufanda", 25, new PosicionProducto(17, 55, 3)),
-            new Producto("SKU011", "Guantes", 14, new PosicionProducto(9, 35, 1)),
-            new Producto("SKU012", "Chaleco", 10, new PosicionProducto(7, 42, 2)),
-            new Producto("SKU013", "Cinturón", 30, new PosicionProducto(13, 21, 4)),
-            new Producto("SKU014", "Lentes de sol", 20, new PosicionProducto(16, 18, 3)),
-            new Producto("SKU015", "Mochila", 5, new PosicionProducto(14, 30, 2)),
-            new Producto("SKU016", "Pantalones cortos", 9, new PosicionProducto(6, 29, 1)),
-            new Producto("SKU017", "Botas", 3, new PosicionProducto(25, 50, 4)),
-            new Producto("SKU018", "Sombrero", 7, new PosicionProducto(21, 60, 2)),
-            new Producto("SKU019", "Zapatillas deportivas", 11, new PosicionProducto(19, 20, 3)),
-            new Producto("SKU020", "Jeans", 16, new PosicionProducto(26, 33, 2)),
-            new Producto("SKU021", "Camiseta", 22, new PosicionProducto(4, 27, 1)),
-            new Producto("SKU022", "Parka", 2, new PosicionProducto(3, 47, 4)),
-            new Producto("SKU023", "Falda", 18, new PosicionProducto(28, 39, 3)),
-            new Producto("SKU024", "Corbata", 13, new PosicionProducto(2, 15, 2)),
-            new Producto("SKU025", "Traje", 4, new PosicionProducto(1, 10, 1))
-        };
+            {
+                new Producto("SKU001", "Zapatilla", 10, new PosicionProducto(12, 43, 2)),
+                new Producto("SKU002", "Remera", 5, new PosicionProducto(15, 10, 1)),
+                new Producto("SKU003", "Pantalón", 3, new PosicionProducto(20, 25, 3)),
+                new Producto("SKU004", "Camisa", 7, new PosicionProducto(30, 50, 4)),
+                new Producto("SKU005", "Buzo", 6, new PosicionProducto(10, 12, 1)),
+                new Producto("SKU006", "Gorra", 15, new PosicionProducto(5, 23, 2)),
+                new Producto("SKU007", "Medias", 50, new PosicionProducto(22, 32, 3)),
+                new Producto("SKU008", "Campera", 8, new PosicionProducto(18, 40, 4)),
+                new Producto("SKU009", "Short", 12, new PosicionProducto(11, 44, 2)),
+                new Producto("SKU010", "Bufanda", 25, new PosicionProducto(17, 55, 3)),
+                new Producto("SKU011", "Guantes", 14, new PosicionProducto(9, 35, 1)),
+                new Producto("SKU012", "Chaleco", 10, new PosicionProducto(7, 42, 2)),
+                new Producto("SKU013", "Cinturón", 30, new PosicionProducto(13, 21, 4)),
+                new Producto("SKU014", "Lentes de sol", 20, new PosicionProducto(16, 18, 3)),
+                new Producto("SKU015", "Mochila", 5, new PosicionProducto(14, 30, 2)),
+                new Producto("SKU016", "Pantalones cortos", 9, new PosicionProducto(6, 29, 1)),
+                new Producto("SKU017", "Botas", 3, new PosicionProducto(25, 50, 4)),
+                new Producto("SKU018", "Sombrero", 7, new PosicionProducto(21, 60, 2)),
+                new Producto("SKU019", "Zapatillas deportivas", 11, new PosicionProducto(19, 20, 3)),
+                new Producto("SKU020", "Jeans", 16, new PosicionProducto(26, 33, 2)),
+                new Producto("SKU021", "Camiseta", 22, new PosicionProducto(4, 27, 1)),
+                new Producto("SKU022", "Parka", 2, new PosicionProducto(3, 47, 4)),
+                new Producto("SKU023", "Falda", 18, new PosicionProducto(28, 39, 3)),
+                new Producto("SKU024", "Corbata", 13, new PosicionProducto(2, 15, 2)),
+                new Producto("SKU025", "Traje", 4, new PosicionProducto(1, 10, 1))
+            };
         }
 
         public List<OrdenDePreparacion> CrearOrdenes(List<Cliente> clientes, List<Producto> productos)
@@ -103,12 +103,6 @@ namespace Pampazon.ConsultarOrdenes
             return ordenes;
         }
 
-        // Búsqueda por código de cliente
-        public List<OrdenDePreparacion> ObtenerOrdenesPorCodigoCliente(int codigoCliente)
-        {
-            return ordenes.Where(o => o.Cliente.CodigoCliente == codigoCliente).ToList();
-        }
-
         // Búsqueda por razón social
         public List<OrdenDePreparacion> ObtenerOrdenesPorRazonSocial(string razonSocial)
         {
@@ -119,12 +113,6 @@ namespace Pampazon.ConsultarOrdenes
         public List<OrdenDePreparacion> ObtenerOrdenesPorCuit(string cuit)
         {
             return ordenes.Where(o => o.Cliente.Cuit.Equals(cuit, StringComparison.OrdinalIgnoreCase)).ToList();
-        }
-
-        // Búsqueda por rango de fechas
-        public List<OrdenDePreparacion> ObtenerOrdenesPorRangoDeFechas(DateTime fechaInicio, DateTime fechaFin)
-        {
-            return ordenes.Where(o => o.Fecha >= fechaInicio && o.Fecha <= fechaFin).ToList();
         }
         public OrdenDePreparacion ObtenerOrdenPorId(int idOrden)
         {

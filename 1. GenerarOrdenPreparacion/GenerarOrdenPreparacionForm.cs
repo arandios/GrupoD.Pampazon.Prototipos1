@@ -26,7 +26,7 @@ namespace Pampazon
             PrioridadComboBox.Items.Add("Media");
             PrioridadComboBox.Items.Add("Baja");
             this.ProductosStockLista.SelectedIndexChanged += new EventHandler(this.ProductosStockLista_SelectedIndexChanged);
-  
+
 
         }
 
@@ -192,8 +192,8 @@ namespace Pampazon
                 if (result == DialogResult.Yes)
                 {
                     model.cancelarOrden();
-                    cargarTransportistas(); 
-                    cargarNombreTransportistas(); 
+                    cargarTransportistas();
+                    cargarNombreTransportistas();
                     CodigoClienteInput.Enabled = true;
                     RazonSocialClienteInput.Enabled = true;
                     ActualizarListaOrden();
@@ -285,11 +285,12 @@ namespace Pampazon
                         ProductosStockLista.Items.Clear();
                         CodigoClienteInput.Enabled = false;
                         RazonSocialClienteInput.Enabled = false;
-                        if(NombreTransportistaComboBox.SelectedItem == null) {
+                        if (NombreTransportistaComboBox.SelectedItem == null)
+                        {
                             cargarTransportistas();
                             cargarNombreTransportistas();
                         }
-        
+
                     }
 
                 }
@@ -334,10 +335,11 @@ namespace Pampazon
 
             if (model.Orden.Productos.Count > 0)
             {
-                 NombreTransportistaComboBox.DisplayMember = "NombreCompleto"; // Show combined Nombre and Apellido
-                 NombreTransportistaComboBox.DataSource = new BindingSource(model.ObtenerTransportistas(), null);
-                 NombreTransportistaComboBox.SelectedIndex = -1; // Clear selection
-            }else
+                NombreTransportistaComboBox.DisplayMember = "NombreCompleto"; // Show combined Nombre and Apellido
+                NombreTransportistaComboBox.DataSource = new BindingSource(model.ObtenerTransportistas(), null);
+                NombreTransportistaComboBox.SelectedIndex = -1; // Clear selection
+            }
+            else
             {
                 NombreTransportistaComboBox.DataSource = null; // Clear the DataSource
                 NombreTransportistaComboBox.Items.Clear(); // Clear the Items (if needed)
@@ -384,8 +386,18 @@ namespace Pampazon
             else
             {
                 // Handle the case where no item is selected
-                    DniTransportistaComboBox.Text = string.Empty; // Clear the text or handle appropriately
+                DniTransportistaComboBox.Text = string.Empty; // Clear the text or handle appropriately
             }
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
 
         }
     }
