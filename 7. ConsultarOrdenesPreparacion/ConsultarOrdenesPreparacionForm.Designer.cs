@@ -1,4 +1,5 @@
-﻿namespace Pampazon.ListarOrdenes
+﻿
+namespace Pampazon.ListarOrdenes
 {
     partial class ConsultarOrdenesForm
     {
@@ -36,13 +37,11 @@
             BorrarFiltrosBtn = new Button();
             SalirBtn = new Button();
             CodigoClienteTxt = new TextBox();
-            ClienteLTV = new ListView();
-            CodCliente_Columna = new ColumnHeader();
-            RazonSocial_Columna = new ColumnHeader();
-            Cuit = new ColumnHeader();
-            FechaOP_Columna = new ColumnHeader();
-            Estado_Columna = new ColumnHeader();
-            Prioridad_Columna = new ColumnHeader();
+            OrdenesLTV = new ListView();
+            IdOrdenColumna = new ColumnHeader();
+            FechaOPColumna = new ColumnHeader();
+            EstadoColumna = new ColumnHeader();
+            PrioridadColumna = new ColumnHeader();
             FiltrosGBX = new GroupBox();
             FechaFinDTP = new DateTimePicker();
             FechaInicioDTP = new DateTimePicker();
@@ -59,7 +58,7 @@
             Producto_Columna = new ColumnHeader();
             Cantidad_Columna = new ColumnHeader();
             Ubicacion_Columna = new ColumnHeader();
-            ClienteGBX = new GroupBox();
+            OrdenesGBX = new GroupBox();
             FiltrosGBX.SuspendLayout();
             DetallesGBX.SuspendLayout();
             SuspendLayout();
@@ -87,6 +86,7 @@
             // EstadoComboBox
             // 
             EstadoComboBox.FormattingEnabled = true;
+            EstadoComboBox.Items.AddRange(new object[] { "Emitida", "Selccionada", "Preparada", "Despachada" });
             EstadoComboBox.Location = new Point(8, 85);
             EstadoComboBox.Margin = new Padding(2);
             EstadoComboBox.Name = "EstadoComboBox";
@@ -112,7 +112,7 @@
             BuscarOrdenBtn.TabIndex = 8;
             BuscarOrdenBtn.Text = "&Buscar orden";
             BuscarOrdenBtn.UseVisualStyleBackColor = true;
-            BuscarOrdenBtn.Click += button1_Click;
+            BuscarOrdenBtn.Click += BuscarOrdenes_Click;
             // 
             // BorrarFiltrosBtn
             // 
@@ -124,6 +124,7 @@
             BorrarFiltrosBtn.TabIndex = 9;
             BorrarFiltrosBtn.Text = "&Borrar filtros";
             BorrarFiltrosBtn.UseVisualStyleBackColor = true;
+            BorrarFiltrosBtn.Click += BorrarFiltrosBtn_Click;
             // 
             // SalirBtn
             // 
@@ -134,6 +135,7 @@
             SalirBtn.TabIndex = 11;
             SalirBtn.Text = "&Salir";
             SalirBtn.UseVisualStyleBackColor = true;
+            SalirBtn.Click += SalirBtn_Click;
             // 
             // CodigoClienteTxt
             // 
@@ -143,50 +145,39 @@
             CodigoClienteTxt.Size = new Size(268, 23);
             CodigoClienteTxt.TabIndex = 14;
             // 
-            // ClienteLTV
+            // OrdenesLTV
             // 
-            ClienteLTV.Columns.AddRange(new ColumnHeader[] { CodCliente_Columna, RazonSocial_Columna, Cuit, FechaOP_Columna, Estado_Columna, Prioridad_Columna });
-            ClienteLTV.Location = new Point(17, 220);
-            ClienteLTV.Name = "ClienteLTV";
-            ClienteLTV.Size = new Size(827, 215);
-            ClienteLTV.TabIndex = 19;
-            ClienteLTV.UseCompatibleStateImageBehavior = false;
-            ClienteLTV.View = View.Details;
+            OrdenesLTV.Columns.AddRange(new ColumnHeader[] { IdOrdenColumna, FechaOPColumna, EstadoColumna, PrioridadColumna });
+            OrdenesLTV.Location = new Point(17, 220);
+            OrdenesLTV.Name = "OrdenesLTV";
+            OrdenesLTV.Size = new Size(827, 215);
+            OrdenesLTV.TabIndex = 19;
+            OrdenesLTV.UseCompatibleStateImageBehavior = false;
+            OrdenesLTV.View = View.Details;
+            OrdenesLTV.SelectedIndexChanged += OrdenesLTV_SelectedIndexChanged_1;
             // 
-            // CodCliente_Columna
+            // IdOrdenColumna
             // 
-            CodCliente_Columna.Text = "Código Cliente";
-            CodCliente_Columna.Width = 100;
+            IdOrdenColumna.Text = "ID Orden";
+            IdOrdenColumna.Width = 199;
             // 
-            // RazonSocial_Columna
+            // FechaOPColumna
             // 
-            RazonSocial_Columna.Text = "Razón Social";
-            RazonSocial_Columna.TextAlign = HorizontalAlignment.Center;
-            RazonSocial_Columna.Width = 150;
+            FechaOPColumna.Text = "Fecha generación Orden Preparación";
+            FechaOPColumna.TextAlign = HorizontalAlignment.Center;
+            FechaOPColumna.Width = 220;
             // 
-            // Cuit
+            // EstadoColumna
             // 
-            Cuit.Text = "Cuit";
-            Cuit.TextAlign = HorizontalAlignment.Center;
-            Cuit.Width = 100;
+            EstadoColumna.Text = "Estado";
+            EstadoColumna.TextAlign = HorizontalAlignment.Center;
+            EstadoColumna.Width = 199;
             // 
-            // FechaOP_Columna
+            // PrioridadColumna
             // 
-            FechaOP_Columna.Text = "Fecha generación Orden Preparación";
-            FechaOP_Columna.TextAlign = HorizontalAlignment.Center;
-            FechaOP_Columna.Width = 220;
-            // 
-            // Estado_Columna
-            // 
-            Estado_Columna.Text = "Estado";
-            Estado_Columna.TextAlign = HorizontalAlignment.Center;
-            Estado_Columna.Width = 120;
-            // 
-            // Prioridad_Columna
-            // 
-            Prioridad_Columna.Text = "Prioridad";
-            Prioridad_Columna.TextAlign = HorizontalAlignment.Center;
-            Prioridad_Columna.Width = 100;
+            PrioridadColumna.Text = "Prioridad";
+            PrioridadColumna.TextAlign = HorizontalAlignment.Center;
+            PrioridadColumna.Width = 200;
             // 
             // FiltrosGBX
             // 
@@ -214,7 +205,6 @@
             FiltrosGBX.TabIndex = 20;
             FiltrosGBX.TabStop = false;
             FiltrosGBX.Text = "Seleccione filtros de búsqueda para Clientes: ";
-            FiltrosGBX.Enter += groupBox1_Enter;
             // 
             // FechaFinDTP
             // 
@@ -255,6 +245,7 @@
             // PrioridadComboBox
             // 
             PrioridadComboBox.FormattingEnabled = true;
+            PrioridadComboBox.Items.AddRange(new object[] { "Alta", "Media", "Baja" });
             PrioridadComboBox.Location = new Point(194, 85);
             PrioridadComboBox.Margin = new Padding(2);
             PrioridadComboBox.Name = "PrioridadComboBox";
@@ -318,7 +309,6 @@
             ProductoLTV.TabIndex = 23;
             ProductoLTV.UseCompatibleStateImageBehavior = false;
             ProductoLTV.View = View.Details;
-            ProductoLTV.SelectedIndexChanged += listView3_SelectedIndexChanged;
             // 
             // SKU_Columna
             // 
@@ -343,27 +333,27 @@
             Ubicacion_Columna.TextAlign = HorizontalAlignment.Center;
             Ubicacion_Columna.Width = 199;
             // 
-            // ClienteGBX
+            // OrdenesGBX
             // 
-            ClienteGBX.Location = new Point(9, 202);
-            ClienteGBX.Margin = new Padding(3, 2, 3, 2);
-            ClienteGBX.Name = "ClienteGBX";
-            ClienteGBX.Padding = new Padding(3, 2, 3, 2);
-            ClienteGBX.Size = new Size(840, 237);
-            ClienteGBX.TabIndex = 22;
-            ClienteGBX.TabStop = false;
-            ClienteGBX.Text = "Cliente encontrado";
+            OrdenesGBX.Location = new Point(9, 202);
+            OrdenesGBX.Margin = new Padding(3, 2, 3, 2);
+            OrdenesGBX.Name = "OrdenesGBX";
+            OrdenesGBX.Padding = new Padding(3, 2, 3, 2);
+            OrdenesGBX.Size = new Size(840, 237);
+            OrdenesGBX.TabIndex = 22;
+            OrdenesGBX.TabStop = false;
+            OrdenesGBX.Text = "Ordenes encontradas";
             // 
             // ConsultarOrdenesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(859, 706);
-            Controls.Add(ClienteLTV);
+            Controls.Add(OrdenesLTV);
             Controls.Add(SalirBtn);
             Controls.Add(FiltrosGBX);
             Controls.Add(DetallesGBX);
-            Controls.Add(ClienteGBX);
+            Controls.Add(OrdenesGBX);
             Margin = new Padding(2);
             Name = "ConsultarOrdenesForm";
             Text = "Consultar Ordenes de Preparación";
@@ -374,6 +364,8 @@
             ResumeLayout(false);
         }
 
+
+
         #endregion
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -383,10 +375,8 @@
         private System.Windows.Forms.Button BorrarFiltrosBtn;
         private System.Windows.Forms.Button SalirBtn;
         private System.Windows.Forms.TextBox CodigoClienteTxt;
-        private ListView ClienteLTV;
-        private ColumnHeader CodCliente_Columna;
-        private ColumnHeader RazonSocial_Columna;
-        private ColumnHeader Cuit;
+        private ListView OrdenesLTV;
+        private ColumnHeader IdOrdenColumna;
         private GroupBox FiltrosGBX;
         private TextBox CuitTxt;
         private Label label7;
@@ -397,13 +387,13 @@
         private ColumnHeader SKU_Columna;
         private ColumnHeader Producto_Columna;
         private ColumnHeader Cantidad_Columna;
-        private ColumnHeader FechaOP_Columna;
-        private ColumnHeader Estado_Columna;
-        private ColumnHeader Prioridad_Columna;
+        private ColumnHeader FechaOPColumna;
+        private ColumnHeader EstadoColumna;
+        private ColumnHeader PrioridadColumna;
         private Label label8;
         private ComboBox PrioridadComboBox;
         private ColumnHeader Ubicacion_Columna;
-        private GroupBox ClienteGBX;
+        private GroupBox OrdenesGBX;
         private Label label5;
         private DateTimePicker FechaFinDTP;
         private DateTimePicker FechaInicioDTP;
