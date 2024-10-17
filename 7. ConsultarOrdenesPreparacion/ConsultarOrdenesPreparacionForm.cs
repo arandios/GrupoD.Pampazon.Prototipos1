@@ -127,10 +127,10 @@ namespace Pampazon.ListarOrdenes
 
             foreach (var orden in ordenes)
             {
-                ListViewItem item = new ListViewItem(orden.IdOrden.ToString()); // IdOrdenColumna
-                item.SubItems.Add(orden.Fecha.ToShortDateString()); // FechaOPColumna
-                item.SubItems.Add(orden.Estado); // EstadoColumna
-                item.SubItems.Add(orden.Prioridad); // PrioridadColumna
+                ListViewItem item = new ListViewItem(orden.IdOrden.ToString()); 
+                item.SubItems.Add(orden.Fecha.ToShortDateString()); 
+                item.SubItems.Add(orden.Estado); 
+                item.SubItems.Add(orden.Prioridad);
 
                 OrdenesLTV.Items.Add(item);
             }
@@ -138,9 +138,9 @@ namespace Pampazon.ListarOrdenes
             // Autoseleccionar el primer elemento si hay elementos en el ListView
             if (OrdenesLTV.Items.Count > 0)
             {
-                OrdenesLTV.Items[0].Selected = true; // Seleccionar el primer elemento
-                OrdenesLTV.Items[0].Focused = true;  // Hacerlo el elemento enfocado
-                OrdenesLTV.EnsureVisible(0);         // Asegurarse de que el primer elemento sea visible
+                OrdenesLTV.Items[0].Selected = true; 
+                OrdenesLTV.Items[0].Focused = true;  
+                OrdenesLTV.EnsureVisible(0);         
             }
         }
 
@@ -157,9 +157,6 @@ namespace Pampazon.ListarOrdenes
             OrdenesLTV.Items.Clear();
             ProductoLTV.Items.Clear();
         }
-
-      
-
 
         private void SalirBtn_Click(object sender, EventArgs e)
         {
