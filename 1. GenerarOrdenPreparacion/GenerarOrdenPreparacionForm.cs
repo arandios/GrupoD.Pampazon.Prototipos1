@@ -211,7 +211,30 @@ namespace Pampazon
 
         private void GenerarOrderPreparacionBtn(object sender, EventArgs e)
         {
-            // Logic to generate preparation order
+            if (model.Orden.Productos.Count == 0)
+            {
+                DialogResult result = MessageBox.Show($"Ingrese Productos para generar Orden", "Confirmation");
+            }
+            else if (model.Orden.DNITransportista == -1)
+            {
+                DialogResult result = MessageBox.Show($"Seleccione un transportista", "Confirmation");
+            }
+
+            else
+            {
+                DialogResult resultOrden = MessageBox.Show($"Confirmar Orden", "Confirmation", MessageBoxButtons.YesNo);
+                if (resultOrden == DialogResult.Yes)
+                {
+                    DialogResult result = MessageBox.Show($"Orden ingresada con exitos, le enviaremos un mail con los detalles", "Confirmar Orden");
+                    model.Orden.borrarOrden();
+                    ActualizarListaOrden();
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show($"Continuar con la orden");
+                }
+
+            }
         }
 
 
@@ -361,6 +384,13 @@ namespace Pampazon
                     // For example:
                     NombreTransportistaComboBox.Text = selectedTransportista.Nombre + " " + selectedTransportista.Apellido;
                 }
+                if(selectedTransportista.DNI != null)
+                {
+                    model.Orden.DNITransportista = selectedTransportista.DNI;
+                }
+
+        
+
             }
             else
             {
@@ -382,6 +412,7 @@ namespace Pampazon
                     // For example:
                     DniTransportistaComboBox.Text = selectedNombreTransportista.DNI.ToString();
                 }
+
             }
             else
             {

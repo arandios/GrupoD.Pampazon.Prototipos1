@@ -14,7 +14,7 @@ namespace Pampazon.GenerarOrdenPreparacion
         public int IDCliente { get; set; } = -1;
 
         public string Prioridad { get; set; }
-        public int DNITransportista { get; set; }
+        public int DNITransportista { get; set; } = -1;
         public string Fecha { get; set; }
 
         public string FechaDeEntrega { get; set; }// For test data
