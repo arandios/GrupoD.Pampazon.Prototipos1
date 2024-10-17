@@ -24,6 +24,11 @@ namespace Pampazon.ConsultarOrdenes
             var productos = CrearProductosConUbicacion();
             ordenes = CrearOrdenes(clientes, productos);
         }
+        // Método nuevo: Obtener todas las órdenes
+        public List<OrdenDePreparacion> ObtenerTodasLasOrdenes()
+        {
+            return ordenes; // Devuelve la lista completa de órdenes
+        }
 
         public List<Cliente> CrearClientes()
         {
@@ -97,6 +102,39 @@ namespace Pampazon.ConsultarOrdenes
 
             return ordenes;
         }
+
+        // Búsqueda por código de cliente
+        public List<OrdenDePreparacion> ObtenerOrdenesPorCodigoCliente(int codigoCliente)
+        {
+            return ordenes.Where(o => o.Cliente.CodigoCliente == codigoCliente).ToList();
+        }
+
+        // Búsqueda por razón social
+        public List<OrdenDePreparacion> ObtenerOrdenesPorRazonSocial(string razonSocial)
+        {
+            return ordenes.Where(o => o.Cliente.RazonSocial.Equals(razonSocial, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        // Búsqueda por CUIT
+        public List<OrdenDePreparacion> ObtenerOrdenesPorCuit(string cuit)
+        {
+            return ordenes.Where(o => o.Cliente.Cuit.Equals(cuit, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        // Búsqueda por rango de fechas
+        public List<OrdenDePreparacion> ObtenerOrdenesPorRangoDeFechas(DateTime fechaInicio, DateTime fechaFin)
+        {
+            return ordenes.Where(o => o.Fecha >= fechaInicio && o.Fecha <= fechaFin).ToList();
+        }
+        public OrdenDePreparacion ObtenerOrdenPorId(int idOrden)
+        {
+            // Obtiene todas las órdenes de preparación
+            var todasLasOrdenes = ObtenerTodasLasOrdenes();
+
+            // Retorna la orden que coincide con el IdOrden proporcionado
+            return todasLasOrdenes.FirstOrDefault(o => o.IdOrden == idOrden);
+        }
+
     }
 
 
