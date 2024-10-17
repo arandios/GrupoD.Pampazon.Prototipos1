@@ -1,6 +1,6 @@
-﻿using Pampazon._6._GenerarRemito;
+﻿using Pampazon._4._EmpaquetarOrden;
+using Pampazon._6._GenerarRemito;
 using Pampazon.BuscarProductosEnDepositos;
-using Pampazon.EmpaquetarOrden;
 using Pampazon.OrdenSeleccion;
 using Pampazon.Remitos;
 using System;
@@ -118,7 +118,7 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                EmpaquetarOrdenesForm empaquetarOrdenForm = new();
+                EmpaquetarOrdenForm empaquetarOrdenForm = new EmpaquetarOrdenForm();
                 empaquetarOrdenForm.ShowDialog();
             }
             catch (Exception ex)
