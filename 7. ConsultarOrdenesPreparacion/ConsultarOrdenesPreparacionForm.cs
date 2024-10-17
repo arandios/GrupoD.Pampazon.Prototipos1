@@ -22,7 +22,7 @@ namespace Pampazon.ListarOrdenes
         {
             InitializeComponent();
             modelo.InicializarDatos();
-            
+            OrdenesLTV.FullRowSelect = true;
 
         }
         private void ListarOrdenes_Load(object sender, EventArgs e)
@@ -66,25 +66,27 @@ namespace Pampazon.ListarOrdenes
                 // Si no hay filtros en cliente, buscar todas las órdenes y aplicar los filtros adicionales
                 ordenesEncontradas = todasLasOrdenes.ToList();
             }
-            // Si no se encontró nada hasta ahora, entonces establecer la lista de órdenes
-            if (!ordenesEncontradas.Any())
-            {
-                ordenesEncontradas = todasLasOrdenes.ToList();
-            }
 
             // Aplicar filtros adicionales (Estado, Prioridad, Fechas) si hay órdenes encontradas
             if (ordenesEncontradas.Any())
             {
                 FiltrarPorEstadoPrioridadYFechas(ref ordenesEncontradas);
+            }
 
-                // Cargar las órdenes en el ListView
-                CargarOrdenesEnListView(ordenesEncontradas);
+            // Verificar si después de todos los filtros aún no hay órdenes encontradas
+            if (!ordenesEncontradas.Any())
+            {
+                MessageBox.Show("No se encontraron órdenes con los filtros aplicados.");
+                OrdenesLTV.Items.Clear();
+                ProductoLTV.Items.Clear ();
             }
             else
             {
-                MessageBox.Show("No se encontraron órdenes con los criterios ingresados.");
+                // Cargar las órdenes en el ListView
+                CargarOrdenesEnListView(ordenesEncontradas);
             }
         }
+
 
         // Método auxiliar para aplicar los filtros de Estado, Prioridad y Fechas
         private void FiltrarPorEstadoPrioridadYFechas(ref List<OrdenDePreparacion> ordenes)

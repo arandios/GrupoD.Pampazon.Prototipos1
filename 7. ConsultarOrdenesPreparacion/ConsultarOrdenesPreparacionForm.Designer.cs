@@ -58,7 +58,7 @@ namespace Pampazon.ListarOrdenes
             Producto_Columna = new ColumnHeader();
             Cantidad_Columna = new ColumnHeader();
             Ubicacion_Columna = new ColumnHeader();
-            ClienteGBX = new GroupBox();
+            OrdenesGBX = new GroupBox();
             FiltrosGBX.SuspendLayout();
             DetallesGBX.SuspendLayout();
             SuspendLayout();
@@ -159,7 +159,7 @@ namespace Pampazon.ListarOrdenes
             // IdOrdenColumna
             // 
             IdOrdenColumna.Text = "ID Orden";
-            IdOrdenColumna.Width = 100;
+            IdOrdenColumna.Width = 199;
             // 
             // FechaOPColumna
             // 
@@ -171,13 +171,13 @@ namespace Pampazon.ListarOrdenes
             // 
             EstadoColumna.Text = "Estado";
             EstadoColumna.TextAlign = HorizontalAlignment.Center;
-            EstadoColumna.Width = 120;
+            EstadoColumna.Width = 199;
             // 
             // PrioridadColumna
             // 
             PrioridadColumna.Text = "Prioridad";
             PrioridadColumna.TextAlign = HorizontalAlignment.Center;
-            PrioridadColumna.Width = 100;
+            PrioridadColumna.Width = 200;
             // 
             // FiltrosGBX
             // 
@@ -333,16 +333,16 @@ namespace Pampazon.ListarOrdenes
             Ubicacion_Columna.TextAlign = HorizontalAlignment.Center;
             Ubicacion_Columna.Width = 199;
             // 
-            // ClienteGBX
+            // OrdenesGBX
             // 
-            ClienteGBX.Location = new Point(9, 202);
-            ClienteGBX.Margin = new Padding(3, 2, 3, 2);
-            ClienteGBX.Name = "ClienteGBX";
-            ClienteGBX.Padding = new Padding(3, 2, 3, 2);
-            ClienteGBX.Size = new Size(840, 237);
-            ClienteGBX.TabIndex = 22;
-            ClienteGBX.TabStop = false;
-            ClienteGBX.Text = "Cliente encontrado";
+            OrdenesGBX.Location = new Point(9, 202);
+            OrdenesGBX.Margin = new Padding(3, 2, 3, 2);
+            OrdenesGBX.Name = "OrdenesGBX";
+            OrdenesGBX.Padding = new Padding(3, 2, 3, 2);
+            OrdenesGBX.Size = new Size(840, 237);
+            OrdenesGBX.TabIndex = 22;
+            OrdenesGBX.TabStop = false;
+            OrdenesGBX.Text = "Ordenes encontradas";
             // 
             // ConsultarOrdenesForm
             // 
@@ -353,7 +353,7 @@ namespace Pampazon.ListarOrdenes
             Controls.Add(SalirBtn);
             Controls.Add(FiltrosGBX);
             Controls.Add(DetallesGBX);
-            Controls.Add(ClienteGBX);
+            Controls.Add(OrdenesGBX);
             Margin = new Padding(2);
             Name = "ConsultarOrdenesForm";
             Text = "Consultar Ordenes de Preparación";
@@ -393,7 +393,7 @@ namespace Pampazon.ListarOrdenes
         private Label label8;
         private ComboBox PrioridadComboBox;
         private ColumnHeader Ubicacion_Columna;
-        private GroupBox ClienteGBX;
+        private GroupBox OrdenesGBX;
         private Label label5;
         private DateTimePicker FechaFinDTP;
         private DateTimePicker FechaInicioDTP;
