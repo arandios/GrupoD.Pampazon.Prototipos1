@@ -75,6 +75,7 @@ namespace Pampazon.GenerarOrdenPreparacion
         public void borrarOrden()
         {
             Productos = new List<Producto>();
+            IDCliente = -1;
         }
 
     } // end of class

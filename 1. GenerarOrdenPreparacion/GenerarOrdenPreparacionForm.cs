@@ -49,14 +49,15 @@ namespace Pampazon
                 int currentIndex = OrdenTempLista.SelectedIndices[0];
                 //previousSelectedIndex = currentIndex; // Update the previous index
                 string nombreProducto = selectedItem.Text;
-                // model.retirarProductoDeOrdenYAgregarloDevuelta(nombreProducto);
-                MessageBox.Show($"Se retiro de el pedido '{nombreProducto}' de la orden ", "Info");
+                //model.retirarProductoDeOrdenYAgregarloDevuelta(nombreProducto);
+                //MessageBox.Show($"Se retiro de el pedido '{nombreProducto}' de la orden ", "Info");
                 ActualizarListaOrden();
             }
         }
         private void ActualizarListaOrden()
         {
             OrdenTempLista.Items.Clear();
+            OrdenTempLista.FullRowSelect = true;
             if (model.Orden.Productos.Count > 0)
             {
                 foreach (var ProdOrden in model.Orden.Productos)
@@ -182,7 +183,26 @@ namespace Pampazon
 
         private void CancelarOrderBtn(object sender, EventArgs e)
         {
-            // Logic to cancel the order
+            if (model.Orden.Productos.Count > 0)
+            {
+                DialogResult result = MessageBox.Show($"Cancelar Orden", "Confirmation", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    model.cancelarOrden();
+                    MessageBox.Show("Orden Cancelada", "Info");
+                    ActualizarListaOrden();
+                    CodigoClienteInput.Enabled = true;
+                    RazonSocialClienteInput.Enabled = true;
+
+                }
+                else
+                {
+                    // User clicked No
+                    MessageBox.Show("Continuar con la orden", "Info");
+                }
+
+            }
         }
 
         private void GenerarOrderPreparacionBtn(object sender, EventArgs e)
@@ -259,6 +279,8 @@ namespace Pampazon
                         model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad);
                         ActualizarListaOrden();
                         ProductosStockLista.Items.Clear();
+                        CodigoClienteInput.Enabled = false;
+                        RazonSocialClienteInput.Enabled= false;
                     }
 
                 }

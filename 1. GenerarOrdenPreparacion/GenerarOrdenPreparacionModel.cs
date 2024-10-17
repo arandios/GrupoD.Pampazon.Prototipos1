@@ -185,6 +185,18 @@ namespace Pampazon.GenerarOrdenPreparacion
             }
 
         }
+        public void cancelarOrden()
+        {
+            if (Orden.Productos.Count > 0)
+            {
+                foreach (Producto Producto in this.Orden.Productos)
+                {
+                    obtenerProdIndividual(Producto.Id).Stock += Producto.Stock;
+                }
+            }
+            Orden.borrarOrden();
+
+        }
 
 
 
