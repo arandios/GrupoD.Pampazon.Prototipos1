@@ -277,6 +277,11 @@ namespace Pampazon
                     DialogResult result = MessageBox.Show($"Orden ingresada con exitos, le enviaremos un mail con los detalles", "Confirmar Orden");
                     model.Orden.borrarOrden();
                     ActualizarListaOrden();
+                    PrioridadComboBox.SelectedIndex = -1;
+                    HorarioTextBox.Text = "";
+                    DniTransportistaComboBox.SelectedIndex = -1;
+                    NombreTransportistaComboBox.SelectedIndex = -1;
+                    FechaSelecter.Value = DateTime.Today;
                     CodigoClienteInput.Enabled = true;
                     RazonSocialClienteInput.Enabled = true;
                 }
