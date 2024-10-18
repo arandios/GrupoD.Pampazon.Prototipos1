@@ -25,6 +25,7 @@ namespace Pampazon
             PrioridadComboBox.Items.Add("Alta");
             PrioridadComboBox.Items.Add("Media");
             PrioridadComboBox.Items.Add("Baja");
+            PrioridadComboBox.Enabled = false;
             this.ProductosStockLista.SelectedIndexChanged += new EventHandler(this.ProductosStockLista_SelectedIndexChanged);
 
 
@@ -192,11 +193,14 @@ namespace Pampazon
                 if (result == DialogResult.Yes)
                 {
                     model.cancelarOrden();
+                    ActualizarListaOrden();
                     cargarTransportistas();
                     cargarNombreTransportistas();
+                    PrioridadComboBox.SelectedIndex = -1;
+                    PrioridadComboBox.Enabled = false;
                     CodigoClienteInput.Enabled = true;
                     RazonSocialClienteInput.Enabled = true;
-                    ActualizarListaOrden();
+               
                     MessageBox.Show("Orden Cancelada", "Info");
 
                 }
@@ -315,6 +319,7 @@ namespace Pampazon
                         ProductosStockLista.Items.Clear();
                         CodigoClienteInput.Enabled = false;
                         RazonSocialClienteInput.Enabled = false;
+                        PrioridadComboBox.Enabled = true;
                     }
 
                 }
