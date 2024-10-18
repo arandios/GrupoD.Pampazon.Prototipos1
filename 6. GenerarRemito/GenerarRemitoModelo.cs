@@ -53,7 +53,7 @@ public class GenerarRemitoModelo
     {
         return ordenes.Where(o => o.DNItransportista == dni).ToList();
     }
-    
+
 
     //metodos para GENERAR REMITO
     // Crea un nuevo remito utilizando las órdenes seleccionadas y el DNI del transportista
@@ -61,7 +61,23 @@ public class GenerarRemitoModelo
     {
         Remito nuevoRemito = new Remito(ordenesSeleccionadas, dniTransportista);
 
+        // Eliminar las órdenes que se han utilizado en el remito
+        EliminarOrdenes(ordenesSeleccionadas);
+
         return nuevoRemito;
+    }
+
+    // Método para eliminar órdenes del listado
+    private void EliminarOrdenes(List<OrdenesDePreparacion> ordenesAEliminar)
+    {
+        foreach (var orden in ordenesAEliminar)
+        {
+            var ordenEnLista = ordenes.FirstOrDefault(o => o.IdOrden == orden.IdOrden);
+            if (ordenEnLista != null)
+            {
+                ordenes.Remove(ordenEnLista); // Elimina la orden si existe en la lista general
+            }
+        }
     }
 
     internal OrdenesDePreparacion ObtenerOrdenPorId(string idOrden)
