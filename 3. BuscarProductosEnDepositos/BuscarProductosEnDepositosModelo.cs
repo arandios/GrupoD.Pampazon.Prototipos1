@@ -144,5 +144,33 @@ namespace Pampazon.BuscarProductosEnDepositos
                 ordenesDeSeleccion.Remove(ordenSeleccion);
             }
         }
+        public void CargarOrdenesEnComboBox(ComboBox comboBox)
+        {
+            comboBox.Items.Clear();
+            var ordenes = ObtenerOrdenesDeSeleccion();
+            foreach (var orden in ordenes)
+            {
+                comboBox.Items.Add(orden.IDOrdenSeleccion);
+            }
+
+            // Seleccionar la primera orden de selección si hay alguna
+            if (comboBox.Items.Count > 0)
+            {
+                comboBox.SelectedIndex = 0; // Selecciona automáticamente la primera
+            }
+        }
+        public void CargarProductosEnListView(int idOrdenSeleccion, ListView listView)
+        {
+            listView.Items.Clear();
+            var productos = ObtenerProductosPorOrdenDeSeleccion(idOrdenSeleccion);
+
+            foreach (var producto in productos)
+            {
+                ListViewItem item = new ListViewItem(producto.Ubicacion);
+                item.SubItems.Add(producto.SKU);
+                item.SubItems.Add(producto.Cantidad.ToString());
+                listView.Items.Add(item);
+            }
+        }
     }
 }

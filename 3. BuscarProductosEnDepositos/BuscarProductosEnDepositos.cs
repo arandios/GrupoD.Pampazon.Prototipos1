@@ -21,31 +21,16 @@ namespace Pampazon.BuscarProductosEnDepositos
         }
         private void CargarOrdenesDeSeleccionEnComboBox()
         {
-            CMBOrdenSeleccion.Items.Clear();
-            var ordenes = modelo.ObtenerOrdenesDeSeleccion();
-            foreach (var orden in ordenes)
-            {
-                CMBOrdenSeleccion.Items.Add(orden.IDOrdenSeleccion);
-            }
-
-            // Limpiar la selección después de recargar
-            CMBOrdenSeleccion.SelectedItem = null;
+            // Obtener la lista de órdenes de selección pendientes y cargarla en el ComboBox
+            modelo.CargarOrdenesEnComboBox(CMBOrdenSeleccion);
         }
 
 
 
         private void CargarProductosEnListView(int idOrdenSeleccion)
         {
-            LSTProductos.Items.Clear();
-            var productos = modelo.ObtenerProductosPorOrdenDeSeleccion(idOrdenSeleccion);
-
-            foreach (var producto in productos)
-            {
-                ListViewItem item = new ListViewItem(producto.Ubicacion);
-                item.SubItems.Add(producto.SKU);
-                item.SubItems.Add(producto.Cantidad.ToString());
-                LSTProductos.Items.Add(item);
-            }
+            // Obtener la lista de productos y cargarla en el ListView
+            modelo.CargarProductosEnListView(idOrdenSeleccion, LSTProductos);
         }
 
         private void AgregarProductosEnDepositosFormulario_Load_1(object sender, EventArgs e)
@@ -55,6 +40,12 @@ namespace Pampazon.BuscarProductosEnDepositos
 
             // Establecer el estilo del ComboBox para que solo permita selección
             CMBOrdenSeleccion.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // Seleccionar la primera orden de selección si hay alguna
+            if (CMBOrdenSeleccion.Items.Count > 0)
+            {
+                CMBOrdenSeleccion.SelectedIndex = 0; // Selecciona automáticamente la primera orden de selección
+            }
         }
         // Evento que se dispara al seleccionar una OrdenDeSeleccion en el ComboBox
 
@@ -95,8 +86,15 @@ namespace Pampazon.BuscarProductosEnDepositos
                     // Limpiar el ListView después de confirmar la orden
                     LSTProductos.Items.Clear();
 
-                    // Deshabilitar el ComboBox para que no permita escribir (solo selección)
-                    CMBOrdenSeleccion.DropDownStyle = ComboBoxStyle.DropDownList;
+                    // Seleccionar la siguiente orden automáticamente
+                    if (CMBOrdenSeleccion.Items.Count > 0)
+                    {
+                        CMBOrdenSeleccion.SelectedIndex = 0; // Selecciona la primera orden disponible
+
+                        // Cargar los productos de la nueva orden seleccionada en el ListView
+                        int nuevaOrdenSeleccionID = (int)CMBOrdenSeleccion.SelectedItem;
+                        CargarProductosEnListView(nuevaOrdenSeleccionID);
+                    }
                 }
             }
             else
