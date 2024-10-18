@@ -277,6 +277,8 @@ namespace Pampazon
                     DialogResult result = MessageBox.Show($"Orden ingresada con exitos, le enviaremos un mail con los detalles", "Confirmar Orden");
                     model.Orden.borrarOrden();
                     ActualizarListaOrden();
+                    CodigoClienteInput.Enabled = true;
+                    RazonSocialClienteInput.Enabled = true;
                 }
                 else
                 {
