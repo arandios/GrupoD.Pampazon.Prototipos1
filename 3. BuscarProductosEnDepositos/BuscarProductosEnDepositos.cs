@@ -20,7 +20,7 @@ namespace Pampazon.BuscarProductosEnDepositos
             modelo = new BuscarProductosEnDepositosModelo();
         }
         private void CargarOrdenesDeSeleccionEnComboBox()
-        {
+        {            
             CMBOrdenSeleccion.Items.Clear();
             var ordenes = modelo.ObtenerOrdenesDeSeleccion();
             foreach (var orden in ordenes)
@@ -28,8 +28,11 @@ namespace Pampazon.BuscarProductosEnDepositos
                 CMBOrdenSeleccion.Items.Add(orden.IDOrdenSeleccion);
             }
 
-            // Limpiar la selección después de recargar
-            CMBOrdenSeleccion.SelectedItem = null;
+            // Seleccionar la primera orden de selección si hay alguna
+            if (CMBOrdenSeleccion.Items.Count > 0)
+            {
+                CMBOrdenSeleccion.SelectedIndex = 0; // Selecciona automáticamente la primera
+            }
         }
 
 
@@ -55,6 +58,12 @@ namespace Pampazon.BuscarProductosEnDepositos
 
             // Establecer el estilo del ComboBox para que solo permita selección
             CMBOrdenSeleccion.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // Seleccionar la primera orden de selección si hay alguna
+            if (CMBOrdenSeleccion.Items.Count > 0)
+            {
+                CMBOrdenSeleccion.SelectedIndex = 0; // Selecciona automáticamente la primera orden de selección
+            }
         }
         // Evento que se dispara al seleccionar una OrdenDeSeleccion en el ComboBox
 
@@ -95,8 +104,15 @@ namespace Pampazon.BuscarProductosEnDepositos
                     // Limpiar el ListView después de confirmar la orden
                     LSTProductos.Items.Clear();
 
-                    // Deshabilitar el ComboBox para que no permita escribir (solo selección)
-                    CMBOrdenSeleccion.DropDownStyle = ComboBoxStyle.DropDownList;
+                    // Seleccionar la siguiente orden automáticamente
+                    if (CMBOrdenSeleccion.Items.Count > 0)
+                    {
+                        CMBOrdenSeleccion.SelectedIndex = 0; // Selecciona la primera orden disponible
+
+                        // Cargar los productos de la nueva orden seleccionada en el ListView
+                        int nuevaOrdenSeleccionID = (int)CMBOrdenSeleccion.SelectedItem;
+                        CargarProductosEnListView(nuevaOrdenSeleccionID);
+                    }
                 }
             }
             else
