@@ -364,6 +364,10 @@ namespace Pampazon.ListarOrdenes
             FiltrosGBX.PerformLayout();
             DetallesGBX.ResumeLayout(false);
             ResumeLayout(false);
+
+            CodigoClienteTxt.TextChanged += CodigoClienteTxt_TextChanged;
+            RazonSocialTxt.TextChanged += RazonSocialTxt_TextChanged;
+            CuitTxt.TextChanged += CuitTxt_TextChanged;
         }
 
 

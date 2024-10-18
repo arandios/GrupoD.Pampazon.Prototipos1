@@ -56,6 +56,7 @@
             DetalleRemitoLTV.BorderStyle = BorderStyle.FixedSingle;
             DetalleRemitoLTV.CheckBoxes = true;
             DetalleRemitoLTV.Columns.AddRange(new ColumnHeader[] { OrdenConfirmadaColumna, FechaRemitoColumna });
+            DetalleRemitoLTV.FullRowSelect = true;
             DetalleRemitoLTV.Location = new Point(23, 32);
             DetalleRemitoLTV.MultiSelect = false;
             DetalleRemitoLTV.Name = "DetalleRemitoLTV";
