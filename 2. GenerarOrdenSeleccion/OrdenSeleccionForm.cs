@@ -250,6 +250,11 @@ namespace Pampazon.OrdenSeleccion
                 }
             }
 
+            // Ajustar automáticamente el ancho de la columna según el contenido completo
+            DetalleOrdenesDePreparacionPendientesListView.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent);
+
+
+
             // Eliminar los ítems seleccionados de la lista de detalles de órdenes de preparación
             var itemsToRemove = new List<ListViewItem>();
             foreach (ListViewItem item in OrdenesDePrepracionAOrdenSeleccionListView.SelectedItems)
