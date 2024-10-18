@@ -398,7 +398,7 @@
             PrioridadComboBox.Name = "PrioridadComboBox";
             PrioridadComboBox.Size = new Size(307, 23);
             PrioridadComboBox.TabIndex = 61;
-            PrioridadComboBox.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            PrioridadComboBox.SelectedIndexChanged += PrioridadComboBox_SelectedIndexChanged;
             // 
             // label4
             // 

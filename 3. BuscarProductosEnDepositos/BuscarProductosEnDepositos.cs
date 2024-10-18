@@ -12,11 +12,100 @@ namespace Pampazon.BuscarProductosEnDepositos
 {
     public partial class AgregarProductosEnDepositosFormulario : Form
     {
+        private BuscarProductosEnDepositosModelo modelo;
+
         public AgregarProductosEnDepositosFormulario()
         {
             InitializeComponent();
+            modelo = new BuscarProductosEnDepositosModelo();
+        }
+        private void CargarOrdenesDeSeleccionEnComboBox()
+        {
+            CMBOrdenSeleccion.Items.Clear();
+            var ordenes = modelo.ObtenerOrdenesDeSeleccion();
+            foreach (var orden in ordenes)
+            {
+                CMBOrdenSeleccion.Items.Add(orden.IDOrdenSeleccion);
+            }
+
+            // Limpiar la selección después de recargar
+            CMBOrdenSeleccion.SelectedItem = null;
         }
 
 
+
+        private void CargarProductosEnListView(int idOrdenSeleccion)
+        {
+            LSTProductos.Items.Clear();
+            var productos = modelo.ObtenerProductosPorOrdenDeSeleccion(idOrdenSeleccion);
+
+            foreach (var producto in productos)
+            {
+                ListViewItem item = new ListViewItem(producto.Ubicacion);
+                item.SubItems.Add(producto.SKU);
+                item.SubItems.Add(producto.Cantidad.ToString());
+                LSTProductos.Items.Add(item);
+            }
+        }
+
+        private void AgregarProductosEnDepositosFormulario_Load_1(object sender, EventArgs e)
+        {
+            // Cargar las órdenes de selección en el ComboBox
+            CargarOrdenesDeSeleccionEnComboBox();
+
+            // Establecer el estilo del ComboBox para que solo permita selección
+            CMBOrdenSeleccion.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+        // Evento que se dispara al seleccionar una OrdenDeSeleccion en el ComboBox
+
+        private void CMBOrdenSeleccion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CMBOrdenSeleccion.SelectedItem != null)
+            {
+                int idOrdenSeleccion = (int)CMBOrdenSeleccion.SelectedItem;
+                CargarProductosEnListView(idOrdenSeleccion);
+            }
+        }
+
+
+
+        private void CancelarOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BTNConfirmarOrdenSeleccion_Click(object sender, EventArgs e)
+        {
+            if (CMBOrdenSeleccion.SelectedItem != null)
+            {
+                // Mostrar MessageBox para confirmar la acción
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas confirmar esta orden?",
+                                                      "Confirmar Orden",
+                                                      MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    int idOrdenSeleccion = (int)CMBOrdenSeleccion.SelectedItem;
+                    modelo.ConfirmarOrdenSeleccion(idOrdenSeleccion);
+
+                    // Recargar las órdenes de selección en el ComboBox
+                    CargarOrdenesDeSeleccionEnComboBox();
+
+                    // Limpiar el ListView después de confirmar la orden
+                    LSTProductos.Items.Clear();
+
+                    // Deshabilitar el ComboBox para que no permita escribir (solo selección)
+                    CMBOrdenSeleccion.DropDownStyle = ComboBoxStyle.DropDownList;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una orden de selección antes de confirmar.",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
     }
 }
