@@ -241,8 +241,6 @@ namespace Pampazon.ListarOrdenes
                         item.SubItems.Add(producto.Nombre); // Producto_Columna
                         item.SubItems.Add(producto.Cantidad.ToString()); // Cantidad_Columna
 
-                        // Convertir la ubicación a string utilizando el método ToString() de PosicionProducto
-                        item.SubItems.Add(producto.Ubicacion.ToString()); // Ubicacion_Columna
 
                         // Agregar el item al ListView de productos
                         ProductoLTV.Items.Add(item);
