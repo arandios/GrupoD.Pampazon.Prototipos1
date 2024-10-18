@@ -72,7 +72,7 @@ namespace Pampazon._4._EmpaquetarOrden
                 Productos = new List<Producto>
                 {
                     new Producto() { SKUProducto = "SKU011", DescripcionProducto = "Guantes", Cantidad = 14 },
-                    new Producto() { SKUProducto = "SKU012", DescripcionProducto = "Chakeco", Cantidad = 10 }
+                    new Producto() { SKUProducto = "SKU012", DescripcionProducto = "Chaleco", Cantidad = 10 }
                 }
             },
             new Orden

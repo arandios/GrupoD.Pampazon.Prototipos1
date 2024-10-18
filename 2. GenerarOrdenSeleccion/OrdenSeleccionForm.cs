@@ -239,8 +239,7 @@ namespace Pampazon.OrdenSeleccion
                     ListViewItem newItem = new ListViewItem();
                     newItem.Text = ordenPreparacion.IDOrdenPreparacion;
                     newItem.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
-                    newItem.SubItems.Add(ordenPreparacion.fechaOrdenPreparacion.ToString());
-                    newItem.SubItems.Add(ordenPreparacion.EstadoOrdenPreparacion.ToString());
+                    newItem.SubItems.Add(ordenPreparacion.fechaOrdenPreparacion.ToString("dd/MM/yyyy"));
                     newItem.SubItems.Add(ordenPreparacion.Prioridad.ToString());
                     newItem.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
 
@@ -316,15 +315,6 @@ namespace Pampazon.OrdenSeleccion
             // Mostrar mensaje de confirmación
             MessageBox.Show($"Se ha creado la orden de selección número {ordenSeleccion.IDOrdenSeleccion} exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Ajustar el ancho de las columnas automáticamente según el contenido
-
-            /*
-            foreach (ColumnHeader column in OrdenesDePreparacionPendientesProductoUbicacionListView.Columns)
-            {
-                OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.ColumnContent);
-            }
-            */
-
         }
 
 
@@ -359,13 +349,12 @@ namespace Pampazon.OrdenSeleccion
 
                 ListViewItem item = new ListViewItem();
                 item.Text = ordenPreparacion.IDOrdenPreparacion;
-                //item.SubItems.Add(ordenPreparacion.IdCliente.ToString()); -->Estos campos los voy a mostrar en la lista de al lado, de detalle. 
+                //item.SubItems.Add(ordenPreparacion.IdCliente.ToString()); 
                 item.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
                 //item.SubItems.Add(ordenPreparacion.Mercaderias.ToString());
                 //item.SubItems.Add(ordenPreparacion.CantidadMercaderia.ToString());
                 item.SubItems.Add(ordenPreparacion.fechaOrdenPreparacion.ToString("dd/MM/yyyy"));  // Formatear solo la fecha
-                item.SubItems.Add(ordenPreparacion.EstadoOrdenPreparacion.ToString());
-                item.SubItems.Add(ordenPreparacion.Prioridad.ToString());
+                item.SubItems.Add(ordenPreparacion.Prioridad.ToString());     
                 item.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
 
 

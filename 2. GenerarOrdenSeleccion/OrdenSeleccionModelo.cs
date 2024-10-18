@@ -156,7 +156,7 @@ new OrdenPreparacion(
     new Transportista(77778888, "Transportista I", "606")
 ),
 new OrdenPreparacion(
-    "10",
+    "12",
     "707",
     "Cliente J",
     new List<Mercaderia>

@@ -22,14 +22,14 @@ namespace Pampazon.OrdenSeleccion
 
         //CONSTRUCTOR
         
-        public OrdenPreparacion(string idOrdenPreparacion, string idCliente, string descripcionCliente, List<Mercaderia> mercaderias, int cantidadMercaderia, DateTime fechaOrdenPreparacion, PosiblesEstadosOrdenesGenerales estado, CodigoPrioridad prioridad, Transportista transportistaDetalle)
+        public OrdenPreparacion(string idOrdenPreparacion, string idCliente, string descripcionCliente, List<Mercaderia> mercaderias, int cantidadMercaderia, DateTime pFechaOrdenPreparacion, PosiblesEstadosOrdenesGenerales estado, CodigoPrioridad prioridad, Transportista transportistaDetalle)
         {
             IDOrdenPreparacion = idOrdenPreparacion;
             IdCliente = idCliente;
             DescripcionCliente = descripcionCliente;
             Mercaderias = mercaderias;
             CantidadMercaderia = cantidadMercaderia;
-            fechaOrdenPreparacion = fechaOrdenPreparacion;
+            fechaOrdenPreparacion = pFechaOrdenPreparacion;
             EstadoOrdenPreparacion = estado;
             Prioridad = prioridad;
             TransportistaDetalle = transportistaDetalle;

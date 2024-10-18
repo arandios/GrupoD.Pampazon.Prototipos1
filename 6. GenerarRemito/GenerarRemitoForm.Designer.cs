@@ -64,6 +64,7 @@
             DetalleRemitoLTV.TabIndex = 12;
             DetalleRemitoLTV.UseCompatibleStateImageBehavior = false;
             DetalleRemitoLTV.View = View.Details;
+            DetalleRemitoLTV.MouseClick += DetalleRemitoLTV_MouseClick;
             // 
             // OrdenConfirmadaColumna
             // 
@@ -120,6 +121,7 @@
             TransportistasListV.TabIndex = 20;
             TransportistasListV.UseCompatibleStateImageBehavior = false;
             TransportistasListV.View = View.Details;
+            TransportistasListV.MouseClick += TransportistasListV_MouseClick;
             // 
             // IdOrdenColumna
             // 
@@ -143,7 +145,7 @@
             // NomApellTransportistaTxt
             // 
             NomApellTransportistaTxt.Location = new Point(4, 91);
-            NomApellTransportistaTxt.Margin = new Padding(2, 2, 2, 2);
+            NomApellTransportistaTxt.Margin = new Padding(2);
             NomApellTransportistaTxt.Name = "NomApellTransportistaTxt";
             NomApellTransportistaTxt.ReadOnly = true;
             NomApellTransportistaTxt.Size = new Size(650, 23);
@@ -241,6 +243,7 @@
             Controls.Add(BuscarTransportistaGBX);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "GenerarRemitoForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Generar remito";
             Load += Generar_RemitoForms_Load;
             BuscarTransportistaGBX.ResumeLayout(false);

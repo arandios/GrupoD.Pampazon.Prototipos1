@@ -33,12 +33,6 @@
             label2 = new Label();
             groupBox3 = new GroupBox();
             Orden_Entrega = new ListView();
-            CodOrdenColumna = new ColumnHeader();
-            RazonClienteColumna = new ColumnHeader();
-            TransportistaColumna = new ColumnHeader();
-            fechaOPColumna = new ColumnHeader();
-            fechaOEColumna = new ColumnHeader();
-            OPColumna = new ColumnHeader();
             groupBox3.SuspendLayout();
             SuspendLayout();
             // 
@@ -87,7 +81,6 @@
             // 
             // Orden_Entrega
             // 
-            Orden_Entrega.Columns.AddRange(new ColumnHeader[] { CodOrdenColumna, RazonClienteColumna, TransportistaColumna, fechaOPColumna, fechaOEColumna, OPColumna });
             Orden_Entrega.Location = new Point(9, 36);
             Orden_Entrega.Margin = new Padding(3, 4, 3, 4);
             Orden_Entrega.Name = "Orden_Entrega";
@@ -95,36 +88,7 @@
             Orden_Entrega.TabIndex = 22;
             Orden_Entrega.UseCompatibleStateImageBehavior = false;
             Orden_Entrega.View = View.Details;
-            // 
-            // CodOrdenColumna
-            // 
-            CodOrdenColumna.Text = "Código Orden de Entrega";
-            CodOrdenColumna.Width = 160;
-            // 
-            // RazonClienteColumna
-            // 
-            RazonClienteColumna.Text = "Razón Social";
-            RazonClienteColumna.Width = 160;
-            // 
-            // TransportistaColumna
-            // 
-            TransportistaColumna.Text = "Transportista";
-            TransportistaColumna.Width = 160;
-            // 
-            // fechaOPColumna
-            // 
-            fechaOPColumna.Text = "Fecha Orden de Preparación";
-            fechaOPColumna.Width = 160;
-            // 
-            // fechaOEColumna
-            // 
-            fechaOEColumna.Text = "Fecha Orden de Entrega";
-            fechaOEColumna.Width = 160;
-            // 
-            // OPColumna
-            // 
-            OPColumna.Text = "Orden Preparación asociada";
-            OPColumna.Width = 160;
+            Orden_Entrega.SelectedIndexChanged += Orden_Entrega_SelectedIndexChanged;
             // 
             // GenerarOrdenEntregaForm
             // 
@@ -150,11 +114,5 @@
         private Label label2;
         private GroupBox groupBox3;
         private ListView Orden_Entrega;
-        private ColumnHeader CodOrdenColumna;
-        private ColumnHeader RazonClienteColumna;
-        private ColumnHeader TransportistaColumna;
-        private ColumnHeader fechaOPColumna;
-        private ColumnHeader fechaOEColumna;
-        private ColumnHeader OPColumna;
     }
 }

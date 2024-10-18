@@ -34,43 +34,39 @@ namespace Pampazon._6._GenerarRemito
                     return; // Salir si el DNI no es válido
                 }
 
-                // Verificar si el transportista existe
-                if (GenerarRemitoModelo.ExisteTransportistaPorDni(dni))
+                // Verificar si el transportista tiene órdenes asociadas
+                var ordenesDelTransportista = GenerarRemitoModelo.ObtenerOrdenesDePreparacionPorDni(dni);
+                if (ordenesDelTransportista == null || ordenesDelTransportista.Count == 0)
                 {
-                    // Verificar si el transportista tiene órdenes asociadas
-                    var ordenesDelTransportista = GenerarRemitoModelo.ObtenerOrdenesDePreparacionPorDni(dni);
-                    if (ordenesDelTransportista == null || ordenesDelTransportista.Count == 0)
-                    {
-                        MessageBox.Show("El transportista no tiene órdenes asociadas.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return; // Salir si no hay órdenes asociadas
-                    }
-
-                    // Obtener el nombre y apellido del transportista
-                    string nombreTransportista = GenerarRemitoModelo.ObtenerNombreTransportistaPorDni(dni);
-                    NomApellTransportistaTxt.Text = nombreTransportista; 
-
-                    // Limpiar la lista de transportistas antes de agregar nuevos elementos
-                    TransportistasListV.Items.Clear();
-                    foreach (var orden in ordenesDelTransportista)
-                    {
-                        TransportistasListV.Items.Add(new ListViewItem(new[] { orden.IdOrden })); // Agregar órdenes a la lista
-                    }
-
-                    // Desactivar el grupo de búsqueda y habilitar el grupo de órdenes del transportista
-                    BuscarTransportistaGBX.Enabled = false;
-                    OrdenesDelTransportistaGBX.Enabled = true;
+                    MessageBox.Show("El transportista no tiene órdenes asociadas.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return; // Salir si no hay órdenes asociadas
                 }
-                else
+
+                // Obtener el nombre y apellido del transportista desde las órdenes
+                string nombreTransportista = GenerarRemitoModelo.ObtenerNombreTransportistaPorDni(dni);
+                NomApellTransportistaTxt.Text = nombreTransportista;
+
+                // Limpiar la lista de transportistas antes de agregar nuevos elementos
+                TransportistasListV.Items.Clear();
+                foreach (var orden in ordenesDelTransportista)
                 {
-                    MessageBox.Show("El transportista con el DNI proporcionado no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TransportistasListV.Items.Add(new ListViewItem(new[] { orden.IdOrden })); // Agregar órdenes a la lista
                 }
+
+                // Desactivar el grupo de búsqueda y habilitar el grupo de órdenes del transportista
+                BuscarTransportistaGBX.Enabled = false;
+                OrdenesDelTransportistaGBX.Enabled = true;
             }
             else
             {
                 MessageBox.Show("Ingrese un DNI válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
+        
+
+
+
 
 
         /// <summary>
@@ -197,7 +193,7 @@ namespace Pampazon._6._GenerarRemito
                 MessageBox.Show($"Remito generado:\nTransportista DNI: {nuevoRemito.DNITransportista}\nÓrdenes: {string.Join(", ", nuevoRemito.Ordenes.Select(o => o.IdOrden))}",
                                 "Remito Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                
+
                 var itemsAEliminar = new List<ListViewItem>();
 
                 if (hayItemsSeleccionados)
@@ -205,7 +201,7 @@ namespace Pampazon._6._GenerarRemito
                     // Solo eliminar ítems que estén marcados
                     foreach (ListViewItem item in DetalleRemitoLTV.Items)
                     {
-                        if (item.Checked) 
+                        if (item.Checked)
                         {
                             itemsAEliminar.Add(item);
                         }
@@ -265,7 +261,7 @@ namespace Pampazon._6._GenerarRemito
             {
                 if (item.Checked)
                 {
-                    itemsAEliminar.Add(item); 
+                    itemsAEliminar.Add(item);
                 }
             }
 
@@ -342,6 +338,44 @@ namespace Pampazon._6._GenerarRemito
                 return;
             }
             this.Close();
+        }
+
+        private void TransportistasListV_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (TransportistasListV.SelectedItems.Count > 0)
+            {
+                var selectedItem = TransportistasListV.SelectedItems[0];
+                string idOrden = selectedItem.SubItems[0].Text;
+                DateTime fechaHoy = DateTime.Now.Date;
+
+                ListViewItem nuevoItem = new ListViewItem(idOrden);
+                nuevoItem.SubItems.Add(fechaHoy.ToShortDateString());
+
+                DetalleRemitoLTV.Items.Add(nuevoItem);
+                TransportistasListV.Items.Remove(selectedItem);
+
+                DetalleRemitoGBX.Enabled = true;
+            }
+        }
+
+        private void DetalleRemitoLTV_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (DetalleRemitoLTV.SelectedItems.Count > 0)
+            {
+                var selectedItem = DetalleRemitoLTV.SelectedItems[0];
+                string idOrden = selectedItem.SubItems[0].Text;
+
+                ListViewItem nuevoItem = new ListViewItem(idOrden);
+                nuevoItem.SubItems.Add(selectedItem.SubItems[1].Text);
+
+                TransportistasListV.Items.Add(nuevoItem);
+                DetalleRemitoLTV.Items.Remove(selectedItem);
+
+                if (DetalleRemitoLTV.Items.Count == 0)
+                {
+                    DetalleRemitoGBX.Enabled = false;
+                }
+            }
         }
     }
 }

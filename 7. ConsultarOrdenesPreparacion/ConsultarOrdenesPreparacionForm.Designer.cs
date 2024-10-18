@@ -354,8 +354,10 @@ namespace Pampazon.ListarOrdenes
             Controls.Add(FiltrosGBX);
             Controls.Add(DetallesGBX);
             Controls.Add(OrdenesGBX);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(2);
             Name = "ConsultarOrdenesForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Consultar Ordenes de Preparación";
             Load += ListarOrdenes_Load;
             FiltrosGBX.ResumeLayout(false);

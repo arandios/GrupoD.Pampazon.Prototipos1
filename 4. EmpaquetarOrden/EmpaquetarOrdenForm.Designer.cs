@@ -45,7 +45,7 @@
             Ordenesgrb.Margin = new Padding(2);
             Ordenesgrb.Name = "Ordenesgrb";
             Ordenesgrb.Padding = new Padding(2);
-            Ordenesgrb.Size = new Size(873, 685);
+            Ordenesgrb.Size = new Size(873, 833);
             Ordenesgrb.TabIndex = 0;
             Ordenesgrb.TabStop = false;
             Ordenesgrb.Text = "Detalle productos a empaquetar";
@@ -56,7 +56,7 @@
             OrdenesParaPrepararlst.Location = new Point(28, 35);
             OrdenesParaPrepararlst.Margin = new Padding(2);
             OrdenesParaPrepararlst.Name = "OrdenesParaPrepararlst";
-            OrdenesParaPrepararlst.Size = new Size(825, 630);
+            OrdenesParaPrepararlst.Size = new Size(802, 782);
             OrdenesParaPrepararlst.TabIndex = 0;
             OrdenesParaPrepararlst.UseCompatibleStateImageBehavior = false;
             OrdenesParaPrepararlst.View = View.Details;
@@ -80,10 +80,10 @@
             // 
             Confirmarbtn.BackColor = Color.FromArgb(192, 255, 192);
             Confirmarbtn.ForeColor = Color.Black;
-            Confirmarbtn.Location = new Point(316, 727);
+            Confirmarbtn.Location = new Point(360, 875);
             Confirmarbtn.Margin = new Padding(2);
             Confirmarbtn.Name = "Confirmarbtn";
-            Confirmarbtn.Size = new Size(280, 100);
+            Confirmarbtn.Size = new Size(280, 53);
             Confirmarbtn.TabIndex = 1;
             Confirmarbtn.Text = "&Confirmar orden como preparada";
             Confirmarbtn.UseVisualStyleBackColor = false;
@@ -91,10 +91,10 @@
             // 
             // Salirbtn
             // 
-            Salirbtn.Location = new Point(610, 727);
+            Salirbtn.Location = new Point(654, 875);
             Salirbtn.Margin = new Padding(2);
             Salirbtn.Name = "Salirbtn";
-            Salirbtn.Size = new Size(280, 100);
+            Salirbtn.Size = new Size(214, 53);
             Salirbtn.TabIndex = 2;
             Salirbtn.Text = "&Salir";
             Salirbtn.UseVisualStyleBackColor = true;
@@ -104,14 +104,13 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 840);
+            ClientSize = new Size(982, 953);
             Controls.Add(Salirbtn);
             Controls.Add(Confirmarbtn);
             Controls.Add(Ordenesgrb);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(2);
             Name = "EmpaquetarOrdenForm";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Empaquetar Ordenes de Preparación";
             Ordenesgrb.ResumeLayout(false);
             ResumeLayout(false);
