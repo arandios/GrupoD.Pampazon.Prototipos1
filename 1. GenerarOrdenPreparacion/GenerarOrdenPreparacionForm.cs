@@ -132,8 +132,7 @@ namespace Pampazon
                     {
                         model.Orden.changeIDCliente(model.obtenerCliente(clienteNumber));
                         model.IDCliente = model.Orden.IDCliente;
-                        model.setProductosClientes(model.Orden.IDCliente);
-                        MessageBox.Show($"ID Cliente seleccionado {CodigoClienteInput.Text}");
+                        model.setProductosClientes(model.Orden.IDCliente);                        
                     }
                 }
                 else if (CodigoClienteInput.Text == "" & RazonSocialClienteInput.Text != "")
@@ -148,7 +147,6 @@ namespace Pampazon
                         CodigoClienteInput.Text = model.Orden.IDCliente.ToString().ToUpper();
                         model.setProductosClientes(model.Orden.IDCliente);
                         model.IDCliente = model.Orden.IDCliente;
-                        MessageBox.Show($"ID Cliente seleccionado {CodigoClienteInput.Text}. Razon Social {RazonSocialClienteInput.Text}");
                     }
                 } // fin de if orden con productos == 0
             } // fin de if orden con productos == 0
@@ -209,16 +207,10 @@ namespace Pampazon
                     PrioridadComboBox.Enabled = false;
                     CodigoClienteInput.Enabled = true;
                     RazonSocialClienteInput.Enabled = true;
-               
+
                     MessageBox.Show("Orden Cancelada", "Info");
 
                 }
-                else
-                {
-                    // User clicked No
-                    MessageBox.Show("Continuar con la orden", "Info");
-                }
-
             }
         }
 
@@ -226,21 +218,23 @@ namespace Pampazon
 
         {
             bool eshorarioNumero;
-            if (string.IsNullOrEmpty(HorarioTextBox.Text)){
+            if (string.IsNullOrEmpty(HorarioTextBox.Text))
+            {
                 eshorarioNumero = false;
             }
             else
             {
-             if(!int.TryParse(HorarioTextBox.Text, out int horario))
+                if (!int.TryParse(HorarioTextBox.Text, out int horario))
                 {
                     eshorarioNumero = false;
                 }
-             else
+                else
                 {
-                    if(!(horario > 0 & horario <= 24))
+                    if (!(horario > 0 & horario <= 24))
                     {
-                       eshorarioNumero = false;
-                    } else { eshorarioNumero = true; }
+                        eshorarioNumero = false;
+                    }
+                    else { eshorarioNumero = true; }
                 };
             }
 
@@ -251,11 +245,13 @@ namespace Pampazon
             if (model.Orden.Productos.Count == 0)
             {
                 DialogResult result = MessageBox.Show($"Ingrese Productos para generar Orden", "Confirmation");
-            } 
-            else if (FechaSelecter.Value < DateTime.Today.AddDays(1)) {
+            }
+            else if (FechaSelecter.Value < DateTime.Today.AddDays(1))
+            {
                 DialogResult result = MessageBox.Show($"Selecciona una fecha de Retiro mayor", "Confirmation");
             }
-            else if (!eshorarioNumero)  {
+            else if (!eshorarioNumero)
+            {
                 DialogResult result = MessageBox.Show($"Seleccione un horario de Retiro. Un valor entre el 0 y el 24", "Confirmation");
             }
             else if (string.IsNullOrEmpty(selectedPriority))
@@ -267,10 +263,10 @@ namespace Pampazon
             {
                 DialogResult result = MessageBox.Show($"Seleccione un transportista por DNI o por Nombre", "Confirmation");
             }
-        
+
             else
             {
-        
+
                 DialogResult resultOrden = MessageBox.Show($" ID Cliente:{model.Orden.IDCliente}\n Fecha de entrega:{FechaSelecter.Value.ToString("dd-MM-yyyy")} Horario: {HorarioTextBox.Text}\n Dni Transportista: {model.Orden.DNITransportista}\n\n\n Confirmar Orden", "CONFIRMAR ORDEN DE ENTREGA", MessageBoxButtons.YesNo);
                 if (resultOrden == DialogResult.Yes)
                 {
@@ -285,11 +281,6 @@ namespace Pampazon
                     CodigoClienteInput.Enabled = true;
                     RazonSocialClienteInput.Enabled = true;
                 }
-                else
-                {
-                    DialogResult result = MessageBox.Show($"Continuar con la orden");
-                }
-
             }
         }
 
@@ -315,16 +306,17 @@ namespace Pampazon
         {
             if (model.Orden.Productos.Count > 0)
             {
-            DialogResult resultOrden = MessageBox.Show($"Desea salir? No se guardara la orden en proceso", "Confirmar Salir", MessageBoxButtons.YesNo);
-            if (resultOrden == DialogResult.Yes)
+                DialogResult resultOrden = MessageBox.Show($"Desea salir? No se guardara la orden en proceso", "Confirmar Salir", MessageBoxButtons.YesNo);
+                if (resultOrden == DialogResult.Yes)
                 {
                     this.Close();
                 }
-            }else
+            }
+            else
             {
                 this.Close();
             }
-        
+
         }
 
         private void GenerarOrdenPreparacionForm_Load_1(object sender, EventArgs e)
@@ -388,7 +380,7 @@ namespace Pampazon
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-    
+
         }
 
         private void FechaSelecter_ValueChanged(object sender, EventArgs e)

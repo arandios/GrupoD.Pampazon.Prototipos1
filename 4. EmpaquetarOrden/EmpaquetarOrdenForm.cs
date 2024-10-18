@@ -59,19 +59,16 @@ namespace Pampazon._4._EmpaquetarOrden
         private void Confirmarbtn_Click(object sender, EventArgs e)
         {
             // Confirmar si la orden fue empaquetada
-            DialogResult result = MessageBox.Show("¿Confirmar que la orden está preparada?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //DialogResult result = MessageBox.Show("¿Confirmar que la orden está preparada?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
-            {
-                // Confirmación aceptada, mostrar mensaje de éxito
-                MessageBox.Show("Orden confirmada. Cargando nueva orden.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            /*if (result == DialogResult.Yes)
+            {*/
                 // Incrementar el índice para mostrar la siguiente orden
                 indiceActualOrden++;
 
                 // Cargar la siguiente orden si hay más
                 CargarLista();
-            }
+            //}
         }
     }
 }
