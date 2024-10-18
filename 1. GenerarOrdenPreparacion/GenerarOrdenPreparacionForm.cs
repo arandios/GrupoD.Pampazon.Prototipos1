@@ -11,6 +11,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace Pampazon
 {
@@ -21,10 +23,18 @@ namespace Pampazon
         public GenerarOrdenPreparacionForm()
         {
             InitializeComponent();
-            FechaSelecter.CustomFormat = "MM/dd/yyyy hh:mm tt";
+
             PrioridadComboBox.Items.Add("Alta");
             PrioridadComboBox.Items.Add("Media");
             PrioridadComboBox.Items.Add("Baja");
+            PrioridadComboBox.Enabled = false;
+
+
+            FechaSelecter.CustomFormat = "MM/dd/yyyy";
+            DateTime today = DateTime.Today;
+            FechaSelecter.MinDate = today;
+            FechaSelecter.MaxDate = today.AddDays(90);
+
             this.ProductosStockLista.SelectedIndexChanged += new EventHandler(this.ProductosStockLista_SelectedIndexChanged);
 
 
@@ -192,11 +202,14 @@ namespace Pampazon
                 if (result == DialogResult.Yes)
                 {
                     model.cancelarOrden();
+                    ActualizarListaOrden();
                     cargarTransportistas();
                     cargarNombreTransportistas();
+                    PrioridadComboBox.SelectedIndex = -1;
+                    PrioridadComboBox.Enabled = false;
                     CodigoClienteInput.Enabled = true;
                     RazonSocialClienteInput.Enabled = true;
-                    ActualizarListaOrden();
+               
                     MessageBox.Show("Orden Cancelada", "Info");
 
                 }
@@ -210,13 +223,40 @@ namespace Pampazon
         }
 
         private void GenerarOrderPreparacionBtn(object sender, EventArgs e)
+
         {
+            bool eshorarioNumero;
+            if (string.IsNullOrEmpty(HorarioTextBox.Text)){
+                eshorarioNumero = false;
+            }
+            else
+            {
+             if(!int.TryParse(HorarioTextBox.Text, out int horario))
+                {
+                    eshorarioNumero = false;
+                }
+             else
+                {
+                    if(!(horario > 0 & horario <= 24))
+                    {
+                       eshorarioNumero = false;
+                    } else { eshorarioNumero = true; }
+                };
+            }
+
             string selectedPriority = PrioridadComboBox.SelectedItem?.ToString();
             string dniTransportista = DniTransportistaComboBox.SelectedItem?.ToString();
+
 
             if (model.Orden.Productos.Count == 0)
             {
                 DialogResult result = MessageBox.Show($"Ingrese Productos para generar Orden", "Confirmation");
+            } 
+            else if (FechaSelecter.Value < DateTime.Today.AddDays(1)) {
+                DialogResult result = MessageBox.Show($"Selecciona una fecha de Retiro mayor", "Confirmation");
+            }
+            else if (!eshorarioNumero)  {
+                DialogResult result = MessageBox.Show($"Seleccione un horario de Retiro. Un valor entre el 0 y el 24", "Confirmation");
             }
             else if (string.IsNullOrEmpty(selectedPriority))
             {
@@ -227,9 +267,11 @@ namespace Pampazon
             {
                 DialogResult result = MessageBox.Show($"Seleccione un transportista por DNI o por Nombre", "Confirmation");
             }
+        
             else
             {
-                DialogResult resultOrden = MessageBox.Show($"Confirmar Orden", "Confirmation", MessageBoxButtons.YesNo);
+        
+                DialogResult resultOrden = MessageBox.Show($" ID Cliente:{model.Orden.IDCliente}\n Fecha de entrega:{FechaSelecter.Value.ToString("dd-MM-yyyy")} Horario: {HorarioTextBox.Text}\n Dni Transportista: {model.Orden.DNITransportista}\n\n\n Confirmar Orden", "CONFIRMAR ORDEN DE ENTREGA", MessageBoxButtons.YesNo);
                 if (resultOrden == DialogResult.Yes)
                 {
                     DialogResult result = MessageBox.Show($"Orden ingresada con exitos, le enviaremos un mail con los detalles", "Confirmar Orden");
@@ -315,6 +357,7 @@ namespace Pampazon
                         ProductosStockLista.Items.Clear();
                         CodigoClienteInput.Enabled = false;
                         RazonSocialClienteInput.Enabled = false;
+                        PrioridadComboBox.Enabled = true;
                     }
 
                 }

@@ -445,17 +445,17 @@
             // 
             // HorarioTextBox
             // 
-            HorarioTextBox.Location = new Point(754, 41);
+            HorarioTextBox.Location = new Point(756, 41);
             HorarioTextBox.Margin = new Padding(2);
             HorarioTextBox.MaxLength = 2;
             HorarioTextBox.Name = "HorarioTextBox";
-            HorarioTextBox.Size = new Size(96, 23);
+            HorarioTextBox.Size = new Size(94, 23);
             HorarioTextBox.TabIndex = 64;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(754, 24);
+            label2.Location = new Point(756, 24);
             label2.Name = "label2";
             label2.Size = new Size(96, 15);
             label2.TabIndex = 70;
@@ -469,7 +469,7 @@
             FechaSelecter.MaxDate = new DateTime(2025, 12, 31, 0, 0, 0, 0);
             FechaSelecter.MinDate = new DateTime(2024, 10, 17, 0, 16, 31, 0);
             FechaSelecter.Name = "FechaSelecter";
-            FechaSelecter.Size = new Size(206, 23);
+            FechaSelecter.Size = new Size(208, 23);
             FechaSelecter.TabIndex = 59;
             FechaSelecter.Value = new DateTime(2024, 10, 18, 0, 0, 0, 0);
             FechaSelecter.ValueChanged += FechaSelecter_ValueChanged;
