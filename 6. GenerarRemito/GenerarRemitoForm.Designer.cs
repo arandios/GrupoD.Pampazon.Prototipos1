@@ -64,6 +64,7 @@
             DetalleRemitoLTV.TabIndex = 12;
             DetalleRemitoLTV.UseCompatibleStateImageBehavior = false;
             DetalleRemitoLTV.View = View.Details;
+            DetalleRemitoLTV.MouseClick += DetalleRemitoLTV_MouseClick;
             // 
             // OrdenConfirmadaColumna
             // 
@@ -120,6 +121,7 @@
             TransportistasListV.TabIndex = 20;
             TransportistasListV.UseCompatibleStateImageBehavior = false;
             TransportistasListV.View = View.Details;
+            TransportistasListV.MouseClick += TransportistasListV_MouseClick;
             // 
             // IdOrdenColumna
             // 

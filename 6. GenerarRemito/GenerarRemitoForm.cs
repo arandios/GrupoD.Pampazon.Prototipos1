@@ -63,6 +63,10 @@ namespace Pampazon._6._GenerarRemito
             }
         }
 
+        
+
+
+
 
 
         /// <summary>
@@ -189,7 +193,7 @@ namespace Pampazon._6._GenerarRemito
                 MessageBox.Show($"Remito generado:\nTransportista DNI: {nuevoRemito.DNITransportista}\nÓrdenes: {string.Join(", ", nuevoRemito.Ordenes.Select(o => o.IdOrden))}",
                                 "Remito Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                
+
                 var itemsAEliminar = new List<ListViewItem>();
 
                 if (hayItemsSeleccionados)
@@ -197,7 +201,7 @@ namespace Pampazon._6._GenerarRemito
                     // Solo eliminar ítems que estén marcados
                     foreach (ListViewItem item in DetalleRemitoLTV.Items)
                     {
-                        if (item.Checked) 
+                        if (item.Checked)
                         {
                             itemsAEliminar.Add(item);
                         }
@@ -257,7 +261,7 @@ namespace Pampazon._6._GenerarRemito
             {
                 if (item.Checked)
                 {
-                    itemsAEliminar.Add(item); 
+                    itemsAEliminar.Add(item);
                 }
             }
 
@@ -334,6 +338,44 @@ namespace Pampazon._6._GenerarRemito
                 return;
             }
             this.Close();
+        }
+
+        private void TransportistasListV_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (TransportistasListV.SelectedItems.Count > 0)
+            {
+                var selectedItem = TransportistasListV.SelectedItems[0];
+                string idOrden = selectedItem.SubItems[0].Text;
+                DateTime fechaHoy = DateTime.Now.Date;
+
+                ListViewItem nuevoItem = new ListViewItem(idOrden);
+                nuevoItem.SubItems.Add(fechaHoy.ToShortDateString());
+
+                DetalleRemitoLTV.Items.Add(nuevoItem);
+                TransportistasListV.Items.Remove(selectedItem);
+
+                DetalleRemitoGBX.Enabled = true;
+            }
+        }
+
+        private void DetalleRemitoLTV_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (DetalleRemitoLTV.SelectedItems.Count > 0)
+            {
+                var selectedItem = DetalleRemitoLTV.SelectedItems[0];
+                string idOrden = selectedItem.SubItems[0].Text;
+
+                ListViewItem nuevoItem = new ListViewItem(idOrden);
+                nuevoItem.SubItems.Add(selectedItem.SubItems[1].Text);
+
+                TransportistasListV.Items.Add(nuevoItem);
+                DetalleRemitoLTV.Items.Remove(selectedItem);
+
+                if (DetalleRemitoLTV.Items.Count == 0)
+                {
+                    DetalleRemitoGBX.Enabled = false;
+                }
+            }
         }
     }
 }
