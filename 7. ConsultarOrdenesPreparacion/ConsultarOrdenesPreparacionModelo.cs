@@ -75,32 +75,40 @@ namespace Pampazon.ConsultarOrdenes
         public List<OrdenDePreparacion> CrearOrdenes(List<Cliente> clientes, List<Producto> productos)
         {
             List<OrdenDePreparacion> ordenes = new List<OrdenDePreparacion>();
+            Random random = new Random();
+
+            DateTime fechaAleatoria()
+            {
+                int diasAtras = random.Next(0, 8); 
+                return DateTime.Now.AddDays(-diasAtras);
+            }
 
             // Crear una orden para el cliente 1
-            var productosCliente1 = new List<Producto> { productos[0], productos[1], productos[2] }; // Asignar productos
-            ordenes.Add(new OrdenDePreparacion(1, DateTime.Now, "Preparada", "Alta", clientes[0], productosCliente1));
+            var productosCliente1 = new List<Producto> { productos[0], productos[1], productos[2] }; 
+            ordenes.Add(new OrdenDePreparacion(1, fechaAleatoria(), "Preparada", "Alta", clientes[0], productosCliente1));
 
             // Crear una segunda orden para el cliente 1
             productosCliente1 = new List<Producto> { productos[3], productos[4] };
-            ordenes.Add(new OrdenDePreparacion(2, DateTime.Now.AddDays(-1), "Preparada", "Media", clientes[0], productosCliente1));
+            ordenes.Add(new OrdenDePreparacion(2, fechaAleatoria(), "Preparada", "Media", clientes[0], productosCliente1));
 
             // Crear una orden para el cliente 2
             var productosCliente2 = new List<Producto> { productos[5], productos[6] };
-            ordenes.Add(new OrdenDePreparacion(3, DateTime.Now.AddDays(-2), "Preparada", "Baja", clientes[1], productosCliente2));
+            ordenes.Add(new OrdenDePreparacion(3, fechaAleatoria(), "Preparada", "Baja", clientes[1], productosCliente2));
 
             // Crear una segunda orden para el cliente 2
             productosCliente2 = new List<Producto> { productos[7], productos[8], productos[9] };
-            ordenes.Add(new OrdenDePreparacion(4, DateTime.Now.AddDays(-3), "Preparada", "Alta", clientes[1], productosCliente2));
+            ordenes.Add(new OrdenDePreparacion(4, fechaAleatoria(), "Preparada", "Alta", clientes[1], productosCliente2));
 
             // Crear una orden para el cliente 3
             var productosCliente3 = new List<Producto> { productos[10], productos[11] };
-            ordenes.Add(new OrdenDePreparacion(5, DateTime.Now.AddDays(-4), "Preparada", "Media", clientes[2], productosCliente3));
+            ordenes.Add(new OrdenDePreparacion(5, fechaAleatoria(), "Preparada", "Media", clientes[2], productosCliente3));
 
             // Crear una segunda orden para el cliente 3
             productosCliente3 = new List<Producto> { productos[12], productos[13] };
-            ordenes.Add(new OrdenDePreparacion(6, DateTime.Now.AddDays(-5), "Preparada", "Baja", clientes[2], productosCliente3));
+            ordenes.Add(new OrdenDePreparacion(6, fechaAleatoria(), "Preparada", "Baja", clientes[2], productosCliente3));
 
             return ordenes;
+
         }
 
         // Búsqueda por razón social
