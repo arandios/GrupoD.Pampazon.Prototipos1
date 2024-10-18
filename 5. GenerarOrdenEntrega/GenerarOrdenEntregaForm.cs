@@ -76,12 +76,25 @@ namespace Pampazon.OrdenEntrega
 
         private void GenerarOrdenEntregabtn_Click(object sender, EventArgs e)
         {
+
+            if (Orden_Entrega.Items.Count < 7)
+            {
+                MessageBox.Show("Error: Debe haber al menos 7 ítems en la lista para generar una orden de entrega.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             DialogResult result = MessageBox.Show("¿Está seguro de que desea generar la orden de entrega?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 MessageBox.Show("Orden de entrega generada", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Orden_Entrega.Items.Clear();
+                for (int i = 10; i <= 14; i++)
+                {
+                    ListViewItem item = new ListViewItem("000" + i);
+                    item.SubItems.Add(DateTime.Now.AddDays(i).ToString("dd/MM/yyyy"));
+                    Orden_Entrega.Items.Add(item);
+                }
             }
         }
 
