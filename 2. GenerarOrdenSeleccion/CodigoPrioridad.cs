@@ -4,6 +4,6 @@
     {
         Baja,
         Media,
-        Urgente
+        Alta
     }
 }
