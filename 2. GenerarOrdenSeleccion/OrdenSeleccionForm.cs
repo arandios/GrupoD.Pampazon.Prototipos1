@@ -173,7 +173,7 @@ namespace Pampazon.OrdenSeleccion
             }
 
             // Llamar al método para agrupar y mostrar los productos y ubicaciones
-            AgruparOrdenesDePreparacionPendientes();
+            //AgruparOrdenesDePreparacionPendientes();
         }
 
 
@@ -199,7 +199,7 @@ namespace Pampazon.OrdenSeleccion
                 }
 
                 // Actualizar la lista OrdenesDePreparacionPendientesProductoUbicacionListView
-                AgruparOrdenesDePreparacionPendientes();
+                //AgruparOrdenesDePreparacionPendientes();
             }
             else
             {
@@ -267,7 +267,7 @@ namespace Pampazon.OrdenSeleccion
             MessageBox.Show("Orden de Preparacion agregada al detalle.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Llamar al método para agrupar y mostrar los productos y ubicaciones
-            AgruparOrdenesDePreparacionPendientes();
+            //AgruparOrdenesDePreparacionPendientes();
         }
 
 
