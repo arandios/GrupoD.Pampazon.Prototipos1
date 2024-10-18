@@ -57,7 +57,6 @@ namespace Pampazon.ListarOrdenes
             SKU_Columna = new ColumnHeader();
             Producto_Columna = new ColumnHeader();
             Cantidad_Columna = new ColumnHeader();
-            Ubicacion_Columna = new ColumnHeader();
             OrdenesGBX = new GroupBox();
             FiltrosGBX.SuspendLayout();
             DetallesGBX.SuspendLayout();
@@ -144,6 +143,7 @@ namespace Pampazon.ListarOrdenes
             CodigoClienteTxt.Name = "CodigoClienteTxt";
             CodigoClienteTxt.Size = new Size(268, 23);
             CodigoClienteTxt.TabIndex = 14;
+            CodigoClienteTxt.TextChanged += CodigoClienteTxt_TextChanged;
             // 
             // OrdenesLTV
             // 
@@ -259,6 +259,7 @@ namespace Pampazon.ListarOrdenes
             CuitTxt.Name = "CuitTxt";
             CuitTxt.Size = new Size(252, 23);
             CuitTxt.TabIndex = 18;
+            CuitTxt.TextChanged += CuitTxt_TextChanged;
             // 
             // label7
             // 
@@ -277,6 +278,7 @@ namespace Pampazon.ListarOrdenes
             RazonSocialTxt.Name = "RazonSocialTxt";
             RazonSocialTxt.Size = new Size(281, 23);
             RazonSocialTxt.TabIndex = 16;
+            RazonSocialTxt.TextChanged += RazonSocialTxt_TextChanged;
             // 
             // label1
             // 
@@ -302,7 +304,7 @@ namespace Pampazon.ListarOrdenes
             // 
             // ProductoLTV
             // 
-            ProductoLTV.Columns.AddRange(new ColumnHeader[] { SKU_Columna, Producto_Columna, Cantidad_Columna, Ubicacion_Columna });
+            ProductoLTV.Columns.AddRange(new ColumnHeader[] { SKU_Columna, Producto_Columna, Cantidad_Columna });
             ProductoLTV.Location = new Point(6, 21);
             ProductoLTV.Name = "ProductoLTV";
             ProductoLTV.Size = new Size(822, 176);
@@ -326,12 +328,6 @@ namespace Pampazon.ListarOrdenes
             Cantidad_Columna.Text = "Cantidad";
             Cantidad_Columna.TextAlign = HorizontalAlignment.Center;
             Cantidad_Columna.Width = 199;
-            // 
-            // Ubicacion_Columna
-            // 
-            Ubicacion_Columna.Text = "Ubicación";
-            Ubicacion_Columna.TextAlign = HorizontalAlignment.Center;
-            Ubicacion_Columna.Width = 199;
             // 
             // OrdenesGBX
             // 
@@ -394,7 +390,6 @@ namespace Pampazon.ListarOrdenes
         private ColumnHeader PrioridadColumna;
         private Label label8;
         private ComboBox PrioridadComboBox;
-        private ColumnHeader Ubicacion_Columna;
         private GroupBox OrdenesGBX;
         private Label label5;
         private DateTimePicker FechaFinDTP;

@@ -40,7 +40,7 @@ namespace Pampazon.OrdenSeleccion
                 30,
                 DateTime.Now,
                 PosiblesEstadosOrdenesGenerales.Pendiente,
-                CodigoPrioridad.Urgente,
+                CodigoPrioridad.Alta,
                 new Transportista(87654321, "Transportista B", "456")
             ),
             new OrdenPreparacion(
@@ -82,7 +82,7 @@ namespace Pampazon.OrdenSeleccion
                 30,
                 DateTime.Now,
                 PosiblesEstadosOrdenesGenerales.Pendiente,
-                CodigoPrioridad.Urgente,
+                CodigoPrioridad.Alta,
                 new Transportista(99887766, "Transportista E", "202")
             ),
 
@@ -138,7 +138,7 @@ new OrdenPreparacion(
     40,
     DateTime.Now.AddDays(20),  // Fecha 20 días en el futuro desde hoy
     PosiblesEstadosOrdenesGenerales.Pendiente,
-    CodigoPrioridad.Urgente,
+    CodigoPrioridad.Alta,
     new Transportista(55556666, "Transportista H", "505")
 ),
 new OrdenPreparacion(
@@ -156,7 +156,7 @@ new OrdenPreparacion(
     new Transportista(77778888, "Transportista I", "606")
 ),
 new OrdenPreparacion(
-    "10",
+    "12",
     "707",
     "Cliente J",
     new List<Mercaderia>

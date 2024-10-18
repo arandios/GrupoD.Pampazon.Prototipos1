@@ -41,8 +41,8 @@
             // CMBOrdenSeleccion
             // 
             CMBOrdenSeleccion.FormattingEnabled = true;
-            CMBOrdenSeleccion.Location = new Point(274, 69);
-            CMBOrdenSeleccion.Margin = new Padding(4);
+            CMBOrdenSeleccion.Location = new Point(274, 68);
+            CMBOrdenSeleccion.Margin = new Padding(4, 3, 4, 3);
             CMBOrdenSeleccion.Name = "CMBOrdenSeleccion";
             CMBOrdenSeleccion.Size = new Size(695, 33);
             CMBOrdenSeleccion.TabIndex = 1;
@@ -52,9 +52,9 @@
             // 
             LSTProductos.Columns.AddRange(new ColumnHeader[] { Ubicacion_Columna, Sku_Columna, CantidadColumna });
             LSTProductos.Location = new Point(106, 150);
-            LSTProductos.Margin = new Padding(4);
+            LSTProductos.Margin = new Padding(4, 3, 4, 3);
             LSTProductos.Name = "LSTProductos";
-            LSTProductos.Size = new Size(1002, 868);
+            LSTProductos.Size = new Size(1003, 867);
             LSTProductos.TabIndex = 2;
             LSTProductos.UseCompatibleStateImageBehavior = false;
             LSTProductos.View = View.Details;
@@ -89,9 +89,9 @@
             // CancelarOrdenSeleccionBTN
             // 
             CancelarOrdenSeleccionBTN.Location = new Point(841, 1038);
-            CancelarOrdenSeleccionBTN.Margin = new Padding(4);
+            CancelarOrdenSeleccionBTN.Margin = new Padding(4, 3, 4, 3);
             CancelarOrdenSeleccionBTN.Name = "CancelarOrdenSeleccionBTN";
-            CancelarOrdenSeleccionBTN.Size = new Size(268, 66);
+            CancelarOrdenSeleccionBTN.Size = new Size(269, 67);
             CancelarOrdenSeleccionBTN.TabIndex = 21;
             CancelarOrdenSeleccionBTN.Text = "&Salir";
             CancelarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
@@ -101,9 +101,9 @@
             // 
             BTNConfirmarOrdenSeleccion.BackColor = Color.FromArgb(192, 255, 192);
             BTNConfirmarOrdenSeleccion.Location = new Point(464, 1038);
-            BTNConfirmarOrdenSeleccion.Margin = new Padding(4);
+            BTNConfirmarOrdenSeleccion.Margin = new Padding(4, 3, 4, 3);
             BTNConfirmarOrdenSeleccion.Name = "BTNConfirmarOrdenSeleccion";
-            BTNConfirmarOrdenSeleccion.Size = new Size(350, 66);
+            BTNConfirmarOrdenSeleccion.Size = new Size(350, 67);
             BTNConfirmarOrdenSeleccion.TabIndex = 20;
             BTNConfirmarOrdenSeleccion.Text = "&Confirmar Orden de Selección";
             BTNConfirmarOrdenSeleccion.UseVisualStyleBackColor = false;
@@ -113,13 +113,14 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1228, 1191);
+            ClientSize = new Size(1229, 1145);
             Controls.Add(CancelarOrdenSeleccionBTN);
             Controls.Add(BTNConfirmarOrdenSeleccion);
             Controls.Add(LBLOrdenSeleccion);
             Controls.Add(LSTProductos);
             Controls.Add(CMBOrdenSeleccion);
-            Margin = new Padding(4);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(4, 3, 4, 3);
             Name = "AgregarProductosEnDepositosFormulario";
             Text = "Buscar productos en depósito";
             Load += AgregarProductosEnDepositosFormulario_Load_1;

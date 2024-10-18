@@ -23,7 +23,50 @@ namespace Pampazon.ListarOrdenes
             InitializeComponent();
             modelo.InicializarDatos();
             OrdenesLTV.FullRowSelect = true;
+           
 
+        }
+
+        private void CodigoClienteTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CodigoClienteTxt.Text))
+            {
+                RazonSocialTxt.Enabled = false;
+                CuitTxt.Enabled = false;
+            }
+            else
+            {
+                RazonSocialTxt.Enabled = true;
+                CuitTxt.Enabled = true;
+            }
+        }
+
+        private void RazonSocialTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(RazonSocialTxt.Text))
+            {
+                CodigoClienteTxt.Enabled = false;
+                CuitTxt.Enabled = false;
+            }
+            else
+            {
+                CodigoClienteTxt.Enabled = true;
+                CuitTxt.Enabled = true;
+            }
+        }
+
+        private void CuitTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CuitTxt.Text))
+            {
+                CodigoClienteTxt.Enabled = false;
+                RazonSocialTxt.Enabled = false;
+            }
+            else
+            {
+                CodigoClienteTxt.Enabled = true;
+                RazonSocialTxt.Enabled = true;
+            }
         }
         private void ListarOrdenes_Load(object sender, EventArgs e)
         {
@@ -198,8 +241,6 @@ namespace Pampazon.ListarOrdenes
                         item.SubItems.Add(producto.Nombre); // Producto_Columna
                         item.SubItems.Add(producto.Cantidad.ToString()); // Cantidad_Columna
 
-                        // Convertir la ubicación a string utilizando el método ToString() de PosicionProducto
-                        item.SubItems.Add(producto.Ubicacion.ToString()); // Ubicacion_Columna
 
                         // Agregar el item al ListView de productos
                         ProductoLTV.Items.Add(item);

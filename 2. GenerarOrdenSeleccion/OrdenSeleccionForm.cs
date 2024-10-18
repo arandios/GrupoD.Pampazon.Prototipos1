@@ -36,6 +36,8 @@ namespace Pampazon.OrdenSeleccion
             // Llenar el ComboBox con los valores del enum CodigoPrioridad
             PrioridadComboBoxOrdenSeleccion.DataSource = Enum.GetValues(typeof(CodigoPrioridad));
 
+            //Borrar filtros que pudieran llegar a quedar precargados.
+            BorrarFiltros();
 
             // Verificar si la lista de órdenes de preparación no está vacía
             if (modelo.OrdenesDePreparacion == null || modelo.OrdenesDePreparacion.Count == 0)
@@ -78,7 +80,6 @@ namespace Pampazon.OrdenSeleccion
 
             // Obtener los valores de los filtros
             string clienteAFiltrar = ClienteTextBoxOrdenSeleccion.Text.Trim(); // Razon social cliente
-            string transportistaAFiltrar = TransportistaTextBoxOrdenSeleccion.Text.Trim();
             string idOrdenAFiltrar = NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Trim();
             string prioridadAFiltrar = PrioridadComboBoxOrdenSeleccion.SelectedItem?.ToString();
             DateTime? fechaInicioAFiltrar = FechaInicio_dateTimePicker_OrdenSeleccion.Value.Date;
@@ -86,7 +87,6 @@ namespace Pampazon.OrdenSeleccion
 
             // Verificar si al menos un filtro está completo
             if (string.IsNullOrWhiteSpace(clienteAFiltrar) &&
-                string.IsNullOrWhiteSpace(transportistaAFiltrar) &&
                 string.IsNullOrWhiteSpace(idOrdenAFiltrar) &&
                 string.IsNullOrWhiteSpace(prioridadAFiltrar) &&
                 fechaInicioAFiltrar == null &&
@@ -103,8 +103,7 @@ namespace Pampazon.OrdenSeleccion
             var ordenesFiltradas = ordenesPreparacion
                 .Where(op =>
                     (string.IsNullOrEmpty(clienteAFiltrar) || op.DescripcionCliente.Contains(clienteAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
-                    (string.IsNullOrEmpty(transportistaAFiltrar) || op.TransportistaDetalle.Nombre.Contains(transportistaAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
-                    (string.IsNullOrEmpty(idOrdenAFiltrar) || op.IDOrdenPreparacion.Contains(idOrdenAFiltrar, StringComparison.OrdinalIgnoreCase)) &&
+                    (string.IsNullOrEmpty(idOrdenAFiltrar) || op.IDOrdenPreparacion == idOrdenAFiltrar) &&
                     (string.IsNullOrEmpty(prioridadAFiltrar) || op.Prioridad.ToString() == prioridadAFiltrar) &&
                     (!fechaInicioAFiltrar.HasValue || op.fechaOrdenPreparacion.Date >= fechaInicioAFiltrar.Value) &&  // Filtro inclusivo para la fecha de inicio
                     (!fechaFinalAFiltrar.HasValue || op.fechaOrdenPreparacion.Date <= fechaFinalAFiltrar.Value)        // Filtro inclusivo para la fecha final
@@ -174,7 +173,7 @@ namespace Pampazon.OrdenSeleccion
             }
 
             // Llamar al método para agrupar y mostrar los productos y ubicaciones
-            AgruparOrdenesDePreparacionPendientes();
+            //AgruparOrdenesDePreparacionPendientes();
         }
 
 
@@ -200,7 +199,7 @@ namespace Pampazon.OrdenSeleccion
                 }
 
                 // Actualizar la lista OrdenesDePreparacionPendientesProductoUbicacionListView
-                AgruparOrdenesDePreparacionPendientes();
+                //AgruparOrdenesDePreparacionPendientes();
             }
             else
             {
@@ -241,7 +240,7 @@ namespace Pampazon.OrdenSeleccion
                     newItem.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
                     newItem.SubItems.Add(ordenPreparacion.fechaOrdenPreparacion.ToString("dd/MM/yyyy"));
                     newItem.SubItems.Add(ordenPreparacion.Prioridad.ToString());
-                    newItem.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
+                    //newItem.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
 
                     newItem.Tag = ordenPreparacion; // Guardar el objeto completo como Tag
                     DetalleOrdenesDePreparacionPendientesListView.Items.Add(newItem);
@@ -250,6 +249,11 @@ namespace Pampazon.OrdenSeleccion
                     ordenesAgregadas.Add(ordenPreparacion);
                 }
             }
+
+            // Ajustar automáticamente el ancho de la columna según el contenido completo
+            DetalleOrdenesDePreparacionPendientesListView.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent);
+
+
 
             // Eliminar los ítems seleccionados de la lista de detalles de órdenes de preparación
             var itemsToRemove = new List<ListViewItem>();
@@ -268,7 +272,7 @@ namespace Pampazon.OrdenSeleccion
             MessageBox.Show("Orden de Preparacion agregada al detalle.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Llamar al método para agrupar y mostrar los productos y ubicaciones
-            AgruparOrdenesDePreparacionPendientes();
+            //AgruparOrdenesDePreparacionPendientes();
         }
 
 
@@ -314,15 +318,6 @@ namespace Pampazon.OrdenSeleccion
 
             // Mostrar mensaje de confirmación
             MessageBox.Show($"Se ha creado la orden de selección número {ordenSeleccion.IDOrdenSeleccion} exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Ajustar el ancho de las columnas automáticamente según el contenido
-
-            /*
-            foreach (ColumnHeader column in OrdenesDePreparacionPendientesProductoUbicacionListView.Columns)
-            {
-                OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.ColumnContent);
-            }
-            */
 
         }
 
@@ -378,7 +373,16 @@ namespace Pampazon.OrdenSeleccion
             }
         }
 
-        
+        private void BorrarFiltros()
+        {
+            ClienteTextBoxOrdenSeleccion.Text = string.Empty;
+            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text = string.Empty;
+            PrioridadComboBoxOrdenSeleccion.SelectedIndex = -1;
+            FechaInicio_dateTimePicker_OrdenSeleccion.Value = DateTime.Now;
+            FechaFinal_dateTimePicker_OrdenSeleccion.Value = DateTime.Now;
+        }
+
+
         private void DetalleOrdenesDePrepracionAOrdenSeleccionListView_SelectedIndexChanged(object sender, EventArgs e)
         {
 
