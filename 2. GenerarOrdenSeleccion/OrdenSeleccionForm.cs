@@ -315,15 +315,6 @@ namespace Pampazon.OrdenSeleccion
             // Mostrar mensaje de confirmación
             MessageBox.Show($"Se ha creado la orden de selección número {ordenSeleccion.IDOrdenSeleccion} exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Ajustar el ancho de las columnas automáticamente según el contenido
-
-            /*
-            foreach (ColumnHeader column in OrdenesDePreparacionPendientesProductoUbicacionListView.Columns)
-            {
-                OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.ColumnContent);
-            }
-            */
-
         }
 
 
