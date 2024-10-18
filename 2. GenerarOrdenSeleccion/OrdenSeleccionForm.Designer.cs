@@ -45,8 +45,6 @@
             CancelarOrdenSeleccionBTN = new Button();
             FiltrosOPgroupBox = new GroupBox();
             label9 = new Label();
-            TransportistaTextBoxOrdenSeleccion = new TextBox();
-            label8 = new Label();
             FechaFinal_dateTimePicker_OrdenSeleccion = new DateTimePicker();
             FechaInicio_dateTimePicker_OrdenSeleccion = new DateTimePicker();
             PrioridadComboBoxOrdenSeleccion = new ComboBox();
@@ -56,14 +54,12 @@
             RSCliente_Columna = new ColumnHeader();
             FechaOrdenPreparacionColumna = new ColumnHeader();
             PrioridadColumna = new ColumnHeader();
-            TransportistaDetalleColumna = new ColumnHeader();
             OSgroupBox = new GroupBox();
             DetalleOrdenesDePreparacionPendientesListView = new ListView();
             OPaOS_IdOPColumna = new ColumnHeader();
             OPaOS_RazonSocialClienteColumna = new ColumnHeader();
             OPaOS_FechaOPColumna = new ColumnHeader();
             OPaOS_PrioridadColumna = new ColumnHeader();
-            OPaOS_TransportistaColumna = new ColumnHeader();
             FiltrosOPgroupBox.SuspendLayout();
             OPgroupBox.SuspendLayout();
             OSgroupBox.SuspendLayout();
@@ -121,11 +117,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(530, 38);
+            label2.Location = new Point(233, 40);
             label2.Name = "label2";
-            label2.Size = new Size(87, 20);
+            label2.Size = new Size(101, 20);
             label2.TabIndex = 6;
-            label2.Text = "Fecha inicio";
+            label2.Text = "Fecha Mínima";
             // 
             // label3
             // 
@@ -148,11 +144,11 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(233, 38);
+            label5.Location = new Point(0, 106);
             label5.Name = "label5";
-            label5.Size = new Size(212, 20);
+            label5.Size = new Size(173, 20);
             label5.TabIndex = 9;
-            label5.Text = "Número de Orden Preparación";
+            label5.Text = "ID de Orden Preparación";
             // 
             // ClienteTextBoxOrdenSeleccion
             // 
@@ -163,9 +159,9 @@
             // 
             // NumeroOrdenPreparacionTextBoxOrdenSeleccion
             // 
-            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Location = new Point(233, 62);
+            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Location = new Point(0, 131);
             NumeroOrdenPreparacionTextBoxOrdenSeleccion.Name = "NumeroOrdenPreparacionTextBoxOrdenSeleccion";
-            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Size = new Size(276, 27);
+            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Size = new Size(227, 27);
             NumeroOrdenPreparacionTextBoxOrdenSeleccion.TabIndex = 12;
             // 
             // label6
@@ -208,8 +204,6 @@
             // FiltrosOPgroupBox
             // 
             FiltrosOPgroupBox.Controls.Add(label9);
-            FiltrosOPgroupBox.Controls.Add(TransportistaTextBoxOrdenSeleccion);
-            FiltrosOPgroupBox.Controls.Add(label8);
             FiltrosOPgroupBox.Controls.Add(FechaFinal_dateTimePicker_OrdenSeleccion);
             FiltrosOPgroupBox.Controls.Add(FechaInicio_dateTimePicker_OrdenSeleccion);
             FiltrosOPgroupBox.Controls.Add(NumeroOrdenPreparacionTextBoxOrdenSeleccion);
@@ -229,40 +223,24 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(739, 34);
+            label9.Location = new Point(593, 40);
             label9.Name = "label9";
-            label9.Size = new Size(80, 20);
+            label9.Size = new Size(104, 20);
             label9.TabIndex = 25;
-            label9.Text = "Fecha final";
-            // 
-            // TransportistaTextBoxOrdenSeleccion
-            // 
-            TransportistaTextBoxOrdenSeleccion.Location = new Point(0, 131);
-            TransportistaTextBoxOrdenSeleccion.Name = "TransportistaTextBoxOrdenSeleccion";
-            TransportistaTextBoxOrdenSeleccion.Size = new Size(223, 27);
-            TransportistaTextBoxOrdenSeleccion.TabIndex = 23;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(0, 108);
-            label8.Name = "label8";
-            label8.Size = new Size(94, 20);
-            label8.TabIndex = 22;
-            label8.Text = "Transportista";
+            label9.Text = "Fecha Máxima";
             // 
             // FechaFinal_dateTimePicker_OrdenSeleccion
             // 
-            FechaFinal_dateTimePicker_OrdenSeleccion.Location = new Point(739, 62);
+            FechaFinal_dateTimePicker_OrdenSeleccion.Location = new Point(593, 63);
             FechaFinal_dateTimePicker_OrdenSeleccion.Name = "FechaFinal_dateTimePicker_OrdenSeleccion";
-            FechaFinal_dateTimePicker_OrdenSeleccion.Size = new Size(212, 27);
+            FechaFinal_dateTimePicker_OrdenSeleccion.Size = new Size(354, 27);
             FechaFinal_dateTimePicker_OrdenSeleccion.TabIndex = 24;
             // 
             // FechaInicio_dateTimePicker_OrdenSeleccion
             // 
-            FechaInicio_dateTimePicker_OrdenSeleccion.Location = new Point(515, 62);
+            FechaInicio_dateTimePicker_OrdenSeleccion.Location = new Point(233, 63);
             FechaInicio_dateTimePicker_OrdenSeleccion.Name = "FechaInicio_dateTimePicker_OrdenSeleccion";
-            FechaInicio_dateTimePicker_OrdenSeleccion.Size = new Size(221, 27);
+            FechaInicio_dateTimePicker_OrdenSeleccion.Size = new Size(354, 27);
             FechaInicio_dateTimePicker_OrdenSeleccion.TabIndex = 1;
             // 
             // PrioridadComboBoxOrdenSeleccion
@@ -287,7 +265,7 @@
             // 
             // OrdenesDePrepracionAOrdenSeleccionListView
             // 
-            OrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacionColumna, RSCliente_Columna, FechaOrdenPreparacionColumna, PrioridadColumna, TransportistaDetalleColumna });
+            OrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacionColumna, RSCliente_Columna, FechaOrdenPreparacionColumna, PrioridadColumna });
             OrdenesDePrepracionAOrdenSeleccionListView.Location = new Point(4, 26);
             OrdenesDePrepracionAOrdenSeleccionListView.Name = "OrdenesDePrepracionAOrdenSeleccionListView";
             OrdenesDePrepracionAOrdenSeleccionListView.Size = new Size(947, 221);
@@ -316,11 +294,6 @@
             PrioridadColumna.Text = "Prioridad";
             PrioridadColumna.Width = 100;
             // 
-            // TransportistaDetalleColumna
-            // 
-            TransportistaDetalleColumna.Text = "Transportista";
-            TransportistaDetalleColumna.Width = 100;
-            // 
             // OSgroupBox
             // 
             OSgroupBox.Controls.Add(DetalleOrdenesDePreparacionPendientesListView);
@@ -335,7 +308,7 @@
             // 
             // DetalleOrdenesDePreparacionPendientesListView
             // 
-            DetalleOrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOPColumna, OPaOS_RazonSocialClienteColumna, OPaOS_FechaOPColumna, OPaOS_PrioridadColumna, OPaOS_TransportistaColumna });
+            DetalleOrdenesDePreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { OPaOS_IdOPColumna, OPaOS_RazonSocialClienteColumna, OPaOS_FechaOPColumna, OPaOS_PrioridadColumna });
             DetalleOrdenesDePreparacionPendientesListView.Location = new Point(6, 43);
             DetalleOrdenesDePreparacionPendientesListView.Name = "DetalleOrdenesDePreparacionPendientesListView";
             DetalleOrdenesDePreparacionPendientesListView.Size = new Size(947, 216);
@@ -362,11 +335,6 @@
             // 
             OPaOS_PrioridadColumna.Text = "Prioridad";
             OPaOS_PrioridadColumna.Width = 100;
-            // 
-            // OPaOS_TransportistaColumna
-            // 
-            OPaOS_TransportistaColumna.Text = "Transportista";
-            OPaOS_TransportistaColumna.Width = 100;
             // 
             // OrdenSeleccionForm
             // 
@@ -422,16 +390,12 @@
         private ColumnHeader RSCliente_Columna;
         private ColumnHeader FechaOrdenPreparacionColumna;
         private ColumnHeader PrioridadColumna;
-        private ColumnHeader TransportistaDetalleColumna;
         private ListView DetalleOrdenesDePreparacionPendientesListView;
         private ColumnHeader OPaOS_IdOPColumna;
         private ColumnHeader OPaOS_RazonSocialClienteColumna;
         private ColumnHeader OPaOS_FechaOPColumna;
         private ColumnHeader OPaOS_PrioridadColumna;
-        private ColumnHeader OPaOS_TransportistaColumna;
         private DateTimePicker FechaInicio_dateTimePicker_OrdenSeleccion;
-        private TextBox TransportistaTextBoxOrdenSeleccion;
-        private Label label8;
         private Label label9;
         private DateTimePicker FechaFinal_dateTimePicker_OrdenSeleccion;
     }
