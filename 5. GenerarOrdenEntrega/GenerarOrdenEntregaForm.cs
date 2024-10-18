@@ -18,9 +18,6 @@ namespace Pampazon.OrdenEntrega
         {
             public int NroOrden { get; set; }
             public string FechaEntrega { get; set; }
-            public int IdTransportista { get; set; }
-            public string NombreTransportista { get; set; }
-            public string Estado { get; set; }
         }
 
         public GenerarOrdenEntregaForm()
