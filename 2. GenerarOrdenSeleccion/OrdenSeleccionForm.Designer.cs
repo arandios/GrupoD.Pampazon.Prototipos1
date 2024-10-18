@@ -53,7 +53,7 @@
             OPgroupBox = new GroupBox();
             OrdenesDePrepracionAOrdenSeleccionListView = new ListView();
             IDOrdenPreparacionColumna = new ColumnHeader();
-            DescripcionClienteColumna = new ColumnHeader();
+            RSCliente_Columna = new ColumnHeader();
             FechaOrdenPreparacionColumna = new ColumnHeader();
             PrioridadColumna = new ColumnHeader();
             TransportistaDetalleColumna = new ColumnHeader();
@@ -262,7 +262,7 @@
             // 
             FechaInicio_dateTimePicker_OrdenSeleccion.Location = new Point(515, 62);
             FechaInicio_dateTimePicker_OrdenSeleccion.Name = "FechaInicio_dateTimePicker_OrdenSeleccion";
-            FechaInicio_dateTimePicker_OrdenSeleccion.Size = new Size(218, 27);
+            FechaInicio_dateTimePicker_OrdenSeleccion.Size = new Size(221, 27);
             FechaInicio_dateTimePicker_OrdenSeleccion.TabIndex = 1;
             // 
             // PrioridadComboBoxOrdenSeleccion
@@ -287,7 +287,7 @@
             // 
             // OrdenesDePrepracionAOrdenSeleccionListView
             // 
-            OrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacionColumna, DescripcionClienteColumna, FechaOrdenPreparacionColumna, PrioridadColumna, TransportistaDetalleColumna });
+            OrdenesDePrepracionAOrdenSeleccionListView.Columns.AddRange(new ColumnHeader[] { IDOrdenPreparacionColumna, RSCliente_Columna, FechaOrdenPreparacionColumna, PrioridadColumna, TransportistaDetalleColumna });
             OrdenesDePrepracionAOrdenSeleccionListView.Location = new Point(4, 26);
             OrdenesDePrepracionAOrdenSeleccionListView.Name = "OrdenesDePrepracionAOrdenSeleccionListView";
             OrdenesDePrepracionAOrdenSeleccionListView.Size = new Size(947, 221);
@@ -301,10 +301,10 @@
             IDOrdenPreparacionColumna.Text = "ID Orden Preparación";
             IDOrdenPreparacionColumna.Width = 100;
             // 
-            // DescripcionClienteColumna
+            // RSCliente_Columna
             // 
-            DescripcionClienteColumna.Text = "Cliente";
-            DescripcionClienteColumna.Width = 100;
+            RSCliente_Columna.Text = "Razón Social Cliente";
+            RSCliente_Columna.Width = 100;
             // 
             // FechaOrdenPreparacionColumna
             // 
@@ -350,12 +350,12 @@
             // 
             // OPaOS_RazonSocialClienteColumna
             // 
-            OPaOS_RazonSocialClienteColumna.Text = "Cliente";
+            OPaOS_RazonSocialClienteColumna.Text = "Razón Social Cliente";
             OPaOS_RazonSocialClienteColumna.Width = 100;
             // 
             // OPaOS_FechaOPColumna
             // 
-            OPaOS_FechaOPColumna.Text = "Fecha Orden de Preparación";
+            OPaOS_FechaOPColumna.Text = "Fecha";
             OPaOS_FechaOPColumna.Width = 120;
             // 
             // OPaOS_PrioridadColumna
@@ -419,7 +419,7 @@
         private ComboBox PrioridadComboBoxOrdenSeleccion;
         private ListView OrdenesDePrepracionAOrdenSeleccionListView;
         private ColumnHeader IDOrdenPreparacionColumna;
-        private ColumnHeader DescripcionClienteColumna;
+        private ColumnHeader RSCliente_Columna;
         private ColumnHeader FechaOrdenPreparacionColumna;
         private ColumnHeader PrioridadColumna;
         private ColumnHeader TransportistaDetalleColumna;

@@ -313,7 +313,18 @@ namespace Pampazon
 
         private void VolverBtn(object sender, EventArgs e)
         {
-            this.Close();
+            if (model.Orden.Productos.Count > 0)
+            {
+            DialogResult resultOrden = MessageBox.Show($"Desea salir? No se guardara la orden en proceso", "Confirmar Salir", MessageBoxButtons.YesNo);
+            if (resultOrden == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }else
+            {
+                this.Close();
+            }
+        
         }
 
         private void GenerarOrdenPreparacionForm_Load_1(object sender, EventArgs e)
