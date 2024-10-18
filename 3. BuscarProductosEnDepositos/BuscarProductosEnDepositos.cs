@@ -20,35 +20,17 @@ namespace Pampazon.BuscarProductosEnDepositos
             modelo = new BuscarProductosEnDepositosModelo();
         }
         private void CargarOrdenesDeSeleccionEnComboBox()
-        {            
-            CMBOrdenSeleccion.Items.Clear();
-            var ordenes = modelo.ObtenerOrdenesDeSeleccion();
-            foreach (var orden in ordenes)
-            {
-                CMBOrdenSeleccion.Items.Add(orden.IDOrdenSeleccion);
-            }
-
-            // Seleccionar la primera orden de selección si hay alguna
-            if (CMBOrdenSeleccion.Items.Count > 0)
-            {
-                CMBOrdenSeleccion.SelectedIndex = 0; // Selecciona automáticamente la primera
-            }
+        {
+            // Obtener la lista de órdenes de selección pendientes y cargarla en el ComboBox
+            modelo.CargarOrdenesEnComboBox(CMBOrdenSeleccion);
         }
 
 
 
         private void CargarProductosEnListView(int idOrdenSeleccion)
         {
-            LSTProductos.Items.Clear();
-            var productos = modelo.ObtenerProductosPorOrdenDeSeleccion(idOrdenSeleccion);
-
-            foreach (var producto in productos)
-            {
-                ListViewItem item = new ListViewItem(producto.Ubicacion);
-                item.SubItems.Add(producto.SKU);
-                item.SubItems.Add(producto.Cantidad.ToString());
-                LSTProductos.Items.Add(item);
-            }
+            // Obtener la lista de productos y cargarla en el ListView
+            modelo.CargarProductosEnListView(idOrdenSeleccion, LSTProductos);
         }
 
         private void AgregarProductosEnDepositosFormulario_Load_1(object sender, EventArgs e)
