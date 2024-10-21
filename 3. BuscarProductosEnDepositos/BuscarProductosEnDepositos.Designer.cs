@@ -62,7 +62,7 @@
             // Ubicacion_Columna
             // 
             Ubicacion_Columna.Text = "Ubicación";
-            Ubicacion_Columna.Width = 150;
+            Ubicacion_Columna.Width = 151;
             // 
             // Sku_Columna
             // 
