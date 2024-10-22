@@ -29,7 +29,7 @@ namespace Pampazon._4._EmpaquetarOrden
         private void CargarLista()
         {
 
-            OrdenesParaPrepararlst.Items.Clear();
+            OrdenesParaPrepararLST.Items.Clear();
 
 
             if (indiceActualOrden < modelo.ordenes.Count)
@@ -46,7 +46,7 @@ namespace Pampazon._4._EmpaquetarOrden
                     item.SubItems.Add(producto.Cantidad.ToString());  // Muestra la cantidad
 
                     // Agregar el ítem al ListView
-                    OrdenesParaPrepararlst.Items.Add(item);
+                    OrdenesParaPrepararLST.Items.Add(item);
                 }
             }
             else

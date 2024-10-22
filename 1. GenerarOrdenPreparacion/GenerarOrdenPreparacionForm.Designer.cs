@@ -52,13 +52,13 @@
             RazonSocialClienteTXT = new TextBox();
             SKUProductoLBL = new Label();
             SKUProductoTXT = new TextBox();
-            OPMercaderiaGroupBox = new GroupBox();
-            label5 = new Label();
+            OPMercaderiaGRP = new GroupBox();
+            CantidadDisponibleLBL = new Label();
             MaxCantidadTxt = new TextBox();
             AgregarCantidadTXT = new TextBox();
-            label9 = new Label();
+            CantidadRetirarLBL = new Label();
             ProductoSeleccionadoTxt = new TextBox();
-            label15 = new Label();
+            ProductoSelecionadoLBL = new Label();
             label14 = new Label();
             label12 = new Label();
             PrioridadCMB = new ComboBox();
@@ -72,7 +72,7 @@
             NombreTransportistaCMB = new ComboBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             groupBox1.SuspendLayout();
-            OPMercaderiaGroupBox.SuspendLayout();
+            OPMercaderiaGRP.SuspendLayout();
             OPDetalleMercaderiaGroupBox.SuspendLayout();
             SuspendLayout();
             // 
@@ -298,34 +298,34 @@
             SKUProductoTXT.TabIndex = 59;
             SKUProductoTXT.TextChanged += SKUProductoTXT_TextChanged;
             // 
-            // OPMercaderiaGroupBox
+            // OPMercaderiaGRP
             // 
-            OPMercaderiaGroupBox.Controls.Add(label5);
-            OPMercaderiaGroupBox.Controls.Add(label1);
-            OPMercaderiaGroupBox.Controls.Add(AgregarProductoBTN);
-            OPMercaderiaGroupBox.Controls.Add(MaxCantidadTxt);
-            OPMercaderiaGroupBox.Controls.Add(AgregarCantidadTXT);
-            OPMercaderiaGroupBox.Controls.Add(ProductosStockLST);
-            OPMercaderiaGroupBox.Controls.Add(label9);
-            OPMercaderiaGroupBox.Controls.Add(ProductoSeleccionadoTxt);
-            OPMercaderiaGroupBox.Controls.Add(label15);
-            OPMercaderiaGroupBox.Location = new Point(48, 198);
-            OPMercaderiaGroupBox.Margin = new Padding(3, 2, 3, 2);
-            OPMercaderiaGroupBox.Name = "OPMercaderiaGroupBox";
-            OPMercaderiaGroupBox.Padding = new Padding(3, 2, 3, 2);
-            OPMercaderiaGroupBox.Size = new Size(867, 234);
-            OPMercaderiaGroupBox.TabIndex = 57;
-            OPMercaderiaGroupBox.TabStop = false;
-            OPMercaderiaGroupBox.Text = "Productos en deposito";
+            OPMercaderiaGRP.Controls.Add(CantidadDisponibleLBL);
+            OPMercaderiaGRP.Controls.Add(label1);
+            OPMercaderiaGRP.Controls.Add(AgregarProductoBTN);
+            OPMercaderiaGRP.Controls.Add(MaxCantidadTxt);
+            OPMercaderiaGRP.Controls.Add(AgregarCantidadTXT);
+            OPMercaderiaGRP.Controls.Add(ProductosStockLST);
+            OPMercaderiaGRP.Controls.Add(CantidadRetirarLBL);
+            OPMercaderiaGRP.Controls.Add(ProductoSeleccionadoTxt);
+            OPMercaderiaGRP.Controls.Add(ProductoSelecionadoLBL);
+            OPMercaderiaGRP.Location = new Point(48, 198);
+            OPMercaderiaGRP.Margin = new Padding(3, 2, 3, 2);
+            OPMercaderiaGRP.Name = "OPMercaderiaGRP";
+            OPMercaderiaGRP.Padding = new Padding(3, 2, 3, 2);
+            OPMercaderiaGRP.Size = new Size(867, 234);
+            OPMercaderiaGRP.TabIndex = 57;
+            OPMercaderiaGRP.TabStop = false;
+            OPMercaderiaGRP.Text = "Productos en deposito";
             // 
-            // label5
+            // CantidadDisponibleLBL
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(579, 74);
-            label5.Name = "label5";
-            label5.Size = new Size(113, 15);
-            label5.TabIndex = 71;
-            label5.Text = "Cantidad disponible";
+            CantidadDisponibleLBL.AutoSize = true;
+            CantidadDisponibleLBL.Location = new Point(579, 74);
+            CantidadDisponibleLBL.Name = "CantidadDisponibleLBL";
+            CantidadDisponibleLBL.Size = new Size(113, 15);
+            CantidadDisponibleLBL.TabIndex = 71;
+            CantidadDisponibleLBL.Text = "Cantidad disponible";
             // 
             // MaxCantidadTxt
             // 
@@ -346,14 +346,14 @@
             AgregarCantidadTXT.Size = new Size(237, 23);
             AgregarCantidadTXT.TabIndex = 69;
             // 
-            // label9
+            // CantidadRetirarLBL
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(574, 134);
-            label9.Name = "label9";
-            label9.Size = new Size(144, 15);
-            label9.TabIndex = 68;
-            label9.Text = "Indique Cantidad a Retirar";
+            CantidadRetirarLBL.AutoSize = true;
+            CantidadRetirarLBL.Location = new Point(574, 134);
+            CantidadRetirarLBL.Name = "CantidadRetirarLBL";
+            CantidadRetirarLBL.Size = new Size(144, 15);
+            CantidadRetirarLBL.TabIndex = 68;
+            CantidadRetirarLBL.Text = "Indique Cantidad a Retirar";
             // 
             // ProductoSeleccionadoTxt
             // 
@@ -364,14 +364,14 @@
             ProductoSeleccionadoTxt.Size = new Size(238, 23);
             ProductoSeleccionadoTxt.TabIndex = 63;
             // 
-            // label15
+            // ProductoSelecionadoLBL
             // 
-            label15.AutoSize = true;
-            label15.Location = new Point(585, 20);
-            label15.Name = "label15";
-            label15.Size = new Size(129, 15);
-            label15.TabIndex = 65;
-            label15.Text = "Producto Seleccionado";
+            ProductoSelecionadoLBL.AutoSize = true;
+            ProductoSelecionadoLBL.Location = new Point(585, 20);
+            ProductoSelecionadoLBL.Name = "ProductoSelecionadoLBL";
+            ProductoSelecionadoLBL.Size = new Size(129, 15);
+            ProductoSelecionadoLBL.TabIndex = 65;
+            ProductoSelecionadoLBL.Text = "Producto Seleccionado";
             // 
             // label14
             // 
@@ -507,7 +507,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1004, 813);
             Controls.Add(SalirBTN);
-            Controls.Add(OPMercaderiaGroupBox);
+            Controls.Add(OPMercaderiaGRP);
             Controls.Add(groupBox1);
             Controls.Add(OPDetalleMercaderiaGroupBox);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -518,8 +518,8 @@
             Load += GenerarOrdenPreparacionForm_Load_1;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            OPMercaderiaGroupBox.ResumeLayout(false);
-            OPMercaderiaGroupBox.PerformLayout();
+            OPMercaderiaGRP.ResumeLayout(false);
+            OPMercaderiaGRP.PerformLayout();
             OPDetalleMercaderiaGroupBox.ResumeLayout(false);
             OPDetalleMercaderiaGroupBox.PerformLayout();
             ResumeLayout(false);
@@ -543,7 +543,7 @@
         private Label label1;
         private Label label8;
         private GroupBox groupBox1;
-        private GroupBox OPMercaderiaGroupBox;
+        private GroupBox OPMercaderiaGRP;
         private GroupBox OPDetalleMercaderiaGroupBox;
         private ComboBox PrioridadCMB;
         private Label label4;
@@ -558,12 +558,12 @@
         private Label label14;
         private Label label12;
         private ComboBox DniTransportistaCMB;
-        private Label label5;
+        private Label CantidadDisponibleLBL;
         protected TextBox MaxCantidadTxt;
         private TextBox AgregarCantidadTXT;
-        private Label label9;
+        private Label CantidadRetirarLBL;
         protected TextBox ProductoSeleccionadoTxt;
-        private Label label15;
+        private Label ProductoSelecionadoLBL;
         private TextBox CodigoClienteTXT;
         private DateTimePicker FechaSelecter;
         private ComboBox NombreTransportistaCMB;
