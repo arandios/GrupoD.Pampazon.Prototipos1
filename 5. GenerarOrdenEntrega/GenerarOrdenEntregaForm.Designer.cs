@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Salirbtn = new Button();
+            SalirGenerarOEbtn = new Button();
             GenerarOrdenEntregabtn = new Button();
             label2 = new Label();
-            groupBox3 = new GroupBox();
-            Orden_Entrega = new ListView();
-            groupBox3.SuspendLayout();
+            OrdenDespachoCMB = new GroupBox();
+            Orden_EntregaLST = new ListView();
+            OrdenDespachoCMB.SuspendLayout();
             SuspendLayout();
             // 
-            // Salirbtn
+            // SalirGenerarOEbtn
             // 
-            Salirbtn.Location = new Point(757, 816);
-            Salirbtn.Margin = new Padding(2, 3, 2, 3);
-            Salirbtn.Name = "Salirbtn";
-            Salirbtn.Size = new Size(214, 53);
-            Salirbtn.TabIndex = 17;
-            Salirbtn.Text = "&Salir";
-            Salirbtn.UseVisualStyleBackColor = true;
-            Salirbtn.Click += Salirbtn_Click;
+            SalirGenerarOEbtn.Location = new Point(757, 816);
+            SalirGenerarOEbtn.Margin = new Padding(2, 3, 2, 3);
+            SalirGenerarOEbtn.Name = "SalirGenerarOEbtn";
+            SalirGenerarOEbtn.Size = new Size(214, 53);
+            SalirGenerarOEbtn.TabIndex = 17;
+            SalirGenerarOEbtn.Text = "&Salir";
+            SalirGenerarOEbtn.UseVisualStyleBackColor = true;
+            SalirGenerarOEbtn.Click += Salirbtn_Click;
             // 
             // GenerarOrdenEntregabtn
             // 
@@ -67,52 +67,53 @@
             label2.Size = new Size(0, 20);
             label2.TabIndex = 23;
             // 
-            // groupBox3
+            // OrdenDespachoCMB
             // 
-            groupBox3.Controls.Add(Orden_Entrega);
-            groupBox3.Location = new Point(0, 35);
-            groupBox3.Margin = new Padding(3, 4, 3, 4);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(3, 4, 3, 4);
-            groupBox3.Size = new Size(971, 758);
-            groupBox3.TabIndex = 26;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Ordenes a despacho:";
+            OrdenDespachoCMB.Controls.Add(Orden_EntregaLST);
+            OrdenDespachoCMB.Location = new Point(0, 35);
+            OrdenDespachoCMB.Margin = new Padding(3, 4, 3, 4);
+            OrdenDespachoCMB.Name = "OrdenDespachoCMB";
+            OrdenDespachoCMB.Padding = new Padding(3, 4, 3, 4);
+            OrdenDespachoCMB.Size = new Size(971, 774);
+            OrdenDespachoCMB.TabIndex = 26;
+            OrdenDespachoCMB.TabStop = false;
+            OrdenDespachoCMB.Text = "Ordenes a despacho:";
+            OrdenDespachoCMB.Enter += OrdenDespachoCMB_Enter;
             // 
-            // Orden_Entrega
+            // Orden_EntregaLST
             // 
-            Orden_Entrega.Location = new Point(9, 36);
-            Orden_Entrega.Margin = new Padding(3, 4, 3, 4);
-            Orden_Entrega.Name = "Orden_Entrega";
-            Orden_Entrega.Size = new Size(956, 714);
-            Orden_Entrega.TabIndex = 22;
-            Orden_Entrega.UseCompatibleStateImageBehavior = false;
-            Orden_Entrega.View = View.Details;
-            Orden_Entrega.SelectedIndexChanged += Orden_Entrega_SelectedIndexChanged;
+            Orden_EntregaLST.Location = new Point(12, 28);
+            Orden_EntregaLST.Margin = new Padding(3, 4, 3, 4);
+            Orden_EntregaLST.Name = "Orden_EntregaLST";
+            Orden_EntregaLST.Size = new Size(956, 738);
+            Orden_EntregaLST.TabIndex = 22;
+            Orden_EntregaLST.UseCompatibleStateImageBehavior = false;
+            Orden_EntregaLST.View = View.Details;
+            Orden_EntregaLST.SelectedIndexChanged += Orden_Entrega_SelectedIndexChanged;
             // 
             // GenerarOrdenEntregaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(982, 953);
-            Controls.Add(groupBox3);
+            Controls.Add(OrdenDespachoCMB);
             Controls.Add(GenerarOrdenEntregabtn);
             Controls.Add(label2);
-            Controls.Add(Salirbtn);
+            Controls.Add(SalirGenerarOEbtn);
             Margin = new Padding(2, 3, 2, 3);
             Name = "GenerarOrdenEntregaForm";
             Text = "Generar Orden de Entrega";
             Load += OrdenEntregaForm_Load;
-            groupBox3.ResumeLayout(false);
+            OrdenDespachoCMB.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Button Salirbtn;
+        private Button SalirGenerarOEbtn;
         private Button GenerarOrdenEntregabtn;
         private Label label2;
-        private GroupBox groupBox3;
-        private ListView Orden_Entrega;
+        private GroupBox OrdenDespachoCMB;
+        private ListView Orden_EntregaLST;
     }
 }

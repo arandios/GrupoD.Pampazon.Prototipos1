@@ -33,9 +33,9 @@ namespace Pampazon.OrdenEntrega
 
         private void ConfigurarListView()
         {
-            Orden_Entrega.View = View.Details;
-            Orden_Entrega.Columns.Add("Código Orden de Entrega", 250); 
-            Orden_Entrega.Columns.Add("Fecha Orden de Entrega", 250);  
+            Orden_EntregaLST.View = View.Details;
+            Orden_EntregaLST.Columns.Add("Código Orden de Entrega", 250);
+            Orden_EntregaLST.Columns.Add("Fecha Orden de Entrega", 250);
         }
 
 
@@ -43,9 +43,9 @@ namespace Pampazon.OrdenEntrega
         {
             for (int i = 1; i <= 10; i++)
             {
-                ListViewItem item = new ListViewItem("0000"+i);
+                ListViewItem item = new ListViewItem("0000" + i);
                 item.SubItems.Add(DateTime.Now.AddDays(i).ToString("dd/MM/yyyy"));
-                Orden_Entrega.Items.Add(item);
+                Orden_EntregaLST.Items.Add(item);
             }
         }
 
@@ -77,7 +77,7 @@ namespace Pampazon.OrdenEntrega
         private void GenerarOrdenEntregabtn_Click(object sender, EventArgs e)
         {
 
-            if (Orden_Entrega.Items.Count < 7)
+            if (Orden_EntregaLST.Items.Count < 7)
             {
                 MessageBox.Show("Error: Debe haber al menos 7 ítems en la lista para generar una orden de entrega.",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -88,17 +88,22 @@ namespace Pampazon.OrdenEntrega
             if (result == DialogResult.Yes)
             {
                 MessageBox.Show("Orden de entrega generada", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Orden_Entrega.Items.Clear();
+                Orden_EntregaLST.Items.Clear();
                 for (int i = 10; i <= 14; i++)
                 {
                     ListViewItem item = new ListViewItem("000" + i);
                     item.SubItems.Add(DateTime.Now.AddDays(i).ToString("dd/MM/yyyy"));
-                    Orden_Entrega.Items.Add(item);
+                    Orden_EntregaLST.Items.Add(item);
                 }
             }
         }
 
         private void Orden_Entrega_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OrdenDespachoCMB_Enter(object sender, EventArgs e)
         {
 
         }
