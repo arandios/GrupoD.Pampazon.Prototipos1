@@ -36,22 +36,22 @@
             OrdenTempLista = new ListView();
             ProductoColumna = new ColumnHeader();
             CantidadColumna = new ColumnHeader();
-            ProductoBuscar = new Button();
+            ProductoBuscarBTN = new Button();
             button3 = new Button();
             Generar = new Button();
             button2 = new Button();
-            NombreProductoInput = new TextBox();
-            button5 = new Button();
+            NombreProductoTXT = new TextBox();
+            BorrarFiltrosBTN = new Button();
             AgregarProductoBtn = new Button();
             label1 = new Label();
             label8 = new Label();
             groupBox1 = new GroupBox();
-            CodigoClienteInput = new TextBox();
+            CodigoClienteTXT = new TextBox();
             label11 = new Label();
             label10 = new Label();
-            RazonSocialClienteInput = new TextBox();
+            RazonSocialClienteTXT = new TextBox();
             SKUProductoLBL = new Label();
-            SKUProductoInput = new TextBox();
+            SKUProductoTXT = new TextBox();
             OPMercaderiaGroupBox = new GroupBox();
             label5 = new Label();
             MaxCantidadTxt = new TextBox();
@@ -127,16 +127,16 @@
             CantidadColumna.TextAlign = HorizontalAlignment.Center;
             CantidadColumna.Width = 120;
             // 
-            // ProductoBuscar
+            // ProductoBuscarBTN
             // 
-            ProductoBuscar.Location = new Point(433, 140);
-            ProductoBuscar.Margin = new Padding(2);
-            ProductoBuscar.Name = "ProductoBuscar";
-            ProductoBuscar.Size = new Size(187, 30);
-            ProductoBuscar.TabIndex = 29;
-            ProductoBuscar.Text = "&Buscar Productos";
-            ProductoBuscar.UseVisualStyleBackColor = true;
-            ProductoBuscar.Click += BuscarProductoBtn;
+            ProductoBuscarBTN.Location = new Point(433, 140);
+            ProductoBuscarBTN.Margin = new Padding(2);
+            ProductoBuscarBTN.Name = "ProductoBuscarBTN";
+            ProductoBuscarBTN.Size = new Size(187, 30);
+            ProductoBuscarBTN.TabIndex = 29;
+            ProductoBuscarBTN.Text = "&Buscar Productos";
+            ProductoBuscarBTN.UseVisualStyleBackColor = true;
+            ProductoBuscarBTN.Click += BuscarProductoBtn;
             // 
             // button3
             // 
@@ -174,24 +174,24 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += CancelarOrderBtn;
             // 
-            // NombreProductoInput
+            // NombreProductoTXT
             // 
-            NombreProductoInput.Location = new Point(414, 103);
-            NombreProductoInput.Margin = new Padding(2);
-            NombreProductoInput.Name = "NombreProductoInput";
-            NombreProductoInput.Size = new Size(413, 23);
-            NombreProductoInput.TabIndex = 23;
+            NombreProductoTXT.Location = new Point(414, 103);
+            NombreProductoTXT.Margin = new Padding(2);
+            NombreProductoTXT.Name = "NombreProductoTXT";
+            NombreProductoTXT.Size = new Size(413, 23);
+            NombreProductoTXT.TabIndex = 23;
             // 
-            // button5
+            // BorrarFiltrosBTN
             // 
-            button5.Location = new Point(640, 140);
-            button5.Margin = new Padding(2);
-            button5.Name = "button5";
-            button5.Size = new Size(187, 30);
-            button5.TabIndex = 36;
-            button5.Text = "&Borrar Filtros";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += LimpiarFiltros;
+            BorrarFiltrosBTN.Location = new Point(640, 140);
+            BorrarFiltrosBTN.Margin = new Padding(2);
+            BorrarFiltrosBTN.Name = "BorrarFiltrosBTN";
+            BorrarFiltrosBTN.Size = new Size(187, 30);
+            BorrarFiltrosBTN.TabIndex = 36;
+            BorrarFiltrosBTN.Text = "&Borrar Filtros";
+            BorrarFiltrosBTN.UseVisualStyleBackColor = true;
+            BorrarFiltrosBTN.Click += LimpiarFiltros;
             // 
             // AgregarProductoBtn
             // 
@@ -224,16 +224,16 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(CodigoClienteInput);
+            groupBox1.Controls.Add(CodigoClienteTXT);
             groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(NombreProductoInput);
+            groupBox1.Controls.Add(NombreProductoTXT);
             groupBox1.Controls.Add(label10);
-            groupBox1.Controls.Add(RazonSocialClienteInput);
+            groupBox1.Controls.Add(RazonSocialClienteTXT);
             groupBox1.Controls.Add(SKUProductoLBL);
-            groupBox1.Controls.Add(SKUProductoInput);
-            groupBox1.Controls.Add(ProductoBuscar);
-            groupBox1.Controls.Add(button5);
+            groupBox1.Controls.Add(SKUProductoTXT);
+            groupBox1.Controls.Add(ProductoBuscarBTN);
+            groupBox1.Controls.Add(BorrarFiltrosBTN);
             groupBox1.Location = new Point(56, 20);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
@@ -243,14 +243,14 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Seleccione filtros de búsqueda para sus productos en los depositos:";
             // 
-            // CodigoClienteInput
+            // CodigoClienteTXT
             // 
-            CodigoClienteInput.Location = new Point(10, 48);
-            CodigoClienteInput.Margin = new Padding(2);
-            CodigoClienteInput.Name = "CodigoClienteInput";
-            CodigoClienteInput.Size = new Size(369, 23);
-            CodigoClienteInput.TabIndex = 63;
-            CodigoClienteInput.TextChanged += CodigoClienteInput_TextChanged;
+            CodigoClienteTXT.Location = new Point(10, 48);
+            CodigoClienteTXT.Margin = new Padding(2);
+            CodigoClienteTXT.Name = "CodigoClienteTXT";
+            CodigoClienteTXT.Size = new Size(369, 23);
+            CodigoClienteTXT.TabIndex = 63;
+            CodigoClienteTXT.TextChanged += CodigoClienteInput_TextChanged;
             // 
             // label11
             // 
@@ -271,13 +271,13 @@
             label10.TabIndex = 60;
             label10.Text = "Razón Social cliente";
             // 
-            // RazonSocialClienteInput
+            // RazonSocialClienteTXT
             // 
-            RazonSocialClienteInput.Location = new Point(414, 48);
-            RazonSocialClienteInput.Margin = new Padding(2);
-            RazonSocialClienteInput.Name = "RazonSocialClienteInput";
-            RazonSocialClienteInput.Size = new Size(413, 23);
-            RazonSocialClienteInput.TabIndex = 59;
+            RazonSocialClienteTXT.Location = new Point(414, 48);
+            RazonSocialClienteTXT.Margin = new Padding(2);
+            RazonSocialClienteTXT.Name = "RazonSocialClienteTXT";
+            RazonSocialClienteTXT.Size = new Size(413, 23);
+            RazonSocialClienteTXT.TabIndex = 59;
             // 
             // SKUProductoLBL
             // 
@@ -289,13 +289,13 @@
             SKUProductoLBL.Text = "SKU Producto";
             SKUProductoLBL.Click += label7_Click;
             // 
-            // SKUProductoInput
+            // SKUProductoTXT
             // 
-            SKUProductoInput.Location = new Point(10, 103);
-            SKUProductoInput.Margin = new Padding(2);
-            SKUProductoInput.Name = "SKUProductoInput";
-            SKUProductoInput.Size = new Size(369, 23);
-            SKUProductoInput.TabIndex = 59;
+            SKUProductoTXT.Location = new Point(10, 103);
+            SKUProductoTXT.Margin = new Padding(2);
+            SKUProductoTXT.Name = "SKUProductoTXT";
+            SKUProductoTXT.Size = new Size(369, 23);
+            SKUProductoTXT.TabIndex = 59;
             // 
             // OPMercaderiaGroupBox
             // 
@@ -531,13 +531,13 @@
         private ColumnHeader Cant_Columna;
         private ListView OrdenTempLista;
         private ColumnHeader ProductoColumna;
-        private Button ProductoBuscar;
+        private Button ProductoBuscarBTN;
         private Button button3;
         private Button Generar;
         private Button button2;
         private ColumnHeader CantidadColumna;
-        private TextBox NombreProductoInput;
-        private Button button5;
+        private TextBox NombreProductoTXT;
+        private Button BorrarFiltrosBTN;
         private Button AgregarProductoBtn;
         private Label label1;
         private Label label8;
@@ -548,9 +548,9 @@
         private Label label4;
         private Label label3;
         private Label SKUProductoLBL;
-        private TextBox SKUProductoInput;
+        private TextBox SKUProductoTXT;
         private Label label10;
-        private TextBox RazonSocialClienteInput;
+        private TextBox RazonSocialClienteTXT;
         private Label label11;
         private TextBox CodigoClienteInput2;
         private ColumnHeader SKU_columna;
@@ -563,7 +563,7 @@
         private Label label9;
         protected TextBox ProductoSeleccionadoTxt;
         private Label label15;
-        private TextBox CodigoClienteInput;
+        private TextBox CodigoClienteTXT;
         private DateTimePicker FechaSelecter;
         private ComboBox NombreTransportistaComboBox;
         private TextBox HorarioTextBox;

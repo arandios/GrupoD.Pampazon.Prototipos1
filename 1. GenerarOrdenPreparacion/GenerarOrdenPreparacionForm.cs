@@ -92,8 +92,8 @@ namespace Pampazon
         private void LimpiarFiltros(object sender, EventArgs e)
         {
             ProductosStockLista.Items.Clear();
-            SKUProductoInput.Text = "";
-            NombreProductoInput.Text = "";
+            SKUProductoTXT.Text = "";
+            NombreProductoTXT.Text = "";
 
             // Clear other filters if necessary
         }
@@ -101,32 +101,32 @@ namespace Pampazon
         private void BuscarProductoBtn(object sender, EventArgs e)
         {
 
-            if (CodigoClienteInput.Text.ToUpper() != model.IDCliente.ToString().ToUpper())
+            if (CodigoClienteTXT.Text.ToUpper() != model.IDCliente.ToString().ToUpper())
             {
                 model.IDCliente = -1;
                 ProductosStockLista.Items.Clear();
-                if (CodigoClienteInput.Text == "" & RazonSocialClienteInput.Text == "")
+                if (CodigoClienteTXT.Text == "" & RazonSocialClienteTXT.Text == "")
                 {
                     DialogResult result = MessageBox.Show($"Ingrese ID cliente o Razon Social");
                 }
-                else if (CodigoClienteInput.Text != "" & RazonSocialClienteInput.Text != "")
+                else if (CodigoClienteTXT.Text != "" & RazonSocialClienteTXT.Text != "")
                 {
                     DialogResult result = MessageBox.Show($"Busque cliente por ID o por Razon Social. Elija una");
-                    CodigoClienteInput.Text = "";
-                    RazonSocialClienteInput.Text = "";
+                    CodigoClienteTXT.Text = "";
+                    RazonSocialClienteTXT.Text = "";
                 }
-                else if (CodigoClienteInput.Text != "" & RazonSocialClienteInput.Text == "")
+                else if (CodigoClienteTXT.Text != "" & RazonSocialClienteTXT.Text == "")
                 {
                     int clienteNumber;
-                    if (!int.TryParse(CodigoClienteInput.Text, out clienteNumber))
+                    if (!int.TryParse(CodigoClienteTXT.Text, out clienteNumber))
                     {
                         MessageBox.Show($"Ingrese un numero para buscar ID cliente");
-                        CodigoClienteInput.Text = "";
+                        CodigoClienteTXT.Text = "";
                     }
                     else if (model.obtenerCliente(clienteNumber) == -1)
                     {
-                        CodigoClienteInput.Text = "";
-                        MessageBox.Show($"ID Cliente seleccionado {CodigoClienteInput.Text} no existe. Busque devuelta o por razon Social");
+                        CodigoClienteTXT.Text = "";
+                        MessageBox.Show($"ID Cliente seleccionado {CodigoClienteTXT.Text} no existe. Busque devuelta o por razon Social");
                     }
                     else // caso favorable
                     {
@@ -135,16 +135,16 @@ namespace Pampazon
                         model.setProductosClientes(model.Orden.IDCliente);                        
                     }
                 }
-                else if (CodigoClienteInput.Text == "" & RazonSocialClienteInput.Text != "")
+                else if (CodigoClienteTXT.Text == "" & RazonSocialClienteTXT.Text != "")
                 {
-                    if (model.obtenerCliente(-1, RazonSocialClienteInput.Text) == -1)
+                    if (model.obtenerCliente(-1, RazonSocialClienteTXT.Text) == -1)
                     {
-                        MessageBox.Show($"Razon Social {RazonSocialClienteInput.Text} no existe. Busque devuelta o por ID Cliente");
+                        MessageBox.Show($"Razon Social {RazonSocialClienteTXT.Text} no existe. Busque devuelta o por ID Cliente");
                     }
                     else // caso favorable
                     {
-                        model.Orden.changeIDCliente(model.obtenerCliente(-1, RazonSocialClienteInput.Text));
-                        CodigoClienteInput.Text = model.Orden.IDCliente.ToString().ToUpper();
+                        model.Orden.changeIDCliente(model.obtenerCliente(-1, RazonSocialClienteTXT.Text));
+                        CodigoClienteTXT.Text = model.Orden.IDCliente.ToString().ToUpper();
                         model.setProductosClientes(model.Orden.IDCliente);
                         model.IDCliente = model.Orden.IDCliente;
                     }
@@ -152,7 +152,7 @@ namespace Pampazon
             } // fin de if orden con productos == 0
             if (model.IDCliente != -1)
             {
-                ActualizarListaProductos(SKUProductoInput.Text, NombreProductoInput.Text);
+                ActualizarListaProductos(SKUProductoTXT.Text, NombreProductoTXT.Text);
             }
 
         }  // hasta aca llega la seleccioan de cliente y producto
@@ -205,8 +205,8 @@ namespace Pampazon
                     cargarNombreTransportistas();
                     PrioridadComboBox.SelectedIndex = -1;
                     PrioridadComboBox.Enabled = false;
-                    CodigoClienteInput.Enabled = true;
-                    RazonSocialClienteInput.Enabled = true;
+                    CodigoClienteTXT.Enabled = true;
+                    RazonSocialClienteTXT.Enabled = true;
 
                     MessageBox.Show("Orden Cancelada", "Info");
 
@@ -278,8 +278,8 @@ namespace Pampazon
                     DniTransportistaComboBox.SelectedIndex = -1;
                     NombreTransportistaComboBox.SelectedIndex = -1;
                     FechaSelecter.Value = DateTime.Today;
-                    CodigoClienteInput.Enabled = true;
-                    RazonSocialClienteInput.Enabled = true;
+                    CodigoClienteTXT.Enabled = true;
+                    RazonSocialClienteTXT.Enabled = true;
                 }
             }
         }
@@ -365,8 +365,8 @@ namespace Pampazon
                         model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad);
                         ActualizarListaOrden();
                         ProductosStockLista.Items.Clear();
-                        CodigoClienteInput.Enabled = false;
-                        RazonSocialClienteInput.Enabled = false;
+                        CodigoClienteTXT.Enabled = false;
+                        RazonSocialClienteTXT.Enabled = false;
                         PrioridadComboBox.Enabled = true;
                     }
 
