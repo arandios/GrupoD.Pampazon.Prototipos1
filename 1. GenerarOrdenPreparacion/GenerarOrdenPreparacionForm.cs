@@ -35,7 +35,7 @@ namespace Pampazon
             FechaSelecter.MinDate = today;
             FechaSelecter.MaxDate = today.AddDays(90);
 
-            this.ProductosStockLista.SelectedIndexChanged += new EventHandler(this.ProductosStockLista_SelectedIndexChanged);
+            this.ProductosStockLST.SelectedIndexChanged += new EventHandler(this.ProductosStockLista_SelectedIndexChanged);
 
 
         }
@@ -47,9 +47,9 @@ namespace Pampazon
 
         private void AjustarColumnas()
         {
-            foreach (ColumnHeader column in ProductosStockLista.Columns)
+            foreach (ColumnHeader column in ProductosStockLST.Columns)
             {
-                ProductosStockLista.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+                ProductosStockLST.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
 
             foreach (ColumnHeader column in OrdenTempLista.Columns)
@@ -91,7 +91,7 @@ namespace Pampazon
 
         private void LimpiarFiltros(object sender, EventArgs e)
         {
-            ProductosStockLista.Items.Clear();
+            ProductosStockLST.Items.Clear();
             SKUProductoTXT.Text = "";
             NombreProductoTXT.Text = "";
 
@@ -104,7 +104,7 @@ namespace Pampazon
             if (CodigoClienteTXT.Text.ToUpper() != model.IDCliente.ToString().ToUpper())
             {
                 model.IDCliente = -1;
-                ProductosStockLista.Items.Clear();
+                ProductosStockLST.Items.Clear();
                 if (CodigoClienteTXT.Text == "" & RazonSocialClienteTXT.Text == "")
                 {
                     DialogResult result = MessageBox.Show($"Ingrese ID cliente o Razon Social");
@@ -132,7 +132,7 @@ namespace Pampazon
                     {
                         model.Orden.changeIDCliente(model.obtenerCliente(clienteNumber));
                         model.IDCliente = model.Orden.IDCliente;
-                        model.setProductosClientes(model.Orden.IDCliente);                        
+                        model.setProductosClientes(model.Orden.IDCliente);
                     }
                 }
                 else if (CodigoClienteTXT.Text == "" & RazonSocialClienteTXT.Text != "")
@@ -159,8 +159,8 @@ namespace Pampazon
 
         private void ActualizarListaProductos(string codProducto, string nombreProducto)
         {
-            ProductosStockLista.Items.Clear();
-            ProductosStockLista.FullRowSelect = true;
+            ProductosStockLST.Items.Clear();
+            ProductosStockLST.FullRowSelect = true;
             foreach (var Prod in model.obtenerProdFiltrados(codProducto.ToUpper(), nombreProducto.ToUpper()))
             {
                 if (Prod.Stock > 0)
@@ -171,18 +171,18 @@ namespace Pampazon
                     item.SubItems.Add(Prod.NombreProducto.ToUpper());
                     item.SubItems.Add(Prod.Stock.ToString());
                     item.Tag = Prod;
-                    ProductosStockLista.Items.Add(item);
+                    ProductosStockLST.Items.Add(item);
                 }
             }
-            ProductosStockLista.Enabled = true;
+            ProductosStockLST.Enabled = true;
 
             // Implement transportista list update logic
         }
         private void ProductosStockLista_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ProductosStockLista.SelectedItems.Count > 0)
+            if (ProductosStockLST.SelectedItems.Count > 0)
             {
-                ListViewItem selectedItem = ProductosStockLista.SelectedItems[0];
+                ListViewItem selectedItem = ProductosStockLST.SelectedItems[0];
                 ProductoSeleccionadoTxt.Text = selectedItem.Text;
                 MaxCantidadTxt.Text = selectedItem.SubItems[2].Text;
                 AgregarCantidadTXT.Enabled = true; ;
@@ -364,7 +364,7 @@ namespace Pampazon
                         MaxCantidadTxt.Text = (cantidadMax - cantidad).ToString();
                         model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad);
                         ActualizarListaOrden();
-                        ProductosStockLista.Items.Clear();
+                        ProductosStockLST.Items.Clear();
                         CodigoClienteTXT.Enabled = false;
                         RazonSocialClienteTXT.Enabled = false;
                         PrioridadCMB.Enabled = true;
@@ -490,6 +490,11 @@ namespace Pampazon
                 DniTransportistaCMB.SelectedIndex = -1; // Clear selection
                 NombreTransportistaCMB.SelectedIndex = -1; // Clear selection
             }
+        }
+
+        private void SKUProductoTXT_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

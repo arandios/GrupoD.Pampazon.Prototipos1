@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            ProductosStockLista = new ListView();
+            ProductosStockLST = new ListView();
             SKUColumna = new ColumnHeader();
             ProductosClienteColumna = new ColumnHeader();
             CantColumna = new ColumnHeader();
@@ -76,16 +76,16 @@
             OPDetalleMercaderiaGroupBox.SuspendLayout();
             SuspendLayout();
             // 
-            // ProductosStockLista
+            // ProductosStockLST
             // 
-            ProductosStockLista.Columns.AddRange(new ColumnHeader[] { SKUColumna, ProductosClienteColumna, CantColumna });
-            ProductosStockLista.Location = new Point(10, 20);
-            ProductosStockLista.Name = "ProductosStockLista";
-            ProductosStockLista.Size = new Size(503, 212);
-            ProductosStockLista.TabIndex = 32;
-            ProductosStockLista.UseCompatibleStateImageBehavior = false;
-            ProductosStockLista.View = View.Details;
-            ProductosStockLista.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
+            ProductosStockLST.Columns.AddRange(new ColumnHeader[] { SKUColumna, ProductosClienteColumna, CantColumna });
+            ProductosStockLST.Location = new Point(10, 20);
+            ProductosStockLST.Name = "ProductosStockLST";
+            ProductosStockLST.Size = new Size(503, 212);
+            ProductosStockLST.TabIndex = 32;
+            ProductosStockLST.UseCompatibleStateImageBehavior = false;
+            ProductosStockLST.View = View.Details;
+            ProductosStockLST.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
             // 
             // SKUColumna
             // 
@@ -296,6 +296,7 @@
             SKUProductoTXT.Name = "SKUProductoTXT";
             SKUProductoTXT.Size = new Size(369, 23);
             SKUProductoTXT.TabIndex = 59;
+            SKUProductoTXT.TextChanged += SKUProductoTXT_TextChanged;
             // 
             // OPMercaderiaGroupBox
             // 
@@ -304,7 +305,7 @@
             OPMercaderiaGroupBox.Controls.Add(AgregarProductoBTN);
             OPMercaderiaGroupBox.Controls.Add(MaxCantidadTxt);
             OPMercaderiaGroupBox.Controls.Add(AgregarCantidadTXT);
-            OPMercaderiaGroupBox.Controls.Add(ProductosStockLista);
+            OPMercaderiaGroupBox.Controls.Add(ProductosStockLST);
             OPMercaderiaGroupBox.Controls.Add(label9);
             OPMercaderiaGroupBox.Controls.Add(ProductoSeleccionadoTxt);
             OPMercaderiaGroupBox.Controls.Add(label15);
@@ -526,7 +527,7 @@
 
         #endregion
 
-        private ListView ProductosStockLista;
+        private ListView ProductosStockLST;
         private ColumnHeader ProductosClienteColumna;
         private ColumnHeader CantColumna;
         private ListView OrdenTempLista;
