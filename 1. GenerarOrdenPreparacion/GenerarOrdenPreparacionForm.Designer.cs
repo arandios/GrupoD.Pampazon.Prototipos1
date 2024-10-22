@@ -30,9 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             ProductosStockLista = new ListView();
-            SKU_columna = new ColumnHeader();
-            ProductosCliente = new ColumnHeader();
-            Cant_Columna = new ColumnHeader();
+            SKUColumna = new ColumnHeader();
+            ProductosClienteColumna = new ColumnHeader();
+            CantColumna = new ColumnHeader();
             OrdenTempLista = new ListView();
             ProductoColumna = new ColumnHeader();
             CantidadColumna = new ColumnHeader();
@@ -42,7 +42,7 @@
             button2 = new Button();
             NombreProductoTXT = new TextBox();
             BorrarFiltrosBTN = new Button();
-            AgregarProductoBtn = new Button();
+            AgregarProductoBTN = new Button();
             label1 = new Label();
             label8 = new Label();
             groupBox1 = new GroupBox();
@@ -55,7 +55,7 @@
             OPMercaderiaGroupBox = new GroupBox();
             label5 = new Label();
             MaxCantidadTxt = new TextBox();
-            AgregarCantidadTextBox = new TextBox();
+            AgregarCantidadTXT = new TextBox();
             label9 = new Label();
             ProductoSeleccionadoTxt = new TextBox();
             label15 = new Label();
@@ -78,7 +78,7 @@
             // 
             // ProductosStockLista
             // 
-            ProductosStockLista.Columns.AddRange(new ColumnHeader[] { SKU_columna, ProductosCliente, Cant_Columna });
+            ProductosStockLista.Columns.AddRange(new ColumnHeader[] { SKUColumna, ProductosClienteColumna, CantColumna });
             ProductosStockLista.Location = new Point(10, 20);
             ProductosStockLista.Name = "ProductosStockLista";
             ProductosStockLista.Size = new Size(503, 212);
@@ -87,22 +87,22 @@
             ProductosStockLista.View = View.Details;
             ProductosStockLista.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
             // 
-            // SKU_columna
+            // SKUColumna
             // 
-            SKU_columna.Text = "SKU Producto";
-            SKU_columna.Width = 150;
+            SKUColumna.Text = "SKU Producto";
+            SKUColumna.Width = 150;
             // 
-            // ProductosCliente
+            // ProductosClienteColumna
             // 
-            ProductosCliente.Text = "Producto";
-            ProductosCliente.TextAlign = HorizontalAlignment.Center;
-            ProductosCliente.Width = 180;
+            ProductosClienteColumna.Text = "Producto";
+            ProductosClienteColumna.TextAlign = HorizontalAlignment.Center;
+            ProductosClienteColumna.Width = 180;
             // 
-            // Cant_Columna
+            // CantColumna
             // 
-            Cant_Columna.Text = "Cantidad disponible";
-            Cant_Columna.TextAlign = HorizontalAlignment.Center;
-            Cant_Columna.Width = 200;
+            CantColumna.Text = "Cantidad disponible";
+            CantColumna.TextAlign = HorizontalAlignment.Center;
+            CantColumna.Width = 200;
             // 
             // OrdenTempLista
             // 
@@ -193,16 +193,16 @@
             BorrarFiltrosBTN.UseVisualStyleBackColor = true;
             BorrarFiltrosBTN.Click += LimpiarFiltros;
             // 
-            // AgregarProductoBtn
+            // AgregarProductoBTN
             // 
-            AgregarProductoBtn.Location = new Point(574, 194);
-            AgregarProductoBtn.Margin = new Padding(2);
-            AgregarProductoBtn.Name = "AgregarProductoBtn";
-            AgregarProductoBtn.Size = new Size(237, 35);
-            AgregarProductoBtn.TabIndex = 39;
-            AgregarProductoBtn.Text = "&Agregar Productos a la Orden";
-            AgregarProductoBtn.UseVisualStyleBackColor = true;
-            AgregarProductoBtn.Click += AgregarProductoBtn_Click;
+            AgregarProductoBTN.Location = new Point(574, 194);
+            AgregarProductoBTN.Margin = new Padding(2);
+            AgregarProductoBTN.Name = "AgregarProductoBTN";
+            AgregarProductoBTN.Size = new Size(237, 35);
+            AgregarProductoBTN.TabIndex = 39;
+            AgregarProductoBTN.Text = "&Agregar Productos a la Orden";
+            AgregarProductoBTN.UseVisualStyleBackColor = true;
+            AgregarProductoBTN.Click += AgregarProductoBtn_Click;
             // 
             // label1
             // 
@@ -301,9 +301,9 @@
             // 
             OPMercaderiaGroupBox.Controls.Add(label5);
             OPMercaderiaGroupBox.Controls.Add(label1);
-            OPMercaderiaGroupBox.Controls.Add(AgregarProductoBtn);
+            OPMercaderiaGroupBox.Controls.Add(AgregarProductoBTN);
             OPMercaderiaGroupBox.Controls.Add(MaxCantidadTxt);
-            OPMercaderiaGroupBox.Controls.Add(AgregarCantidadTextBox);
+            OPMercaderiaGroupBox.Controls.Add(AgregarCantidadTXT);
             OPMercaderiaGroupBox.Controls.Add(ProductosStockLista);
             OPMercaderiaGroupBox.Controls.Add(label9);
             OPMercaderiaGroupBox.Controls.Add(ProductoSeleccionadoTxt);
@@ -335,15 +335,15 @@
             MaxCantidadTxt.Size = new Size(237, 23);
             MaxCantidadTxt.TabIndex = 70;
             // 
-            // AgregarCantidadTextBox
+            // AgregarCantidadTXT
             // 
-            AgregarCantidadTextBox.Enabled = false;
-            AgregarCantidadTextBox.Location = new Point(574, 151);
-            AgregarCantidadTextBox.Margin = new Padding(2);
-            AgregarCantidadTextBox.MaxLength = 50;
-            AgregarCantidadTextBox.Name = "AgregarCantidadTextBox";
-            AgregarCantidadTextBox.Size = new Size(237, 23);
-            AgregarCantidadTextBox.TabIndex = 69;
+            AgregarCantidadTXT.Enabled = false;
+            AgregarCantidadTXT.Location = new Point(574, 151);
+            AgregarCantidadTXT.Margin = new Padding(2);
+            AgregarCantidadTXT.MaxLength = 50;
+            AgregarCantidadTXT.Name = "AgregarCantidadTXT";
+            AgregarCantidadTXT.Size = new Size(237, 23);
+            AgregarCantidadTXT.TabIndex = 69;
             // 
             // label9
             // 
@@ -527,8 +527,8 @@
         #endregion
 
         private ListView ProductosStockLista;
-        private ColumnHeader ProductosCliente;
-        private ColumnHeader Cant_Columna;
+        private ColumnHeader ProductosClienteColumna;
+        private ColumnHeader CantColumna;
         private ListView OrdenTempLista;
         private ColumnHeader ProductoColumna;
         private Button ProductoBuscarBTN;
@@ -538,7 +538,7 @@
         private ColumnHeader CantidadColumna;
         private TextBox NombreProductoTXT;
         private Button BorrarFiltrosBTN;
-        private Button AgregarProductoBtn;
+        private Button AgregarProductoBTN;
         private Label label1;
         private Label label8;
         private GroupBox groupBox1;
@@ -553,13 +553,13 @@
         private TextBox RazonSocialClienteTXT;
         private Label label11;
         private TextBox CodigoClienteInput2;
-        private ColumnHeader SKU_columna;
+        private ColumnHeader SKUColumna;
         private Label label14;
         private Label label12;
         private ComboBox DniTransportistaComboBox;
         private Label label5;
         protected TextBox MaxCantidadTxt;
-        private TextBox AgregarCantidadTextBox;
+        private TextBox AgregarCantidadTXT;
         private Label label9;
         protected TextBox ProductoSeleccionadoTxt;
         private Label label15;

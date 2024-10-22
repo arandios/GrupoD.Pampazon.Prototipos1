@@ -185,7 +185,7 @@ namespace Pampazon
                 ListViewItem selectedItem = ProductosStockLista.SelectedItems[0];
                 ProductoSeleccionadoTxt.Text = selectedItem.Text;
                 MaxCantidadTxt.Text = selectedItem.SubItems[2].Text;
-                AgregarCantidadTextBox.Enabled = true; ;
+                AgregarCantidadTXT.Enabled = true; ;
                 // Puedes acceder a otros valores aquí si es necesario
             }
 
@@ -327,7 +327,7 @@ namespace Pampazon
         private void AgregarProductoBtn_Click(object sender, EventArgs e)
         {
             int cantidad;
-            bool esNumero = int.TryParse(AgregarCantidadTextBox.Text, out cantidad);
+            bool esNumero = int.TryParse(AgregarCantidadTXT.Text, out cantidad);
             int cantidadMax;
             bool esNumeroMax = int.TryParse(MaxCantidadTxt.Text.ToString(), out cantidadMax);
             if (ProductoSeleccionadoTxt.Text == "")
@@ -337,7 +337,7 @@ namespace Pampazon
             else if (!esNumero)
             {
                 MessageBox.Show("Ingrese un numero Valido", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                AgregarCantidadTextBox.Text = "";
+                AgregarCantidadTXT.Text = "";
             }
             else if (esNumero)
             {
@@ -375,7 +375,7 @@ namespace Pampazon
             ProductoSeleccionadoTxt.Text = "";
             MaxCantidadTxt.Text = "";
             //model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
-            AgregarCantidadTextBox.Text = "";
+            AgregarCantidadTXT.Text = "";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
