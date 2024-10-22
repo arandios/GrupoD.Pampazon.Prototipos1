@@ -22,7 +22,7 @@ namespace Pampazon.BuscarProductosEnDepositos
         private void CargarOrdenesDeSeleccionEnComboBox()
         {
             // Obtener la lista de órdenes de selección pendientes y cargarla en el ComboBox
-            modelo.CargarOrdenesEnComboBox(CMBOrdenSeleccion);
+            modelo.CargarOrdenesEnComboBox(OrdenSeleccionCMB);
         }
 
 
@@ -30,7 +30,7 @@ namespace Pampazon.BuscarProductosEnDepositos
         private void CargarProductosEnListView(int idOrdenSeleccion)
         {
             // Obtener la lista de productos y cargarla en el ListView
-            modelo.CargarProductosEnListView(idOrdenSeleccion, LSTProductos);
+            modelo.CargarProductosEnListView(idOrdenSeleccion, ProductosLST);
         }
 
         private void AgregarProductosEnDepositosFormulario_Load_1(object sender, EventArgs e)
@@ -39,21 +39,21 @@ namespace Pampazon.BuscarProductosEnDepositos
             CargarOrdenesDeSeleccionEnComboBox();
 
             // Establecer el estilo del ComboBox para que solo permita selección
-            CMBOrdenSeleccion.DropDownStyle = ComboBoxStyle.DropDownList;
+            OrdenSeleccionCMB.DropDownStyle = ComboBoxStyle.DropDownList;
 
             // Seleccionar la primera orden de selección si hay alguna
-            if (CMBOrdenSeleccion.Items.Count > 0)
+            if (OrdenSeleccionCMB.Items.Count > 0)
             {
-                CMBOrdenSeleccion.SelectedIndex = 0; // Selecciona automáticamente la primera orden de selección
+                OrdenSeleccionCMB.SelectedIndex = 0; // Selecciona automáticamente la primera orden de selección
             }
         }
         // Evento que se dispara al seleccionar una OrdenDeSeleccion en el ComboBox
 
         private void CMBOrdenSeleccion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CMBOrdenSeleccion.SelectedItem != null)
+            if (OrdenSeleccionCMB.SelectedItem != null)
             {
-                int idOrdenSeleccion = (int)CMBOrdenSeleccion.SelectedItem;
+                int idOrdenSeleccion = (int)OrdenSeleccionCMB.SelectedItem;
                 CargarProductosEnListView(idOrdenSeleccion);
             }
         }
@@ -67,7 +67,7 @@ namespace Pampazon.BuscarProductosEnDepositos
 
         private void BTNConfirmarOrdenSeleccion_Click(object sender, EventArgs e)
         {
-            if (CMBOrdenSeleccion.SelectedItem != null)
+            if (OrdenSeleccionCMB.SelectedItem != null)
             {
                 // Mostrar MessageBox para confirmar la acción
                 DialogResult result = MessageBox.Show("¿Estás seguro de que deseas confirmar esta orden?",
@@ -77,22 +77,22 @@ namespace Pampazon.BuscarProductosEnDepositos
 
                 if (result == DialogResult.Yes)
                 {
-                    int idOrdenSeleccion = (int)CMBOrdenSeleccion.SelectedItem;
+                    int idOrdenSeleccion = (int)OrdenSeleccionCMB.SelectedItem;
                     modelo.ConfirmarOrdenSeleccion(idOrdenSeleccion);
 
                     // Recargar las órdenes de selección en el ComboBox
                     CargarOrdenesDeSeleccionEnComboBox();
 
                     // Limpiar el ListView después de confirmar la orden
-                    LSTProductos.Items.Clear();
+                    ProductosLST.Items.Clear();
 
                     // Seleccionar la siguiente orden automáticamente
-                    if (CMBOrdenSeleccion.Items.Count > 0)
+                    if (OrdenSeleccionCMB.Items.Count > 0)
                     {
-                        CMBOrdenSeleccion.SelectedIndex = 0; // Selecciona la primera orden disponible
+                        OrdenSeleccionCMB.SelectedIndex = 0; // Selecciona la primera orden disponible
 
                         // Cargar los productos de la nueva orden seleccionada en el ListView
-                        int nuevaOrdenSeleccionID = (int)CMBOrdenSeleccion.SelectedItem;
+                        int nuevaOrdenSeleccionID = (int)OrdenSeleccionCMB.SelectedItem;
                         CargarProductosEnListView(nuevaOrdenSeleccionID);
                     }
                 }
