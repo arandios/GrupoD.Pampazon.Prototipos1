@@ -18,13 +18,13 @@ namespace Pampazon._6._GenerarRemito
         private void BuscarTransportistaBtn_Click(object sender, EventArgs e)
         {
             // Obtener el DNI ingresado en el TextBox
-            if (string.IsNullOrWhiteSpace(DNITtxt.Text))
+            if (string.IsNullOrWhiteSpace(DNITXT.Text))
             {
                 MessageBox.Show("Por favor, ingrese un DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Salir si el campo está vacío
             }
 
-            if (int.TryParse(DNITtxt.Text, out int dni))
+            if (int.TryParse(DNITXT.Text, out int dni))
             {
                 // Validar el DNI
                 string mensajeValidacion = GenerarRemitoModelo.ComprobarDni(dni);
@@ -44,7 +44,7 @@ namespace Pampazon._6._GenerarRemito
 
                 // Obtener el nombre y apellido del transportista desde las órdenes
                 string nombreTransportista = GenerarRemitoModelo.ObtenerNombreTransportistaPorDni(dni);
-                NomApellTransportistaTxt.Text = nombreTransportista;
+                NomApellTransportistaTXT.Text = nombreTransportista;
 
                 // Limpiar la lista de transportistas antes de agregar nuevos elementos
                 TransportistasListV.Items.Clear();
@@ -63,7 +63,7 @@ namespace Pampazon._6._GenerarRemito
             }
         }
 
-        
+
 
 
 
@@ -166,7 +166,7 @@ namespace Pampazon._6._GenerarRemito
             }
 
             // Recoger el DNI del transportista desde el control, sin validación porque ya se hizo antes
-            int dniTransportista = int.Parse(DNITtxt.Text);
+            int dniTransportista = int.Parse(DNITXT.Text);
 
             // Verificar si hay ítems seleccionados (con checkbox marcado)
             bool hayItemsSeleccionados = DetalleRemitoLTV.Items.Cast<ListViewItem>().Any(item => item.Checked);
@@ -223,11 +223,11 @@ namespace Pampazon._6._GenerarRemito
                 if (DetalleRemitoLTV.Items.Count == 0)
                 {
                     TransportistasListV.Items.Clear();
-                    DNITtxt.Clear();
+                    DNITXT.Clear();
                     BuscarTransportistaGRP.Enabled = true;
                     OrdenesDelTransportistaGRP.Enabled = false;
                     DetalleRemitoGRP.Enabled = false;
-                    NomApellTransportistaTxt.Text = string.Empty;
+                    NomApellTransportistaTXT.Text = string.Empty;
                 }
             }
             catch (Exception ex)
@@ -376,6 +376,16 @@ namespace Pampazon._6._GenerarRemito
                     DetalleRemitoGRP.Enabled = false;
                 }
             }
+        }
+
+        private void DetalleRemitoGRP_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NomApellTransportistaTxt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

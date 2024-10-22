@@ -31,10 +31,10 @@ namespace Pampazon.ListarOrdenes
         {
             CodigoCLienteLBL = new Label();
             FechaInicioLBL = new Label();
-            EstadoComboBox = new ComboBox();
+            EstadoCMB = new ComboBox();
             EstadoLBL = new Label();
-            BuscarOrdenBtn = new Button();
-            BorrarFiltrosBtn = new Button();
+            BuscarOrdenBTN = new Button();
+            BorrarFiltrosBTN = new Button();
             SalirBTN = new Button();
             CodigoClienteTxt = new TextBox();
             OrdenesLTV = new ListView();
@@ -47,8 +47,8 @@ namespace Pampazon.ListarOrdenes
             FechaInicioDTP = new DateTimePicker();
             FechaFinLBL = new Label();
             PrioridadLBL = new Label();
-            PrioridadComboBox = new ComboBox();
-            CuitTxt = new TextBox();
+            PrioridadCMB = new ComboBox();
+            CuitTXT = new TextBox();
             CuitLBL = new Label();
             RazonSocialTxt = new TextBox();
             RazonSocialLBL = new Label();
@@ -82,15 +82,15 @@ namespace Pampazon.ListarOrdenes
             FechaInicioLBL.TabIndex = 5;
             FechaInicioLBL.Text = "Fecha inicio";
             // 
-            // EstadoComboBox
+            // EstadoCMB
             // 
-            EstadoComboBox.FormattingEnabled = true;
-            EstadoComboBox.Items.AddRange(new object[] { "Emitida", "Selccionada", "Preparada", "Despachada" });
-            EstadoComboBox.Location = new Point(9, 113);
-            EstadoComboBox.Margin = new Padding(2, 3, 2, 3);
-            EstadoComboBox.Name = "EstadoComboBox";
-            EstadoComboBox.Size = new Size(198, 28);
-            EstadoComboBox.TabIndex = 6;
+            EstadoCMB.FormattingEnabled = true;
+            EstadoCMB.Items.AddRange(new object[] { "Emitida", "Selccionada", "Preparada", "Despachada" });
+            EstadoCMB.Location = new Point(9, 113);
+            EstadoCMB.Margin = new Padding(2, 3, 2, 3);
+            EstadoCMB.Name = "EstadoCMB";
+            EstadoCMB.Size = new Size(198, 28);
+            EstadoCMB.TabIndex = 6;
             // 
             // EstadoLBL
             // 
@@ -102,28 +102,28 @@ namespace Pampazon.ListarOrdenes
             EstadoLBL.TabIndex = 7;
             EstadoLBL.Text = "Estado";
             // 
-            // BuscarOrdenBtn
+            // BuscarOrdenBTN
             // 
-            BuscarOrdenBtn.Location = new Point(507, 180);
-            BuscarOrdenBtn.Margin = new Padding(2, 3, 2, 3);
-            BuscarOrdenBtn.Name = "BuscarOrdenBtn";
-            BuscarOrdenBtn.Size = new Size(224, 53);
-            BuscarOrdenBtn.TabIndex = 8;
-            BuscarOrdenBtn.Text = "&Buscar orden";
-            BuscarOrdenBtn.UseVisualStyleBackColor = true;
-            BuscarOrdenBtn.Click += BuscarOrdenes_Click;
+            BuscarOrdenBTN.Location = new Point(507, 180);
+            BuscarOrdenBTN.Margin = new Padding(2, 3, 2, 3);
+            BuscarOrdenBTN.Name = "BuscarOrdenBTN";
+            BuscarOrdenBTN.Size = new Size(224, 53);
+            BuscarOrdenBTN.TabIndex = 8;
+            BuscarOrdenBTN.Text = "&Buscar orden";
+            BuscarOrdenBTN.UseVisualStyleBackColor = true;
+            BuscarOrdenBTN.Click += BuscarOrdenes_Click;
             // 
-            // BorrarFiltrosBtn
+            // BorrarFiltrosBTN
             // 
-            BorrarFiltrosBtn.Location = new Point(741, 180);
-            BorrarFiltrosBtn.Margin = new Padding(2, 3, 2, 3);
-            BorrarFiltrosBtn.Name = "BorrarFiltrosBtn";
-            BorrarFiltrosBtn.RightToLeft = RightToLeft.No;
-            BorrarFiltrosBtn.Size = new Size(214, 53);
-            BorrarFiltrosBtn.TabIndex = 9;
-            BorrarFiltrosBtn.Text = "&Borrar filtros";
-            BorrarFiltrosBtn.UseVisualStyleBackColor = true;
-            BorrarFiltrosBtn.Click += BorrarFiltrosBtn_Click;
+            BorrarFiltrosBTN.Location = new Point(741, 180);
+            BorrarFiltrosBTN.Margin = new Padding(2, 3, 2, 3);
+            BorrarFiltrosBTN.Name = "BorrarFiltrosBTN";
+            BorrarFiltrosBTN.RightToLeft = RightToLeft.No;
+            BorrarFiltrosBTN.Size = new Size(214, 53);
+            BorrarFiltrosBTN.TabIndex = 9;
+            BorrarFiltrosBTN.Text = "&Borrar filtros";
+            BorrarFiltrosBTN.UseVisualStyleBackColor = true;
+            BorrarFiltrosBTN.Click += BorrarFiltrosBtn_Click;
             // 
             // SalirBTN
             // 
@@ -186,17 +186,17 @@ namespace Pampazon.ListarOrdenes
             FiltrosGRP.Controls.Add(FechaInicioDTP);
             FiltrosGRP.Controls.Add(FechaFinLBL);
             FiltrosGRP.Controls.Add(PrioridadLBL);
-            FiltrosGRP.Controls.Add(PrioridadComboBox);
-            FiltrosGRP.Controls.Add(CuitTxt);
+            FiltrosGRP.Controls.Add(PrioridadCMB);
+            FiltrosGRP.Controls.Add(CuitTXT);
             FiltrosGRP.Controls.Add(CuitLBL);
             FiltrosGRP.Controls.Add(EstadoLBL);
             FiltrosGRP.Controls.Add(RazonSocialTxt);
-            FiltrosGRP.Controls.Add(EstadoComboBox);
+            FiltrosGRP.Controls.Add(EstadoCMB);
             FiltrosGRP.Controls.Add(RazonSocialLBL);
             FiltrosGRP.Controls.Add(CodigoClienteTxt);
-            FiltrosGRP.Controls.Add(BuscarOrdenBtn);
+            FiltrosGRP.Controls.Add(BuscarOrdenBTN);
             FiltrosGRP.Controls.Add(FechaInicioLBL);
-            FiltrosGRP.Controls.Add(BorrarFiltrosBtn);
+            FiltrosGRP.Controls.Add(BorrarFiltrosBTN);
             FiltrosGRP.Controls.Add(CodigoCLienteLBL);
             FiltrosGRP.Location = new Point(10, 12);
             FiltrosGRP.Name = "FiltrosGRP";
@@ -239,24 +239,24 @@ namespace Pampazon.ListarOrdenes
             PrioridadLBL.TabIndex = 21;
             PrioridadLBL.Text = "Prioridad";
             // 
-            // PrioridadComboBox
+            // PrioridadCMB
             // 
-            PrioridadComboBox.FormattingEnabled = true;
-            PrioridadComboBox.Items.AddRange(new object[] { "Alta", "Media", "Baja" });
-            PrioridadComboBox.Location = new Point(222, 113);
-            PrioridadComboBox.Margin = new Padding(2, 3, 2, 3);
-            PrioridadComboBox.Name = "PrioridadComboBox";
-            PrioridadComboBox.Size = new Size(229, 28);
-            PrioridadComboBox.TabIndex = 20;
+            PrioridadCMB.FormattingEnabled = true;
+            PrioridadCMB.Items.AddRange(new object[] { "Alta", "Media", "Baja" });
+            PrioridadCMB.Location = new Point(222, 113);
+            PrioridadCMB.Margin = new Padding(2, 3, 2, 3);
+            PrioridadCMB.Name = "PrioridadCMB";
+            PrioridadCMB.Size = new Size(229, 28);
+            PrioridadCMB.TabIndex = 20;
             // 
-            // CuitTxt
+            // CuitTXT
             // 
-            CuitTxt.Location = new Point(654, 49);
-            CuitTxt.Margin = new Padding(2, 3, 2, 3);
-            CuitTxt.Name = "CuitTxt";
-            CuitTxt.Size = new Size(287, 27);
-            CuitTxt.TabIndex = 18;
-            CuitTxt.TextChanged += CuitTxt_TextChanged;
+            CuitTXT.Location = new Point(654, 49);
+            CuitTXT.Margin = new Padding(2, 3, 2, 3);
+            CuitTXT.Name = "CuitTXT";
+            CuitTXT.Size = new Size(287, 27);
+            CuitTXT.TabIndex = 18;
+            CuitTXT.TextChanged += CuitTxt_TextChanged;
             // 
             // CuitLBL
             // 
@@ -333,6 +333,7 @@ namespace Pampazon.ListarOrdenes
             OrdenesGRP.TabIndex = 22;
             OrdenesGRP.TabStop = false;
             OrdenesGRP.Text = "Ordenes encontradas";
+            OrdenesGRP.Enter += OrdenesGRP_Enter;
             // 
             // ConsultarOrdenesForm
             // 
@@ -361,16 +362,16 @@ namespace Pampazon.ListarOrdenes
         #endregion
         private System.Windows.Forms.Label CodigoCLienteLBL;
         private System.Windows.Forms.Label FechaInicioLBL;
-        private System.Windows.Forms.ComboBox EstadoComboBox;
+        private System.Windows.Forms.ComboBox EstadoCMB;
         private System.Windows.Forms.Label EstadoLBL;
-        private System.Windows.Forms.Button BuscarOrdenBtn;
-        private System.Windows.Forms.Button BorrarFiltrosBtn;
+        private System.Windows.Forms.Button BuscarOrdenBTN;
+        private System.Windows.Forms.Button BorrarFiltrosBTN;
         private System.Windows.Forms.Button SalirBTN;
         private System.Windows.Forms.TextBox CodigoClienteTxt;
         private ListView OrdenesLTV;
         private ColumnHeader IdOrdenColumna;
         private GroupBox FiltrosGRP;
-        private TextBox CuitTxt;
+        private TextBox CuitTXT;
         private Label CuitLBL;
         private TextBox RazonSocialTxt;
         private Label RazonSocialLBL;
@@ -383,7 +384,7 @@ namespace Pampazon.ListarOrdenes
         private ColumnHeader EstadoColumna;
         private ColumnHeader PrioridadColumna;
         private Label PrioridadLBL;
-        private ComboBox PrioridadComboBox;
+        private ComboBox PrioridadCMB;
         private GroupBox OrdenesGRP;
         private Label FechaFinLBL;
         private DateTimePicker FechaFinDTP;

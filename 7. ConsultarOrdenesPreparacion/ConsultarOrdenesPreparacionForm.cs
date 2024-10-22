@@ -23,7 +23,7 @@ namespace Pampazon.ListarOrdenes
             InitializeComponent();
             modelo.InicializarDatos();
             OrdenesLTV.FullRowSelect = true;
-           
+
 
         }
 
@@ -32,12 +32,12 @@ namespace Pampazon.ListarOrdenes
             if (!string.IsNullOrWhiteSpace(CodigoClienteTxt.Text))
             {
                 RazonSocialTxt.Enabled = false;
-                CuitTxt.Enabled = false;
+                CuitTXT.Enabled = false;
             }
             else
             {
                 RazonSocialTxt.Enabled = true;
-                CuitTxt.Enabled = true;
+                CuitTXT.Enabled = true;
             }
         }
 
@@ -46,18 +46,18 @@ namespace Pampazon.ListarOrdenes
             if (!string.IsNullOrWhiteSpace(RazonSocialTxt.Text))
             {
                 CodigoClienteTxt.Enabled = false;
-                CuitTxt.Enabled = false;
+                CuitTXT.Enabled = false;
             }
             else
             {
                 CodigoClienteTxt.Enabled = true;
-                CuitTxt.Enabled = true;
+                CuitTXT.Enabled = true;
             }
         }
 
         private void CuitTxt_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(CuitTxt.Text))
+            if (!string.IsNullOrWhiteSpace(CuitTXT.Text))
             {
                 CodigoClienteTxt.Enabled = false;
                 RazonSocialTxt.Enabled = false;
@@ -96,14 +96,14 @@ namespace Pampazon.ListarOrdenes
                 ordenesEncontradas = modelo.ObtenerOrdenesPorRazonSocial(RazonSocialTxt.Text);
             }
             // Si no hay razón social, verificar si hay un CUIT ingresado
-            else if (!string.IsNullOrEmpty(CuitTxt.Text))
+            else if (!string.IsNullOrEmpty(CuitTXT.Text))
             {
                 // Obtener las órdenes por CUIT
-                ordenesEncontradas = modelo.ObtenerOrdenesPorCuit(CuitTxt.Text);
+                ordenesEncontradas = modelo.ObtenerOrdenesPorCuit(CuitTXT.Text);
             }
             // Si no se ingresó ningún criterio, verificar si hay filtros adicionales seleccionados
-            else if (!string.IsNullOrEmpty(EstadoComboBox.Text) ||
-                     !string.IsNullOrEmpty(PrioridadComboBox.Text) ||
+            else if (!string.IsNullOrEmpty(EstadoCMB.Text) ||
+                     !string.IsNullOrEmpty(PrioridadCMB.Text) ||
                      (FechaInicioDTP.Value.Date != DateTime.Today || FechaFinDTP.Value.Date != DateTime.Today))
             {
                 // Si no hay filtros en cliente, buscar todas las órdenes y aplicar los filtros adicionales
@@ -121,7 +121,7 @@ namespace Pampazon.ListarOrdenes
             {
                 MessageBox.Show("No se encontraron órdenes con los filtros aplicados.");
                 OrdenesLTV.Items.Clear();
-                ProductoLTV.Items.Clear ();
+                ProductoLTV.Items.Clear();
             }
             else
             {
@@ -135,18 +135,18 @@ namespace Pampazon.ListarOrdenes
         private void FiltrarPorEstadoPrioridadYFechas(ref List<OrdenDePreparacion> ordenes)
         {
             // Filtrar por Estado (si se seleccionó uno)
-            if (!string.IsNullOrEmpty(EstadoComboBox.Text))
+            if (!string.IsNullOrEmpty(EstadoCMB.Text))
             {
                 ordenes = ordenes
-                    .Where(o => o.Estado.Equals(EstadoComboBox.Text, StringComparison.OrdinalIgnoreCase))
+                    .Where(o => o.Estado.Equals(EstadoCMB.Text, StringComparison.OrdinalIgnoreCase))
                     .ToList();
             }
 
             // Filtrar por Prioridad (si se seleccionó una)
-            if (!string.IsNullOrEmpty(PrioridadComboBox.Text))
+            if (!string.IsNullOrEmpty(PrioridadCMB.Text))
             {
                 ordenes = ordenes
-                    .Where(o => o.Prioridad.Equals(PrioridadComboBox.Text, StringComparison.OrdinalIgnoreCase))
+                    .Where(o => o.Prioridad.Equals(PrioridadCMB.Text, StringComparison.OrdinalIgnoreCase))
                     .ToList();
             }
 
@@ -170,9 +170,9 @@ namespace Pampazon.ListarOrdenes
 
             foreach (var orden in ordenes)
             {
-                ListViewItem item = new ListViewItem(orden.IdOrden.ToString()); 
-                item.SubItems.Add(orden.Fecha.ToShortDateString()); 
-                item.SubItems.Add(orden.Estado); 
+                ListViewItem item = new ListViewItem(orden.IdOrden.ToString());
+                item.SubItems.Add(orden.Fecha.ToShortDateString());
+                item.SubItems.Add(orden.Estado);
                 item.SubItems.Add(orden.Prioridad);
 
                 OrdenesLTV.Items.Add(item);
@@ -181,9 +181,9 @@ namespace Pampazon.ListarOrdenes
             // Autoseleccionar el primer elemento si hay elementos en el ListView
             if (OrdenesLTV.Items.Count > 0)
             {
-                OrdenesLTV.Items[0].Selected = true; 
-                OrdenesLTV.Items[0].Focused = true;  
-                OrdenesLTV.EnsureVisible(0);         
+                OrdenesLTV.Items[0].Selected = true;
+                OrdenesLTV.Items[0].Focused = true;
+                OrdenesLTV.EnsureVisible(0);
             }
         }
 
@@ -192,9 +192,9 @@ namespace Pampazon.ListarOrdenes
         {
             CodigoClienteTxt.Clear();
             RazonSocialTxt.Clear();
-            CuitTxt.Clear();
-            EstadoComboBox.SelectedIndex = -1;
-            PrioridadComboBox.SelectedIndex = -1;
+            CuitTXT.Clear();
+            EstadoCMB.SelectedIndex = -1;
+            PrioridadCMB.SelectedIndex = -1;
             FechaInicioDTP.Value = DateTime.Today;
             FechaFinDTP.Value = DateTime.Today;
             OrdenesLTV.Items.Clear();
@@ -254,8 +254,9 @@ namespace Pampazon.ListarOrdenes
             }
         }
 
+        private void OrdenesGRP_Enter(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }
