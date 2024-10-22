@@ -11,8 +11,8 @@ namespace Pampazon._6._GenerarRemito
         public GenerarRemitoForm()
         {
             InitializeComponent();
-            OrdenesDelTransportistaGBX.Enabled = false;
-            DetalleRemitoGBX.Enabled = false;
+            OrdenesDelTransportistaGRP.Enabled = false;
+            DetalleRemitoGRP.Enabled = false;
         }
 
         private void BuscarTransportistaBtn_Click(object sender, EventArgs e)
@@ -54,8 +54,8 @@ namespace Pampazon._6._GenerarRemito
                 }
 
                 // Desactivar el grupo de búsqueda y habilitar el grupo de órdenes del transportista
-                BuscarTransportistaGBX.Enabled = false;
-                OrdenesDelTransportistaGBX.Enabled = true;
+                BuscarTransportistaGRP.Enabled = false;
+                OrdenesDelTransportistaGRP.Enabled = true;
             }
             else
             {
@@ -133,7 +133,7 @@ namespace Pampazon._6._GenerarRemito
             }
 
             // Habilitar el grupo de detalles del remito
-            DetalleRemitoGBX.Enabled = true;
+            DetalleRemitoGRP.Enabled = true;
         }
 
         /// <summary>
@@ -224,9 +224,9 @@ namespace Pampazon._6._GenerarRemito
                 {
                     TransportistasListV.Items.Clear();
                     DNITtxt.Clear();
-                    BuscarTransportistaGBX.Enabled = true;
-                    OrdenesDelTransportistaGBX.Enabled = false;
-                    DetalleRemitoGBX.Enabled = false;
+                    BuscarTransportistaGRP.Enabled = true;
+                    OrdenesDelTransportistaGRP.Enabled = false;
+                    DetalleRemitoGRP.Enabled = false;
                     NomApellTransportistaTxt.Text = string.Empty;
                 }
             }
@@ -313,7 +313,7 @@ namespace Pampazon._6._GenerarRemito
             // Verificar si DetalleRemitoLTV está vacío para habilitar o deshabilitar el GroupBox
             if (DetalleRemitoLTV.Items.Count == 0)
             {
-                DetalleRemitoGBX.Enabled = false; // Deshabilitar el GroupBox si no hay órdenes
+                DetalleRemitoGRP.Enabled = false; // Deshabilitar el GroupBox si no hay órdenes
             }
 
             MessageBox.Show("Órdenes eliminadas con éxito y devueltas a la lista de transportistas.", "Órdenes Eliminadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -354,7 +354,7 @@ namespace Pampazon._6._GenerarRemito
                 DetalleRemitoLTV.Items.Add(nuevoItem);
                 TransportistasListV.Items.Remove(selectedItem);
 
-                DetalleRemitoGBX.Enabled = true;
+                DetalleRemitoGRP.Enabled = true;
             }
         }
 
@@ -373,7 +373,7 @@ namespace Pampazon._6._GenerarRemito
 
                 if (DetalleRemitoLTV.Items.Count == 0)
                 {
-                    DetalleRemitoGBX.Enabled = false;
+                    DetalleRemitoGRP.Enabled = false;
                 }
             }
         }

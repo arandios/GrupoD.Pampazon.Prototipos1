@@ -28,47 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            CMBOrdenSeleccion = new ComboBox();
-            LSTProductos = new ListView();
-            Ubicacion_Columna = new ColumnHeader();
-            Sku_Columna = new ColumnHeader();
+            OrdenSeleccionCMB = new ComboBox();
+            ProductosLST = new ListView();
+            UbicacionColumna = new ColumnHeader();
+            SkuColumna = new ColumnHeader();
             CantidadColumna = new ColumnHeader();
-            LBLOrdenSeleccion = new Label();
+            OrdenSeleccionLBL = new Label();
             CancelarOrdenSeleccionBTN = new Button();
-            BTNConfirmarOrdenSeleccion = new Button();
+            ConfirmarOrdenSeleccionBTN = new Button();
             SuspendLayout();
             // 
-            // CMBOrdenSeleccion
+            // OrdenSeleccionCMB
             // 
-            CMBOrdenSeleccion.FormattingEnabled = true;
-            CMBOrdenSeleccion.Location = new Point(192, 41);
-            CMBOrdenSeleccion.Margin = new Padding(3, 2, 3, 2);
-            CMBOrdenSeleccion.Name = "CMBOrdenSeleccion";
-            CMBOrdenSeleccion.Size = new Size(488, 23);
-            CMBOrdenSeleccion.TabIndex = 1;
-            CMBOrdenSeleccion.SelectedIndexChanged += CMBOrdenSeleccion_SelectedIndexChanged;
+            OrdenSeleccionCMB.FormattingEnabled = true;
+            OrdenSeleccionCMB.Location = new Point(192, 41);
+            OrdenSeleccionCMB.Margin = new Padding(3, 2, 3, 2);
+            OrdenSeleccionCMB.Name = "OrdenSeleccionCMB";
+            OrdenSeleccionCMB.Size = new Size(488, 23);
+            OrdenSeleccionCMB.TabIndex = 1;
+            OrdenSeleccionCMB.SelectedIndexChanged += CMBOrdenSeleccion_SelectedIndexChanged;
             // 
-            // LSTProductos
+            // ProductosLST
             // 
-            LSTProductos.Columns.AddRange(new ColumnHeader[] { Ubicacion_Columna, Sku_Columna, CantidadColumna });
-            LSTProductos.Location = new Point(74, 90);
-            LSTProductos.Margin = new Padding(3, 2, 3, 2);
-            LSTProductos.Name = "LSTProductos";
-            LSTProductos.Size = new Size(703, 522);
-            LSTProductos.TabIndex = 2;
-            LSTProductos.UseCompatibleStateImageBehavior = false;
-            LSTProductos.View = View.Details;
+            ProductosLST.Columns.AddRange(new ColumnHeader[] { UbicacionColumna, SkuColumna, CantidadColumna });
+            ProductosLST.Location = new Point(74, 90);
+            ProductosLST.Margin = new Padding(3, 2, 3, 2);
+            ProductosLST.Name = "ProductosLST";
+            ProductosLST.Size = new Size(703, 522);
+            ProductosLST.TabIndex = 2;
+            ProductosLST.UseCompatibleStateImageBehavior = false;
+            ProductosLST.View = View.Details;
             // 
-            // Ubicacion_Columna
+            // UbicacionColumna
             // 
-            Ubicacion_Columna.Text = "Ubicación";
-            Ubicacion_Columna.Width = 151;
+            UbicacionColumna.Text = "Ubicación";
+            UbicacionColumna.Width = 151;
             // 
-            // Sku_Columna
+            // SkuColumna
             // 
-            Sku_Columna.Text = "SKU Producto";
-            Sku_Columna.TextAlign = HorizontalAlignment.Center;
-            Sku_Columna.Width = 190;
+            SkuColumna.Text = "SKU Producto";
+            SkuColumna.TextAlign = HorizontalAlignment.Center;
+            SkuColumna.Width = 190;
             // 
             // CantidadColumna
             // 
@@ -76,14 +76,14 @@
             CantidadColumna.TextAlign = HorizontalAlignment.Center;
             CantidadColumna.Width = 140;
             // 
-            // LBLOrdenSeleccion
+            // OrdenSeleccionLBL
             // 
-            LBLOrdenSeleccion.AutoSize = true;
-            LBLOrdenSeleccion.Location = new Point(192, 24);
-            LBLOrdenSeleccion.Name = "LBLOrdenSeleccion";
-            LBLOrdenSeleccion.Size = new Size(112, 15);
-            LBLOrdenSeleccion.TabIndex = 3;
-            LBLOrdenSeleccion.Text = "Orden de Selección:";
+            OrdenSeleccionLBL.AutoSize = true;
+            OrdenSeleccionLBL.Location = new Point(192, 24);
+            OrdenSeleccionLBL.Name = "OrdenSeleccionLBL";
+            OrdenSeleccionLBL.Size = new Size(112, 15);
+            OrdenSeleccionLBL.TabIndex = 3;
+            OrdenSeleccionLBL.Text = "Orden de Selección:";
             // 
             // CancelarOrdenSeleccionBTN
             // 
@@ -96,17 +96,17 @@
             CancelarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
             CancelarOrdenSeleccionBTN.Click += CancelarOrdenSeleccionBTN_Click;
             // 
-            // BTNConfirmarOrdenSeleccion
+            // ConfirmarOrdenSeleccionBTN
             // 
-            BTNConfirmarOrdenSeleccion.BackColor = Color.FromArgb(192, 255, 192);
-            BTNConfirmarOrdenSeleccion.Location = new Point(325, 623);
-            BTNConfirmarOrdenSeleccion.Margin = new Padding(3, 2, 3, 2);
-            BTNConfirmarOrdenSeleccion.Name = "BTNConfirmarOrdenSeleccion";
-            BTNConfirmarOrdenSeleccion.Size = new Size(245, 40);
-            BTNConfirmarOrdenSeleccion.TabIndex = 20;
-            BTNConfirmarOrdenSeleccion.Text = "&Confirmar Orden de Selección";
-            BTNConfirmarOrdenSeleccion.UseVisualStyleBackColor = false;
-            BTNConfirmarOrdenSeleccion.Click += BTNConfirmarOrdenSeleccion_Click;
+            ConfirmarOrdenSeleccionBTN.BackColor = Color.FromArgb(192, 255, 192);
+            ConfirmarOrdenSeleccionBTN.Location = new Point(325, 623);
+            ConfirmarOrdenSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
+            ConfirmarOrdenSeleccionBTN.Name = "ConfirmarOrdenSeleccionBTN";
+            ConfirmarOrdenSeleccionBTN.Size = new Size(245, 40);
+            ConfirmarOrdenSeleccionBTN.TabIndex = 20;
+            ConfirmarOrdenSeleccionBTN.Text = "&Confirmar Orden de Selección";
+            ConfirmarOrdenSeleccionBTN.UseVisualStyleBackColor = false;
+            ConfirmarOrdenSeleccionBTN.Click += BTNConfirmarOrdenSeleccion_Click;
             // 
             // AgregarProductosEnDepositosFormulario
             // 
@@ -114,10 +114,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(860, 694);
             Controls.Add(CancelarOrdenSeleccionBTN);
-            Controls.Add(BTNConfirmarOrdenSeleccion);
-            Controls.Add(LBLOrdenSeleccion);
-            Controls.Add(LSTProductos);
-            Controls.Add(CMBOrdenSeleccion);
+            Controls.Add(ConfirmarOrdenSeleccionBTN);
+            Controls.Add(OrdenSeleccionLBL);
+            Controls.Add(ProductosLST);
+            Controls.Add(OrdenSeleccionCMB);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(3, 2, 3, 2);
             Name = "AgregarProductosEnDepositosFormulario";
@@ -130,13 +130,13 @@
 
         #endregion
 
-        private ComboBox CMBOrdenSeleccion;
-        private ListView LSTProductos;
-        private ColumnHeader Ubicacion_Columna;
-        private ColumnHeader Sku_Columna;
+        private ComboBox OrdenSeleccionCMB;
+        private ListView ProductosLST;
+        private ColumnHeader UbicacionColumna;
+        private ColumnHeader SkuColumna;
         private ColumnHeader CantidadColumna;
-        private Label LBLOrdenSeleccion;
+        private Label OrdenSeleccionLBL;
         private Button CancelarOrdenSeleccionBTN;
-        private Button BTNConfirmarOrdenSeleccion;
+        private Button ConfirmarOrdenSeleccionBTN;
     }
 }
