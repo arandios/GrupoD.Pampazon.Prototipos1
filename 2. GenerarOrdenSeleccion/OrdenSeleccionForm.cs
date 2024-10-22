@@ -26,15 +26,15 @@ namespace Pampazon.OrdenSeleccion
         private void OrdenSeleccionForm_Load_1(object sender, EventArgs e)
         {
             // Habilitar las partes superiores del formulario.
-            FiltrosOPgroupBox.Enabled = true;
-            OPgroupBox.Enabled = true;
-            OSgroupBox.Enabled = false;
+            FiltrosOPGRP.Enabled = true;
+            OPGRP.Enabled = true;
+            OSGRP.Enabled = false;
 
             // Habilitar selección múltiple --> Para Ordenes de Preparacion.
-            OrdenesDePrepracionAOrdenSeleccionListView.MultiSelect = true;
+            OrdenesDePrepracionAOrdenSeleccionLST.MultiSelect = true;
 
             // Llenar el ComboBox con los valores del enum CodigoPrioridad
-            PrioridadComboBoxOrdenSeleccion.DataSource = Enum.GetValues(typeof(CodigoPrioridad));
+            PrioridadOrdenSeleccionCMB.DataSource = Enum.GetValues(typeof(CodigoPrioridad));
 
             //Borrar filtros que pudieran llegar a quedar precargados.
             BorrarFiltros();
@@ -47,22 +47,22 @@ namespace Pampazon.OrdenSeleccion
             }
 
             // Establecer la fecha por defecto a 2 años en el futuro
-            FechaFinal_dateTimePicker_OrdenSeleccion.Value = DateTime.Now.AddYears(2);
+            FechaFinalOrdenSeleccionDTP.Value = DateTime.Now.AddYears(2);
 
             // CARGAR DATOS A LA LISTA DE ORDENES DE PREPARACION.
             ActualizarListaOrdenDePreparacion();
 
 
             // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
-            foreach (ColumnHeader column in OrdenesDePrepracionAOrdenSeleccionListView.Columns)
+            foreach (ColumnHeader column in OrdenesDePrepracionAOrdenSeleccionLST.Columns)
             {
-                OrdenesDePrepracionAOrdenSeleccionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+                OrdenesDePrepracionAOrdenSeleccionLST.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
 
             // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
-            foreach (ColumnHeader column in DetalleOrdenesDePreparacionPendientesListView.Columns)
+            foreach (ColumnHeader column in DetalleOrdenesDePreparacionPendientesLST.Columns)
             {
-                DetalleOrdenesDePreparacionPendientesListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+                DetalleOrdenesDePreparacionPendientesLST.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
 
             
@@ -76,14 +76,14 @@ namespace Pampazon.OrdenSeleccion
         private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
             // Limpiar la lista actual
-            OrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
+            OrdenesDePrepracionAOrdenSeleccionLST.Items.Clear();
 
             // Obtener los valores de los filtros
-            string clienteAFiltrar = ClienteTextBoxOrdenSeleccion.Text.Trim(); // Razon social cliente
-            string idOrdenAFiltrar = NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text.Trim();
-            string prioridadAFiltrar = PrioridadComboBoxOrdenSeleccion.SelectedItem?.ToString();
-            DateTime? fechaInicioAFiltrar = FechaInicio_dateTimePicker_OrdenSeleccion.Value.Date;
-            DateTime? fechaFinalAFiltrar = FechaFinal_dateTimePicker_OrdenSeleccion.Value.Date;
+            string clienteAFiltrar = ClienteOrdenSeleccionTXT.Text.Trim(); // Razon social cliente
+            string idOrdenAFiltrar = NumeroOrdenPreparacionOrdenSeleccionTXT.Text.Trim();
+            string prioridadAFiltrar = PrioridadOrdenSeleccionCMB.SelectedItem?.ToString();
+            DateTime? fechaInicioAFiltrar = FechaInicioOrdenSeleccionDTP.Value.Date;
+            DateTime? fechaFinalAFiltrar = FechaFinalOrdenSeleccionDTP.Value.Date;
 
             // Verificar si al menos un filtro está completo
             if (string.IsNullOrWhiteSpace(clienteAFiltrar) &&
@@ -116,7 +116,7 @@ namespace Pampazon.OrdenSeleccion
                 foreach (var orden in ordenesFiltradas)
                 {
                     // Verificar si el ítem ya existe en DetalleOrdenesDePrepracionAOrdenSeleccionListView
-                    if (!OrdenesDePrepracionAOrdenSeleccionListView.Items.Cast<ListViewItem>().Any(item => item.Tag == orden))
+                    if (!OrdenesDePrepracionAOrdenSeleccionLST.Items.Cast<ListViewItem>().Any(item => item.Tag == orden))
                     {
                         var item = new ListViewItem(new[]
                         {
@@ -130,7 +130,7 @@ namespace Pampazon.OrdenSeleccion
 
                         // Asociar el objeto orden como Tag del ListViewItem
                         item.Tag = orden;
-                        OrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
+                        OrdenesDePrepracionAOrdenSeleccionLST.Items.Add(item);
                     }
                 }
             }
@@ -147,17 +147,17 @@ namespace Pampazon.OrdenSeleccion
         private void BorrarFiltrosOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
             // Limpiar los campos de búsqueda
-            ClienteTextBoxOrdenSeleccion.Text = string.Empty;
+            ClienteOrdenSeleccionTXT.Text = string.Empty;
             //TransportistaTextBoxOrdenSeleccion.Text = string.Empty;
-            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text = string.Empty;
-            PrioridadComboBoxOrdenSeleccion.SelectedIndex = -1; // Deseleccionar cualquier elemento
+            NumeroOrdenPreparacionOrdenSeleccionTXT.Text = string.Empty;
+            PrioridadOrdenSeleccionCMB.SelectedIndex = -1; // Deseleccionar cualquier elemento
 
             // Restablecer la lista de órdenes de preparación
             ActualizarListaOrdenDePreparacion();
 
             // Filtrar las órdenes de preparación que no han sido agregadas
             var itemsToRemove = new List<ListViewItem>();
-            foreach (ListViewItem item in OrdenesDePrepracionAOrdenSeleccionListView.Items)
+            foreach (ListViewItem item in OrdenesDePrepracionAOrdenSeleccionLST.Items)
             {
                 var ordenPreparacion = (OrdenPreparacion)item.Tag;
                 if (ordenesAgregadas.Contains(ordenPreparacion))
@@ -169,7 +169,7 @@ namespace Pampazon.OrdenSeleccion
             // Remover los ítems que han sido agregados
             foreach (var item in itemsToRemove)
             {
-                OrdenesDePrepracionAOrdenSeleccionListView.Items.Remove(item);
+                OrdenesDePrepracionAOrdenSeleccionLST.Items.Remove(item);
             }
 
             // Llamar al método para agrupar y mostrar los productos y ubicaciones
@@ -181,17 +181,17 @@ namespace Pampazon.OrdenSeleccion
         private void QuitarOrdenPreparacionASeleccionBTN_Click(object sender, EventArgs e)
         {
             // Obtener los elementos seleccionados en OrdenesDePreparacionPendientesListView
-            var seleccionados = DetalleOrdenesDePreparacionPendientesListView.SelectedItems;
+            var seleccionados = DetalleOrdenesDePreparacionPendientesLST.SelectedItems;
 
             if (seleccionados.Count > 0)
             {
                 foreach (ListViewItem item in seleccionados)
                 {
                     // Eliminar el elemento de OrdenesDePreparacionPendientesListView
-                    DetalleOrdenesDePreparacionPendientesListView.Items.Remove(item);
+                    DetalleOrdenesDePreparacionPendientesLST.Items.Remove(item);
 
                     // Agregar el elemento a DetalleOrdenesDePrepracionAOrdenSeleccionListView
-                    OrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
+                    OrdenesDePrepracionAOrdenSeleccionLST.Items.Add(item);
 
                     // Eliminar el elemento de la lista de órdenes disponibles
                     var ordenPreparacion = (OrdenPreparacion)item.Tag;
@@ -210,7 +210,7 @@ namespace Pampazon.OrdenSeleccion
         private void AgregarAOrdenSeleccionBTN_Click_1(object sender, EventArgs e)
         {
             // Verificar si hay elementos seleccionados en la lista de detalles de órdenes de preparación
-            if (OrdenesDePrepracionAOrdenSeleccionListView.SelectedItems.Count == 0)
+            if (OrdenesDePrepracionAOrdenSeleccionLST.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Seleccione al menos una orden de preparación para crear una orden de selección.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -226,13 +226,13 @@ namespace Pampazon.OrdenSeleccion
             };
 
             // Agregar las órdenes de preparación seleccionadas a la orden de selección
-            foreach (ListViewItem item in OrdenesDePrepracionAOrdenSeleccionListView.SelectedItems)
+            foreach (ListViewItem item in OrdenesDePrepracionAOrdenSeleccionLST.SelectedItems)
             {
                 var ordenPreparacion = (OrdenPreparacion)item.Tag;
                 ordenSeleccion.OrdenesPreparacion.Add(ordenPreparacion);
 
                 // Verificar si el ítem ya existe en OrdenesDePreparacionPendientesListView
-                if (!DetalleOrdenesDePreparacionPendientesListView.Items.Cast<ListViewItem>().Any(existingItem => existingItem.Tag == ordenPreparacion))
+                if (!DetalleOrdenesDePreparacionPendientesLST.Items.Cast<ListViewItem>().Any(existingItem => existingItem.Tag == ordenPreparacion))
                 {
                     // Crear un nuevo ítem para la lista de órdenes de preparación pendientes
                     ListViewItem newItem = new ListViewItem();
@@ -243,7 +243,7 @@ namespace Pampazon.OrdenSeleccion
                     //newItem.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
 
                     newItem.Tag = ordenPreparacion; // Guardar el objeto completo como Tag
-                    DetalleOrdenesDePreparacionPendientesListView.Items.Add(newItem);
+                    DetalleOrdenesDePreparacionPendientesLST.Items.Add(newItem);
 
                     // Agregar a la lista de órdenes agregadas
                     ordenesAgregadas.Add(ordenPreparacion);
@@ -251,23 +251,23 @@ namespace Pampazon.OrdenSeleccion
             }
 
             // Ajustar automáticamente el ancho de la columna según el contenido completo
-            DetalleOrdenesDePreparacionPendientesListView.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent);
+            DetalleOrdenesDePreparacionPendientesLST.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent);
 
 
 
             // Eliminar los ítems seleccionados de la lista de detalles de órdenes de preparación
             var itemsToRemove = new List<ListViewItem>();
-            foreach (ListViewItem item in OrdenesDePrepracionAOrdenSeleccionListView.SelectedItems)
+            foreach (ListViewItem item in OrdenesDePrepracionAOrdenSeleccionLST.SelectedItems)
             {
                 itemsToRemove.Add(item);
             }
             foreach (var item in itemsToRemove)
             {
-                OrdenesDePrepracionAOrdenSeleccionListView.Items.Remove(item);
+                OrdenesDePrepracionAOrdenSeleccionLST.Items.Remove(item);
             }
 
             // Habilitar OSgroupBox
-            OSgroupBox.Enabled = true;
+            OSGRP.Enabled = true;
 
             MessageBox.Show("Orden de Preparacion agregada al detalle.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -282,7 +282,7 @@ namespace Pampazon.OrdenSeleccion
         private void CrearOrdenSeleccionBTN_Click_1(object sender, EventArgs e)
         {
             // Verificar si hay elementos en la lista OrdenesDePreparacionPendientesListView
-            if (DetalleOrdenesDePreparacionPendientesListView.Items.Count == 0)
+            if (DetalleOrdenesDePreparacionPendientesLST.Items.Count == 0)
             {
                 MessageBox.Show("No hay órdenes de preparación pendientes para crear una orden de selección.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -299,14 +299,14 @@ namespace Pampazon.OrdenSeleccion
             };
 
             // Agregar las órdenes de preparación a la orden de selección
-            foreach (ListViewItem item in DetalleOrdenesDePreparacionPendientesListView.Items)
+            foreach (ListViewItem item in DetalleOrdenesDePreparacionPendientesLST.Items)
             {
                 var ordenPreparacion = (OrdenPreparacion)item.Tag;
                 ordenSeleccion.OrdenesPreparacion.Add(ordenPreparacion);
             }
 
             // Eliminar las órdenes de preparación que se han agregado a la orden de selección de la lista de órdenes disponibles
-            foreach (ListViewItem item in DetalleOrdenesDePreparacionPendientesListView.Items)
+            foreach (ListViewItem item in DetalleOrdenesDePreparacionPendientesLST.Items)
             {
                 var ordenPreparacion = (OrdenPreparacion)item.Tag;
                 ordenesDisponibles.Remove(ordenPreparacion);
@@ -314,7 +314,7 @@ namespace Pampazon.OrdenSeleccion
 
 
             // Vaciar la lista DetalleOrdenesDePreparacionPendientesListView
-            DetalleOrdenesDePreparacionPendientesListView.Items.Clear();
+            DetalleOrdenesDePreparacionPendientesLST.Items.Clear();
 
             // Mostrar mensaje de confirmación
             MessageBox.Show($"Se ha creado la orden de selección número {ordenSeleccion.IDOrdenSeleccion} exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -341,7 +341,7 @@ namespace Pampazon.OrdenSeleccion
         
         private void ActualizarListaOrdenDePreparacion()
         {
-            OrdenesDePrepracionAOrdenSeleccionListView.Items.Clear();
+            OrdenesDePrepracionAOrdenSeleccionLST.Items.Clear();
 
             // CARGAR DATOS A LA LISTA DE ORDENES DE PREPARACION.
             foreach (var ordenPreparacion in modelo.OrdenesDePreparacion)
@@ -363,23 +363,23 @@ namespace Pampazon.OrdenSeleccion
 
 
                 item.Tag = ordenPreparacion; // Guardar el objeto completo como Tag
-                OrdenesDePrepracionAOrdenSeleccionListView.Items.Add(item);
+                OrdenesDePrepracionAOrdenSeleccionLST.Items.Add(item);
             }
 
             // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
-            foreach (ColumnHeader column in OrdenesDePrepracionAOrdenSeleccionListView.Columns)
+            foreach (ColumnHeader column in OrdenesDePrepracionAOrdenSeleccionLST.Columns)
             {
-                OrdenesDePrepracionAOrdenSeleccionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
+                OrdenesDePrepracionAOrdenSeleccionLST.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
 
         private void BorrarFiltros()
         {
-            ClienteTextBoxOrdenSeleccion.Text = string.Empty;
-            NumeroOrdenPreparacionTextBoxOrdenSeleccion.Text = string.Empty;
-            PrioridadComboBoxOrdenSeleccion.SelectedIndex = -1;
-            FechaInicio_dateTimePicker_OrdenSeleccion.Value = DateTime.Now;
-            FechaFinal_dateTimePicker_OrdenSeleccion.Value = DateTime.Now;
+            ClienteOrdenSeleccionTXT.Text = string.Empty;
+            NumeroOrdenPreparacionOrdenSeleccionTXT.Text = string.Empty;
+            PrioridadOrdenSeleccionCMB.SelectedIndex = -1;
+            FechaInicioOrdenSeleccionDTP.Value = DateTime.Now;
+            FechaFinalOrdenSeleccionDTP.Value = DateTime.Now;
         }
 
 

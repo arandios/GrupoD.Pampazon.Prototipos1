@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Ordenesgrb = new GroupBox();
-            OrdenesParaPrepararlst = new ListView();
+            OrdenesGRP = new GroupBox();
+            OrdenesParaPrepararLST = new ListView();
             SKUProductoColumna = new ColumnHeader();
             ProductoColumna = new ColumnHeader();
             CantidadColumna = new ColumnHeader();
-            Confirmarbtn = new Button();
-            Salirbtn = new Button();
-            Ordenesgrb.SuspendLayout();
+            ConfirmarBTN = new Button();
+            SalirBTN = new Button();
+            OrdenesGRP.SuspendLayout();
             SuspendLayout();
             // 
-            // Ordenesgrb
+            // OrdenesGRP
             // 
-            Ordenesgrb.Controls.Add(OrdenesParaPrepararlst);
-            Ordenesgrb.Location = new Point(38, 24);
-            Ordenesgrb.Margin = new Padding(2);
-            Ordenesgrb.Name = "Ordenesgrb";
-            Ordenesgrb.Padding = new Padding(2);
-            Ordenesgrb.Size = new Size(873, 833);
-            Ordenesgrb.TabIndex = 0;
-            Ordenesgrb.TabStop = false;
-            Ordenesgrb.Text = "Detalle productos a empaquetar";
+            OrdenesGRP.Controls.Add(OrdenesParaPrepararLST);
+            OrdenesGRP.Location = new Point(33, 18);
+            OrdenesGRP.Margin = new Padding(2);
+            OrdenesGRP.Name = "OrdenesGRP";
+            OrdenesGRP.Padding = new Padding(2);
+            OrdenesGRP.Size = new Size(764, 625);
+            OrdenesGRP.TabIndex = 0;
+            OrdenesGRP.TabStop = false;
+            OrdenesGRP.Text = "Detalle productos a empaquetar";
             // 
-            // OrdenesParaPrepararlst
+            // OrdenesParaPrepararLST
             // 
-            OrdenesParaPrepararlst.Columns.AddRange(new ColumnHeader[] { SKUProductoColumna, ProductoColumna, CantidadColumna });
-            OrdenesParaPrepararlst.Location = new Point(28, 35);
-            OrdenesParaPrepararlst.Margin = new Padding(2);
-            OrdenesParaPrepararlst.Name = "OrdenesParaPrepararlst";
-            OrdenesParaPrepararlst.Size = new Size(802, 782);
-            OrdenesParaPrepararlst.TabIndex = 0;
-            OrdenesParaPrepararlst.UseCompatibleStateImageBehavior = false;
-            OrdenesParaPrepararlst.View = View.Details;
+            OrdenesParaPrepararLST.Columns.AddRange(new ColumnHeader[] { SKUProductoColumna, ProductoColumna, CantidadColumna });
+            OrdenesParaPrepararLST.Location = new Point(24, 26);
+            OrdenesParaPrepararLST.Margin = new Padding(2);
+            OrdenesParaPrepararLST.Name = "OrdenesParaPrepararLST";
+            OrdenesParaPrepararLST.Size = new Size(702, 588);
+            OrdenesParaPrepararLST.TabIndex = 0;
+            OrdenesParaPrepararLST.UseCompatibleStateImageBehavior = false;
+            OrdenesParaPrepararLST.View = View.Details;
             // 
             // SKUProductoColumna
             // 
@@ -76,54 +76,54 @@
             CantidadColumna.Text = "Cantidad";
             CantidadColumna.Width = 350;
             // 
-            // Confirmarbtn
+            // ConfirmarBTN
             // 
-            Confirmarbtn.BackColor = Color.FromArgb(192, 255, 192);
-            Confirmarbtn.ForeColor = Color.Black;
-            Confirmarbtn.Location = new Point(360, 875);
-            Confirmarbtn.Margin = new Padding(2);
-            Confirmarbtn.Name = "Confirmarbtn";
-            Confirmarbtn.Size = new Size(280, 53);
-            Confirmarbtn.TabIndex = 1;
-            Confirmarbtn.Text = "&Confirmar orden como preparada";
-            Confirmarbtn.UseVisualStyleBackColor = false;
-            Confirmarbtn.Click += Confirmarbtn_Click;
+            ConfirmarBTN.BackColor = Color.FromArgb(192, 255, 192);
+            ConfirmarBTN.ForeColor = Color.Black;
+            ConfirmarBTN.Location = new Point(315, 656);
+            ConfirmarBTN.Margin = new Padding(2);
+            ConfirmarBTN.Name = "ConfirmarBTN";
+            ConfirmarBTN.Size = new Size(245, 40);
+            ConfirmarBTN.TabIndex = 1;
+            ConfirmarBTN.Text = "&Confirmar orden como preparada";
+            ConfirmarBTN.UseVisualStyleBackColor = false;
+            ConfirmarBTN.Click += Confirmarbtn_Click;
             // 
-            // Salirbtn
+            // SalirBTN
             // 
-            Salirbtn.Location = new Point(654, 875);
-            Salirbtn.Margin = new Padding(2);
-            Salirbtn.Name = "Salirbtn";
-            Salirbtn.Size = new Size(214, 53);
-            Salirbtn.TabIndex = 2;
-            Salirbtn.Text = "&Salir";
-            Salirbtn.UseVisualStyleBackColor = true;
-            Salirbtn.Click += Salirbtn_Click;
+            SalirBTN.Location = new Point(572, 656);
+            SalirBTN.Margin = new Padding(2);
+            SalirBTN.Name = "SalirBTN";
+            SalirBTN.Size = new Size(187, 40);
+            SalirBTN.TabIndex = 2;
+            SalirBTN.Text = "&Salir";
+            SalirBTN.UseVisualStyleBackColor = true;
+            SalirBTN.Click += Salirbtn_Click;
             // 
             // EmpaquetarOrdenForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 953);
-            Controls.Add(Salirbtn);
-            Controls.Add(Confirmarbtn);
-            Controls.Add(Ordenesgrb);
+            ClientSize = new Size(859, 715);
+            Controls.Add(SalirBTN);
+            Controls.Add(ConfirmarBTN);
+            Controls.Add(OrdenesGRP);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(2);
             Name = "EmpaquetarOrdenForm";
             Text = "Empaquetar Ordenes de Preparación";
-            Ordenesgrb.ResumeLayout(false);
+            OrdenesGRP.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox Ordenesgrb;
-        private ListView OrdenesParaPrepararlst;
+        private GroupBox OrdenesGRP;
+        private ListView OrdenesParaPrepararLST;
         private ColumnHeader SKUProductoColumna;
         private ColumnHeader ProductoColumna;
         private ColumnHeader CantidadColumna;
-        private Button Confirmarbtn;
-        private Button Salirbtn;
+        private Button ConfirmarBTN;
+        private Button SalirBTN;
     }
 }
