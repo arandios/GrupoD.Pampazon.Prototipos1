@@ -33,10 +33,10 @@
             BuscarOrdenSeleccionBTN = new Button();
             BorrarFiltrosOrdenSeleccionBTN = new Button();
             label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
+            FechaMinimaLBL = new Label();
+            PrioridadLBL = new Label();
+            RazonSocialClienteLBL = new Label();
+            IdOrdenLBL = new Label();
             ClienteOrdenSeleccionTXT = new TextBox();
             NumeroOrdenPreparacionOrdenSeleccionTXT = new TextBox();
             label6 = new Label();
@@ -44,7 +44,7 @@
             CrearOrdenSeleccionBTN = new Button();
             CancelarOrdenSeleccionBTN = new Button();
             FiltrosOPGRP = new GroupBox();
-            label9 = new Label();
+            FechaMaximaLBL = new Label();
             FechaFinalOrdenSeleccionDTP = new DateTimePicker();
             FechaInicioOrdenSeleccionDTP = new DateTimePicker();
             PrioridadOrdenSeleccionCMB = new ComboBox();
@@ -118,41 +118,41 @@
             label1.Size = new Size(0, 15);
             label1.TabIndex = 5;
             // 
-            // label2
+            // FechaMinimaLBL
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(204, 30);
-            label2.Name = "label2";
-            label2.Size = new Size(82, 15);
-            label2.TabIndex = 6;
-            label2.Text = "Fecha Mínima";
+            FechaMinimaLBL.AutoSize = true;
+            FechaMinimaLBL.Location = new Point(204, 30);
+            FechaMinimaLBL.Name = "FechaMinimaLBL";
+            FechaMinimaLBL.Size = new Size(82, 15);
+            FechaMinimaLBL.TabIndex = 6;
+            FechaMinimaLBL.Text = "Fecha Mínima";
             // 
-            // label3
+            // PrioridadLBL
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(204, 80);
-            label3.Name = "label3";
-            label3.Size = new Size(55, 15);
-            label3.TabIndex = 7;
-            label3.Text = "Prioridad";
+            PrioridadLBL.AutoSize = true;
+            PrioridadLBL.Location = new Point(204, 80);
+            PrioridadLBL.Name = "PrioridadLBL";
+            PrioridadLBL.Size = new Size(55, 15);
+            PrioridadLBL.TabIndex = 7;
+            PrioridadLBL.Text = "Prioridad";
             // 
-            // label4
+            // RazonSocialClienteLBL
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(13, 45);
-            label4.Name = "label4";
-            label4.Size = new Size(112, 15);
-            label4.TabIndex = 8;
-            label4.Text = "Razón social Cliente";
+            RazonSocialClienteLBL.AutoSize = true;
+            RazonSocialClienteLBL.Location = new Point(13, 45);
+            RazonSocialClienteLBL.Name = "RazonSocialClienteLBL";
+            RazonSocialClienteLBL.Size = new Size(112, 15);
+            RazonSocialClienteLBL.TabIndex = 8;
+            RazonSocialClienteLBL.Text = "Razón social Cliente";
             // 
-            // label5
+            // IdOrdenLBL
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(0, 80);
-            label5.Name = "label5";
-            label5.Size = new Size(136, 15);
-            label5.TabIndex = 9;
-            label5.Text = "ID de Orden Preparación";
+            IdOrdenLBL.AutoSize = true;
+            IdOrdenLBL.Location = new Point(0, 80);
+            IdOrdenLBL.Name = "IdOrdenLBL";
+            IdOrdenLBL.Size = new Size(136, 15);
+            IdOrdenLBL.TabIndex = 9;
+            IdOrdenLBL.Text = "ID de Orden Preparación";
             // 
             // ClienteOrdenSeleccionTXT
             // 
@@ -211,13 +211,13 @@
             // 
             // FiltrosOPGRP
             // 
-            FiltrosOPGRP.Controls.Add(label9);
+            FiltrosOPGRP.Controls.Add(FechaMaximaLBL);
             FiltrosOPGRP.Controls.Add(FechaFinalOrdenSeleccionDTP);
             FiltrosOPGRP.Controls.Add(FechaInicioOrdenSeleccionDTP);
             FiltrosOPGRP.Controls.Add(NumeroOrdenPreparacionOrdenSeleccionTXT);
-            FiltrosOPGRP.Controls.Add(label2);
-            FiltrosOPGRP.Controls.Add(label5);
-            FiltrosOPGRP.Controls.Add(label3);
+            FiltrosOPGRP.Controls.Add(FechaMinimaLBL);
+            FiltrosOPGRP.Controls.Add(IdOrdenLBL);
+            FiltrosOPGRP.Controls.Add(PrioridadLBL);
             FiltrosOPGRP.Controls.Add(PrioridadOrdenSeleccionCMB);
             FiltrosOPGRP.Controls.Add(BuscarOrdenSeleccionBTN);
             FiltrosOPGRP.Controls.Add(BorrarFiltrosOrdenSeleccionBTN);
@@ -230,14 +230,14 @@
             FiltrosOPGRP.TabStop = false;
             FiltrosOPGRP.Text = "Seleccione filtros de búsqueda para Ordenes de Preparación: ";
             // 
-            // label9
+            // FechaMaximaLBL
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(519, 30);
-            label9.Name = "label9";
-            label9.Size = new Size(84, 15);
-            label9.TabIndex = 25;
-            label9.Text = "Fecha Máxima";
+            FechaMaximaLBL.AutoSize = true;
+            FechaMaximaLBL.Location = new Point(519, 30);
+            FechaMaximaLBL.Name = "FechaMaximaLBL";
+            FechaMaximaLBL.Size = new Size(84, 15);
+            FechaMaximaLBL.TabIndex = 25;
+            FechaMaximaLBL.Text = "Fecha Máxima";
             // 
             // FechaFinalOrdenSeleccionDTP
             // 
@@ -365,7 +365,7 @@
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(ClienteOrdenSeleccionTXT);
-            Controls.Add(label4);
+            Controls.Add(RazonSocialClienteLBL);
             Controls.Add(label1);
             Controls.Add(FiltrosOPGRP);
             Controls.Add(OPGRP);
@@ -390,10 +390,10 @@
         private Button BorrarFiltrosOrdenSeleccionBTN;
         private ListBox OrdenesDePreparacionPendientesList;
         private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
+        private Label FechaMinimaLBL;
+        private Label PrioridadLBL;
+        private Label RazonSocialClienteLBL;
+        private Label IdOrdenLBL;
         private TextBox ClienteOrdenSeleccionTXT;
         private TextBox NumeroOrdenPreparacionOrdenSeleccionTXT;
         private Label label6;
@@ -416,7 +416,7 @@
         private ColumnHeader OPaOS_FechaOPColumna;
         private ColumnHeader OPaOS_PrioridadColumna;
         private DateTimePicker FechaInicioOrdenSeleccionDTP;
-        private Label label9;
+        private Label FechaMaximaLBL;
         private DateTimePicker FechaFinalOrdenSeleccionDTP;
     }
 }
