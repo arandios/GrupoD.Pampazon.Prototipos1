@@ -37,7 +37,7 @@
             ProductoColumna = new ColumnHeader();
             CantidadColumna = new ColumnHeader();
             ProductoBuscarBTN = new Button();
-            button3 = new Button();
+            SalirBTN = new Button();
             Generar = new Button();
             button2 = new Button();
             NombreProductoTXT = new TextBox();
@@ -61,15 +61,15 @@
             label15 = new Label();
             label14 = new Label();
             label12 = new Label();
-            PrioridadComboBox = new ComboBox();
+            PrioridadCMB = new ComboBox();
             label4 = new Label();
             label3 = new Label();
             OPDetalleMercaderiaGroupBox = new GroupBox();
             HorarioTextBox = new TextBox();
             label2 = new Label();
             FechaSelecter = new DateTimePicker();
-            DniTransportistaComboBox = new ComboBox();
-            NombreTransportistaComboBox = new ComboBox();
+            DniTransportistaCMB = new ComboBox();
+            NombreTransportistaCMB = new ComboBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             groupBox1.SuspendLayout();
             OPMercaderiaGroupBox.SuspendLayout();
@@ -138,17 +138,17 @@
             ProductoBuscarBTN.UseVisualStyleBackColor = true;
             ProductoBuscarBTN.Click += BuscarProductoBtn;
             // 
-            // button3
+            // SalirBTN
             // 
-            button3.BackColor = Color.White;
-            button3.Location = new Point(730, 708);
-            button3.Margin = new Padding(2);
-            button3.Name = "button3";
-            button3.Size = new Size(187, 40);
-            button3.TabIndex = 28;
-            button3.Text = "&Salir";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += VolverBtn;
+            SalirBTN.BackColor = Color.White;
+            SalirBTN.Location = new Point(730, 708);
+            SalirBTN.Margin = new Padding(2);
+            SalirBTN.Name = "SalirBTN";
+            SalirBTN.Size = new Size(187, 40);
+            SalirBTN.TabIndex = 28;
+            SalirBTN.Text = "&Salir";
+            SalirBTN.UseVisualStyleBackColor = false;
+            SalirBTN.Click += VolverBtn;
             // 
             // Generar
             // 
@@ -390,15 +390,15 @@
             label12.TabIndex = 62;
             label12.Text = "Nombre Transportista:";
             // 
-            // PrioridadComboBox
+            // PrioridadCMB
             // 
-            PrioridadComboBox.FormattingEnabled = true;
-            PrioridadComboBox.Location = new Point(543, 101);
-            PrioridadComboBox.Margin = new Padding(3, 2, 3, 2);
-            PrioridadComboBox.Name = "PrioridadComboBox";
-            PrioridadComboBox.Size = new Size(307, 23);
-            PrioridadComboBox.TabIndex = 61;
-            PrioridadComboBox.SelectedIndexChanged += PrioridadComboBox_SelectedIndexChanged;
+            PrioridadCMB.FormattingEnabled = true;
+            PrioridadCMB.Location = new Point(543, 101);
+            PrioridadCMB.Margin = new Padding(3, 2, 3, 2);
+            PrioridadCMB.Name = "PrioridadCMB";
+            PrioridadCMB.Size = new Size(307, 23);
+            PrioridadCMB.TabIndex = 61;
+            PrioridadCMB.SelectedIndexChanged += PrioridadComboBox_SelectedIndexChanged;
             // 
             // label4
             // 
@@ -426,12 +426,12 @@
             OPDetalleMercaderiaGroupBox.Controls.Add(FechaSelecter);
             OPDetalleMercaderiaGroupBox.Controls.Add(button2);
             OPDetalleMercaderiaGroupBox.Controls.Add(Generar);
-            OPDetalleMercaderiaGroupBox.Controls.Add(DniTransportistaComboBox);
+            OPDetalleMercaderiaGroupBox.Controls.Add(DniTransportistaCMB);
             OPDetalleMercaderiaGroupBox.Controls.Add(OrdenTempLista);
             OPDetalleMercaderiaGroupBox.Controls.Add(label3);
-            OPDetalleMercaderiaGroupBox.Controls.Add(PrioridadComboBox);
+            OPDetalleMercaderiaGroupBox.Controls.Add(PrioridadCMB);
             OPDetalleMercaderiaGroupBox.Controls.Add(label4);
-            OPDetalleMercaderiaGroupBox.Controls.Add(NombreTransportistaComboBox);
+            OPDetalleMercaderiaGroupBox.Controls.Add(NombreTransportistaCMB);
             OPDetalleMercaderiaGroupBox.Controls.Add(label14);
             OPDetalleMercaderiaGroupBox.Controls.Add(label12);
             OPDetalleMercaderiaGroupBox.Location = new Point(48, 454);
@@ -474,25 +474,25 @@
             FechaSelecter.Value = new DateTime(2024, 10, 18, 0, 0, 0, 0);
             FechaSelecter.ValueChanged += FechaSelecter_ValueChanged;
             // 
-            // DniTransportistaComboBox
+            // DniTransportistaCMB
             // 
-            DniTransportistaComboBox.FormattingEnabled = true;
-            DniTransportistaComboBox.Location = new Point(543, 149);
-            DniTransportistaComboBox.Margin = new Padding(3, 2, 3, 2);
-            DniTransportistaComboBox.Name = "DniTransportistaComboBox";
-            DniTransportistaComboBox.Size = new Size(307, 23);
-            DniTransportistaComboBox.TabIndex = 69;
-            DniTransportistaComboBox.SelectedIndexChanged += DniTransportistaComboBox_SelectedIndexChanged;
+            DniTransportistaCMB.FormattingEnabled = true;
+            DniTransportistaCMB.Location = new Point(543, 149);
+            DniTransportistaCMB.Margin = new Padding(3, 2, 3, 2);
+            DniTransportistaCMB.Name = "DniTransportistaCMB";
+            DniTransportistaCMB.Size = new Size(307, 23);
+            DniTransportistaCMB.TabIndex = 69;
+            DniTransportistaCMB.SelectedIndexChanged += DniTransportistaComboBox_SelectedIndexChanged;
             // 
-            // NombreTransportistaComboBox
+            // NombreTransportistaCMB
             // 
-            NombreTransportistaComboBox.FormattingEnabled = true;
-            NombreTransportistaComboBox.Location = new Point(543, 204);
-            NombreTransportistaComboBox.Margin = new Padding(3, 2, 3, 2);
-            NombreTransportistaComboBox.Name = "NombreTransportistaComboBox";
-            NombreTransportistaComboBox.Size = new Size(307, 23);
-            NombreTransportistaComboBox.TabIndex = 68;
-            NombreTransportistaComboBox.SelectedIndexChanged += NombreTransportistaComboBox_SelectedIndexChanged;
+            NombreTransportistaCMB.FormattingEnabled = true;
+            NombreTransportistaCMB.Location = new Point(543, 204);
+            NombreTransportistaCMB.Margin = new Padding(3, 2, 3, 2);
+            NombreTransportistaCMB.Name = "NombreTransportistaCMB";
+            NombreTransportistaCMB.Size = new Size(307, 23);
+            NombreTransportistaCMB.TabIndex = 68;
+            NombreTransportistaCMB.SelectedIndexChanged += NombreTransportistaComboBox_SelectedIndexChanged;
             // 
             // contextMenuStrip1
             // 
@@ -505,7 +505,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1004, 813);
-            Controls.Add(button3);
+            Controls.Add(SalirBTN);
             Controls.Add(OPMercaderiaGroupBox);
             Controls.Add(groupBox1);
             Controls.Add(OPDetalleMercaderiaGroupBox);
@@ -532,7 +532,7 @@
         private ListView OrdenTempLista;
         private ColumnHeader ProductoColumna;
         private Button ProductoBuscarBTN;
-        private Button button3;
+        private Button SalirBTN;
         private Button Generar;
         private Button button2;
         private ColumnHeader CantidadColumna;
@@ -544,7 +544,7 @@
         private GroupBox groupBox1;
         private GroupBox OPMercaderiaGroupBox;
         private GroupBox OPDetalleMercaderiaGroupBox;
-        private ComboBox PrioridadComboBox;
+        private ComboBox PrioridadCMB;
         private Label label4;
         private Label label3;
         private Label SKUProductoLBL;
@@ -556,7 +556,7 @@
         private ColumnHeader SKUColumna;
         private Label label14;
         private Label label12;
-        private ComboBox DniTransportistaComboBox;
+        private ComboBox DniTransportistaCMB;
         private Label label5;
         protected TextBox MaxCantidadTxt;
         private TextBox AgregarCantidadTXT;
@@ -565,7 +565,7 @@
         private Label label15;
         private TextBox CodigoClienteTXT;
         private DateTimePicker FechaSelecter;
-        private ComboBox NombreTransportistaComboBox;
+        private ComboBox NombreTransportistaCMB;
         private TextBox HorarioTextBox;
         private Label label2;
         private ContextMenuStrip contextMenuStrip1;

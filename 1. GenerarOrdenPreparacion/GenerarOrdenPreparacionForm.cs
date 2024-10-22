@@ -24,10 +24,10 @@ namespace Pampazon
         {
             InitializeComponent();
 
-            PrioridadComboBox.Items.Add("Alta");
-            PrioridadComboBox.Items.Add("Media");
-            PrioridadComboBox.Items.Add("Baja");
-            PrioridadComboBox.Enabled = false;
+            PrioridadCMB.Items.Add("Alta");
+            PrioridadCMB.Items.Add("Media");
+            PrioridadCMB.Items.Add("Baja");
+            PrioridadCMB.Enabled = false;
 
 
             FechaSelecter.CustomFormat = "MM/dd/yyyy";
@@ -203,8 +203,8 @@ namespace Pampazon
                     ActualizarListaOrden();
                     cargarTransportistas();
                     cargarNombreTransportistas();
-                    PrioridadComboBox.SelectedIndex = -1;
-                    PrioridadComboBox.Enabled = false;
+                    PrioridadCMB.SelectedIndex = -1;
+                    PrioridadCMB.Enabled = false;
                     CodigoClienteTXT.Enabled = true;
                     RazonSocialClienteTXT.Enabled = true;
 
@@ -238,8 +238,8 @@ namespace Pampazon
                 };
             }
 
-            string selectedPriority = PrioridadComboBox.SelectedItem?.ToString();
-            string dniTransportista = DniTransportistaComboBox.SelectedItem?.ToString();
+            string selectedPriority = PrioridadCMB.SelectedItem?.ToString();
+            string dniTransportista = DniTransportistaCMB.SelectedItem?.ToString();
 
 
             if (model.Orden.Productos.Count == 0)
@@ -273,10 +273,10 @@ namespace Pampazon
                     DialogResult result = MessageBox.Show($"Orden ingresada con exitos, le enviaremos un mail con los detalles", "Confirmar Orden");
                     model.Orden.borrarOrden();
                     ActualizarListaOrden();
-                    PrioridadComboBox.SelectedIndex = -1;
+                    PrioridadCMB.SelectedIndex = -1;
                     HorarioTextBox.Text = "";
-                    DniTransportistaComboBox.SelectedIndex = -1;
-                    NombreTransportistaComboBox.SelectedIndex = -1;
+                    DniTransportistaCMB.SelectedIndex = -1;
+                    NombreTransportistaCMB.SelectedIndex = -1;
                     FechaSelecter.Value = DateTime.Today;
                     CodigoClienteTXT.Enabled = true;
                     RazonSocialClienteTXT.Enabled = true;
@@ -367,7 +367,7 @@ namespace Pampazon
                         ProductosStockLista.Items.Clear();
                         CodigoClienteTXT.Enabled = false;
                         RazonSocialClienteTXT.Enabled = false;
-                        PrioridadComboBox.Enabled = true;
+                        PrioridadCMB.Enabled = true;
                     }
 
                 }
@@ -392,14 +392,14 @@ namespace Pampazon
         {
             if (model.Orden.Productos.Count > 0)
             {
-                DniTransportistaComboBox.DisplayMember = "DNI"; // Show DNI in the ComboBox
-                DniTransportistaComboBox.DataSource = new BindingSource(model.ObtenerTransportistas(), null);
-                DniTransportistaComboBox.SelectedIndex = -1; // Clear selection
+                DniTransportistaCMB.DisplayMember = "DNI"; // Show DNI in the ComboBox
+                DniTransportistaCMB.DataSource = new BindingSource(model.ObtenerTransportistas(), null);
+                DniTransportistaCMB.SelectedIndex = -1; // Clear selection
             }
             else
             {
-                DniTransportistaComboBox.DataSource = null; // Clear the DataSource
-                DniTransportistaComboBox.Items.Clear(); // Clear the Items (if needed)
+                DniTransportistaCMB.DataSource = null; // Clear the DataSource
+                DniTransportistaCMB.Items.Clear(); // Clear the Items (if needed)
             }
 
         }
@@ -408,14 +408,14 @@ namespace Pampazon
 
             if (model.Orden.Productos.Count > 0)
             {
-                NombreTransportistaComboBox.DisplayMember = "NombreCompleto"; // Show combined Nombre and Apellido
-                NombreTransportistaComboBox.DataSource = new BindingSource(model.ObtenerTransportistas(), null);
-                NombreTransportistaComboBox.SelectedIndex = -1; // Clear selection
+                NombreTransportistaCMB.DisplayMember = "NombreCompleto"; // Show combined Nombre and Apellido
+                NombreTransportistaCMB.DataSource = new BindingSource(model.ObtenerTransportistas(), null);
+                NombreTransportistaCMB.SelectedIndex = -1; // Clear selection
             }
             else
             {
-                NombreTransportistaComboBox.DataSource = null; // Clear the DataSource
-                NombreTransportistaComboBox.Items.Clear(); // Clear the Items (if needed)
+                NombreTransportistaCMB.DataSource = null; // Clear the DataSource
+                NombreTransportistaCMB.Items.Clear(); // Clear the Items (if needed)
 
             }
 
@@ -423,16 +423,16 @@ namespace Pampazon
 
         private void DniTransportistaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (DniTransportistaComboBox.SelectedItem != null)
+            if (DniTransportistaCMB.SelectedItem != null)
             {
-                var selectedTransportista = (GenerarOrdenPreparacion.Transportista)DniTransportistaComboBox.SelectedItem;
+                var selectedTransportista = (GenerarOrdenPreparacion.Transportista)DniTransportistaCMB.SelectedItem;
 
                 // Ensure that selectedTransportista is not null
                 if (selectedTransportista != null)
                 {
                     // Now you can safely access properties like selectedTransportista.Nombre
                     // For example:
-                    NombreTransportistaComboBox.Text = selectedTransportista.Nombre + " " + selectedTransportista.Apellido;
+                    NombreTransportistaCMB.Text = selectedTransportista.Nombre + " " + selectedTransportista.Apellido;
                     model.Orden.DNITransportista = selectedTransportista.DNI;
                 }
 
@@ -440,29 +440,29 @@ namespace Pampazon
             else
             {
                 // Handle the case where no item is selected
-                DniTransportistaComboBox.SelectedIndex = -1; // Clear selection // Clear the text or handle appropriately
+                DniTransportistaCMB.SelectedIndex = -1; // Clear selection // Clear the text or handle appropriately
             }
         }
 
         private void NombreTransportistaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (NombreTransportistaComboBox.SelectedItem != null)
+            if (NombreTransportistaCMB.SelectedItem != null)
             {
-                var selectedNombreTransportista = (GenerarOrdenPreparacion.Transportista)NombreTransportistaComboBox.SelectedItem;
+                var selectedNombreTransportista = (GenerarOrdenPreparacion.Transportista)NombreTransportistaCMB.SelectedItem;
 
                 // Ensure that selectedTransportista is not null
                 if (selectedNombreTransportista != null)
                 {
                     // Now you can safely access properties like selectedTransportista.Nombre
                     // For example:
-                    DniTransportistaComboBox.Text = selectedNombreTransportista.DNI.ToString();
+                    DniTransportistaCMB.Text = selectedNombreTransportista.DNI.ToString();
                 }
 
             }
             else
             {
                 // Handle the case where no item is selected
-                NombreTransportistaComboBox.SelectedIndex = -1; // Clear the text or handle appropriately
+                NombreTransportistaCMB.SelectedIndex = -1; // Clear the text or handle appropriately
             }
 
         }
@@ -479,7 +479,7 @@ namespace Pampazon
 
         private void PrioridadComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedPriority = PrioridadComboBox.SelectedItem?.ToString();
+            string selectedPriority = PrioridadCMB.SelectedItem?.ToString();
 
             if (!string.IsNullOrEmpty(selectedPriority))
             {
@@ -487,8 +487,8 @@ namespace Pampazon
                 cargarTransportistas();
                 cargarNombreTransportistas();
                 // Clear selections after loading transportistas
-                DniTransportistaComboBox.SelectedIndex = -1; // Clear selection
-                NombreTransportistaComboBox.SelectedIndex = -1; // Clear selection
+                DniTransportistaCMB.SelectedIndex = -1; // Clear selection
+                NombreTransportistaCMB.SelectedIndex = -1; // Clear selection
             }
         }
     }
