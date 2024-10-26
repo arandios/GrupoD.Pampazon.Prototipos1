@@ -73,7 +73,7 @@ namespace Pampazon.OrdenSeleccion
         // EVENTOS DEL FORMULARIO
         // ==============================================================================
 
-        private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        private void BuscarOrdenSeleccionBTN_Click(object sender, EventArgs e) //TODO: Cambiar nombre del metodo a BuscarOrdenesDePreparacionBTN_Click
         {
             // Limpiar la lista actual
             OrdenesDePrepracionAOrdenSeleccionLST.Items.Clear();

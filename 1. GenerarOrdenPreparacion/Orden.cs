@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Pampazon.GenerarOrdenPreparacion
 {
-    internal class Orden
+    internal class Orden //TODO: Cambiar nombre a OrdenPreparacion (para coincidir con diagrama de clases.)
     {
-        public int ID { get; set; }
+        public int ID { get; set; } //TODO: Cambiar nombre a IDOrdenPreparacion (para coincidir con diagrama de clases.)
         public int IDCliente { get; set; } = -1;
 
         public string Prioridad { get; set; } = "";
         public int DNITransportista { get; set; } = -1;
-        public string Fecha { get; set; }
+        public string Fecha { get; set; } //TODO: Cambiar nombre a FechaEmision (para coincidir con diagrama de clases.)
 
-        public string FechaDeEntrega { get; set; }// For test data
+        public string FechaDeEntrega { get; set; } // TODO: Cambiar nombre a FechaRetiro (para coincidir con diagrama de clases.)
         public List<Producto> Productos { get; set; }
 
         // Constructor
