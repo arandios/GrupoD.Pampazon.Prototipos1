@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Pampazon.Entidades
+{
+    public class OrdenPreparacionEnt
+    {
+        public int IdOrdenPreparacion { get; set; }
+        public PrioridadEnum Prioridad { get; set; }
+        public int IdCliente { get; set; }
+        public List<OrdenPreparacionDetalle> Detalle { get; } = new();
+        public int DNITransportista { get; set; }
+        public DateTime FechaEmision { get; set; }
+        public DateTime FechaRetiro { get; set; }
+        public DateTime HoraRetiro { get; set; }
+        public EstadoOrdenPreparacionEnum Estado { get; set; }
+    }
+}
