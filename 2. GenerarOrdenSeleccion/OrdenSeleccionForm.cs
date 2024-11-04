@@ -15,8 +15,8 @@ namespace Pampazon.OrdenSeleccion
     {
         //El formulario tiene una referencia al modelo.
         private OrdenSeleccionModelo modelo = new OrdenSeleccionModelo();
-        private List<OrdenPreparacion> ordenesDisponibles = new List<OrdenPreparacion>();
-        private List<OrdenPreparacion> ordenesAgregadas = new List<OrdenPreparacion>();
+        private List<OrdenPreparacionEnt> ordenesDisponibles = new List<OrdenPreparacionEnt>();
+        private List<OrdenPreparacionEnt> ordenesAgregadas = new List<OrdenPreparacionEnt>();
 
         public OrdenSeleccionForm()
         {
@@ -34,7 +34,7 @@ namespace Pampazon.OrdenSeleccion
             OrdenesDePrepracionAOrdenSeleccionLST.MultiSelect = true;
 
             // Llenar el ComboBox con los valores del enum CodigoPrioridad
-            PrioridadOrdenSeleccionCMB.DataSource = Enum.GetValues(typeof(CodigoPrioridad));
+            PrioridadOrdenSeleccionCMB.DataSource = Enum.GetValues(typeof(PrioridadEnum));
 
             //Borrar filtros que pudieran llegar a quedar precargados.
             BorrarFiltros();
@@ -159,7 +159,7 @@ namespace Pampazon.OrdenSeleccion
             var itemsToRemove = new List<ListViewItem>();
             foreach (ListViewItem item in OrdenesDePrepracionAOrdenSeleccionLST.Items)
             {
-                var ordenPreparacion = (OrdenPreparacion)item.Tag;
+                var ordenPreparacion = (OrdenPreparacionEnt)item.Tag;
                 if (ordenesAgregadas.Contains(ordenPreparacion))
                 {
                     itemsToRemove.Add(item);
@@ -194,7 +194,7 @@ namespace Pampazon.OrdenSeleccion
                     OrdenesDePrepracionAOrdenSeleccionLST.Items.Add(item);
 
                     // Eliminar el elemento de la lista de órdenes disponibles
-                    var ordenPreparacion = (OrdenPreparacion)item.Tag;
+                    var ordenPreparacion = (OrdenPreparacionEnt)item.Tag;
                     ordenesDisponibles.Remove(ordenPreparacion);
                 }
 
@@ -217,10 +217,10 @@ namespace Pampazon.OrdenSeleccion
             }
 
             // Crear una nueva instancia de OrdenSeleccion
-            var ordenSeleccion = new OrdenSeleccion
+            var ordenSeleccion = new OrdenSeleccionEnt
             {
                 FechaEmision = DateTime.Now,
-                OrdenesPreparacion = new List<OrdenPreparacion>(),
+                OrdenesPreparacion = new List<OrdenPreparacionEnt>(),
                 EstadoOrdenDeSeleccion = "Nueva", // Estado inicial de la orden de selección
                 FechaEstados = DateTime.Now
             };
@@ -228,7 +228,7 @@ namespace Pampazon.OrdenSeleccion
             // Agregar las órdenes de preparación seleccionadas a la orden de selección
             foreach (ListViewItem item in OrdenesDePrepracionAOrdenSeleccionLST.SelectedItems)
             {
-                var ordenPreparacion = (OrdenPreparacion)item.Tag;
+                var ordenPreparacion = (OrdenPreparacionEnt)item.Tag;
                 ordenSeleccion.OrdenesPreparacion.Add(ordenPreparacion);
 
                 // Verificar si el ítem ya existe en OrdenesDePreparacionPendientesListView
@@ -288,12 +288,12 @@ namespace Pampazon.OrdenSeleccion
                 return;
             }
 
-            // Crear una nueva instancia de OrdenSeleccion
-            var ordenSeleccion = new OrdenSeleccion
+            // Crear una nueva instancia de OrdenSeleccionEnt
+            var ordenSeleccion = new OrdenSeleccionEnt
             {
                 //IDOrdenSeleccion = Guid.NewGuid().ToString(), // Generar un ID único para la orden de selección
                 FechaEmision = DateTime.Now,
-                OrdenesPreparacion = new List<OrdenPreparacion>(),
+                OrdenesPreparacion = new List<OrdenPreparacionEnt>(),
                 EstadoOrdenDeSeleccion = "Nueva", // Estado inicial de la orden de selección
                 FechaEstados = DateTime.Now
             };
@@ -301,14 +301,14 @@ namespace Pampazon.OrdenSeleccion
             // Agregar las órdenes de preparación a la orden de selección
             foreach (ListViewItem item in DetalleOrdenesDePreparacionPendientesLST.Items)
             {
-                var ordenPreparacion = (OrdenPreparacion)item.Tag;
+                var ordenPreparacion = (OrdenPreparacionEnt)item.Tag;
                 ordenSeleccion.OrdenesPreparacion.Add(ordenPreparacion);
             }
 
             // Eliminar las órdenes de preparación que se han agregado a la orden de selección de la lista de órdenes disponibles
             foreach (ListViewItem item in DetalleOrdenesDePreparacionPendientesLST.Items)
             {
-                var ordenPreparacion = (OrdenPreparacion)item.Tag;
+                var ordenPreparacion = (OrdenPreparacionEnt)item.Tag;
                 ordenesDisponibles.Remove(ordenPreparacion);
             }
 
@@ -323,19 +323,7 @@ namespace Pampazon.OrdenSeleccion
 
 
         // ==============================================================================
-        // FOOTER DE PANTALLA
-        // ==============================================================================
-
-        //Cerrar ventana.
-        private void CancelarOrdenSeleccionBTN_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-
-
-        // ==============================================================================
-        // DEFINICION DE METODOS:
+        // DEFINICION DE METODOS AUXILIARES:
         // ==============================================================================
         
         
@@ -383,75 +371,10 @@ namespace Pampazon.OrdenSeleccion
         }
 
 
-        private void DetalleOrdenesDePrepracionAOrdenSeleccionListView_SelectedIndexChanged(object sender, EventArgs e)
+        //Cerrar ventana.
+        private void CancelarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
-
-            /*
-            // Limpiar la lista de detalles de productos
-            DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Items.Clear();
-
-            // Verificar si hay un ítem seleccionado
-            if (DetalleOrdenesDePrepracionAOrdenSeleccionListView.SelectedItems.Count > 0)
-            {
-                // Obtener la orden de preparación seleccionada
-                var selectedItem = DetalleOrdenesDePrepracionAOrdenSeleccionListView.SelectedItems[0];
-                var ordenPreparacion = (OrdenPreparacion)selectedItem.Tag;
-
-                // Agregar los detalles de la mercadería a la lista de productos
-                foreach (var mercaderia in ordenPreparacion.Mercaderias)
-                {
-                    ListViewItem item = new ListViewItem(mercaderia.DescripcionProducto);
-                    item.SubItems.Add(mercaderia.Cantidad.ToString());
-                    DetalleOrdenesDePrepracionProductosAOrdenSeleccionListView.Items.Add(item);
-                }
-            }
-            */
+            this.Close();
         }
-
-
-
-        private void AgruparOrdenesDePreparacionPendientes()
-        {
-            /*
-            // Limpiar la lista actual
-            OrdenesDePreparacionPendientesProductoUbicacionListView.Items.Clear();
-
-            // Obtener los elementos de OrdenesDePreparacionPendientesListView
-            var items = OrdenesDePreparacionPendientesListView.Items.Cast<ListViewItem>();
-
-            // Agrupar por Producto y Ubicación y sumar la cantidad de mercadería
-            var agrupacion = items
-                .SelectMany(item => ((OrdenPreparacion)item.Tag).Mercaderias.Select(m => new
-                {
-                    Producto = m.DescripcionProducto,
-                    Ubicacion = m.Ubicacion, // Asumiendo que Mercaderia tiene una propiedad Ubicacion
-                    Cantidad = m.Cantidad
-                }))
-                .GroupBy(x => new { x.Producto, x.Ubicacion })
-                .Select(g => new
-                {
-                    Producto = g.Key.Producto,
-                    Ubicacion = g.Key.Ubicacion,
-                    CantidadTotal = g.Sum(x => x.Cantidad)
-                })
-                .ToList();
-
-            // Agregar los resultados agrupados a OrdenesDePreparacionPendientesProductoUbicacionListView
-            foreach (var grupo in agrupacion)
-            {
-                ListViewItem item = new ListViewItem(grupo.Producto);
-                item.SubItems.Add(grupo.Ubicacion);
-                item.SubItems.Add(grupo.CantidadTotal.ToString());
-                OrdenesDePreparacionPendientesProductoUbicacionListView.Items.Add(item);
-            }
-
-            // Ajustar el ancho de las columnas automáticamente según el contenido
-            foreach (ColumnHeader column in OrdenesDePreparacionPendientesProductoUbicacionListView.Columns)
-            {
-                OrdenesDePreparacionPendientesProductoUbicacionListView.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.ColumnContent);
-            }
-            */
-        }
-
     }
 }

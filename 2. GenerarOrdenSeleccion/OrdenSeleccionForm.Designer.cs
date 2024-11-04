@@ -288,7 +288,6 @@
             OrdenesDePrepracionAOrdenSeleccionLST.TabIndex = 2;
             OrdenesDePrepracionAOrdenSeleccionLST.UseCompatibleStateImageBehavior = false;
             OrdenesDePrepracionAOrdenSeleccionLST.View = View.Details;
-            OrdenesDePrepracionAOrdenSeleccionLST.SelectedIndexChanged += DetalleOrdenesDePrepracionAOrdenSeleccionListView_SelectedIndexChanged;
             // 
             // IDOrdenPreparacionColumna
             // 
