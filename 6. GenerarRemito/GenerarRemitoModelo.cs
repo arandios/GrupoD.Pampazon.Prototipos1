@@ -1,4 +1,5 @@
-﻿using Pampazon.OrdenSeleccion;
+﻿using Pampazon.Almacenes;
+using Pampazon.OrdenSeleccion;
 using Pampazon.Remitos;
 using System;
 using System.Collections.Generic;
@@ -64,24 +65,35 @@ public class GenerarRemitoModelo
         return ordenes.FirstOrDefault(o => o.IdOrden == idOrden);
     }
 
+    /* internal static List<OrdenesDePreparacion> ObtenerOrdenes()
+     {
+         return new List<OrdenesDePreparacion>
+         {
+             new OrdenesDePreparacion("OD_00123", 52983472, "Juan", "Perez"),
+             new OrdenesDePreparacion("OD_00124", 42938571, "Maria", "Lopez"),
+             new OrdenesDePreparacion("OD_00125", 73928563, "Carlos", "Martinez"),
+             new OrdenesDePreparacion("OD_00129", 40293857, "Mario", "Paz"),
+             new OrdenesDePreparacion("OD_00130", 75930281, "Ana", "Gomez"),
+             new OrdenesDePreparacion("OD_00131", 50283741, "Luis", "Diaz"),
+             new OrdenesDePreparacion("OD_00132", 75930281, "Ana", "Gomez"),
+             new OrdenesDePreparacion("OD_00136", 23984720, "Sofia", "Ramos"),
+             new OrdenesDePreparacion("OD_00137", 10394827, "Laura", "Fernandez"),
+             new OrdenesDePreparacion("OD_00138", 75930281, "Ana", "Gomez"),
+             new OrdenesDePreparacion("OD_00139", 37492018, "Pedro", "Alvarez"),
+             new OrdenesDePreparacion("OD_00140", 29837465, "Lucas", "Garcia"),
+             new OrdenesDePreparacion("OD_00141", 94832015, "Elena", "Molina"),
+         };
+     }*/
     internal static List<OrdenesDePreparacion> ObtenerOrdenes()
     {
-        return new List<OrdenesDePreparacion>
-        {
-            new OrdenesDePreparacion("OD_00123", 52983472, "Juan", "Perez"),
-            new OrdenesDePreparacion("OD_00124", 42938571, "Maria", "Lopez"),
-            new OrdenesDePreparacion("OD_00125", 73928563, "Carlos", "Martinez"),
-            new OrdenesDePreparacion("OD_00129", 40293857, "Mario", "Paz"),
-            new OrdenesDePreparacion("OD_00130", 75930281, "Ana", "Gomez"),
-            new OrdenesDePreparacion("OD_00131", 50283741, "Luis", "Diaz"),
-            new OrdenesDePreparacion("OD_00132", 75930281, "Ana", "Gomez"),
-            new OrdenesDePreparacion("OD_00136", 23984720, "Sofia", "Ramos"),
-            new OrdenesDePreparacion("OD_00137", 10394827, "Laura", "Fernandez"),
-            new OrdenesDePreparacion("OD_00138", 75930281, "Ana", "Gomez"),
-            new OrdenesDePreparacion("OD_00139", 37492018, "Pedro", "Alvarez"),
-            new OrdenesDePreparacion("OD_00140", 29837465, "Lucas", "Garcia"),
-            new OrdenesDePreparacion("OD_00141", 94832015, "Elena", "Molina"),
-        };
+        return OrdenPreparacionAlmacen.OrdenesPreparacion.Select(o => new OrdenesDePreparacion(
+            o.IdOrdenPreparacion.ToString(),
+            o.DNITransportista,
+            TransportistaAlmacen.Transportistas.FirstOrDefault(t => t.DNI == o.DNITransportista)?.Nombre ?? "Desconocido",
+            TransportistaAlmacen.Transportistas.FirstOrDefault(t => t.DNI == o.DNITransportista)?.Apellido ?? "Desconocido"
+        )).ToList();
     }
+
+
 }
 
