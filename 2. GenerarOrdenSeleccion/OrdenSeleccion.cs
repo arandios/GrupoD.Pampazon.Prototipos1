@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Pampazon.OrdenSeleccion
 {
 
-    internal class OrdenSeleccionEnt //Antes se llamaba "OrdenSeleccion"
+    internal class OrdenSeleccion //Antes se llamaba "OrdenSeleccion"
     {
         /*
          OS: Nro, fecha de emisión, 
@@ -20,7 +20,7 @@ namespace Pampazon.OrdenSeleccion
         //PROPIEDADES
         public int IDOrdenSeleccion { get; set; }
         public DateTime FechaEmision { get; set; }
-        public List<OrdenPreparacionEnt> OrdenesPreparacion { get; set; } //Conjunto de OP asociadas a una OS
+        public List<OrdenPreparacion> OrdenesPreparacion { get; set; } //Conjunto de OP asociadas a una OS
 
         public string EstadoOrdenDeSeleccion { get; set; } //Deberia ser una lista? Una orden puede tener muchos estados?
         public DateTime FechaEstados{get;set;}
@@ -30,7 +30,7 @@ namespace Pampazon.OrdenSeleccion
         private static int contadorID = 0;
 
         // CONSTRUCTOR
-        public OrdenSeleccionEnt(string idOrdenSeleccion, DateTime fechaEmision, List<OrdenPreparacionEnt> ordenesPreparacion, int cantidad, string detalleMercaderia, string ubicacionEnAlmacen, string estados, DateTime fechaEstados)
+        public OrdenSeleccion(string idOrdenSeleccion, DateTime fechaEmision, List<OrdenPreparacion> ordenesPreparacion, int cantidad, string detalleMercaderia, string ubicacionEnAlmacen, string estados, DateTime fechaEstados)
         {
             IDOrdenSeleccion = ++contadorID;
             FechaEmision = fechaEmision;
@@ -40,11 +40,11 @@ namespace Pampazon.OrdenSeleccion
         }
 
         // Constructor vacío //TODO: Verficar sobrecarga de constructor vacio. Orden de Seleccion.
-        public OrdenSeleccionEnt()
+        public OrdenSeleccion()
         {
             IDOrdenSeleccion = ++contadorID;
             FechaEmision = DateTime.MinValue;
-            OrdenesPreparacion = new List<OrdenPreparacionEnt>();
+            OrdenesPreparacion = new List<OrdenPreparacion>();
             EstadoOrdenDeSeleccion = "Pendiente";
             FechaEstados = DateTime.MinValue;
         }

@@ -15,8 +15,8 @@ namespace Pampazon.OrdenSeleccion
     {
         //El formulario tiene una referencia al modelo.
         private OrdenSeleccionModelo modelo = new OrdenSeleccionModelo();
-        private List<OrdenPreparacionEnt> ordenesDisponibles = new List<OrdenPreparacionEnt>();
-        private List<OrdenPreparacionEnt> ordenesAgregadas = new List<OrdenPreparacionEnt>();
+        private List<OrdenPreparacion> ordenesDisponibles = new List<OrdenPreparacion>();
+        private List<OrdenPreparacion> ordenesAgregadas = new List<OrdenPreparacion>();
 
         public OrdenSeleccionForm()
         {
@@ -159,7 +159,7 @@ namespace Pampazon.OrdenSeleccion
             var itemsToRemove = new List<ListViewItem>();
             foreach (ListViewItem item in OrdenesDePrepracionAOrdenSeleccionLST.Items)
             {
-                var ordenPreparacion = (OrdenPreparacionEnt)item.Tag;
+                var ordenPreparacion = (OrdenPreparacion)item.Tag;
                 if (ordenesAgregadas.Contains(ordenPreparacion))
                 {
                     itemsToRemove.Add(item);
@@ -194,7 +194,7 @@ namespace Pampazon.OrdenSeleccion
                     OrdenesDePrepracionAOrdenSeleccionLST.Items.Add(item);
 
                     // Eliminar el elemento de la lista de órdenes disponibles
-                    var ordenPreparacion = (OrdenPreparacionEnt)item.Tag;
+                    var ordenPreparacion = (OrdenPreparacion)item.Tag;
                     ordenesDisponibles.Remove(ordenPreparacion);
                 }
 
@@ -217,10 +217,10 @@ namespace Pampazon.OrdenSeleccion
             }
 
             // Crear una nueva instancia de OrdenSeleccion
-            var ordenSeleccion = new OrdenSeleccionEnt
+            var ordenSeleccion = new OrdenSeleccion
             {
                 FechaEmision = DateTime.Now,
-                OrdenesPreparacion = new List<OrdenPreparacionEnt>(),
+                OrdenesPreparacion = new List<OrdenPreparacion>(),
                 EstadoOrdenDeSeleccion = "Nueva", // Estado inicial de la orden de selección
                 FechaEstados = DateTime.Now
             };
@@ -228,7 +228,7 @@ namespace Pampazon.OrdenSeleccion
             // Agregar las órdenes de preparación seleccionadas a la orden de selección
             foreach (ListViewItem item in OrdenesDePrepracionAOrdenSeleccionLST.SelectedItems)
             {
-                var ordenPreparacion = (OrdenPreparacionEnt)item.Tag;
+                var ordenPreparacion = (OrdenPreparacion)item.Tag;
                 ordenSeleccion.OrdenesPreparacion.Add(ordenPreparacion);
 
                 // Verificar si el ítem ya existe en OrdenesDePreparacionPendientesListView
@@ -289,11 +289,11 @@ namespace Pampazon.OrdenSeleccion
             }
 
             // Crear una nueva instancia de OrdenSeleccionEnt
-            var ordenSeleccion = new OrdenSeleccionEnt
+            var ordenSeleccion = new OrdenSeleccion
             {
                 //IDOrdenSeleccion = Guid.NewGuid().ToString(), // Generar un ID único para la orden de selección
                 FechaEmision = DateTime.Now,
-                OrdenesPreparacion = new List<OrdenPreparacionEnt>(),
+                OrdenesPreparacion = new List<OrdenPreparacion>(),
                 EstadoOrdenDeSeleccion = "Nueva", // Estado inicial de la orden de selección
                 FechaEstados = DateTime.Now
             };
@@ -301,14 +301,14 @@ namespace Pampazon.OrdenSeleccion
             // Agregar las órdenes de preparación a la orden de selección
             foreach (ListViewItem item in DetalleOrdenesDePreparacionPendientesLST.Items)
             {
-                var ordenPreparacion = (OrdenPreparacionEnt)item.Tag;
+                var ordenPreparacion = (OrdenPreparacion)item.Tag;
                 ordenSeleccion.OrdenesPreparacion.Add(ordenPreparacion);
             }
 
             // Eliminar las órdenes de preparación que se han agregado a la orden de selección de la lista de órdenes disponibles
             foreach (ListViewItem item in DetalleOrdenesDePreparacionPendientesLST.Items)
             {
-                var ordenPreparacion = (OrdenPreparacionEnt)item.Tag;
+                var ordenPreparacion = (OrdenPreparacion)item.Tag;
                 ordenesDisponibles.Remove(ordenPreparacion);
             }
 
