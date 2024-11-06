@@ -1,0 +1,154 @@
+Caso 1:[Desde el menu del sistema]
+- Tocar boton "Generar Orden Preparacion"
+- Codigo Cliente(ID?): 1
+- Tocar boton "Buscar Productos"
+- Verificar: Lista Productos en Deposito: 
+	SKU Producto - PROD-04456, Producto - Aceite sintético 5W-30, Cantidad Disponible - 70
+	SKU Producto - PROD-04434, Producto - Termo, Cantidad Disponible - 26
+- SKU Producto: PROD-04434
+- Tocar Boton "Buscar Productos"
+- Verificar: Lista Productos en Deposito:
+	SKU Producto - PROD-04434, Producto - Termo, Cantidad Disponible - 26
+- Tocar boton "Borrar Filtros"
+- Verificar: : Lista Productos en Deposito: Vacio 
+- Verificar SKU Producto - vacio, Nombre Producto - Vacio
+- Nombre Producto: Aceite
+- Tocar Boton "Buscar Productos"
+- Verificar: Lista Productos en Deposito: 
+	SKU Producto - PROD-04456, Producto - Aceite sintético 5W-30, Cantidad Disponible - 70
+- Selecciona de la Lista Productos en Deposito: SKU Producto: PROD-04456.
+- Verificar: Producto Seleccionado - PROD-04456, Cantidad Disponible - 70
+- Ingresar 30 en "Indique Cantidad a Retirar"
+- Tocar boton "Agregar Productos a la orden"
+- Verificar: Lista Orden: Productos - PROD-04456, Cantidad - 30
+- Seleccionar 22/12/2024 en Fecha a Retirar
+- Horario a Retirar: 17
+- Seleccionar Media en Prioridad
+- Dni Transportista: 87654321
+- Verificar: Nombre Transportista - Carlos Gonzalez
+- Tocar boton "Generar Orden Preparacion"
+- Verificar: Mensaje emergente: ID Cliente - 1, Fecha de Entrega - 22-12-2024, Horario 17, Dni Transportista - 87654321
+- Tocar boton "SI"
+- Verificar Mesaje emergente "Orden Ingresada con exitos, le enviaremos un mail con los detalles"
+- Tocar boton "Aceptar"
+
+Caso 2:[Desde el menu del sistema]
+- Tocar boton "Generar Orden Preparacion"
+- Codigo Cliente(ID?): vacio, verificar mensaje "Ingrese ID cliente o Razon Social"
+- Tocar boton Aceptar
+- Codigo cliente: asdasd, verificar mensaje "Ingrese un numero para buscar ID cliente"
+- Tocar boton Aceptar
+- Codigo Cliente(ID?): -1
+- Tocar boton "Buscar Productos", verificar mensaje "ID cliente seleccionado no existe. Busque devuelta o por razon Social"
+- Tocar boton Aceptar
+- Codigo cliente: 1
+- Verificar: Lista Productos en Deposito: 
+	SKU Producto - PROD-04456, Producto - Aceite sintético 5W-30, Cantidad Disponible - 70
+	SKU Producto - PROD-04434, Producto - Termo, Cantidad Disponible - 26
+- Razon social: MessiFc, verificar mensaje "Razon social MessiFC no existe. Busque devuela o por ID cliente"
+- Tocar boton Aceptar
+- SKU Producto: vacio
+- Verifiar: Lista Productos en Deposito: vacia
+- SKU Producto: PROD-04434
+- Tocar Boton "Buscar Productos"
+- Verificar: Lista Productos en Deposito:
+	SKU Producto - PROD-04434, Producto - Termo, Cantidad Disponible - 26
+- Tocar boton "Borrar Filtros"
+- Verificar: : Lista Productos en Deposito: Vacio 
+- Verificar SKU Producto - vacio, Nombre Producto - Vacio
+- Nombre Producto: vacio
+- Tocar boton "Buscar Producto"
+- Verificar: : Lista Productos en Deposito: Vacio 
+- Nombre Producto: Aceite
+- Tocar Boton "Buscar Productos"
+- Verificar: Lista Productos en Deposito: 
+	SKU Producto - PROD-04456, Producto - Aceite sintético 5W-30, Cantidad Disponible - 70
+- Tocar boton "Agregar Productos a la orden", verificar mensaje "Seleccione un producto"
+- Selecciona de la Lista Productos en Deposito: SKU Producto: PROD-04456.
+- Verificar: Producto Seleccionado - PROD-04456, Cantidad Disponible - 70
+- Ingresar 100 en "Indique Cantidad a Retirar", verificar mensaje "Cantidad a retirar no puede ser mayor a la cantidad depositada"
+- Tocar boton Aceptar
+- Tocar boton "Generar Orden Preparacion", verificar mensaje "Ingrese Productos para generar Orden"
+- Tocar boton Aceptar
+- Ingresar 30 en "Indique Cantidad a Retirar"
+- Tocar boton "Agregar Productos a la orden"
+- Verificar: Lista Orden: Productos - PROD-04456, Cantidad - 30
+- Fecha a Retirar sin seleccionar
+- Tocar boton "Generar Orden Preparacion", verificar mensaje "Seleccione una fecha de Retiro mayor"
+- Tocar boton Aceptar
+- Seleccionar 22/12/2024 en Fecha a Retirar
+- Horario a Retirar: vacio
+- Tocar boton "Generar Orden Preparacion", verificar mensaje "Seleecione un horario de Retiro. Un valro entre el 0 y el 24"
+- Tocar boton Aceptar
+- Horario a Retirar: 17
+- Prioridad sin seleccionar 
+- Tocar boton "Generar Orden Preparacion", verificar mensaje "Seleccione Prioridad Alta, Media o Baja"
+- Tocar boton Aceptar
+- Seleccionar Media en Prioridad
+- Dni Transportista: vacio
+- Tocar boton "Generar Orden Preparacion", verificar mensaje "Seleccione un transportista por DNI o por Nombre"
+- Tocar boton Aceptar
+- Dni Transportista: 87654321
+- Verificar: Nombre Transportista - Carlos Gonzalez
+- Tocar boton "Generar Orden Preparacion"
+- Verificar: Mensaje emergente: ID Cliente - 1, Fecha de Entrega - 22-12-2024, Horario 17, Dni Transportista - 87654321
+- Tocar boton "SI"
+- Verificar Mesaje emergente "Orden Ingresada con exitos, le enviaremos un mail con los detalles"
+- Tocar boton "Aceptar"
+
+
+Caso 3: [Desde el menu del sistema]
+- Tocar boton "Generar Orden Preparacion"
+- Codigo Cliente(ID?): 1
+- Tocar boton "Buscar Productos"
+- Verificar: Lista Productos en Deposito: 
+	SKU Producto - PROD-04456, Producto - Aceite sintético 5W-30, Cantidad Disponible - 70
+	SKU Producto - PROD-04434, Producto - Termo, Cantidad Disponible - 26
+- SKU Producto: PROD-04434
+- Tocar Boton "Buscar Productos"
+- Verificar: Lista Productos en Deposito:
+	SKU Producto - PROD-04434, Producto - Termo, Cantidad Disponible - 26
+- Tocar boton "Borrar Filtros"
+- Verificar: : Lista Productos en Deposito: Vacio 
+- Verificar SKU Producto - vacio, Nombre Producto - Vacio
+- Nombre Producto: Aceite
+- Tocar Boton "Buscar Productos"
+- Verificar: Lista Productos en Deposito: 
+	SKU Producto - PROD-04456, Producto - Aceite sintético 5W-30, Cantidad Disponible - 70
+- Selecciona de la Lista Productos en Deposito: SKU Producto: PROD-04456.
+- Verificar: Producto Seleccionado - PROD-04456, Cantidad Disponible - 70
+- Ingresar 30 en "Indique Cantidad a Retirar"
+- Tocar boton "Agregar Productos a la orden"
+- Verificar: Lista Orden: Productos - PROD-04456, Cantidad - 30
+- Seleccionar 22/12/2024 en Fecha a Retirar
+- Horario a Retirar: 17
+- Seleccionar Media en Prioridad
+- Dni Transportista: 87654321
+- Verificar: Nombre Transportista - Carlos Gonzalez
+-Tocar Boton "Cancelar Orden"
+- Verificar Mesaje emergente "Cancelar Orden"
+- Tocar boton "Si"
+- Verificar Mesaje emergente "Orden cancelada"
+- Tocar boton "Aceptar"
+-Verificar lista: Orden: vacia.
+ 
+ 
+ //////////// ver con el profe
+-Tocar boton "Salir"
+- Verificar que EN ELARCHIVO ordenesPreparación.json QUE EXISTA LÍNEA: 
+  {
+    "IdOrdenPreparacion": 8,
+    "Prioridad": 2,
+    "IdCliente": 1,
+    "Detalle": [
+      {
+        "SKU": "PROD-04456",
+        "Cantidad": 30
+      }
+    ],
+    "DNITransportista": 87654321,
+    "FechaEmision": "2024-11-06T14:35:00.5678901-03:00",
+    "FechaRetiro": "2024-12-22T17:00:00.5678901-03:00",
+    "HoraRetiro": "2024-12-22T17:00:00.5678901-03:00",
+    "Estado": 0
+	}
