@@ -181,19 +181,27 @@
       }
     ]
   },
+
   {
-    "SKU": "PROD-04456",
+
+    "SKU": "PROD-04434",
+
     "IdCliente": 1,
-    "NombreProducto": "Aceite sintético 5W-30",
+
+    "NombreProducto": "Termos",
+
     "Detalle": [
+
       {
-        "IdUbicacion": "25-15-8",
-        "Stock": 40
-      },
-      {
-        "IdUbicacion": "25-17-2",
-        "Stock": 30
+
+        "IdUbicacion": "9-12-18",
+
+        "Stock": 26
+
       }
+
     ]
+
   }
+
 ]
