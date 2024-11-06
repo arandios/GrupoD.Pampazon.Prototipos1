@@ -8,7 +8,7 @@ namespace Pampazon.Entidades
 {
     public class UbicacionProductoDetalle
     {
-        public int IdUbicacion { get; set; }
+        public string IdUbicacion { get; set; }
         public int Stock { get; set; }
     }
 }

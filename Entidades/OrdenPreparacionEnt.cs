@@ -17,5 +17,6 @@ namespace Pampazon.Entidades
         public DateTime FechaRetiro { get; set; }
         public DateTime HoraRetiro { get; set; }
         public EstadoOrdenPreparacionEnum Estado { get; set; }
+
     }
 }

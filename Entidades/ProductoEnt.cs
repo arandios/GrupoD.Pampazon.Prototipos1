@@ -11,6 +11,6 @@ namespace Pampazon.Entidades
         public string SKU { get; set; }
         public int IdCliente { get; set; }
         public string NombreProducto { get; set; }
-        public List<UbicacionProductoDetalle> Detalle { get; } = new();
+        public List<UbicacionProductoDetalle> Detalle { get;   } = new();
     }
 }

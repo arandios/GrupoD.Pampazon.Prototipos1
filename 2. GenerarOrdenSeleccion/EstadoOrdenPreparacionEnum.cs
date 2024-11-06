@@ -1,6 +1,6 @@
 ﻿namespace Pampazon.OrdenSeleccion
 {
-    public enum EstadoOrdenPreparacionEnum //Antes se llamaba "PosiblesEstadosOrdenesGenerales"
+    public enum PosiblesEstadosOrdenesGenerales 
     {
      Pendiente,
      Procesamiento,

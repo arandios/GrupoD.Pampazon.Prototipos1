@@ -1,0 +1,199 @@
+[
+  {
+    "SKU": "PROD-00123",
+    "IdCliente": 2,
+    "NombreProducto": "Filtro de aceite",
+    "Detalle": [
+      {
+        "IdUbicacion": "14-10-2",
+        "Stock": 15
+      },
+      {
+        "IdUbicacion": "14-15-8",
+        "Stock": 25
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-00456",
+    "IdCliente": 3,
+    "NombreProducto": "Disco de freno cerámico",
+    "Detalle": [
+      {
+        "IdUbicacion": "20-22-1",
+        "Stock": 5
+      },
+      {
+        "IdUbicacion": "20-22-3",
+        "Stock": 18
+      },
+      {
+        "IdUbicacion": "20-24-7",
+        "Stock": 12
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-00789",
+    "IdCliente": 4,
+    "NombreProducto": "Amortiguador deportivo",
+    "Detalle": [
+      {
+        "IdUbicacion": "15-30-4",
+        "Stock": 10
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-01012",
+    "IdCliente": 5,
+    "NombreProducto": "Bujías de iridio",
+    "Detalle": [
+      {
+        "IdUbicacion": "18-40-1",
+        "Stock": 30
+      },
+      {
+        "IdUbicacion": "18-41-2",
+        "Stock": 22
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-01345",
+    "IdCliente": 6,
+    "NombreProducto": "Radiador de aluminio",
+    "Detalle": [
+      {
+        "IdUbicacion": "10-10-10",
+        "Stock": 8
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-01678",
+    "IdCliente": 7,
+    "NombreProducto": "Turbo compresor GT35",
+    "Detalle": [
+      {
+        "IdUbicacion": "13-30-2",
+        "Stock": 3
+      },
+      {
+        "IdUbicacion": "13-30-5",
+        "Stock": 7
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-01901",
+    "IdCliente": 8,
+    "NombreProducto": "Kit de embrague reforzado",
+    "Detalle": [
+      {
+        "IdUbicacion": "11-20-4",
+        "Stock": 12
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-02234",
+    "IdCliente": 9,
+    "NombreProducto": "Barras estabilizadoras",
+    "Detalle": [
+      {
+        "IdUbicacion": "22-40-8",
+        "Stock": 9
+      },
+      {
+        "IdUbicacion": "22-43-3",
+        "Stock": 18
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-02567",
+    "IdCliente": 10,
+    "NombreProducto": "Cables de bujía",
+    "Detalle": [
+      {
+        "IdUbicacion": "19-10-6",
+        "Stock": 40
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-02890",
+    "IdCliente": 11,
+    "NombreProducto": "Polea de cigüeñal",
+    "Detalle": [
+      {
+        "IdUbicacion": "16-30-1",
+        "Stock": 15
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-03123",
+    "IdCliente": 12,
+    "NombreProducto": "Bobinas de encendido",
+    "Detalle": [
+      {
+        "IdUbicacion": "23-25-9",
+        "Stock": 20
+      },
+      {
+        "IdUbicacion": "23-27-4",
+        "Stock": 14
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-03456",
+    "IdCliente": 13,
+    "NombreProducto": "Tornillos para culata",
+    "Detalle": [
+      {
+        "IdUbicacion": "24-50-3",
+        "Stock": 50
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-03789",
+    "IdCliente": 14,
+    "NombreProducto": "Kit de distribución",
+    "Detalle": [
+      {
+        "IdUbicacion": "17-60-5",
+        "Stock": 6
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-04123",
+    "IdCliente": 15,
+    "NombreProducto": "Correa de accesorios",
+    "Detalle": [
+      {
+        "IdUbicacion": "15-12-3",
+        "Stock": 22
+      }
+    ]
+  },
+  {
+    "SKU": "PROD-04456",
+    "IdCliente": 1,
+    "NombreProducto": "Aceite sintético 5W-30",
+    "Detalle": [
+      {
+        "IdUbicacion": "25-15-8",
+        "Stock": 40
+      },
+      {
+        "IdUbicacion": "25-17-2",
+        "Stock": 30
+      }
+    ]
+  }
+]

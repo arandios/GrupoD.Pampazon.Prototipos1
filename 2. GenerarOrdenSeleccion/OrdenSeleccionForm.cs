@@ -34,7 +34,7 @@ namespace Pampazon.OrdenSeleccion
             OrdenesDePrepracionAOrdenSeleccionLST.MultiSelect = true;
 
             // Llenar el ComboBox con los valores del enum CodigoPrioridad
-            PrioridadOrdenSeleccionCMB.DataSource = Enum.GetValues(typeof(PrioridadEnum));
+            PrioridadOrdenSeleccionCMB.DataSource = Enum.GetValues(typeof(Prioridades));
 
             //Borrar filtros que pudieran llegar a quedar precargados.
             BorrarFiltros();

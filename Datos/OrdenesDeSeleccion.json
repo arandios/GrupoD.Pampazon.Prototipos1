@@ -1,0 +1,32 @@
+[
+  {
+    "IdOrdenSeleccion": 1,
+    "FechaEmision": "2024-11-06T00:00:00",
+    "OrdenesPreparacion": [
+      2,
+      4
+    ],
+    "EstadoOrden": 0,
+    "FechaEstado": "2024-11-06T00:00:00"
+  },
+  {
+    "IdOrdenSeleccion": 2,
+    "FechaEmision": "2024-11-06T00:00:00",
+    "OrdenesPreparacion": [
+      3,
+      6
+    ],
+    "EstadoOrden": 0,
+    "FechaEstado": "2024-11-06T00:00:00"
+  },
+  {
+    "IdOrdenSeleccion": 3,
+    "FechaEmision": "2024-11-06T00:00:00",
+    "OrdenesPreparacion": [
+      5,
+      7
+    ],
+    "EstadoOrden": 0,
+    "FechaEstado": "2024-11-06T00:00:00"
+  }
+]

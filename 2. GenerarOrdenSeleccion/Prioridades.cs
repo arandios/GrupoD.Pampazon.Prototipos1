@@ -1,6 +1,6 @@
 ﻿namespace Pampazon.OrdenSeleccion
 {
-    public enum PrioridadEnum //Antes CodigoPrioridad
+    public enum Prioridades //Antes CodigoPrioridad
     {
         Baja,
         Media,

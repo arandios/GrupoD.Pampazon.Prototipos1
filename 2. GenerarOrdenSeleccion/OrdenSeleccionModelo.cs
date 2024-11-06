@@ -95,7 +95,7 @@ namespace Pampazon.OrdenSeleccion
                 },
                 15,
                 DateTime.Now,
-                EstadoOrdenPreparacionEnum.Pendiente,
+                PosiblesEstadosOrdenesGenerales.Pendiente,
                 PrioridadEnum.Media,
                 new Transportista(12345678, "Transportista A", "123")
             ),
@@ -110,7 +110,7 @@ namespace Pampazon.OrdenSeleccion
                 },
                 30,
                 DateTime.Now,
-                EstadoOrdenPreparacionEnum.Pendiente,
+                PosiblesEstadosOrdenesGenerales.Pendiente,
                 PrioridadEnum.Alta,
                 new Transportista(87654321, "Transportista B", "456")
             ),
@@ -124,7 +124,7 @@ namespace Pampazon.OrdenSeleccion
                 },
                 15,
                 DateTime.Now,
-                EstadoOrdenPreparacionEnum.Pendiente,
+                PosiblesEstadosOrdenesGenerales.Pendiente,
                 PrioridadEnum.Baja,
                 new Transportista(11223344, "Transportista C", "789")
             ),
@@ -138,7 +138,7 @@ namespace Pampazon.OrdenSeleccion
                 },
                 25,
                 DateTime.Now,
-                EstadoOrdenPreparacionEnum.Pendiente,
+                PosiblesEstadosOrdenesGenerales.Pendiente,
                 PrioridadEnum.Media,
                 new Transportista(55667788, "Transportista D", "101")
             ),
@@ -152,7 +152,7 @@ namespace Pampazon.OrdenSeleccion
                 },
                 30,
                 DateTime.Now,
-                EstadoOrdenPreparacionEnum.Pendiente,
+                PosiblesEstadosOrdenesGenerales.Pendiente,
                 PrioridadEnum.Alta,
                 new Transportista(99887766, "Transportista E", "202")
             ),
@@ -167,7 +167,7 @@ namespace Pampazon.OrdenSeleccion
         },
         20,
         new DateTime(2023, 8, 15),  // Fecha en el pasado
-        EstadoOrdenPreparacionEnum.Pendiente,
+        PosiblesEstadosOrdenesGenerales.Pendiente,
         PrioridadEnum.Media,
         new Transportista(11112222, "Transportista F", "303")),
 new OrdenPreparacion(
@@ -180,7 +180,7 @@ new OrdenPreparacion(
     },
     20,
     DateTime.Now.AddDays(3),  // Fecha 3 días en el futuro desde hoy
-    EstadoOrdenPreparacionEnum.Pendiente,
+    PosiblesEstadosOrdenesGenerales.Pendiente,
     PrioridadEnum.Media,
     new Transportista(11112222, "Transportista F", "303")
 ),
@@ -194,7 +194,7 @@ new OrdenPreparacion(
     },
     10,
     DateTime.Now.AddDays(10),  // Fecha 10 días en el futuro desde hoy
-    EstadoOrdenPreparacionEnum.Pendiente,
+    PosiblesEstadosOrdenesGenerales.Pendiente,
     PrioridadEnum.Baja,
     new Transportista(33334444, "Transportista G", "404")
 ),
@@ -208,7 +208,7 @@ new OrdenPreparacion(
     },
     40,
     DateTime.Now.AddDays(20),  // Fecha 20 días en el futuro desde hoy
-    EstadoOrdenPreparacionEnum.Pendiente,
+    PosiblesEstadosOrdenesGenerales.Pendiente,
     PrioridadEnum.Alta,
     new Transportista(55556666, "Transportista H", "505")
 ),
@@ -222,7 +222,7 @@ new OrdenPreparacion(
     },
     50,
     DateTime.Now.AddMonths(1),  // Fecha 1 mes en el futuro desde hoy
-    EstadoOrdenPreparacionEnum.Pendiente,
+    PosiblesEstadosOrdenesGenerales.Pendiente,
     PrioridadEnum.Media,
     new Transportista(77778888, "Transportista I", "606")
 ),
@@ -236,7 +236,7 @@ new OrdenPreparacion(
     },
     35,
     DateTime.Now.AddMonths(2),  // Fecha 2 meses en el futuro desde hoy
-    EstadoOrdenPreparacionEnum.Pendiente,
+    PosiblesEstadosOrdenesGenerales.Pendiente,
     PrioridadEnum.Baja,
     new Transportista(99990000, "Transportista J", "707")
 )

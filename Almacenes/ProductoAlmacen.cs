@@ -12,6 +12,7 @@ namespace Pampazon.Almacenes
     {
         private static List<ProductoEnt> productos = new List<ProductoEnt>();
 
+
         public static IReadOnlyCollection<ProductoEnt> Productos => productos.AsReadOnly();
 
         public static void Grabar()

@@ -1,4 +1,5 @@
 ﻿using Pampazon.Entidades;
+using Pampazon.OrdenSeleccion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Pampazon.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(ordenesPreparacion);
-            File.WriteAllText("OrdenesPreparacion.json", datos);
+            File.WriteAllText("OrdenesDePreparacion.json", datos);
         }
 
         public static void Leer()
@@ -28,6 +29,12 @@ namespace Pampazon.Almacenes
                 ordenesPreparacion = JsonSerializer.Deserialize<List<OrdenPreparacionEnt>>(datos);
             }
         }
+
+
+        
+        
+
+
     }
 
 }

@@ -11,7 +11,7 @@ namespace Pampazon.Entidades
         public int IdCliente { get; set; }
         public string RazonSocial { get; set; }
         public string CUIT { get; set; }
-        public List<TransportistaEnt> Transportistas { get; } = new();
+        //public List<TransportistaEnt> Transportistas { get; } = new();
         public PrioridadEnum Prioridad { get; set; }
     }
 }

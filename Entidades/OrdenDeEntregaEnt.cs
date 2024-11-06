@@ -11,6 +11,6 @@ namespace Pampazon.Entidades
         public int IdOrdenEntrega { get; set; }
         public DateTime FechaEntrega { get; set; }
         public string Estado = "Completada";
-        public List<int> OrdenesDePreparacion { get; } = new();
+        public List<int> OrdenesDePreparacion { get;  } = new();
     }
 }

@@ -1,0 +1,92 @@
+[
+  {
+    "IdCliente": 1,
+    "RazonSocial": "Servicios Integrales Alfa",
+    "CUIT": "20-12345678-9",
+    "Prioridad": 2
+  },
+  {
+    "IdCliente": 2,
+    "RazonSocial": "Distribuidora Omega",
+    "CUIT": "20-23456789-7",
+    "Prioridad": 1
+  },
+  {
+    "IdCliente": 3,
+    "RazonSocial": "Logística Bravo",
+    "CUIT": "20-34567890-6",
+    "Prioridad": 0
+  },
+  {
+    "IdCliente": 4,
+    "RazonSocial": "Tecnologías Delta",
+    "CUIT": "20-45678901-5",
+    "Prioridad": 1
+  },
+  {
+    "IdCliente": 5,
+    "RazonSocial": "Grupo Epsilon",
+    "CUIT": "20-56789012-4",
+    "Prioridad": 2
+  },
+  {
+    "IdCliente": 6,
+    "RazonSocial": "Agropecuaria Gamma",
+    "CUIT": "20-67890123-3",
+    "Prioridad": 0
+  },
+  {
+    "IdCliente": 7,
+    "RazonSocial": "Construcciones Lambda",
+    "CUIT": "20-78901234-2",
+    "Prioridad": 2
+  },
+  {
+    "IdCliente": 8,
+    "RazonSocial": "Soluciones Integrales Zeta",
+    "CUIT": "20-89012345-1",
+    "Prioridad": 1
+  },
+  {
+    "IdCliente": 9,
+    "RazonSocial": "Corporación Beta",
+    "CUIT": "20-90123456-8",
+    "Prioridad": 0
+  },
+  {
+    "IdCliente": 10,
+    "RazonSocial": "Alimentos Nacionales SA",
+    "CUIT": "20-01234567-9",
+    "Prioridad": 2
+  },
+  {
+    "IdCliente": 11,
+    "RazonSocial": "Logística y Transporte Sigma",
+    "CUIT": "20-12348765-4",
+    "Prioridad": 1
+  },
+  {
+    "IdCliente": 12,
+    "RazonSocial": "Maderas Los Robles",
+    "CUIT": "20-23457689-3",
+    "Prioridad": 0
+  },
+  {
+    "IdCliente": 13,
+    "RazonSocial": "Importaciones Venecia",
+    "CUIT": "20-34568901-7",
+    "Prioridad": 2
+  },
+  {
+    "IdCliente": 14,
+    "RazonSocial": "Textiles del Sol",
+    "CUIT": "20-45679012-6",
+    "Prioridad": 1
+  },
+  {
+    "IdCliente": 15,
+    "RazonSocial": "Proyectos Industriales SA",
+    "CUIT": "20-56780123-5",
+    "Prioridad": 0
+  }
+]

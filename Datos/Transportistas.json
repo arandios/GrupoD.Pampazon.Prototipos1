@@ -1,0 +1,32 @@
+﻿[
+  {
+    "DNI": 87654321,
+    "Nombre": "Carlos",
+    "Apellido": "Gonzalez"
+  },
+  {
+    "DNI": 23456789,
+    "Nombre": "Maria",
+    "Apellido": "Lopez"
+  },
+  {
+    "DNI": 34567890,
+    "Nombre": "Roberto",
+    "Apellido": "Martinez"
+  },
+  {
+    "DNI": 45678901,
+    "Nombre": "Ana",
+    "Apellido": "Fernandez"
+  },
+  {
+    "DNI": 56789012,
+    "Nombre": "Lucia",
+    "Apellido": "Ramirez"
+  },
+  {
+    "DNI": 67890123,
+    "Nombre": "Javier",
+    "Apellido": "Diaz"
+  }
+]

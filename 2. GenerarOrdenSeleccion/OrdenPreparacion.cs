@@ -18,13 +18,13 @@ namespace Pampazon.OrdenSeleccion
         public List<Producto> Productos { get; set; }
         public int CantidadProductoEnt { get; set; }
         public DateTime fechaOrdenPreparacion { get; set; }
-        public EstadoOrdenPreparacionEnum EstadoOrdenPreparacion { get; set; }
-        public PrioridadEnum Prioridad { get; set; }
+        public PosiblesEstadosOrdenesGenerales EstadoOrdenPreparacion { get; set; }
+        public Prioridades Prioridad { get; set; }
         public Transportista TransportistaDetalle { get; set; }
 
         //CONSTRUCTOR
         
-        public OrdenPreparacion(string idOrdenPreparacion, string idCliente, string descripcionCliente, List<Producto> productos, int cantidadProductoEnt, DateTime pFechaOrdenPreparacion, EstadoOrdenPreparacionEnum estado, PrioridadEnum prioridad, Transportista transportistaDetalle)
+        public OrdenPreparacion(string idOrdenPreparacion, string idCliente, string descripcionCliente, List<Producto> productos, int cantidadProductoEnt, DateTime pFechaOrdenPreparacion, PosiblesEstadosOrdenesGenerales estado, Prioridades prioridad, Transportista transportistaDetalle)
         {
             IDOrdenPreparacion = idOrdenPreparacion;
             IdCliente = idCliente;
