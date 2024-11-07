@@ -1,11 +1,11 @@
 
-Caso 1:[Desde el menu del sistema]
+Caso 3: [Desde el menu del sistema]
 
 - Tocar boton "Generar Orden Preparacion"
 - Codigo Cliente(ID?): 1
 - Tocar boton "Buscar Productos"
 - Verificar: Lista Productos en Deposito: 
-	SKU Producto - PROD-04456, Producto - Aceite sintÃ©tico 5W-30, Cantidad Disponible - 70
+	SKU Producto - PROD-04456, Producto - Aceite sintético 5W-30, Cantidad Disponible - 70
 	SKU Producto - PROD-04434, Producto - Termo, Cantidad Disponible - 26
 - SKU Producto: PROD-04434
 - Tocar Boton "Buscar Productos"
@@ -17,7 +17,7 @@ Caso 1:[Desde el menu del sistema]
 - Nombre Producto: Aceite
 - Tocar Boton "Buscar Productos"
 - Verificar: Lista Productos en Deposito: 
-	SKU Producto - PROD-04456, Producto - Aceite sintÃ©tico 5W-30, Cantidad Disponible - 70
+	SKU Producto - PROD-04456, Producto - Aceite sintético 5W-30, Cantidad Disponible - 70
 - Selecciona de la Lista Productos en Deposito: SKU Producto: PROD-04456.
 - Verificar: Producto Seleccionado - PROD-04456, Cantidad Disponible - 70
 - Ingresar 30 en "Indique Cantidad a Retirar"
@@ -28,8 +28,30 @@ Caso 1:[Desde el menu del sistema]
 - Seleccionar Media en Prioridad
 - Dni Transportista: 87654321
 - Verificar: Nombre Transportista - Carlos Gonzalez
-- Tocar boton "Generar Orden Preparacion"
-- Verificar: Mensaje emergente: ID Cliente - 1, Fecha de Entrega - 22-12-2024, Horario 17, Dni Transportista - 87654321
-- Tocar boton "SI"
-- Verificar Mesaje emergente "Orden Ingresada con exitos, le enviaremos un mail con los detalles"
+-Tocar Boton "Cancelar Orden"
+- Verificar Mesaje emergente "Cancelar Orden"
+- Tocar boton "Si"
+- Verificar Mesaje emergente "Orden cancelada"
 - Tocar boton "Aceptar"
+-Verificar lista: Orden: vacia.
+ 
+ 
+ //////////// ver con el profe
+-Tocar boton "Salir"
+- Verificar que EN ELARCHIVO ordenesPreparación.json QUE EXISTA LÍNEA: 
+  {
+    "IdOrdenPreparacion": 8,
+    "Prioridad": 2,
+    "IdCliente": 1,
+    "Detalle": [
+      {
+        "SKU": "PROD-04456",
+        "Cantidad": 30
+      }
+    ],
+    "DNITransportista": 87654321,
+    "FechaEmision": "2024-11-06T14:35:00.5678901-03:00",
+    "FechaRetiro": "2024-12-22T17:00:00.5678901-03:00",
+    "HoraRetiro": "2024-12-22T17:00:00.5678901-03:00",
+    "Estado": 0
+	}
