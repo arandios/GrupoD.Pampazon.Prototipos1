@@ -36,22 +36,3 @@ Caso 3: [Desde el menu del sistema]
 -Verificar lista: Orden: vacia.
  
  
- //////////// ver con el profe
--Tocar boton "Salir"
-- Verificar que EN ELARCHIVO ordenesPreparación.json QUE EXISTA LÍNEA: 
-  {
-    "IdOrdenPreparacion": 8,
-    "Prioridad": 2,
-    "IdCliente": 1,
-    "Detalle": [
-      {
-        "SKU": "PROD-04456",
-        "Cantidad": 30
-      }
-    ],
-    "DNITransportista": 87654321,
-    "FechaEmision": "2024-11-06T14:35:00.5678901-03:00",
-    "FechaRetiro": "2024-12-22T17:00:00.5678901-03:00",
-    "HoraRetiro": "2024-12-22T17:00:00.5678901-03:00",
-    "Estado": 0
-	}
