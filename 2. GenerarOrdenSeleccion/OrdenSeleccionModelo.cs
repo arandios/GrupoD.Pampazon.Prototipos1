@@ -1,4 +1,5 @@
-﻿using Pampazon.Almacenes;
+﻿using Pampazon._2._GenerarOrdenSeleccion;
+using Pampazon.Almacenes;
 using Pampazon.Entidades;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,51 @@ namespace Pampazon.OrdenSeleccion
         
         public OrdenSeleccionModelo()
         {
+
+            //LINQ 3
+            OrdenesDePreparacion = (from orden in OrdenPreparacionAlmacen.OrdenesPreparacion
+                                    where (PosiblesEstadosOrdenesGenerales)orden.Estado == PosiblesEstadosOrdenesGenerales.Pendiente // Filtra por estado "Pendiente"
+                                    join cliente in ClienteAlmacen.Clientes
+                                    on orden.IdCliente equals cliente.IdCliente into clientesJoin
+                                    from cliente in clientesJoin.DefaultIfEmpty() // Realiza el LEFT JOIN
+                                    select new OrdenPreparacion(
+                                        orden.IdOrdenPreparacion.ToString(),                 // IDOrdenPreparacion
+                                        (Prioridades)orden.Prioridad,                        // Prioridad
+                                        orden.IdCliente.ToString(),                          // IdCliente
+                                        orden.FechaRetiro,                                   // FechaRetiro
+                                        (PosiblesEstadosOrdenesGenerales)orden.Estado,       // Estado
+                                        cliente?.RazonSocial ?? "Cliente no encontrado"      // DescripcionCliente (con valor predeterminado en caso de NULL)
+                                    )).ToList();
+
+
+
+
+
+
+            //LINQ 2 -Adaptada a cambio de atributos en OrdenPreparacion.
+
             /*
-            //LINQ
+             Esta expresión LINQ está usando el método Select para proyectar (transformar) 
+            cada elemento en OrdenPreparacionAlmacen.OrdenesPreparacion 
+            en una nueva instancia de la clase OrdenPreparacion. 
+             
+
+
+                    OrdenesDePreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion.Select(o => new OrdenPreparacion(
+             o.IdOrdenPreparacion.ToString(),                   // IDOrdenPreparacion
+             (Prioridades)o.Prioridad,                          // Prioridades (conversión de PrioridadEnum a Prioridades)
+             o.IdCliente.ToString(),                            // IdCliente
+             o.FechaRetiro,                                     // FechaRetiro
+             (PosiblesEstadosOrdenesGenerales)o.Estado,         // Estado (conversión de EstadoOrdenPreparacionEnum a PosiblesEstadosOrdenesGenerales)
+             ClienteAlmacen.Clientes.FirstOrDefault(c => c.IdCliente == o.IdCliente)?.RazonSocial // RazonSocial del cliente
+         )).ToList();
+            */
+
+
+
+
+            //LINQ V1- Hecha por el profe.
+            /*
             OrdenesDePreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion.Select(o => new OrdenPreparacion(
                 o.IdOrdenPreparacion.ToString(),
                 o.IdCliente.ToString(),
@@ -30,7 +74,10 @@ namespace Pampazon.OrdenSeleccion
                     DescripcionProducto = ProductoAlmacen.Productos.First(p => p.SKU == d.SKU).NombreProducto,
                     IdCliente = o.IdCliente.ToString()
                 }).ToList(),
-                o.Detalle.Sum(d => d.Cantidad)
+                o.Detalle.Sum(d => d.Cantidad),
+                o.FechaEmision,
+                o.Estado.ToString(),
+
             )).ToList();
             */
 

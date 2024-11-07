@@ -123,9 +123,7 @@ namespace Pampazon.OrdenSeleccion
                     orden.IDOrdenPreparacion,
                     orden.DescripcionCliente,
                     orden.fechaOrdenPreparacion.ToString("dd/MM/yyyy"), // Formato de fecha cambiado a DIA/MES/AÑO
-                    orden.EstadoOrdenPreparacion.ToString(),
                     orden.Prioridad.ToString(),
-                    orden.TransportistaDetalle.Nombre
                 });
 
                         // Asociar el objeto orden como Tag del ListViewItem
@@ -340,14 +338,12 @@ namespace Pampazon.OrdenSeleccion
                 }
 
                 ListViewItem item = new ListViewItem();
-                item.Text = ordenPreparacion.IDOrdenPreparacion;
-                //item.SubItems.Add(ordenPreparacion.IdCliente.ToString()); 
-                item.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
-                //item.SubItems.Add(ordenPreparacion.Mercaderias.ToString());
-                //item.SubItems.Add(ordenPreparacion.CantidadMercaderia.ToString());
+                item.Text = ordenPreparacion.IDOrdenPreparacion ;
+                item.SubItems.Add(ordenPreparacion.DescripcionCliente?.ToString() ?? "Valor por defecto");
                 item.SubItems.Add(ordenPreparacion.fechaOrdenPreparacion.ToString("dd/MM/yyyy"));  // Formatear solo la fecha
                 item.SubItems.Add(ordenPreparacion.Prioridad.ToString());     
-                item.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
+
+
 
 
                 item.Tag = ordenPreparacion; // Guardar el objeto completo como Tag

@@ -22,7 +22,6 @@ namespace Pampazon
             TransportistaAlmacen.Leer();
             ProductoAlmacen.Leer();
             ApplicationConfiguration.Initialize();
-            // Application.Run(new MenuPrincipal.MenuPrincipalForm()); // comentario test //
             Application.Run(new MenuPrincipalForm());
             OrdenDeEntregaAlmacen.Grabar();
             OrdenDeSeleccionAlmacen.Grabar();
