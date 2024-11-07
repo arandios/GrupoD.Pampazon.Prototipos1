@@ -1,5 +1,7 @@
 
-Caso 1:[Desde el menu del sistema]
+
+Caso 1:[Desde el menu del sistema] "Carga Producto a la Orden"
+
 
 - Tocar boton "Generar Orden Preparacion"
 - Codigo Cliente(ID?): 1
