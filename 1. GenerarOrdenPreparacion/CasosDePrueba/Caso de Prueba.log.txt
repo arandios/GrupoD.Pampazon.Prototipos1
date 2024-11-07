@@ -1,6 +1,6 @@
 
 
-Caso 1:[Desde el menu del sistema] "Carga Producto a la Orden"
+Caso 1:[Desde el menu del sistema] "Cargar Orden con un Producto"
 
 
 - Tocar boton "Generar Orden Preparacion"
