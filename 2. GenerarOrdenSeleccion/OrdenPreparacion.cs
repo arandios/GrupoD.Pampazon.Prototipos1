@@ -13,24 +13,11 @@ namespace Pampazon.OrdenSeleccion
 
         public string IdCliente { get; set; }
 
-        //public DateTime fechaOrdenPreparacion { get; set; }
-
         public DateTime fechaOrdenPreparacion { get; set; }
 
         public PosiblesEstadosOrdenesGenerales EstadoOrdenPreparacion { get; set; }
         public string DescripcionCliente { get; set; } //Seria Razon Social
 
-
-        /* V1
-        public string DescripcionCliente { get; set; }
-        public List<Producto> Productos { get; set; }
-        public int CantidadProductoEnt { get; set; }
-        public DateTime fechaOrdenPreparacion { get; set; }
-        public PosiblesEstadosOrdenesGenerales EstadoOrdenPreparacion { get; set; }
-        public Prioridades Prioridad { get; set; }
-        public Transportista TransportistaDetalle { get; set; }
-
-       */
 
         //CONSTRUCTOR 2
         public OrdenPreparacion(
@@ -50,9 +37,19 @@ namespace Pampazon.OrdenSeleccion
         }
 
 
+        /* V1
+public string DescripcionCliente { get; set; }
+public List<Producto> Productos { get; set; }
+public int CantidadProductoEnt { get; set; }
+public DateTime fechaOrdenPreparacion { get; set; }
+public PosiblesEstadosOrdenesGenerales EstadoOrdenPreparacion { get; set; }
+public Prioridades Prioridad { get; set; }
+public Transportista TransportistaDetalle { get; set; }
+
+*/
+
 
         //CONSTRUCTOR 1
-
         /*
         
         public OrdenPreparacion(string idOrdenPreparacion, string idCliente, string descripcionCliente, List<Producto> productos, int cantidadProductoEnt, DateTime pFechaOrdenPreparacion, PosiblesEstadosOrdenesGenerales estado, Prioridades prioridad, Transportista transportistaDetalle)

@@ -21,18 +21,19 @@ namespace Pampazon.OrdenSeleccion
 
             //LINQ 3
             OrdenesDePreparacion = (from orden in OrdenPreparacionAlmacen.OrdenesPreparacion
-                                    where (PosiblesEstadosOrdenesGenerales)orden.Estado == PosiblesEstadosOrdenesGenerales.Pendiente // Filtra por estado "Pendiente"
+                                    where (PosiblesEstadosOrdenesGenerales)orden.Estado == PosiblesEstadosOrdenesGenerales.Pendiente
                                     join cliente in ClienteAlmacen.Clientes
                                     on orden.IdCliente equals cliente.IdCliente into clientesJoin
-                                    from cliente in clientesJoin.DefaultIfEmpty() // Realiza el LEFT JOIN
+                                    from cliente in clientesJoin.DefaultIfEmpty()
                                     select new OrdenPreparacion(
-                                        orden.IdOrdenPreparacion.ToString(),                 // IDOrdenPreparacion
-                                        (Prioridades)orden.Prioridad,                        // Prioridad
-                                        orden.IdCliente.ToString(),                          // IdCliente
-                                        orden.FechaRetiro,                                   // FechaRetiro
-                                        (PosiblesEstadosOrdenesGenerales)orden.Estado,       // Estado
-                                        cliente?.RazonSocial ?? "Cliente no encontrado"      // DescripcionCliente (con valor predeterminado en caso de NULL)
+                                        orden.IdOrdenPreparacion.ToString(),
+                                        (Prioridades)orden.Prioridad,
+                                        orden.IdCliente.ToString(),
+                                        orden.FechaEmision,
+                                        (PosiblesEstadosOrdenesGenerales)orden.Estado,
+                                        cliente?.RazonSocial ?? "Cliente no encontrado"
                                     )).ToList();
+
 
 
 
@@ -81,45 +82,6 @@ namespace Pampazon.OrdenSeleccion
             )).ToList();
             */
 
-
-            /*
-                        var ordenes = new List<OrdenPreparacion>();
-
-                        foreach (var ordenEntidad in OrdenPreparacionAlmacen.OrdenesPreparacion)
-                        {
-                            var productosOrden = new List<Producto>();
-                            foreach (var ordenDetalle in ordenEntidad.Detalle)
-                            {
-                                ProductoEnt productoEnt = null;
-
-                                foreach (var productoEntidad in ProductoAlmacen.Productos)
-                                {
-                                    if (productoEntidad.SKU == ordenDetalle.SKU)
-                                    {
-                                        productoEnt = productoEntidad;
-                                        break;
-                                    }
-                                }
-
-                                var producto = new Producto();
-                                producto.IDProducto = ordenDetalle.SKU;
-                                producto.DescripcionProducto
-
-                                productosOrden.Add(producto);
-                            }
-
-
-                            var orden = new OrdenPreparacion(
-                                 ordenEntidad.IdOrdenPreparacion.ToString(),
-                                 ordenEntidad.IdCliente.ToString(),
-                                 productosOrden
-                            );
-
-                            ordenes.Add(orden);
-                        }
-
-                        OrdenesDePreparacion = ordenes;
-            */
         }
 
 

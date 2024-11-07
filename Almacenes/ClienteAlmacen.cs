@@ -1,10 +1,8 @@
 ﻿using Pampazon.Entidades;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Pampazon.Almacenes
 {
@@ -17,17 +15,21 @@ namespace Pampazon.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(clientes);
-            File.WriteAllText("Clientes.json", datos);
+            File.WriteAllText("Datos/Clientes.json", datos); //Esta mal. pero es la que funciona. CORREGIR~!
         }
 
         public static void Leer()
         {
-            if (File.Exists("Clientes.json"))
+            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Datos", "Clientes.json");
+
+            if (!File.Exists(filePath))
             {
-                var datos = File.ReadAllText("Clientes.json");
-                clientes = JsonSerializer.Deserialize<List<ClienteEnt>>(datos);
+                return;
             }
+
+            var datos = File.ReadAllText(filePath);
+
+            clientes = JsonSerializer.Deserialize<List<ClienteEnt>>(datos)!;
         }
     }
-
 }
