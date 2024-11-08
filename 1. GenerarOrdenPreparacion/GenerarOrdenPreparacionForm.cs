@@ -117,13 +117,17 @@ namespace Pampazon
             ProductosStockLST.Items.Clear();
             SKUProductoTXT.Text = "";
             NombreProductoTXT.Text = "";
-
+            ProductoSeleccionadoTxt.Text = "";
+            MaxCantidadTxt.Text = "";
+            AgregarCantidadTXT.Text = "";
             // Clear other filters if necessary
         }
 
         private void BuscarProductoBtn(object sender, EventArgs e)
         {
             // Reiniciar siempre el cliente al valor no válido
+            CodigoClienteTXT.Enabled = true;
+            RazonSocialClienteTXT.Enabled = true;
             model.IDCliente = -1;
             ProductosStockLST.Items.Clear();
 
@@ -139,6 +143,7 @@ namespace Pampazon
             }
             else if (!string.IsNullOrEmpty(CodigoClienteTXT.Text))
             {
+                RazonSocialClienteTXT.Enabled = false;
                 if (int.TryParse(CodigoClienteTXT.Text, out int clienteNumber))
                 {
                     int clienteID = model.obtenerCliente(clienteNumber);
@@ -162,6 +167,7 @@ namespace Pampazon
             }
             else if (!string.IsNullOrEmpty(RazonSocialClienteTXT.Text))
             {
+                CodigoClienteTXT.Enabled = false;
                 int clienteID = model.obtenerCliente(-1, RazonSocialClienteTXT.Text);
                 if (clienteID == -1)
                 {
@@ -273,7 +279,7 @@ namespace Pampazon
             }
             else if (FechaSelecter.Value < DateTime.Today.AddDays(1))
             {
-                DialogResult result = MessageBox.Show($"Selecciona una fecha de Retiro mayor", "Confirmation");
+                DialogResult result = MessageBox.Show($"Selecciona una fecha de Retiro mayor a la actual", "Confirmation");
             }
             else if (!eshorarioNumero)
             {
@@ -348,59 +354,54 @@ namespace Pampazon
         {
 
         }
-        // test 
+        
         private void AgregarProductoBtn_Click(object sender, EventArgs e)
         {
             int cantidad;
             bool esNumero = int.TryParse(AgregarCantidadTXT.Text, out cantidad);
             int cantidadMax;
             bool esNumeroMax = int.TryParse(MaxCantidadTxt.Text.ToString(), out cantidadMax);
+
             if (ProductoSeleccionadoTxt.Text == "")
             {
                 MessageBox.Show("Seleccione un Producto", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (!esNumero)
             {
-                MessageBox.Show("Ingrese un numero Valido", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                AgregarCantidadTXT.Text = "";
+                MessageBox.Show("Ingrese una cantidad a retirar", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AgregarCantidadTXT.Text = ""; 
             }
-            else if (esNumero)
+            else if (cantidad <= 0)
             {
-                if (cantidad <= 0)
+                MessageBox.Show("La cantidad debe ser mayor que 0", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (cantidad > cantidadMax)
+            {
+                MessageBox.Show("La cantidad a retirar no puede ser mayor a la cantidad disponible", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                var prod = model.obtenerProdIndividual(ProductoSeleccionadoTxt.Text);
+                if (prod == null)
                 {
-                    MessageBox.Show("Cantidad tiene que ser mayor que 0", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Error: Producto no encontrado en depósito", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if (cantidad > cantidadMax)
+                else
                 {
-                    MessageBox.Show("Cantidad a retirar no puede ser mayor a la cantidad depositada", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    prod.Stock = cantidadMax - cantidad;
+                    MaxCantidadTxt.Text = (cantidadMax - cantidad).ToString();
+                    model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad);
+                    ActualizarListaOrden();
+                    ProductosStockLST.Items.Clear();
+                    CodigoClienteTXT.Enabled = false;
+                    RazonSocialClienteTXT.Enabled = false;
+                    PrioridadCMB.Enabled = true;
 
-                }
-                else // ok el numero
-                {
-                    var prod = model.obtenerProdIndividual(ProductoSeleccionadoTxt.Text);
-                    if (prod == null)
-                    {
-                        MessageBox.Show("Error producto no encontrado en deposito", "Cantidad Seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                    else
-                    {
-                        prod.Stock = cantidadMax - cantidad;
-                        MaxCantidadTxt.Text = (cantidadMax - cantidad).ToString();
-                        model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad);
-                        ActualizarListaOrden();
-                        ProductosStockLST.Items.Clear();
-                        CodigoClienteTXT.Enabled = false;
-                        RazonSocialClienteTXT.Enabled = false;
-                        PrioridadCMB.Enabled = true;
-                    }
-
+                    ProductoSeleccionadoTxt.Text = "";
+                    MaxCantidadTxt.Text = "";
+                    AgregarCantidadTXT.Text = "";
                 }
             }
-            ProductoSeleccionadoTxt.Text = "";
-            MaxCantidadTxt.Text = "";
-            //model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad, deposito);
-            AgregarCantidadTXT.Text = "";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
