@@ -15,20 +15,17 @@ namespace Pampazon.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(clientes);
-            File.WriteAllText("Datos/Clientes.json", datos); //Esta mal? Si refiero a la carpeta? CORREGIR~!
+            File.WriteAllText(@"Datos\Clientes.json", datos); //Esta mal? Si refiero a la carpeta? CORREGIR~!
         }
 
         public static void Leer()
         {
-            //TODO: ESTA MAL, NO DEBERIA USARSE EL PATH.
-            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Datos", "Clientes.json");
-
-            if (!File.Exists(filePath))
+            if (!File.Exists(@"Datos\Clientes.json"))
             {
                 return;
             }
 
-            var datos = File.ReadAllText(filePath);
+            var datos = File.ReadAllText(@"Datos\Clientes.json");
 
             clientes = JsonSerializer.Deserialize<List<ClienteEnt>>(datos)!;
         }

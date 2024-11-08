@@ -1,4 +1,5 @@
 ﻿using Pampazon._7._ConsultarOrdenesPreparacion;
+using Pampazon.Almacenes;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -32,12 +33,9 @@ namespace Pampazon.ConsultarOrdenes
 
         public List<Cliente> CrearClientes()
         {
-            return new List<Cliente>
-            {
-                new Cliente(1, "Zapatillas S.A.", "30-12345678-9"),
-                new Cliente(2, "Camisas SRL", "30-98765432-1"),
-                new Cliente(3, "Pantalones Ltda.", "30-11112222-3")
-            };
+            return (from clienteEnt in ClienteAlmacen.Clientes
+                    select new Cliente(clienteEnt.IdCliente, clienteEnt.RazonSocial, clienteEnt.CUIT))
+                    .ToList();
         }
 
         public List<Producto> CrearProductosConUbicacion()

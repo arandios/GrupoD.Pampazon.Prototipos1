@@ -17,14 +17,14 @@ namespace Pampazon.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(ordenesDeEntrega);
-            File.WriteAllText("OrdenesDeEntrega.json", datos);
+            File.WriteAllText(@"Datos\OrdenesDeEntrega.json", datos);
         }
 
         public static void Leer()
         {
-            if (File.Exists("OrdenesDeEntrega.json"))
+            if (File.Exists(@"Datos\OrdenesDeEntrega.json"))
             {
-                var datos = File.ReadAllText("OrdenesDeEntrega.json");
+                var datos = File.ReadAllText(@"Datos\OrdenesDeEntrega.json");
                 ordenesDeEntrega = JsonSerializer.Deserialize<List<OrdenDeEntregaEnt>>(datos);
             }
         }

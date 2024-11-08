@@ -18,7 +18,6 @@ namespace Pampazon.OrdenSeleccion
         
         public OrdenSeleccionModelo()
         {
-
             //LINQ Version3 --> mas parecido a SQL
             OrdenesDePreparacion = (from orden in OrdenPreparacionAlmacen.OrdenesPreparacion
                                     where (PosiblesEstadosOrdenesGenerales)orden.Estado == PosiblesEstadosOrdenesGenerales.Pendiente //Hay que castear el enum
@@ -34,6 +33,20 @@ namespace Pampazon.OrdenSeleccion
                                         cliente?.RazonSocial ?? "Cliente no encontrado"
                                     )).ToList();
 
+
+            //Equivalente a lo de arriba, pero en sintaxis Lambda
+            /*
+            var op = OrdenPreparacionAlmacen.OrdenesPreparacion
+                                            .Select(o => new OrdenPreparacion
+                                            (
+                                                o.IdOrdenPreparacion.ToString(),
+                                                (Prioridades)o.Prioridad,
+                                                o.IdCliente.ToString(),
+                                                o.FechaEmision,
+                                                (PosiblesEstadosOrdenesGenerales)o.Estado,
+                                                ClienteAlmacen.Clientes.First(c => c.IdCliente == o.IdCliente).RazonSocial
+                                            )).ToList();
+            */
         }
 
 
@@ -54,10 +67,12 @@ namespace Pampazon.OrdenSeleccion
                 FechaEstado = DateTime.Now
             };
 
+
+
             //------> TODO: VERIFICAR SI ESTA BIEN PARA GUARDAR EN EL JSON!
 
             // Agregar la nueva orden a la lista de Ordenes de Seleccion
-            //OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeleccion);
+            OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeleccion);
             
 
 
