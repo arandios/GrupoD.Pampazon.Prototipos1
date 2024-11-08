@@ -15,7 +15,7 @@ namespace Pampazon.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(clientes);
-            File.WriteAllText("Datos/Clientes.json", datos); //Esta mal. pero es la que funciona. CORREGIR~!
+            File.WriteAllText("Datos/Clientes.json", datos); //Esta mal? Si refiero a la carpeta? CORREGIR~!
         }
 
         public static void Leer()

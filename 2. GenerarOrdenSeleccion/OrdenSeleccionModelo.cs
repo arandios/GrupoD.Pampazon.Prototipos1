@@ -34,54 +34,6 @@ namespace Pampazon.OrdenSeleccion
                                         cliente?.RazonSocial ?? "Cliente no encontrado"
                                     )).ToList();
 
-
-
-
-
-
-
-            //LINQ 2 -Adaptada a cambio de atributos en OrdenPreparacion.
-
-            /*
-             Esta expresión LINQ está usando el método Select para proyectar (transformar) 
-            cada elemento en OrdenPreparacionAlmacen.OrdenesPreparacion 
-            en una nueva instancia de la clase OrdenPreparacion. 
-             
-
-
-                    OrdenesDePreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion.Select(o => new OrdenPreparacion(
-             o.IdOrdenPreparacion.ToString(),                   // IDOrdenPreparacion
-             (Prioridades)o.Prioridad,                          // Prioridades (conversión de PrioridadEnum a Prioridades)
-             o.IdCliente.ToString(),                            // IdCliente
-             o.FechaRetiro,                                     // FechaRetiro
-             (PosiblesEstadosOrdenesGenerales)o.Estado,         // Estado (conversión de EstadoOrdenPreparacionEnum a PosiblesEstadosOrdenesGenerales)
-             ClienteAlmacen.Clientes.FirstOrDefault(c => c.IdCliente == o.IdCliente)?.RazonSocial // RazonSocial del cliente
-         )).ToList();
-            */
-
-
-
-
-            //LINQ V1- Hecha por el profe.
-            /*
-            OrdenesDePreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion.Select(o => new OrdenPreparacion(
-                o.IdOrdenPreparacion.ToString(),
-                o.IdCliente.ToString(),
-                ClienteAlmacen.Clientes.First(c => c.IdCliente == o.IdCliente).RazonSocial,
-                o.Detalle.Select(d => new Producto
-                {
-                    IDProducto = d.SKU,
-                    Cantidad = d.Cantidad,
-                    DescripcionProducto = ProductoAlmacen.Productos.First(p => p.SKU == d.SKU).NombreProducto,
-                    IdCliente = o.IdCliente.ToString()
-                }).ToList(),
-                o.Detalle.Sum(d => d.Cantidad),
-                o.FechaEmision,
-                o.Estado.ToString(),
-
-            )).ToList();
-            */
-
         }
 
 

@@ -14,4 +14,6 @@ namespace Pampazon.Entidades
         public EstadoOrdenSeleccionEnum EstadoOrden { get; set; }
         public DateTime FechaEstado { get; set; }
     }
+
+
 }
