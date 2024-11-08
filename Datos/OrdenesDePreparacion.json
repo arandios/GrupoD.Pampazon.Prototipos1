@@ -118,5 +118,125 @@
     "FechaRetiro": "2024-12-16T15:40:10.6789012-03:00",
     "HoraRetiro": "2024-11-06T16:40:10.6789012-03:00",
     "Estado": 2
+  },
+  {
+    "IdOrdenPreparacion": 8,
+    "Prioridad": 1,
+    "IdCliente": 9,
+    "Detalle": [
+      {
+        "SKU": "HIJ456",
+        "Cantidad": 10
+      },
+      {
+        "SKU": "LMN789",
+        "Cantidad": 2
+      }
+    ],
+    "DNITransportista": 78901234,
+    "FechaEmision": "2024-11-06T16:45:20.7890123-03:00",
+    "FechaRetiro": "2024-12-16T16:45:20.7890123-03:00",
+    "HoraRetiro": "2024-11-06T17:45:20.7890123-03:00",
+    "Estado": 3
+  },
+  {
+    "IdOrdenPreparacion": 9,
+    "Prioridad": 2,
+    "IdCliente": 10,
+    "Detalle": [
+      {
+        "SKU": "OPQ567",
+        "Cantidad": 3
+      },
+      {
+        "SKU": "RST890",
+        "Cantidad": 1
+      }
+    ],
+    "DNITransportista": 89012345,
+    "FechaEmision": "2024-11-06T17:50:30.8901234-03:00",
+    "FechaRetiro": "2024-12-16T17:50:30.8901234-03:00",
+    "HoraRetiro": "2024-11-06T18:50:30.8901234-03:00",
+    "Estado": 3
+  },
+  {
+    "IdOrdenPreparacion": 10,
+    "Prioridad": 3,
+    "IdCliente": 11,
+    "Detalle": [
+      {
+        "SKU": "UVW678",
+        "Cantidad": 7
+      },
+      {
+        "SKU": "XYZ123",
+        "Cantidad": 4
+      }
+    ],
+    "DNITransportista": 90123456,
+    "FechaEmision": "2024-11-06T18:55:40.9012345-03:00",
+    "FechaRetiro": "2024-12-16T18:55:40.9012345-03:00",
+    "HoraRetiro": "2024-11-06T19:55:40.9012345-03:00",
+    "Estado": 3
+  },
+  {
+    "IdOrdenPreparacion": 11,
+    "Prioridad": 1,
+    "IdCliente": 12,
+    "Detalle": [
+      {
+        "SKU": "ABC234",
+        "Cantidad": 6
+      },
+      {
+        "SKU": "DEF456",
+        "Cantidad": 5
+      }
+    ],
+    "DNITransportista": 12345678,
+    "FechaEmision": "2024-11-06T19:00:50.1234567-03:00",
+    "FechaRetiro": "2024-12-16T19:00:50.1234567-03:00",
+    "HoraRetiro": "2024-11-06T20:00:50.1234567-03:00",
+    "Estado": 3
+  },
+  {
+    "IdOrdenPreparacion": 12,
+    "Prioridad": 2,
+    "IdCliente": 13,
+    "Detalle": [
+      {
+        "SKU": "GHI789",
+        "Cantidad": 8
+      },
+      {
+        "SKU": "JKL012",
+        "Cantidad": 6
+      }
+    ],
+    "DNITransportista": 23456789,
+    "FechaEmision": "2024-11-06T20:05:00.2345678-03:00",
+    "FechaRetiro": "2024-12-16T20:05:00.2345678-03:00",
+    "HoraRetiro": "2024-11-06T21:05:00.2345678-03:00",
+    "Estado": 3
+  },
+  {
+    "IdOrdenPreparacion": 13,
+    "Prioridad": 3,
+    "IdCliente": 14,
+    "Detalle": [
+      {
+        "SKU": "MNO345",
+        "Cantidad": 9
+      },
+      {
+        "SKU": "PQR567",
+        "Cantidad": 4
+      }
+    ],
+    "DNITransportista": 34567890,
+    "FechaEmision": "2024-11-06T21:10:10.3456789-03:00",
+    "FechaRetiro": "2024-12-16T21:10:10.3456789-03:00",
+    "HoraRetiro": "2024-11-06T22:10:10.3456789-03:00",
+    "Estado": 3
   }
 ]
