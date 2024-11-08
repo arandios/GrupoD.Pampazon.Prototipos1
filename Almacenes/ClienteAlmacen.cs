@@ -20,6 +20,7 @@ namespace Pampazon.Almacenes
 
         public static void Leer()
         {
+            //TODO: ESTA MAL, NO DEBERIA USARSE EL PATH.
             var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Datos", "Clientes.json");
 
             if (!File.Exists(filePath))

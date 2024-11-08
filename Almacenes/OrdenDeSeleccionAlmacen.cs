@@ -17,16 +17,23 @@ namespace Pampazon.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(ordenesDeSeleccion);
-            File.WriteAllText("OrdenesDeSeleccion.json", datos);
+            File.WriteAllText("Datos/OrdenesDeSeleccion.json", datos);
         }
 
         public static void Leer()
         {
-            if (File.Exists("OrdenesDeSeleccion.json"))
+            //TODO: ESTA MAL, NO DEBERIA USARSE EL PATH.
+            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Datos", "OrdenesDeSeleccion.json");
+
+            if (!File.Exists(filePath))
             {
-                var datos = File.ReadAllText("OrdenesDeSeleccion.json");
-                ordenesDeSeleccion = JsonSerializer.Deserialize<List<OrdenDeSeleccionEnt>>(datos);
+                return;
             }
+
+            var datos = File.ReadAllText(filePath);
+
+            ordenesDeSeleccion = JsonSerializer.Deserialize<List<OrdenDeSeleccionEnt>>(datos)!;
+
         }
 
         public static void Agregar(OrdenDeSeleccionEnt ordenDeSeleccion)

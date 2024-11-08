@@ -19,9 +19,9 @@ namespace Pampazon.OrdenSeleccion
         public OrdenSeleccionModelo()
         {
 
-            //LINQ 3
+            //LINQ Version3 --> mas parecido a SQL
             OrdenesDePreparacion = (from orden in OrdenPreparacionAlmacen.OrdenesPreparacion
-                                    where (PosiblesEstadosOrdenesGenerales)orden.Estado == PosiblesEstadosOrdenesGenerales.Pendiente
+                                    where (PosiblesEstadosOrdenesGenerales)orden.Estado == PosiblesEstadosOrdenesGenerales.Pendiente //Hay que castear el enum
                                     join cliente in ClienteAlmacen.Clientes
                                     on orden.IdCliente equals cliente.IdCliente into clientesJoin
                                     from cliente in clientesJoin.DefaultIfEmpty()
@@ -62,16 +62,10 @@ namespace Pampazon.OrdenSeleccion
 
 
             // Grabar la lista actualizada en el archivo JSON
-            //OrdenDeSeleccionAlmacen.Grabar();
+            //OrdenDeSeleccionAlmacen.Grabar(); TODO: Grabar deberia estar en el almacen?
         }
 
 
-    /* V1
-    public string IngresarOrdenSeleccion(OrdenSeleccion ordenSeleccion)
-    {
-        return null;
-    }
-    */
 
     public string BorrarOrdenDePreparacion(OrdenPreparacion OrdenDePreparacionSeleccionada)
         {

@@ -1,6 +1,7 @@
 ﻿using Pampazon._3._BuscarProductosEnDepositos;
 using Pampazon.Almacenes;
 using Pampazon.Entidades;
+using Pampazon.OrdenSeleccion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,26 +14,26 @@ namespace Pampazon.BuscarProductosEnDepositos
     {
         public List<OrdenDeSeleccion>OrdenesDeSeleccion { get; private set; }
 
+
+
         public BuscarProductosEnDepositosModelo()
         {
             //OrdenesDeSeleccion = new List<OrdenDeSeleccion>
 
 
-            /*
+
             //LINQ  ---------------------- AJUSTAR SENTENCIA SEGUN REQUERIMIENTOS DE PANTALLA!
-            OrdenesDeSeleccion = (from orden in OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
-                                  where orden.Estado == EstadoOrdenSeleccionEnum.Pendiente
-                                  join cliente in ClienteAlmacen.Clientes
-                                  on orden.IdCliente equals cliente.IdCliente into clientesJoin
-                                  from cliente in clientesJoin.DefaultIfEmpty()
-                                  select new OrdenDeSeleccion(
-                                      orden.IDOrdenSeleccion,
-                                      EstadoOrdenSeleccionEnum.Pendiente,
-                                      orden.OrdenesDePreparacion,
-                                      DateTime.Now
-                                  )).ToList();
+
+            OrdenesDeSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
+            .Where(orden => orden.EstadoOrden == EstadoOrdenSeleccionEnum.Pendiente)
+            .Select(orden => new OrdenDeSeleccion(
+                orden.IdOrdenSeleccion,
+                ((PosiblesEstadosOrdenesGenerales)orden.EstadoOrden).ToString()
+            ))
+            .ToList();
 
 
+            /*
             {
                 new OrdenDeSeleccion(1, "Pendiente")
                 {
@@ -68,8 +69,8 @@ namespace Pampazon.BuscarProductosEnDepositos
                             new Producto("17-33-3", "SKU007", 18),  // Sector 17, Posición 33, Fila 3
                             new Producto("17-33-4", "SKU008", 22)   // Sector 17, Posición 33, Fila 4
                         })
-            }
-        },
+                    }
+                },
                 new OrdenDeSeleccion(3, "Pendiente")
                 {
                     OrdenesDePreparacion = new List<OrdenDePreparacion>
@@ -127,6 +128,9 @@ namespace Pampazon.BuscarProductosEnDepositos
         
             };*/
         }
+
+
+
 
         public List<Producto> ObtenerProductosPorOrdenDeSeleccion(int idOrdenSeleccion)
         {
