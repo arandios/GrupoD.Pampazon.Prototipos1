@@ -238,7 +238,6 @@ namespace Pampazon.OrdenSeleccion
                     newItem.SubItems.Add(ordenPreparacion.DescripcionCliente.ToString());
                     newItem.SubItems.Add(ordenPreparacion.fechaOrdenPreparacion.ToString("dd/MM/yyyy"));
                     newItem.SubItems.Add(ordenPreparacion.Prioridad.ToString());
-                    //newItem.SubItems.Add(ordenPreparacion.TransportistaDetalle.Nombre);
 
                     newItem.Tag = ordenPreparacion; // Guardar el objeto completo como Tag
                     DetalleOrdenesDePreparacionPendientesLST.Items.Add(newItem);
@@ -269,14 +268,12 @@ namespace Pampazon.OrdenSeleccion
 
             MessageBox.Show("Orden de Preparacion agregada al detalle.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Llamar al método para agrupar y mostrar los productos y ubicaciones
-            //AgruparOrdenesDePreparacionPendientes();
         }
 
 
 
 
-
+        //Cuando se hace click en "GENERAR ORDEN DE SELECCION"
         private void CrearOrdenSeleccionBTN_Click_1(object sender, EventArgs e)
         {
             // Verificar si hay elementos en la lista OrdenesDePreparacionPendientesListView
@@ -291,7 +288,7 @@ namespace Pampazon.OrdenSeleccion
             {
                 //IDOrdenSeleccion = Guid.NewGuid().ToString(), // Generar un ID único para la orden de selección
                 FechaEmision = DateTime.Now,
-                OrdenesPreparacion = new List<OrdenPreparacion>(),
+                OrdenesPreparacion = new List<OrdenPreparacion>(), //Es la lista que hay que pasar al modelo.
                 EstadoOrdenDeSeleccion = "Nueva", // Estado inicial de la orden de selección
                 FechaEstados = DateTime.Now
             };
@@ -310,6 +307,8 @@ namespace Pampazon.OrdenSeleccion
                 ordenesDisponibles.Remove(ordenPreparacion);
             }
 
+            //Le pido al modelo que cree una nueva OS. con esas OP.
+            modelo.IngresarOrdenSeleccion(ordenSeleccion.OrdenesPreparacion); 
 
             // Vaciar la lista DetalleOrdenesDePreparacionPendientesListView
             DetalleOrdenesDePreparacionPendientesLST.Items.Clear();

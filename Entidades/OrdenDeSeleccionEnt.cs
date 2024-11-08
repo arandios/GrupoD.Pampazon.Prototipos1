@@ -10,7 +10,7 @@ namespace Pampazon.Entidades
     {
         public int IdOrdenSeleccion { get; set; }
         public DateTime FechaEmision { get; set; }
-        public List<int> OrdenesPreparacion { get; } = new(); 
+        public List<int> OrdenesPreparacion { get; set; } = new(); 
         public EstadoOrdenSeleccionEnum EstadoOrden { get; set; }
         public DateTime FechaEstado { get; set; }
     }

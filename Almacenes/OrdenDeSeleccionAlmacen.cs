@@ -28,5 +28,11 @@ namespace Pampazon.Almacenes
                 ordenesDeSeleccion = JsonSerializer.Deserialize<List<OrdenDeSeleccionEnt>>(datos);
             }
         }
+
+        public static void Agregar(OrdenDeSeleccionEnt ordenDeSeleccion)
+        {
+            ordenesDeSeleccion.Add(ordenDeSeleccion);
+            Grabar();
+        }
     }
 }

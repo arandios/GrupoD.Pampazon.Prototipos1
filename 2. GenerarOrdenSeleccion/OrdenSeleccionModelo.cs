@@ -37,12 +37,43 @@ namespace Pampazon.OrdenSeleccion
         }
 
 
-        public string IngresarOrdenSeleccion(OrdenSeleccion ordenSeleccion)
+        public void IngresarOrdenSeleccion(List<OrdenPreparacion> OPseleccionadas)
         {
-            return null;
+            // Obtener el número ID para la nueva Orden de Selección
+            int nuevoIdOrdenSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Any()
+                ? OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.IdOrdenSeleccion) + 1
+                : 1;
+
+            // Creao una instancia de OrdenDeSeleccionEnt
+            var nuevaOrdenSeleccion = new OrdenDeSeleccionEnt
+            {
+                IdOrdenSeleccion = nuevoIdOrdenSeleccion,
+                FechaEmision = DateTime.Now,
+                OrdenesPreparacion = OPseleccionadas.Select(op => int.Parse(op.IDOrdenPreparacion)).ToList(),
+                EstadoOrden = EstadoOrdenSeleccionEnum.Pendiente,
+                FechaEstado = DateTime.Now
+            };
+
+            //------> TODO: VERIFICAR SI ESTA BIEN PARA GUARDAR EN EL JSON!
+
+            // Agregar la nueva orden a la lista de Ordenes de Seleccion
+            //OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeleccion);
+            
+
+
+            // Grabar la lista actualizada en el archivo JSON
+            //OrdenDeSeleccionAlmacen.Grabar();
         }
 
-        public string BorrarOrdenDePreparacion(OrdenPreparacion OrdenDePreparacionSeleccionada)
+
+    /* V1
+    public string IngresarOrdenSeleccion(OrdenSeleccion ordenSeleccion)
+    {
+        return null;
+    }
+    */
+
+    public string BorrarOrdenDePreparacion(OrdenPreparacion OrdenDePreparacionSeleccionada)
         {
             //Validaciones.
             //TODO: Reveer que validaciones serian necesarias aqui. Limitaciones antes de borrar. (No deberia haber?)
