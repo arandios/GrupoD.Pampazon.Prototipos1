@@ -36,8 +36,31 @@ namespace Pampazon
             FechaSelecter.MaxDate = today.AddDays(90);
 
             this.ProductosStockLST.SelectedIndexChanged += new EventHandler(this.ProductosStockLista_SelectedIndexChanged);
+            CodigoClienteTXT.TextChanged += CodigoClienteTXT_TextChanged;
+            RazonSocialClienteTXT.TextChanged += RazonSocialClienteTXT_TextChanged;
 
-
+        }
+        private void CodigoClienteTXT_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(CodigoClienteTXT.Text))
+            {
+                RazonSocialClienteTXT.Enabled = false;
+            }
+            else
+            {
+                RazonSocialClienteTXT.Enabled = true;
+            }
+        }
+        private void RazonSocialClienteTXT_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(RazonSocialClienteTXT.Text))
+            {
+                CodigoClienteTXT.Enabled = false;
+            }
+            else
+            {
+                CodigoClienteTXT.Enabled = true;
+            }
         }
 
         private void GenerarOrdenPreparacionForm_Load(object sender, EventArgs e)
@@ -100,62 +123,64 @@ namespace Pampazon
 
         private void BuscarProductoBtn(object sender, EventArgs e)
         {
+            // Reiniciar siempre el cliente al valor no válido
+            model.IDCliente = -1;
+            ProductosStockLST.Items.Clear();
 
-            if (CodigoClienteTXT.Text.ToUpper() != model.IDCliente.ToString().ToUpper())
+            if (string.IsNullOrEmpty(CodigoClienteTXT.Text) && string.IsNullOrEmpty(RazonSocialClienteTXT.Text))
             {
-                model.IDCliente = -1;
-                ProductosStockLST.Items.Clear();
-                if (CodigoClienteTXT.Text == "" & RazonSocialClienteTXT.Text == "")
+                MessageBox.Show("Ingrese ID cliente o Razon Social");
+            }
+            else if (!string.IsNullOrEmpty(CodigoClienteTXT.Text) && !string.IsNullOrEmpty(RazonSocialClienteTXT.Text))
+            {
+                MessageBox.Show("Busque cliente por ID o por Razon Social. Elija una");
+                CodigoClienteTXT.Clear();
+                RazonSocialClienteTXT.Clear();
+            }
+            else if (!string.IsNullOrEmpty(CodigoClienteTXT.Text))
+            {
+                if (int.TryParse(CodigoClienteTXT.Text, out int clienteNumber))
                 {
-                    DialogResult result = MessageBox.Show($"Ingrese ID cliente o Razon Social");
-                }
-                else if (CodigoClienteTXT.Text != "" & RazonSocialClienteTXT.Text != "")
-                {
-                    DialogResult result = MessageBox.Show($"Busque cliente por ID o por Razon Social. Elija una");
-                    CodigoClienteTXT.Text = "";
-                    RazonSocialClienteTXT.Text = "";
-                }
-                else if (CodigoClienteTXT.Text != "" & RazonSocialClienteTXT.Text == "")
-                {
-                    int clienteNumber;
-                    if (!int.TryParse(CodigoClienteTXT.Text, out clienteNumber))
+                    int clienteID = model.obtenerCliente(clienteNumber);
+                    if (clienteID == -1)
                     {
-                        MessageBox.Show($"Ingrese un numero para buscar ID cliente");
-                        CodigoClienteTXT.Text = "";
+                        MessageBox.Show($"ID Cliente {CodigoClienteTXT.Text} no existe.");
+                        CodigoClienteTXT.Clear();
                     }
-                    else if (model.obtenerCliente(clienteNumber) == -1)
+                    else
                     {
-                        CodigoClienteTXT.Text = "";
-                        MessageBox.Show($"ID Cliente seleccionado {CodigoClienteTXT.Text} no existe. Busque devuelta o por razon Social");
-                    }
-                    else // caso favorable
-                    {
-                        model.Orden.changeIDCliente(model.obtenerCliente(clienteNumber));
-                        model.IDCliente = model.Orden.IDCliente;
-                        model.setProductosClientes(model.Orden.IDCliente);
+                        model.Orden.changeIDCliente(clienteID);
+                        model.IDCliente = clienteID;
+                        model.setProductosClientes(clienteID);
                     }
                 }
-                else if (CodigoClienteTXT.Text == "" & RazonSocialClienteTXT.Text != "")
+                else
                 {
-                    if (model.obtenerCliente(-1, RazonSocialClienteTXT.Text) == -1)
-                    {
-                        MessageBox.Show($"Razon Social {RazonSocialClienteTXT.Text} no existe. Busque devuelta o por ID Cliente");
-                    }
-                    else // caso favorable
-                    {
-                        model.Orden.changeIDCliente(model.obtenerCliente(-1, RazonSocialClienteTXT.Text));
-                        CodigoClienteTXT.Text = model.Orden.IDCliente.ToString().ToUpper();
-                        model.setProductosClientes(model.Orden.IDCliente);
-                        model.IDCliente = model.Orden.IDCliente;
-                    }
-                } // fin de if orden con productos == 0
-            } // fin de if orden con productos == 0
+                    MessageBox.Show("Ingrese un número válido para buscar ID cliente.");
+                    CodigoClienteTXT.Clear();
+                }
+            }
+            else if (!string.IsNullOrEmpty(RazonSocialClienteTXT.Text))
+            {
+                int clienteID = model.obtenerCliente(-1, RazonSocialClienteTXT.Text);
+                if (clienteID == -1)
+                {
+                    MessageBox.Show($"Razon Social '{RazonSocialClienteTXT.Text}' no existe.");
+                }
+                else
+                {
+                    model.Orden.changeIDCliente(clienteID);
+                    CodigoClienteTXT.Text = clienteID.ToString();
+                    model.setProductosClientes(clienteID);
+                    model.IDCliente = clienteID;
+                }
+            }
+
             if (model.IDCliente != -1)
             {
                 ActualizarListaProductos(SKUProductoTXT.Text, NombreProductoTXT.Text);
             }
-
-        }  // hasta aca llega la seleccioan de cliente y producto
+        }
 
         private void ActualizarListaProductos(string codProducto, string nombreProducto)
         {
