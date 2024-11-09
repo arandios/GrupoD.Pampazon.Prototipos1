@@ -366,7 +366,7 @@
     "Detalle": [
       {
         "SKU": "PROD-09345",
-        "Cantidad": 67
+        "Cantidad": 25
       },
       {
         "SKU": "PROD-13333",
@@ -390,7 +390,7 @@
       },
       {
         "SKU": "PROD-73477",
-        "Cantidad": 80
+        "Cantidad": 47
       }
     ],
     "DNITransportista": 87899594,

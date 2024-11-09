@@ -487,7 +487,7 @@
         "Detalle": [
           {
             "IdUbicacion": "63-10-20",
-            "Stock": 34
+            "Stock": 50
           }
         ]
       },
@@ -498,18 +498,18 @@
         "Detalle": [
           {
             "IdUbicacion": "44-75-22",
-            "Stock": 12
+            "Stock": 89
           }
         ]
       },
       {
         "SKU": "PROD-58994",
         "IdCliente": 21,
-        "NombreProducto": "Omega Moonswatch",
+        "NombreProducto": "Aire enlatado",
         "Detalle": [
           {
             "IdUbicacion": "32-66-30",
-            "Stock": 33
+            "Stock": 240
           }
         ]
       },
@@ -520,11 +520,11 @@
         "Detalle": [
           {
             "IdUbicacion": "61-33-12",
-            "Stock": 1
+            "Stock": 20
           },
           {
             "IdUbicacion": "13-20-3",
-            "Stock": 1
+            "Stock": 16
           }
         ]
       }
