@@ -32,10 +32,10 @@ namespace Pampazon._4._EmpaquetarOrden
             OrdenesParaPrepararLST.Items.Clear();
 
 
-            if (indiceActualOrden < modelo.ordenes.Count)
+            if (indiceActualOrden < modelo.ordenesPreparacion.Count)
             {
 
-                Orden ordenActual = modelo.ordenes[indiceActualOrden];
+                OrdenPreparacion ordenActual = modelo.ordenesPreparacion[indiceActualOrden];
 
                 // Recorrer los productos de la orden actual
                 foreach (Producto producto in ordenActual.Productos)

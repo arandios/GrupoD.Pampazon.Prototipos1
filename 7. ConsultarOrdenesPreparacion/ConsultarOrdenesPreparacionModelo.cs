@@ -101,12 +101,12 @@ namespace Pampazon.ConsultarOrdenes
       }*/
     internal class ConsultarOrdenesPreparacionModelo
     {
-        private List<OrdenPreparacionEnt> ordenes;
+        private List<OrdenPreparacionEnt> ordenesPreparacion;
 
         public ConsultarOrdenesPreparacionModelo()
         {
             // Inicializar 'ordenes' con los datos de 'OrdenPreparacionAlmacen'
-            ordenes = OrdenPreparacionAlmacen.OrdenesPreparacion
+            ordenesPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion
                 .Select(o =>
                 {
                     var orden = new OrdenPreparacionEnt
@@ -138,7 +138,7 @@ namespace Pampazon.ConsultarOrdenes
                 .Select(c => c.IdCliente)
                 .ToHashSet();
 
-            return ordenes
+            return ordenesPreparacion
                 .Where(o => clientesFiltrados.Contains(o.IdCliente))
                 .ToList();
         }
@@ -152,19 +152,19 @@ namespace Pampazon.ConsultarOrdenes
                 .Select(c => c.IdCliente)
                 .ToHashSet();
 
-            return ordenes
+            return ordenesPreparacion
                 .Where(o => clientesFiltrados.Contains(o.IdCliente))
                 .ToList();
         }
 
         public OrdenPreparacionEnt ObtenerOrdenPorId(int idOrdenPreparacion)
         {
-            return ordenes.FirstOrDefault(o => o.IdOrdenPreparacion == idOrdenPreparacion);
+            return ordenesPreparacion.FirstOrDefault(o => o.IdOrdenPreparacion == idOrdenPreparacion);
         }
 
         public List<OrdenPreparacionEnt> ObtenerTodasLasOrdenes()
         {
-            return ordenes;
+            return ordenesPreparacion;
         }
 
         // Método para filtrar las órdenes por estado, prioridad y fechas
@@ -202,7 +202,7 @@ namespace Pampazon.ConsultarOrdenes
         // Método para aplicar filtros adicionales
         public List<OrdenPreparacionEnt> BuscarOrdenes(string codigoCliente, string razonSocial, string cuit, string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
         {
-            List<OrdenPreparacionEnt> ordenesEncontradas = ordenes;
+            List<OrdenPreparacionEnt> ordenesEncontradas = ordenesPreparacion;
 
             // Filtrar por código de cliente
             if (!string.IsNullOrEmpty(codigoCliente))

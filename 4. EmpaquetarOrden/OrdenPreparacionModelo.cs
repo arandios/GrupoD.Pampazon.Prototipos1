@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Pampazon.Almacenes;
+using Pampazon.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,7 @@ namespace Pampazon._4._EmpaquetarOrden
 {
     internal class OrdenPreparacionModelo
     {
-        public List<Orden> ordenes { get; private set; }  // Lista de órdenes
+        public List<OrdenPreparacion> ordenesPreparacion { get; private set; }  // Lista de órdenes
 
         public OrdenPreparacionModelo()
         {
@@ -16,15 +18,67 @@ namespace Pampazon._4._EmpaquetarOrden
         }
 
         // Método que obtiene la lista actual de órdenes
-        public List<Orden> ObtenerOrdenActual()
+        public List<OrdenPreparacion> ObtenerOrdenActual()
         {
-            return ordenes;
+            return ordenesPreparacion;
         }
 
         // Método para cargar las órdenes iniciales (simulación de carga de datos)
         public void CargarOrdenes()
         {
-            // Simulamos que tenemos 3 órdenes con productos asociados
+
+            // Asegúrate de llamar a `ProductoAlmacen.Leer()` y `OrdenPreparacionAlmacen.Leer()` para cargar los datos antes de esta consulta
+            /*
+            ordenesPreparacion = (
+                from o in OrdenPreparacionAlmacen.OrdenesPreparacion
+               
+                select new OrdenPreparacion
+                {
+                    Productos = (
+                        from d in o.Detalle
+                        join p in ProductoAlmacen.Productos 
+                        on d.SKU equals p.SKU into productosJoin
+                        from producto in productosJoin.DefaultIfEmpty() // Hace una unión externa izquierda para manejar SKUs que no se encuentran en `ProductoAlmacen`
+                        select new Producto
+                        {
+                            SKUProducto = d.SKU,
+                            DescripcionProducto = producto?.NombreProducto ?? "Producto no encontrado",
+                            Cantidad = d.Cantidad
+                        }).ToList()
+                }).ToList();
+            */
+
+            ordenesPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion
+                .Select(o => new OrdenPreparacion
+                {
+                    IdOrdenPreparacion = o.IdOrdenPreparacion.ToString(),
+                    Productos = o.Detalle.Select(d => new Producto
+                    {
+                        SKUProducto = d.SKU,
+                        DescripcionProducto = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == d.SKU)?.NombreProducto ?? "Producto no encontrado",
+                        Cantidad = d.Cantidad
+                    }).ToList()
+                }).ToList();
+
+
+            /*
+                         var op = OrdenPreparacionAlmacen.OrdenesPreparacion
+                                            .Select(o => new OrdenPreparacion
+                                            (
+                                                o.IdOrdenPreparacion.ToString(),
+                                                (Prioridades)o.Prioridad,
+                                                o.IdCliente.ToString(),
+                                                o.FechaEmision,
+                                                (PosiblesEstadosOrdenesGenerales)o.Estado,
+                                                ClienteAlmacen.Clientes.First(c => c.IdCliente == o.IdCliente).RazonSocial
+                                            )).ToList(); 
+             
+             
+             * /
+
+
+
+            /*
             ordenes = new List<Orden>
             {
             new Orden
@@ -84,8 +138,9 @@ namespace Pampazon._4._EmpaquetarOrden
                     new Producto() { SKUProducto = "SKU014", DescripcionProducto = "Lentes de Sol", Cantidad = 20 }
                 }
             }
-            };
-
+            */
         }
+
     }
-}
+    }
+
