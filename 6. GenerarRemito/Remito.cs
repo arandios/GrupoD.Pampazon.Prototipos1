@@ -9,7 +9,7 @@ namespace Pampazon.Remitos
     internal class Remito
     {
         // Propiedades
-        public List<OrdenesDePreparacion> Ordenes { get; set; }
+        public List<int> Ordenes { get; set; }
         public int DNITransportista { get; set; }
         public DateTime FechaDeEmision { get; set; }
         public string IdRemito { get; private set; } // Propiedad para el ID del remito
@@ -18,7 +18,7 @@ namespace Pampazon.Remitos
         private static int _lastId = 0;
 
         // Constructor
-        public Remito(List<OrdenesDePreparacion> ordenes, int transportista)
+        public Remito(List<int> ordenes, int transportista)
         {
             Ordenes = ordenes;
             DNITransportista = transportista;

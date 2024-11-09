@@ -1,0 +1,20 @@
+[
+  {
+    "IdRemito": 1001,
+    "DNITransportista": 87654321,
+    "FechaEmision": "2024-11-06T10:15:20",
+    "OrdenesPreparacion": [ 22, 35, 48 ]
+  },
+  {
+    "IdRemito": 1002,
+    "DNITransportista": 23456789,
+    "FechaEmision": "2024-11-06T11:20:30",
+    "OrdenesPreparacion": [ 25, 37 ]
+  },
+  {
+    "IdRemito": 1003,
+    "DNITransportista": 34567890,
+    "FechaEmision": "2024-11-06T12:25:40",
+    "OrdenesPreparacion": [ 20, 30, 42, 50 ]
+  }
+]

@@ -28,6 +28,12 @@ namespace Pampazon.Almacenes
                 remitos = JsonSerializer.Deserialize<List<RemitoEnt>>(datos);
             }
         }
+
+        public static void Agregar(RemitoEnt remito)
+        {
+            remitos.Add(remito);
+            Grabar();
+        }
     }
 
 }

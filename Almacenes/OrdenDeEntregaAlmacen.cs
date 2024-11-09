@@ -28,6 +28,12 @@ namespace Pampazon.Almacenes
                 ordenesDeEntrega = JsonSerializer.Deserialize<List<OrdenDeEntregaEnt>>(datos);
             }
         }
+
+        public static void Agregar(OrdenDeEntregaEnt ordenDeEntrega)
+        {
+            ordenesDeEntrega.Add(ordenDeEntrega);
+            Grabar();
+        }
     }
 
 }
