@@ -13,8 +13,8 @@
     "IdOrdenSeleccion": 2,
     "FechaEmision": "2024-11-06T00:00:00",
     "OrdenesPreparacion": [
-      3,
-      4
+     3, 
+     4 
     ],
     "EstadoOrden": 0,
     "FechaEstado": "2024-11-06T00:00:00"

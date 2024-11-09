@@ -3,16 +3,15 @@
     "IdOrdenEntrega": 1,
     "FechaEntrega": "2024-01-06T00:00:00",
     "OrdenesDePreparacion": [
-      2,
-      3
+      19,
+      20
     ]
   },
   {
     "IdOrdenEntrega": 2,
     "FechaEntrega": "2024-01-06T00:00:00",
     "OrdenesDePreparacion": [
-      4,
-      5
+      21
     ]
   }
 ]
