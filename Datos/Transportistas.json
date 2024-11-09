@@ -1,8 +1,8 @@
 ﻿[
   {
-    "DNI": 87654321,
-    "Nombre": "Carlos",
-    "Apellido": "Gonzalez"
+    "DNI": 12345678,
+    "Nombre": "Valentina",
+    "Apellido": "Rojas"
   },
   {
     "DNI": 23456789,
@@ -28,5 +28,65 @@
     "DNI": 67890123,
     "Nombre": "Javier",
     "Apellido": "Diaz"
+  },
+  {
+    "DNI": 78901234,
+    "Nombre": "Federico",
+    "Apellido": "Perez"
+  },
+  {
+    "DNI": 89012345,
+    "Nombre": "Sofia",
+    "Apellido": "Gutierrez"
+  },
+  {
+    "DNI": 90123456,
+    "Nombre": "Emilio",
+    "Apellido": "Salinas"
+  },
+  {
+    "DNI": 98765432,
+    "Nombre": "Camila",
+    "Apellido": "Sanchez"
+  },
+  {
+    "DNI": 87654321,
+    "Nombre": "Carlos",
+    "Apellido": "Gonzalez"
+  },
+  {
+    "DNI": 76543210,
+    "Nombre": "Fernando",
+    "Apellido": "Mendoza"
+  },
+  {
+    "DNI": 65432109,
+    "Nombre": "Elena",
+    "Apellido": "Garcia"
+  },
+  {
+    "DNI": 54321098,
+    "Nombre": "Pablo",
+    "Apellido": "Ruiz"
+  },
+  {
+    "DNI": 43210987,
+    "Nombre": "Laura",
+    "Apellido": "Figueroa"
+  },
+  {
+    "DNI": 32109876,
+    "Nombre": "Miguel",
+    "Apellido": "Torres"
+  },
+  {
+    "DNI": 21098765,
+    "Nombre": "Alicia",
+    "Apellido": "Morales"
+  },
+  {
+    "DNI": 10987654,
+    "Nombre": "Ramon",
+    "Apellido": "Herrera"
   }
 ]
