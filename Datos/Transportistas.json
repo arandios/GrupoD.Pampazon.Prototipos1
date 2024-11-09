@@ -88,5 +88,20 @@
     "DNI": 10987654,
     "Nombre": "Ramon",
     "Apellido": "Herrera"
+  },
+  {
+    "DNI": 78766564,
+    "Nombre": "Lore",
+    "Apellido": "Mazzalupo"
+  },
+  {
+    "DNI": 87899594,
+    "Nombre": "Alan",
+    "Apellido": "Prado"
+  },
+  {
+    "DNI": 96499344,
+    "Nombre": "Daniel",
+    "Apellido": "Claudio"
   }
 ]

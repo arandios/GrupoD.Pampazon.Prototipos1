@@ -14,13 +14,5 @@
       4,
       5
     ]
-  },
-  {
-    "IdOrdenEntrega": 3,
-    "FechaEntrega": "2024-01-06T00:00:00",
-    "OrdenesDePreparacion": [
-      6,
-      7
-    ]
   }
 ]
