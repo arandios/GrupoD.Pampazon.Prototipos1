@@ -396,6 +396,10 @@
           {
             "IdUbicacion": "26-26-26",
             "Stock": 15
+          },
+          {
+            "IdUbicacion": "26-13-10",
+            "Stock": 10
           }
         ]
       },
@@ -451,6 +455,76 @@
           {
             "IdUbicacion": "37-77-77",
             "Stock": 5
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-09345",
+        "IdCliente": 19,
+        "NombreProducto": "Oro 24 kilates",
+        "Detalle": [
+          {
+            "IdUbicacion": "01-37-77",
+            "Stock": 40
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-13333",
+        "IdCliente": 19,
+        "NombreProducto": "Ojotas ferrari",
+        "Detalle": [
+          {
+            "IdUbicacion": "37-79-67",
+            "Stock": 45
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-64466",
+        "IdCliente": 20,
+        "NombreProducto": "Permadrago",
+        "Detalle": [
+          {
+            "IdUbicacion": "63-10-20",
+            "Stock": 34
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-73477",
+        "IdCliente": 20,
+        "NombreProducto": "Pelota de Metal",
+        "Detalle": [
+          {
+            "IdUbicacion": "44-75-22",
+            "Stock": 12
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-58994",
+        "IdCliente": 21,
+        "NombreProducto": "Omega Moonswatch",
+        "Detalle": [
+          {
+            "IdUbicacion": "32-66-30",
+            "Stock": 33
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-15673",
+        "IdCliente": 21,
+        "NombreProducto": "Balon firmado por messi",
+        "Detalle": [
+          {
+            "IdUbicacion": "61-33-12",
+            "Stock": 1
+          },
+          {
+            "IdUbicacion": "13-20-3",
+            "Stock": 1
           }
         ]
       }
