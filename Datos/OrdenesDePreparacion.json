@@ -97,7 +97,7 @@
     "FechaEmision": "2024-11-06T13:15:00-03:00",
     "FechaRetiro": "2024-12-16T13:15:00-03:00",
     "HoraRetiro": "2024-11-06T14:15:00-03:00",
-    "Estado": 2
+    "Estado": 0
   },
   {
     "IdOrdenPreparacion": 6,
@@ -117,7 +117,7 @@
     "FechaEmision": "2024-11-06T14:15:00-03:00",
     "FechaRetiro": "2024-12-16T14:15:00-03:00",
     "HoraRetiro": "2024-11-06T15:15:00-03:00",
-    "Estado": 2
+    "Estado": 0
   },
   {
     "IdOrdenPreparacion": 7,
