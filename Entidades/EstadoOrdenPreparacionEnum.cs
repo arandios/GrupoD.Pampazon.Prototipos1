@@ -12,6 +12,7 @@ namespace Pampazon.Entidades
         Procesamiento,
         Procesada,
         Preparada,
+        Lista,
         Entregada
     }
 }
