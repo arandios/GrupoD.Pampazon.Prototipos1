@@ -200,7 +200,7 @@ namespace Pampazon.ConsultarOrdenes
 
 
         // Método para aplicar filtros adicionales
-        public List<OrdenPreparacionEnt> BuscarOrdenes(string codigoCliente, string razonSocial, string cuit)
+        public List<OrdenPreparacionEnt> BuscarOrdenes(string codigoCliente, string razonSocial, string cuit, string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
         {
             List<OrdenPreparacionEnt> ordenesEncontradas = ordenes;
 
@@ -226,7 +226,7 @@ namespace Pampazon.ConsultarOrdenes
             // Aplicar filtros por estado, prioridad y fechas
             if (ordenesEncontradas.Any())
             {
-                FiltrarPorEstadoPrioridadYFechas(ref ordenesEncontradas);
+                FiltrarPorEstadoPrioridadYFechas(ref ordenesEncontradas, estadoSeleccionado, prioridadSeleccionada, fechaInicio, fechaFin);
             }
 
             return ordenesEncontradas;
