@@ -34,8 +34,8 @@ namespace Pampazon.OrdenEntrega
         private void ConfigurarListView()
         {
             Orden_EntregaLST.View = View.Details;
-            Orden_EntregaLST.Columns.Add("Código Orden de Entrega", 250);
-            Orden_EntregaLST.Columns.Add("Fecha Orden de Entrega", 250);
+            Orden_EntregaLST.Columns.Add("Id orden de preparación", 250);
+            Orden_EntregaLST.Columns.Add("Fecha retiro Orden de Preparación", 250);
         }
 
 
