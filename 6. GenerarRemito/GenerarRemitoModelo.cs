@@ -1,4 +1,5 @@
 ﻿using Pampazon.Almacenes;
+using Pampazon.Entidades;
 using Pampazon.OrdenSeleccion;
 using Pampazon.Remitos;
 using System;
@@ -44,17 +45,29 @@ public class GenerarRemitoModelo
 
     // Métodos para GENERAR REMITO
     // Crea un nuevo remito utilizando las órdenes seleccionadas y el DNI del transportista
-    internal Remito GenerarRemito(List<OrdenesDePreparacion> ordenesSeleccionadas, int dniTransportista)
+    internal RemitoEnt GenerarRemito(List<OrdenesDePreparacion> ordenesSeleccionadas, int dniTransportista)
     {
-        Remito nuevoRemito = new Remito(ordenesSeleccionadas, dniTransportista);
+        var nuevoRemito = new RemitoEnt
+        {
+            DNITransportista = dniTransportista,
+            FechaEmision = DateTime.Now,
+            IdRemito = RemitoAlmacen.Remitos.Any() ? RemitoAlmacen.Remitos.Max(r => r.IdRemito) + 1 : 1,
+        };
 
+        // Agregar las órdenes de preparación al remito
+        nuevoRemito.OrdenesPreparacion.AddRange(ordenesSeleccionadas.Select(o => int.Parse(o.IdOrden)));
         // Eliminar las órdenes que se han utilizado en el remito
         EliminarOrdenes(ordenesSeleccionadas);
 
+        RemitoAlmacen.Agregar(nuevoRemito);
+
+        // Retornar el nuevo remito
         return nuevoRemito;
     }
 
+
     // Método para eliminar órdenes del listado
+    //LAS ELIMINO O LES CAMBIO EL ESTADO?
     private void EliminarOrdenes(List<OrdenesDePreparacion> ordenesAEliminar)
     {
         ordenes = ordenes.Except(ordenesAEliminar).ToList();

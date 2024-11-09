@@ -23,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Datos\Remitos.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Datos\Clientes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

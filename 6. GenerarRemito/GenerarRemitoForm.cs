@@ -1,4 +1,5 @@
-﻿using Pampazon.Remitos;
+﻿using Pampazon.Entidades;
+using Pampazon.Remitos;
 using System.Data;
 using System.Net;
 using System.Text;
@@ -187,18 +188,17 @@ namespace Pampazon._6._GenerarRemito
             try
             {
                 // Crear el remito a través del modelo
-                Remito nuevoRemito = modelo.GenerarRemito(ordenesParaRemito, dniTransportista);
+                RemitoEnt nuevoRemito = modelo.GenerarRemito(ordenesParaRemito, dniTransportista);
 
                 // Mostrar la confirmación del remito
-                MessageBox.Show($"Remito generado:\nTransportista DNI: {nuevoRemito.DNITransportista}\nÓrdenes: {string.Join(", ", nuevoRemito.Ordenes.Select(o => o.IdOrden))}",
+                MessageBox.Show($"Remito generado:\nTransportista DNI: {nuevoRemito.DNITransportista}\nÓrdenes: {string.Join(", ", nuevoRemito.OrdenesPreparacion)}",
                                 "Remito Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
+                // Preparar los ítems a eliminar en base a la selección
                 var itemsAEliminar = new List<ListViewItem>();
-
                 if (hayItemsSeleccionados)
                 {
-                    // Solo eliminar ítems que estén marcados
+                    // Si hay ítems seleccionados, eliminar solo los seleccionados
                     foreach (ListViewItem item in DetalleRemitoLTV.Items)
                     {
                         if (item.Checked)
@@ -209,17 +209,17 @@ namespace Pampazon._6._GenerarRemito
                 }
                 else
                 {
-                    // Si no hay ítems seleccionados, eliminar todos los ítems de DetalleRemitoLTV
+                    // Si no hay ítems seleccionados, eliminar todos
                     itemsAEliminar.AddRange(DetalleRemitoLTV.Items.Cast<ListViewItem>());
                 }
 
-                // Eliminar los ítems seleccionados de DetalleRemitoLTV
+                // Eliminar ítems seleccionados de DetalleRemitoLTV
                 foreach (ListViewItem item in itemsAEliminar)
                 {
                     DetalleRemitoLTV.Items.Remove(item);
                 }
 
-                // Comprobar si DetalleRemitoLTV está vacío
+                // Restablecer el formulario si DetalleRemitoLTV está vacío
                 if (DetalleRemitoLTV.Items.Count == 0)
                 {
                     TransportistasListV.Items.Clear();
@@ -232,9 +232,10 @@ namespace Pampazon._6._GenerarRemito
             }
             catch (Exception ex)
             {
-                // Mostrar mensaje de error si hay un problema con la validación
+                // Mostrar mensaje de error si hay un problema
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
 

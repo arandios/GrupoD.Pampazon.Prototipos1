@@ -30,9 +30,14 @@ namespace Pampazon.Almacenes
             }
         }
 
+        public static void Agregar(OrdenPreparacionEnt ordenPreparacion)
+        {
+            ordenesPreparacion.Add(ordenPreparacion);
+            Grabar();
+        }
 
-        
-        
+
+
 
 
     }

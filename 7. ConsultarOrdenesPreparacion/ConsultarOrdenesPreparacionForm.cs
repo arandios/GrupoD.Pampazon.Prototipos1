@@ -1,5 +1,7 @@
 ﻿using Pampazon._7._ConsultarOrdenesPreparacion;
+using Pampazon.Almacenes;
 using Pampazon.ConsultarOrdenes;
+using Pampazon.Entidades;
 using Pampazon.GenerarOrdenPreparacion;
 using Pampazon.Remitos;
 using System;
@@ -21,7 +23,7 @@ namespace Pampazon.ListarOrdenes
         public ConsultarOrdenesForm()
         {
             InitializeComponent();
-            modelo.InicializarDatos();
+            //modelo.InicializarDatos();
             OrdenesLTV.FullRowSelect = true;
 
 
@@ -75,7 +77,7 @@ namespace Pampazon.ListarOrdenes
 
         private void BuscarOrdenes_Click(object sender, EventArgs e)
         {
-            List<OrdenDePreparacion> ordenesEncontradas = new List<OrdenDePreparacion>();
+            List<OrdenPreparacionEnt> ordenesEncontradas = new List<OrdenPreparacionEnt>();
 
             // Obtener todas las órdenes primero
             var todasLasOrdenes = modelo.ObtenerTodasLasOrdenes();
@@ -86,19 +88,19 @@ namespace Pampazon.ListarOrdenes
                 if (int.TryParse(CodigoClienteTxt.Text, out int codigoCliente))
                 {
                     // Filtrar las órdenes por el Código de Cliente
-                    ordenesEncontradas = todasLasOrdenes.Where(o => o.Cliente.CodigoCliente == codigoCliente).ToList();
+                    ordenesEncontradas = todasLasOrdenes.Where(o => o.IdCliente == codigoCliente).ToList();
                 }
             }
             // Si no hay código de cliente, verificar si hay una razón social ingresada
             else if (!string.IsNullOrEmpty(RazonSocialTxt.Text))
             {
-                // Obtener las órdenes por razón social
+                // Obtener las órdenes por razón social utilizando el modelo
                 ordenesEncontradas = modelo.ObtenerOrdenesPorRazonSocial(RazonSocialTxt.Text);
             }
             // Si no hay razón social, verificar si hay un CUIT ingresado
             else if (!string.IsNullOrEmpty(CuitTXT.Text))
             {
-                // Obtener las órdenes por CUIT
+                // Obtener las órdenes por CUIT utilizando el modelo
                 ordenesEncontradas = modelo.ObtenerOrdenesPorCuit(CuitTXT.Text);
             }
             // Si no se ingresó ningún criterio, verificar si hay filtros adicionales seleccionados
@@ -110,10 +112,16 @@ namespace Pampazon.ListarOrdenes
                 ordenesEncontradas = todasLasOrdenes.ToList();
             }
 
+            // Obtener los valores de los controles del formulario para aplicar los filtros
+            string estadoSeleccionado = EstadoCMB.Text;
+            string prioridadSeleccionada = PrioridadCMB.Text;
+            DateTime fechaInicio = FechaInicioDTP.Value.Date;
+            DateTime fechaFin = FechaFinDTP.Value.Date;
+
             // Aplicar filtros adicionales (Estado, Prioridad, Fechas) si hay órdenes encontradas
             if (ordenesEncontradas.Any())
             {
-                FiltrarPorEstadoPrioridadYFechas(ref ordenesEncontradas);
+                modelo.FiltrarPorEstadoPrioridadYFechas(ref ordenesEncontradas, estadoSeleccionado, prioridadSeleccionada, fechaInicio, fechaFin);
             }
 
             // Verificar si después de todos los filtros aún no hay órdenes encontradas
@@ -131,49 +139,51 @@ namespace Pampazon.ListarOrdenes
         }
 
 
+
+
         // Método auxiliar para aplicar los filtros de Estado, Prioridad y Fechas
-        private void FiltrarPorEstadoPrioridadYFechas(ref List<OrdenDePreparacion> ordenes)
-        {
-            // Filtrar por Estado (si se seleccionó uno)
-            if (!string.IsNullOrEmpty(EstadoCMB.Text))
-            {
-                ordenes = ordenes
-                    .Where(o => o.Estado.Equals(EstadoCMB.Text, StringComparison.OrdinalIgnoreCase))
-                    .ToList();
-            }
+        /* private void FiltrarPorEstadoPrioridadYFechas(ref List<OrdenDePreparacion> ordenes)
+         {
+             // Filtrar por Estado (si se seleccionó uno)
+             if (!string.IsNullOrEmpty(EstadoCMB.Text))
+             {
+                 ordenes = ordenes
+                     .Where(o => o.Estado.Equals(EstadoCMB.Text, StringComparison.OrdinalIgnoreCase))
+                     .ToList();
+             }
 
-            // Filtrar por Prioridad (si se seleccionó una)
-            if (!string.IsNullOrEmpty(PrioridadCMB.Text))
-            {
-                ordenes = ordenes
-                    .Where(o => o.Prioridad.Equals(PrioridadCMB.Text, StringComparison.OrdinalIgnoreCase))
-                    .ToList();
-            }
+             // Filtrar por Prioridad (si se seleccionó una)
+             if (!string.IsNullOrEmpty(PrioridadCMB.Text))
+             {
+                 ordenes = ordenes
+                     .Where(o => o.Prioridad.Equals(PrioridadCMB.Text, StringComparison.OrdinalIgnoreCase))
+                     .ToList();
+             }
 
-            // Verificar si las fechas de los DateTimePickers son diferentes a la fecha predeterminada (hoy)
-            DateTime fechaInicioPredeterminada = DateTime.Today;
-            if (FechaInicioDTP.Value.Date != fechaInicioPredeterminada || FechaFinDTP.Value.Date != fechaInicioPredeterminada)
-            {
-                DateTime fechaInicio = FechaInicioDTP.Value.Date;
-                DateTime fechaFin = FechaFinDTP.Value.Date;
+             // Verificar si las fechas de los DateTimePickers son diferentes a la fecha predeterminada (hoy)
+             DateTime fechaInicioPredeterminada = DateTime.Today;
+             if (FechaInicioDTP.Value.Date != fechaInicioPredeterminada || FechaFinDTP.Value.Date != fechaInicioPredeterminada)
+             {
+                 DateTime fechaInicio = FechaInicioDTP.Value.Date;
+                 DateTime fechaFin = FechaFinDTP.Value.Date;
 
-                // Filtrar por rango de fechas
-                ordenes = ordenes
-                    .Where(o => o.Fecha.Date >= fechaInicio && o.Fecha.Date <= fechaFin)
-                    .ToList();
-            }
-        }
-        private void CargarOrdenesEnListView(List<OrdenDePreparacion> ordenes)
+                 // Filtrar por rango de fechas
+                 ordenes = ordenes
+                     .Where(o => o.Fecha.Date >= fechaInicio && o.Fecha.Date <= fechaFin)
+                     .ToList();
+             }
+         }*/
+        private void CargarOrdenesEnListView(List<OrdenPreparacionEnt> ordenes)
         {
             // Limpiar ListView antes de agregar nuevas órdenes
             OrdenesLTV.Items.Clear();
 
             foreach (var orden in ordenes)
             {
-                ListViewItem item = new ListViewItem(orden.IdOrden.ToString());
-                item.SubItems.Add(orden.Fecha.ToShortDateString());
-                item.SubItems.Add(orden.Estado);
-                item.SubItems.Add(orden.Prioridad);
+                ListViewItem item = new ListViewItem(orden.IdOrdenPreparacion.ToString());
+                item.SubItems.Add(orden.FechaEmision.ToShortDateString());
+                item.SubItems.Add(orden.Estado.ToString()); // Convertimos el enum a string
+                item.SubItems.Add(orden.Prioridad.ToString()); // Convertimos el enum a string
 
                 OrdenesLTV.Items.Add(item);
             }
@@ -186,6 +196,7 @@ namespace Pampazon.ListarOrdenes
                 OrdenesLTV.EnsureVisible(0);
             }
         }
+
 
 
         private void BorrarFiltrosBtn_Click(object sender, EventArgs e)
@@ -235,10 +246,10 @@ namespace Pampazon.ListarOrdenes
                     ProductoLTV.Items.Clear();
 
                     // Cargar los productos en el ListView
-                    foreach (var producto in ordenSeleccionada.Productos)
+                    foreach (var producto in ordenSeleccionada.Detalle)
                     {
                         var item = new ListViewItem(producto.SKU); // SKU_Columna
-                        item.SubItems.Add(producto.Nombre); // Producto_Columna
+                        item.SubItems.Add(ProductoAlmacen.Productos.First(p => p.SKU == producto.SKU).NombreProducto); // Producto_Columna
                         item.SubItems.Add(producto.Cantidad.ToString()); // Cantidad_Columna
 
 
