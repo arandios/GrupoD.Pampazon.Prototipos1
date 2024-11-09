@@ -1,7 +1,7 @@
 [
   {
     "SKU": "PROD-00123",
-    "IdCliente": 2,
+    "IdCliente": 1,
     "NombreProducto": "Filtro de aceite",
     "Detalle": [
       {
@@ -15,193 +15,445 @@
     ]
   },
   {
-    "SKU": "PROD-00456",
-    "IdCliente": 3,
-    "NombreProducto": "Disco de freno cerámico",
+    "SKU": "PROD-00234",
+    "IdCliente": 2,
+    "NombreProducto": "Disco de meo",
     "Detalle": [
       {
-        "IdUbicacion": "20-22-1",
-        "Stock": 5
+        "IdUbicacion": "23-23-3",
+        "Stock": 4
+      },
+
+      {
+        "SKU": "PROD-00456",
+        "IdCliente": 1,
+        "NombreProducto": "Disco de freno cerámico",
+        "Detalle": [
+          {
+            "IdUbicacion": "20-22-1",
+            "Stock": 5
+          },
+          {
+            "IdUbicacion": "20-22-3",
+            "Stock": 18
+          },
+          {
+            "IdUbicacion": "20-24-7",
+            "Stock": 12
+          }
+        ]
       },
       {
-        "IdUbicacion": "20-22-3",
-        "Stock": 18
+        "SKU": "PROD-00789",
+        "IdCliente": 4,
+        "NombreProducto": "Amortiguador deportivo",
+        "Detalle": [
+          {
+            "IdUbicacion": "15-30-4",
+            "Stock": 10
+          }
+        ]
       },
       {
-        "IdUbicacion": "20-24-7",
-        "Stock": 12
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-00789",
-    "IdCliente": 4,
-    "NombreProducto": "Amortiguador deportivo",
-    "Detalle": [
-      {
-        "IdUbicacion": "15-30-4",
-        "Stock": 10
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-01012",
-    "IdCliente": 5,
-    "NombreProducto": "Bujías de iridio",
-    "Detalle": [
-      {
-        "IdUbicacion": "18-40-1",
-        "Stock": 30
+        "SKU": "PROD-01012",
+        "IdCliente": 4,
+        "NombreProducto": "Bujías de iridio",
+        "Detalle": [
+          {
+            "IdUbicacion": "18-40-1",
+            "Stock": 30
+          },
+          {
+            "IdUbicacion": "18-41-2",
+            "Stock": 22
+          }
+        ]
       },
       {
-        "IdUbicacion": "18-41-2",
-        "Stock": 22
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-01345",
-    "IdCliente": 6,
-    "NombreProducto": "Radiador de aluminio",
-    "Detalle": [
-      {
-        "IdUbicacion": "10-10-10",
-        "Stock": 8
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-01678",
-    "IdCliente": 7,
-    "NombreProducto": "Turbo compresor GT35",
-    "Detalle": [
-      {
-        "IdUbicacion": "13-30-2",
-        "Stock": 3
+        "SKU": "PROD-01345",
+        "IdCliente": 6,
+        "NombreProducto": "Radiador de aluminio",
+        "Detalle": [
+          {
+            "IdUbicacion": "10-10-10",
+            "Stock": 8
+          }
+        ]
       },
       {
-        "IdUbicacion": "13-30-5",
-        "Stock": 7
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-01901",
-    "IdCliente": 8,
-    "NombreProducto": "Kit de embrague reforzado",
-    "Detalle": [
-      {
-        "IdUbicacion": "11-20-4",
-        "Stock": 12
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-02234",
-    "IdCliente": 9,
-    "NombreProducto": "Barras estabilizadoras",
-    "Detalle": [
-      {
-        "IdUbicacion": "22-40-8",
-        "Stock": 9
+        "SKU": "PROD-00678",
+        "IdCliente": 3,
+        "NombreProducto": "Turbo compresor GT35",
+        "Detalle": [
+          {
+            "IdUbicacion": "13-30-2",
+            "Stock": 3
+          },
+          {
+            "IdUbicacion": "13-30-5",
+            "Stock": 7
+          }
+        ]
       },
       {
-        "IdUbicacion": "22-43-3",
-        "Stock": 18
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-02567",
-    "IdCliente": 10,
-    "NombreProducto": "Cables de bujía",
-    "Detalle": [
-      {
-        "IdUbicacion": "19-10-6",
-        "Stock": 40
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-02890",
-    "IdCliente": 11,
-    "NombreProducto": "Polea de cigüeñal",
-    "Detalle": [
-      {
-        "IdUbicacion": "16-30-1",
-        "Stock": 15
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-03123",
-    "IdCliente": 12,
-    "NombreProducto": "Bobinas de encendido",
-    "Detalle": [
-      {
-        "IdUbicacion": "23-25-9",
-        "Stock": 20
+        "SKU": "PROD-03890",
+        "IdCliente": 9,
+        "NombreProducto": "Kit de embrague reforzado",
+        "Detalle": [
+          {
+            "IdUbicacion": "11-20-4",
+            "Stock": 12
+          }
+        ]
       },
       {
-        "IdUbicacion": "23-27-4",
-        "Stock": 14
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-03456",
-    "IdCliente": 13,
-    "NombreProducto": "Tornillos para culata",
-    "Detalle": [
+        "SKU": "PROD-03456",
+        "IdCliente": 8,
+        "NombreProducto": "Barras estabilizadoras",
+        "Detalle": [
+          {
+            "IdUbicacion": "22-40-8",
+            "Stock": 9
+          },
+          {
+            "IdUbicacion": "22-43-3",
+            "Stock": 18
+          }
+        ]
+      },
       {
-        "IdUbicacion": "24-50-3",
-        "Stock": 50
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-03789",
-    "IdCliente": 14,
-    "NombreProducto": "Kit de distribución",
-    "Detalle": [
+        "SKU": "PROD-03123",
+        "IdCliente": 8,
+        "NombreProducto": "Cables de bujía",
+        "Detalle": [
+          {
+            "IdUbicacion": "19-10-6",
+            "Stock": 40
+          }
+        ]
+      },
       {
-        "IdUbicacion": "17-60-5",
-        "Stock": 6
-      }
-    ]
-  },
-  {
-    "SKU": "PROD-04123",
-    "IdCliente": 15,
-    "NombreProducto": "Correa de accesorios",
-    "Detalle": [
+        "SKU": "PROD-02789",
+        "IdCliente": 7,
+        "NombreProducto": "Polea de cigüeñal",
+        "Detalle": [
+          {
+            "IdUbicacion": "16-30-1",
+            "Stock": 15
+          }
+        ]
+      },
       {
-        "IdUbicacion": "15-12-3",
-        "Stock": 22
-      }
-    ]
-  },
-
-  {
-
-    "SKU": "PROD-04434",
-
-    "IdCliente": 1,
-
-    "NombreProducto": "Termos",
-
-    "Detalle": [
+        "SKU": "PROD-01234",
+        "IdCliente": 5,
+        "NombreProducto": "Bobinas de encendido",
+        "Detalle": [
+          {
+            "IdUbicacion": "23-25-9",
+            "Stock": 20
+          },
+          {
+            "IdUbicacion": "23-27-4",
+            "Stock": 14
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-02456",
+        "IdCliente": 7,
+        "NombreProducto": "Tornillos para culata",
+        "Detalle": [
+          {
+            "IdUbicacion": "24-50-3",
+            "Stock": 50
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-00789",
+        "IdCliente": 4,
+        "NombreProducto": "Kit de distribución",
+        "Detalle": [
+          {
+            "IdUbicacion": "17-60-5",
+            "Stock": 6
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-02123",
+        "IdCliente": 6,
+        "NombreProducto": "Correa de accesorios",
+        "Detalle": [
+          {
+            "IdUbicacion": "15-12-3",
+            "Stock": 22
+          }
+        ]
+      },
 
       {
 
-        "IdUbicacion": "9-12-18",
+        "SKU": "PROD-01567",
 
-        "Stock": 26
+        "IdCliente": 5,
 
+        "NombreProducto": "Termos",
+
+        "Detalle": [
+
+          {
+
+            "IdUbicacion": "9-12-18",
+
+            "Stock": 26
+
+          }
+
+        ]
+
+      },
+      {
+        "SKU": "PROD-01890",
+        "IdCliente": 6,
+        "NombreProducto": "Disco de Plastico",
+        "Detalle": [
+          {
+            "IdUbicacion": "26-26-6",
+            "Stock": 15
+          }
+        ]
+      },
+      {
+
+        "SKU": "PROD-00345",
+
+        "IdCliente": 3,
+
+        "NombreProducto": "Termos Madrid",
+
+        "Detalle": [
+
+          {
+
+            "IdUbicacion": "9-12-18",
+
+            "Stock": 28
+
+          }
+
+        ]
+
+      },
+      {
+        "SKU": "PROD-04123",
+        "IdCliente": 9,
+        "NombreProducto": "Disco de aleacion",
+        "Detalle": [
+          {
+            "IdUbicacion": "23-21-9",
+            "Stock": 15
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-04567",
+        "IdCliente": 10,
+        "NombreProducto": "caja de plastico",
+        "Detalle": [
+          {
+            "IdUbicacion": "16-36-36",
+            "Stock": 15
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-04890",
+        "IdCliente": 10,
+        "NombreProducto": "Toyota 86 GR",
+        "Detalle": [
+          {
+            "IdUbicacion": "66-66-0",
+            "Stock": 120
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-05234",
+        "IdCliente": 11,
+        "NombreProducto": "Funda iqoo 11",
+        "Detalle": [
+          {
+            "IdUbicacion": "76-76-7",
+            "Stock": 33
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-05567",
+        "IdCliente": 11,
+        "NombreProducto": "Teclado Barato",
+        "Detalle": [
+          {
+            "IdUbicacion": "56-56-5",
+            "Stock": 55
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-05890",
+        "IdCliente": 12,
+        "NombreProducto": "Batata",
+        "Detalle": [
+          {
+            "IdUbicacion": "06-06-2",
+            "Stock": 35
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-06123",
+        "IdCliente": 12,
+        "NombreProducto": "Papa Negra",
+        "Detalle": [
+          {
+            "IdUbicacion": "09-09-82",
+            "Stock": 350
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-06456",
+        "IdCliente": 13,
+        "NombreProducto": "Arroz blanco",
+        "Detalle": [
+          {
+            "IdUbicacion": "06-06-2",
+            "Stock": 135
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-06789",
+        "IdCliente": 13,
+        "NombreProducto": "Cacao en polvo",
+        "Detalle": [
+          {
+            "IdUbicacion": "76-66-21",
+            "Stock": 33
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-07123",
+        "IdCliente": 14,
+        "NombreProducto": "Tempera Marron",
+        "Detalle": [
+          {
+            "IdUbicacion": "46-26-12",
+            "Stock": 22
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-07434",
+        "IdCliente": 14,
+        "NombreProducto": "Materia fecal artificial",
+        "Detalle": [
+          {
+            "IdUbicacion": "96-96-7",
+            "Stock": 122
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-07890",
+        "IdCliente": 15,
+        "NombreProducto": "Bomba de olor",
+        "Detalle": [
+          {
+            "IdUbicacion": "16-106-21",
+            "Stock": 14
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-08123",
+        "IdCliente": 15,
+        "NombreProducto": "Casio w59",
+        "Detalle": [
+          {
+            "IdUbicacion": "106-306-23",
+            "Stock": 125
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-08456",
+        "IdCliente": 16,
+        "NombreProducto": "Casio Mdv-10",
+        "Detalle": [
+          {
+            "IdUbicacion": "26-26-26",
+            "Stock": 15
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-08789",
+        "IdCliente": 16,
+        "NombreProducto": "Casio HDA-600",
+        "Detalle": [
+          {
+            "IdUbicacion": "56-56-25",
+            "Stock": 11
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-09123",
+        "IdCliente": 17,
+        "NombreProducto": "Casio MW-600",
+        "Detalle": [
+          {
+            "IdUbicacion": "56-56-22",
+            "Stock": 15
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-09456",
+        "IdCliente": 17,
+        "NombreProducto": "Seiko 5 Automatico",
+        "Detalle": [
+          {
+            "IdUbicacion": "26-86-29",
+            "Stock": 25
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-09890",
+        "IdCliente": 18,
+        "NombreProducto": "Rolex Submariner 36mm",
+        "Detalle": [
+          {
+            "IdUbicacion": "36-76-27",
+            "Stock": 7
+          }
+        ]
+      },
+      {
+        "SKU": "PROD-10123",
+        "IdCliente": 18,
+        "NombreProducto": "Omega Moonswatch",
+        "Detalle": [
+          {
+            "IdUbicacion": "37-77-77",
+            "Stock": 5
+          }
+        ]
       }
-
     ]
-
   }
-
 ]
