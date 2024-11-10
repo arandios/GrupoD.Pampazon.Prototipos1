@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pampazon._5._GenerarOrdenEntrega;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,22 +14,14 @@ namespace Pampazon.OrdenEntrega
 {
     public partial class GenerarOrdenEntregaForm : Form
     {
-        private List<ListViewItem> Items;
-        public class OrdenEntregaData
-        {
-            public int NroOrden { get; set; }
-            public string FechaEntrega { get; set; }
-        }
+        
+        private GenerarOrdenEntregaModelo modelo = new GenerarOrdenEntregaModelo();
 
         public GenerarOrdenEntregaForm()
         {
             InitializeComponent();
-            Items = new List<ListViewItem>();
-
-
             ConfigurarListView();
-
-            GenerarEjemplos();
+            CargarLista();
         }
 
         private void ConfigurarListView()
@@ -38,20 +31,16 @@ namespace Pampazon.OrdenEntrega
             Orden_EntregaLST.Columns.Add("Fecha retiro Orden de Preparación", 250);
         }
 
-
-        private void GenerarEjemplos()
+        private void CargarLista()
         {
-            for (int i = 1; i <= 10; i++)
+            Orden_EntregaLST.Items.Clear();
+
+            foreach (var orden in modelo.ordenesPreparacion)
             {
-                ListViewItem item = new ListViewItem("0000" + i);
-                item.SubItems.Add(DateTime.Now.AddDays(i).ToString("dd/MM/yyyy"));
+                ListViewItem item = new ListViewItem(orden.IdOrdenPreparacion);
+                item.SubItems.Add(orden.FechaRetiro.ToString("dd/MM/yyyy"));
                 Orden_EntregaLST.Items.Add(item);
             }
-        }
-
-        private void Buscar_ID(object sender, EventArgs e)
-        {
-
         }
 
         private void Salirbtn_Click(object sender, EventArgs e)
@@ -59,20 +48,6 @@ namespace Pampazon.OrdenEntrega
             this.Close();
         }
 
-        private void Ordenes_Preparacion_listView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OrdenEntregaForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtIdOrden_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void GenerarOrdenEntregabtn_Click(object sender, EventArgs e)
         {
@@ -96,16 +71,6 @@ namespace Pampazon.OrdenEntrega
                     Orden_EntregaLST.Items.Add(item);
                 }
             }
-        }
-
-        private void Orden_Entrega_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OrdenDespachoCMB_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

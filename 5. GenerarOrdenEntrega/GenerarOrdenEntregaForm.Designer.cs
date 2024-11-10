@@ -78,7 +78,6 @@
             OrdenDespachoCMB.TabIndex = 26;
             OrdenDespachoCMB.TabStop = false;
             OrdenDespachoCMB.Text = "Ordenes a despacho:";
-            OrdenDespachoCMB.Enter += OrdenDespachoCMB_Enter;
             // 
             // Orden_EntregaLST
             // 
@@ -89,7 +88,6 @@
             Orden_EntregaLST.TabIndex = 22;
             Orden_EntregaLST.UseCompatibleStateImageBehavior = false;
             Orden_EntregaLST.View = View.Details;
-            Orden_EntregaLST.SelectedIndexChanged += Orden_Entrega_SelectedIndexChanged;
             // 
             // GenerarOrdenEntregaForm
             // 
@@ -103,7 +101,6 @@
             Margin = new Padding(2, 3, 2, 3);
             Name = "GenerarOrdenEntregaForm";
             Text = "Generar Orden de Entrega";
-            Load += OrdenEntregaForm_Load;
             OrdenDespachoCMB.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

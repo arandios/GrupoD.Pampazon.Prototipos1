@@ -14,7 +14,7 @@ namespace Pampazon._4._EmpaquetarOrden
 {
     public partial class EmpaquetarOrdenForm : Form
     {
-        private OrdenPreparacionModelo modelo = new OrdenPreparacionModelo();
+        private EmpaquetarOrdenModelo modelo = new EmpaquetarOrdenModelo();
         private int indiceActualOrden = 0;
         public EmpaquetarOrdenForm()
         {
