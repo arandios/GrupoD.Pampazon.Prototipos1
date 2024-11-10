@@ -511,5 +511,16 @@
         "Stock": 70
       }
     ]
+  },
+  {
+    "SKU": "PROD-00567",
+    "IdCliente": 2,
+    "NombreProducto": "Arroz bomba",
+    "Detalle": [
+      {
+        "IdUbicacion": "86-86-86",
+        "Stock": 30
+      }
+    ]
   }
 ]
