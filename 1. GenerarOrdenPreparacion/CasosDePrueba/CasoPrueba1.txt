@@ -36,12 +36,12 @@ Caso 1:[Desde el menú del sistema] "Cargar Orden con un Producto"
 - Producto Seleccionado: PROD-04456 
 - Cantidad Disponible: 70
 
-- Indique Cantidad a Retirar: 30
+- Indique Cantidad a Retirar: 2
 
 - Botón "Agregar Productos a la orden"
 
 - Orden: 
-PROD-04456  -  30
+PROD-04456  -  2
 
 - Seleccionar Fecha a Retirar: 22/12/2024
 
@@ -71,13 +71,13 @@ Confirmar Orden”
 
 - Verificar OrdenesDePreparacion.json, nuevo registro:
   {
-    "IdOrdenPreparacion" : 24,
+    "IdOrdenPreparacion" : 22,
     "Prioridad": 2,
     "IdCliente": 1,
    	     "Detalle": [
       {
         "SKU": "PROD-04456",
-        "Cantidad": 30
+        "Cantidad": 2
       }
     ]
 
