@@ -1,0 +1,18 @@
+﻿Caso de Prueba : Verificación
+
+-Orden de Selección: 2
+
+- Datos de la lista:
+
+9-12-18  -  PROD-00345  -  6
+13-30-2  - PROD-00678  -  1
+15-30-4  -  PROD-00789  -  3
+18-40-1  -  PROD-01012  -  4
+
+- Botón: “Confirmar Orden de Selección”
+
+- Mensaje: ¿Estás seguro de confirmar la Orden de Selección?
+
+- Botón: “Cancelar”
+
+- Cerrar el sistema

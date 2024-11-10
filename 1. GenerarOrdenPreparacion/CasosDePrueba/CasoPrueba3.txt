@@ -1,38 +1,140 @@
+- Botón: "Generar Orden Preparación"
 
-Caso 3: [Desde el menu del sistema]
+- ID Cliente: vacio
 
-- Tocar boton "Generar Orden Preparacion"
-- Codigo Cliente(ID?): 1
-- Tocar boton "Buscar Productos"
-- Verificar: Lista Productos en Deposito: 
-	SKU Producto - PROD-04456, Producto - Aceite sintético 5W-30, Cantidad Disponible - 70
-	SKU Producto - PROD-04434, Producto - Termo, Cantidad Disponible - 26
-- SKU Producto: PROD-04434
-- Tocar Boton "Buscar Productos"
-- Verificar: Lista Productos en Deposito:
-	SKU Producto - PROD-04434, Producto - Termo, Cantidad Disponible - 26
-- Tocar boton "Borrar Filtros"
-- Verificar: : Lista Productos en Deposito: Vacio 
-- Verificar SKU Producto - vacio, Nombre Producto - Vacio
+- Botón: “Buscar Productos”
+
+- Mensaje : "Ingrese ID cliente o Razón Social"
+
+- Botón: Aceptar
+
+
+
+- ID Cliente: asdasd
+
+- Mensaje "Ingrese un numero para buscar ID cliente"
+
+- Botón: “Aceptar”
+
+
+
+- ID Cliente: -1
+
+- Botón: "Buscar Productos"
+
+- Mensaje "ID cliente -1 seleccionado no existe”
+
+- Botón: “Aceptar”
+
+
+
+- Codigo cliente: 1
+
+- Productos en Depósito: 
+	SPROD-00123  -  Aceite sintético 5W-30  -  40
+	PROD-34523  -  Termo  -  34
+
+- Razón social: MessiFc
+
+- Mensaje: "Razon social MessiFc no existe"
+
+- Botón: Aceptar
+
+
 - Nombre Producto: Aceite
-- Tocar Boton "Buscar Productos"
-- Verificar: Lista Productos en Deposito: 
-	SKU Producto - PROD-04456, Producto - Aceite sintético 5W-30, Cantidad Disponible - 70
-- Selecciona de la Lista Productos en Deposito: SKU Producto: PROD-04456.
-- Verificar: Producto Seleccionado - PROD-04456, Cantidad Disponible - 70
-- Ingresar 30 en "Indique Cantidad a Retirar"
-- Tocar boton "Agregar Productos a la orden"
-- Verificar: Lista Orden: Productos - PROD-04456, Cantidad - 30
-- Seleccionar 22/12/2024 en Fecha a Retirar
+
+- Botón: "Buscar Productos"
+
+- Productos en Depósito: 
+	PROD-00123  -  Aceite sintético 5W-30  -  40
+
+- Botón: "Agregar Productos a la orden"
+
+- Mensaje "Seleccione un producto".
+- Botón: “Aceptar”
+
+- Seleccionar SKU Producto: PROD-00123
+
+- Producto Seleccionado: PROD-00123 
+- Cantidad Disponible: 40
+
+- Botón: "Agregar Productos a la orden"
+
+- Mensaje: “Ingrese una cantidad a retirar”
+
+- Cantidad a Retirar: 10000
+
+- Mensaje: "Cantidad a retirar no puede ser mayor a la cantidad depositada"
+
+- Botón: “Aceptar”
+
+- Botón: "Generar Orden Preparación"
+
+- Mensaje "Ingrese Productos para generar Orden"
+
+- Botón: Aceptar
+
+- Cantidad a Retirar: 20
+
+- Botón:"Agregar Productos a la orden"
+
+- Orden: PROD-00123  -  20
+
+- Fecha a Retirar: sin seleccionar
+
+- Botón: "Generar Orden Preparación"
+
+- Mensaje: "Seleccione una fecha mayor a la actual"
+
+- Botón: Aceptar
+
+- Fecha a Retirar:  22/12/2024
+
+- Horario a Retirar: vacío
+
+- Botón: "Generar Orden Preparación"
+
+-Mensaje: "Seleccione un horario de Retiro. Un valor entre el 0 y el 24".
+
+- Botón: Aceptar
 - Horario a Retirar: 17
-- Seleccionar Media en Prioridad
+
+- Prioridad: sin seleccionar 
+
+- Botón: "Generar Orden Preparación"
+
+-Mensaje:  "Seleccione Prioridad Alta, Media o Baja"
+
+- Botón: “Aceptar”
+
+- Prioridad: media
+
+- Dni Transportista: vacío
+
+- Botón: "Generar Orden Preparación"
+
+- Mensaje: "Seleccione un transportista por DNI o por Nombre"
+
+- Botón: “Aceptar”
+
+- Dni Transportista: 23
+
+- Botón: "Generar Orden Preparación"
+
+- Mensaje: "Seleccione un transportista por DNI o por Nombre"
+
 - Dni Transportista: 87654321
-- Verificar: Nombre Transportista - Carlos Gonzalez
--Tocar Boton "Cancelar Orden"
-- Verificar Mesaje emergente "Cancelar Orden"
-- Tocar boton "Si"
-- Verificar Mesaje emergente "Orden cancelada"
-- Tocar boton "Aceptar"
--Verificar lista: Orden: vacia.
- 
- 
+
+- Nombre Transportista: Valentina Rojas
+
+- Botón: "Generar Orden Preparación"
+
+- Mensaje: 
+“ID Cliente:  1
+Fecha de Entrega: 22-12-2024   Horario 17
+Dni Transportista: 12345678
+
+Confirmar Orden”
+
+- Botón: "No"
+- Cerrar el sistema

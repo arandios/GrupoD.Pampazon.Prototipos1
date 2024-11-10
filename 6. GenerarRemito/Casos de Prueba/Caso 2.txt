@@ -1,0 +1,25 @@
+﻿Caso de Prueba: Quitar Orden de preparación del remito:
+
+- Botón: "Generar remito”
+
+-DNI transportista: 87899594
+
+- Botón: "Buscar Transportista"
+
+-ID orden de preparación: seleccionar 20
+
+- Botón: "Agregar Orden de Preparación al remito"
+
+-ID orden de preparación: seleccionar 20 - 9/11/2024
+
+-Botón: “Quitar Orden de preparación del remito”
+
+-Mensaje: ¿Esta seguro que desea eliminar la siguiente orden? Orden: 20
+
+-Botón: “Si”
+
+-Mensaje: “Ordenes eliminadas con exito y devueltas a la lista de transportistas”
+
+-Botón: “Aceptar”
+
+-Cerrar el sistema

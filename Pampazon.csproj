@@ -9,6 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="3. BuscarProductosEnDepositos\CasosDePrueba\**" />
+    <Compile Remove="4. EmpaquetarOrden\CasosDePrueba\**" />
+    <Compile Remove="5. GenerarOrdenEntrega\CasosDePrueba\**" />
+    <Compile Remove="6. GenerarRemito\CasosDePrueba\**" />
+    <Compile Remove="7. ConsultarOrdenesPreparacion\CasosDePrueba\**" />
+    <EmbeddedResource Remove="3. BuscarProductosEnDepositos\CasosDePrueba\**" />
+    <EmbeddedResource Remove="4. EmpaquetarOrden\CasosDePrueba\**" />
+    <EmbeddedResource Remove="5. GenerarOrdenEntrega\CasosDePrueba\**" />
+    <EmbeddedResource Remove="6. GenerarRemito\CasosDePrueba\**" />
+    <EmbeddedResource Remove="7. ConsultarOrdenesPreparacion\CasosDePrueba\**" />
+    <None Remove="3. BuscarProductosEnDepositos\CasosDePrueba\**" />
+    <None Remove="4. EmpaquetarOrden\CasosDePrueba\**" />
+    <None Remove="5. GenerarOrdenEntrega\CasosDePrueba\**" />
+    <None Remove="6. GenerarRemito\CasosDePrueba\**" />
+    <None Remove="7. ConsultarOrdenesPreparacion\CasosDePrueba\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="6. GenerarRemito\GenerarRemitoForm.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -48,11 +66,6 @@
 
   <ItemGroup>
     <Folder Include="2. GenerarOrdenSeleccion\CasosDePrueba\" />
-    <Folder Include="3. BuscarProductosEnDepositos\CasosDePrueba\" />
-    <Folder Include="4. EmpaquetarOrden\CasosDePrueba\" />
-    <Folder Include="5. GenerarOrdenEntrega\CasosDePrueba\" />
-    <Folder Include="6. GenerarRemito\CasosDePrueba\" />
-    <Folder Include="7. ConsultarOrdenesPreparacion\CasosDePrueba\" />
   </ItemGroup>
 
 </Project>

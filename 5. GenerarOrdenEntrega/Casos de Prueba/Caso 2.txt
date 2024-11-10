@@ -1,0 +1,24 @@
+﻿Caso de Prueba: "Cancelar Generar orden de entrega"
+
+
+- Órdenes a despacho: 
+
+ 11 - 2024-12-16
+12 - 2024-12-16
+13 - 2024-12-16
+14 - 2024-12-16
+15 - 2024-12-16
+16 - 2024-12-17
+17 - 2024-12-17
+18 - 2024-12-17
+19 - 2024-12-17
+20 - 2024-12-17
+21 - 2024-12-17
+
+- Botón: "Generar/Confirmar  Orden de entrega"
+
+- Mensaje: 
+
+“Está seguro que desea confirmar la Orden de entrega?”
+
+- Botón: “No”

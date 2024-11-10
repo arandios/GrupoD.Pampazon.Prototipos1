@@ -2,7 +2,7 @@
   {
     "SKU": "PROD-00123",
     "IdCliente": 1,
-    "NombreProducto": "Filtro de aceite",
+    "NombreProducto": "Aceite sintético 5W-30",
     "Detalle": [
       {
         "IdUbicacion": "14-10-2",
@@ -15,9 +15,24 @@
     ]
   },
   {
+    "SKU": "PROD-34523",
+    "IdCliente": 1,
+    "NombreProducto": "Termo",
+    "Detalle": [
+      {
+        "IdUbicacion": "14-33-3",
+        "Stock": 19
+      },
+      {
+        "IdUbicacion": "14-15-8",
+        "Stock": 15
+      }
+    ]
+  },
+  {
     "SKU": "PROD-00234",
     "IdCliente": 2,
-    "NombreProducto": "Disco de meo",
+    "NombreProducto": "Disco de plastico",
     "Detalle": [
       {
         "IdUbicacion": "23-23-3",

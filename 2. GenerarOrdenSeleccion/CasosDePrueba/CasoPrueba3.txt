@@ -1,0 +1,46 @@
+﻿Validaciones: 
+- Botón: "Generar Orden Selección"
+
+- Razon Social Cliente: “Mercado Libre”
+
+- Mensaje: "No se encontraron órdenes de preparación con los criterios especificados."
+
+- Id Orden Preparación: “3737” 
+
+- Mensaje: "No se encontraron órdenes de preparación con los criterios especificados."
+
+- Razón Social cliente: “Agropecuaria Gamma”
+
+-  Órdenes de preparación en estado pendiente:
+
+	5  -  Grupo Epsilon  -  06/11/2024  -  Media
+
+- Botón: “Agregar el detalle de la selección”
+
+- Mensaje: “Seleccione al menos una orden de preparación para crear una orden de selección” 
+
+- Botón: “Aceptar”
+
+- Seleccionar : Grupo Epsilon
+
+- Botón: “Agregar el detalle de la selección”
+
+- Mensaje: “Orden de preparacion agregada con exito”
+
+- Botón: “Aceptar”
+
+- Botón: “Quitar orden de Preparación”
+
+- Mensaje: “No hay elementos seleccionados para quitar.”
+
+- Botón: “Aceptar”
+
+- Seleccionar : Grupo Epsilon
+
+- Botón: “Quitar orden de Preparación”
+
+- Botón: “Generar orden de Selección”
+
+- Mensaje: “No hay órdenes de preparación pendientes para crear una orden de selección”
+
+- Botón: “Aceptar”
