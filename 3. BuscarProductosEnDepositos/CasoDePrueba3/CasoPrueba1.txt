@@ -1,4 +1,4 @@
-﻿Buscar Productos en depósito
+﻿Buscar Productos en depósito:
 
 - Botón: “Buscar Productos en Depósito”
 
