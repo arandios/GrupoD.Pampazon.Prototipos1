@@ -1,0 +1,14 @@
+﻿Caso de Prueba : Verificación
+
+
+- Órdenes a despacho: 
+ -
+
+
+
+- Botón: "Generar/Confirmar  Orden de entrega"
+
+- Mensaje: 
+“Error: Debe haber al menos 7 items en la lista para generar una orden de entrega.”
+
+- Botón: “Aceptar”

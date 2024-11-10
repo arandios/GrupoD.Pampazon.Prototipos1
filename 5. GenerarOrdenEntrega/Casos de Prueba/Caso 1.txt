@@ -1,0 +1,75 @@
+﻿Caso :[Desde el menú del sistema] "Generar orden de entrega"
+
+
+- Órdenes a despacho:
+
+ 11 - 2024-12-16
+ 12 - 2024-12-16
+ 13 - 2024-12-16
+ 14 - 2024-12-16
+ 15 - 2024-12-16
+ 16 - 2024-12-17
+ 17 - 2024-12-17
+ 18 - 2024-12-17
+ 19 - 2024-12-17
+ 20 - 2024-12-17
+ 21 - 2024-12-17
+
+
+- Botón: "Generar/Confirmar  Orden de entrega"
+
+- Mensaje: 
+“Está seguro que desea confirmar la Orden de entrega?”
+
+- Botón: “Si”
+
+- Mensaje:
+ “Orden de entrega generada”.
+
+-Botón: “Aceptar”
+
+- Cerrar el sistema
+
+- Verificar en OrdenesDePreparacion.json que las órdenes de Preparación incluidas en la orden de entrega hayan cambiado su estado a: 4
+
+{
+  "IdOrdenPreparacion": 11,
+  "Prioridad": 1,
+  "IdCliente": 11,
+  "Detalle": [
+    {
+      "SKU": "PROD-05234",
+      "Cantidad": 6
+    },
+    {
+      "SKU": "PROD-05567",
+      "Cantidad": 2
+    }
+  ],
+  "DNITransportista": 87654321,
+  "FechaEmision": "2024-11-06T19:15:00-03:00",
+  "FechaRetiro": "2024-12-16T19:15:00-03:00",
+  "HoraRetiro": "2024-11-06T20:15:00-03:00",
+  "Estado": 4
+},
+
+
+- Verificar en OrdenesDeEntrega.json que la orden de entrega haya sido generada: 
+
+{
+  "IdOrdenEntrega": 3,
+  "FechaEntrega": "2024-12-18",
+  "OrdenesDePreparacion": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ]
+},

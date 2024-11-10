@@ -65,7 +65,7 @@ namespace Pampazon.OrdenSeleccion
                 DetalleOrdenesDePreparacionPendientesLST.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
 
-            
+
         }
 
 
@@ -308,7 +308,7 @@ namespace Pampazon.OrdenSeleccion
             }
 
             //Le pido al modelo que cree una nueva OS. con esas OP.
-            modelo.IngresarOrdenSeleccion(ordenSeleccion.OrdenesPreparacion); 
+            modelo.IngresarOrdenSeleccion(ordenSeleccion.OrdenesPreparacion);
 
             // Vaciar la lista DetalleOrdenesDePreparacionPendientesListView
             DetalleOrdenesDePreparacionPendientesLST.Items.Clear();
@@ -322,8 +322,8 @@ namespace Pampazon.OrdenSeleccion
         // ==============================================================================
         // DEFINICION DE METODOS AUXILIARES:
         // ==============================================================================
-        
-        
+
+
         private void ActualizarListaOrdenDePreparacion()
         {
             OrdenesDePrepracionAOrdenSeleccionLST.Items.Clear();
@@ -337,10 +337,10 @@ namespace Pampazon.OrdenSeleccion
                 }
 
                 ListViewItem item = new ListViewItem();
-                item.Text = ordenPreparacion.IDOrdenPreparacion ;
+                item.Text = ordenPreparacion.IDOrdenPreparacion;
                 item.SubItems.Add(ordenPreparacion.DescripcionCliente?.ToString() ?? "Valor por defecto");
                 item.SubItems.Add(ordenPreparacion.fechaOrdenPreparacion.ToString("dd/MM/yyyy"));  // Formatear solo la fecha
-                item.SubItems.Add(ordenPreparacion.Prioridad.ToString());     
+                item.SubItems.Add(ordenPreparacion.Prioridad.ToString());
 
 
 
@@ -370,6 +370,11 @@ namespace Pampazon.OrdenSeleccion
         private void CancelarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void PrioridadOrdenSeleccionCMB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
