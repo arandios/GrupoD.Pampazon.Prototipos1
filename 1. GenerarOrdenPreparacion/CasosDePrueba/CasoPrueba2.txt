@@ -13,13 +13,13 @@ PROD-34523  -  Termo  -  34
 
 -Seleccionar SKU Producto: PROD-34523
 
-- "Indique Cantidad a Retirar" : 30
+- "Indique Cantidad a Retirar": 34
 
 - Botón : "Agregar Productos a la orden"
 
 - Lista Orden: 
 
-PROD-34523  -  30
+PROD-34523  -  34
 
 - Fecha a Retirar:  22/12/2024
 
