@@ -6,6 +6,7 @@
      Procesamiento,
      Procesada,
      Preparada,
+     Lista,
      Entregada
     }
 }

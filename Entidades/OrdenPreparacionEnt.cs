@@ -11,7 +11,7 @@ namespace Pampazon.Entidades
         public int IdOrdenPreparacion { get; set; }
         public PrioridadEnum Prioridad { get; set; }
         public int IdCliente { get; set; }
-        public List<OrdenPreparacionDetalle> Detalle { get; } = new();
+        public List<OrdenPreparacionDetalle> Detalle { get; set; } = new();
         public int DNITransportista { get; set; }
         public DateTime FechaEmision { get; set; }
         public DateTime FechaRetiro { get; set; }

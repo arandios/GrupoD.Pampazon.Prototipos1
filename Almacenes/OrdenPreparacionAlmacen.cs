@@ -35,11 +35,6 @@ namespace Pampazon.Almacenes
             ordenesPreparacion.Add(ordenPreparacion);
             Grabar();
         }
-
-
-
-
-
     }
 
 }

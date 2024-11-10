@@ -26,7 +26,7 @@ namespace Pampazon.Almacenes
             if (File.Exists(@"Datos\Productos.json"))
             {
                 var datos = File.ReadAllText(@"Datos\Productos.json");
-                productos = JsonSerializer.Deserialize<List<ProductoEnt>>(datos);
+                productos = JsonSerializer.Deserialize<List<ProductoEnt>>(datos)!;
             }
         }
     }
