@@ -47,7 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="2. GenerarOrdenSeleccion\CasosDePrueba\" />
     <Folder Include="3. BuscarProductosEnDepositos\CasosDePrueba\" />
     <Folder Include="4. EmpaquetarOrden\CasosDePrueba\" />
     <Folder Include="5. GenerarOrdenEntrega\CasosDePrueba\" />
