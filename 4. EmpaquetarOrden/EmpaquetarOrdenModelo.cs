@@ -27,7 +27,9 @@ namespace Pampazon._4._EmpaquetarOrden
         public void CargarOrdenes()
         {
 
+            // Filtrar solo las órdenes con estado "Procesada" (2)
             ordenesPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion
+                .Where(o => o.Estado == EstadoOrdenPreparacionEnum.Procesada)  // Filtrar por estado
                 .Select(o => new OrdenPreparacion
                 {
                     IdOrdenPreparacion = o.IdOrdenPreparacion.ToString(),
