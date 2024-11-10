@@ -8,10 +8,10 @@ Cancelar Orden De Preparación
 
 - Productos en Deposito: 
 	
-PROD-04456  -  Aceite sintético 5W-30  -  70
-	PROD-04434  -  Termo  -  26
+PROD-00123  -  Aceite sintético 5W-30  -  40
+PROD-34523  -  Termo  -  34
 
--Seleccionar SKU Producto: PROD-04434
+-Seleccionar SKU Producto: PROD-34523
 
 - "Indique Cantidad a Retirar" : 30
 
@@ -19,17 +19,17 @@ PROD-04456  -  Aceite sintético 5W-30  -  70
 
 - Lista Orden: 
 
-PROD-0445  -  30
+PROD-34523  -  30
 
-- 22/12/2024 Fecha a Retirar:  22/12/2024
+- Fecha a Retirar:  22/12/2024
 
 - Horario a Retirar: 17
 
-- ´Prioridad: Media
+- Prioridad: Media
 
-- Dni Transportista: 87654321
+- Dni Transportista: 12345678
 
-- Nombre Transportista : Carlos Gonzalez
+- Nombre Transportista : Valentian Rojas
 
 -Botón: "Cancelar Orden"
 

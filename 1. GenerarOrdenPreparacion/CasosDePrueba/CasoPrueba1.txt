@@ -7,8 +7,8 @@ Caso 1:[Desde el menú del sistema] "Cargar Orden con un Producto"
 - Botón: "Buscar Productos"
 
 - Productos en Depósito: 
-	PROD-00123  -  Aceite sintético 5W-30  -  70
-	PROD-34523  -  Termo  -  26
+	PROD-00123  -  Aceite sintético 5W-30  -  40
+	PROD-34523  -  Termo  -  34
 
 - SKU Producto: “ PROD-04434”
 
@@ -50,7 +50,7 @@ PROD-00123  -  12
 - Prioridad: Media
 
 - Dni Transportista: 12345678
-- Nombre Transportista: Carlos Gonzalez
+- Nombre Transportista: Valentina Rojas
 
 - Botón: "Generar Orden Preparación"
 
