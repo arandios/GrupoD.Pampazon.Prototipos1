@@ -22,3 +22,5 @@
 “Está seguro que desea confirmar la Orden de entrega?”
 
 - Botón: “No”
+
+- Cerrrar el sistema

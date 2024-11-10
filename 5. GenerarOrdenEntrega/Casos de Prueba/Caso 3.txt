@@ -12,3 +12,5 @@
 “Error: Debe haber al menos 7 items en la lista para generar una orden de entrega.”
 
 - Botón: “Aceptar”
+
+- Cerrrar el sistema
