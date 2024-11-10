@@ -1,0 +1,90 @@
+Caso 1:[Desde el menú del sistema] "Cargar Orden con un Producto"
+
+- Botón: "Generar Orden Preparación"
+
+- ID Cliente: 1
+
+- Botón: "Buscar Productos"
+
+- Productos en Depósito: 
+	PROD-04456  -  Aceite sintético 5W-30  -  70
+	PROD-04434  -  Termo  -  26
+
+- SKU Producto: “ PROD-04434”
+
+- Botón: "Buscar Productos"
+
+- Productos en Depósito:
+	PROD-04434  -  Termo  -  26
+
+- Botón: "Borrar Filtros"
+
+- Productos en Deposito:  Vacio 
+
+- SKU Producto: vacío, 
+-Nombre Producto: Vacío
+
+- Nombre Producto: Aceite
+
+- Botón: "Buscar Productos"
+
+- Productos en Depósito: 
+	PROD-04456  -  Aceite sintético 5W-30  -  70
+
+- Seleccionar SKU Producto: PROD-04456
+
+- Producto Seleccionado: PROD-04456 
+- Cantidad Disponible: 70
+
+- Indique Cantidad a Retirar: 30
+
+- Botón "Agregar Productos a la orden"
+
+- Orden: 
+PROD-04456  -  30
+
+- Seleccionar Fecha a Retirar: 22/12/2024
+
+- Horario a Retirar: 17
+
+- Prioridad: Media
+
+- Dni Transportista: 87654321
+- Nombre Transportista: Carlos Gonzalez
+
+- Botón: "Generar Orden Preparación"
+
+- Mensaje: 
+“ID Cliente: 1
+Fecha de Entrega: 22-12-2024  Horario: 17
+Dni Transportista: 87654321
+
+Confirmar Orden”
+
+- Botón: "SI"
+
+- Mensaje: "Orden Ingresada con éxito, le enviaremos un mail con los detalles"
+
+- Botón: "Aceptar"
+
+-Cerrar el sistema
+
+- Verificar OrdenesDePreparacion.json, nuevo registro:
+  {
+    "IdOrdenPreparacion" : 24,
+    "Prioridad": 2,
+    "IdCliente": 1,
+   	     "Detalle": [
+      {
+        "SKU": "PROD-04456",
+        "Cantidad": 30
+      }
+    ]
+
+    "DNITransportista": 87654321,
+    "FechaEmision": "2024-11-06T14:35:00.5678901-03:00",
+    "FechaRetiro": "2024-12-22T17:00:00.5678901-03:00",
+    "HoraRetiro": "2024-12-22T17:00:00.5678901-03:00",
+    "Estado": 0
+     }
+
