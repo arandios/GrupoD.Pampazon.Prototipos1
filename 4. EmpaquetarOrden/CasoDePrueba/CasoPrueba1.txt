@@ -1,4 +1,4 @@
-﻿Empaquetar Órdenes de Preparación
+﻿Empaquetar Órdenes de Preparación:
 
 -Botón: “Empaquetar Orden Preparación”
 
