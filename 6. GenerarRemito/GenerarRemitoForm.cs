@@ -35,6 +35,13 @@ namespace Pampazon._6._GenerarRemito
                     return; // Salir si el DNI no es válido
                 }
 
+                // Verificar la existencia del transportista
+                if (!GenerarRemitoModelo.ExisteTransportistaPorDni(dni))
+                {
+                    MessageBox.Show("El transportista no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Salir si el transportista no existe
+                }
+
                 // Verificar si el transportista tiene órdenes asociadas
                 var ordenesDelTransportista = GenerarRemitoModelo.ObtenerOrdenesDePreparacionPorDni(dni);
                 if (ordenesDelTransportista == null || ordenesDelTransportista.Count == 0)
