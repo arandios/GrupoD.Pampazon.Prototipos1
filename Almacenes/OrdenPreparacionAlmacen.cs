@@ -1,4 +1,5 @@
-﻿using Pampazon.Entidades;
+﻿using Pampazon.BuscarProductosEnDepositos;
+using Pampazon.Entidades;
 using Pampazon.OrdenSeleccion;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Pampazon.Almacenes
         private static List<OrdenPreparacionEnt> ordenesPreparacion = new List<OrdenPreparacionEnt>();
 
         public static IReadOnlyCollection<OrdenPreparacionEnt> OrdenesPreparacion => ordenesPreparacion.AsReadOnly();
+
 
         public static void Grabar()
         {

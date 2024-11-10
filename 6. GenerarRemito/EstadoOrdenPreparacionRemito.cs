@@ -12,6 +12,7 @@ namespace Pampazon._6._GenerarRemito
         Procesamiento,
         Procesada,
         Preparada,
+        Lista,
         Entregada
     }
 }

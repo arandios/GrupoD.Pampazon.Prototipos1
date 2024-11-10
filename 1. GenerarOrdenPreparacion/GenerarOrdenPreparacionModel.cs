@@ -1,6 +1,7 @@
 ﻿using Pampazon._1._GenerarOrdenPreparacion;
 using Pampazon.Entidades;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -55,7 +56,7 @@ namespace Pampazon.GenerarOrdenPreparacion
                 var producto = new Producto();
                 producto.Id = productoEnt.IdCliente.ToString();
                 producto.NombreProducto = productoEnt.NombreProducto;
-                //int stock = productoEnt.sumTotal();
+                //producto.Stock = productoEnt.sumTotal();
                 producto.Stock = 10;
                 producto.IdCliente = productoEnt.IdCliente;
                 Productos.Add(producto);
@@ -281,6 +282,32 @@ namespace Pampazon.GenerarOrdenPreparacion
                 }
             }
             return "";
+        }
+
+        public void agregarOrderAlmacen()
+        {
+            OrdenPreparacionEnt ordenEnt = new OrdenPreparacionEnt();
+            if (Almacenes.OrdenPreparacionAlmacen.OrdenesPreparacion.LastOrDefault() != null)
+            {
+                ordenEnt.IdOrdenPreparacion = Almacenes.OrdenPreparacionAlmacen.OrdenesPreparacion.LastOrDefault().IdOrdenPreparacion + 1;
+            }
+            ordenEnt.IdCliente = this.Orden.IDCliente;
+            ordenEnt.DNITransportista = this.Orden.DNITransportista;
+
+            //ordenEnt.Prioridad = this.Orden.Prioridad;
+            foreach (Producto prod in this.Orden.Productos)
+            {
+                var productoEnt = new OrdenPreparacionDetalle();
+                productoEnt.SKU = prod.Id;
+                productoEnt.Cantidad = prod.Stock;
+                ordenEnt.Detalle.Add(productoEnt);
+
+            }
+            ordenEnt.FechaEmision = DateTime.Now;
+            ordenEnt.FechaRetiro = DateTime.Now;
+            //FALTA FECHA AHORA
+            ordenEnt.Estado = EstadoOrdenPreparacionEnum.Pendiente;
+            Almacenes.OrdenPreparacionAlmacen.Agregar(ordenEnt);
         }
 
 
