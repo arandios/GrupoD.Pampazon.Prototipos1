@@ -7,15 +7,15 @@ Caso 1:[Desde el menú del sistema] "Cargar Orden con un Producto"
 - Botón: "Buscar Productos"
 
 - Productos en Depósito: 
-	PROD-04456  -  Aceite sintético 5W-30  -  70
-	PROD-04434  -  Termo  -  26
+	PROD-00123  -  Aceite sintético 5W-30  -  70
+	PROD-34523  -  Termo  -  26
 
 - SKU Producto: “ PROD-04434”
 
 - Botón: "Buscar Productos"
 
 - Productos en Depósito:
-	PROD-04434  -  Termo  -  26
+	PROD-34523  -  Termo  -  26
 
 - Botón: "Borrar Filtros"
 
@@ -29,19 +29,19 @@ Caso 1:[Desde el menú del sistema] "Cargar Orden con un Producto"
 - Botón: "Buscar Productos"
 
 - Productos en Depósito: 
-	PROD-04456  -  Aceite sintético 5W-30  -  70
+	PROD-00123  -  Aceite sintético 5W-30  -  40
 
-- Seleccionar SKU Producto: PROD-04456
+- Seleccionar SKU Producto: PROD-00123
 
-- Producto Seleccionado: PROD-04456 
-- Cantidad Disponible: 70
+- Producto Seleccionado: PROD-00123
+- Cantidad Disponible: 40
 
-- Indique Cantidad a Retirar: 2
+- Indique Cantidad a Retirar: 12
 
 - Botón "Agregar Productos a la orden"
 
 - Orden: 
-PROD-04456  -  2
+PROD-00123  -  12
 
 - Seleccionar Fecha a Retirar: 22/12/2024
 
@@ -49,7 +49,7 @@ PROD-04456  -  2
 
 - Prioridad: Media
 
-- Dni Transportista: 87654321
+- Dni Transportista: 12345678
 - Nombre Transportista: Carlos Gonzalez
 
 - Botón: "Generar Orden Preparación"
@@ -57,7 +57,7 @@ PROD-04456  -  2
 - Mensaje: 
 “ID Cliente: 1
 Fecha de Entrega: 22-12-2024  Horario: 17
-Dni Transportista: 87654321
+Dni Transportista: 12345678
 
 Confirmar Orden”
 
@@ -76,12 +76,12 @@ Confirmar Orden”
     "IdCliente": 1,
    	     "Detalle": [
       {
-        "SKU": "PROD-04456",
-        "Cantidad": 2
+        "SKU": "PROD-00123",
+        "Cantidad": 12
       }
     ]
 
-    "DNITransportista": 87654321,
+    "DNITransportista": 12345678,
     "FechaEmision": "2024-11-06T14:35:00.5678901-03:00",
     "FechaRetiro": "2024-12-22T17:00:00.5678901-03:00",
     "HoraRetiro": "2024-12-22T17:00:00.5678901-03:00",
