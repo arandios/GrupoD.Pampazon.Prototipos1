@@ -27,27 +27,6 @@ namespace Pampazon._4._EmpaquetarOrden
         public void CargarOrdenes()
         {
 
-            // Asegúrate de llamar a `ProductoAlmacen.Leer()` y `OrdenPreparacionAlmacen.Leer()` para cargar los datos antes de esta consulta
-            /*
-            ordenesPreparacion = (
-                from o in OrdenPreparacionAlmacen.OrdenesPreparacion
-               
-                select new OrdenPreparacion
-                {
-                    Productos = (
-                        from d in o.Detalle
-                        join p in ProductoAlmacen.Productos 
-                        on d.SKU equals p.SKU into productosJoin
-                        from producto in productosJoin.DefaultIfEmpty() // Hace una unión externa izquierda para manejar SKUs que no se encuentran en `ProductoAlmacen`
-                        select new Producto
-                        {
-                            SKUProducto = d.SKU,
-                            DescripcionProducto = producto?.NombreProducto ?? "Producto no encontrado",
-                            Cantidad = d.Cantidad
-                        }).ToList()
-                }).ToList();
-            */
-
             ordenesPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion
                 .Select(o => new OrdenPreparacion
                 {
