@@ -50,7 +50,7 @@ PROD-00123  -  12
 - Prioridad: Media
 
 - Dni Transportista: 12345678
-- Nombre Transportista: Valentina Rojas
+- Nombre Transportista: "Valentina Rojas"
 
 - Botón: "Generar Orden Preparación"
 
