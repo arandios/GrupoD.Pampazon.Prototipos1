@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pampazon._3._BuscarProductosEnDepositos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,25 +14,16 @@ namespace Pampazon.BuscarProductosEnDepositos
     public partial class AgregarProductosEnDepositosFormulario : Form
     {
         private BuscarProductosEnDepositosModelo modelo;
+        private List<Producto> productosInfo;
 
         public AgregarProductosEnDepositosFormulario()
         {
             InitializeComponent();
             modelo = new BuscarProductosEnDepositosModelo();
-        }
-        private void CargarOrdenesDeSeleccionEnComboBox()
-        {
-            // Obtener la lista de órdenes de selección pendientes y cargarla en el ComboBox
-            modelo.CargarOrdenesEnComboBox(OrdenSeleccionCMB);
+            productosInfo = new List<Producto>(); // Inicializar la lista para evitar el error CS8618
         }
 
-
-
-        private void CargarProductosEnListView(int idOrdenSeleccion)
-        {
-            // Obtener la lista de productos y cargarla en el ListView
-            modelo.CargarProductosEnListView(idOrdenSeleccion, ProductosLST);
-        }
+        // ==============================================================================
 
         private void AgregarProductosEnDepositosFormulario_Load_1(object sender, EventArgs e)
         {
@@ -47,8 +39,14 @@ namespace Pampazon.BuscarProductosEnDepositos
                 OrdenSeleccionCMB.SelectedIndex = 0; // Selecciona automáticamente la primera orden de selección
             }
         }
-        // Evento que se dispara al seleccionar una OrdenDeSeleccion en el ComboBox
 
+        private void CargarOrdenesDeSeleccionEnComboBox()
+        {
+            // Obtener la lista de órdenes de selección pendientes y cargarla en el ComboBox
+            modelo.CargarOrdenesSeleccionEnComboBox(OrdenSeleccionCMB);
+        }
+
+        // Evento que se dispara al seleccionar una OrdenDeSeleccion en el ComboBox
         private void CMBOrdenSeleccion_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (OrdenSeleccionCMB.SelectedItem != null)
@@ -56,13 +54,6 @@ namespace Pampazon.BuscarProductosEnDepositos
                 int idOrdenSeleccion = (int)OrdenSeleccionCMB.SelectedItem;
                 CargarProductosEnListView(idOrdenSeleccion);
             }
-        }
-
-
-
-        private void CancelarOrdenSeleccionBTN_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void BTNConfirmarOrdenSeleccion_Click(object sender, EventArgs e)
@@ -105,5 +96,43 @@ namespace Pampazon.BuscarProductosEnDepositos
                                 MessageBoxIcon.Error);
             }
         }
+
+        private void CancelarOrdenSeleccionBTN_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // ==============================================================================
+
+        private void CargarProductosEnListView(int idOrdenSeleccion)
+        {
+            var productosEnt = modelo.ObtenerProductosPorOrdenDeSeleccion(idOrdenSeleccion);
+            productosInfo = productosEnt.Select(pe => new Producto(
+                pe.SKU,
+                pe.IdCliente.ToString(),
+                pe.NombreProducto,
+                pe.Detalle?.Select(d => new UbicacionProdutoDetalle_ParaBuscarProductosEnDepo
+                {
+                    IdUbicacion = d.IdUbicacion,
+                    Stock = d.Stock
+                }).ToList() ?? new List<UbicacionProdutoDetalle_ParaBuscarProductosEnDepo>() // Lista vacía si es null
+            )).ToList();
+
+            ProductosLST.Items.Clear();
+
+            foreach (var producto in productosInfo)
+            {
+                foreach (var detalle in producto.Detalle)
+                {
+                    ListViewItem item = new ListViewItem(detalle.IdUbicacion ?? "Ubicación desconocida");
+                    item.SubItems.Add(producto.SKUProducto);
+                    item.SubItems.Add(detalle.Stock.ToString());
+                    ProductosLST.Items.Add(item);
+                }
+            }
+        }
+
+
+
     }
 }

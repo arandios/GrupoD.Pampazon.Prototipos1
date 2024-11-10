@@ -26,9 +26,10 @@ namespace Pampazon.Almacenes
             if (File.Exists(@"Datos\OrdenesDePreparacion.json"))
             {
                 var datos = File.ReadAllText(@"Datos\OrdenesDePreparacion.json");
-                ordenesPreparacion = JsonSerializer.Deserialize<List<OrdenPreparacionEnt>>(datos);
+                ordenesPreparacion = JsonSerializer.Deserialize<List<OrdenPreparacionEnt>>(datos)!;
             }
         }
+
 
         public static void Agregar(OrdenPreparacionEnt ordenPreparacion)
         {

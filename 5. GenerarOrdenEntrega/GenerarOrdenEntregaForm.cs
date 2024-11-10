@@ -48,7 +48,7 @@ namespace Pampazon.OrdenEntrega
             this.Close();
         }
 
-
+        //TODO: CREAR LA ORDEN DE ENTREGA, PASAR AL MODELO! SEGUIR EJEMPLO GENERAR OS
         private void GenerarOrdenEntregabtn_Click(object sender, EventArgs e)
         {
 
