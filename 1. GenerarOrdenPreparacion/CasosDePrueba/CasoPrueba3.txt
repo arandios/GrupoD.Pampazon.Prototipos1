@@ -31,8 +31,8 @@
 - Codigo cliente: 1
 
 - Productos en Depósito: 
-	SPROD-04456  -  Aceite sintético 5W-30  -  70
-	PROD-04434  -  Termo  -  26
+	SPROD-00123  -  Aceite sintético 5W-30  -  40
+	PROD-34523  -  Termo  -  34
 
 - Razón social: MessiFc
 
@@ -46,23 +46,21 @@
 - Botón: "Buscar Productos"
 
 - Productos en Depósito: 
-	PROD-04456  -  Aceite sintético 5W-30  -  70
+	PROD-00123  -  Aceite sintético 5W-30  -  40
 
 - Botón: "Agregar Productos a la orden"
 
 - Mensaje "Seleccione un producto".
 - Botón: “Aceptar”
 
-- Seleccionar SKU Producto: PROD-04456
+- Seleccionar SKU Producto: PROD-00123
+
+- Producto Seleccionado: PROD-00123 
+- Cantidad Disponible: 40
 
 - Botón: "Agregar Productos a la orden"
 
 - Mensaje: “Ingrese una cantidad a retirar”
-
-- Seleccionar SKU Producto: PROD-04456
-
-- Producto Seleccionado: PROD-04456 
-- Cantidad Disponible: 40
 
 - Cantidad a Retirar: 10000
 
@@ -80,7 +78,7 @@
 
 - Botón:"Agregar Productos a la orden"
 
-- Orden: PROD-04456  -  20
+- Orden: PROD-00123  -  20
 
 - Fecha a Retirar: sin seleccionar
 
@@ -127,14 +125,14 @@
 
 - Dni Transportista: 87654321
 
-- Nombre Transportista: Carlos Gonzalez
+- Nombre Transportista: Valentina Rojas
 
 - Botón: "Generar Orden Preparación"
 
 - Mensaje: 
 “ID Cliente:  1
 Fecha de Entrega: 22-12-2024   Horario 17
-Dni Transportista: 87654321
+Dni Transportista: 12345678
 
 Confirmar Orden”
 
