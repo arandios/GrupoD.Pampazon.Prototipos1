@@ -1,0 +1,81 @@
+﻿ Caso de prueba: Verificación
+
+ Botón: "Generar Remito"
+
+- DNI transportista: vacío
+
+- Botón: “Buscar transportista”
+
+- Mensaje : "Por favor, ingrese un DNI"
+
+- Botón: “Aceptar”
+
+
+- DNI transportista: -1
+
+- Botón: “Buscar transportista”
+
+- Mensaje : "El numero de DNI no puede ser negativo"
+
+- Botón: “Aceptar”
+
+
+
+- DNI transportista: asdasd
+
+- Botón: “Buscar transportista”
+
+- Mensaje : "Ingrese un DNI valido"
+
+- Botón: “Aceptar”
+
+
+- DNI transportista: 1234
+
+- Botón: “Buscar transportista”
+
+- Mensaje : "El numero de DNI debe tener 8 digitos"
+
+- Botón: “Aceptar”
+
+
+- DNI transportista: 11111122
+
+- Botón: “Buscar transportista”
+
+- Mensaje : "El transportista no tiene ordenes asociadas"
+
+- Botón: “Aceptar”
+
+
+- DNI transportista: 96499344
+
+- Botón: “Buscar transportista”
+
+- Botón: “Agregar Orden de Preparación al remito”
+
+- Mensaje : “No hay órdenes para agregar. Agregue al menos una orden."
+
+- Botón: “Aceptar”
+
+-  Seleccionar ID orden de preparación: 21
+
+- Botón: “Agregar Orden de Preparación al remito”
+
+- Botón: “Quitar Orden de preparación del remito”
+
+- Mensaje: “Por favor, seleccione al menos una orden para eliminar.”
+
+- -ID orden de preparación: seleccionar 21 - 9/11/2024
+
+- Botón: “Generar remito”
+
+- Mensaje: “¿Esta seguro que desea generar el remito?”
+
+- Botón: “No”
+
+- Mensaje: “Operacion cancelada”
+
+- Botón: “Aceptar”
+
+-Cerrar el sistema

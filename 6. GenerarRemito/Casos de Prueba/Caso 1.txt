@@ -1,0 +1,51 @@
+﻿Caso de Prueba : Generar nuevo remito
+
+- Botón: "Generar remito”
+
+-DNI transportista: 78766564
+
+- Botón: "Buscar Transportista"
+
+-ID orden de preparación: seleccionar 19
+
+- Botón: "Agregar Orden de Preparación al remito"
+
+-ID orden de preparación: seleccionar 19 - 9/11/2024
+
+-Botón: “Generar Remito”
+
+-Mensaje: ¿Está seguro que desea generar el remito?
+
+-Botón: “Si”
+
+-Mensaje: 
+“Remito generado:
+ Transportista DNI:78766564
+Órdenes: 19
+
+-Botón: “Aceptar”
+
+-Cerrar el sistema
+
+-- Verificar OrdenesDePreparacion.json,cambio de estado a Entregada(4):
+
+ {
+   "IdOrdenPreparacion": 19,
+   "Prioridad": 1,
+   "IdCliente": 19,
+   "Detalle": [
+     {
+       "SKU": "PROD-09345",
+       "Cantidad": 25
+     },
+     {
+       "SKU": "PROD-13333",
+       "Cantidad": 23
+     }
+   ],
+   "DNITransportista": 78766564,
+   "FechaEmision": "2024-11-07T02:15:00-03:00",
+   "FechaRetiro": "2024-12-17T02:15:00-03:00",
+   "HoraRetiro": "2024-11-07T03:15:00-03:00",
+   "Estado": 4
+ },
