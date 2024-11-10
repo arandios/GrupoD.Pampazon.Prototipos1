@@ -1,0 +1,65 @@
+﻿- Botón: "Consultar Orden Preparación"
+- ID Cliente: vacio 
+- Botón: “Buscar Orden”
+- Mensaje : "No se encontraron ordenes con los filtrados aplicados "
+- Botón: Aceptar
+- Codigo cliente: 1
+Boton: ”Buscar Orden”
+- Ordenes encontradas
+1         8/11/2024        Preparada           Alta
+2         9/11/2024         Preparada          Media
+
+
+- Razon Social Cliente: “ZapatillasURL”
+Boton: “ Buscar Orden”
+- Mensaje: "No se encontraron ordenes con los filtrados aplicados."
+- Razon Social Cliente: “Camisas SRL”
+Boton: “ Buscar Orden”
+Ordenes Encontradas
+3          8/11/2024              Preparada             Baja
+4          6/11/2024           	Preparada        	Prioridad
+Cuit: 30-12345678-9
+Boton:”Buscar Orden”
+Ordenes Encontradas
+1          10/11/2024           Preparada   	  Alta
+2          10/11/2024           Preparada          Media
+ 
+Cerrar el sistema
+ 
+- Verificar ConsultarOrdenPreparacion.json, nuevo registro:
+ {
+   "IdOrdenPreparacion": 12,
+   "Prioridad": 2,
+   "IdCliente": 12,
+   "Detalle": [
+     {
+       "SKU": "PROD-05890",
+       "Cantidad": 8
+     },
+     {
+       "SKU": "PROD-06123",
+       "Cantidad": 1
+     }
+   ],
+   "DNITransportista": 76543210,
+   "FechaEmision": "2024-11-06T20:15:00-03:00",
+   "FechaRetiro": "2024-12-16T20:15:00-03:00",
+   "HoraRetiro": "2024-11-06T21:15:00-03:00",
+   "Estado": 3
+ },
+
+
+ {
+   "IdOrdenPreparacion": 13,
+   "Prioridad": 3,
+   "IdCliente": 13,
+   "Detalle": [
+     {
+       "SKU": "PROD-06456",
+       "Cantidad": 5
+     },
+     {
+       "SKU": "PROD-06789",
+       "Cantidad": 2
+     }
+   ],

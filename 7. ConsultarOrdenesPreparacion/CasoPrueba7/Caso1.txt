@@ -1,0 +1,63 @@
+﻿Caso de prueba: [Desde el menú del sistema] “Consultar orden de preparación”
+Boton:”Consultar Orden De Preparacion”
+ID Cliente: 1
+Boton:”Buscar Ordenes”
+Ordenes Encontradas:
+1         8/11/2024        Preparada                 Alta
+2	     9/11/2024         Preparada          Media
+- Razón Social Cliente: Camisas SRL
+- Botón: “Buscar Órden”
+- Órdenes encontradas:
+ 3          8/11/2024              Preparada             Baja
+4          6/11/2024           	Preparada        	Prioridad
+Boton:”Borrar Filtros”
+Seleccionar CUIT
+CUIT:123456
+Boton : ”BuscarOrden”
+Ordenes encontradas:
+Boton:”Borrar filtros”
+- Seleccionar Fecha Incio: 06/11/2024
+ 
+- Órdenes encontradas:
+    1      6/11/2024      Procesamiento         Media
+    2     6/11/2024     Procesamiento          Media
+   3-     6/11/2024     Procesamiento           Alta
+4          6/11/2024          Procesamiento           3
+5         6/11/2024           Pendiente                Media
+7         6/11/2024           Pendiente                3 
+8        6/11/2024           Procesada                Media
+
+ 
+- Botón: “Borrar Filtros”
+- Seleccionar Fecha Fin: 15/11/2024
+- Órdenes encontradas:
+   1      6/11/2024      Procesamiento         Media
+ 2     6/11/2024     Procesamiento          Media
+ 3-     6/11/2024     Procesamiento           Alta
+4          6/11/2024          Procesamiento           3
+5         6/11/2024           Pendiente                Media
+7         6/11/2024           Pendiente                3 
+8        6/11/2024           Procesada                Media
+9        6/11/2024           Procesada               Alta
+10       6/11/2024       Procesada                 3
+11        6/11/2024        preparada               Media    
+12        6/11/2024       preparada               Alta
+- Botón: “Borrar Filtros”
+- Seleccionar Prioridad: Alta
+- Órdenes encontradas:
+ 3  	 6/11/2024    Procesamiento  alta
+6 	  6/11/2024    Pendiente  	alta
+9 	  6/11/2024    Procesada      alta
+12  	6/11/2024    Preparada      alta
+15      6/11/2024    Preparada  	alta
+ 18      6/11/2024    Preparada  	alta
+Botón: ”Borrar filtros”
+- Seleccionar Estado: Preparada
+- Órdenes encontradas:
+         	
+11	  6/11/2024    Preparada          Media
+12	  6/11/2024    Preparada  	alta
+13         6/11/2024    Preparada     	3
+Boton: ”Borrar filtros”
+ 
+ 
