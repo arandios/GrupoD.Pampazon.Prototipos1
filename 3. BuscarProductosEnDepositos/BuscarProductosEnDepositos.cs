@@ -108,7 +108,7 @@ namespace Pampazon.BuscarProductosEnDepositos
         {
             var productosEnt = modelo.ObtenerProductosPorOrdenDeSeleccion(idOrdenSeleccion);
             productosInfo = productosEnt.Select(pe => new Producto(
-                pe.SKU,
+                pe.SKUProducto,
                 pe.IdCliente.ToString(),
                 pe.NombreProducto,
                 pe.Detalle?.Select(d => new UbicacionProdutoDetalle_ParaBuscarProductosEnDepo
