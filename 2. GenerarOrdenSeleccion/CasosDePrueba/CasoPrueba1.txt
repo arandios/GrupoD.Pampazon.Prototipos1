@@ -6,6 +6,8 @@
 	5  -  Grupo Epsilon  -  06/11/2024  -  Media
 	6  -  Agropecuaria Gamma  -  06/11/2024  -  Alta
 
+- Seleccionar Fecha Minima: 06/11/2024
+
 - Razón Social Cliente: Epsilon
 
 - Botón: “Buscar Órdenes de Preparación”
