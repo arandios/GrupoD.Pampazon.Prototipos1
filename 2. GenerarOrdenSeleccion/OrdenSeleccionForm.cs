@@ -308,7 +308,7 @@ namespace Pampazon.OrdenSeleccion
             DetalleOrdenesDePreparacionPendientesLST.Items.Clear();
 
             // Mostrar mensaje de confirmación
-            MessageBox.Show($"Se ha creado la orden de selección número {ordenSeleccion.IDOrdenSeleccion} exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Se ha creado la orden de selección exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
             //TODO: PASAR AL MODELO. 
