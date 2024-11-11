@@ -65,49 +65,49 @@ namespace Pampazon.ListarOrdenes
             // CodigoCLienteLBL
             // 
             CodigoCLienteLBL.AutoSize = true;
-            CodigoCLienteLBL.Location = new Point(5, 27);
+            CodigoCLienteLBL.Location = new Point(4, 20);
             CodigoCLienteLBL.Margin = new Padding(2, 0, 2, 0);
             CodigoCLienteLBL.Name = "CodigoCLienteLBL";
-            CodigoCLienteLBL.Size = new Size(106, 20);
+            CodigoCLienteLBL.Size = new Size(84, 15);
             CodigoCLienteLBL.TabIndex = 2;
             CodigoCLienteLBL.Text = "Código cliente";
             // 
             // FechaInicioLBL
             // 
             FechaInicioLBL.AutoSize = true;
-            FechaInicioLBL.Location = new Point(456, 91);
+            FechaInicioLBL.Location = new Point(399, 68);
             FechaInicioLBL.Margin = new Padding(2, 0, 2, 0);
             FechaInicioLBL.Name = "FechaInicioLBL";
-            FechaInicioLBL.Size = new Size(87, 20);
+            FechaInicioLBL.Size = new Size(70, 15);
             FechaInicioLBL.TabIndex = 5;
             FechaInicioLBL.Text = "Fecha inicio";
             // 
             // EstadoCMB
             // 
             EstadoCMB.FormattingEnabled = true;
-            EstadoCMB.Items.AddRange(new object[] { "Emitida", "Selccionada", "Preparada", "Despachada" });
-            EstadoCMB.Location = new Point(9, 113);
-            EstadoCMB.Margin = new Padding(2, 3, 2, 3);
+            EstadoCMB.Items.AddRange(new object[] { "Pendiente", "Procesamiento", "Procesada", "Preparada", "Lista", "Entregada" });
+            EstadoCMB.Location = new Point(8, 85);
+            EstadoCMB.Margin = new Padding(2, 2, 2, 2);
             EstadoCMB.Name = "EstadoCMB";
-            EstadoCMB.Size = new Size(198, 28);
+            EstadoCMB.Size = new Size(174, 23);
             EstadoCMB.TabIndex = 6;
             // 
             // EstadoLBL
             // 
             EstadoLBL.AutoSize = true;
-            EstadoLBL.Location = new Point(7, 91);
+            EstadoLBL.Location = new Point(6, 68);
             EstadoLBL.Margin = new Padding(2, 0, 2, 0);
             EstadoLBL.Name = "EstadoLBL";
-            EstadoLBL.Size = new Size(54, 20);
+            EstadoLBL.Size = new Size(42, 15);
             EstadoLBL.TabIndex = 7;
             EstadoLBL.Text = "Estado";
             // 
             // BuscarOrdenBTN
             // 
-            BuscarOrdenBTN.Location = new Point(507, 180);
-            BuscarOrdenBTN.Margin = new Padding(2, 3, 2, 3);
+            BuscarOrdenBTN.Location = new Point(444, 135);
+            BuscarOrdenBTN.Margin = new Padding(2, 2, 2, 2);
             BuscarOrdenBTN.Name = "BuscarOrdenBTN";
-            BuscarOrdenBTN.Size = new Size(224, 53);
+            BuscarOrdenBTN.Size = new Size(196, 40);
             BuscarOrdenBTN.TabIndex = 8;
             BuscarOrdenBTN.Text = "&Buscar orden";
             BuscarOrdenBTN.UseVisualStyleBackColor = true;
@@ -115,11 +115,11 @@ namespace Pampazon.ListarOrdenes
             // 
             // BorrarFiltrosBTN
             // 
-            BorrarFiltrosBTN.Location = new Point(741, 180);
-            BorrarFiltrosBTN.Margin = new Padding(2, 3, 2, 3);
+            BorrarFiltrosBTN.Location = new Point(648, 135);
+            BorrarFiltrosBTN.Margin = new Padding(2, 2, 2, 2);
             BorrarFiltrosBTN.Name = "BorrarFiltrosBTN";
             BorrarFiltrosBTN.RightToLeft = RightToLeft.No;
-            BorrarFiltrosBTN.Size = new Size(214, 53);
+            BorrarFiltrosBTN.Size = new Size(187, 40);
             BorrarFiltrosBTN.TabIndex = 9;
             BorrarFiltrosBTN.Text = "&Borrar filtros";
             BorrarFiltrosBTN.UseVisualStyleBackColor = true;
@@ -127,10 +127,10 @@ namespace Pampazon.ListarOrdenes
             // 
             // SalirBTN
             // 
-            SalirBTN.Location = new Point(750, 875);
-            SalirBTN.Margin = new Padding(2, 3, 2, 3);
+            SalirBTN.Location = new Point(656, 656);
+            SalirBTN.Margin = new Padding(2, 2, 2, 2);
             SalirBTN.Name = "SalirBTN";
-            SalirBTN.Size = new Size(214, 53);
+            SalirBTN.Size = new Size(187, 40);
             SalirBTN.TabIndex = 11;
             SalirBTN.Text = "&Salir";
             SalirBTN.UseVisualStyleBackColor = true;
@@ -138,20 +138,19 @@ namespace Pampazon.ListarOrdenes
             // 
             // CodigoClienteTxt
             // 
-            CodigoClienteTxt.Location = new Point(7, 49);
-            CodigoClienteTxt.Margin = new Padding(2, 3, 2, 3);
+            CodigoClienteTxt.Location = new Point(6, 37);
+            CodigoClienteTxt.Margin = new Padding(2, 2, 2, 2);
             CodigoClienteTxt.Name = "CodigoClienteTxt";
-            CodigoClienteTxt.Size = new Size(306, 27);
+            CodigoClienteTxt.Size = new Size(268, 23);
             CodigoClienteTxt.TabIndex = 14;
             CodigoClienteTxt.TextChanged += CodigoClienteTxt_TextChanged;
             // 
             // OrdenesLTV
             // 
             OrdenesLTV.Columns.AddRange(new ColumnHeader[] { IdOrdenColumna, FechaOPColumna, EstadoColumna, PrioridadColumna });
-            OrdenesLTV.Location = new Point(19, 293);
-            OrdenesLTV.Margin = new Padding(3, 4, 3, 4);
+            OrdenesLTV.Location = new Point(17, 220);
             OrdenesLTV.Name = "OrdenesLTV";
-            OrdenesLTV.Size = new Size(945, 285);
+            OrdenesLTV.Size = new Size(827, 215);
             OrdenesLTV.TabIndex = 19;
             OrdenesLTV.UseCompatibleStateImageBehavior = false;
             OrdenesLTV.View = View.Details;
@@ -198,44 +197,48 @@ namespace Pampazon.ListarOrdenes
             FiltrosGRP.Controls.Add(FechaInicioLBL);
             FiltrosGRP.Controls.Add(BorrarFiltrosBTN);
             FiltrosGRP.Controls.Add(CodigoCLienteLBL);
-            FiltrosGRP.Location = new Point(10, 12);
+            FiltrosGRP.Location = new Point(9, 9);
+            FiltrosGRP.Margin = new Padding(3, 2, 3, 2);
             FiltrosGRP.Name = "FiltrosGRP";
-            FiltrosGRP.Size = new Size(960, 239);
+            FiltrosGRP.Padding = new Padding(3, 2, 3, 2);
+            FiltrosGRP.Size = new Size(840, 179);
             FiltrosGRP.TabIndex = 20;
             FiltrosGRP.TabStop = false;
             FiltrosGRP.Text = "Seleccione filtros de búsqueda para Clientes: ";
             // 
             // FechaFinDTP
             // 
-            FechaFinDTP.Location = new Point(706, 113);
+            FechaFinDTP.Location = new Point(618, 85);
+            FechaFinDTP.Margin = new Padding(3, 2, 3, 2);
             FechaFinDTP.Name = "FechaFinDTP";
-            FechaFinDTP.Size = new Size(238, 27);
+            FechaFinDTP.Size = new Size(209, 23);
             FechaFinDTP.TabIndex = 25;
             // 
             // FechaInicioDTP
             // 
-            FechaInicioDTP.Location = new Point(456, 115);
+            FechaInicioDTP.Location = new Point(399, 86);
+            FechaInicioDTP.Margin = new Padding(3, 2, 3, 2);
             FechaInicioDTP.Name = "FechaInicioDTP";
-            FechaInicioDTP.Size = new Size(238, 27);
+            FechaInicioDTP.Size = new Size(209, 23);
             FechaInicioDTP.TabIndex = 24;
             // 
             // FechaFinLBL
             // 
             FechaFinLBL.AutoSize = true;
-            FechaFinLBL.Location = new Point(706, 88);
+            FechaFinLBL.Location = new Point(618, 66);
             FechaFinLBL.Margin = new Padding(2, 0, 2, 0);
             FechaFinLBL.Name = "FechaFinLBL";
-            FechaFinLBL.Size = new Size(68, 20);
+            FechaFinLBL.Size = new Size(55, 15);
             FechaFinLBL.TabIndex = 22;
             FechaFinLBL.Text = "Fecha fin";
             // 
             // PrioridadLBL
             // 
             PrioridadLBL.AutoSize = true;
-            PrioridadLBL.Location = new Point(222, 93);
+            PrioridadLBL.Location = new Point(194, 70);
             PrioridadLBL.Margin = new Padding(2, 0, 2, 0);
             PrioridadLBL.Name = "PrioridadLBL";
-            PrioridadLBL.Size = new Size(70, 20);
+            PrioridadLBL.Size = new Size(55, 15);
             PrioridadLBL.TabIndex = 21;
             PrioridadLBL.Text = "Prioridad";
             // 
@@ -243,56 +246,58 @@ namespace Pampazon.ListarOrdenes
             // 
             PrioridadCMB.FormattingEnabled = true;
             PrioridadCMB.Items.AddRange(new object[] { "Alta", "Media", "Baja" });
-            PrioridadCMB.Location = new Point(222, 113);
-            PrioridadCMB.Margin = new Padding(2, 3, 2, 3);
+            PrioridadCMB.Location = new Point(194, 85);
+            PrioridadCMB.Margin = new Padding(2, 2, 2, 2);
             PrioridadCMB.Name = "PrioridadCMB";
-            PrioridadCMB.Size = new Size(229, 28);
+            PrioridadCMB.Size = new Size(201, 23);
             PrioridadCMB.TabIndex = 20;
             // 
             // CuitTXT
             // 
-            CuitTXT.Location = new Point(654, 49);
-            CuitTXT.Margin = new Padding(2, 3, 2, 3);
+            CuitTXT.Location = new Point(572, 37);
+            CuitTXT.Margin = new Padding(2, 2, 2, 2);
             CuitTXT.Name = "CuitTXT";
-            CuitTXT.Size = new Size(287, 27);
+            CuitTXT.Size = new Size(252, 23);
             CuitTXT.TabIndex = 18;
             CuitTXT.TextChanged += CuitTxt_TextChanged;
             // 
             // CuitLBL
             // 
             CuitLBL.AutoSize = true;
-            CuitLBL.Location = new Point(664, 27);
+            CuitLBL.Location = new Point(581, 20);
             CuitLBL.Margin = new Padding(2, 0, 2, 0);
             CuitLBL.Name = "CuitLBL";
-            CuitLBL.Size = new Size(35, 20);
+            CuitLBL.Size = new Size(29, 15);
             CuitLBL.TabIndex = 17;
             CuitLBL.Text = "Cuit";
             // 
             // RazonSocialTxt
             // 
-            RazonSocialTxt.Location = new Point(329, 49);
-            RazonSocialTxt.Margin = new Padding(2, 3, 2, 3);
+            RazonSocialTxt.Location = new Point(288, 37);
+            RazonSocialTxt.Margin = new Padding(2, 2, 2, 2);
             RazonSocialTxt.Name = "RazonSocialTxt";
-            RazonSocialTxt.Size = new Size(321, 27);
+            RazonSocialTxt.Size = new Size(281, 23);
             RazonSocialTxt.TabIndex = 16;
             RazonSocialTxt.TextChanged += RazonSocialTxt_TextChanged;
             // 
             // RazonSocialLBL
             // 
             RazonSocialLBL.AutoSize = true;
-            RazonSocialLBL.Location = new Point(329, 27);
+            RazonSocialLBL.Location = new Point(288, 20);
             RazonSocialLBL.Margin = new Padding(2, 0, 2, 0);
             RazonSocialLBL.Name = "RazonSocialLBL";
-            RazonSocialLBL.Size = new Size(94, 20);
+            RazonSocialLBL.Size = new Size(73, 15);
             RazonSocialLBL.TabIndex = 15;
             RazonSocialLBL.Text = "Razón Social";
             // 
             // DetallesGRP
             // 
             DetallesGRP.Controls.Add(ProductoLTV);
-            DetallesGRP.Location = new Point(18, 601);
+            DetallesGRP.Location = new Point(16, 451);
+            DetallesGRP.Margin = new Padding(3, 2, 3, 2);
             DetallesGRP.Name = "DetallesGRP";
-            DetallesGRP.Size = new Size(952, 268);
+            DetallesGRP.Padding = new Padding(3, 2, 3, 2);
+            DetallesGRP.Size = new Size(833, 201);
             DetallesGRP.TabIndex = 21;
             DetallesGRP.TabStop = false;
             DetallesGRP.Text = "Detalle productos en la Orden del cliente seleccionado: ";
@@ -300,10 +305,9 @@ namespace Pampazon.ListarOrdenes
             // ProductoLTV
             // 
             ProductoLTV.Columns.AddRange(new ColumnHeader[] { SKU_Columna, Producto_Columna, Cantidad_Columna });
-            ProductoLTV.Location = new Point(7, 28);
-            ProductoLTV.Margin = new Padding(3, 4, 3, 4);
+            ProductoLTV.Location = new Point(6, 21);
             ProductoLTV.Name = "ProductoLTV";
-            ProductoLTV.Size = new Size(939, 233);
+            ProductoLTV.Size = new Size(822, 176);
             ProductoLTV.TabIndex = 23;
             ProductoLTV.UseCompatibleStateImageBehavior = false;
             ProductoLTV.View = View.Details;
@@ -327,9 +331,11 @@ namespace Pampazon.ListarOrdenes
             // 
             // OrdenesGRP
             // 
-            OrdenesGRP.Location = new Point(10, 269);
+            OrdenesGRP.Location = new Point(9, 202);
+            OrdenesGRP.Margin = new Padding(3, 2, 3, 2);
             OrdenesGRP.Name = "OrdenesGRP";
-            OrdenesGRP.Size = new Size(960, 316);
+            OrdenesGRP.Padding = new Padding(3, 2, 3, 2);
+            OrdenesGRP.Size = new Size(840, 237);
             OrdenesGRP.TabIndex = 22;
             OrdenesGRP.TabStop = false;
             OrdenesGRP.Text = "Ordenes encontradas";
@@ -337,16 +343,16 @@ namespace Pampazon.ListarOrdenes
             // 
             // ConsultarOrdenesForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 941);
+            ClientSize = new Size(859, 562);
             Controls.Add(OrdenesLTV);
             Controls.Add(SalirBTN);
             Controls.Add(FiltrosGRP);
             Controls.Add(DetallesGRP);
             Controls.Add(OrdenesGRP);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(2, 3, 2, 3);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "ConsultarOrdenesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Consultar Ordenes de Preparación";
