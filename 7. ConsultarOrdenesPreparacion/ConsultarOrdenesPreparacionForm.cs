@@ -74,41 +74,15 @@ namespace Pampazon.ListarOrdenes
 
         private void BuscarOrdenes_Click(object sender, EventArgs e)
         {
-            List<OrdenDePreparacionConsultas> ordenesEncontradas = new List<OrdenDePreparacionConsultas>();
-
-            var todasLasOrdenes = modelo.ObtenerTodasLasOrdenes();
-
-            if (!string.IsNullOrEmpty(CodigoClienteTxt.Text))
-            {
-                if (int.TryParse(CodigoClienteTxt.Text, out int codigoCliente))
-                {
-                    ordenesEncontradas = todasLasOrdenes.Where(o => o.IdCliente == codigoCliente).ToList();
-                }
-            }
-            else if (!string.IsNullOrEmpty(RazonSocialTxt.Text))
-            {
-                ordenesEncontradas = modelo.ObtenerOrdenesPorRazonSocial(RazonSocialTxt.Text);
-            }
-            else if (!string.IsNullOrEmpty(CuitTXT.Text))
-            {
-                ordenesEncontradas = modelo.ObtenerOrdenesPorCuit(CuitTXT.Text);
-            }
-            else if (!string.IsNullOrEmpty(EstadoCMB.Text) ||
-                     !string.IsNullOrEmpty(PrioridadCMB.Text) ||
-                     (FechaInicioDTP.Value.Date != DateTime.Today || FechaFinDTP.Value.Date != DateTime.Today))
-            {
-                ordenesEncontradas = todasLasOrdenes.ToList();
-            }
-
+            string codigoCliente = CodigoClienteTxt.Text;
+            string razonSocial = RazonSocialTxt.Text;
+            string cuit = CuitTXT.Text;
             string estadoSeleccionado = EstadoCMB.Text;
             string prioridadSeleccionada = PrioridadCMB.Text;
             DateTime fechaInicio = FechaInicioDTP.Value.Date;
             DateTime fechaFin = FechaFinDTP.Value.Date;
 
-            if (ordenesEncontradas.Any())
-            {
-                modelo.FiltrarPorEstadoPrioridadYFechas(ref ordenesEncontradas, estadoSeleccionado, prioridadSeleccionada, fechaInicio, fechaFin);
-            }
+            List<OrdenDePreparacionConsultas> ordenesEncontradas = modelo.BuscarOrdenes(codigoCliente, razonSocial, cuit, estadoSeleccionado, prioridadSeleccionada, fechaInicio, fechaFin);
 
             if (!ordenesEncontradas.Any())
             {
@@ -121,7 +95,6 @@ namespace Pampazon.ListarOrdenes
                 CargarOrdenesEnListView(ordenesEncontradas);
             }
         }
-
         private void CargarOrdenesEnListView(List<OrdenDePreparacionConsultas> ordenes)
         {
             OrdenesLTV.Items.Clear();
@@ -143,9 +116,6 @@ namespace Pampazon.ListarOrdenes
                 OrdenesLTV.EnsureVisible(0);
             }
         }
-
-
-
         private void BorrarFiltrosBtn_Click(object sender, EventArgs e)
         {
             CodigoClienteTxt.Clear();
@@ -158,7 +128,6 @@ namespace Pampazon.ListarOrdenes
             OrdenesLTV.Items.Clear();
             ProductoLTV.Items.Clear();
         }
-
         private void SalirBtn_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("¿Está seguro que desea salir?",
@@ -172,7 +141,6 @@ namespace Pampazon.ListarOrdenes
             }
             this.Close();
         }
-
         private void OrdenesLTV_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (OrdenesLTV.SelectedItems.Count > 0)
@@ -193,8 +161,6 @@ namespace Pampazon.ListarOrdenes
                 }
             }
         }
-
-
         private void OrdenesGRP_Enter(object sender, EventArgs e)
         {
 
