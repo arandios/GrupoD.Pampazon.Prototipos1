@@ -63,12 +63,17 @@ namespace Pampazon._4._EmpaquetarOrden
 
             /*if (result == DialogResult.Yes)
             {*/
-                // Incrementar el índice para mostrar la siguiente orden
-                indiceActualOrden++;
+            // Incrementar el índice para mostrar la siguiente orden
+            indiceActualOrden++;
 
-                // Cargar la siguiente orden si hay más
-                CargarLista();
+            // Cargar la siguiente orden si hay más
+            CargarLista();
             //}
+        }
+
+        private void OrdenesParaPrepararLST_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
