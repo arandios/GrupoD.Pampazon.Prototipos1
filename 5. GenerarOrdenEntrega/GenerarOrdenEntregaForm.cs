@@ -71,7 +71,8 @@ namespace Pampazon.OrdenEntrega
 
                 // Vuelve a cargar las órdenes de preparación desde el modelo para obtener las nuevas
                 modelo.CargarOrdenes();  // Esto asegura que el modelo se actualice con las nuevas órdenes
-                CargarLista();           // Refresca el ListView con las órdenes actualizadas
+                modelo.cambiarEstadoOP();
+               modelo.CargarOrdenes(); // Refresca el ListView con las órdenes actualizadas
             }
         }
     }
