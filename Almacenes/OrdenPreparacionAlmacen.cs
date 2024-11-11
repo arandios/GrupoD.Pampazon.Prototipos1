@@ -36,6 +36,7 @@ namespace Pampazon.Almacenes
         public static void Agregar(OrdenPreparacionEnt ordenPreparacion)
         {
             ordenesPreparacion.Add(ordenPreparacion);
+            MessageBox.Show("Se ejecuto metodo Agregar en el AlmacenOrdendePreparacion");
             Grabar();
         }
     }

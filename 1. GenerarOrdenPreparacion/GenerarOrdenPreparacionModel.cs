@@ -32,8 +32,7 @@ namespace Pampazon.GenerarOrdenPreparacion
                 var producto = new Producto();
                 producto.Id = productoEnt.SKU.ToString();
                 producto.NombreProducto = productoEnt.NombreProducto;
-                producto.Stock = productoEnt.totalStock();
-               
+                producto.Stock = productoEnt.totalStock();      
                 producto.IdCliente = productoEnt.IdCliente;
                 Productos.Add(producto);
             }
@@ -270,7 +269,6 @@ namespace Pampazon.GenerarOrdenPreparacion
             ordenEnt.FechaRetiro = DateTime.Now;
             //FALTA FECHA AHORA
             ordenEnt.HoraRetiro = DateTime.Now;
-            MessageBox.Show("ordenEnt.IdOrdenPreparacion");
             Almacenes.OrdenPreparacionAlmacen.Agregar(ordenEnt);
         }
 
