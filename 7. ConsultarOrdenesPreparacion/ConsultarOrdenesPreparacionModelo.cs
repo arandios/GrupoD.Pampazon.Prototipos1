@@ -15,58 +15,64 @@ namespace Pampazon.ConsultarOrdenes
    
     internal class ConsultarOrdenesPreparacionModelo
     {
-        private List<OrdenPreparacionEnt> ordenesPreparacion;
+        private List<OrdenDePreparacionConsultas> ordenesPreparacion;
 
         public ConsultarOrdenesPreparacionModelo()
         {
-            // Inicializar 'ordenes' con los datos de 'OrdenPreparacionAlmacen'
+            // Inicializar 'ordenesPreparacion' con los datos de 'OrdenPreparacionAlmacen'
             ordenesPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion
                 .Select(o =>
                 {
-                    var orden = new OrdenPreparacionEnt
+                    var detalles = o.Detalle.Select(d => new OrdenPreparacionConsultaDetalle
                     {
-                        IdOrdenPreparacion = o.IdOrdenPreparacion,
-                        Prioridad = o.Prioridad,
-                        IdCliente = o.IdCliente,
-                        DNITransportista = o.DNITransportista,
-                        FechaEmision = o.FechaEmision,
-                        FechaRetiro = o.FechaRetiro,
-                        HoraRetiro = o.HoraRetiro,
-                        Estado = o.Estado
-                    };
+                        SKU = d.SKU,
+                        Cantidad = d.Cantidad
+                    }).ToList();
 
-                    
-                    orden.Detalle.AddRange(o.Detalle); 
+                    // Convertir EstadoOrdenPreparacionEnum a EstadoOrdenPreparacionConsultaEnum
+                    EstadoOrdenPreparacionConsultaEnum estadoConsulta = (EstadoOrdenPreparacionConsultaEnum)Enum.Parse(typeof(EstadoOrdenPreparacionConsultaEnum), o.Estado.ToString());
 
-                    return orden;
+                    return new OrdenDePreparacionConsultas(
+                        o.IdOrdenPreparacion,
+                        o.FechaEmision,
+                        estadoConsulta,
+                        o.Prioridad.ToString(),
+                        o.IdCliente,
+                        detalles
+                    );
                 })
                 .ToList();
         }
+
         public List<ProductoConsulta> ObtenerProductosPorOrdenId(int idOrdenPreparacion)
         {
-            var orden = ObtenerOrdenPorId(idOrdenPreparacion);
-            if (orden == null)
-            {
-                return new List<ProductoConsulta>();
-            }
+                var orden = ordenesPreparacion.FirstOrDefault(o => o.IdOrdenPreparacion == idOrdenPreparacion);
+                if (orden == null)
+                {
+                    return new List<ProductoConsulta>();
+                }
 
-            var productosAlmacen = ProductoAlmacen.Productos;
+                var productosAlmacen = ProductoAlmacen.Productos;
 
-            return orden.Detalle.Select(detalle =>
-            {
-                var productoAlmacen = productosAlmacen.FirstOrDefault(p => p.SKU == detalle.SKU);
-                return new ProductoConsulta(
-                    detalle.SKU,
-                    productoAlmacen?.NombreProducto ?? "Desconocido",
-                    detalle.Cantidad
-                );
-            }).ToList();
+                return orden.Detalle.Select(detalle =>
+                {
+                    var productoAlmacen = productosAlmacen.FirstOrDefault(p => p.SKU == detalle.SKU);
+                    return new ProductoConsulta(
+                        detalle.SKU,
+                        productoAlmacen?.NombreProducto ?? "Desconocido",
+                        detalle.Cantidad
+                    );
+                }).ToList();
         }
+        
+
+
+
 
 
 
         // Búsqueda por razón social 
-        public List<OrdenPreparacionEnt> ObtenerOrdenesPorRazonSocial(string razonSocial)
+        public List<OrdenDePreparacionConsultas> ObtenerOrdenesPorRazonSocial(string razonSocial)
         {
             var clientes = ClienteAlmacen.Clientes;
             var clientesFiltrados = clientes
@@ -80,7 +86,7 @@ namespace Pampazon.ConsultarOrdenes
         }
 
         // Búsqueda por CUIT
-        public List<OrdenPreparacionEnt> ObtenerOrdenesPorCuit(string cuit)
+        public List<OrdenDePreparacionConsultas> ObtenerOrdenesPorCuit(string cuit)
         {
             var clientes = ClienteAlmacen.Clientes;
             var clientesFiltrados = clientes
@@ -93,32 +99,31 @@ namespace Pampazon.ConsultarOrdenes
                 .ToList();
         }
 
-        public OrdenPreparacionEnt ObtenerOrdenPorId(int idOrdenPreparacion)
+        public OrdenDePreparacionConsultas ObtenerOrdenPorId(int idOrdenPreparacion)
         {
             return ordenesPreparacion.FirstOrDefault(o => o.IdOrdenPreparacion == idOrdenPreparacion);
         }
 
-        public List<OrdenPreparacionEnt> ObtenerTodasLasOrdenes()
+        public List<OrdenDePreparacionConsultas> ObtenerTodasLasOrdenes()
         {
             return ordenesPreparacion;
         }
 
         // Método para filtrar las órdenes por estado, prioridad y fechas
-        public void FiltrarPorEstadoPrioridadYFechas(ref List<OrdenPreparacionEnt> ordenesEncontradas,
-     string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
+        public void FiltrarPorEstadoPrioridadYFechas(ref List<OrdenDePreparacionConsultas> ordenesEncontradas,
+             string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
         {
             // Filtrar por Estado
             if (!string.IsNullOrEmpty(estadoSeleccionado))
             {
-                EstadoOrdenPreparacionEnum estado = (EstadoOrdenPreparacionEnum)Enum.Parse(typeof(EstadoOrdenPreparacionEnum), estadoSeleccionado);
-                ordenesEncontradas = ordenesEncontradas.Where(o => o.Estado == estado).ToList();
+                EstadoOrdenPreparacionConsultaEnum estadoConsulta = (EstadoOrdenPreparacionConsultaEnum)Enum.Parse(typeof(EstadoOrdenPreparacionConsultaEnum), estadoSeleccionado);
+                ordenesEncontradas = ordenesEncontradas.Where(o => o.Estado == estadoConsulta).ToList();
             }
 
             // Filtrar por Prioridad
             if (!string.IsNullOrEmpty(prioridadSeleccionada))
             {
-                PrioridadEnum prioridad = (PrioridadEnum)Enum.Parse(typeof(PrioridadEnum), prioridadSeleccionada);
-                ordenesEncontradas = ordenesEncontradas.Where(o => o.Prioridad == prioridad).ToList();
+                ordenesEncontradas = ordenesEncontradas.Where(o => o.Prioridad.Equals(prioridadSeleccionada, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
             // Filtrar por Fecha de Inicio
@@ -130,15 +135,15 @@ namespace Pampazon.ConsultarOrdenes
             // Filtrar por Fecha de Fin
             if (fechaFin != DateTime.Today)
             {
-                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision <= fechaFin).ToList();
+                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision <= fechaFin.AddDays(1).AddTicks(-1)).ToList();
             }
         }
 
 
         // Método para aplicar filtros adicionales
-        public List<OrdenPreparacionEnt> BuscarOrdenes(string codigoCliente, string razonSocial, string cuit, string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
+        public List<OrdenDePreparacionConsultas> BuscarOrdenes(string codigoCliente, string razonSocial, string cuit, string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
         {
-            List<OrdenPreparacionEnt> ordenesEncontradas = ordenesPreparacion;
+            List<OrdenDePreparacionConsultas> ordenesEncontradas = ordenesPreparacion;
 
             // Filtrar por código de cliente
             if (!string.IsNullOrEmpty(codigoCliente))

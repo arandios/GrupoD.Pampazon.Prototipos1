@@ -74,7 +74,7 @@ namespace Pampazon.ListarOrdenes
 
         private void BuscarOrdenes_Click(object sender, EventArgs e)
         {
-            List<OrdenPreparacionEnt> ordenesEncontradas = new List<OrdenPreparacionEnt>();
+            List<OrdenDePreparacionConsultas> ordenesEncontradas = new List<OrdenDePreparacionConsultas>();
 
             var todasLasOrdenes = modelo.ObtenerTodasLasOrdenes();
 
@@ -100,11 +100,9 @@ namespace Pampazon.ListarOrdenes
                      !string.IsNullOrEmpty(PrioridadCMB.Text) ||
                      (FechaInicioDTP.Value.Date != DateTime.Today || FechaFinDTP.Value.Date != DateTime.Today))
             {
-                // Si no hay filtros en cliente, buscar todas las órdenes y aplicar los filtros adicionales
                 ordenesEncontradas = todasLasOrdenes.ToList();
             }
 
-            // Obtener los valores de los controles del formulario para aplicar los filtros
             string estadoSeleccionado = EstadoCMB.Text;
             string prioridadSeleccionada = PrioridadCMB.Text;
             DateTime fechaInicio = FechaInicioDTP.Value.Date;
@@ -129,7 +127,7 @@ namespace Pampazon.ListarOrdenes
             }
         }
 
-        private void CargarOrdenesEnListView(List<OrdenPreparacionEnt> ordenes)
+        private void CargarOrdenesEnListView(List<OrdenDePreparacionConsultas> ordenes)
         {
             OrdenesLTV.Items.Clear();
 
@@ -194,7 +192,7 @@ namespace Pampazon.ListarOrdenes
                 foreach (var producto in productos)
                 {
                     var item = new ListViewItem(producto.SKU); 
-                    item.SubItems.Add(producto.Nombre);
+                    item.SubItems.Add(producto.NombreProducto);
                     item.SubItems.Add(producto.Cantidad.ToString());
                     ProductoLTV.Items.Add(item);
                 }

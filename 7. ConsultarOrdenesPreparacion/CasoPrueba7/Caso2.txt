@@ -1,28 +1,27 @@
-﻿- Botón: "Consultar Orden Preparación"
-- ID Cliente: vacio 
-- Botón: “Buscar Orden”
-- Mensaje : "No se encontraron ordenes con los filtrados aplicados "
-- Botón: Aceptar
-- Codigo cliente: 1
-Boton: ”Buscar Orden”
-- Ordenes encontradas
-1         8/11/2024        Preparada           Alta
-2         9/11/2024         Preparada          Media
+﻿-Validaciones
 
+- Botón: "Consultar Orden Preparación"
+
+- ID Cliente: vacio }
+
+- Botón: “Buscar Orden”
+
+- Mensaje : "No se encontraron ordenes con los filtrados aplicados "
+
+- Botón: Aceptar
 
 - Razon Social Cliente: “ZapatillasURL”
+
 Boton: “ Buscar Orden”
+
 - Mensaje: "No se encontraron ordenes con los filtrados aplicados."
-- Razon Social Cliente: “Camisas SRL”
-Boton: “ Buscar Orden”
-Ordenes Encontradas
-3          8/11/2024              Preparada             Baja
-4          6/11/2024           	Preparada        	Prioridad
-Cuit: 30-12345678-9
+
+Cuit: 30-123456754
+
 Boton:”Buscar Orden”
-Ordenes Encontradas
-1          10/11/2024           Preparada   	  Alta
-2          10/11/2024           Preparada          Media
+
+- Mensaje: "No se encontraron ordenes con los filtrados aplicados."
  
 Cerrar el sistema
+
  

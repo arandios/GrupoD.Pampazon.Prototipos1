@@ -10,6 +10,8 @@
 
 - ID Cliente: asdasd
 
+- Botón: “Buscar Productos”
+
 - Mensaje "Ingrese un numero para buscar ID cliente"
 
 - Botón: “Aceptar”
@@ -24,11 +26,15 @@
 
 - Razón social: MessiFc
 
+- Botón: “Buscar Productos”
+
 - Mensaje: "Razon social MessiFc no existe"
 
 - Botón: Aceptar
 
 - Codigo cliente: 1
+
+- Botón: “Buscar Productos”
 
 - Productos en Depósito: 
 	SPROD-00123  -  Aceite sintético 5W-30  -  40
@@ -53,11 +59,11 @@
 
 - Botón: "Agregar Productos a la orden"
 
-- Mensaje: “Ingrese una cantidad a retirar”
+- Mensaje: “Seleccione un Producto”
 
 - Cantidad a Retirar: 10000
 
-- Mensaje: "Cantidad a retirar no puede ser mayor a la cantidad depositada"
+- Mensaje: "Cantidad a retirar no puede ser mayor a la cantidad disponible"
 
 - Botón: “Aceptar”
 
@@ -73,26 +79,21 @@
 
 - Orden: PROD-00123  -  20
 
-- Fecha a Retirar: sin seleccionar
-
 - Botón: "Generar Orden Preparación"
 
-- Mensaje: "Seleccione una fecha mayor a la actual"
+- Mensaje: "Seleccione una fecha de Retiro mayor a la actual"
 
 - Botón: Aceptar
 
 - Fecha a Retirar:  22/12/2024
-
-- Horario a Retirar: vacío
 
 - Botón: "Generar Orden Preparación"
 
 -Mensaje: "Seleccione un horario de Retiro. Un valor entre el 0 y el 24".
 
 - Botón: Aceptar
-- Horario a Retirar: 17
 
-- Prioridad: sin seleccionar 
+- Horario a Retirar: 17
 
 - Botón: "Generar Orden Preparación"
 
@@ -101,8 +102,6 @@
 - Botón: “Aceptar”
 
 - Prioridad: media
-
-- Dni Transportista: vacío
 
 - Botón: "Generar Orden Preparación"
 
@@ -116,7 +115,7 @@
 
 - Mensaje: "Seleccione un transportista por DNI o por Nombre"
 
-- Dni Transportista: 87654321
+- Dni Transportista: 12345678
 
 - Nombre Transportista: Valentina Rojas
 

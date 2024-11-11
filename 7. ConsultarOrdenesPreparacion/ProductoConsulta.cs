@@ -8,15 +8,14 @@ namespace Pampazon._7._ConsultarOrdenesPreparacion
 {
     internal class ProductoConsulta
     {
-        public string SKU { get; set; } = string.Empty;
-        public string Nombre { get; set; } = string.Empty;
+        public string SKU { get; set; }
+        public string NombreProducto { get; set; }
         public int Cantidad { get; set; }
-        public List<UbicacionConsultaDetalle> Detalles { get; } = new();
 
-        public ProductoConsulta(string sku, string nombre, int cantidad)
+        public ProductoConsulta(string sku, string nombreProducto, int cantidad)
         {
             SKU = sku;
-            Nombre = nombre;
+            NombreProducto = nombreProducto;
             Cantidad = cantidad;
         }
     }
