@@ -91,16 +91,7 @@ namespace Pampazon.BuscarProductosEnDepositos
                 .Select(id => OrdenPreparacionAlmacen.OrdenesPreparacion.FirstOrDefault(op => op.IdOrdenPreparacion == id))
                 .Where(op => op != null)
                 .ToList();
-
-            // Cambiar el estado de las órdenes de preparación a PROCESADA
            
-            /*
-            foreach (var ordenPreparacion in ordenesPreparacion)
-            {
-                ordenPreparacion.EstadoOrdenPreparacion = EstadoOrdenPreparacionEnum.Procesada;
-            }
-            */
-
             // Un diccionario SKU / Cantidad.
             var cantReqXProducto = new Dictionary<string, int>();
             foreach (var ordenPrep in ordenesPreparacion)
@@ -150,6 +141,13 @@ namespace Pampazon.BuscarProductosEnDepositos
                 }
 
                 resultado.Add(productoResultado);
+
+                //OrdenDePreparacion pasa a estado PROCESADA
+                foreach (var op in ordenesPreparacion)
+                {
+                    Almacenes.OrdenPreparacionAlmacen.cambiarEstado(op.IdOrdenPreparacion, EstadoOrdenPreparacionEnum.Procesada);
+
+                }
             }
             return resultado;
         }
@@ -223,5 +221,7 @@ namespace Pampazon.BuscarProductosEnDepositos
             }
             return resultado;
         }*/
+
+
     }
 }
