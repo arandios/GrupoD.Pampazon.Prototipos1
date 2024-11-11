@@ -78,7 +78,14 @@ namespace Pampazon.OrdenSeleccion
             OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeleccion);
 
             // Grabar la lista actualizada en el archivo JSON
-            //OrdenDeSeleccionAlmacen.Grabar(); TODO: Grabar deberia estar en el almacen?
+            OrdenDeSeleccionAlmacen.Grabar(); //TODO: Grabar deberia estar en el almacen?
+
+            //Cambiar estado Orden de Preparacion
+            //TODO VERIFICAR EN JSON
+            foreach (var op in OPseleccionadas)
+            {
+                OrdenPreparacionAlmacen.cambiarEstado(int.Parse(op.IDOrdenPreparacion), EstadoOrdenPreparacionEnum.Procesamiento);
+            }
         }
 
 

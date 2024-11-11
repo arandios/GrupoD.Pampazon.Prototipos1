@@ -283,7 +283,7 @@ namespace Pampazon.OrdenSeleccion
                 //IDOrdenSeleccion = Guid.NewGuid().ToString(), // Generar un ID único para la orden de selección
                 FechaEmision = DateTime.Now,
                 OrdenesPreparacion = new List<OrdenPreparacion>(), //Es la lista que hay que pasar al modelo.
-                EstadoOrdenDeSeleccion = "Nueva", // Estado inicial de la orden de selección
+                EstadoOrdenDeSeleccion = "Pendiente", // Estado inicial de la orden de selección
                 FechaEstados = DateTime.Now
             };
 

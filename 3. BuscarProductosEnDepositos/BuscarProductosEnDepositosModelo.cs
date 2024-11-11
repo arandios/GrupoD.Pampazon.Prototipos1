@@ -32,11 +32,17 @@ namespace Pampazon.BuscarProductosEnDepositos
                 }).ToList();
         }
 
-        //TODO: La firma del metodo, no debe devolver ENT. 
-        public List<OrdenDeSeleccionEnt> ObtenerOrdenesDeSeleccion()
+        //Antes devolvia List<OrdenSeleccionENT>
+        public List<int> ObtenerOrdenesDeSeleccion()
         {
-            return OrdenesDeSeleccion.Where(o => o.EstadoOrden == EstadoOrdenSeleccionEnum.Pendiente).ToList();
+            // Obtener los IDs de las órdenes de selección con estado "Pendiente"
+            return OrdenesDeSeleccion
+                .Where(o => o.EstadoOrden == EstadoOrdenSeleccionEnum.Pendiente)
+                .Select(o => o.IdOrdenSeleccion)
+                .ToList();
         }
+
+
 
         // Método para confirmar la orden de selección
         public void ConfirmarOrdenSeleccion(int idOrdenSeleccion)
@@ -66,11 +72,21 @@ namespace Pampazon.BuscarProductosEnDepositos
         public void CargarOrdenesSeleccionEnComboBox(ComboBox comboBox)
         {
             comboBox.Items.Clear();
-            var ordenes = ObtenerOrdenesDeSeleccion();
+            //var ordenes = ObtenerOrdenesDeSeleccion();
+            List<int> ordenes = ObtenerOrdenesDeSeleccion();
+
+            foreach (var orden in ordenes)
+            {
+                comboBox.Items.Add(orden);
+            }
+
+
+            /*
             foreach (var orden in ordenes)
             {
                 comboBox.Items.Add(orden.IdOrdenSeleccion);
             }
+            */
 
             // Seleccionar la primera orden de selección si hay alguna
             if (comboBox.Items.Count > 0)
