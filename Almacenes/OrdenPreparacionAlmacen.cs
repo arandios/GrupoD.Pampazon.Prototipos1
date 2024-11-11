@@ -1,4 +1,5 @@
-﻿using Pampazon.BuscarProductosEnDepositos;
+﻿using Pampazon._3._BuscarProductosEnDepositos;
+using Pampazon.BuscarProductosEnDepositos;
 using Pampazon.Entidades;
 using Pampazon.OrdenSeleccion;
 using System;
@@ -46,6 +47,8 @@ namespace Pampazon.Almacenes
         {
             var datos = JsonSerializer.Serialize(ordenesPreparacion);
             //MessageBox.Show("Se ejecuto metodo Agregar en el Grabar");
+
+            //                        OrdenesDePreparacion.json
             File.WriteAllText(@"Datos\OrdenesDePreparacion.json", datos);
         }
 
@@ -53,6 +56,7 @@ namespace Pampazon.Almacenes
         {
             if (File.Exists(@"Datos\OrdenesDePreparacion.json"))
             {
+                //                                   OrdenesDePreparacion.json
                 var datos = File.ReadAllText(@"Datos\OrdenesDePreparacion.json");
                 ordenesPreparacion = JsonSerializer.Deserialize<List<OrdenPreparacionEnt>>(datos)!;
             }
