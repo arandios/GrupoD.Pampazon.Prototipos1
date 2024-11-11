@@ -8,7 +8,7 @@ namespace Pampazon.Entidades
 {
     public class OrdenPreparacionDetalle
     {
-        public string SKU { get; set; }
-        public int Cantidad { get; set; }
+        public  string SKU { get; set; }
+        public  int Cantidad { get; set; }
     }
 }
