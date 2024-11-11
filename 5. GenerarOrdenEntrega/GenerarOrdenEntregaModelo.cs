@@ -23,6 +23,14 @@ namespace Pampazon._5._GenerarOrdenEntrega
                 .Select(o => new OrdenPreparacion(o.IdOrdenPreparacion.ToString(), o.FechaRetiro))
                 .ToList();
 
+
+            /*
+            // Cambiar estado de las órdenes de preparación a Lista -- TODO: Verificar cambio de estado. 
+            foreach (var ordenPreparacion in ordenesPreparacion)
+            {
+            ordenPreparacion.Estado = (EstadoOrdenPreparacionEnum)PosiblesEstadosOrdenesPreparacion_paraBuscarProductos.Lista;
+            }
+            */
         }
     }
 }

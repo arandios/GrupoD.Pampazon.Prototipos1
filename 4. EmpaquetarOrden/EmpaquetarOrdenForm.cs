@@ -42,8 +42,8 @@ namespace Pampazon._4._EmpaquetarOrden
                 {
                     // Crear un nuevo ítem para cada producto en la orden
                     ListViewItem item = new ListViewItem(producto.SKUProducto); // Muestra SKUProducto
-                    item.SubItems.Add(producto.DescripcionProducto);  // Muestra la descripción del producto
-                    item.SubItems.Add(producto.Cantidad.ToString());  // Muestra la cantidad
+                    item.SubItems.Add(producto.DescripcionProducto);  //  descripción del producto
+                    item.SubItems.Add(producto.Cantidad.ToString());  //cantidad
 
                     // Agregar el ítem al ListView
                     OrdenesParaPrepararLST.Items.Add(item);
@@ -51,7 +51,7 @@ namespace Pampazon._4._EmpaquetarOrden
             }
             else
             {
-                // Mostrar mensaje cuando no haya más órdenes para procesar
+                // Mostrar mensaje cuando no haya más ordenes para procesar
                 MessageBox.Show("No hay más productos para empaquetar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
