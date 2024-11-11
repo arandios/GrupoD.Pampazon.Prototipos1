@@ -503,5 +503,16 @@
         "Stock": 30
       }
     ]
+  },
+  {
+    "SKU": "PROD-00456",
+    "IdCliente": 1,
+    "NombreProducto": "Arroz inflado",
+    "Detalle": [
+      {
+        "IdUbicacion": "99-29-39",
+        "Stock": 30
+      }
+    ]
   }
 ]

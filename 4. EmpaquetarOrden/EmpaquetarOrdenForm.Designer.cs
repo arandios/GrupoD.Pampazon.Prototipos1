@@ -41,11 +41,11 @@
             // OrdenesGRP
             // 
             OrdenesGRP.Controls.Add(OrdenesParaPrepararLST);
-            OrdenesGRP.Location = new Point(33, 18);
-            OrdenesGRP.Margin = new Padding(2);
+            OrdenesGRP.Location = new Point(38, 24);
+            OrdenesGRP.Margin = new Padding(2, 3, 2, 3);
             OrdenesGRP.Name = "OrdenesGRP";
-            OrdenesGRP.Padding = new Padding(2);
-            OrdenesGRP.Size = new Size(764, 625);
+            OrdenesGRP.Padding = new Padding(2, 3, 2, 3);
+            OrdenesGRP.Size = new Size(873, 833);
             OrdenesGRP.TabIndex = 0;
             OrdenesGRP.TabStop = false;
             OrdenesGRP.Text = "Detalle productos a empaquetar";
@@ -53,13 +53,14 @@
             // OrdenesParaPrepararLST
             // 
             OrdenesParaPrepararLST.Columns.AddRange(new ColumnHeader[] { SKUProductoColumna, ProductoColumna, CantidadColumna });
-            OrdenesParaPrepararLST.Location = new Point(24, 26);
-            OrdenesParaPrepararLST.Margin = new Padding(2);
+            OrdenesParaPrepararLST.Location = new Point(27, 35);
+            OrdenesParaPrepararLST.Margin = new Padding(2, 3, 2, 3);
             OrdenesParaPrepararLST.Name = "OrdenesParaPrepararLST";
-            OrdenesParaPrepararLST.Size = new Size(702, 588);
+            OrdenesParaPrepararLST.Size = new Size(802, 783);
             OrdenesParaPrepararLST.TabIndex = 0;
             OrdenesParaPrepararLST.UseCompatibleStateImageBehavior = false;
             OrdenesParaPrepararLST.View = View.Details;
+            OrdenesParaPrepararLST.SelectedIndexChanged += OrdenesParaPrepararLST_SelectedIndexChanged;
             // 
             // SKUProductoColumna
             // 
@@ -80,10 +81,10 @@
             // 
             ConfirmarBTN.BackColor = Color.FromArgb(192, 255, 192);
             ConfirmarBTN.ForeColor = Color.Black;
-            ConfirmarBTN.Location = new Point(315, 656);
-            ConfirmarBTN.Margin = new Padding(2);
+            ConfirmarBTN.Location = new Point(360, 875);
+            ConfirmarBTN.Margin = new Padding(2, 3, 2, 3);
             ConfirmarBTN.Name = "ConfirmarBTN";
-            ConfirmarBTN.Size = new Size(245, 40);
+            ConfirmarBTN.Size = new Size(280, 53);
             ConfirmarBTN.TabIndex = 1;
             ConfirmarBTN.Text = "&Confirmar orden como preparada";
             ConfirmarBTN.UseVisualStyleBackColor = false;
@@ -91,10 +92,10 @@
             // 
             // SalirBTN
             // 
-            SalirBTN.Location = new Point(572, 656);
-            SalirBTN.Margin = new Padding(2);
+            SalirBTN.Location = new Point(654, 875);
+            SalirBTN.Margin = new Padding(2, 3, 2, 3);
             SalirBTN.Name = "SalirBTN";
-            SalirBTN.Size = new Size(187, 40);
+            SalirBTN.Size = new Size(214, 53);
             SalirBTN.TabIndex = 2;
             SalirBTN.Text = "&Salir";
             SalirBTN.UseVisualStyleBackColor = true;
@@ -102,14 +103,14 @@
             // 
             // EmpaquetarOrdenForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(859, 715);
+            ClientSize = new Size(982, 953);
             Controls.Add(SalirBTN);
             Controls.Add(ConfirmarBTN);
             Controls.Add(OrdenesGRP);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "EmpaquetarOrdenForm";
             Text = "Empaquetar Ordenes de Preparación";
             OrdenesGRP.ResumeLayout(false);
