@@ -90,11 +90,34 @@ namespace Pampazon.ConsultarOrdenes
                 .ToList();
         }
 
-        public List<OrdenDePreparacionConsultas> ObtenerTodasLasOrdenes()
+        // Método para buscar órdenes
+        public List<OrdenDePreparacionConsultas> BuscarOrdenes(string codigoCliente, string razonSocial, string cuit, string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
         {
-            return ordenesPreparacion;
-        }
+            List<OrdenDePreparacionConsultas> ordenesEncontradas = ordenesPreparacion;
 
+            if (!string.IsNullOrEmpty(codigoCliente))
+            {
+                if (int.TryParse(codigoCliente, out int codigo))
+                {
+                    ordenesEncontradas = ordenesEncontradas.Where(o => o.IdCliente == codigo).ToList();
+                }
+            }
+            else if (!string.IsNullOrEmpty(razonSocial))
+            {
+                ordenesEncontradas = ObtenerOrdenesPorRazonSocial(razonSocial);
+            }
+            else if (!string.IsNullOrEmpty(cuit))
+            {
+                ordenesEncontradas = ObtenerOrdenesPorCuit(cuit);
+            }
+
+            if (ordenesEncontradas.Any())
+            {
+                FiltrarPorEstadoPrioridadYFechas(ref ordenesEncontradas, estadoSeleccionado, prioridadSeleccionada, fechaInicio, fechaFin);
+            }
+
+            return ordenesEncontradas;
+        }
       
         // Método para filtrar las órdenes por estado, prioridad y fechas
         public void FiltrarPorEstadoPrioridadYFechas(ref List<OrdenDePreparacionConsultas> ordenesEncontradas,
@@ -121,39 +144,5 @@ namespace Pampazon.ConsultarOrdenes
                 ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision <= fechaFin.AddDays(1).AddTicks(-1)).ToList();
             }
         }
-
-
-        // Método para aplicar filtros adicionales
     }
-
-
-
-
 }
-/* public List<OrdenDePreparacionConsultas> BuscarOrdenes(string codigoCliente, string razonSocial, string cuit, string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
-       {
-           List<OrdenDePreparacionConsultas> ordenesEncontradas = ordenesPreparacion;
-
-           if (!string.IsNullOrEmpty(codigoCliente))
-           {
-               if (int.TryParse(codigoCliente, out int codigo))
-               {
-                   ordenesEncontradas = ordenesEncontradas.Where(o => o.IdCliente == codigo).ToList();
-               }
-           }
-           else if (!string.IsNullOrEmpty(razonSocial))
-           {
-               ordenesEncontradas = ObtenerOrdenesPorRazonSocial(razonSocial);
-           }
-           else if (!string.IsNullOrEmpty(cuit))
-           {
-               ordenesEncontradas = ObtenerOrdenesPorCuit(cuit);
-           }
-
-           if (ordenesEncontradas.Any())
-           {
-               FiltrarPorEstadoPrioridadYFechas(ref ordenesEncontradas, estadoSeleccionado, prioridadSeleccionada, fechaInicio, fechaFin);
-           }
-
-           return ordenesEncontradas;
-       }*/
