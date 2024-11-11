@@ -28,7 +28,7 @@ public class GenerarRemitoModelo
     internal static List<OrdenesDePreparacionRemito> ObtenerOrdenes()
     {
         return OrdenPreparacionAlmacen.OrdenesPreparacion
-            .Where(o => (EstadoOrdenPreparacionRemito)o.Estado == EstadoOrdenPreparacionRemito.Preparada)
+            .Where(o => (EstadoOrdenPreparacionRemito)o.Estado == EstadoOrdenPreparacionRemito.Lista)
             .Select(o => new OrdenesDePreparacionRemito(
                 o.IdOrdenPreparacion.ToString(),
                 o.DNITransportista,
@@ -84,7 +84,7 @@ public class GenerarRemitoModelo
         // Agregar las órdenes de preparación al remito
         nuevoRemito.OrdenesPreparacion.AddRange(ordenesSeleccionadas.Select(o => int.Parse(o.IdOrden)));
         // Cambiar el estado de las órdenes que se han utilizado en el remito
-        CambiarEstadoOrdenes(ordenesSeleccionadas, EstadoOrdenPreparacionRemito.Lista);
+        CambiarEstadoOrdenes(ordenesSeleccionadas, EstadoOrdenPreparacionRemito.Entregada);
 
         RemitoAlmacen.Agregar(nuevoRemito);
 
