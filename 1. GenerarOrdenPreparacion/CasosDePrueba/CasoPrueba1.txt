@@ -9,7 +9,7 @@ Caso 1:[Desde el menú del sistema] "Cargar Orden con un Producto"
 - Productos en Depósito: 
 	PROD-00123  -  Aceite sintético 5W-30  -  38
 	PROD-34523  -  Termo  -  34
-    PROD-0456  -  ARROZ INFLADO  -  20
+    PROD-00456  -  ARROZ INFLADO  -  20
 
 - SKU Producto: “PROD-34523”
 
