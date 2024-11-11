@@ -130,9 +130,12 @@ namespace Pampazon.BuscarProductosEnDepositos
                     ProductosLST.Items.Add(item);
                 }
             }
+
+
+ 
+
+
         }
-
-
 
     }
 }

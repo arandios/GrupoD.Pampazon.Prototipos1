@@ -169,9 +169,6 @@ namespace Pampazon.OrdenSeleccion
             {
                 OrdenesDePrepracionAOrdenSeleccionLST.Items.Remove(item);
             }
-
-            // Llamar al método para agrupar y mostrar los productos y ubicaciones
-            //AgruparOrdenesDePreparacionPendientes();
         }
 
 
@@ -195,9 +192,6 @@ namespace Pampazon.OrdenSeleccion
                     var ordenPreparacion = (OrdenPreparacion)item.Tag;
                     ordenesDisponibles.Remove(ordenPreparacion);
                 }
-
-                // Actualizar la lista OrdenesDePreparacionPendientesProductoUbicacionListView
-                //AgruparOrdenesDePreparacionPendientes();
             }
             else
             {
@@ -315,6 +309,16 @@ namespace Pampazon.OrdenSeleccion
 
             // Mostrar mensaje de confirmación
             MessageBox.Show($"Se ha creado la orden de selección número {ordenSeleccion.IDOrdenSeleccion} exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            //TODO: PASAR AL MODELO. 
+            //Cambiar estado de las ordenes  de preparacion a PROCESAMIENTO. TODO: VERIFICAR
+            /*
+            foreach (var orden in ordenSeleccion.OrdenesPreparacion)
+            {
+                orden.EstadoOrdenPreparacion = PosiblesEstadosOrdenesGenerales.Procesamiento;
+            }
+            */
 
         }
 

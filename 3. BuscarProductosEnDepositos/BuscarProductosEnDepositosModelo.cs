@@ -86,6 +86,14 @@ namespace Pampazon.BuscarProductosEnDepositos
                     .Select(id => OrdenPreparacionAlmacen.OrdenesPreparacion.First(op => op.IdOrdenPreparacion == id))
                     .ToList();
 
+                /*
+                // Cambiar estado de las órdenes de preparación a PROCESADA -- TODO: Verificar cambio de estado. 
+                foreach (var ordenPreparacion in ordenesPreparacion)
+                {
+                    ordenPreparacion.Estado = (EstadoOrdenPreparacionEnum)PosiblesEstadosOrdenesPreparacion_paraBuscarProductos.Procesamiento;
+                }
+                */
+
                 return ordenesPreparacion
                     .SelectMany(op => op.Detalle)
                     .GroupBy(detalle => new { detalle.SKU, ordenesPreparacion.First().IdCliente })
@@ -105,11 +113,12 @@ namespace Pampazon.BuscarProductosEnDepositos
                             }).ToList()
                     })
                     .ToList();
+
             }
             return new List<ProductoEnt>();
         }
 
-
+        
 
 
 
