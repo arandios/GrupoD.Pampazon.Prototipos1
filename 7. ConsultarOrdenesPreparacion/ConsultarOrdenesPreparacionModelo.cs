@@ -17,10 +17,6 @@ namespace Pampazon.ConsultarOrdenes
     {
         private List<OrdenDePreparacionConsultas> ordenesPreparacion;
 
-
-
-
-
         public ConsultarOrdenesPreparacionModelo()
         {
             // Inicializar 'ordenesPreparacion' con los datos de 'OrdenPreparacionAlmacen'
@@ -133,13 +129,13 @@ namespace Pampazon.ConsultarOrdenes
             // Filtrar por Fecha de Inicio
             if (fechaInicio != DateTime.Today)
             {
-                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision >= fechaInicio).ToList();
+                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision == fechaInicio).ToList();
             }
 
             // Filtrar por Fecha de Fin
             if (fechaFin != DateTime.Today)
             {
-                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision <= fechaFin).ToList();
+                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision == fechaFin).ToList();
             }
         }
 

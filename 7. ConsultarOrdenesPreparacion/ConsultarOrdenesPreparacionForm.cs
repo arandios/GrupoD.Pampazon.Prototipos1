@@ -100,11 +100,9 @@ namespace Pampazon.ListarOrdenes
                      !string.IsNullOrEmpty(PrioridadCMB.Text) ||
                      (FechaInicioDTP.Value.Date != DateTime.Today || FechaFinDTP.Value.Date != DateTime.Today))
             {
-                // Si no hay filtros en cliente, buscar todas las órdenes y aplicar los filtros adicionales
                 ordenesEncontradas = todasLasOrdenes.ToList();
             }
 
-            // Obtener los valores de los controles del formulario para aplicar los filtros
             string estadoSeleccionado = EstadoCMB.Text;
             string prioridadSeleccionada = PrioridadCMB.Text;
             DateTime fechaInicio = FechaInicioDTP.Value.Date;
