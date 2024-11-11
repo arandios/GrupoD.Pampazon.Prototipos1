@@ -20,6 +20,7 @@ namespace Pampazon.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(ordenesPreparacion);
+            //MessageBox.Show("Se ejecuto metodo Agregar en el Grabar");
             File.WriteAllText(@"Datos\OrdenesDePreparacion.json", datos);
         }
 

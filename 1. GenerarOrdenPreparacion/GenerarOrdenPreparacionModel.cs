@@ -287,8 +287,8 @@ namespace Pampazon.GenerarOrdenPreparacion
 
             // Fechas
             ordenEnt.FechaEmision = DateTime.Now;
-            ordenEnt.FechaRetiro = DateTime.Now;
-            ordenEnt.HoraRetiro = DateTime.Now;
+            ordenEnt.FechaRetiro = this.Orden.FechaDeEntrega;
+            ordenEnt.HoraRetiro = this.Orden.FechaDeEntrega;
 
 
             Almacenes.OrdenPreparacionAlmacen.Agregar(ordenEnt);

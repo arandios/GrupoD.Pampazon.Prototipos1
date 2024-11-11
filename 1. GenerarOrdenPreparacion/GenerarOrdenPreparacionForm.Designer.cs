@@ -505,6 +505,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(1004, 796);
             Controls.Add(SalirBTN);
             Controls.Add(OPMercaderiaGRP);
