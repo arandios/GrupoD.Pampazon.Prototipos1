@@ -70,8 +70,7 @@ namespace Pampazon.OrdenEntrega
                 Orden_EntregaLST.Items.Clear();
 
                 // Vuelve a cargar las órdenes de preparación desde el modelo para obtener las nuevas
-                modelo.CargarOrdenes();  // Esto asegura que el modelo se actualice con las nuevas órdenes
-                modelo.cambiarEstadoOP();
+               modelo.cambiarEstadoOP();
                modelo.CargarOrdenes(); // Refresca el ListView con las órdenes actualizadas
             }
         }

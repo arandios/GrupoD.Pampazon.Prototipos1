@@ -38,9 +38,6 @@ namespace Pampazon._5._GenerarOrdenEntrega
         {
             foreach(var op in ordenesPreparacion)
             {
-                //EstadoOrdenPreparacionEnum.Pendiente;
-                //Almacenes.OrdenPreparacionAlmacen
-
                 Almacenes.OrdenPreparacionAlmacen.cambiarEstado(int.Parse(op.IdOrdenPreparacion), EstadoOrdenPreparacionEnum.Lista);
 
             }
