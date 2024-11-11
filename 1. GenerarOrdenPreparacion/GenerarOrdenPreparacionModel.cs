@@ -256,7 +256,7 @@ namespace Pampazon.GenerarOrdenPreparacion
             } else { ordenEnt.IdOrdenPreparacion = 1; }
 
             // IDCliente y DNI transportista
-            ordenEnt.IdCliente = this.Orden.IDCliente;
+            ordenEnt.IdCliente = this.Orden.IDCliente; // 2
             ordenEnt.DNITransportista = this.Orden.DNITransportista; // 3
 
             //Cargo Productos
@@ -264,8 +264,8 @@ namespace Pampazon.GenerarOrdenPreparacion
             {
                 var productoEnt = new OrdenPreparacionDetalle();
                 productoEnt.SKU = prod.Id;
-
                 productoEnt.Cantidad = prod.Stock;
+
                 ordenEnt.Detalle.Add(productoEnt);   // 4
             }
 
@@ -281,7 +281,11 @@ namespace Pampazon.GenerarOrdenPreparacion
             } else if(this.Orden.Prioridad.ToUpper() == "BAJA")
             {
                 ordenEnt.Prioridad = PrioridadEnum.Baja;
-            } else {  ordenEnt.Prioridad = PrioridadEnum.Alta; }  // 5
+            }
+            else if  (this.Orden.Prioridad.ToUpper() == "ALTA") {
+                ordenEnt.Prioridad = PrioridadEnum.Alta;
+            }
+            else {  ordenEnt.Prioridad = PrioridadEnum.Media; }  // 5
 
             ordenEnt.Estado = EstadoOrdenPreparacionEnum.Pendiente; // 6
 
