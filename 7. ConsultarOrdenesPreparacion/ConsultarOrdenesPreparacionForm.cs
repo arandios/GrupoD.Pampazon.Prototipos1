@@ -201,34 +201,25 @@ namespace Pampazon.ListarOrdenes
                 var itemSeleccionado = OrdenesLTV.SelectedItems[0];
                 int idOrdenSeleccionada = int.Parse(itemSeleccionado.SubItems[0].Text); // Asumiendo que IdOrden está en la primera columna
 
-                // Obtener la orden de preparación desde el modelo usando el IdOrden
-                var ordenSeleccionada = modelo.ObtenerOrdenPorId(idOrdenSeleccionada);
+                // Obtener los productos de la orden de preparación desde el modelo usando el IdOrden
+                var productos = modelo.ObtenerProductosPorOrdenId(idOrdenSeleccionada);
 
-                // Verificar que la orden no sea nula
-                if (ordenSeleccionada != null)
+                // Limpiar el ListView de productos
+                ProductoLTV.Items.Clear();
+
+                // Cargar los productos en el ListView
+                foreach (var producto in productos)
                 {
-                    // Limpiar el ListView de productos
-                    ProductoLTV.Items.Clear();
+                    var item = new ListViewItem(producto.SKU); // SKU_Columna
+                    item.SubItems.Add(producto.Nombre); // Producto_Columna
+                    item.SubItems.Add(producto.Cantidad.ToString()); // Cantidad_Columna
 
-                    // Cargar los productos en el ListView
-                    foreach (var producto in ordenSeleccionada.Detalle)
-                    {
-                        var item = new ListViewItem(producto.SKU); // SKU_Columna
-                        item.SubItems.Add(ProductoAlmacen.Productos.First(p => p.SKU == producto.SKU).NombreProducto); // Producto_Columna
-                        item.SubItems.Add(producto.Cantidad.ToString()); // Cantidad_Columna
-
-
-                        // Agregar el item al ListView de productos
-                        ProductoLTV.Items.Add(item);
-                    }
-                }
-                else
-                {
-                    // Manejar el caso donde no se encontró la orden
-                    MessageBox.Show("No se encontró la orden seleccionada.");
+                    // Agregar el item al ListView de productos
+                    ProductoLTV.Items.Add(item);
                 }
             }
         }
+
 
         private void OrdenesGRP_Enter(object sender, EventArgs e)
         {

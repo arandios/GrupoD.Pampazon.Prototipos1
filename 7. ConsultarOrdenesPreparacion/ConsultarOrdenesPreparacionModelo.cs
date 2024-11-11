@@ -42,6 +42,28 @@ namespace Pampazon.ConsultarOrdenes
                 })
                 .ToList();
         }
+        public List<ProductoConsulta> ObtenerProductosPorOrdenId(int idOrdenPreparacion)
+        {
+            var orden = ObtenerOrdenPorId(idOrdenPreparacion);
+            if (orden == null)
+            {
+                return new List<ProductoConsulta>();
+            }
+
+            var productosAlmacen = ProductoAlmacen.Productos;
+
+            return orden.Detalle.Select(detalle =>
+            {
+                var productoAlmacen = productosAlmacen.FirstOrDefault(p => p.SKU == detalle.SKU);
+                return new ProductoConsulta(
+                    detalle.SKU,
+                    productoAlmacen?.NombreProducto ?? "Desconocido",
+                    detalle.Cantidad
+                );
+            }).ToList();
+        }
+
+
 
         // Búsqueda por razón social (requiere cargar los clientes para obtener la razón social)
         public List<OrdenPreparacionEnt> ObtenerOrdenesPorRazonSocial(string razonSocial)
