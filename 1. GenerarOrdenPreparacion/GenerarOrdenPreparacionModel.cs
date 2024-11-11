@@ -44,7 +44,7 @@ namespace Pampazon.GenerarOrdenPreparacion
             {
                 var cliente = new Cliente();
                 cliente.IDCliente = clientesEnt.IdCliente;
-                cliente.Nombre = clientesEnt.RazonSocial;
+                cliente.RazonSocial = clientesEnt.RazonSocial;
                 foreach (var transportista in Almacenes.TransportistaAlmacen.Transportistas)
                 {
                     var trans = new Transportista();
