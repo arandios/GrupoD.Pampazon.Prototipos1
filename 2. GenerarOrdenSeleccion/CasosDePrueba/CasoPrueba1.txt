@@ -4,20 +4,31 @@
 
 - Seleccionar Fecha Minima: 06/11/2024
 - Seleccionar Fecha Maxima: 06/11/2024
+- Prioridad: Media
+
+- Boton: "Buscar orden de preparacion"
 
 - Órdenes de preparación en estado pendiente:
 	5  -  Grupo Epsilon  -  06/11/2024  -  Media
 
-- Seleccionar: Agropecuaria Gamma
+- Boton: "Borrar filtos"
 
-- Boton: “Agregar al Detalle de Selección”
+- Seleccionar Fecha Minima: 06/11/2024
+- Seleccionar Fecha Maxima: 06/11/2024
+- Prioridad: Alta
 
-- Mensaje: “Orden de Preparación Agregada al Detalle”
-
-- Botón: “Aceptar”
+- Boton: "Buscar orden de preparacion"
 
 - Detalle de Ordenes de preparación a Insertar:
 	6  -  Agropecuaria Gamma  -  06/11/2024  -  Alta
+
+- Seleccionar: Agropecuaria Gamma
+
+- Boton: "Agregar al detalle de la seleccion"
+
+Mensaje: "Orden de preparacion agregada al detalle"
+
+Boton: "aceptar"
 
 - Botón: “Generar Orden Selección”
 
