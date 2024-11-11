@@ -85,17 +85,14 @@ namespace Pampazon.ListarOrdenes
                     ordenesEncontradas = todasLasOrdenes.Where(o => o.IdCliente == codigoCliente).ToList();
                 }
             }
-            // Si no hay código de cliente, verificar si hay una razón social ingresada
             else if (!string.IsNullOrEmpty(RazonSocialTxt.Text))
             {
                 ordenesEncontradas = modelo.ObtenerOrdenesPorRazonSocial(RazonSocialTxt.Text);
             }
-            // Si no hay razón social, verificar si hay un CUIT ingresado
             else if (!string.IsNullOrEmpty(CuitTXT.Text))
             {
                 ordenesEncontradas = modelo.ObtenerOrdenesPorCuit(CuitTXT.Text);
             }
-            // Si no se ingresó ningún criterio, verificar si hay filtros adicionales seleccionados
             else if (!string.IsNullOrEmpty(EstadoCMB.Text) ||
                      !string.IsNullOrEmpty(PrioridadCMB.Text) ||
                      (FechaInicioDTP.Value.Date != DateTime.Today || FechaFinDTP.Value.Date != DateTime.Today))
@@ -108,13 +105,11 @@ namespace Pampazon.ListarOrdenes
             DateTime fechaInicio = FechaInicioDTP.Value.Date;
             DateTime fechaFin = FechaFinDTP.Value.Date;
 
-            // Aplicar filtros adicionales (Estado, Prioridad, Fechas) si hay órdenes encontradas
             if (ordenesEncontradas.Any())
             {
                 modelo.FiltrarPorEstadoPrioridadYFechas(ref ordenesEncontradas, estadoSeleccionado, prioridadSeleccionada, fechaInicio, fechaFin);
             }
 
-            // Verificar si después de todos los filtros aún no hay órdenes encontradas
             if (!ordenesEncontradas.Any())
             {
                 MessageBox.Show("No se encontraron órdenes con los filtros aplicados.");
