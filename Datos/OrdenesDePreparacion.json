@@ -61,7 +61,7 @@
   },
   {
     "IdOrdenPreparacion": 4,
-    "Prioridad": 3,
+    "Prioridad": 0,
     "IdCliente": 4,
     "Detalle": [
       {
@@ -121,7 +121,7 @@
   },
   {
     "IdOrdenPreparacion": 7,
-    "Prioridad": 3,
+    "Prioridad": 0,
     "IdCliente": 7,
     "Detalle": [
       {
@@ -181,7 +181,7 @@
   },
   {
     "IdOrdenPreparacion": 10,
-    "Prioridad": 3,
+    "Prioridad": 0,
     "IdCliente": 10,
     "Detalle": [
       {
@@ -241,7 +241,7 @@
   },
   {
     "IdOrdenPreparacion": 13,
-    "Prioridad": 3,
+    "Prioridad": 0,
     "IdCliente": 13,
     "Detalle": [
       {
@@ -301,7 +301,7 @@
   },
   {
     "IdOrdenPreparacion": 16,
-    "Prioridad": 3,
+    "Prioridad": 0,
     "IdCliente": 16,
     "Detalle": [
       {

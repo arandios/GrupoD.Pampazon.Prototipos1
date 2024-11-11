@@ -250,6 +250,8 @@ namespace Pampazon.GenerarOrdenPreparacion
             OrdenPreparacionEnt ordenEnt = new OrdenPreparacionEnt();
             if (Almacenes.OrdenPreparacionAlmacen.OrdenesPreparacion.LastOrDefault() != null)
             {
+                MessageBox.Show($"{Almacenes.OrdenPreparacionAlmacen.OrdenesPreparacion.LastOrDefault().IdOrdenPreparacion + 1 }");
+
                 ordenEnt.IdOrdenPreparacion = Almacenes.OrdenPreparacionAlmacen.OrdenesPreparacion.LastOrDefault().IdOrdenPreparacion + 1;
             }
             ordenEnt.IdCliente = this.Orden.IDCliente;
