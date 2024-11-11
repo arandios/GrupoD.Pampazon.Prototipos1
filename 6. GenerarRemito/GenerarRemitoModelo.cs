@@ -40,7 +40,6 @@ public class GenerarRemitoModelo
 
 
     // Métodos para el botón BUSCAR
-    // Para comprobar la validez del tipo de dato ingresado
     public static string ComprobarDni(int DNI)
     {
         if (DNI < 0)
@@ -81,14 +80,11 @@ public class GenerarRemitoModelo
             IdRemito = RemitoAlmacen.Remitos.Any() ? RemitoAlmacen.Remitos.Max(r => r.IdRemito) + 1 : 1,
         };
 
-        // Agregar las órdenes de preparación al remito
         nuevoRemito.OrdenesPreparacion.AddRange(ordenesSeleccionadas.Select(o => int.Parse(o.IdOrden)));
-        // Cambiar el estado de las órdenes que se han utilizado en el remito
         CambiarEstadoOrdenes(ordenesSeleccionadas, EstadoOrdenPreparacionRemito.Entregada);
 
         RemitoAlmacen.Agregar(nuevoRemito);
 
-        // Retornar el nuevo remito
         return nuevoRemito;
     }
 

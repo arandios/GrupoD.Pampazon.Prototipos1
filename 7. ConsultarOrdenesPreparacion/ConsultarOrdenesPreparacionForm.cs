@@ -23,10 +23,7 @@ namespace Pampazon.ListarOrdenes
         public ConsultarOrdenesForm()
         {
             InitializeComponent();
-            //modelo.InicializarDatos();
             OrdenesLTV.FullRowSelect = true;
-
-
         }
 
         private void CodigoClienteTxt_TextChanged(object sender, EventArgs e)
@@ -79,28 +76,23 @@ namespace Pampazon.ListarOrdenes
         {
             List<OrdenPreparacionEnt> ordenesEncontradas = new List<OrdenPreparacionEnt>();
 
-            // Obtener todas las órdenes primero
             var todasLasOrdenes = modelo.ObtenerTodasLasOrdenes();
 
-            // Verificar si hay un código de cliente ingresado
             if (!string.IsNullOrEmpty(CodigoClienteTxt.Text))
             {
                 if (int.TryParse(CodigoClienteTxt.Text, out int codigoCliente))
                 {
-                    // Filtrar las órdenes por el Código de Cliente
                     ordenesEncontradas = todasLasOrdenes.Where(o => o.IdCliente == codigoCliente).ToList();
                 }
             }
             // Si no hay código de cliente, verificar si hay una razón social ingresada
             else if (!string.IsNullOrEmpty(RazonSocialTxt.Text))
             {
-                // Obtener las órdenes por razón social utilizando el modelo
                 ordenesEncontradas = modelo.ObtenerOrdenesPorRazonSocial(RazonSocialTxt.Text);
             }
             // Si no hay razón social, verificar si hay un CUIT ingresado
             else if (!string.IsNullOrEmpty(CuitTXT.Text))
             {
-                // Obtener las órdenes por CUIT utilizando el modelo
                 ordenesEncontradas = modelo.ObtenerOrdenesPorCuit(CuitTXT.Text);
             }
             // Si no se ingresó ningún criterio, verificar si hay filtros adicionales seleccionados
@@ -133,27 +125,24 @@ namespace Pampazon.ListarOrdenes
             }
             else
             {
-                // Cargar las órdenes en el ListView
                 CargarOrdenesEnListView(ordenesEncontradas);
             }
         }
 
         private void CargarOrdenesEnListView(List<OrdenPreparacionEnt> ordenes)
         {
-            // Limpiar ListView antes de agregar nuevas órdenes
             OrdenesLTV.Items.Clear();
 
             foreach (var orden in ordenes)
             {
                 ListViewItem item = new ListViewItem(orden.IdOrdenPreparacion.ToString());
                 item.SubItems.Add(orden.FechaEmision.ToShortDateString());
-                item.SubItems.Add(orden.Estado.ToString()); // Convertimos el enum a string
-                item.SubItems.Add(orden.Prioridad.ToString()); // Convertimos el enum a string
+                item.SubItems.Add(orden.Estado.ToString()); 
+                item.SubItems.Add(orden.Prioridad.ToString());
 
                 OrdenesLTV.Items.Add(item);
             }
 
-            // Autoseleccionar el primer elemento si hay elementos en el ListView
             if (OrdenesLTV.Items.Count > 0)
             {
                 OrdenesLTV.Items[0].Selected = true;
@@ -184,7 +173,6 @@ namespace Pampazon.ListarOrdenes
                                          MessageBoxButtons.YesNo,
                                          MessageBoxIcon.Question);
 
-            // Si el usuario elige No, salir del m�todo
             if (result == DialogResult.No)
             {
                 return;
@@ -194,27 +182,20 @@ namespace Pampazon.ListarOrdenes
 
         private void OrdenesLTV_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            // Verificar si hay una orden seleccionada
             if (OrdenesLTV.SelectedItems.Count > 0)
             {
-                // Obtener el IdOrden de la fila seleccionada
                 var itemSeleccionado = OrdenesLTV.SelectedItems[0];
-                int idOrdenSeleccionada = int.Parse(itemSeleccionado.SubItems[0].Text); // Asumiendo que IdOrden está en la primera columna
+                int idOrdenSeleccionada = int.Parse(itemSeleccionado.SubItems[0].Text); 
 
-                // Obtener los productos de la orden de preparación desde el modelo usando el IdOrden
                 var productos = modelo.ObtenerProductosPorOrdenId(idOrdenSeleccionada);
 
-                // Limpiar el ListView de productos
                 ProductoLTV.Items.Clear();
 
-                // Cargar los productos en el ListView
                 foreach (var producto in productos)
                 {
-                    var item = new ListViewItem(producto.SKU); // SKU_Columna
-                    item.SubItems.Add(producto.Nombre); // Producto_Columna
-                    item.SubItems.Add(producto.Cantidad.ToString()); // Cantidad_Columna
-
-                    // Agregar el item al ListView de productos
+                    var item = new ListViewItem(producto.SKU); 
+                    item.SubItems.Add(producto.Nombre);
+                    item.SubItems.Add(producto.Cantidad.ToString());
                     ProductoLTV.Items.Add(item);
                 }
             }

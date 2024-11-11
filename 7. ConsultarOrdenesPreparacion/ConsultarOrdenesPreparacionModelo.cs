@@ -65,7 +65,7 @@ namespace Pampazon.ConsultarOrdenes
 
 
 
-        // Búsqueda por razón social (requiere cargar los clientes para obtener la razón social)
+        // Búsqueda por razón social 
         public List<OrdenPreparacionEnt> ObtenerOrdenesPorRazonSocial(string razonSocial)
         {
             var clientes = ClienteAlmacen.Clientes;
@@ -79,7 +79,7 @@ namespace Pampazon.ConsultarOrdenes
                 .ToList();
         }
 
-        // Búsqueda por CUIT (requiere cargar los clientes para obtener el CUIT)
+        // Búsqueda por CUIT
         public List<OrdenPreparacionEnt> ObtenerOrdenesPorCuit(string cuit)
         {
             var clientes = ClienteAlmacen.Clientes;
