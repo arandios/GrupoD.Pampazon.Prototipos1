@@ -138,41 +138,6 @@ namespace Pampazon.ListarOrdenes
             }
         }
 
-
-
-
-        // Método auxiliar para aplicar los filtros de Estado, Prioridad y Fechas
-        /* private void FiltrarPorEstadoPrioridadYFechas(ref List<OrdenDePreparacion> ordenes)
-         {
-             // Filtrar por Estado (si se seleccionó uno)
-             if (!string.IsNullOrEmpty(EstadoCMB.Text))
-             {
-                 ordenes = ordenes
-                     .Where(o => o.Estado.Equals(EstadoCMB.Text, StringComparison.OrdinalIgnoreCase))
-                     .ToList();
-             }
-
-             // Filtrar por Prioridad (si se seleccionó una)
-             if (!string.IsNullOrEmpty(PrioridadCMB.Text))
-             {
-                 ordenes = ordenes
-                     .Where(o => o.Prioridad.Equals(PrioridadCMB.Text, StringComparison.OrdinalIgnoreCase))
-                     .ToList();
-             }
-
-             // Verificar si las fechas de los DateTimePickers son diferentes a la fecha predeterminada (hoy)
-             DateTime fechaInicioPredeterminada = DateTime.Today;
-             if (FechaInicioDTP.Value.Date != fechaInicioPredeterminada || FechaFinDTP.Value.Date != fechaInicioPredeterminada)
-             {
-                 DateTime fechaInicio = FechaInicioDTP.Value.Date;
-                 DateTime fechaFin = FechaFinDTP.Value.Date;
-
-                 // Filtrar por rango de fechas
-                 ordenes = ordenes
-                     .Where(o => o.Fecha.Date >= fechaInicio && o.Fecha.Date <= fechaFin)
-                     .ToList();
-             }
-         }*/
         private void CargarOrdenesEnListView(List<OrdenPreparacionEnt> ordenes)
         {
             // Limpiar ListView antes de agregar nuevas órdenes
