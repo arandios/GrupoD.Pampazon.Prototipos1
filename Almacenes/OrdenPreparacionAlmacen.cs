@@ -17,6 +17,31 @@ namespace Pampazon.Almacenes
         public static IReadOnlyCollection<OrdenPreparacionEnt> OrdenesPreparacion => ordenesPreparacion.AsReadOnly();
 
 
+        public static int totalProductoenOrdenes(int idCliente, string sku)
+        {
+            int total = 0;
+            foreach(var ordEnt in ordenesPreparacion)
+            {
+                if (idCliente == ordEnt.IdCliente)
+                {
+                    if( (ordEnt.Estado == EstadoOrdenPreparacionEnum.Pendiente ) | ( ordEnt.Estado == EstadoOrdenPreparacionEnum.Procesamiento ) )
+                    {
+                        foreach (var detalleEnt in ordEnt.Detalle)
+                        {
+                            if (sku == detalleEnt.SKU)
+                            {
+                                total = total + detalleEnt.Cantidad;
+
+                            }
+                        }
+
+                    }
+                }
+            }
+            return total;
+        }
+
+
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(ordenesPreparacion);

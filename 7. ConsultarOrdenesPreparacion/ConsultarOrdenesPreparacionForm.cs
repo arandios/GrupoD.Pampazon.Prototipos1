@@ -74,7 +74,7 @@ namespace Pampazon.ListarOrdenes
 
         private void BuscarOrdenes_Click(object sender, EventArgs e)
         {
-            List<OrdenPreparacionEnt> ordenesEncontradas = new List<OrdenPreparacionEnt>();
+            List<OrdenDePreparacionConsultas> ordenesEncontradas = new List<OrdenDePreparacionConsultas>();
 
             var todasLasOrdenes = modelo.ObtenerTodasLasOrdenes();
 
@@ -85,38 +85,31 @@ namespace Pampazon.ListarOrdenes
                     ordenesEncontradas = todasLasOrdenes.Where(o => o.IdCliente == codigoCliente).ToList();
                 }
             }
-            // Si no hay código de cliente, verificar si hay una razón social ingresada
             else if (!string.IsNullOrEmpty(RazonSocialTxt.Text))
             {
                 ordenesEncontradas = modelo.ObtenerOrdenesPorRazonSocial(RazonSocialTxt.Text);
             }
-            // Si no hay razón social, verificar si hay un CUIT ingresado
             else if (!string.IsNullOrEmpty(CuitTXT.Text))
             {
                 ordenesEncontradas = modelo.ObtenerOrdenesPorCuit(CuitTXT.Text);
             }
-            // Si no se ingresó ningún criterio, verificar si hay filtros adicionales seleccionados
             else if (!string.IsNullOrEmpty(EstadoCMB.Text) ||
                      !string.IsNullOrEmpty(PrioridadCMB.Text) ||
                      (FechaInicioDTP.Value.Date != DateTime.Today || FechaFinDTP.Value.Date != DateTime.Today))
             {
-                // Si no hay filtros en cliente, buscar todas las órdenes y aplicar los filtros adicionales
                 ordenesEncontradas = todasLasOrdenes.ToList();
             }
 
-            // Obtener los valores de los controles del formulario para aplicar los filtros
             string estadoSeleccionado = EstadoCMB.Text;
             string prioridadSeleccionada = PrioridadCMB.Text;
             DateTime fechaInicio = FechaInicioDTP.Value.Date;
             DateTime fechaFin = FechaFinDTP.Value.Date;
 
-            // Aplicar filtros adicionales (Estado, Prioridad, Fechas) si hay órdenes encontradas
             if (ordenesEncontradas.Any())
             {
                 modelo.FiltrarPorEstadoPrioridadYFechas(ref ordenesEncontradas, estadoSeleccionado, prioridadSeleccionada, fechaInicio, fechaFin);
             }
 
-            // Verificar si después de todos los filtros aún no hay órdenes encontradas
             if (!ordenesEncontradas.Any())
             {
                 MessageBox.Show("No se encontraron órdenes con los filtros aplicados.");
@@ -129,7 +122,7 @@ namespace Pampazon.ListarOrdenes
             }
         }
 
-        private void CargarOrdenesEnListView(List<OrdenPreparacionEnt> ordenes)
+        private void CargarOrdenesEnListView(List<OrdenDePreparacionConsultas> ordenes)
         {
             OrdenesLTV.Items.Clear();
 
@@ -194,7 +187,7 @@ namespace Pampazon.ListarOrdenes
                 foreach (var producto in productos)
                 {
                     var item = new ListViewItem(producto.SKU); 
-                    item.SubItems.Add(producto.Nombre);
+                    item.SubItems.Add(producto.NombreProducto);
                     item.SubItems.Add(producto.Cantidad.ToString());
                     ProductoLTV.Items.Add(item);
                 }

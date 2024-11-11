@@ -9,29 +9,21 @@ namespace Pampazon._7._ConsultarOrdenesPreparacion
 {
     internal class OrdenDePreparacionConsultas
     {
-        public int IdOrden { get; set; }
-        public DateTime Fecha { get; set; }
-        public string Estado { get; set; } = string.Empty;
-        public string Prioridad { get; set; } = string.Empty;
-        public Cliente Cliente { get; set; }
-        public List<OrdenPreparacionConsultaDetalle> Detalle { get; set; } = new();
+        public int IdOrdenPreparacion { get; set; }
+        public DateTime FechaEmision { get; set; }
+        public EstadoOrdenPreparacionConsultaEnum Estado { get; set; }
+        public string Prioridad { get; set; }
+        public int IdCliente { get; set; }
+        public List<OrdenPreparacionConsultaDetalle> Detalle { get; set; }
 
-        public OrdenDePreparacionConsultas(int idOrden, DateTime fecha, string estado, string prioridad, Cliente idcliente, List<OrdenPreparacionConsultaDetalle> detalle)
+        public OrdenDePreparacionConsultas(int idOrdenPreparacion, DateTime fechaEmision, EstadoOrdenPreparacionConsultaEnum estado, string prioridad, int cliente, List<OrdenPreparacionConsultaDetalle> detalle)
         {
-            IdOrden = idOrden;
-            Fecha = fecha;
+            IdOrdenPreparacion = idOrdenPreparacion;
+            FechaEmision = fechaEmision;
             Estado = estado;
             Prioridad = prioridad;
-            Cliente = idcliente;
+            IdCliente = cliente;
             Detalle = detalle;
-        }
-
-        public void AgregarProducto(OrdenPreparacionConsultaDetalle producto)
-        {
-            if (producto != null)
-            {
-                Detalle.Add(producto);
-            }
         }
     }
 
