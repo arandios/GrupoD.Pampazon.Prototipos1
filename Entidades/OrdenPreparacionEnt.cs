@@ -18,16 +18,7 @@ namespace Pampazon.Entidades
         public DateTime HoraRetiro { get; set; }
         public EstadoOrdenPreparacionEnum Estado { get; set; }
 
-        public int totalStock()
-        {
-            int stock = 0;
-            foreach (var item in Detalle)
-            {
-                stock = stock + item.Cantidad;
-            }
 
-            return stock;
-        }
 
     }
 

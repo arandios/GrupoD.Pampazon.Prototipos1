@@ -317,7 +317,6 @@ namespace Pampazon
                     FechaSelecter.Value = resetDate;
                     FechaSelecter.Value = FechaSelecter.Value.AddHours(Int32.Parse(HorarioTextBox.Text));
                     model.Orden.FechaDeEntrega = FechaSelecter.Value;
-                    MessageBox.Show($"{model.Orden.FechaDeEntrega}");
 
                     model.agregarOrderAlmacen();
                     model.Orden.borrarOrden();

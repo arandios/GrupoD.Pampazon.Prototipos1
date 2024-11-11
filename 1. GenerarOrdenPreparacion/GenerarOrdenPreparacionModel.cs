@@ -257,7 +257,7 @@ namespace Pampazon.GenerarOrdenPreparacion
 
             // IDCliente y DNI transportista
             ordenEnt.IdCliente = this.Orden.IDCliente;
-            ordenEnt.DNITransportista = this.Orden.DNITransportista;
+            ordenEnt.DNITransportista = this.Orden.DNITransportista; // 3
 
             //Cargo Productos
             foreach (Producto prod in this.Orden.Productos)
@@ -266,7 +266,7 @@ namespace Pampazon.GenerarOrdenPreparacion
                 productoEnt.SKU = prod.Id;
 
                 productoEnt.Cantidad = prod.Stock;
-                ordenEnt.Detalle.Add(productoEnt);
+                ordenEnt.Detalle.Add(productoEnt);   // 4
             }
 
             foreach(var prod in ordenEnt.Detalle)
@@ -281,14 +281,14 @@ namespace Pampazon.GenerarOrdenPreparacion
             } else if(this.Orden.Prioridad.ToUpper() == "BAJA")
             {
                 ordenEnt.Prioridad = PrioridadEnum.Baja;
-            } else {  ordenEnt.Prioridad = PrioridadEnum.Alta; }
+            } else {  ordenEnt.Prioridad = PrioridadEnum.Alta; }  // 5
 
-            ordenEnt.Estado = EstadoOrdenPreparacionEnum.Pendiente;
+            ordenEnt.Estado = EstadoOrdenPreparacionEnum.Pendiente; // 6
 
             // Fechas
-            ordenEnt.FechaEmision = DateTime.Now;
-            ordenEnt.FechaRetiro = this.Orden.FechaDeEntrega;
-            ordenEnt.HoraRetiro = this.Orden.FechaDeEntrega;
+            ordenEnt.FechaEmision = DateTime.Now; // 7
+            ordenEnt.FechaRetiro = this.Orden.FechaDeEntrega; // 8
+            ordenEnt.HoraRetiro = this.Orden.FechaDeEntrega; // 9
 
 
             Almacenes.OrdenPreparacionAlmacen.Agregar(ordenEnt);
