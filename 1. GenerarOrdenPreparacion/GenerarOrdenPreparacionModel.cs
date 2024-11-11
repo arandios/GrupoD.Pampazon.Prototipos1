@@ -16,31 +16,7 @@ namespace Pampazon.GenerarOrdenPreparacion
         public Orden Orden = new Orden();
 
         public int IDCliente { get; set; } = -1;
-        public List<Cliente> Clientes2 { get; private set; } = new List<Cliente>
-{
-         new Cliente { IDCliente = 1, Nombre = "Coca Cola", RazonSocial = "1", Transportistas = new List<Transportista>
-        {
-            new Transportista { DNI = 10000010, Nombre = "Mónica", Apellido = "Torres" },
-            new Transportista { DNI = 10000011, Nombre = "Jorge", Apellido = "Domínguez" },
-            new Transportista { DNI = 10000015, Nombre = "Luis", Apellido = "Fernández" }
-        }
-        },
-        new Cliente { IDCliente = 2, Nombre = "Pepsi", RazonSocial = "2", Transportistas = new List<Transportista>
-        {
-            new Transportista { DNI = 10000012, Nombre = "Natalia", Apellido = "Mendoza" },
-            new Transportista { DNI = 10000016, Nombre = "Ana", Apellido = "García" }
-        }
-         },
-        new Cliente { IDCliente = 3, Nombre = "El comandante", RazonSocial = "3", Transportistas = new List<Transportista>
-        {
-            new Transportista { DNI = 10000013, Nombre = "Daniel", Apellido = "Silva" },
-            new Transportista { DNI = 10000014, Nombre = "Patricia", Apellido = "Castro" },
-            new Transportista { DNI = 10000017, Nombre = "Carlos", Apellido = "Hernández" },
-            new Transportista { DNI = 10000018, Nombre = "Sofía", Apellido = "López" }
-            }
-        }
-        };
-
+ 
         public List<Producto> ProductosCliente { get; set; } = new List<Producto>();
         public List<Producto> Productos = new List<Producto>();
         public List<Cliente> Clientes = new List<Cliente>();
@@ -80,21 +56,7 @@ namespace Pampazon.GenerarOrdenPreparacion
                 }
                 Clientes.Add(cliente);
             }
-        }
-        public List<Producto> Productos2 { get; private set; } =
-     [
-            new Producto { Id = "1" ,NombreProducto = "Producto A", Stock = 5, IdCliente  = 1,  },
-            new Producto { Id = "2" ,NombreProducto = "Producto B", Stock = 5, IdCliente  = 1, },
-            new Producto { Id = "3",NombreProducto = "Producto C", Stock = 8, IdCliente  = 1,  },
-            new Producto {Id = "1", NombreProducto = "Producto D", Stock = 8, IdCliente  = 2,  },
-            new Producto {Id = "19", NombreProducto = "Producto E", Stock = 6, IdCliente  = 2,  },
-            new Producto {Id ="15" ,NombreProducto = "Producto A", Stock = 7, IdCliente  = 2, },
-            new Producto {Id = "1" ,NombreProducto = "Producto G", Stock = 7, IdCliente  = 3,  },
-            new Producto {Id = "2" ,NombreProducto = "Producto H", Stock = 8, IdCliente  = 3,  },
-            new Producto {Id = "5" ,NombreProducto = "Producto I", Stock = 1, IdCliente  = 3, },
-            new Producto {Id = "3" ,NombreProducto = "Producto B", Stock = 2, IdCliente  = 4,  },
-        ];
-
+       }
 
         public List<Producto> obtenerProdCliente(int IdCliente)
         {
@@ -303,10 +265,12 @@ namespace Pampazon.GenerarOrdenPreparacion
                 ordenEnt.Detalle.Add(productoEnt);
 
             }
+            ordenEnt.Estado = EstadoOrdenPreparacionEnum.Pendiente;
             ordenEnt.FechaEmision = DateTime.Now;
             ordenEnt.FechaRetiro = DateTime.Now;
             //FALTA FECHA AHORA
-            ordenEnt.Estado = EstadoOrdenPreparacionEnum.Pendiente;
+            ordenEnt.HoraRetiro = DateTime.Now;
+            MessageBox.Show("ordenEnt.IdOrdenPreparacion");
             Almacenes.OrdenPreparacionAlmacen.Agregar(ordenEnt);
         }
 

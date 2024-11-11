@@ -302,7 +302,11 @@ namespace Pampazon
                 if (resultOrden == DialogResult.Yes)
                 {
                     DialogResult result = MessageBox.Show($"Orden ingresada con exito, le enviaremos un mail con los detalles", "Confirmar Orden");
+                    
+                    model.agregarOrderAlmacen();
                     model.Orden.borrarOrden();
+
+                    // front
                     ActualizarListaOrden();
                     PrioridadCMB.SelectedIndex = -1;
                     HorarioTextBox.Text = "";
