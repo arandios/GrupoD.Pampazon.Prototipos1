@@ -103,7 +103,7 @@ namespace Pampazon.ListarOrdenes
             {
                 ListViewItem item = new ListViewItem(orden.IdOrdenPreparacion.ToString());
                 item.SubItems.Add(orden.FechaEmision.ToShortDateString());
-                item.SubItems.Add(orden.Estado.ToString()); 
+                item.SubItems.Add(orden.Estado.ToString());
                 item.SubItems.Add(orden.Prioridad.ToString());
 
                 OrdenesLTV.Items.Add(item);
@@ -146,7 +146,7 @@ namespace Pampazon.ListarOrdenes
             if (OrdenesLTV.SelectedItems.Count > 0)
             {
                 var itemSeleccionado = OrdenesLTV.SelectedItems[0];
-                int idOrdenSeleccionada = int.Parse(itemSeleccionado.SubItems[0].Text); 
+                int idOrdenSeleccionada = int.Parse(itemSeleccionado.SubItems[0].Text);
 
                 var productos = modelo.ObtenerProductosPorOrdenId(idOrdenSeleccionada);
 
@@ -154,7 +154,7 @@ namespace Pampazon.ListarOrdenes
 
                 foreach (var producto in productos)
                 {
-                    var item = new ListViewItem(producto.SKU); 
+                    var item = new ListViewItem(producto.SKU);
                     item.SubItems.Add(producto.NombreProducto);
                     item.SubItems.Add(producto.Cantidad.ToString());
                     ProductoLTV.Items.Add(item);
@@ -162,6 +162,11 @@ namespace Pampazon.ListarOrdenes
             }
         }
         private void OrdenesGRP_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CodigoCLienteLBL_Click(object sender, EventArgs e)
         {
 
         }
