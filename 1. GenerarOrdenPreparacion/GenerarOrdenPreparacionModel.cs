@@ -248,14 +248,18 @@ namespace Pampazon.GenerarOrdenPreparacion
         public void agregarOrderAlmacen()
         {
             OrdenPreparacionEnt ordenEnt = new OrdenPreparacionEnt();
+            
+            // IdOrden
             if (Almacenes.OrdenPreparacionAlmacen.OrdenesPreparacion.LastOrDefault() != null)
             {
                 ordenEnt.IdOrdenPreparacion = Almacenes.OrdenPreparacionAlmacen.OrdenesPreparacion.LastOrDefault().IdOrdenPreparacion + 1;
-            }
+            } else { ordenEnt.IdOrdenPreparacion = 1; }
+
+            // IDCliente y DNI transportista
             ordenEnt.IdCliente = this.Orden.IDCliente;
             ordenEnt.DNITransportista = this.Orden.DNITransportista;
 
-            //ordenEnt.Prioridad = this.Orden.Prioridad;
+            //Cargo Productos
             foreach (Producto prod in this.Orden.Productos)
             {
                 var productoEnt = new OrdenPreparacionDetalle();
@@ -270,6 +274,7 @@ namespace Pampazon.GenerarOrdenPreparacion
                 MessageBox.Show(prod.SKU);
             }
 
+            // Prioridad y Estado
             if(this.Orden.Prioridad.ToUpper() == "MEDIA")
             {
                 ordenEnt.Prioridad = PrioridadEnum.Media;
@@ -278,12 +283,14 @@ namespace Pampazon.GenerarOrdenPreparacion
                 ordenEnt.Prioridad = PrioridadEnum.Baja;
             } else {  ordenEnt.Prioridad = PrioridadEnum.Alta; }
 
-
             ordenEnt.Estado = EstadoOrdenPreparacionEnum.Pendiente;
+
+            // Fechas
             ordenEnt.FechaEmision = DateTime.Now;
             ordenEnt.FechaRetiro = DateTime.Now;
-            //FALTA FECHA AHORA
             ordenEnt.HoraRetiro = DateTime.Now;
+
+
             Almacenes.OrdenPreparacionAlmacen.Agregar(ordenEnt);
         }
 
