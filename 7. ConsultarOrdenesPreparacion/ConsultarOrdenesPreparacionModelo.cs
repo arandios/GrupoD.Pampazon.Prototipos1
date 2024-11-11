@@ -42,8 +42,30 @@ namespace Pampazon.ConsultarOrdenes
                 })
                 .ToList();
         }
+        public List<ProductoConsulta> ObtenerProductosPorOrdenId(int idOrdenPreparacion)
+        {
+            var orden = ObtenerOrdenPorId(idOrdenPreparacion);
+            if (orden == null)
+            {
+                return new List<ProductoConsulta>();
+            }
 
-        // Búsqueda por razón social (requiere cargar los clientes para obtener la razón social)
+            var productosAlmacen = ProductoAlmacen.Productos;
+
+            return orden.Detalle.Select(detalle =>
+            {
+                var productoAlmacen = productosAlmacen.FirstOrDefault(p => p.SKU == detalle.SKU);
+                return new ProductoConsulta(
+                    detalle.SKU,
+                    productoAlmacen?.NombreProducto ?? "Desconocido",
+                    detalle.Cantidad
+                );
+            }).ToList();
+        }
+
+
+
+        // Búsqueda por razón social 
         public List<OrdenPreparacionEnt> ObtenerOrdenesPorRazonSocial(string razonSocial)
         {
             var clientes = ClienteAlmacen.Clientes;
@@ -57,7 +79,7 @@ namespace Pampazon.ConsultarOrdenes
                 .ToList();
         }
 
-        // Búsqueda por CUIT (requiere cargar los clientes para obtener el CUIT)
+        // Búsqueda por CUIT
         public List<OrdenPreparacionEnt> ObtenerOrdenesPorCuit(string cuit)
         {
             var clientes = ClienteAlmacen.Clientes;

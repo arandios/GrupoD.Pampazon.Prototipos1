@@ -8,31 +8,19 @@
 
 - Botón: Aceptar
 
-
-
 - ID Cliente: asdasd
 
 - Mensaje "Ingrese un numero para buscar ID cliente"
 
 - Botón: “Aceptar”
 
-
-
 - ID Cliente: -1
 
 - Botón: "Buscar Productos"
 
-- Mensaje "ID cliente -1 seleccionado no existe”
+- Mensaje "ID cliente -1 no existe”
 
 - Botón: “Aceptar”
-
-
-
-- Codigo cliente: 1
-
-- Productos en Depósito: 
-	SPROD-00123  -  Aceite sintético 5W-30  -  40
-	PROD-34523  -  Termo  -  34
 
 - Razón social: MessiFc
 
@@ -40,6 +28,11 @@
 
 - Botón: Aceptar
 
+- Codigo cliente: 1
+
+- Productos en Depósito: 
+	SPROD-00123  -  Aceite sintético 5W-30  -  40
+	PROD-34523  -  Termo  -  34
 
 - Nombre Producto: Aceite
 
