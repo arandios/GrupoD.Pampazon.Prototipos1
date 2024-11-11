@@ -90,7 +90,7 @@ namespace Pampazon.BuscarProductosEnDepositos
                 // Cambiar estado de las órdenes de preparación a PROCESADA -- TODO: Verificar cambio de estado. 
                 foreach (var ordenPreparacion in ordenesPreparacion)
                 {
-                    ordenPreparacion.Estado = (EstadoOrdenPreparacionEnum)PosiblesEstadosOrdenesPreparacion_paraBuscarProductos.Procesada;
+                    ordenPreparacion.Estado = (EstadoOrdenPreparacionEnum)PosiblesEstadosOrdenesPreparacion_paraGenerarOrdenDeEntrega.Procesada;
                 }
                 */
 
