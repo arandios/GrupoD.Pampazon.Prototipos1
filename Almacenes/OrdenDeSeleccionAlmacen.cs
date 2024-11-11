@@ -14,6 +14,8 @@ namespace Pampazon.Almacenes
 
         public static IReadOnlyCollection<OrdenDeSeleccionEnt> OrdenesDeSeleccion => ordenesDeSeleccion.AsReadOnly();
 
+
+
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(ordenesDeSeleccion);

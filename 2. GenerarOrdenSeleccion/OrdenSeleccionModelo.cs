@@ -62,19 +62,20 @@ namespace Pampazon.OrdenSeleccion
             {
                 IdOrdenSeleccion = nuevoIdOrdenSeleccion,
                 FechaEmision = DateTime.Now,
-                OrdenesPreparacion = OPseleccionadas.Select(op => int.Parse(op.IDOrdenPreparacion)).ToList(),
+                OrdenesPreparacion = OPseleccionadas.Select(op => new OrdenPreparacionEnt
+                {
+                    IdOrdenPreparacion = int.Parse(op.IDOrdenPreparacion),
+                    Prioridad = (PrioridadEnum)op.Prioridad,
+                    IdCliente = int.Parse(op.IdCliente),
+                    FechaEmision = op.fechaOrdenPreparacion,
+                    Estado = (EstadoOrdenPreparacionEnum)op.EstadoOrdenPreparacion,
+                }).Select(opEnt => opEnt.IdOrdenPreparacion).ToList(), // Convertir a lista de IDs
                 EstadoOrden = EstadoOrdenSeleccionEnum.Pendiente,
                 FechaEstado = DateTime.Now
             };
 
-
-
-            //------> TODO: VERIFICAR SI ESTA BIEN PARA GUARDAR EN EL JSON!
-
             // Agregar la nueva orden a la lista de Ordenes de Seleccion
             OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeleccion);
-            
-
 
             // Grabar la lista actualizada en el archivo JSON
             //OrdenDeSeleccionAlmacen.Grabar(); TODO: Grabar deberia estar en el almacen?
@@ -82,7 +83,9 @@ namespace Pampazon.OrdenSeleccion
 
 
 
-    public string BorrarOrdenDePreparacion(OrdenPreparacion OrdenDePreparacionSeleccionada)
+
+
+        public string BorrarOrdenDePreparacion(OrdenPreparacion OrdenDePreparacionSeleccionada)
         {
             //Validaciones.
             //TODO: Reveer que validaciones serian necesarias aqui. Limitaciones antes de borrar. (No deberia haber?)

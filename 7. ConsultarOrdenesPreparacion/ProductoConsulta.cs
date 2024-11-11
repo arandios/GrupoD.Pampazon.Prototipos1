@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Pampazon._7._ConsultarOrdenesPreparacion
 {
-    internal class Producto
+    internal class ProductoConsulta
     {
-        public string SKU { get; set; }  // Código único del producto
-        public string Nombre { get; set; }
+        public string SKU { get; set; }
+        public string NombreProducto { get; set; }
         public int Cantidad { get; set; }
 
-        public Producto(string sku, string nombre, int cantidad)
+        public ProductoConsulta(string sku, string nombreProducto, int cantidad)
         {
             SKU = sku;
-            Nombre = nombre;
+            NombreProducto = nombreProducto;
             Cantidad = cantidad;
         }
     }

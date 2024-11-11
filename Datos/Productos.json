@@ -41,25 +41,6 @@
     ]
   },
   {
-    "SKU": "PROD-00456",
-    "IdCliente": 1,
-    "NombreProducto": "Disco de freno cerámico",
-    "Detalle": [
-      {
-        "IdUbicacion": "20-22-1",
-        "Stock": 5
-      },
-      {
-        "IdUbicacion": "20-22-3",
-        "Stock": 18
-      },
-      {
-        "IdUbicacion": "20-24-7",
-        "Stock": 12
-      }
-    ]
-  },
-  {
     "SKU": "PROD-00789",
     "IdCliente": 4,
     "NombreProducto": "Amortiguador deportivo",

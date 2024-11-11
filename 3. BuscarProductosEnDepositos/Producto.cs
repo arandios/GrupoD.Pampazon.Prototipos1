@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pampazon._3._BuscarProductosEnDepositos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,19 @@ namespace Pampazon.BuscarProductosEnDepositos
 {
     internal class Producto
     {
-        public string Ubicacion { get; set; }
-        public string SKU { get; set; }
-        public int Cantidad { get; set; }
+        public string SKUProducto { get; set; }
+        public string IdCliente { get; set; }
 
-        public Producto(string ubicacion, string sku, int cantidad)
+        public string NombreProducto { get; set; }
+        
+        public List<UbicacionProdutoDetalle_ParaBuscarProductosEnDepo> Detalle { get; set; }
+
+        public Producto(string skuProducto, string idCliente, string nombreProducto, List<UbicacionProdutoDetalle_ParaBuscarProductosEnDepo> detalle)
         {
-            Ubicacion = ubicacion;
-            SKU = sku;
-            Cantidad = cantidad;
+            SKUProducto = skuProducto;
+            IdCliente = idCliente;
+            NombreProducto = nombreProducto;
+            Detalle = detalle;
         }
     }
 

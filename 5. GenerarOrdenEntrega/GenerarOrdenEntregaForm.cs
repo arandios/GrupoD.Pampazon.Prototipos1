@@ -48,28 +48,30 @@ namespace Pampazon.OrdenEntrega
             this.Close();
         }
 
-
+        //TODO: CREAR LA ORDEN DE ENTREGA, PASAR AL MODELO! SEGUIR EJEMPLO GENERAR OS
         private void GenerarOrdenEntregabtn_Click(object sender, EventArgs e)
         {
 
-            if (Orden_EntregaLST.Items.Count < 7)
+            if (Orden_EntregaLST.Items.Count < 5)
             {
-                MessageBox.Show("Error: Debe haber al menos 7 ítems en la lista para generar una orden de entrega.",
+                MessageBox.Show("Error: Debe haber al menos 5 ítems en la lista para generar una orden de entrega.",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            DialogResult result = MessageBox.Show("¿Está seguro de que desea generar la orden de entrega?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            DialogResult result = MessageBox.Show("¿Está seguro de que desea generar la orden de entrega?",
+                                                  "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 MessageBox.Show("Orden de entrega generada", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpia la lista de visualización
                 Orden_EntregaLST.Items.Clear();
-                for (int i = 10; i <= 14; i++)
-                {
-                    ListViewItem item = new ListViewItem("000" + i);
-                    item.SubItems.Add(DateTime.Now.AddDays(i).ToString("dd/MM/yyyy"));
-                    Orden_EntregaLST.Items.Add(item);
-                }
+
+                // Vuelve a cargar las órdenes de preparación desde el modelo para obtener las nuevas
+                modelo.CargarOrdenes();  // Esto asegura que el modelo se actualice con las nuevas órdenes
+                CargarLista();           // Refresca el ListView con las órdenes actualizadas
             }
         }
     }

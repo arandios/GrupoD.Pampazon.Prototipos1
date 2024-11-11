@@ -1,47 +1,64 @@
-﻿Caso de Prueba Uso de Filtros Para generar Orden de Selección
+﻿Caso de Prueba Generar Orden Selección
 
 - Botón: "Generar Orden Selección"
 
-- Órdenes de preparación en estado pendiente:
-	5  -  Grupo Epsilon  -  06/11/2024  -  Media
-	6  -  Agropecuaria Gamma  -  06/11/2024  -  Alta
+- Seleccionar Fecha Minima: 06/11/2024
+- Seleccionar Fecha Maxima: 06/11/2024
+- Prioridad: Media
 
-- Razón Social Cliente: Epsilon
-
-- Botón: “Buscar Órdenes de Preparación”
+- Boton: "Buscar orden de preparacion"
 
 - Órdenes de preparación en estado pendiente:
 	5  -  Grupo Epsilon  -  06/11/2024  -  Media
 
-- Botón: “Borrar Filtros”
+- Boton: "Borrar filtos"
 
 - Seleccionar Fecha Minima: 06/11/2024
-
-- Órdenes de preparación en estado pendiente:
-	5  -  Grupo Epsilon  -  06/11/2024  -  Media
-	6  -  Agropecuaria Gamma  -  06/11/2024  -  Alta
-
-- Botón: “Borrar Filtros”
-
 - Seleccionar Fecha Maxima: 06/11/2024
+- Prioridad: Alta
 
-- Órdenes de preparación en estado pendiente:
-	5  -  Grupo Epsilon  -  06/11/2024  -  Media
+- Boton: "Buscar orden de preparacion"
+
+- Detalle de Ordenes de preparación a Insertar:
 	6  -  Agropecuaria Gamma  -  06/11/2024  -  Alta
 
-- Botón: “Borrar Filtros”
+- Seleccionar: Agropecuaria Gamma
 
-- Id Orden Preparación: 5
+- Boton: "Agregar al detalle de la seleccion"
 
-- Órdenes de preparación en estado pendiente:
-	5  -  Grupo Epsilon  -  06/11/2024  -  Media
+Mensaje: "Orden de preparacion agregada al detalle"
 
-- Botón: “Borrar Filtros”
+Boton: "aceptar"
 
-- Seleccionar Prioridad: Alta
+- Botón: “Generar Orden Selección”
 
-- Órdenes de preparación en estado pendiente:
-	6  -  Agropecuaria Gamma  -  06/11/2024  -  Alta
+- Mensaje: “Se ha creado la Orden de selección número 3 exitosamente ”
+
+-Botón: “Aceptar”
 
 - Cerrar sistema.
+
+- Verificar OrdenesDeSeleccion.json, nuevo registro:
+
+ {
+   "IdOrdenPreparacion": 6,
+   "Prioridad": 2,
+   "IdCliente": 6,
+   "Detalle": [
+     {
+       "SKU": "PROD-01890",
+       "Cantidad": 1
+     },
+     {
+       "SKU": "PROD-02123",
+       "Cantidad": 4
+     }
+   ],
+   "DNITransportista": 67890123,
+   "FechaEmision": "2024-11-06T14:15:00-03:00",
+   "FechaRetiro": "2024-12-16T14:15:00-03:00",
+   "HoraRetiro": "2024-11-06T15:15:00-03:00",
+   "Estado": 1
+ },
+
 

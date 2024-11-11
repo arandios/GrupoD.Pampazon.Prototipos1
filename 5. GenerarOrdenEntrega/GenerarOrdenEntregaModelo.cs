@@ -1,4 +1,5 @@
 ﻿using Pampazon.Almacenes;
+using Pampazon.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,17 @@ namespace Pampazon._5._GenerarOrdenEntrega
         {
 
             ordenesPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion
-                .Select(o => new OrdenPreparacion(o.IdOrdenPreparacion.ToString(), o.FechaRetiro))
-                .ToList();
+                 .Where(o => o.Estado == EstadoOrdenPreparacionEnum.Preparada) // Filtra el estado "Preparada"
+                 .Select(o => new OrdenPreparacion(o.IdOrdenPreparacion.ToString(), o.FechaRetiro))
+                 .ToList();
 
+            /*
+            // Cambiar estado de las órdenes de preparación a Lista -- TODO: Verificar cambio de estado. 
+            foreach (var ordenPreparacion in ordenesPreparacion)
+            {
+            ordenPreparacion.Estado = (EstadoOrdenPreparacionEnum)PosiblesEstadosOrdenesPreparacion_paraBuscarProductos.Lista;
+            }
+            */
         }
     }
 }

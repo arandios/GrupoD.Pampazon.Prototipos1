@@ -1,6 +1,7 @@
 ﻿using Pampazon._1._GenerarOrdenPreparacion;
 using Pampazon.Entidades;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -15,31 +16,7 @@ namespace Pampazon.GenerarOrdenPreparacion
         public Orden Orden = new Orden();
 
         public int IDCliente { get; set; } = -1;
-        public List<Cliente> Clientes2 { get; private set; } = new List<Cliente>
-{
-         new Cliente { IDCliente = 1, Nombre = "Coca Cola", RazonSocial = "1", Transportistas = new List<Transportista>
-        {
-            new Transportista { DNI = 10000010, Nombre = "Mónica", Apellido = "Torres" },
-            new Transportista { DNI = 10000011, Nombre = "Jorge", Apellido = "Domínguez" },
-            new Transportista { DNI = 10000015, Nombre = "Luis", Apellido = "Fernández" }
-        }
-        },
-        new Cliente { IDCliente = 2, Nombre = "Pepsi", RazonSocial = "2", Transportistas = new List<Transportista>
-        {
-            new Transportista { DNI = 10000012, Nombre = "Natalia", Apellido = "Mendoza" },
-            new Transportista { DNI = 10000016, Nombre = "Ana", Apellido = "García" }
-        }
-         },
-        new Cliente { IDCliente = 3, Nombre = "El comandante", RazonSocial = "3", Transportistas = new List<Transportista>
-        {
-            new Transportista { DNI = 10000013, Nombre = "Daniel", Apellido = "Silva" },
-            new Transportista { DNI = 10000014, Nombre = "Patricia", Apellido = "Castro" },
-            new Transportista { DNI = 10000017, Nombre = "Carlos", Apellido = "Hernández" },
-            new Transportista { DNI = 10000018, Nombre = "Sofía", Apellido = "López" }
-            }
-        }
-        };
-
+ 
         public List<Producto> ProductosCliente { get; set; } = new List<Producto>();
         public List<Producto> Productos = new List<Producto>();
         public List<Cliente> Clientes = new List<Cliente>();
@@ -53,11 +30,14 @@ namespace Pampazon.GenerarOrdenPreparacion
             foreach (var productoEnt in Almacenes.ProductoAlmacen.Productos)
             {
                 var producto = new Producto();
-                producto.Id = productoEnt.IdCliente.ToString();
+
+                producto.Id = productoEnt.SKU.ToString();
                 producto.NombreProducto = productoEnt.NombreProducto;
-                //int stock = productoEnt.sumTotal();
-                producto.Stock = 10;
                 producto.IdCliente = productoEnt.IdCliente;
+
+                int totalCantidadenOrdenes = Almacenes.OrdenPreparacionAlmacen.totalProductoenOrdenes(productoEnt.IdCliente, productoEnt.SKU);
+                producto.Stock = productoEnt.totalStock() - totalCantidadenOrdenes;
+                
                 Productos.Add(producto);
             }
         }
@@ -68,7 +48,7 @@ namespace Pampazon.GenerarOrdenPreparacion
             {
                 var cliente = new Cliente();
                 cliente.IDCliente = clientesEnt.IdCliente;
-                cliente.Nombre = clientesEnt.RazonSocial;
+                cliente.RazonSocial = clientesEnt.RazonSocial;
                 foreach (var transportista in Almacenes.TransportistaAlmacen.Transportistas)
                 {
                     var trans = new Transportista();
@@ -79,21 +59,7 @@ namespace Pampazon.GenerarOrdenPreparacion
                 }
                 Clientes.Add(cliente);
             }
-        }
-        public List<Producto> Productos2 { get; private set; } =
-     [
-            new Producto { Id = "1" ,NombreProducto = "Producto A", Stock = 5, IdCliente  = 1,  },
-            new Producto { Id = "2" ,NombreProducto = "Producto B", Stock = 5, IdCliente  = 1, },
-            new Producto { Id = "3",NombreProducto = "Producto C", Stock = 8, IdCliente  = 1,  },
-            new Producto {Id = "1", NombreProducto = "Producto D", Stock = 8, IdCliente  = 2,  },
-            new Producto {Id = "19", NombreProducto = "Producto E", Stock = 6, IdCliente  = 2,  },
-            new Producto {Id ="15" ,NombreProducto = "Producto A", Stock = 7, IdCliente  = 2, },
-            new Producto {Id = "1" ,NombreProducto = "Producto G", Stock = 7, IdCliente  = 3,  },
-            new Producto {Id = "2" ,NombreProducto = "Producto H", Stock = 8, IdCliente  = 3,  },
-            new Producto {Id = "5" ,NombreProducto = "Producto I", Stock = 1, IdCliente  = 3, },
-            new Producto {Id = "3" ,NombreProducto = "Producto B", Stock = 2, IdCliente  = 4,  },
-        ];
-
+       }
 
         public List<Producto> obtenerProdCliente(int IdCliente)
         {
@@ -281,6 +247,59 @@ namespace Pampazon.GenerarOrdenPreparacion
                 }
             }
             return "";
+        }
+
+        public void agregarOrderAlmacen()
+        {
+            OrdenPreparacionEnt ordenEnt = new OrdenPreparacionEnt();
+            
+            // IdOrden
+            if (Almacenes.OrdenPreparacionAlmacen.OrdenesPreparacion.LastOrDefault() != null)
+            {
+                ordenEnt.IdOrdenPreparacion = Almacenes.OrdenPreparacionAlmacen.OrdenesPreparacion.LastOrDefault().IdOrdenPreparacion + 1;
+            } else { ordenEnt.IdOrdenPreparacion = 1; }
+
+            // IDCliente y DNI transportista
+            ordenEnt.IdCliente = this.Orden.IDCliente; // 2
+            ordenEnt.DNITransportista = this.Orden.DNITransportista; // 3
+
+            //Cargo Productos
+            foreach (Producto prod in this.Orden.Productos)
+            {
+                var productoEnt = new OrdenPreparacionDetalle();
+                productoEnt.SKU = prod.Id;
+                productoEnt.Cantidad = prod.Stock;
+
+                ordenEnt.Detalle.Add(productoEnt);   // 4
+            }
+
+            foreach(var prod in ordenEnt.Detalle)
+            {
+                MessageBox.Show(prod.SKU);
+            }
+
+            // Prioridad y Estado
+            if(this.Orden.Prioridad.ToUpper() == "MEDIA")
+            {
+                ordenEnt.Prioridad = PrioridadEnum.Media;
+            } else if(this.Orden.Prioridad.ToUpper() == "BAJA")
+            {
+                ordenEnt.Prioridad = PrioridadEnum.Baja;
+            }
+            else if  (this.Orden.Prioridad.ToUpper() == "ALTA") {
+                ordenEnt.Prioridad = PrioridadEnum.Alta;
+            }
+            else {  ordenEnt.Prioridad = PrioridadEnum.Media; }  // 5
+
+            ordenEnt.Estado = EstadoOrdenPreparacionEnum.Pendiente; // 6
+
+            // Fechas
+            ordenEnt.FechaEmision = DateTime.Now; // 7
+            ordenEnt.FechaRetiro = this.Orden.FechaDeEntrega; // 8
+            ordenEnt.HoraRetiro = this.Orden.FechaDeEntrega; // 9
+
+
+            Almacenes.OrdenPreparacionAlmacen.Agregar(ordenEnt);
         }
 
 

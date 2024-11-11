@@ -17,7 +17,7 @@ namespace Pampazon.GenerarOrdenPreparacion
         public int DNITransportista { get; set; } = -1;
         public string Fecha { get; set; } //TODO: Cambiar nombre a FechaEmision (para coincidir con diagrama de clases.)
 
-        public string FechaDeEntrega { get; set; } // TODO: Cambiar nombre a FechaRetiro (para coincidir con diagrama de clases.)
+        public DateTime FechaDeEntrega { get; set; } // TODO: Cambiar nombre a FechaRetiro (para coincidir con diagrama de clases.)
         public List<Producto> Productos { get; set; }
 
         // Constructor

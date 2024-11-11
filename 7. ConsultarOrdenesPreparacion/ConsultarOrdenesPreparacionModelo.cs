@@ -11,126 +11,59 @@ using System.Threading.Tasks;
 
 namespace Pampazon.ConsultarOrdenes
 {
-
-    //deberia borrar todo
-    /* public void InicializarDatos()
-     {
-         var clientes = CrearClientes();
-         var productos = CrearProductosConUbicacion();
-         ordenes = CrearOrdenes(clientes, productos);
-     }*/
-
-    // Método nuevo: Obtener todas las órdenes
-
-    /*  public List<Producto> CrearProductosConUbicacion()
-      public List<Cliente> CrearClientes()
-      {
-          return (from clienteEnt in ClienteAlmacen.Clientes
-                  select new Cliente(clienteEnt.IdCliente, clienteEnt.RazonSocial, clienteEnt.CUIT))
-                  .ToList();
-      }
-
-      {
-          return new List<Producto>
-          {
-              new Producto("SKU001", "Zapatilla", 10),
-              new Producto("SKU002", "Remera", 5),
-              new Producto("SKU003", "Pantalón", 10),
-              new Producto("SKU004", "Camisa", 2),
-              new Producto("SKU005", "Buzo", 8),
-              new Producto("SKU006", "Gorra", 9),
-              new Producto("SKU007", "Medias", 10),
-              new Producto("SKU008", "Campera",10),
-              new Producto("SKU009", "Short",11),
-              new Producto("SKU010", "Bufanda",12),
-              new Producto("SKU011", "Guantes",11),
-              new Producto("SKU012", "Chaleco",11),
-              new Producto("SKU013", "Cinturón",1),
-              new Producto("SKU014", "Lentes de sol", 10),
-              new Producto("SKU015", "Mochila", 5),
-              new Producto("SKU016", "Pantalones cortos", 9),
-              new Producto("SKU017", "Botas", 3),
-              new Producto("SKU018", "Sombrero", 7),
-              new Producto("SKU019", "Zapatillas deportivas",8),
-              new Producto("SKU020", "Jeans", 16),
-              new Producto("SKU021", "Camiseta", 22),
-              new Producto("SKU022", "Parka", 2),
-              new Producto("SKU023", "Falda", 18),
-              new Producto("SKU024", "Corbata", 13),
-              new Producto("SKU025", "Traje", 4)
-          };
-      }
-
-      public List<OrdenDePreparacion> CrearOrdenes(List<Cliente> clientes, List<Producto> productos)
-      {
-          List<OrdenDePreparacion> ordenes = new List<OrdenDePreparacion>();
-          Random random = new Random();
-
-          DateTime fechaAleatoria()
-          {
-              int diasAtras = random.Next(0, 8);
-              return DateTime.Now.AddDays(-diasAtras);
-          }
-
-          // Crear una orden para el cliente 1
-          var productosCliente1 = new List<Producto> { productos[0], productos[1], productos[2] };
-          ordenes.Add(new OrdenDePreparacion(1, fechaAleatoria(), "Preparada", "Alta", clientes[0], productosCliente1));
-
-          // Crear una segunda orden para el cliente 1
-          productosCliente1 = new List<Producto> { productos[3], productos[4] };
-          ordenes.Add(new OrdenDePreparacion(2, fechaAleatoria(), "Preparada", "Media", clientes[0], productosCliente1));
-
-          // Crear una orden para el cliente 2
-          var productosCliente2 = new List<Producto> { productos[5], productos[6] };
-          ordenes.Add(new OrdenDePreparacion(3, fechaAleatoria(), "Preparada", "Baja", clientes[1], productosCliente2));
-
-          // Crear una segunda orden para el cliente 2
-          productosCliente2 = new List<Producto> { productos[7], productos[8], productos[9] };
-          ordenes.Add(new OrdenDePreparacion(4, fechaAleatoria(), "Preparada", "Alta", clientes[1], productosCliente2));
-
-          // Crear una orden para el cliente 3
-          var productosCliente3 = new List<Producto> { productos[10], productos[11] };
-          ordenes.Add(new OrdenDePreparacion(5, fechaAleatoria(), "Preparada", "Media", clientes[2], productosCliente3));
-
-          // Crear una segunda orden para el cliente 3
-          productosCliente3 = new List<Producto> { productos[12], productos[13] };
-          ordenes.Add(new OrdenDePreparacion(6, fechaAleatoria(), "Preparada", "Baja", clientes[2], productosCliente3));
-
-          return ordenes;
-
-      }*/
     internal class ConsultarOrdenesPreparacionModelo
     {
-        private List<OrdenPreparacionEnt> ordenesPreparacion;
+        private List<OrdenDePreparacionConsultas> ordenesPreparacion;
 
         public ConsultarOrdenesPreparacionModelo()
         {
-            // Inicializar 'ordenes' con los datos de 'OrdenPreparacionAlmacen'
             ordenesPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion
                 .Select(o =>
                 {
-                    var orden = new OrdenPreparacionEnt
+                    var detalles = o.Detalle.Select(d => new OrdenPreparacionConsultaDetalle
                     {
-                        IdOrdenPreparacion = o.IdOrdenPreparacion,
-                        Prioridad = o.Prioridad,
-                        IdCliente = o.IdCliente,
-                        DNITransportista = o.DNITransportista,
-                        FechaEmision = o.FechaEmision,
-                        FechaRetiro = o.FechaRetiro,
-                        HoraRetiro = o.HoraRetiro,
-                        Estado = o.Estado
-                    };
+                        SKU = d.SKU,
+                        Cantidad = d.Cantidad
+                    }).ToList();
 
-                    // Aquí agregamos los detalles a la lista Detalle
-                    orden.Detalle.AddRange(o.Detalle); // Asumiendo que o.Detalle es de tipo List<OrdenPreparacionDetalle>
+                    
+                    EstadoOrdenPreparacionConsultaEnum estadoConsulta = (EstadoOrdenPreparacionConsultaEnum)Enum.Parse(typeof(EstadoOrdenPreparacionConsultaEnum), o.Estado.ToString());
 
-                    return orden;
+                    return new OrdenDePreparacionConsultas(
+                        o.IdOrdenPreparacion,
+                        o.FechaEmision,
+                        estadoConsulta,
+                        o.Prioridad.ToString(),
+                        o.IdCliente,
+                        detalles
+                    );
                 })
                 .ToList();
         }
 
-        // Búsqueda por razón social (requiere cargar los clientes para obtener la razón social)
-        public List<OrdenPreparacionEnt> ObtenerOrdenesPorRazonSocial(string razonSocial)
+        public List<ProductoConsulta> ObtenerProductosPorOrdenId(int idOrdenPreparacion)
+        {
+                var orden = ordenesPreparacion.FirstOrDefault(o => o.IdOrdenPreparacion == idOrdenPreparacion);
+                if (orden == null)
+                {
+                    return new List<ProductoConsulta>();
+                }
+
+                var productosAlmacen = ProductoAlmacen.Productos;
+
+                return orden.Detalle.Select(detalle =>
+                {
+                    var productoAlmacen = productosAlmacen.FirstOrDefault(p => p.SKU == detalle.SKU);
+                    return new ProductoConsulta(
+                        detalle.SKU,
+                        productoAlmacen?.NombreProducto ?? "Desconocido",
+                        detalle.Cantidad
+                    );
+                }).ToList();
+        }
+        
+        // Búsqueda por razón social 
+        public List<OrdenDePreparacionConsultas> ObtenerOrdenesPorRazonSocial(string razonSocial)
         {
             var clientes = ClienteAlmacen.Clientes;
             var clientesFiltrados = clientes
@@ -143,8 +76,8 @@ namespace Pampazon.ConsultarOrdenes
                 .ToList();
         }
 
-        // Búsqueda por CUIT (requiere cargar los clientes para obtener el CUIT)
-        public List<OrdenPreparacionEnt> ObtenerOrdenesPorCuit(string cuit)
+        // Búsqueda por CUIT
+        public List<OrdenDePreparacionConsultas> ObtenerOrdenesPorCuit(string cuit)
         {
             var clientes = ClienteAlmacen.Clientes;
             var clientesFiltrados = clientes
@@ -157,54 +90,11 @@ namespace Pampazon.ConsultarOrdenes
                 .ToList();
         }
 
-        public OrdenPreparacionEnt ObtenerOrdenPorId(int idOrdenPreparacion)
+        // Método para buscar órdenes
+        public List<OrdenDePreparacionConsultas> BuscarOrdenes(string codigoCliente, string razonSocial, string cuit, string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
         {
-            return ordenesPreparacion.FirstOrDefault(o => o.IdOrdenPreparacion == idOrdenPreparacion);
-        }
+            List<OrdenDePreparacionConsultas> ordenesEncontradas = ordenesPreparacion;
 
-        public List<OrdenPreparacionEnt> ObtenerTodasLasOrdenes()
-        {
-            return ordenesPreparacion;
-        }
-
-        // Método para filtrar las órdenes por estado, prioridad y fechas
-        public void FiltrarPorEstadoPrioridadYFechas(ref List<OrdenPreparacionEnt> ordenesEncontradas,
-     string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
-        {
-            // Filtrar por Estado
-            if (!string.IsNullOrEmpty(estadoSeleccionado))
-            {
-                EstadoOrdenPreparacionEnum estado = (EstadoOrdenPreparacionEnum)Enum.Parse(typeof(EstadoOrdenPreparacionEnum), estadoSeleccionado);
-                ordenesEncontradas = ordenesEncontradas.Where(o => o.Estado == estado).ToList();
-            }
-
-            // Filtrar por Prioridad
-            if (!string.IsNullOrEmpty(prioridadSeleccionada))
-            {
-                PrioridadEnum prioridad = (PrioridadEnum)Enum.Parse(typeof(PrioridadEnum), prioridadSeleccionada);
-                ordenesEncontradas = ordenesEncontradas.Where(o => o.Prioridad == prioridad).ToList();
-            }
-
-            // Filtrar por Fecha de Inicio
-            if (fechaInicio != DateTime.Today)
-            {
-                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision >= fechaInicio).ToList();
-            }
-
-            // Filtrar por Fecha de Fin
-            if (fechaFin != DateTime.Today)
-            {
-                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision <= fechaFin).ToList();
-            }
-        }
-
-
-        // Método para aplicar filtros adicionales
-        public List<OrdenPreparacionEnt> BuscarOrdenes(string codigoCliente, string razonSocial, string cuit, string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
-        {
-            List<OrdenPreparacionEnt> ordenesEncontradas = ordenesPreparacion;
-
-            // Filtrar por código de cliente
             if (!string.IsNullOrEmpty(codigoCliente))
             {
                 if (int.TryParse(codigoCliente, out int codigo))
@@ -212,18 +102,15 @@ namespace Pampazon.ConsultarOrdenes
                     ordenesEncontradas = ordenesEncontradas.Where(o => o.IdCliente == codigo).ToList();
                 }
             }
-            // Filtrar por razón social
             else if (!string.IsNullOrEmpty(razonSocial))
             {
                 ordenesEncontradas = ObtenerOrdenesPorRazonSocial(razonSocial);
             }
-            // Filtrar por CUIT
             else if (!string.IsNullOrEmpty(cuit))
             {
                 ordenesEncontradas = ObtenerOrdenesPorCuit(cuit);
             }
 
-            // Aplicar filtros por estado, prioridad y fechas
             if (ordenesEncontradas.Any())
             {
                 FiltrarPorEstadoPrioridadYFechas(ref ordenesEncontradas, estadoSeleccionado, prioridadSeleccionada, fechaInicio, fechaFin);
@@ -231,9 +118,31 @@ namespace Pampazon.ConsultarOrdenes
 
             return ordenesEncontradas;
         }
+      
+        // Método para filtrar las órdenes por estado, prioridad y fechas
+        public void FiltrarPorEstadoPrioridadYFechas(ref List<OrdenDePreparacionConsultas> ordenesEncontradas,
+             string estadoSeleccionado, string prioridadSeleccionada, DateTime fechaInicio, DateTime fechaFin)
+        {
+            if (!string.IsNullOrEmpty(estadoSeleccionado))
+            {
+                EstadoOrdenPreparacionConsultaEnum estadoConsulta = (EstadoOrdenPreparacionConsultaEnum)Enum.Parse(typeof(EstadoOrdenPreparacionConsultaEnum), estadoSeleccionado);
+                ordenesEncontradas = ordenesEncontradas.Where(o => o.Estado == estadoConsulta).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(prioridadSeleccionada))
+            {
+                ordenesEncontradas = ordenesEncontradas.Where(o => o.Prioridad.Equals(prioridadSeleccionada, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (fechaInicio != DateTime.Today)
+            {
+                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision >= fechaInicio).ToList();
+            }
+
+            if (fechaFin != DateTime.Today)
+            {
+                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision <= fechaFin.AddDays(1).AddTicks(-1)).ToList();
+            }
+        }
     }
-
-
-
-
 }

@@ -68,9 +68,10 @@ namespace Pampazon.ListarOrdenes
             CodigoCLienteLBL.Location = new Point(5, 27);
             CodigoCLienteLBL.Margin = new Padding(2, 0, 2, 0);
             CodigoCLienteLBL.Name = "CodigoCLienteLBL";
-            CodigoCLienteLBL.Size = new Size(106, 20);
+            CodigoCLienteLBL.Size = new Size(74, 20);
             CodigoCLienteLBL.TabIndex = 2;
-            CodigoCLienteLBL.Text = "Código cliente";
+            CodigoCLienteLBL.Text = "ID Cliente";
+            CodigoCLienteLBL.Click += CodigoCLienteLBL_Click;
             // 
             // FechaInicioLBL
             // 
@@ -85,7 +86,7 @@ namespace Pampazon.ListarOrdenes
             // EstadoCMB
             // 
             EstadoCMB.FormattingEnabled = true;
-            EstadoCMB.Items.AddRange(new object[] { "Emitida", "Selccionada", "Preparada", "Despachada" });
+            EstadoCMB.Items.AddRange(new object[] { "Pendiente", "Procesamiento", "Procesada", "Preparada", "Lista", "Entregada" });
             EstadoCMB.Location = new Point(9, 113);
             EstadoCMB.Margin = new Padding(2, 3, 2, 3);
             EstadoCMB.Name = "EstadoCMB";
@@ -339,7 +340,7 @@ namespace Pampazon.ListarOrdenes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 941);
+            ClientSize = new Size(982, 749);
             Controls.Add(OrdenesLTV);
             Controls.Add(SalirBTN);
             Controls.Add(FiltrosGRP);

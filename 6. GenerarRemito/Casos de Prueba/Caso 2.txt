@@ -10,7 +10,7 @@
 
 - Botón: "Agregar Orden de Preparación al remito"
 
--ID orden de preparación: seleccionar 20 - 9/11/2024
+-ID orden de preparación: seleccionar 20 - 11/11/2024
 
 -Botón: “Quitar Orden de preparación del remito”
 

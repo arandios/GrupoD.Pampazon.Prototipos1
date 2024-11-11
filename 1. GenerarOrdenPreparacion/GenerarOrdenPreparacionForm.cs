@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace Pampazon
@@ -302,7 +303,25 @@ namespace Pampazon
                 if (resultOrden == DialogResult.Yes)
                 {
                     DialogResult result = MessageBox.Show($"Orden ingresada con exito, le enviaremos un mail con los detalles", "Confirmar Orden");
+
+
+                    DateTime originalDate = FechaSelecter.Value;
+                    DateTime resetDate = new DateTime(
+                        originalDate.Year,
+                        originalDate.Month,
+                        originalDate.Day,
+                        0, 0, 0
+                    );
+
+                    // Assign the reset date back to FechaSelecter.Value
+                    FechaSelecter.Value = resetDate;
+                    FechaSelecter.Value = FechaSelecter.Value.AddHours(Int32.Parse(HorarioTextBox.Text));
+                    model.Orden.FechaDeEntrega = FechaSelecter.Value;
+
+                    model.agregarOrderAlmacen();
                     model.Orden.borrarOrden();
+
+                    // front
                     ActualizarListaOrden();
                     PrioridadCMB.SelectedIndex = -1;
                     HorarioTextBox.Text = "";
