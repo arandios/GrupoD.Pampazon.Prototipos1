@@ -30,8 +30,17 @@ namespace Pampazon._5._GenerarOrdenEntrega
             foreach (var ordenPreparacion in ordenesPreparacion)
             {
             ordenPreparacion.Estado = (EstadoOrdenPreparacionEnum)PosiblesEstadosOrdenesPreparacion_paraBuscarProductos.Lista;
+            }*/
+            
+        }
+
+        public void cambiarEstadoOP()
+        {
+            foreach(var op in ordenesPreparacion)
+            {
+                Almacenes.OrdenPreparacionAlmacen.cambiarEstado(int.Parse(op.IdOrdenPreparacion), EstadoOrdenPreparacionEnum.Lista);
+
             }
-            */
         }
     }
 }

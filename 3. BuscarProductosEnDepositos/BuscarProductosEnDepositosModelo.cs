@@ -32,6 +32,7 @@ namespace Pampazon.BuscarProductosEnDepositos
                 }).ToList();
         }
 
+        //TODO: La firma del metodo, no debe devolver ENT. 
         public List<OrdenDeSeleccionEnt> ObtenerOrdenesDeSeleccion()
         {
             return OrdenesDeSeleccion.Where(o => o.EstadoOrden == EstadoOrdenSeleccionEnum.Pendiente).ToList();
@@ -78,6 +79,85 @@ namespace Pampazon.BuscarProductosEnDepositos
             }
         }
 
+        public List<Producto> ObtenerProductosPorOrdenDeSeleccion(int idOrdenSeleccion)
+        {
+            var orden = OrdenesDeSeleccion.FirstOrDefault(o => o.IdOrdenSeleccion == idOrdenSeleccion);
+            if (orden == null)
+            {
+                throw new InvalidOperationException($"No se encontró la orden de selección con ID {idOrdenSeleccion}");
+            }
+
+            var ordenesPreparacion = orden.OrdenesPreparacion
+                .Select(id => OrdenPreparacionAlmacen.OrdenesPreparacion.FirstOrDefault(op => op.IdOrdenPreparacion == id))
+                .Where(op => op != null)
+                .ToList();
+
+            // Cambiar el estado de las órdenes de preparación a PROCESADA
+           
+            /*
+            foreach (var ordenPreparacion in ordenesPreparacion)
+            {
+                ordenPreparacion.EstadoOrdenPreparacion = EstadoOrdenPreparacionEnum.Procesada;
+            }
+            */
+
+            // Un diccionario SKU / Cantidad.
+            var cantReqXProducto = new Dictionary<string, int>();
+            foreach (var ordenPrep in ordenesPreparacion)
+            {
+                foreach (var detalleOrdenPrep in ordenPrep.Detalle)
+                {
+                    if (cantReqXProducto.ContainsKey(detalleOrdenPrep.SKU))
+                    {
+                        cantReqXProducto[detalleOrdenPrep.SKU] += detalleOrdenPrep.Cantidad;
+                    }
+                    else
+                    {
+                        cantReqXProducto.Add(detalleOrdenPrep.SKU, detalleOrdenPrep.Cantidad);
+                    }
+                }
+            }
+
+            // cantReqXProducto tiene "lo que necesito". resultado es lo que tengo que devolver
+            var resultado = new List<Producto>();
+
+            foreach (string sku in cantReqXProducto.Keys) // cada SKU está UNA sola vez.
+            {
+                var productoEntidad = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == sku);
+                if (productoEntidad == null)
+                {
+                    throw new InvalidOperationException($"No se encontró el producto con SKU {sku}");
+                }
+
+                var productoResultado = new Producto(sku, productoEntidad.IdCliente.ToString(), productoEntidad.NombreProducto, new List<UbicacionProdutoDetalle_ParaBuscarProductosEnDepo>());
+
+                // Donde lo encuentro?
+                foreach (var ubicacionEnStock in productoEntidad.Detalle)
+                {
+                    var resultadoUbicacion = new UbicacionProdutoDetalle_ParaBuscarProductosEnDepo
+                    {
+                        IdUbicacion = ubicacionEnStock.IdUbicacion,
+                        Stock = Math.Min(cantReqXProducto[sku], ubicacionEnStock.Stock)
+                    };
+
+                    cantReqXProducto[sku] -= resultadoUbicacion.Stock;
+                    productoResultado.Detalle.Add(resultadoUbicacion);
+
+                    if (cantReqXProducto[sku] == 0)
+                    {
+                        break;
+                    }
+                }
+
+                resultado.Add(productoResultado);
+            }
+            return resultado;
+        }
+
+
+
+
+        /*
         public List<Producto> ObtenerProductosPorOrdenDeSeleccion(int idOrdenSeleccion)
         {
             var orden = OrdenesDeSeleccion.FirstOrDefault(o => o.IdOrdenSeleccion == idOrdenSeleccion);
@@ -141,14 +221,7 @@ namespace Pampazon.BuscarProductosEnDepositos
 
                 resultado.Add(productoResultado);
             }
-
             return resultado;
-        }
-
-
-
-
-
-
+        }*/
     }
 }

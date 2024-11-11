@@ -40,6 +40,7 @@ namespace Pampazon.Almacenes
                 }
             }
             return total;
+
         }
 
 
@@ -69,6 +70,23 @@ namespace Pampazon.Almacenes
             MessageBox.Show("Se ejecuto metodo Agregar en el AlmacenOrdendePreparacion");
             Grabar();
         }
+
+        public static void cambiarEstado(int IdOP, EstadoOrdenPreparacionEnum estado)
+        {
+            foreach (var ordEnt in ordenesPreparacion)
+            {
+                if( ordEnt.IdOrdenPreparacion == IdOP)
+                {
+                    ordEnt.Estado = estado;
+           
+                    return;
+                }
+
+            }
+            Grabar();
+        }
+
     }
+
 
 }

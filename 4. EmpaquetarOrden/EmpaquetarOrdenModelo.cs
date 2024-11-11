@@ -41,16 +41,20 @@ namespace Pampazon._4._EmpaquetarOrden
                     }).ToList()
                 }).ToList();
 
-            /*
-            // Cambiar estado de las órdenes de preparación a Preparada -- TODO: Verificar cambio de estado. 
-            foreach (var ordenPreparacion in ordenesPreparacion)
-            {
-                ordenPreparacion.Estado = (EstadoOrdenPreparacionEnum)PosiblesEstadosOrdenesPreparacion_paraEmpaquetarOrden.Preparada;
-            }
-            */
+            
+
+           
         }
 
         //TODO: Cambiar estado de la Orden de Seleccion a Seleccionada. 
+        public void cambiarEstadoOP()
+        {
+            foreach (var op in ordenesPreparacion)
+            {
+                Almacenes.OrdenPreparacionAlmacen.cambiarEstado(int.Parse(op.IdOrdenPreparacion), EstadoOrdenPreparacionEnum.Preparada);
+
+            }
+        }
     }
 }
 

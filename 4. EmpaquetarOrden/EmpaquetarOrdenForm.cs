@@ -67,7 +67,8 @@ namespace Pampazon._4._EmpaquetarOrden
             indiceActualOrden++;
 
             // Cargar la siguiente orden si hay más
-            CargarLista();
+            modelo.cambiarEstadoOP();
+            modelo.CargarOrdenes();
             //}
         }
 
