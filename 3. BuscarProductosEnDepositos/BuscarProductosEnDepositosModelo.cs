@@ -40,25 +40,26 @@ namespace Pampazon.BuscarProductosEnDepositos
         // Método para confirmar la orden de selección
         public void ConfirmarOrdenSeleccion(int idOrdenSeleccion)
         {
-            var ordenSeleccion = OrdenesDeSeleccion.FirstOrDefault(o => o.IdOrdenSeleccion == idOrdenSeleccion);
-            if (ordenSeleccion != null)
+            //TODO: revisar: parece que está haciendo los cambios en la orden de seleccion sobre una COPIA
+            var ordenSeleccion = OrdenesDeSeleccion.First(o => o.IdOrdenSeleccion == idOrdenSeleccion);
+
+            var ordenSeleccionEntidad = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.First(o => o.IdOrdenSeleccion == idOrdenSeleccion);
+
+            var ordenesPreparacionEntidad = ordenSeleccion.OrdenesPreparacion
+                .Select(id => OrdenPreparacionAlmacen.OrdenesPreparacion.First(op => op.IdOrdenPreparacion == id))
+                .ToList();
+
+            // Cambiar el estado de las órdenes de preparación a "Procesada"
+            foreach (var ordenPrepEntidad in ordenesPreparacionEntidad)
             {
-                var ordenesPreparacion = ordenSeleccion.OrdenesPreparacion
-                    .Select(id => OrdenPreparacionAlmacen.OrdenesPreparacion.First(op => op.IdOrdenPreparacion == id))
-                    .ToList();
-
-                // Cambiar el estado de las órdenes de preparación a "Procesada"
-                foreach (var ordenPrep in ordenesPreparacion)
-                {
-                    ordenPrep.Estado = EstadoOrdenPreparacionEnum.Procesada;
-                }
-
-                // Cambiar el estado de la orden de selección a "Confirmada"
-                ordenSeleccion.EstadoOrden = EstadoOrdenSeleccionEnum.Seleccionada;
-
-                // Eliminar la orden de selección de la lista
-                OrdenesDeSeleccion.Remove(ordenSeleccion);
+                ordenPrepEntidad.Estado = EstadoOrdenPreparacionEnum.Procesada;
             }
+
+            // Cambiar el estado de la orden de selección a "Confirmada"
+            ordenSeleccionEntidad.EstadoOrden = EstadoOrdenSeleccionEnum.Seleccionada;
+
+            // Eliminar la orden de selección de la lista
+            OrdenesDeSeleccion.Remove(ordenSeleccion);
         }
 
         public void CargarOrdenesSeleccionEnComboBox(ComboBox comboBox)
