@@ -13,5 +13,16 @@ namespace Pampazon.Entidades
         public string NombreProducto { get; set; }
         public List<UbicacionProductoDetalle> Detalle { get; set; } = new();
 
+        public int totalStock()
+        {
+            int stock = 0;
+            foreach (var item in Detalle)
+            {
+                stock = stock + item.Stock;
+            }
+
+            return stock;
+        }
+
     }
 }
