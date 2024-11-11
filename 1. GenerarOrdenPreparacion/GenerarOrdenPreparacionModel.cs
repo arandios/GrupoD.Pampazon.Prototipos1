@@ -30,10 +30,14 @@ namespace Pampazon.GenerarOrdenPreparacion
             foreach (var productoEnt in Almacenes.ProductoAlmacen.Productos)
             {
                 var producto = new Producto();
+
                 producto.Id = productoEnt.SKU.ToString();
                 producto.NombreProducto = productoEnt.NombreProducto;
-                producto.Stock = productoEnt.totalStock();      
                 producto.IdCliente = productoEnt.IdCliente;
+
+                int totalCantidadenOrdenes = Almacenes.OrdenPreparacionAlmacen.totalProductoenOrdenes(productoEnt.IdCliente, productoEnt.SKU);
+                producto.Stock = productoEnt.totalStock() - totalCantidadenOrdenes;
+                
                 Productos.Add(producto);
             }
         }
