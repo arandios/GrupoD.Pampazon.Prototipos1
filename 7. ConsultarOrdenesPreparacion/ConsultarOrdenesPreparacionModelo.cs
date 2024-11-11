@@ -129,13 +129,13 @@ namespace Pampazon.ConsultarOrdenes
             // Filtrar por Fecha de Inicio
             if (fechaInicio != DateTime.Today)
             {
-                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision == fechaInicio).ToList();
+                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision >= fechaInicio).ToList();
             }
 
             // Filtrar por Fecha de Fin
             if (fechaFin != DateTime.Today)
             {
-                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision == fechaFin).ToList();
+                ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision <= fechaFin.AddDays(1).AddTicks(-1)).ToList();
             }
         }
 
