@@ -64,51 +64,57 @@ public class GenerarRemitoModelo
     }
 
     // Para ver si el transportista tiene al menos una orden
-    internal static List<OrdenesDePreparacionRemito> ObtenerOrdenesDePreparacionPorDni(int dni)
+    internal static List<OrdenesDePreparacionRemito> ObtenerOrdenesDePreparacionPorDni(List<OrdenesDePreparacionRemito> ordenes, int dni)
     {
-        return ordenes.Where(o => o.DNItransportista == dni).ToList();
+        return ordenes
+            .Where(o => o.DNItransportista == dni && (EstadoOrdenPreparacionRemito)o.Estado != EstadoOrdenPreparacionRemito.Entregada)
+            .ToList();
     }
 
     // Métodos para GENERAR REMITO
     // Crea un nuevo remito utilizando las órdenes seleccionadas y el DNI del transportista
     internal RemitoEnt GenerarRemito(List<OrdenesDePreparacionRemito> ordenesSeleccionadas, int dniTransportista)
     {
-        var nuevoRemito = new RemitoEnt
-        {
-            DNITransportista = dniTransportista,
-            FechaEmision = DateTime.Now,
-            IdRemito = RemitoAlmacen.Remitos.Any() ? RemitoAlmacen.Remitos.Max(r => r.IdRemito) + 1 : 1,
-        };
+        MessageBox.Show("Se ejecutó el método GenerarRemito en el Modelo");
 
-        nuevoRemito.OrdenesPreparacion.AddRange(ordenesSeleccionadas.Select(o => int.Parse(o.IdOrden)));
-        CambiarEstadoOrdenes(ordenesSeleccionadas, EstadoOrdenPreparacionRemito.Entregada);
+        // Obtener el número ID para el nuevo Remito
+        int nuevoIdRemito = RemitoAlmacen.Remitos.Any()
+            ? RemitoAlmacen.Remitos.Max(r => r.IdRemito) + 1
+            : 1;
 
+        // Crear una instancia de RemitoEnt utilizando el constructor adecuado
+        var nuevoRemito = new RemitoEnt(
+            nuevoIdRemito,
+            dniTransportista,
+            DateTime.Now,
+            ordenesSeleccionadas.Select(o => int.Parse(o.IdOrden)).ToList()
+        );
+
+        // Agregar el nuevo remito a la lista de Remitos
         RemitoAlmacen.Agregar(nuevoRemito);
+
+        // Cambiar estado de las órdenes de preparación
+        var idsOrdenes = ordenesSeleccionadas.Select(o => int.Parse(o.IdOrden)).ToList();
+        OrdenPreparacionAlmacen.cambiarVariosEstados(idsOrdenes, EstadoOrdenPreparacionEnum.Entregada);
+
+        // Confirmación visual de éxito
+        string mensaje = $"Se generó un nuevo remito con ID: {nuevoRemito.IdRemito}\n" +
+                         "Estado actualizado a 'Entregada' para las órdenes seleccionadas.";
+        MessageBox.Show(mensaje, "Estado de las Órdenes", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         return nuevoRemito;
     }
-
-    // Método para cambiar el estado de las órdenes
-    private void CambiarEstadoOrdenes(List<OrdenesDePreparacionRemito> ordenesAActualizar, EstadoOrdenPreparacionRemito nuevoEstado)
-    {
-        foreach (var orden in ordenesAActualizar)
-        {
-            var ordenExistente = ordenes.FirstOrDefault(o => o.IdOrden == orden.IdOrden);
-            if (ordenExistente != null)
-            {
-                ordenExistente.Estado = nuevoEstado;
-            }
-        }
-    }
-
-
     internal OrdenesDePreparacionRemito ObtenerOrdenPorId(string idOrden)
     {
+        if (ordenes == null)
+        {
+            throw new ArgumentNullException(nameof(ordenes), "No puede estar vacia");
+        }
         return ordenes.FirstOrDefault(o => o.IdOrden == idOrden);
     }
 
-  
-    
+
+
 
 }
 

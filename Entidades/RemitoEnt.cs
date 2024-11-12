@@ -12,5 +12,13 @@ namespace Pampazon.Entidades
         public int DNITransportista { get; set; }
         public DateTime FechaEmision { get; set; }
         public List<int> OrdenesPreparacion { get; } = new();
+
+        public RemitoEnt(int idRemito, int dniTransportista, DateTime fechaEmision, List<int> ordenesPreparacion)
+        {
+            IdRemito = idRemito;
+            DNITransportista = dniTransportista;
+            FechaEmision = fechaEmision;
+            OrdenesPreparacion.AddRange(ordenesPreparacion);
+        }
     }
 }

@@ -30,20 +30,22 @@ namespace Pampazon._6._GenerarRemito
                 if (!string.IsNullOrEmpty(mensajeValidacion))
                 {
                     MessageBox.Show(mensajeValidacion, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; 
+                    return;
                 }
 
                 if (!GenerarRemitoModelo.ExisteTransportistaPorDni(dni))
                 {
                     MessageBox.Show("El transportista no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; 
+                    return;
                 }
 
-                var ordenesDelTransportista = GenerarRemitoModelo.ObtenerOrdenesDePreparacionPorDni(dni);
+                var ordenesListas = GenerarRemitoModelo.ObtenerOrdenes();
+                var ordenesDelTransportista = GenerarRemitoModelo.ObtenerOrdenesDePreparacionPorDni(ordenesListas, dni);
+
                 if (ordenesDelTransportista == null || ordenesDelTransportista.Count == 0)
                 {
-                    MessageBox.Show("El transportista no tiene órdenes asociadas.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return; 
+                    MessageBox.Show("El transportista no tiene órdenes pendientes.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
 
                 string nombreTransportista = GenerarRemitoModelo.ObtenerNombreTransportistaPorDni(dni);
@@ -143,58 +145,49 @@ namespace Pampazon._6._GenerarRemito
         /// <param name="e"></param>
         private void GenerarRemitoBtn_Click(object sender, EventArgs e)
         {
-            
             if (DetalleRemitoLTV.Items.Count == 0)
             {
                 MessageBox.Show("No hay órdenes para generar un remito. Agregue al menos una orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            
             DialogResult resultado = MessageBox.Show(
                 "¿Está seguro de que desea generar el remito?",
                 "Confirmación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
 
-            
             if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Operación cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            
             int dniTransportista = int.Parse(DNITXT.Text);
 
-            
             bool hayItemsSeleccionados = DetalleRemitoLTV.Items.Cast<ListViewItem>().Any(item => item.Checked);
 
-           
             var ordenesParaRemito = DetalleRemitoLTV.Items.Cast<ListViewItem>()
-                .Where(item => !hayItemsSeleccionados || item.Checked) 
+                .Where(item => !hayItemsSeleccionados || item.Checked)
                 .Select(item =>
                 {
                     string idOrden = item.SubItems[0].Text;
                     return modelo.ObtenerOrdenPorId(idOrden);
                 })
                 .Where(orden => orden != null)
+                .Cast<OrdenesDePreparacionRemito>()
                 .ToList();
 
             try
             {
-                
                 RemitoEnt nuevoRemito = modelo.GenerarRemito(ordenesParaRemito, dniTransportista);
 
-                
                 MessageBox.Show($"Remito generado:\nTransportista DNI: {nuevoRemito.DNITransportista}\nÓrdenes: {string.Join(", ", nuevoRemito.OrdenesPreparacion)}",
                                 "Remito Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                
                 var itemsAEliminar = new List<ListViewItem>();
                 if (hayItemsSeleccionados)
                 {
-                    
                     foreach (ListViewItem item in DetalleRemitoLTV.Items)
                     {
                         if (item.Checked)
@@ -205,7 +198,6 @@ namespace Pampazon._6._GenerarRemito
                 }
                 else
                 {
-                    
                     itemsAEliminar.AddRange(DetalleRemitoLTV.Items.Cast<ListViewItem>());
                 }
 
@@ -213,7 +205,7 @@ namespace Pampazon._6._GenerarRemito
                 {
                     DetalleRemitoLTV.Items.Remove(item);
                 }
-                                
+
                 if (DetalleRemitoLTV.Items.Count == 0)
                 {
                     TransportistasListV.Items.Clear();
@@ -226,11 +218,10 @@ namespace Pampazon._6._GenerarRemito
             }
             catch (Exception ex)
             {
-                
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
 
 
         /// Quita la orden seleccionada de la lista Detalle Remito

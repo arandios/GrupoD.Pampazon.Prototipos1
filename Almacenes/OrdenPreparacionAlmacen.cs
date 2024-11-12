@@ -84,5 +84,18 @@ namespace Pampazon.Almacenes
 
             }
         }
+
+        public static void cambiarVariosEstados(List<int> idsOrdenes, EstadoOrdenPreparacionEnum nuevoEstado)
+        {
+            foreach (var idOrden in idsOrdenes)
+            {
+                var ordenExistente = OrdenesPreparacion.FirstOrDefault(o => o.IdOrdenPreparacion == idOrden);
+                if (ordenExistente != null)
+                {
+                    ordenExistente.Estado = nuevoEstado;
+                }
+            }
+            Grabar();
+        }
     }
 }
