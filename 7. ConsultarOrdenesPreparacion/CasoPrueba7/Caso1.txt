@@ -60,15 +60,15 @@ Fecha Inicio: 06/11/2024
 Botón : ”Buscar Orden”
 
 Órdenes encontradas: 
-1     -     6/11/2024   -     Procesamiento    -     Media
-2     -     6/11/2024   -     Procesamiento    -     Media
-3     -     6/11/2024   -     Procesamiento    -     Alta
-4     -     6/11/2024   -     Procesamiento    -     Baja
-5     -     6/11/2024   -     Pendiente        -     Media
-6     -     6/11/2024   -     Pendiente        -     Alta
-7     -     6/11/2024   -     Procesada        -     Baja
-8     -     6/11/2024   -     Procesada        -     Media
-9     -     6/11/2024   -     Procesada        -     Alta
+1     -     6/11/2024   -    Procesamiento     -     Media
+2     -     6/11/2024   -    Procesamiento     -     Media
+3     -     6/11/2024   -    Procesamiento     -     Alta
+4     -     6/11/2024   -    Procesamiento     -     Baja
+5     -     6/11/2024   -    Pendiente         -     Media
+6     -     6/11/2024   -    Pendiente         -     Alta
+7     -     6/11/2024   -    Procesada         -     Baja
+8     -     6/11/2024   -    Procesada         -     Media
+9     -     6/11/2024   -    Procesada         -     Alta
 10    -     6/11/2024   -    Procesada         -     Baja
 11    -     6/11/2024   -    Preparada         -     Media
 12    -     6/11/2024   -    Preparada         -     Alta
@@ -99,14 +99,14 @@ Botón: ”Borrar filtros”
 - Seleccionar Prioridad: media
 
 - Órdenes encontradas:  
-1     -        6/11/2024   -    Procesamiento    -      Media
-2     -        6/11/2024   -    Procesamiento    -     Media
-5     -        6/11/2024   -    Pendiente        -     Media
-8     -        6/11/2024   -    Procesada        -     Media
-11    -        6/11/2024   -    Preparada        -     Media
-14    -        6/11/2024   -    Preparada        -     Media
-17    -        6/11/2024   -    Preparada        -     Media
-19    -        7/11/2024   -    Lista            -      Media
+1     -        6/11/2024   -    Procesamiento    -       Media
+2     -        6/11/2024   -    Procesamiento    -       Media
+5     -        6/11/2024   -    Pendiente        -       Media
+8     -        6/11/2024   -    Procesada        -       Media
+11    -        6/11/2024   -    Preparada        -       Media
+14    -        6/11/2024   -    Preparada        -       Media
+17    -        6/11/2024   -    Preparada        -       Media
+19    -        7/11/2024   -    Lista            -       Media
 20    -        7/11/2024   -    Lista            -       Media
 21    -        7/11/2024   -    Lista            -       Media
 
@@ -116,25 +116,25 @@ Botón: ”Borrar filtros”
 
 - Órdenes encontradas:
 
-4      -     6/11/2024      -     Procesamiento   -        Baja
-7      -     6/11/2024      -     Procesada       -        Baja
-10    -     6/11/2024      -     Procesada        -        Baja
-13    -     6/11/2024      -     Preparada        -        Baja
-16    -     6/11/2024      -     Preparada        -        Baja
+4     -     6/11/2024      -     Procesamiento    -         Baja
+7     -     6/11/2024      -     Procesada        -         Baja
+10    -     6/11/2024      -     Procesada        -         Baja
+13    -     6/11/2024      -     Preparada        -         Baja
+16    -     6/11/2024      -     Preparada        -         Baja
 
 
 - Seleccionar Estado: Preparada
 
 - Órdenes encontradas:
          	
-11      -     6/11/2024     -    Preparada    -       Media
+11     -     6/11/2024     -    Preparada     -       Media
 12     -     6/11/2024     -    Preparada     -       Alta
 13     -     6/11/2024     -    Preparada     -       Baja
 14     -     6/11/2024     -    Preparada     -       Media
 15     -     6/11/2024     -    Preparada     -       Alta
 16     -     6/11/2024     -    Preparada     -       Baja
 17     -     6/11/2024     -    Preparada     -       Media
-18     -     7/11/2024     -    Preparada     -      Alta
+18     -     7/11/2024     -    Preparada     -       Alta
 
 Botón: ”Borrar filtros”
 
@@ -153,10 +153,10 @@ Seleccionar Estado: Pendiente
  Botón: ”Borrar filtros”
 
  Seleccionar Estado: Procesada 
-7        -    6/11/2024     -       Procesada    -        Baja
-8        -    6/11/2024     -       Procesada    -        Media
-9        -    6/11/2024     -       Procesada    -        Alta
-10      -    6/11/2024     -       Procesada     -        Baja
+7        -    6/11/2024     -       Procesada    -    Baja
+8        -    6/11/2024     -       Procesada    -    Media
+9        -    6/11/2024     -       Procesada    -    Alta
+10       -    6/11/2024     -       Procesada    -    Baja
 
  Botón: ”Borrar filtros”
 
