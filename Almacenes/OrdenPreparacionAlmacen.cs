@@ -78,15 +78,11 @@ namespace Pampazon.Almacenes
                 if( ordEnt.IdOrdenPreparacion == IdOP)
                 {
                     ordEnt.Estado = estado;
-           
+                    Grabar();
                     return;
                 }
 
             }
-            Grabar();
         }
-
     }
-
-
 }
