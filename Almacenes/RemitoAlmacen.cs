@@ -1,16 +1,18 @@
 ﻿using Pampazon.Entidades;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Pampazon.Almacenes
 {
     internal static class RemitoAlmacen
     {
         private static List<RemitoEnt> remitos = new List<RemitoEnt>();
+
+       
 
         public static IReadOnlyCollection<RemitoEnt> Remitos => remitos.AsReadOnly();
 
@@ -25,7 +27,11 @@ namespace Pampazon.Almacenes
             if (File.Exists(@"Datos\Remitos.json"))
             {
                 var datos = File.ReadAllText(@"Datos\Remitos.json");
-                remitos = JsonSerializer.Deserialize<List<RemitoEnt>>(datos);
+                var deserializedRemitos = JsonSerializer.Deserialize<List<RemitoEnt>>(datos);
+                if (deserializedRemitos != null)
+                {
+                    remitos = deserializedRemitos;
+                }
             }
         }
 
@@ -35,5 +41,4 @@ namespace Pampazon.Almacenes
             Grabar();
         }
     }
-
 }

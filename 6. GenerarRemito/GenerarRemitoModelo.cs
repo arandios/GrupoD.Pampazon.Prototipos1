@@ -6,6 +6,7 @@ using Pampazon.Remitos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Windows.Forms;
 
 public class GenerarRemitoModelo
@@ -77,12 +78,10 @@ public class GenerarRemitoModelo
     {
         MessageBox.Show("Se ejecutó el método GenerarRemito en el Modelo");
 
-        // Obtener el número ID para el nuevo Remito
         int nuevoIdRemito = RemitoAlmacen.Remitos.Any()
             ? RemitoAlmacen.Remitos.Max(r => r.IdRemito) + 1
             : 1;
 
-        // Crear una instancia de RemitoEnt utilizando el constructor adecuado
         var nuevoRemito = new RemitoEnt(
             nuevoIdRemito,
             dniTransportista,
@@ -90,12 +89,13 @@ public class GenerarRemitoModelo
             ordenesSeleccionadas.Select(o => int.Parse(o.IdOrden)).ToList()
         );
 
-        // Agregar el nuevo remito a la lista de Remitos
         RemitoAlmacen.Agregar(nuevoRemito);
 
-        // Cambiar estado de las órdenes de preparación
         var idsOrdenes = ordenesSeleccionadas.Select(o => int.Parse(o.IdOrden)).ToList();
         OrdenPreparacionAlmacen.cambiarVariosEstados(idsOrdenes, EstadoOrdenPreparacionEnum.Entregada);
+
+        // Actualizar el archivo OrdenesDePreparacion.json
+        ActualizarOrdenesDePreparacion(idsOrdenes);
 
         // Confirmación visual de éxito
         string mensaje = $"Se generó un nuevo remito con ID: {nuevoRemito.IdRemito}\n" +
@@ -104,7 +104,29 @@ public class GenerarRemitoModelo
 
         return nuevoRemito;
     }
-    internal OrdenesDePreparacionRemito ObtenerOrdenPorId(string idOrden)
+
+    private void ActualizarOrdenesDePreparacion(List<int> idsOrdenes)
+    {
+        var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Datos", "OrdenesDePreparacion.json");
+        var ordenesPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion;
+
+        // Actualizar el estado de las órdenes en la lista
+        foreach (var id in idsOrdenes)
+        {
+            var orden = ordenesPreparacion.FirstOrDefault(o => o.IdOrdenPreparacion == id);
+            if (orden != null)
+            {
+                orden.Estado = (EstadoOrdenPreparacionEnum)(int)EstadoOrdenPreparacionRemito.Entregada;
+            }
+        }
+
+        // Serializar la lista actualizada y escribirla en el archivo
+        var datos = JsonSerializer.Serialize(ordenesPreparacion, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(filePath, datos);
+    }
+
+
+    internal OrdenesDePreparacionRemito? ObtenerOrdenPorId(string idOrden)
     {
         if (ordenes == null)
         {

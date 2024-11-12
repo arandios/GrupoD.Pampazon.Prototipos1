@@ -224,6 +224,7 @@ namespace Pampazon._6._GenerarRemito
 
 
 
+
         /// Quita la orden seleccionada de la lista Detalle Remito
         /// </summary>
         /// <param name="sender"></param>
