@@ -1,369 +1,169 @@
 ﻿Caso de prueba: [Desde el menú del sistema] “Consultar orden de preparación”
 
-Boton:”Consultar Orden De Preparacion”
+Botón:”Consultar Orden De Preparación”
 
 Caso de prueba: [Desde el menú del sistema] “Consultar orden de preparación”
-Boton:”Consultar Orden De Preparacion”
+Botón:”Consultar Orden De Preparación”
+
 ID Cliente: 1
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-1    -    6/11/2024   -     1     -     1
-Boton:”Borrar Filtros”
-ID Cliente: 2
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-2     -    6/11/2024   -    1     -     1
-Boton:”Borrar Filtros”
-ID Cliente: 3
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-3      -  6/11/2024    -    1     -     2
-ID Cliente: 4
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-4         6/11/2024     -   1     -     0
-Boton:”Borrar Filtros”
-ID Cliente: 5
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-5          6/11/2024   -    0     -      1
-Boton:”Borrar Filtros”
-ID Cliente: 6
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-6          6/11/2024   -    0     -      2
-Boton:”Borrar Filtros”
-ID Cliente: 7
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-7           6/11/2024  -    2     -       0
-Boton:”Borrar Filtros”
-ID Cliente: 8
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-8           6/11/2024  -    2      -      1
-Boton:”Borrar Filtros”
-ID Cliente: 9
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-9           6/11/2024  -     2     -       2
-Boton:”Borrar Filtros”
-ID Cliente: 10
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-10          6/11/2024 -      2     -       0
-Boton:”Borrar Filtros”
-ID Cliente: 11
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-11          6/11/2024 -        2    -       1
-Boton:”Borrar Filtros”
-ID Cliente: 12
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-12           6/11/2024 -       2    -        2
-Boton:”Borrar Filtros”
-ID Cliente: 13
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-13        6/11/2024     -      3     -       0
-Boton:”Borrar Filtros”
-ID Cliente: 14
-Boton:”Buscar Ordenes”
-Ordenes Encontradas : 
-14          6/11/2024   -       3    -        1
-Boton:”Borrar Filtros” 
-ID Cliente: 15
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-15             6/11/2024  -      3    -        2
-Boton:”Borrar Filtros”
-ID Cliente: 16
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-16            6/11/2024  -      3     -        0
-Boton:”Borrar Filtros”
-ID Cliente: 17
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-17             6/11/2024  -      3     -        1
-Boton:”Borrar Filtros”
-ID Cliente: 18
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-18           6/11/2024    -      3     -        2
-Boton:”Borrar Filtros”
-ID Cliente: 19
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-19            7/11/2024   -      4     -        1
-Boton:”Borrar Filtros”
-ID Cliente: 20
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-20          7/11/2024     -       4     -       1
-Boton:”Borrar Filtros”
-ID Cliente: 21
-Boton:”Buscar Ordenes”
-Ordenes Encontradas :
-21           7/11/2024    -        4    -       1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-Boton:”Borrar Filtros”
+
+Botón:”Buscar Órdenes”
+
+Órdenes Encontradas :
+
+  	  1    -    6/11/2024   -     Procesamiento     -     Media
+
+Detalles Productos en la orden del cliente seleccionado: 
+
+	PROD-00123 - Aceite sintetico 5W-30 - 2
+	PROD-00456 - Arroz inflado - 10
+
+Botón:”Borrar Filtros”
+
+
 CUIT:20-12345678-9
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-1          6/11/2024      -        1    -       1
-Boton:”Borrar filtros”
-CUIT:20-23456789-7
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-2          6/11/2024      -       1     -       1
-Boton:”Borrar filtros”
-CUIT:2020-34567890-6
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-3         6/11/2024      -       1      -       2
-Boton:”Borrar filtros”
-CUIT:20-45678901-5
-Boton : ”BuscarOrden”
-Ordenes encontradas: 
-4         6/11/2024     -        1      -       0
-Boton:”Borrar filtros”
-CUIT:20-56789012-4
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-5         6/11/2024     -        0      -       1
-Boton:”Borrar filtros”
-CUIT:20-67890123-3
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-6         6/11/2024      -       0      -      2
-Boton:”Borrar filtros”
-CUIT:20-78901234-2
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-7         6/11/2024      -       2       -     0
-Boton:”Borrar filtros”
-CUIT:20-89012345-1
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-8        6/11/2024       -      2       -      1
-Boton:”Borrar filtros”
-CUIT:20-90123456-8
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-9        6/11/2024       -       2       -     2
-Boton:”Borrar filtros”
-CUIT:20-01234567-9
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-10       6/11/2024       -      2        -     0
 
-Boton:”Borrar filtros”
-CUIT:20-12348765-4
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-11      6/11/2024        -      2       -      0
+Botón : ”Buscar Orden”
 
-Boton:”Borrar filtros”
-CUIT:20-23457689-3
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-12      6/11/2024       -      2        -     2
-Boton:”Borrar filtros”
-CUIT:20-34568901-7
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-13     6/11/2024        -      3        -      0
-Boton:”Borrar filtros”
-CUIT:20-45679012-6
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-14     6/11/2024        -      3         -      1
-Boton:”Borrar filtros”
-CUIT:20-56780123-5
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-15    6/11/2024         -       3        -      2
+Órdenes encontradas:
 
-Boton:”Borrar filtros”
+1          6/11/2024      -        Procesamiento    -       Media
+
+Detalle productos en la orden del cliente seleccionado:
+
+PROD-00123 - Aceite sintetico 5W-30 -  2
+PROD-00456 - Arroz inflado - 10
+
+Botón:”Borrar filtros”
+
+
 Razon Social: Servicios Integrales Alfa
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-1   6/11/2024           -       1         -       1
-Boton:”Borrar filtros”
-Razon Social: Distribuidora Omega
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-2          6/11/2024     -      1         -       1
-Boton:”Borrar filtros”
-RazonSocial: Logística Bravo
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-3         6/11/2024      -       1        -        2
-Boton:”Borrar filtros”
-RazonSocial: Tecnologías Delta
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-4         6/11/2024      -       1         -       0
-Boton:”Borrar filtros”
-RazonSocial: Grupo Epsilon
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-5         6/11/2024      -       0          -      1
-Boton:”Borrar filtros”
-RazonSocial: Agropecuaria Gamma
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-6         6/11/2024      -       0          -      2
-Boton:”Borrar filtros”
-Razon Social: Construcciones Lambda
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-7         6/11/2024      -       2           -      0
-Boton:”Borrar filtros”
-RazonSocial: Soluciones Integrales Zeta
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-8        6/11/2024       -      2            -      1
-Boton:”Borrar filtros”
-RazonSocial: Corporación Beta
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-9        6/11/2024       -      2            -       2
-Boton:”Borrar filtros”
-Rzon Social: Alimentos Nacionales SA
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-10       6/11/2024       -      2            -       0
 
-Boton:”Borrar filtros”
-RazonSocial: Logística y Transporte Sigma
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-11      6/11/2024         -     2           -        0
+Botón : ”Buscar Orden”
 
-Boton:”Borrar filtros”
-RazonSocial: Maderas Los Robles
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-12      6/11/2024         -     2            -       2
-Boton:”Borrar filtros”
-RazonSocial: Importaciones Venecia
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-13     6/11/2024           -    3             -      0
-Boton:”Borrar filtros”
-RazonSocial: Textiles del Sol
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-14     6/11/2024           -     3             -      1
-Boton:”Borrar filtros”
-RazonSocial: Proyectos Industriales SA
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-15    6/11/2024             -     3            -      2
-Boton:”Borrar filtros”
+Órdenes encontradas:
+1   6/11/2024           -       Procesamiento         -       Media
+
+
+
+Detalle productos en la orden del cliente seleccionado:
+
+PROD-00123 - Aceite sintetico 5W-30 -  2
+PROD-00456 - Arroz inflado - 10
+
+
+Botón:”Borrar filtros”
+
 
 Fecha Inicio: 06/11/2024
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-1     -      6/11/2024   -   1    -     1
-2     -      6/11/2024   -   1    -     1
-3     -      6/11/2024   -   1    -     2
-4     -       6/11/2024  -   1    -     0
-5     -       6/11/2024  -   0    -     1
-6     -      6/11/2024   -   0    -     2
-7     -     6/11/2024    -   2    -     0
-8     -      6/11/2024   -   2    -     1
-9     -      6/11/2024   -   2    -     2
-10    -     6/11/2024    -   2    -     0
-11    -     6/11/2024    -   2    -     1
-12    -     6/11/2024    -   3    -     2
-13    -     6/11/2024    -   0    -     0
-14    -    6/11/2024     -   1    -     2
-15    -    6/11/2024     -   2    -     2
-16    -     6/11/2024    -   3    -     0
-17    -     6/11/2024    -   3    -     2
-18    -     7/11/2024    -   3    -     2
-19    -     7/11/2024    -   3    -     1
-20    -     7/11/2024    -   3    -     1
-21    -      7/11/2024   -   3    -     1
-Boton:”Borrar filtros”
-Fecha Inicio: 07/11/2024
-Boton : ”BuscarOrden”
-Ordenes encontradas:
-18    -     7/11/2024    -   3     -     2
-19    -    7/11/2024     -   3     -     1
-20    -     7/11/2024    -   3     -     1
-21    -     7/11/2024    -   3     -     1
-- Botón: “Borrar Filtros”
+
+Botón : ”Buscar Orden”
+
+Órdenes encontradas: 
+1     -     6/11/2024   -     Procesamiento    -     Media
+2     -     6/11/2024   -     Procesamiento    -     Media
+3     -     6/11/2024   -     Procesamiento    -     Alta
+4     -     6/11/2024   -     Procesamiento    -     Baja
+5     -     6/11/2024   -     Pendiente        -     Media
+6     -     6/11/2024   -     Pendiente        -     Alta
+7     -     6/11/2024   -     Procesada        -     Baja
+8     -     6/11/2024   -     Procesada        -     Media
+9     -     6/11/2024   -     Procesada        -     Alta
+10    -     6/11/2024   -    Procesada         -     Baja
+11    -     6/11/2024   -    Preparada         -     Media
+12    -     6/11/2024   -    Preparada         -     Alta
+13    -     6/11/2024   -    Preparada         -     Baja
+14    -     6/11/2024   -    Preparada         -     Alta
+15    -     6/11/2024   -    Preparada         -     Alta
+16    -     6/11/2024   -    Preparada         -     Baja
+17    -     6/11/2024   -    Preparada         -     Alta
+18    -     7/11/2024   -    Preparada         -     Alta
+19    -     7/11/2024   -    Lista             -     Media
+20    -     7/11/2024   -    Lista             -     Media
+21    -     7/11/2024   -    Lista             -     Media
+
+Botón:”Borrar filtros”
+
+
 - Seleccionar Prioridad: Alta
+
 - Órdenes encontradas:
- 3   -       6/11/2024    -    1    -    2
-6 	 -       6/11/2024    -    0    -    2
-9 	 -       6/11/2024    -    2    -    2
-12   -    	 6/11/2024    -    3    -    2
-15   -       6/11/2024    -    3    -    2
-18   -      7/11/2024     -    3 	-    2
+3     -       6/11/2024    -    Procesamiento    -    Alta
+6     -       6/11/2024    -    Pendiente        -    Alta
+9     -       6/11/2024    -    Procesada        -    Alta
+12   -       6/11/2024    -    Preparada         -    Alta
+15   -       6/11/2024    -    Preparada         -    Alta
+18   -       7/11/2024    -    Preparada         -    Alta
 Botón: ”Borrar filtros”
+
 - Seleccionar Prioridad: media
+
 - Órdenes encontradas:  
-1     -        6/11/2024   -    1    -         1
-2     -        6/11/2024   -    1    -         1
-5     -        6/11/2024   -    0    -         1
-8     -        6/11/2024   -    2    -         1
-11    -        6/11/2024   -    3    -         1
-14    -        6/11/2024   -    3    -         1
-17    -        6/11/2024   -    3    -         1
-19    -        7/11/2024   -    4    -         1
-20    -        7/11/2024   -    4    -         1
-21    -        7/11/2024   -    4    -         1
+1     -        6/11/2024   -    Procesamiento    -      Media
+2     -        6/11/2024   -    Procesamiento    -     Media
+5     -        6/11/2024   -    Pendiente        -     Media
+8     -        6/11/2024   -    Procesada        -     Media
+11    -        6/11/2024   -    Preparada        -     Media
+14    -        6/11/2024   -    Preparada        -     Media
+17    -        6/11/2024   -    Preparada        -     Media
+19    -        7/11/2024   -    Lista            -      Media
+20    -        7/11/2024   -    Lista            -       Media
+21    -        7/11/2024   -    Lista            -       Media
+
 Botón: ”Borrar filtros”
+
 - Seleccionar Prioridad: baja
+
 - Órdenes encontradas:
 
-4     -     6/11/2024      -     1   -        0
-7     -     6/11/2024      -     2   -        0
-10    -     6/11/2024      -     2   -        0
-13    -     6/11/2024      -     3   -        0
-16    -     6/11/2024      -     3   -        0
-
-
+4      -     6/11/2024      -     Procesamiento   -        Baja
+7      -     6/11/2024      -     Procesada       -        Baja
+10    -     6/11/2024      -     Procesada        -        Baja
+13    -     6/11/2024      -     Preparada        -        Baja
+16    -     6/11/2024      -     Preparada        -        Baja
 
 
 - Seleccionar Estado: Preparada
+
 - Órdenes encontradas:
          	
-11	   -     6/11/2024     -    3     -       1
-12	   -     6/11/2024     -    3     -       2
-13     -     6/11/2024     -    3     -       0
-14     -     6/11/2024     -    3     -       1
-15     -     6/11/2024     -    3     -       2
-16     -     6/11/2024     -    3     -       0
-17     -     6/11/2024     -    3     -       1
-18     -     7/11/2024     -    3     -       2
-Boton: ”Borrar filtros”
+11      -     6/11/2024     -    Preparada    -       Media
+12     -     6/11/2024     -    Preparada     -       Alta
+13     -     6/11/2024     -    Preparada     -       Baja
+14     -     6/11/2024     -    Preparada     -       Media
+15     -     6/11/2024     -    Preparada     -       Alta
+16     -     6/11/2024     -    Preparada     -       Baja
+17     -     6/11/2024     -    Preparada     -       Media
+18     -     7/11/2024     -    Preparada     -      Alta
+
+Botón: ”Borrar filtros”
+
 Seleccionar Estado: Pendiente
-5      -     6/11/2024     -     0    -       1
-6      -      6/11/2024    -     0    -       2
- Boton: ”Borrar filtros”
+5      -     6/11/2024     -     Pendiente     -       Media
+6      -      6/11/2024    -     Pendiente     -       Alta
+
+ Botón: ”Borrar filtros”
 
  Seleccionar Estado: Procesamiento
-1       -      6/11/2024   -        1  -     1
-2       -      6/11/2024   -        1  -     1
-3       -      6/11/2024   -        1  -     2
-4       -      6/11/2024   -        1  -     1
- Boton: ”Borrar filtros”
+1       -      6/11/2024   -      Procesamiento  -     Media
+2       -      6/11/2024   -      Procesamiento  -     Media
+3       -      6/11/2024   -     Procesamiento   -     Alta
+4       -      6/11/2024   -      Procesamiento  -     Media
+
+ Botón: ”Borrar filtros”
+
  Seleccionar Estado: Procesada 
-7       -    6/11/2024     -       2   -        0
-8       -    6/11/2024     -       2   -        1
-9       -    6/11/2024     -       2   -        2
-10      -    6/11/2024     -       2   -        0
- Boton: ”Borrar filtros”
+7        -    6/11/2024     -       Procesada    -        Baja
+8        -    6/11/2024     -       Procesada    -        Media
+9        -    6/11/2024     -       Procesada    -        Alta
+10      -    6/11/2024     -       Procesada     -        Baja
+
+ Botón: ”Borrar filtros”
+
  Seleccionar Estado: Lista
-19      -   7/11/2024      -      4    -        1
-20      -   7/11/2024      -      4    -        1
-21      -   7/11/2024      -      4    -        1
+19      -   7/11/2024      -      Lista    -        Media
+20      -   7/11/2024      -      Lista    -        Media
+21      -   7/11/2024      -      Lista    -        Media
 
 
  
