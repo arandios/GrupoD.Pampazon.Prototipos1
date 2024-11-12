@@ -1,4 +1,5 @@
 ﻿
+using Pampazon.Entidades;
 using Pampazon.GenerarOrdenPreparacion;
 using System;
 using System.Collections.Generic;
@@ -28,48 +29,44 @@ namespace Pampazon._4._EmpaquetarOrden
         }
         private void CargarLista()
         {
-
             OrdenesParaPrepararLST.Items.Clear();
-
 
             if (indiceActualOrden < modelo.ordenesPreparacion.Count)
             {
-
                 OrdenPreparacion ordenActual = modelo.ordenesPreparacion[indiceActualOrden];
 
-                // Recorrer los productos de la orden actual
+                // Cargar los productos de la orden actual
                 foreach (Producto producto in ordenActual.Productos)
                 {
-                    // Crear un nuevo ítem para cada producto en la orden
-                    ListViewItem item = new ListViewItem(producto.SKUProducto); // Muestra SKUProducto
-                    item.SubItems.Add(producto.DescripcionProducto);  //  descripción del producto
-                    item.SubItems.Add(producto.Cantidad.ToString());  //cantidad
-
-                    // Agregar el ítem al ListView
+                    ListViewItem item = new ListViewItem(producto.SKUProducto);
+                    item.SubItems.Add(producto.DescripcionProducto);
+                    item.SubItems.Add(producto.Cantidad.ToString());
                     OrdenesParaPrepararLST.Items.Add(item);
                 }
             }
             else
             {
-                // Mostrar mensaje cuando no haya más ordenes para procesar
                 MessageBox.Show("No hay más productos para empaquetar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void Confirmarbtn_Click(object sender, EventArgs e)
         {
-            // Confirmar si la orden fue empaquetada
-            //DialogResult result = MessageBox.Show("¿Confirmar que la orden está preparada?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (indiceActualOrden < modelo.ordenesPreparacion.Count)
+            {
+                // Obtén la orden actual
+                var ordenActual = modelo.ordenesPreparacion[indiceActualOrden];
 
-            /*if (result == DialogResult.Yes)
-            {*/
-            // Incrementar el índice para mostrar la siguiente orden
-            indiceActualOrden++;
+                // Cambia el estado de la orden actual a "Preparada"
+                modelo.CambiarEstadoOrdenPreparacion(int.Parse(ordenActual.IdOrdenPreparacion), EstadoOrdenPreparacionEnum.Preparada);
 
-            // Cargar la siguiente orden si hay más
-            modelo.cambiarEstadoOP();
-            modelo.CargarOrdenes();
-            //}
+                // Recarga la lista de órdenes y reinicia el índice
+                modelo.CargarOrdenes();
+                indiceActualOrden = 0;  // Reinicia el índice para comenzar con la primera orden "Procesada"
+
+                // Carga la primera orden de la lista actualizada
+                CargarLista();
+            }
         }
 
         private void OrdenesParaPrepararLST_SelectedIndexChanged(object sender, EventArgs e)

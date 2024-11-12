@@ -27,24 +27,31 @@ namespace Pampazon._4._EmpaquetarOrden
         public void CargarOrdenes()
         {
 
-            // Filtrar solo las órdenes con estado "Procesada" (2)
             ordenesPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion
-                .Where(o => o.Estado == EstadoOrdenPreparacionEnum.Procesada)  // Filtrar por estado
-                .Select(o => new OrdenPreparacion
+            .Where(o => o.Estado == EstadoOrdenPreparacionEnum.Procesada)  // Filtra por estado "Procesada"
+            .Select(o => new OrdenPreparacion
+            {
+                IdOrdenPreparacion = o.IdOrdenPreparacion.ToString(),
+                Productos = o.Detalle.Select(d => new Producto
                 {
-                    IdOrdenPreparacion = o.IdOrdenPreparacion.ToString(),
-                    Productos = o.Detalle.Select(d => new Producto
-                    {
-                        SKUProducto = d.SKU,
-                        DescripcionProducto = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == d.SKU)?.NombreProducto ?? "Producto no encontrado",
-                        Cantidad = d.Cantidad
-                    }).ToList()
-                }).ToList();
+                    SKUProducto = d.SKU,
+                    DescripcionProducto = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == d.SKU)?.NombreProducto ?? "Producto no encontrado",
+                    Cantidad = d.Cantidad
+                }).ToList()
+            }).ToList();
 
-            
 
-           
+
+
         }
+        public void CambiarEstadoOrdenPreparacion(int idOrden, EstadoOrdenPreparacionEnum nuevoEstado)
+        {
+            OrdenPreparacionAlmacen.cambiarEstado(idOrden, nuevoEstado);
+            // Actualiza la lista de órdenes para excluir las que ya no están en estado "Procesada"
+            CargarOrdenes();
+        }
+
+
 
         //TODO: Cambiar estado de la Orden de Seleccion a Seleccionada. 
         public void cambiarEstadoOP()
