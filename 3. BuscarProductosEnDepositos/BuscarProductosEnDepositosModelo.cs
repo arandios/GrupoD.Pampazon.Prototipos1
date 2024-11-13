@@ -45,6 +45,8 @@ namespace Pampazon.BuscarProductosEnDepositos
 
 
         // Método para confirmar la orden de selección
+
+        /*
         public void ConfirmarOrdenSeleccion(int idOrdenSeleccion)
         {
             //TODO: revisar: parece que está haciendo los cambios en la orden de seleccion sobre una COPIA
@@ -52,7 +54,7 @@ namespace Pampazon.BuscarProductosEnDepositos
 
             var ordenSeleccionEntidad = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.First(o => o.IdOrdenSeleccion == idOrdenSeleccion);
 
-            var ordenesPreparacionEntidad = ordenSeleccion.OrdenesPreparacion
+            var ordenesPreparacionEntidad = ordenSeleccionEntidad.OrdenesPreparacion
                 .Select(id => OrdenPreparacionAlmacen.OrdenesPreparacion.First(op => op.IdOrdenPreparacion == id))
                 .ToList();
 
@@ -62,12 +64,62 @@ namespace Pampazon.BuscarProductosEnDepositos
                 ordenPrepEntidad.Estado = EstadoOrdenPreparacionEnum.Procesada;
             }
 
-            // Cambiar el estado de la orden de selección a "Confirmada"
+            // Cambiar el estado de la orden de selección a "Seleccionada"
             ordenSeleccionEntidad.EstadoOrden = EstadoOrdenSeleccionEnum.Seleccionada;
 
             // Eliminar la orden de selección de la lista
             OrdenesDeSeleccion.Remove(ordenSeleccion);
         }
+        */
+
+        public void ConfirmarOrdenSeleccion(int idOrdenSeleccion)
+        {
+            // Obtener la orden de selección desde el almacenamiento persistente
+            var ordenSeleccionEntidad = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
+                .FirstOrDefault(o => o.IdOrdenSeleccion == idOrdenSeleccion);
+
+            if (ordenSeleccionEntidad == null)
+            {
+                throw new InvalidOperationException("La orden de selección no existe.");
+            }
+
+            // Cambiar el estado de las órdenes de preparación asociadas a "Procesada"
+            foreach (var idOrdenPreparacion in ordenSeleccionEntidad.OrdenesPreparacion)
+            {
+                var ordenPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion
+                    .FirstOrDefault(op => op.IdOrdenPreparacion == idOrdenPreparacion);
+
+                if (ordenPreparacion != null)
+                {
+                    // Mostrar el estado antes de cambiarlo
+                    //MessageBox.Show($"Estado antes de cambiar: {ordenPreparacion.Estado}");
+
+                    // Cambiar el estado
+                    ordenPreparacion.Estado = EstadoOrdenPreparacionEnum.Procesada;
+
+                    // Mostrar el estado después de cambiarlo
+                    //MessageBox.Show($"Estado después de cambiar: {ordenPreparacion.Estado}");
+
+                    OrdenPreparacionAlmacen.Grabar();
+                }
+            }
+
+            // Cambiar el estado de la orden de selección a "Seleccionada"
+            ordenSeleccionEntidad.EstadoOrden = EstadoOrdenSeleccionEnum.Seleccionada;
+
+            // Persistir los cambios en el almacenamiento
+            OrdenDeSeleccionAlmacen.Grabar();
+
+            // Eliminar la orden de selección de la lista en memoria de órdenes de selección activas
+            OrdenesDeSeleccion.RemoveAll(o => o.IdOrdenSeleccion == idOrdenSeleccion);
+        }
+
+
+
+
+
+
+
 
         public void CargarOrdenesSeleccionEnComboBox(ComboBox comboBox)
         {
@@ -107,12 +159,6 @@ namespace Pampazon.BuscarProductosEnDepositos
                 .Select(id => OrdenPreparacionAlmacen.OrdenesPreparacion.FirstOrDefault(op => op.IdOrdenPreparacion == id))
                 .Where(op => op != null)
                 .ToList();
-
-            // Cambiar el estado de las órdenes de preparación a "Procesada"
-            foreach (var ordenPrepEntidad in ordenesPreparacion)
-            {
-                OrdenPreparacionAlmacen.cambiarEstado(ordenPrepEntidad.IdOrdenPreparacion, EstadoOrdenPreparacionEnum.Procesada);
-            }
 
 
             // Un diccionario SKU / Cantidad.
