@@ -15,6 +15,32 @@ namespace Pampazon.Almacenes
 
         public static IReadOnlyCollection<ProductoEnt> Productos => productos.AsReadOnly();
 
+
+        public static void restarStock(string SKU, int cantidad) { 
+            foreach (var item in productos) 
+                {
+                    if(item.SKU == SKU) {
+
+                        foreach(var prod in item.Detalle)
+                        {
+                                if(prod.Stock - cantidad >= 0) 
+                                {
+                                prod.Stock = prod.Stock - cantidad;
+                                cantidad = 0;
+                                break;
+                                }else
+                                {
+                                cantidad = cantidad - prod.Stock;
+                                prod.Stock = 0;
+                                }
+       
+                        }
+                }
+
+            }
+
+        }
+
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(productos);
