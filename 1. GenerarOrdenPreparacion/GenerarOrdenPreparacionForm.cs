@@ -302,7 +302,7 @@ namespace Pampazon
                 DialogResult resultOrden = MessageBox.Show($" ID Cliente: {model.Orden.IDCliente}\n Fecha de entrega: {FechaSelecter.Value.ToString("dd-MM-yyyy")}   Horario: {HorarioTextBox.Text}\n Dni Transportista: {model.Orden.DNITransportista}\n\n\n Confirmar Orden", "CONFIRMAR ORDEN DE ENTREGA", MessageBoxButtons.YesNo);
                 if (resultOrden == DialogResult.Yes)
                 {
-                    DialogResult result = MessageBox.Show($"Orden ingresada con exito, le enviaremos un mail con los detalles", "Confirmar Orden");
+                    DialogResult result = MessageBox.Show($"Orden ingresada con exito.", "Confirmar Orden");
 
 
                     DateTime originalDate = FechaSelecter.Value;
