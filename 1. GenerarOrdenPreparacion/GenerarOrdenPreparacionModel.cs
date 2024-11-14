@@ -273,10 +273,6 @@ namespace Pampazon.GenerarOrdenPreparacion
                 ordenEnt.Detalle.Add(productoEnt);   // 4
             }
 
-            foreach(var prod in ordenEnt.Detalle)
-            {
-                MessageBox.Show(prod.SKU);
-            }
 
             // Prioridad y Estado
             if(this.Orden.Prioridad.ToUpper() == "MEDIA")
