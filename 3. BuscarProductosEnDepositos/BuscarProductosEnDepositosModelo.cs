@@ -1,4 +1,15 @@
-﻿using Pampazon._3._BuscarProductosEnDepositos;
+﻿
+
+
+
+
+
+
+
+
+
+
+using Pampazon._3._BuscarProductosEnDepositos;
 using Pampazon.Almacenes;
 using Pampazon.Entidades;
 using Pampazon.OrdenSeleccion;
@@ -94,6 +105,8 @@ namespace Pampazon.BuscarProductosEnDepositos
                     // Mostrar el estado antes de cambiarlo
                     //MessageBox.Show($"Estado antes de cambiar: {ordenPreparacion.Estado}");
 
+                    cambiarStock(ordenPreparacion);
+
                     // Cambiar el estado
                     ordenPreparacion.Estado = EstadoOrdenPreparacionEnum.Procesada;
 
@@ -115,9 +128,14 @@ namespace Pampazon.BuscarProductosEnDepositos
         }
 
 
+            public void  cambiarStock( OrdenPreparacionEnt orden  ) {
+                
+                foreach(var prod in orden.Detalle )
+                {
+                Almacenes.ProductoAlmacen.restarStock(prod.SKU, prod.Cantidad);
+                }
 
-
-
+            }
 
 
 

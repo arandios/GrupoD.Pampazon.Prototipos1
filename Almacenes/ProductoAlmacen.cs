@@ -39,6 +39,7 @@ namespace Pampazon.Almacenes
 
             }
 
+            Grabar();
         }
 
         public static void Grabar()
