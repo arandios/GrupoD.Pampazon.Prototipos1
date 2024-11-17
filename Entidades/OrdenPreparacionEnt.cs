@@ -15,7 +15,6 @@ namespace Pampazon.Entidades
         public int DNITransportista { get; set; }
         public DateTime FechaEmision { get; set; }
         public DateTime FechaRetiro { get; set; }
-        public DateTime HoraRetiro { get; set; }
         public EstadoOrdenPreparacionEnum Estado { get; set; }
 
 
