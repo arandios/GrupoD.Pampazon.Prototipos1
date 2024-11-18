@@ -62,7 +62,7 @@ namespace Pampazon._6._GenerarRemito
             }
             else
             {
-                MessageBox.Show("Ingrese un DNI válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ingrese un DNI válido.Debe ser numerico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -231,12 +231,7 @@ namespace Pampazon._6._GenerarRemito
         /// <param name="e"></param>
         private void QuitarOrdenBtn_Click(object sender, EventArgs e)
         {
-            // Verificar si hay al menos un ítem en DetalleRemitoLTV
-            if (DetalleRemitoLTV.Items.Count == 0)
-            {
-                MessageBox.Show("No hay órdenes para eliminar de un remito. Agregue al menos una orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+           
             
             var itemsAEliminar = new List<ListViewItem>();
             
