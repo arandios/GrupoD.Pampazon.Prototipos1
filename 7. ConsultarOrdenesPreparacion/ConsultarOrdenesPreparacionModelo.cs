@@ -144,5 +144,32 @@ namespace Pampazon.ConsultarOrdenes
                 ordenesEncontradas = ordenesEncontradas.Where(o => o.FechaEmision <= fechaFin.AddDays(1).AddTicks(-1)).ToList();
             }
         }
+        // Método para autocompletar campos de cliente
+        public (string codigoCliente, string razonSocial, string cuit) AutocompletarCamposCliente(string input)
+        {
+            var clientes = ClienteAlmacen.Clientes;
+
+            ClienteEnt? cliente = null;
+
+            if (int.TryParse(input, out int codigoCliente))
+            {
+                cliente = clientes.FirstOrDefault(c => c.IdCliente == codigoCliente);
+            }
+            else if (clientes.Any(c => c.CUIT != null && c.CUIT.Equals(input, StringComparison.OrdinalIgnoreCase)))
+            {
+                cliente = clientes.FirstOrDefault(c => c.CUIT != null && c.CUIT.Equals(input, StringComparison.OrdinalIgnoreCase));
+            }
+            else
+            {
+                cliente = clientes.FirstOrDefault(c => c.RazonSocial != null && c.RazonSocial.Equals(input, StringComparison.OrdinalIgnoreCase));
+            }
+
+            if (cliente != null)
+            {
+                return (cliente.IdCliente.ToString(), cliente.RazonSocial, cliente.CUIT);
+            }
+
+            return (string.Empty, string.Empty, string.Empty);
+        }
     }
 }

@@ -14,7 +14,54 @@ namespace Pampazon._6._GenerarRemito
             InitializeComponent();
             OrdenesDelTransportistaGRP.Enabled = false;
             DetalleRemitoGRP.Enabled = false;
+            BuscarTransportistaGRP.Focus();
+           
+            DNITXT.KeyDown += new KeyEventHandler(DNITXT_KeyDown);
+            TransportistasListV.KeyDown += new KeyEventHandler(TransportistasListV_KeyDown);
+            DetalleRemitoLTV.KeyDown += new KeyEventHandler(DetalleRemitoLTV_KeyDown);
         }
+
+        private void GenerarRemitoForm_Load(object sender, EventArgs e)
+        {
+            BuscarTransportistaGRP.Focus();
+            DNITXT.Focus();
+        }
+
+        private void DNITXT_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscarTransportistaBtn_Click(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                if (TransportistasListV.Items.Count > 0)
+                {
+                    TransportistasListV.Focus();
+                    TransportistasListV.Items[0].Selected = true;
+                    TransportistasListV.Items[0].Focused = true;
+                }
+
+            }
+        }
+        private void TransportistasListV_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && TransportistasListV.SelectedItems.Count > 0)
+            {
+                TransportistasListV_MouseClick(this, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+        private void DetalleRemitoLTV_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && DetalleRemitoLTV.SelectedItems.Count > 0)
+            {
+                DetalleRemitoLTV_MouseClick(this, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
 
         private void BuscarTransportistaBtn_Click(object sender, EventArgs e)
         {
@@ -57,8 +104,9 @@ namespace Pampazon._6._GenerarRemito
                     TransportistasListV.Items.Add(new ListViewItem(new[] { orden.IdOrden }));
                 }
 
-                BuscarTransportistaGRP.Enabled = false;
+             //   BuscarTransportistaGRP.Enabled = false;
                 OrdenesDelTransportistaGRP.Enabled = true;
+               
             }
             else
             {
@@ -66,17 +114,6 @@ namespace Pampazon._6._GenerarRemito
             }
         }
 
-
-
-
-
-
-
-        /// <summary>
-        /// Agrega la orden seleccionada y la envia a Detalle remito
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void AgregarOrdenBtn_Click(object sender, EventArgs e)
         {
             if (TransportistasListV.Items.Count == 0)
@@ -85,7 +122,7 @@ namespace Pampazon._6._GenerarRemito
                 return;
             }
 
-            bool hayOrdenSeleccionada = false; 
+            bool hayOrdenSeleccionada = false;
 
             foreach (ListViewItem selectedItem in TransportistasListV.Items)
             {
@@ -96,53 +133,46 @@ namespace Pampazon._6._GenerarRemito
                 }
             }
 
-            
+
             if (!hayOrdenSeleccionada)
             {
                 MessageBox.Show("Por favor seleccione al menos una orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            
+
             var itemsAEliminar = new List<ListViewItem>();
 
-            
+
             foreach (ListViewItem selectedItem in TransportistasListV.Items)
             {
-                if (selectedItem.Checked) 
+                if (selectedItem.Checked)
                 {
-                    
+
                     string idOrden = selectedItem.SubItems[0].Text;
                     DateTime fechaHoy = DateTime.Now.Date;
 
-                    
+
                     ListViewItem nuevoItem = new ListViewItem(idOrden);
                     nuevoItem.SubItems.Add(fechaHoy.ToShortDateString());
 
-                    
+
                     DetalleRemitoLTV.Items.Add(nuevoItem);
 
-                    
+
                     itemsAEliminar.Add(selectedItem);
                 }
             }
 
-            
+
             foreach (ListViewItem item in itemsAEliminar)
             {
                 TransportistasListV.Items.Remove(item);
             }
 
-            
+
             DetalleRemitoGRP.Enabled = true;
         }
-
-        /// <summary>
-        /// Boton para generar remito a partir de los datos del transportista y la orden
-        /// detalladas en la lista "Detalle Remito"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void GenerarRemitoBtn_Click(object sender, EventArgs e)
         {
             if (DetalleRemitoLTV.Items.Count == 0)
@@ -223,18 +253,12 @@ namespace Pampazon._6._GenerarRemito
         }
 
 
-
-
-        /// Quita la orden seleccionada de la lista Detalle Remito
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void QuitarOrdenBtn_Click(object sender, EventArgs e)
         {
-           
-            
+
+
             var itemsAEliminar = new List<ListViewItem>();
-            
+
             foreach (ListViewItem item in DetalleRemitoLTV.Items)
             {
                 if (item.Checked)
@@ -242,7 +266,7 @@ namespace Pampazon._6._GenerarRemito
                     itemsAEliminar.Add(item);
                 }
             }
-            
+
             if (itemsAEliminar.Count == 0)
             {
                 MessageBox.Show("Por favor, seleccione al menos una orden para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -250,10 +274,10 @@ namespace Pampazon._6._GenerarRemito
             }
 
             var mensaje = new StringBuilder("¿Está seguro de que desea eliminar las siguientes órdenes?\n");
-            
+
             foreach (var item in itemsAEliminar)
             {
-                mensaje.AppendLine(item.Text); 
+                mensaje.AppendLine(item.Text);
             }
 
             var result = MessageBox.Show(mensaje.ToString(),
@@ -265,40 +289,35 @@ namespace Pampazon._6._GenerarRemito
             {
                 return;
             }
-            
+
             foreach (var ordenSeleccionada in itemsAEliminar)
             {
-                
+
                 string numeroDeOrden = ordenSeleccionada.SubItems[0].Text;
 
-                
+
                 ListViewItem nuevoItem = new ListViewItem(numeroDeOrden);
-                nuevoItem.SubItems.Add(ordenSeleccionada.SubItems[1].Text); 
+                nuevoItem.SubItems.Add(ordenSeleccionada.SubItems[1].Text);
                 nuevoItem.Checked = false;
 
-                
+
                 TransportistasListV.Items.Add(nuevoItem);
 
-                
+
                 DetalleRemitoLTV.Items.Remove(ordenSeleccionada);
             }
 
             if (DetalleRemitoLTV.Items.Count == 0)
             {
-                DetalleRemitoGRP.Enabled = false; 
+                DetalleRemitoGRP.Enabled = false;
             }
 
             MessageBox.Show("Órdenes eliminadas con éxito y devueltas a la lista de transportistas.", "Órdenes Eliminadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        /// <summary>
-        /// BOTON DE SALIR
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void SalirBtn_Click(object sender, EventArgs e)
         {
-            
+
             var result = MessageBox.Show("¿Está seguro que desea salir?",
                                           "Confirmar",
                                           MessageBoxButtons.YesNo,

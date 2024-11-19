@@ -24,11 +24,49 @@ namespace Pampazon.ListarOrdenes
         {
             InitializeComponent();
             OrdenesLTV.FullRowSelect = true;
+            // Asignar el evento KeyDown a los campos de texto
+            CodigoClienteTxt.KeyDown += new KeyEventHandler(CamposTexto_KeyDown);
+            RazonSocialTxt.KeyDown += new KeyEventHandler(CamposTexto_KeyDown);
+            CuitTXT.KeyDown += new KeyEventHandler(CamposTexto_KeyDown);
+            EstadoCMB.KeyDown += new KeyEventHandler(CamposTexto_KeyDown);
+            FechaInicioDTP.KeyDown += new KeyEventHandler(CamposTexto_KeyDown);
+            FechaFinDTP.KeyDown += new KeyEventHandler(CamposTexto_KeyDown);
+            PrioridadCMB.KeyDown += new KeyEventHandler(CamposTexto_KeyDown);
+
+            // Asignar el evento Leave a los campos de texto
+            CodigoClienteTxt.Leave += new EventHandler(CamposTexto_Leave);
+            RazonSocialTxt.Leave += new EventHandler(CamposTexto_Leave);
+            CuitTXT.Leave += new EventHandler(CamposTexto_Leave);
+        }
+        private void CamposTexto_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Evita el sonido de "ding" al presionar Enter
+                BuscarOrdenes_Click(sender, e);
+                // Poner el foco en el primer ítem de la lista OrdenesLTV
+                if (OrdenesLTV.Items.Count > 0)
+                {
+                    OrdenesLTV.Items[0].Selected = true;
+                    OrdenesLTV.Items[0].Focused = true;
+                    OrdenesLTV.EnsureVisible(0);
+                    OrdenesLTV.Focus();
+                }
+            }
+        }
+
+        private void CamposTexto_Leave(object? sender, EventArgs e)
+        {
+            TextBox? textBox = sender as TextBox;
+            if (textBox != null && !string.IsNullOrEmpty(textBox.Text))
+            {
+                AutocompletarCampos(textBox.Text);
+            }
         }
 
         private void CodigoClienteTxt_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(CodigoClienteTxt.Text))
+            if (!string.IsNullOrEmpty(CodigoClienteTxt.Text))
             {
                 RazonSocialTxt.Enabled = false;
                 CuitTXT.Enabled = false;
@@ -42,7 +80,7 @@ namespace Pampazon.ListarOrdenes
 
         private void RazonSocialTxt_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(RazonSocialTxt.Text))
+            if (!string.IsNullOrEmpty(RazonSocialTxt.Text))
             {
                 CodigoClienteTxt.Enabled = false;
                 CuitTXT.Enabled = false;
@@ -56,7 +94,7 @@ namespace Pampazon.ListarOrdenes
 
         private void CuitTxt_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(CuitTXT.Text))
+            if (!string.IsNullOrEmpty(CuitTXT.Text))
             {
                 CodigoClienteTxt.Enabled = false;
                 RazonSocialTxt.Enabled = false;
@@ -67,12 +105,31 @@ namespace Pampazon.ListarOrdenes
                 RazonSocialTxt.Enabled = true;
             }
         }
+        private void AutocompletarCampos(string input)
+        {
+            var (codigoCliente, razonSocial, cuit) = modelo.AutocompletarCamposCliente(input);
+
+            if (!string.IsNullOrEmpty(codigoCliente))
+            {
+                CodigoClienteTxt.Text = codigoCliente;
+            }
+
+            if (!string.IsNullOrEmpty(razonSocial))
+            {
+                RazonSocialTxt.Text = razonSocial;
+            }
+
+            if (!string.IsNullOrEmpty(cuit))
+            {
+                CuitTXT.Text = cuit;
+            }
+        }
         private void ListarOrdenes_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void BuscarOrdenes_Click(object sender, EventArgs e)
+        private void BuscarOrdenes_Click(object? sender, EventArgs e)
         {
             string codigoCliente = CodigoClienteTxt.Text;
             string razonSocial = RazonSocialTxt.Text;

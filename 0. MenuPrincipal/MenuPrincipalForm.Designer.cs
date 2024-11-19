@@ -36,6 +36,7 @@
             button1 = new Button();
             EmpaquetarOrdenbtn = new Button();
             button2 = new Button();
+            BuscarProductoBTN = new Button();
             SuspendLayout();
             // 
             // label1
@@ -105,7 +106,7 @@
             // EmpaquetarOrdenbtn
             // 
             EmpaquetarOrdenbtn.Location = new Point(223, 273);
-            EmpaquetarOrdenbtn.Margin = new Padding(2, 2, 2, 2);
+            EmpaquetarOrdenbtn.Margin = new Padding(2);
             EmpaquetarOrdenbtn.Name = "EmpaquetarOrdenbtn";
             EmpaquetarOrdenbtn.Size = new Size(414, 57);
             EmpaquetarOrdenbtn.TabIndex = 4;
@@ -124,11 +125,23 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += BuscarProductosEnDepositosBTN_Click;
             // 
+            // BuscarProductoBTN
+            // 
+            BuscarProductoBTN.Location = new Point(223, 560);
+            BuscarProductoBTN.Margin = new Padding(3, 2, 3, 2);
+            BuscarProductoBTN.Name = "BuscarProductoBTN";
+            BuscarProductoBTN.Size = new Size(414, 57);
+            BuscarProductoBTN.TabIndex = 8;
+            BuscarProductoBTN.Text = "Buscar productos";
+            BuscarProductoBTN.UseVisualStyleBackColor = true;
+            BuscarProductoBTN.Click += button3_Click;
+            // 
             // MenuPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(859, 715);
+            Controls.Add(BuscarProductoBTN);
             Controls.Add(button2);
             Controls.Add(EmpaquetarOrdenbtn);
             Controls.Add(button1);
@@ -157,5 +170,6 @@
         private Button button1;
         private Button EmpaquetarOrdenbtn;
         private Button button2;
+        private Button BuscarProductoBTN;
     }
 }

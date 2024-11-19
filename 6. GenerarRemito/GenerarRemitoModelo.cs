@@ -17,7 +17,6 @@ public class GenerarRemitoModelo
 
     private static List<TransportistaRemito> obtenerTransportistas()
     {
-        TransportistaAlmacen.Leer();
         return TransportistaAlmacen.Transportistas
             .Select(t => new TransportistaRemito(
                 t.DNI,
@@ -95,17 +94,17 @@ public class GenerarRemitoModelo
         OrdenPreparacionAlmacen.cambiarVariosEstados(idsOrdenes, EstadoOrdenPreparacionEnum.Entregada);
 
         // Actualizar el archivo OrdenesDePreparacion.json
-        ActualizarOrdenesDePreparacion(idsOrdenes);
+        //ActualizarOrdenesDePreparacion(idsOrdenes);
 
         // Confirmación visual de éxito
         string mensaje = $"Se generó un nuevo remito con ID: {nuevoRemito.IdRemito}\n" +
                          "Estado actualizado a 'Entregada' para las órdenes seleccionadas.";
-        MessageBox.Show(mensaje, "Estado de las Órdenes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        
 
         return nuevoRemito;
     }
 
-    private void ActualizarOrdenesDePreparacion(List<int> idsOrdenes)
+   /* private void ActualizarOrdenesDePreparacion(List<int> idsOrdenes)
     {
         var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Datos", "OrdenesDePreparacion.json");
         var ordenesPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion;
@@ -123,7 +122,7 @@ public class GenerarRemitoModelo
         // Serializar la lista actualizada y escribirla en el archivo
         var datos = JsonSerializer.Serialize(ordenesPreparacion, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(filePath, datos);
-    }
+    }*/
 
 
     internal OrdenesDePreparacionRemito? ObtenerOrdenPorId(string idOrden)

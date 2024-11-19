@@ -1,5 +1,6 @@
 ﻿using Pampazon._4._EmpaquetarOrden;
 using Pampazon._6._GenerarRemito;
+using Pampazon._8._ConsultarProductos;
 using Pampazon.BuscarProductosEnDepositos;
 using Pampazon.OrdenSeleccion;
 using Pampazon.Remitos;
@@ -135,6 +136,19 @@ namespace Pampazon.MenuPrincipal
             {
                 AgregarProductosEnDepositosFormulario AgregarProductosEnDepositosFormulario = new();
                 AgregarProductosEnDepositosFormulario.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BuscarProductosForm Formulario = new();
+                Formulario.ShowDialog();
             }
             catch (Exception ex)
             {
