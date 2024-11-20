@@ -12,22 +12,49 @@ namespace Pampazon._6._GenerarRemito
         public GenerarRemitoForm()
         {
             InitializeComponent();
-            OrdenesDelTransportistaGRP.Enabled = false;
-            DetalleRemitoGRP.Enabled = false;
-            BuscarTransportistaGRP.Focus();
-           
-            DNITXT.KeyDown += new KeyEventHandler(DNITXT_KeyDown);
-            TransportistasListV.KeyDown += new KeyEventHandler(TransportistasListV_KeyDown);
-            DetalleRemitoLTV.KeyDown += new KeyEventHandler(DetalleRemitoLTV_KeyDown);
+            GenerarRemitoForm_Load(this, new EventArgs());
         }
 
         private void GenerarRemitoForm_Load(object sender, EventArgs e)
         {
-            BuscarTransportistaGRP.Focus();
-            DNITXT.Focus();
+            InicializarFormulario();
+            RegistrarEventos();
+            CargarDatosIniciales();
         }
 
-        private void DNITXT_KeyDown(object sender, KeyEventArgs e)
+        private void InicializarFormulario()
+        {
+            BuscarTransportistaGRP.Focus();
+            TransportistasCBX.Focus();
+            Gruposinicializados();
+        }
+
+        private void RegistrarEventos()
+        {
+            TransportistasCBX.KeyDown += new KeyEventHandler(TransportistasCBX_KeyDown);
+            TransportistasListV.KeyDown += new KeyEventHandler(TransportistasListV_KeyDown);
+            DetalleRemitoLTV.KeyDown += new KeyEventHandler(DetalleRemitoLTV_KeyDown);
+            IdCLienteCBX.SelectedIndexChanged += new EventHandler(IdCLienteCBX_SelectedIndexChanged);
+            RZCBX.SelectedIndexChanged += new EventHandler(RZCBX_SelectedIndexChanged);
+            IdCLienteCBX.KeyDown += new KeyEventHandler(IdCLienteCBX_KeyDown);
+            RZCBX.KeyDown += new KeyEventHandler(RZCBX_KeyDown);
+        }
+
+        private void CargarDatosIniciales()
+        {
+            CargarTransportistasEnComboBox();
+            ConfigurarComboBox();
+        }
+
+        private void Gruposinicializados()
+        {
+            BuscarTransportistaGRP.Enabled = true;
+            OrdenesDelTransportistaGRP.Enabled = false;
+            DetalleRemitoGRP.Enabled = false;
+            FiltrarOrdenesPorClienteGBX.Enabled = false;
+        }
+
+        private void TransportistasCBX_KeyDown(object? sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -40,19 +67,30 @@ namespace Pampazon._6._GenerarRemito
                     TransportistasListV.Items[0].Selected = true;
                     TransportistasListV.Items[0].Focused = true;
                 }
-
             }
         }
-        private void TransportistasListV_KeyDown(object sender, KeyEventArgs e)
+
+        private void TransportistasListV_KeyDown(object? sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && TransportistasListV.SelectedItems.Count > 0)
             {
                 TransportistasListV_MouseClick(this, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
                 e.Handled = true;
                 e.SuppressKeyPress = true;
+                if (TransportistasListV.Items.Count > 0)
+                {
+                    TransportistasListV.Focus();
+                    TransportistasListV.Items[0].Selected = true;
+                    TransportistasListV.Items[0].Focused = true;
+                }
+                else
+                {
+                   GenerarRemitoBTN.Focus();
+                }
             }
         }
-        private void DetalleRemitoLTV_KeyDown(object sender, KeyEventArgs e)
+
+        private void DetalleRemitoLTV_KeyDown(object? sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && DetalleRemitoLTV.SelectedItems.Count > 0)
             {
@@ -61,58 +99,176 @@ namespace Pampazon._6._GenerarRemito
                 e.SuppressKeyPress = true;
             }
         }
+        private void IdCLienteCBX_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (IdCLienteCBX.SelectedIndex != -1)
+            {
+                RZCBX.Enabled = false;
+            }
+        }
+
+        private void RZCBX_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RZCBX.SelectedIndex != -1)
+            {
+                IdCLienteCBX.Enabled = false;
+            }
+        }
+        private void IdCLienteCBX_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && IdCLienteCBX.SelectedIndex != -1)
+            {
+                FiltrarOrdenes(sender, e);
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void RZCBX_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && RZCBX.SelectedIndex != -1)
+            {
+                FiltrarOrdenes(sender, e);
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void FiltrarOrdenes(object? sender, EventArgs e)
+        {
+            string? idClienteSeleccionado = IdCLienteCBX.SelectedItem?.ToString();
+            string? razonSocialSeleccionada = RZCBX.SelectedItem?.ToString();
+
+            var ordenesListas = GenerarRemitoModelo.ObtenerOrdenes();
+            var ordenesFiltradas = ordenesListas.Where(o =>
+                (string.IsNullOrEmpty(idClienteSeleccionado) || o.IdCliente.ToString() == idClienteSeleccionado) &&
+                (string.IsNullOrEmpty(razonSocialSeleccionada) || GenerarRemitoModelo.obtenerClientes().FirstOrDefault(c => c.IdCliente == o.IdCliente)?.RazonSocial == razonSocialSeleccionada)
+            ).ToList();
+
+            TransportistasListV.Items.Clear();
+            foreach (var orden in ordenesFiltradas)
+            {
+                var cliente = GenerarRemitoModelo.obtenerClientes().FirstOrDefault(c => c.IdCliente == orden.IdCliente);
+                string razonSocial = cliente != null ? cliente.RazonSocial : "Desconocido";
+                string idCliente = cliente != null ? cliente.IdCliente.ToString() : "Desconocido";
+
+                // Verificar si la orden ya está en DetalleRemitoLTV
+                bool ordenYaEnDetalle = DetalleRemitoLTV.Items.Cast<ListViewItem>()
+                    .Any(item => item.SubItems[0].Text == orden.IdOrden);
+
+                if (!ordenYaEnDetalle)
+                {
+                    TransportistasListV.Items.Add(new ListViewItem(new[] { orden.IdOrden, idCliente, razonSocial }));
+                    TransportistasListV.Focus();
+                    TransportistasListV.Items[0].Selected = true;
+                    TransportistasListV.Items[0].Focused = true;
+                }
+            }
+        }
+        
 
 
+            private void CargarTransportistasEnComboBox()
+        {
+            var transportistas = GenerarRemitoModelo.obtenerTransportistas();
+
+            TransportistasCBX.DataSource = transportistas;
+            TransportistasCBX.DisplayMember = "DNI"; // Mostrar solo el DNI
+            TransportistasCBX.ValueMember = "DNI";
+            TransportistasCBX.SelectedIndex = -1;
+        }
+
+        private void ConfigurarComboBox()
+        {
+            TransportistasCBX.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            TransportistasCBX.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
         private void BuscarTransportistaBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(DNITXT.Text))
+            if (string.IsNullOrWhiteSpace(TransportistasCBX.Text))
             {
-                MessageBox.Show("Por favor, ingrese un DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MostrarMensajeError("Por favor, ingrese un DNI.");
                 return;
             }
 
-            if (int.TryParse(DNITXT.Text, out int dni))
+            if (int.TryParse(TransportistasCBX.Text, out int dni))
             {
-                string mensajeValidacion = GenerarRemitoModelo.ComprobarDni(dni);
-                if (!string.IsNullOrEmpty(mensajeValidacion))
-                {
-                    MessageBox.Show(mensajeValidacion, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                if (!ValidarDniTransportista(dni)) return;
 
-                if (!GenerarRemitoModelo.ExisteTransportistaPorDni(dni))
-                {
-                    MessageBox.Show("El transportista no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                var ordenesListas = GenerarRemitoModelo.ObtenerOrdenes();
-                var ordenesDelTransportista = GenerarRemitoModelo.ObtenerOrdenesDePreparacionPorDni(ordenesListas, dni);
-
+                var ordenesDelTransportista = ObtenerOrdenesDelTransportista(dni);
                 if (ordenesDelTransportista == null || ordenesDelTransportista.Count == 0)
                 {
-                    MessageBox.Show("El transportista no tiene órdenes pendientes.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MostrarMensajeInformacion("El transportista no tiene órdenes pendientes.");
+                    LimpiarFormulario();
                     return;
                 }
 
-                string nombreTransportista = GenerarRemitoModelo.ObtenerNombreTransportistaPorDni(dni);
-                NomApellTransportistaTXT.Text = nombreTransportista;
-
-                TransportistasListV.Items.Clear();
-                foreach (var orden in ordenesDelTransportista)
-                {
-                    TransportistasListV.Items.Add(new ListViewItem(new[] { orden.IdOrden }));
-                }
-
-             //   BuscarTransportistaGRP.Enabled = false;
-                OrdenesDelTransportistaGRP.Enabled = true;
-               
+                CargarDatosTransportista(dni, ordenesDelTransportista);
+                FiltrarOrdenesPorClienteGBX.Enabled = true;
             }
             else
             {
-                MessageBox.Show("Ingrese un DNI válido.Debe ser numerico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MostrarMensajeError("Ingrese un DNI válido. Debe ser numérico");
             }
         }
+        private void MostrarMensajeError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void MostrarMensajeInformacion(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private bool ValidarDniTransportista(int dni)
+        {
+            string mensajeValidacion = GenerarRemitoModelo.ComprobarDni(dni);
+            if (!string.IsNullOrEmpty(mensajeValidacion))
+            {
+                MostrarMensajeError(mensajeValidacion);
+                return false;
+            }
+
+            if (!GenerarRemitoModelo.ExisteTransportistaPorDni(dni))
+            {
+                MostrarMensajeError("El transportista no existe.");
+                return false;
+            }
+
+            return true;
+        }
+        private List<OrdenesDePreparacionRemito> ObtenerOrdenesDelTransportista(int dni)
+        {
+            var ordenesListas = GenerarRemitoModelo.ObtenerOrdenes();
+            return GenerarRemitoModelo.ObtenerOrdenesDePreparacionPorDni(ordenesListas, dni);
+        }
+        private void CargarDatosTransportista(int dni, List<OrdenesDePreparacionRemito> ordenesDelTransportista)
+        {
+            string nombreTransportista = GenerarRemitoModelo.ObtenerNombreTransportistaPorDni(dni);
+            NomApellTransportistaTXT.Text = nombreTransportista;
+
+            TransportistasListV.Items.Clear();
+            foreach (var orden in ordenesDelTransportista)
+            {
+                var cliente = GenerarRemitoModelo.obtenerClientes().FirstOrDefault(c => c.IdCliente == orden.IdCliente);
+                string razonSocial = cliente != null ? cliente.RazonSocial : "Desconocido";
+                string idCliente = cliente != null ? cliente.IdCliente.ToString() : "Desconocido";
+                TransportistasListV.Items.Add(new ListViewItem(new[] { orden.IdOrden, idCliente, razonSocial }));
+            }
+
+            GenerarRemitoModelo.CargarClientesEnComboBox(IdCLienteCBX, RZCBX, ordenesDelTransportista);
+
+            OrdenesDelTransportistaGRP.Enabled = true;
+            TransportistasCBX.Enabled = false;
+            BuscarTransportistaBtn.Enabled = false;
+        }
+        private void LimpiarFormulario()
+        {
+            TransportistasCBX.SelectedIndex = -1;
+            TransportistasListV.Items.Clear();
+        }
+
+
+
 
         private void AgregarOrdenBtn_Click(object sender, EventArgs e)
         {
@@ -133,54 +289,63 @@ namespace Pampazon._6._GenerarRemito
                 }
             }
 
-
             if (!hayOrdenSeleccionada)
             {
                 MessageBox.Show("Por favor seleccione al menos una orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-
             var itemsAEliminar = new List<ListViewItem>();
-
 
             foreach (ListViewItem selectedItem in TransportistasListV.Items)
             {
                 if (selectedItem.Checked)
                 {
-
                     string idOrden = selectedItem.SubItems[0].Text;
+                    string idCliente = selectedItem.SubItems[1].Text;
+                    string razonSocial = selectedItem.SubItems[2].Text;
                     DateTime fechaHoy = DateTime.Now.Date;
 
-
                     ListViewItem nuevoItem = new ListViewItem(idOrden);
+                    nuevoItem.SubItems.Add(idCliente);
+                    nuevoItem.SubItems.Add(razonSocial);
                     nuevoItem.SubItems.Add(fechaHoy.ToShortDateString());
 
-
                     DetalleRemitoLTV.Items.Add(nuevoItem);
-
-
                     itemsAEliminar.Add(selectedItem);
                 }
             }
 
-
-            foreach (ListViewItem item in itemsAEliminar)
+            foreach (var item in itemsAEliminar)
             {
                 TransportistasListV.Items.Remove(item);
             }
 
-
             DetalleRemitoGRP.Enabled = true;
         }
+
         private void GenerarRemitoBtn_Click(object sender, EventArgs e)
         {
-            if (DetalleRemitoLTV.Items.Count == 0)
-            {
-                MessageBox.Show("No hay órdenes para generar un remito. Agregue al menos una orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            if (!ConfirmarGeneracionRemito()) return;
 
+            int dniTransportista = int.Parse(TransportistasCBX.Text);
+            var ordenesParaRemito = ObtenerOrdenesParaRemito();
+
+            try
+            {
+                RemitoEnt nuevoRemito = modelo.GenerarRemito(ordenesParaRemito, dniTransportista);
+                MostrarMensajeRemitoGenerado(nuevoRemito);
+                EliminarItemsSeleccionados();
+                LimpiarFormularioSiNoHayItems();
+            }
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private bool ConfirmarGeneracionRemito()
+        {
             DialogResult resultado = MessageBox.Show(
                 "¿Está seguro de que desea generar el remito?",
                 "Confirmación",
@@ -190,14 +355,17 @@ namespace Pampazon._6._GenerarRemito
             if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Operación cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                return false;
             }
 
-            int dniTransportista = int.Parse(DNITXT.Text);
+            return true;
+        }
 
+        private List<OrdenesDePreparacionRemito> ObtenerOrdenesParaRemito()
+        {
             bool hayItemsSeleccionados = DetalleRemitoLTV.Items.Cast<ListViewItem>().Any(item => item.Checked);
 
-            var ordenesParaRemito = DetalleRemitoLTV.Items.Cast<ListViewItem>()
+            return DetalleRemitoLTV.Items.Cast<ListViewItem>()
                 .Where(item => !hayItemsSeleccionados || item.Checked)
                 .Select(item =>
                 {
@@ -207,56 +375,48 @@ namespace Pampazon._6._GenerarRemito
                 .Where(orden => orden != null)
                 .Cast<OrdenesDePreparacionRemito>()
                 .ToList();
+        }
 
-            try
+        private void MostrarMensajeRemitoGenerado(RemitoEnt nuevoRemito)
+        {
+            MessageBox.Show($"Remito generado:\nTransportista DNI: {nuevoRemito.DNITransportista}\nÓrdenes: {string.Join(", ", nuevoRemito.OrdenesPreparacion)}",
+                            "Remito Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void EliminarItemsSeleccionados()
+        {
+            bool hayItemsSeleccionados = DetalleRemitoLTV.Items.Cast<ListViewItem>().Any(item => item.Checked);
+            var itemsAEliminar = new List<ListViewItem>();
+
+            if (hayItemsSeleccionados)
             {
-                RemitoEnt nuevoRemito = modelo.GenerarRemito(ordenesParaRemito, dniTransportista);
-
-                MessageBox.Show($"Remito generado:\nTransportista DNI: {nuevoRemito.DNITransportista}\nÓrdenes: {string.Join(", ", nuevoRemito.OrdenesPreparacion)}",
-                                "Remito Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                var itemsAEliminar = new List<ListViewItem>();
-                if (hayItemsSeleccionados)
-                {
-                    foreach (ListViewItem item in DetalleRemitoLTV.Items)
-                    {
-                        if (item.Checked)
-                        {
-                            itemsAEliminar.Add(item);
-                        }
-                    }
-                }
-                else
-                {
-                    itemsAEliminar.AddRange(DetalleRemitoLTV.Items.Cast<ListViewItem>());
-                }
-
-                foreach (ListViewItem item in itemsAEliminar)
-                {
-                    DetalleRemitoLTV.Items.Remove(item);
-                }
-
-                if (DetalleRemitoLTV.Items.Count == 0)
-                {
-                    TransportistasListV.Items.Clear();
-                    DNITXT.Clear();
-                    BuscarTransportistaGRP.Enabled = true;
-                    OrdenesDelTransportistaGRP.Enabled = false;
-                    DetalleRemitoGRP.Enabled = false;
-                    NomApellTransportistaTXT.Text = string.Empty;
-                }
+                itemsAEliminar.AddRange(DetalleRemitoLTV.Items.Cast<ListViewItem>().Where(item => item.Checked));
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                itemsAEliminar.AddRange(DetalleRemitoLTV.Items.Cast<ListViewItem>());
+            }
+
+            foreach (ListViewItem item in itemsAEliminar)
+            {
+                DetalleRemitoLTV.Items.Remove(item);
             }
         }
+
+        private void LimpiarFormularioSiNoHayItems()
+        {
+            if (DetalleRemitoLTV.Items.Count == 0)
+            {
+                BorrarBtn_Click(this, new EventArgs());
+            }
+        }
+
+        
+
 
 
         private void QuitarOrdenBtn_Click(object sender, EventArgs e)
         {
-
-
             var itemsAEliminar = new List<ListViewItem>();
 
             foreach (ListViewItem item in DetalleRemitoLTV.Items)
@@ -280,30 +440,19 @@ namespace Pampazon._6._GenerarRemito
                 mensaje.AppendLine(item.Text);
             }
 
-            var result = MessageBox.Show(mensaje.ToString(),
-                                          "Confirmar Eliminación",
-                                          MessageBoxButtons.YesNo,
-                                          MessageBoxIcon.Question);
-
-            if (result == DialogResult.No)
-            {
-                return;
-            }
-
             foreach (var ordenSeleccionada in itemsAEliminar)
             {
+                string idOrden = ordenSeleccionada.SubItems[0].Text;
+                string idCliente = ordenSeleccionada.SubItems[1].Text;
+                string razonSocial = ordenSeleccionada.SubItems[2].Text;
+                DateTime fechaHoy = DateTime.Now.Date;
 
-                string numeroDeOrden = ordenSeleccionada.SubItems[0].Text;
-
-
-                ListViewItem nuevoItem = new ListViewItem(numeroDeOrden);
-                nuevoItem.SubItems.Add(ordenSeleccionada.SubItems[1].Text);
-                nuevoItem.Checked = false;
-
+                ListViewItem nuevoItem = new ListViewItem(idOrden);
+                nuevoItem.SubItems.Add(idCliente);
+                nuevoItem.SubItems.Add(razonSocial);
+                nuevoItem.SubItems.Add(fechaHoy.ToShortDateString());
 
                 TransportistasListV.Items.Add(nuevoItem);
-
-
                 DetalleRemitoLTV.Items.Remove(ordenSeleccionada);
             }
 
@@ -312,8 +461,8 @@ namespace Pampazon._6._GenerarRemito
                 DetalleRemitoGRP.Enabled = false;
             }
 
-            MessageBox.Show("Órdenes eliminadas con éxito y devueltas a la lista de transportistas.", "Órdenes Eliminadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
         private void SalirBtn_Click(object sender, EventArgs e)
         {
@@ -336,9 +485,13 @@ namespace Pampazon._6._GenerarRemito
             {
                 var selectedItem = TransportistasListV.SelectedItems[0];
                 string idOrden = selectedItem.SubItems[0].Text;
+                string idCliente = selectedItem.SubItems[1].Text;
+                string razonSocial = selectedItem.SubItems[2].Text;
                 DateTime fechaHoy = DateTime.Now.Date;
 
                 ListViewItem nuevoItem = new ListViewItem(idOrden);
+                nuevoItem.SubItems.Add(idCliente);
+                nuevoItem.SubItems.Add(razonSocial);
                 nuevoItem.SubItems.Add(fechaHoy.ToShortDateString());
 
                 DetalleRemitoLTV.Items.Add(nuevoItem);
@@ -354,9 +507,12 @@ namespace Pampazon._6._GenerarRemito
             {
                 var selectedItem = DetalleRemitoLTV.SelectedItems[0];
                 string idOrden = selectedItem.SubItems[0].Text;
+                string idCliente = selectedItem.SubItems[1].Text;
+                string razonSocial = selectedItem.SubItems[2].Text;
 
                 ListViewItem nuevoItem = new ListViewItem(idOrden);
-                nuevoItem.SubItems.Add(selectedItem.SubItems[1].Text);
+                nuevoItem.SubItems.Add(idCliente);
+                nuevoItem.SubItems.Add(razonSocial);
 
                 TransportistasListV.Items.Add(nuevoItem);
                 DetalleRemitoLTV.Items.Remove(selectedItem);
@@ -367,15 +523,54 @@ namespace Pampazon._6._GenerarRemito
                 }
             }
         }
-
-        private void DetalleRemitoGRP_Enter(object sender, EventArgs e)
+        private void BorrarFiltrosBTN_Click(object sender, EventArgs e)
         {
+            // Limpiar la selección de los ComboBox
+            IdCLienteCBX.SelectedIndex = -1;
+            RZCBX.SelectedIndex = -1;
+            IdCLienteCBX.Enabled = true;
+            RZCBX.Enabled = true;
+
+            // Obtener el DNI del transportista actual
+            if (int.TryParse(TransportistasCBX.Text, out int dni))
+            {
+                var ordenesListas = GenerarRemitoModelo.ObtenerOrdenes();
+                var ordenesDelTransportista = GenerarRemitoModelo.ObtenerOrdenesDePreparacionPorDni(ordenesListas, dni);
+
+                TransportistasListV.Items.Clear();
+
+                foreach (var orden in ordenesDelTransportista)
+                {
+                    var cliente = GenerarRemitoModelo.obtenerClientes().FirstOrDefault(c => c.IdCliente == orden.IdCliente);
+                    string razonSocial = cliente != null ? cliente.RazonSocial : "Desconocido";
+                    string idCliente = cliente != null ? cliente.IdCliente.ToString() : "Desconocido";
+
+                    // Verificar si la orden ya está en DetalleRemitoLTV
+                    bool ordenYaEnDetalle = DetalleRemitoLTV.Items.Cast<ListViewItem>()
+                        .Any(item => item.SubItems[0].Text == orden.IdOrden);
+
+                    if (!ordenYaEnDetalle)
+                    {
+                        TransportistasListV.Items.Add(new ListViewItem(new[] { orden.IdOrden, idCliente, razonSocial }));
+                    }
+                }
+            }
 
         }
-
-        private void NomApellTransportistaTxt_TextChanged(object sender, EventArgs e)
+        private void BorrarBtn_Click(object sender, EventArgs e)
         {
-
+            TransportistasListV.Items.Clear();
+            DetalleRemitoLTV.Items.Clear();
+            IdCLienteCBX.Items.Clear();
+            RZCBX.Items.Clear();
+            NomApellTransportistaTXT.Text = string.Empty;
+            BuscarTransportistaGRP.Enabled = true;
+            BuscarTransportistaBtn.Enabled = true;
+            TransportistasCBX.Enabled = true;
+            OrdenesDelTransportistaGRP.Enabled = false;
+            DetalleRemitoGRP.Enabled = false;
+            FiltrarOrdenesPorClienteGBX.Enabled = false;
+            TransportistasCBX.SelectedIndex = -1;
         }
     }
 }

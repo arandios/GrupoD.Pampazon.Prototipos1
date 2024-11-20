@@ -14,8 +14,9 @@ public class GenerarRemitoModelo
     // Lista de órdenes de preparación
     private static List<OrdenesDePreparacionRemito> ordenes = ObtenerOrdenes();
     private static List<TransportistaRemito> transportistas = obtenerTransportistas();
+    private static List<ClientesRemito> clientes = obtenerClientes();
 
-    private static List<TransportistaRemito> obtenerTransportistas()
+    internal static List<TransportistaRemito> obtenerTransportistas()
     {
         return TransportistaAlmacen.Transportistas
             .Select(t => new TransportistaRemito(
@@ -33,9 +34,36 @@ public class GenerarRemitoModelo
                 o.IdOrdenPreparacion.ToString(),
                 o.DNITransportista,
                 TransportistaAlmacen.Transportistas.FirstOrDefault(t => t.DNI == o.DNITransportista)?.Nombre ?? "Desconocido",
-                TransportistaAlmacen.Transportistas.FirstOrDefault(t => t.DNI == o.DNITransportista)?.Apellido ?? "Desconocido"
+                TransportistaAlmacen.Transportistas.FirstOrDefault(t => t.DNI == o.DNITransportista)?.Apellido ?? "Desconocido",
+                o.IdCliente
             )).ToList();
     }
+
+    internal static List<ClientesRemito> obtenerClientes()
+    {
+        return ClienteAlmacen.Clientes
+                                .Select(c => new ClientesRemito(
+                               c.IdCliente,
+                               c.RazonSocial,
+                               c.CUIT
+                               )).ToList();
+    }
+
+    internal static void CargarClientesEnComboBox(ComboBox idClienteCBX, ComboBox rzCBX, List<OrdenesDePreparacionRemito> ordenesDelTransportista)
+    {
+        var clientes = obtenerClientes();
+        var clientesFiltrados = clientes.Where(c => ordenesDelTransportista.Any(o => o.IdCliente == c.IdCliente)).ToList();
+
+        idClienteCBX.Items.Clear();
+        rzCBX.Items.Clear();
+
+        foreach (var cliente in clientesFiltrados)
+        {
+            idClienteCBX.Items.Add(cliente.IdCliente);
+            rzCBX.Items.Add(cliente.RazonSocial);
+        }
+    }
+
 
 
 
@@ -75,7 +103,6 @@ public class GenerarRemitoModelo
     // Crea un nuevo remito utilizando las órdenes seleccionadas y el DNI del transportista
     internal RemitoEnt GenerarRemito(List<OrdenesDePreparacionRemito> ordenesSeleccionadas, int dniTransportista)
     {
-        MessageBox.Show("Se ejecutó el método GenerarRemito en el Modelo");
 
         int nuevoIdRemito = RemitoAlmacen.Remitos.Any()
             ? RemitoAlmacen.Remitos.Max(r => r.IdRemito) + 1

@@ -244,7 +244,7 @@ namespace Pampazon._8._ConsultarProductos
             // BuscarBtn
             // 
             BuscarBtn.BackColor = Color.FromArgb(192, 255, 192);
-            BuscarBtn.Location = new Point(577, 84);
+            BuscarBtn.Location = new Point(583, 67);
             BuscarBtn.Margin = new Padding(2);
             BuscarBtn.Name = "BuscarBtn";
             BuscarBtn.Size = new Size(250, 40);
@@ -256,7 +256,7 @@ namespace Pampazon._8._ConsultarProductos
             // BorrarFiltrosBTN
             // 
             BorrarFiltrosBTN.BackColor = Color.FromArgb(255, 192, 192);
-            BorrarFiltrosBTN.Location = new Point(577, 128);
+            BorrarFiltrosBTN.Location = new Point(583, 121);
             BorrarFiltrosBTN.Margin = new Padding(2);
             BorrarFiltrosBTN.Name = "BorrarFiltrosBTN";
             BorrarFiltrosBTN.RightToLeft = RightToLeft.No;

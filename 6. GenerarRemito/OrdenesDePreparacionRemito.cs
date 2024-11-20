@@ -15,17 +15,19 @@ namespace Pampazon.Remitos
         public int DNItransportista { get; set; }
         public string NombreTransportista { get; set; }
         public string ApellidoTransportista { get; set; }
+        public int IdCliente { get; set; }
         public EstadoOrdenPreparacionRemito Estado { get; set; } 
 
 
         // Constructor
-        public OrdenesDePreparacionRemito(string idOrden, int dniTransportista, string Nombre, string Apellido)
+        public OrdenesDePreparacionRemito(string idOrden, int dniTransportista, string Nombre, string Apellido, int id)
         {
           
             IdOrden = idOrden;
             DNItransportista = dniTransportista; 
             NombreTransportista = Nombre;
             ApellidoTransportista = Apellido;
+            IdCliente = id;
         }
 
 
