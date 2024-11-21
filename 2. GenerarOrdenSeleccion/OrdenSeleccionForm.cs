@@ -380,5 +380,27 @@ namespace Pampazon.OrdenSeleccion
         {
 
         }
+
+        private void PrioridadLBL_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ajusteDePosiciones()
+        {
+
+            if (FiltrosOPGRP.Width >= 945)
+            {
+                var ancho = FiltrosOPGRP.Width;
+                var nuevoAncho = (ancho/3) - 10;
+                ClienteOrdenSeleccionTXT.Width = nuevoAncho;
+                NumeroOrdenPreparacionOrdenSeleccionTXT.Width = nuevoAncho;
+                PrioridadOrdenSeleccionCMB.Width = nuevoAncho;
+                FechaFinalOrdenSeleccionDTP.Width = nuevoAncho;
+                FechaInicioOrdenSeleccionDTP.Width = nuevoAncho;
+
+            }
+        }
+
     }
 }

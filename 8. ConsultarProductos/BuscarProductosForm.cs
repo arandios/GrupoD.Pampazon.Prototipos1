@@ -13,6 +13,7 @@ namespace Pampazon._8._ConsultarProductos
         {
             InitializeComponent();
             ProductosLTV.FullRowSelect = true;
+
             // Asignar el evento KeyDown a los campos de texto
             CodigoClienteTxt.KeyDown += new KeyEventHandler(CamposTexto_KeyDown);
             RazonSocialTxt.KeyDown += new KeyEventHandler(CamposTexto_KeyDown);
@@ -27,8 +28,12 @@ namespace Pampazon._8._ConsultarProductos
             RazonSocialTxt.Leave += new EventHandler(CamposTexto_Leave);
             CuitTXT.Leave += new EventHandler(CamposTexto_Leave);
 
+            // Asignar el evento Resize al formulario
+
             CargarProductos();
         }
+
+       
 
         private void CamposTexto_KeyDown(object? sender, KeyEventArgs e)
         {
@@ -190,6 +195,21 @@ namespace Pampazon._8._ConsultarProductos
             StockMinimoTxt.Clear();
             StockMaximoTxt.Clear();
             CargarProductos();
+        }
+
+        private void ProductosLTV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SalirBTN_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CuitTXT_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

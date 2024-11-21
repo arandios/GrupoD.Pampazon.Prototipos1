@@ -41,7 +41,7 @@
             // OrdenSeleccionCMB
             // 
             OrdenSeleccionCMB.FormattingEnabled = true;
-            OrdenSeleccionCMB.Location = new Point(192, 41);
+            OrdenSeleccionCMB.Location = new Point(280, 33);
             OrdenSeleccionCMB.Margin = new Padding(3, 2, 3, 2);
             OrdenSeleccionCMB.Name = "OrdenSeleccionCMB";
             OrdenSeleccionCMB.Size = new Size(488, 23);
@@ -50,11 +50,12 @@
             // 
             // ProductosLST
             // 
+            ProductosLST.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ProductosLST.Columns.AddRange(new ColumnHeader[] { UbicacionColumna, SkuColumna, CantidadColumna });
-            ProductosLST.Location = new Point(74, 90);
+            ProductosLST.Location = new Point(15, 79);
             ProductosLST.Margin = new Padding(3, 2, 3, 2);
             ProductosLST.Name = "ProductosLST";
-            ProductosLST.Size = new Size(703, 522);
+            ProductosLST.Size = new Size(902, 514);
             ProductosLST.TabIndex = 2;
             ProductosLST.UseCompatibleStateImageBehavior = false;
             ProductosLST.View = View.Details;
@@ -62,24 +63,24 @@
             // UbicacionColumna
             // 
             UbicacionColumna.Text = "Ubicación";
-            UbicacionColumna.Width = 151;
+            UbicacionColumna.Width = 300;
             // 
             // SkuColumna
             // 
             SkuColumna.Text = "SKU Producto";
             SkuColumna.TextAlign = HorizontalAlignment.Center;
-            SkuColumna.Width = 190;
+            SkuColumna.Width = 300;
             // 
             // CantidadColumna
             // 
             CantidadColumna.Text = "Cantidad";
             CantidadColumna.TextAlign = HorizontalAlignment.Center;
-            CantidadColumna.Width = 140;
+            CantidadColumna.Width = 300;
             // 
             // OrdenSeleccionLBL
             // 
             OrdenSeleccionLBL.AutoSize = true;
-            OrdenSeleccionLBL.Location = new Point(192, 24);
+            OrdenSeleccionLBL.Location = new Point(283, 19);
             OrdenSeleccionLBL.Name = "OrdenSeleccionLBL";
             OrdenSeleccionLBL.Size = new Size(112, 15);
             OrdenSeleccionLBL.TabIndex = 3;
@@ -87,7 +88,8 @@
             // 
             // CancelarOrdenSeleccionBTN
             // 
-            CancelarOrdenSeleccionBTN.Location = new Point(589, 623);
+            CancelarOrdenSeleccionBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            CancelarOrdenSeleccionBTN.Location = new Point(729, 597);
             CancelarOrdenSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
             CancelarOrdenSeleccionBTN.Name = "CancelarOrdenSeleccionBTN";
             CancelarOrdenSeleccionBTN.Size = new Size(188, 40);
@@ -98,11 +100,12 @@
             // 
             // ConfirmarOrdenSeleccionBTN
             // 
+            ConfirmarOrdenSeleccionBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ConfirmarOrdenSeleccionBTN.BackColor = Color.FromArgb(192, 255, 192);
-            ConfirmarOrdenSeleccionBTN.Location = new Point(325, 623);
+            ConfirmarOrdenSeleccionBTN.Location = new Point(15, 597);
             ConfirmarOrdenSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
             ConfirmarOrdenSeleccionBTN.Name = "ConfirmarOrdenSeleccionBTN";
-            ConfirmarOrdenSeleccionBTN.Size = new Size(245, 40);
+            ConfirmarOrdenSeleccionBTN.Size = new Size(708, 40);
             ConfirmarOrdenSeleccionBTN.TabIndex = 20;
             ConfirmarOrdenSeleccionBTN.Text = "&Confirmar Orden de Selección";
             ConfirmarOrdenSeleccionBTN.UseVisualStyleBackColor = false;
@@ -112,7 +115,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(860, 694);
+            ClientSize = new Size(932, 651);
             Controls.Add(CancelarOrdenSeleccionBTN);
             Controls.Add(ConfirmarOrdenSeleccionBTN);
             Controls.Add(OrdenSeleccionLBL);
@@ -121,6 +124,7 @@
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(3, 2, 3, 2);
             Name = "AgregarProductosEnDepositosFormulario";
+            Padding = new Padding(3);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Buscar productos en depósito";
             Load += AgregarProductosEnDepositosFormulario_Load_1;

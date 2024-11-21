@@ -37,34 +37,39 @@ namespace Pampazon._8._ConsultarProductos
             UbicacionColumna = new ColumnHeader();
             stockColumna = new ColumnHeader();
             FiltrosGRP = new GroupBox();
-            label2 = new Label();
-            label1 = new Label();
-            StockMaximoTxt = new TextBox();
-            StockMinimoTxt = new TextBox();
-            NombreProdTxt = new TextBox();
-            SKUTxt = new TextBox();
-            PrioridadLBL = new Label();
-            CuitTXT = new TextBox();
             CuitLBL = new Label();
-            SKULBL = new Label();
-            RazonSocialTxt = new TextBox();
+            label2 = new Label();
             RazonSocialLBL = new Label();
-            CodigoClienteTxt = new TextBox();
+            CuitTXT = new TextBox();
+            label1 = new Label();
+            SKUTxt = new TextBox();
             BuscarBtn = new Button();
+            PrioridadLBL = new Label();
             BorrarFiltrosBTN = new Button();
+            StockMinimoTxt = new TextBox();
             CodigoCLienteLBL = new Label();
+            RazonSocialTxt = new TextBox();
+            SKULBL = new Label();
+            StockMaximoTxt = new TextBox();
+            CodigoClienteTxt = new TextBox();
+            NombreProdTxt = new TextBox();
+            SalirBTN = new Button();
             FiltrosGRP.SuspendLayout();
             SuspendLayout();
             // 
             // ProductosLTV
             // 
+            ProductosLTV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ProductosLTV.Columns.AddRange(new ColumnHeader[] { SKUColumna, NombrePrdoColumna, idClienteColumna, ClienteRZColumna, UbicacionColumna, stockColumna });
-            ProductosLTV.Location = new Point(11, 211);
+            ProductosLTV.Location = new Point(12, 200);
+            ProductosLTV.MaximumSize = new Size(1000, 1000);
+            ProductosLTV.MinimumSize = new Size(826, 192);
             ProductosLTV.Name = "ProductosLTV";
-            ProductosLTV.Size = new Size(840, 200);
+            ProductosLTV.Size = new Size(900, 397);
             ProductosLTV.TabIndex = 11;
             ProductosLTV.UseCompatibleStateImageBehavior = false;
             ProductosLTV.View = View.Details;
+            ProductosLTV.SelectedIndexChanged += ProductosLTV_SelectedIndexChanged;
             // 
             // SKUColumna
             // 
@@ -99,191 +104,245 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // FiltrosGRP
             // 
-            FiltrosGRP.Controls.Add(label2);
-            FiltrosGRP.Controls.Add(label1);
-            FiltrosGRP.Controls.Add(StockMaximoTxt);
-            FiltrosGRP.Controls.Add(StockMinimoTxt);
-            FiltrosGRP.Controls.Add(NombreProdTxt);
-            FiltrosGRP.Controls.Add(SKUTxt);
-            FiltrosGRP.Controls.Add(PrioridadLBL);
-            FiltrosGRP.Controls.Add(CuitTXT);
+            FiltrosGRP.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             FiltrosGRP.Controls.Add(CuitLBL);
-            FiltrosGRP.Controls.Add(SKULBL);
-            FiltrosGRP.Controls.Add(RazonSocialTxt);
+            FiltrosGRP.Controls.Add(label2);
             FiltrosGRP.Controls.Add(RazonSocialLBL);
-            FiltrosGRP.Controls.Add(CodigoClienteTxt);
+            FiltrosGRP.Controls.Add(CuitTXT);
+            FiltrosGRP.Controls.Add(label1);
+            FiltrosGRP.Controls.Add(SKUTxt);
             FiltrosGRP.Controls.Add(BuscarBtn);
+            FiltrosGRP.Controls.Add(PrioridadLBL);
             FiltrosGRP.Controls.Add(BorrarFiltrosBTN);
+            FiltrosGRP.Controls.Add(StockMinimoTxt);
             FiltrosGRP.Controls.Add(CodigoCLienteLBL);
-            FiltrosGRP.Location = new Point(11, 11);
+            FiltrosGRP.Controls.Add(RazonSocialTxt);
+            FiltrosGRP.Controls.Add(SKULBL);
+            FiltrosGRP.Controls.Add(StockMaximoTxt);
+            FiltrosGRP.Controls.Add(CodigoClienteTxt);
+            FiltrosGRP.Controls.Add(NombreProdTxt);
+            FiltrosGRP.Location = new Point(13, 15);
             FiltrosGRP.Margin = new Padding(3, 2, 3, 2);
+            FiltrosGRP.MaximumSize = new Size(1500, 180);
             FiltrosGRP.Name = "FiltrosGRP";
             FiltrosGRP.Padding = new Padding(3, 2, 3, 2);
-            FiltrosGRP.Size = new Size(840, 180);
+            FiltrosGRP.Size = new Size(899, 180);
             FiltrosGRP.TabIndex = 21;
             FiltrosGRP.TabStop = false;
             FiltrosGRP.Text = "Seleccione filtros de búsqueda para los productos: ";
             FiltrosGRP.Enter += FiltrosGRP_Enter;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(8, 121);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(81, 15);
-            label2.TabIndex = 28;
-            label2.Text = "Stock minimo";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(288, 121);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(83, 15);
-            label1.TabIndex = 27;
-            label1.Text = "Stock maximo";
-            // 
-            // StockMaximoTxt
-            // 
-            StockMaximoTxt.Location = new Point(288, 138);
-            StockMaximoTxt.Margin = new Padding(2);
-            StockMaximoTxt.Name = "StockMaximoTxt";
-            StockMaximoTxt.Size = new Size(250, 23);
-            StockMaximoTxt.TabIndex = 26;
-            // 
-            // StockMinimoTxt
-            // 
-            StockMinimoTxt.Location = new Point(6, 138);
-            StockMinimoTxt.Margin = new Padding(2);
-            StockMinimoTxt.Name = "StockMinimoTxt";
-            StockMinimoTxt.Size = new Size(250, 23);
-            StockMinimoTxt.TabIndex = 25;
-            // 
-            // NombreProdTxt
-            // 
-            NombreProdTxt.Location = new Point(288, 84);
-            NombreProdTxt.Margin = new Padding(2);
-            NombreProdTxt.Name = "NombreProdTxt";
-            NombreProdTxt.Size = new Size(250, 23);
-            NombreProdTxt.TabIndex = 24;
-            // 
-            // SKUTxt
-            // 
-            SKUTxt.Location = new Point(7, 84);
-            SKUTxt.Margin = new Padding(2);
-            SKUTxt.Name = "SKUTxt";
-            SKUTxt.Size = new Size(250, 23);
-            SKUTxt.TabIndex = 23;
-            // 
-            // PrioridadLBL
-            // 
-            PrioridadLBL.AutoSize = true;
-            PrioridadLBL.Location = new Point(288, 67);
-            PrioridadLBL.Margin = new Padding(2, 0, 2, 0);
-            PrioridadLBL.Name = "PrioridadLBL";
-            PrioridadLBL.Size = new Size(103, 15);
-            PrioridadLBL.TabIndex = 21;
-            PrioridadLBL.Text = "Nombre producto";
-            // 
-            // CuitTXT
-            // 
-            CuitTXT.Location = new Point(583, 37);
-            CuitTXT.Margin = new Padding(2);
-            CuitTXT.Name = "CuitTXT";
-            CuitTXT.Size = new Size(250, 23);
-            CuitTXT.TabIndex = 3;
-            // 
             // CuitLBL
             // 
             CuitLBL.AutoSize = true;
-            CuitLBL.Location = new Point(583, 19);
+            CuitLBL.Location = new Point(636, 22);
             CuitLBL.Margin = new Padding(2, 0, 2, 0);
             CuitLBL.Name = "CuitLBL";
             CuitLBL.Size = new Size(29, 15);
             CuitLBL.TabIndex = 17;
             CuitLBL.Text = "Cuit";
             // 
-            // SKULBL
+            // label2
             // 
-            SKULBL.AutoSize = true;
-            SKULBL.Location = new Point(6, 67);
-            SKULBL.Margin = new Padding(2, 0, 2, 0);
-            SKULBL.Name = "SKULBL";
-            SKULBL.Size = new Size(28, 15);
-            SKULBL.TabIndex = 7;
-            SKULBL.Text = "SKU";
-            // 
-            // RazonSocialTxt
-            // 
-            RazonSocialTxt.Location = new Point(288, 37);
-            RazonSocialTxt.Margin = new Padding(2);
-            RazonSocialTxt.Name = "RazonSocialTxt";
-            RazonSocialTxt.Size = new Size(250, 23);
-            RazonSocialTxt.TabIndex = 2;
+            label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Location = new Point(9, 123);
+            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.MaximumSize = new Size(500, 23);
+            label2.Name = "label2";
+            label2.Size = new Size(81, 15);
+            label2.TabIndex = 28;
+            label2.Text = "Stock minimo";
             // 
             // RazonSocialLBL
             // 
+            RazonSocialLBL.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             RazonSocialLBL.AutoSize = true;
-            RazonSocialLBL.Location = new Point(288, 19);
+            RazonSocialLBL.Location = new Point(317, 21);
             RazonSocialLBL.Margin = new Padding(2, 0, 2, 0);
+            RazonSocialLBL.MaximumSize = new Size(500, 23);
             RazonSocialLBL.Name = "RazonSocialLBL";
             RazonSocialLBL.Size = new Size(73, 15);
             RazonSocialLBL.TabIndex = 15;
             RazonSocialLBL.Text = "Razón Social";
             // 
-            // CodigoClienteTxt
+            // CuitTXT
             // 
-            CodigoClienteTxt.Location = new Point(8, 37);
-            CodigoClienteTxt.Margin = new Padding(2);
-            CodigoClienteTxt.Name = "CodigoClienteTxt";
-            CodigoClienteTxt.Size = new Size(250, 23);
-            CodigoClienteTxt.TabIndex = 1;
+            CuitTXT.Location = new Point(636, 39);
+            CuitTXT.Margin = new Padding(2);
+            CuitTXT.MaximumSize = new Size(280, 40);
+            CuitTXT.MinimumSize = new Size(200, 23);
+            CuitTXT.Name = "CuitTXT";
+            CuitTXT.Size = new Size(250, 23);
+            CuitTXT.TabIndex = 3;
+            CuitTXT.TextChanged += CuitTXT_TextChanged_1;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Location = new Point(318, 123);
+            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.MaximumSize = new Size(500, 23);
+            label1.Name = "label1";
+            label1.Size = new Size(83, 15);
+            label1.TabIndex = 27;
+            label1.Text = "Stock maximo";
+            // 
+            // SKUTxt
+            // 
+            SKUTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            SKUTxt.Location = new Point(9, 86);
+            SKUTxt.Margin = new Padding(2);
+            SKUTxt.MaximumSize = new Size(500, 23);
+            SKUTxt.MinimumSize = new Size(200, 23);
+            SKUTxt.Name = "SKUTxt";
+            SKUTxt.Size = new Size(250, 23);
+            SKUTxt.TabIndex = 23;
             // 
             // BuscarBtn
             // 
             BuscarBtn.BackColor = Color.FromArgb(192, 255, 192);
-            BuscarBtn.Location = new Point(583, 67);
+            BuscarBtn.Location = new Point(636, 69);
             BuscarBtn.Margin = new Padding(2);
+            BuscarBtn.MaximumSize = new Size(280, 40);
+            BuscarBtn.MinimumSize = new Size(200, 40);
             BuscarBtn.Name = "BuscarBtn";
-            BuscarBtn.Size = new Size(250, 40);
+            BuscarBtn.Size = new Size(258, 40);
             BuscarBtn.TabIndex = 8;
             BuscarBtn.Text = "Buscar producto";
             BuscarBtn.UseVisualStyleBackColor = false;
             BuscarBtn.Click += BuscarProductos_Click;
             // 
+            // PrioridadLBL
+            // 
+            PrioridadLBL.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            PrioridadLBL.AutoSize = true;
+            PrioridadLBL.Location = new Point(317, 69);
+            PrioridadLBL.Margin = new Padding(2, 0, 2, 0);
+            PrioridadLBL.MaximumSize = new Size(500, 23);
+            PrioridadLBL.Name = "PrioridadLBL";
+            PrioridadLBL.Size = new Size(103, 15);
+            PrioridadLBL.TabIndex = 21;
+            PrioridadLBL.Text = "Nombre producto";
+            // 
             // BorrarFiltrosBTN
             // 
             BorrarFiltrosBTN.BackColor = Color.FromArgb(255, 192, 192);
-            BorrarFiltrosBTN.Location = new Point(583, 121);
+            BorrarFiltrosBTN.Location = new Point(636, 123);
             BorrarFiltrosBTN.Margin = new Padding(2);
+            BorrarFiltrosBTN.MaximumSize = new Size(280, 40);
+            BorrarFiltrosBTN.MinimumSize = new Size(200, 40);
             BorrarFiltrosBTN.Name = "BorrarFiltrosBTN";
             BorrarFiltrosBTN.RightToLeft = RightToLeft.No;
-            BorrarFiltrosBTN.Size = new Size(250, 40);
+            BorrarFiltrosBTN.Size = new Size(258, 40);
             BorrarFiltrosBTN.TabIndex = 9;
             BorrarFiltrosBTN.Text = "&Borrar filtros";
             BorrarFiltrosBTN.UseVisualStyleBackColor = false;
             BorrarFiltrosBTN.Click += BorrarFiltrosBTN_Click;
             // 
+            // StockMinimoTxt
+            // 
+            StockMinimoTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            StockMinimoTxt.Location = new Point(9, 140);
+            StockMinimoTxt.Margin = new Padding(2);
+            StockMinimoTxt.MaximumSize = new Size(500, 23);
+            StockMinimoTxt.MinimumSize = new Size(200, 23);
+            StockMinimoTxt.Name = "StockMinimoTxt";
+            StockMinimoTxt.Size = new Size(250, 23);
+            StockMinimoTxt.TabIndex = 25;
+            // 
             // CodigoCLienteLBL
             // 
+            CodigoCLienteLBL.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             CodigoCLienteLBL.AutoSize = true;
-            CodigoCLienteLBL.Location = new Point(4, 19);
+            CodigoCLienteLBL.Location = new Point(5, 21);
             CodigoCLienteLBL.Margin = new Padding(2, 0, 2, 0);
+            CodigoCLienteLBL.MaximumSize = new Size(500, 23);
             CodigoCLienteLBL.Name = "CodigoCLienteLBL";
             CodigoCLienteLBL.Size = new Size(58, 15);
             CodigoCLienteLBL.TabIndex = 2;
             CodigoCLienteLBL.Text = "ID Cliente";
             // 
+            // RazonSocialTxt
+            // 
+            RazonSocialTxt.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            RazonSocialTxt.ImeMode = ImeMode.Off;
+            RazonSocialTxt.Location = new Point(314, 39);
+            RazonSocialTxt.Margin = new Padding(2);
+            RazonSocialTxt.MaximumSize = new Size(500, 23);
+            RazonSocialTxt.MinimumSize = new Size(200, 23);
+            RazonSocialTxt.Name = "RazonSocialTxt";
+            RazonSocialTxt.Size = new Size(250, 23);
+            RazonSocialTxt.TabIndex = 2;
+            // 
+            // SKULBL
+            // 
+            SKULBL.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            SKULBL.AutoSize = true;
+            SKULBL.Location = new Point(7, 69);
+            SKULBL.Margin = new Padding(2, 0, 2, 0);
+            SKULBL.MaximumSize = new Size(500, 23);
+            SKULBL.Name = "SKULBL";
+            SKULBL.Size = new Size(28, 15);
+            SKULBL.TabIndex = 7;
+            SKULBL.Text = "SKU";
+            // 
+            // StockMaximoTxt
+            // 
+            StockMaximoTxt.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            StockMaximoTxt.Location = new Point(314, 140);
+            StockMaximoTxt.Margin = new Padding(2);
+            StockMaximoTxt.MaximumSize = new Size(500, 23);
+            StockMaximoTxt.MinimumSize = new Size(200, 23);
+            StockMaximoTxt.Name = "StockMaximoTxt";
+            StockMaximoTxt.Size = new Size(250, 23);
+            StockMaximoTxt.TabIndex = 26;
+            // 
+            // CodigoClienteTxt
+            // 
+            CodigoClienteTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            CodigoClienteTxt.Location = new Point(9, 39);
+            CodigoClienteTxt.Margin = new Padding(2);
+            CodigoClienteTxt.MaximumSize = new Size(500, 23);
+            CodigoClienteTxt.MinimumSize = new Size(200, 23);
+            CodigoClienteTxt.Name = "CodigoClienteTxt";
+            CodigoClienteTxt.Size = new Size(250, 23);
+            CodigoClienteTxt.TabIndex = 1;
+            // 
+            // NombreProdTxt
+            // 
+            NombreProdTxt.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            NombreProdTxt.Location = new Point(314, 86);
+            NombreProdTxt.Margin = new Padding(2);
+            NombreProdTxt.MaximumSize = new Size(500, 23);
+            NombreProdTxt.MinimumSize = new Size(200, 23);
+            NombreProdTxt.Name = "NombreProdTxt";
+            NombreProdTxt.Size = new Size(250, 23);
+            NombreProdTxt.TabIndex = 24;
+            // 
+            // SalirBTN
+            // 
+            SalirBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            SalirBTN.Location = new Point(662, 603);
+            SalirBTN.MaximumSize = new Size(250, 40);
+            SalirBTN.Name = "SalirBTN";
+            SalirBTN.Size = new Size(250, 40);
+            SalirBTN.TabIndex = 22;
+            SalirBTN.Text = "Salir";
+            SalirBTN.UseVisualStyleBackColor = true;
+            SalirBTN.Click += SalirBTN_Click;
+            // 
             // BuscarProductosForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(872, 450);
+            ClientSize = new Size(932, 651);
+            Controls.Add(SalirBTN);
             Controls.Add(FiltrosGRP);
             Controls.Add(ProductosLTV);
             Name = "BuscarProductosForm";
+            StartPosition = FormStartPosition.WindowsDefaultBounds;
             Text = "Consultar Productos";
             FiltrosGRP.ResumeLayout(false);
             FiltrosGRP.PerformLayout();
@@ -301,14 +360,10 @@ namespace Pampazon._8._ConsultarProductos
         private ColumnHeader idClienteColumna;
         private ColumnHeader UbicacionColumna;
         private GroupBox FiltrosGRP;
-        private TextBox NombreProdTxt;
         private TextBox SKUTxt;
-        private Label PrioridadLBL;
         private TextBox CuitTXT;
         private Label CuitLBL;
         private Label SKULBL;
-        private TextBox RazonSocialTxt;
-        private Label RazonSocialLBL;
         private TextBox CodigoClienteTxt;
         private Button BuscarBtn;
         private Button BorrarFiltrosBTN;
@@ -316,9 +371,14 @@ namespace Pampazon._8._ConsultarProductos
         private ColumnHeader NombrePrdoColumna;
         private ColumnHeader ClienteRZColumna;
         private Label label2;
-        private Label label1;
-        private TextBox StockMaximoTxt;
         private TextBox StockMinimoTxt;
         private ColumnHeader stockColumna;
+        private Button SalirBTN;
+        private Label RazonSocialLBL;
+        private Label label1;
+        private Label PrioridadLBL;
+        private TextBox RazonSocialTxt;
+        private TextBox StockMaximoTxt;
+        private TextBox NombreProdTxt;
     }
 }

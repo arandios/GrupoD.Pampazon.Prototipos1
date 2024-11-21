@@ -23,13 +23,18 @@ namespace Pampazon.MenuPrincipal
             InitializeComponent();
         }
 
-        private void MenuPrincipal_Load(object sender, EventArgs e)
-        {
 
-        }
-        private void MenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+
+        private void AbrirFormularioEnPanel(Form formHijo)
         {
-            Application.Exit();
+            if (this.panelForms.Controls.Count > 0)
+                this.panelForms.Controls.RemoveAt(0);
+            formHijo.TopLevel = false;
+            formHijo.FormBorderStyle = FormBorderStyle.None;
+            formHijo.Dock = DockStyle.Fill;
+            this.panelForms.Controls.Add(formHijo);
+            this.panelForms.Tag = formHijo;
+            formHijo.Show();
         }
 
         private void Menu_ConsultarOrdenesBTN_Click(object sender, EventArgs e)
@@ -37,7 +42,7 @@ namespace Pampazon.MenuPrincipal
             try
             {
                 ListarOrdenes.ConsultarOrdenesForm formOrdenes = new();
-                formOrdenes.ShowDialog();
+                AbrirFormularioEnPanel(formOrdenes);
             }
             catch (Exception ex)
             {
@@ -46,13 +51,12 @@ namespace Pampazon.MenuPrincipal
         }
 
 
-
         private void GenerarRemitoBTN_Click(object sender, EventArgs e)
         {
             try
             {
                 GenerarRemitoForm formRemito = new();
-                formRemito.ShowDialog();
+                AbrirFormularioEnPanel(formRemito);
             }
             catch (Exception ex)
             {
@@ -67,7 +71,7 @@ namespace Pampazon.MenuPrincipal
             try
             {
                 OrdenSeleccion.OrdenSeleccionForm ordenSeleccionForm = new();
-                ordenSeleccionForm.ShowDialog();
+                AbrirFormularioEnPanel(ordenSeleccionForm);
             }
             catch (Exception ex)
             {
@@ -84,13 +88,11 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-
                 OrdenEntrega.GenerarOrdenEntregaForm ordenEntregaForm = new();
-                ordenEntregaForm.ShowDialog();
+                AbrirFormularioEnPanel(ordenEntregaForm);
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Ocurrió un error al abrir el formulario de Orden de Entrega: " + ex.Message);
             }
         }
@@ -101,11 +103,10 @@ namespace Pampazon.MenuPrincipal
             try
             {
                 GenerarOrdenPreparacionForm generarOrden = new();
-                generarOrden.ShowDialog();
+                AbrirFormularioEnPanel(generarOrden);
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Ocurrió un error al abrir el formulario de Orden de Entrega: " + ex.Message);
             }
         }
@@ -119,8 +120,8 @@ namespace Pampazon.MenuPrincipal
         {
             try
             {
-                EmpaquetarOrdenForm empaquetarOrdenForm = new EmpaquetarOrdenForm();
-                empaquetarOrdenForm.ShowDialog();
+                EmpaquetarOrdenForm empaquetarOrdenForm = new();
+                AbrirFormularioEnPanel(empaquetarOrdenForm);
             }
             catch (Exception ex)
             {
@@ -135,7 +136,19 @@ namespace Pampazon.MenuPrincipal
             try
             {
                 AgregarProductosEnDepositosFormulario AgregarProductosEnDepositosFormulario = new();
-                AgregarProductosEnDepositosFormulario.ShowDialog();
+                AbrirFormularioEnPanel(AgregarProductosEnDepositosFormulario);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BuscarProductosForm Formulario = new();
+                AbrirFormularioEnPanel(Formulario);
             }
             catch (Exception ex)
             {
@@ -143,17 +156,19 @@ namespace Pampazon.MenuPrincipal
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void panel5_Paint(object sender, PaintEventArgs e)
         {
-            try
-            {
-                BuscarProductosForm Formulario = new();
-                Formulario.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+
+        }
+
+        private void panelBotonesConsultas_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void SalirBTN_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

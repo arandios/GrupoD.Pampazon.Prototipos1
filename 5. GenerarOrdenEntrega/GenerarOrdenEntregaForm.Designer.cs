@@ -38,10 +38,11 @@
             // 
             // SalirGenerarOEbtn
             // 
-            SalirGenerarOEbtn.Location = new Point(757, 816);
-            SalirGenerarOEbtn.Margin = new Padding(2, 3, 2, 3);
+            SalirGenerarOEbtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            SalirGenerarOEbtn.Location = new Point(608, 605);
+            SalirGenerarOEbtn.Margin = new Padding(2);
             SalirGenerarOEbtn.Name = "SalirGenerarOEbtn";
-            SalirGenerarOEbtn.Size = new Size(214, 53);
+            SalirGenerarOEbtn.Size = new Size(240, 40);
             SalirGenerarOEbtn.TabIndex = 17;
             SalirGenerarOEbtn.Text = "&Salir";
             SalirGenerarOEbtn.UseVisualStyleBackColor = true;
@@ -49,11 +50,12 @@
             // 
             // GenerarOrdenEntregabtn
             // 
+            GenerarOrdenEntregabtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             GenerarOrdenEntregabtn.BackColor = Color.FromArgb(192, 255, 192);
-            GenerarOrdenEntregabtn.Location = new Point(455, 816);
-            GenerarOrdenEntregabtn.Margin = new Padding(2, 3, 2, 3);
+            GenerarOrdenEntregabtn.Location = new Point(10, 606);
+            GenerarOrdenEntregabtn.Margin = new Padding(2);
             GenerarOrdenEntregabtn.Name = "GenerarOrdenEntregabtn";
-            GenerarOrdenEntregabtn.Size = new Size(280, 53);
+            GenerarOrdenEntregabtn.Size = new Size(594, 40);
             GenerarOrdenEntregabtn.TabIndex = 16;
             GenerarOrdenEntregabtn.Text = "&Generar/ Confirmar Orden de Entrega";
             GenerarOrdenEntregabtn.UseVisualStyleBackColor = false;
@@ -62,44 +64,44 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(14, 219);
+            label2.Location = new Point(15, 167);
             label2.Name = "label2";
-            label2.Size = new Size(0, 20);
+            label2.Size = new Size(0, 15);
             label2.TabIndex = 23;
             // 
             // OrdenDespachoCMB
             // 
+            OrdenDespachoCMB.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             OrdenDespachoCMB.Controls.Add(Orden_EntregaLST);
-            OrdenDespachoCMB.Location = new Point(0, 35);
-            OrdenDespachoCMB.Margin = new Padding(3, 4, 3, 4);
+            OrdenDespachoCMB.Location = new Point(0, 6);
             OrdenDespachoCMB.Name = "OrdenDespachoCMB";
-            OrdenDespachoCMB.Padding = new Padding(3, 4, 3, 4);
-            OrdenDespachoCMB.Size = new Size(971, 774);
+            OrdenDespachoCMB.Size = new Size(854, 600);
             OrdenDespachoCMB.TabIndex = 26;
             OrdenDespachoCMB.TabStop = false;
             OrdenDespachoCMB.Text = "Ordenes a despacho:";
             // 
             // Orden_EntregaLST
             // 
-            Orden_EntregaLST.Location = new Point(12, 28);
-            Orden_EntregaLST.Margin = new Padding(3, 4, 3, 4);
+            Orden_EntregaLST.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Orden_EntregaLST.Location = new Point(10, 21);
             Orden_EntregaLST.Name = "Orden_EntregaLST";
-            Orden_EntregaLST.Size = new Size(956, 738);
+            Orden_EntregaLST.Size = new Size(838, 573);
             Orden_EntregaLST.TabIndex = 22;
             Orden_EntregaLST.UseCompatibleStateImageBehavior = false;
             Orden_EntregaLST.View = View.Details;
             // 
             // GenerarOrdenEntregaForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 953);
+            ClientSize = new Size(866, 651);
             Controls.Add(OrdenDespachoCMB);
             Controls.Add(GenerarOrdenEntregabtn);
             Controls.Add(label2);
             Controls.Add(SalirGenerarOEbtn);
-            Margin = new Padding(2, 3, 2, 3);
+            Margin = new Padding(2);
             Name = "GenerarOrdenEntregaForm";
+            Padding = new Padding(3);
             Text = "Generar Orden de Entrega";
             OrdenDespachoCMB.ResumeLayout(false);
             ResumeLayout(false);
