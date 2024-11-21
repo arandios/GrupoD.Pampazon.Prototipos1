@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipalForm));
             panelLogo = new Panel();
+            Saludolbl = new Label();
             panelContenedor = new Panel();
             panelBotones = new Panel();
             BuscarProductoBTN = new Button();
@@ -59,6 +60,15 @@
             panelLogo.Size = new Size(332, 58);
             panelLogo.TabIndex = 1;
             // 
+            // Saludolbl
+            // 
+            Saludolbl.AutoSize = true;
+            Saludolbl.Location = new Point(4, 59);
+            Saludolbl.Name = "Saludolbl";
+            Saludolbl.Size = new Size(38, 15);
+            Saludolbl.TabIndex = 0;
+            Saludolbl.Text = "label1";
+            // 
             // panelContenedor
             // 
             panelContenedor.BackColor = SystemColors.ActiveCaptionText;
@@ -77,6 +87,7 @@
             panelBotones.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelBotones.AutoScroll = true;
             panelBotones.BackColor = Color.White;
+            panelBotones.Controls.Add(Saludolbl);
             panelBotones.Controls.Add(BuscarProductoBTN);
             panelBotones.Controls.Add(panelLogo);
             panelBotones.Controls.Add(Menu_ConsultarOrdenesBTN);
@@ -113,7 +124,7 @@
             // 
             Menu_ConsultarOrdenesBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Menu_ConsultarOrdenesBTN.ForeColor = SystemColors.ActiveCaptionText;
-            Menu_ConsultarOrdenesBTN.Location = new Point(1, 467);
+            Menu_ConsultarOrdenesBTN.Location = new Point(1, 472);
             Menu_ConsultarOrdenesBTN.Margin = new Padding(3, 2, 3, 2);
             Menu_ConsultarOrdenesBTN.Name = "Menu_ConsultarOrdenesBTN";
             Menu_ConsultarOrdenesBTN.Size = new Size(333, 57);
@@ -126,7 +137,7 @@
             // 
             GenerarRemitoBTN.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             GenerarRemitoBTN.ForeColor = SystemColors.ActiveCaptionText;
-            GenerarRemitoBTN.Location = new Point(0, 346);
+            GenerarRemitoBTN.Location = new Point(0, 367);
             GenerarRemitoBTN.Margin = new Padding(3, 2, 3, 2);
             GenerarRemitoBTN.Name = "GenerarRemitoBTN";
             GenerarRemitoBTN.Size = new Size(334, 57);
@@ -139,7 +150,7 @@
             // 
             GenerarOrdenDeSeleccionBTN.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             GenerarOrdenDeSeleccionBTN.ForeColor = SystemColors.ActiveCaptionText;
-            GenerarOrdenDeSeleccionBTN.Location = new Point(0, 118);
+            GenerarOrdenDeSeleccionBTN.Location = new Point(0, 139);
             GenerarOrdenDeSeleccionBTN.Margin = new Padding(3, 2, 3, 2);
             GenerarOrdenDeSeleccionBTN.Name = "GenerarOrdenDeSeleccionBTN";
             GenerarOrdenDeSeleccionBTN.Size = new Size(334, 57);
@@ -152,7 +163,7 @@
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(-1, 62);
+            button1.Location = new Point(-1, 83);
             button1.Name = "button1";
             button1.Size = new Size(334, 57);
             button1.TabIndex = 3;
@@ -178,7 +189,7 @@
             // 
             button2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             button2.ForeColor = SystemColors.ActiveCaptionText;
-            button2.Location = new Point(0, 175);
+            button2.Location = new Point(0, 196);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
             button2.Size = new Size(334, 57);
@@ -191,7 +202,7 @@
             // 
             EmpaquetarOrdenbtn.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             EmpaquetarOrdenbtn.ForeColor = SystemColors.ActiveCaptionText;
-            EmpaquetarOrdenbtn.Location = new Point(0, 232);
+            EmpaquetarOrdenbtn.Location = new Point(0, 253);
             EmpaquetarOrdenbtn.Margin = new Padding(2);
             EmpaquetarOrdenbtn.Name = "EmpaquetarOrdenbtn";
             EmpaquetarOrdenbtn.Size = new Size(334, 57);
@@ -204,7 +215,7 @@
             // 
             GenerarOrdenDeEntregabtn.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             GenerarOrdenDeEntregabtn.ForeColor = SystemColors.ActiveCaptionText;
-            GenerarOrdenDeEntregabtn.Location = new Point(0, 289);
+            GenerarOrdenDeEntregabtn.Location = new Point(0, 310);
             GenerarOrdenDeEntregabtn.Margin = new Padding(3, 2, 3, 2);
             GenerarOrdenDeEntregabtn.Name = "GenerarOrdenDeEntregabtn";
             GenerarOrdenDeEntregabtn.Size = new Size(334, 57);
@@ -251,6 +262,7 @@
             WindowState = FormWindowState.Maximized;
             panelContenedor.ResumeLayout(false);
             panelBotones.ResumeLayout(false);
+            panelBotones.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -269,7 +281,6 @@
         private Button Menu_ConsultarOrdenesBTN;
         private Panel panelSubcontenedor;
         private Panel panelForms;
-        
-
+        private Label Saludolbl;
     }
 }

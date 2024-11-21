@@ -21,6 +21,7 @@ namespace Pampazon.MenuPrincipal
         public MenuPrincipalForm()
         {
             InitializeComponent();
+            Saludolbl.Text = "Bienvenido " + Environment.UserName;
         }
 
 
