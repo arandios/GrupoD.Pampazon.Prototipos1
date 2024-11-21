@@ -87,18 +87,5 @@ namespace Pampazon.OrdenSeleccion
                 OrdenPreparacionAlmacen.cambiarEstado(int.Parse(op.IDOrdenPreparacion), EstadoOrdenPreparacionEnum.Procesamiento);
             }
         }
-
-
-
-
-
-        public string BorrarOrdenDePreparacion(OrdenPreparacion OrdenDePreparacionSeleccionada)
-        {
-            //Validaciones.
-            //TODO: Reveer que validaciones serian necesarias aqui. Limitaciones antes de borrar. (No deberia haber?)
-
-            OrdenesDePreparacion.Remove(OrdenDePreparacionSeleccionada);
-            return null; //todo ok.
-        }
     }
 }

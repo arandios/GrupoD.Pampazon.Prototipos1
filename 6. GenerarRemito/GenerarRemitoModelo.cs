@@ -131,26 +131,6 @@ public class GenerarRemitoModelo
         return nuevoRemito;
     }
 
-   /* private void ActualizarOrdenesDePreparacion(List<int> idsOrdenes)
-    {
-        var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Datos", "OrdenesDePreparacion.json");
-        var ordenesPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion;
-
-        // Actualizar el estado de las órdenes en la lista
-        foreach (var id in idsOrdenes)
-        {
-            var orden = ordenesPreparacion.FirstOrDefault(o => o.IdOrdenPreparacion == id);
-            if (orden != null)
-            {
-                orden.Estado = (EstadoOrdenPreparacionEnum)(int)EstadoOrdenPreparacionRemito.Entregada;
-            }
-        }
-
-        // Serializar la lista actualizada y escribirla en el archivo
-        var datos = JsonSerializer.Serialize(ordenesPreparacion, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText(filePath, datos);
-    }*/
-
 
     internal OrdenesDePreparacionRemito? ObtenerOrdenPorId(string idOrden)
     {
