@@ -52,12 +52,7 @@ namespace Pampazon.OrdenEntrega
         private void GenerarOrdenEntregabtn_Click(object sender, EventArgs e)
         {
 
-            if (Orden_EntregaLST.Items.Count < 5)
-            {
-                MessageBox.Show("Error: Debe haber al menos 5 ítems en la lista para generar una orden de entrega.",
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+           
 
             DialogResult result = MessageBox.Show("¿Está seguro de que desea generar la orden de entrega?",
                                                   "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
