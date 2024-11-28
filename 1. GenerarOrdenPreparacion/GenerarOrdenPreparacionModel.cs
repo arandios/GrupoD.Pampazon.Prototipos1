@@ -1,4 +1,5 @@
 ﻿using Pampazon._1._GenerarOrdenPreparacion;
+using Pampazon.Almacenes;
 using Pampazon.Entidades;
 using System;
 using System.Collections;
@@ -20,6 +21,7 @@ namespace Pampazon.GenerarOrdenPreparacion
         public List<Producto> ProductosCliente { get; set; } = new List<Producto>();
         public List<Producto> Productos = new List<Producto>();
         public List<Cliente> Clientes = new List<Cliente>();
+        private static List<Transportista> transportistas = obtenerTransportistasSolo();
         public GenerarOrdenPreparacionModel()
         {
             ObtenerProductosAlmacen();
@@ -49,14 +51,7 @@ namespace Pampazon.GenerarOrdenPreparacion
                 var cliente = new Cliente();
                 cliente.IDCliente = clientesEnt.IdCliente;
                 cliente.RazonSocial = clientesEnt.RazonSocial;
-                foreach (var transportista in Almacenes.TransportistaAlmacen.Transportistas)
-                {
-                    var trans = new Transportista();
-                    trans.Nombre = transportista.Nombre;
-                    trans.Apellido = transportista.Apellido;
-                    trans.DNI = transportista.DNI;
-                    cliente.Transportistas.Add(trans);
-                }
+               
                 Clientes.Add(cliente);
             }
        }
@@ -218,7 +213,7 @@ namespace Pampazon.GenerarOrdenPreparacion
 
         }
 
-        public List<Transportista> ObtenerTransportistas()
+      /*  public List<Transportista> ObtenerTransportistas()
         {
             List<Transportista> list = new List<Transportista>();
             if (IDCliente != -1)
@@ -232,22 +227,23 @@ namespace Pampazon.GenerarOrdenPreparacion
                 }
             }
             return list;
-        }
-        public string ObtenerNombreTransportista(int dni = -1)
+        }*/
+        public static List<Transportista> obtenerTransportistasSolo()
         {
-            Transportista vacio = new Transportista();
-            if (dni != -1)
-            {
-                foreach (Transportista transportista in ObtenerTransportistas())
-                {
-                    if (transportista.DNI == dni)
-                    {
-                        return transportista.Nombre + " " + transportista.Apellido;
-                    }
-                }
-            }
-            return "";
+            return TransportistaAlmacen.Transportistas
+                .Select(t => new Transportista(
+                    t.DNI,
+                    t.Nombre,
+                    t.Apellido
+                )).ToList();
         }
+
+        internal static string ObtenerNombreTransportistaPorDni(int dni)
+        {
+            var orden = transportistas.First(o => o.DNI == dni);
+            return orden != null ? $"{orden.Nombre} {orden.Apellido}" : string.Empty;
+        }
+       
 
         public void agregarOrderAlmacen()
         {

@@ -29,6 +29,7 @@ namespace Pampazon
             PrioridadCMB.Items.Add("Media");
             PrioridadCMB.Items.Add("Baja");
             PrioridadCMB.Enabled = false;
+            OPDetalleMercaderiaGroupBox.Enabled = false;
 
 
             FechaSelecter.CustomFormat = "MM/dd/yyyy";
@@ -39,8 +40,183 @@ namespace Pampazon
             this.ProductosStockLST.SelectedIndexChanged += new EventHandler(this.ProductosStockLista_SelectedIndexChanged);
             CodigoClienteTXT.TextChanged += CodigoClienteTXT_TextChanged;
             RazonSocialClienteTXT.TextChanged += RazonSocialClienteTXT_TextChanged;
+            CodigoClienteTXT.KeyDown += CodigoClienteTXT_KeyDown;
+            RazonSocialClienteTXT.KeyDown += RazonSocialClienteTXT_KeyDown;
+            SKUProductoTXT.KeyDown += SKUProductoTXT_KeyDown;
+            NombreProductoTXT.KeyDown += NombreProductoTXT_KeyDown;
+            AgregarCantidadTXT.KeyDown += AgregarCantidadTXT_KeyDown;
+            FechaSelecter.KeyDown += FechaSelecter_KeyDown;
+            HorarioTextBox.KeyDown += HorarioTextBox_KeyDown;
+            DniTransportistaCMB.KeyDown += DniTransportistaCMB_KeyDown;
+            NombreTransportistaCMB.KeyDown += NombreTransportistaCMB_KeyDown;
+            PrioridadCMB.KeyDown += PrioridadCMB_KeyDown;
+            Generar.KeyDown += Generar_KeyDown;
+            CancelarOrdenBtn.KeyDown += CancelarOrdenBtn_KeyDown;
+            SalirBTN.KeyDown += SalirBTN_KeyDown;
 
+
+            cargarTransportistas();
+            cargarNombreTransportistas();
         }
+
+        private void NombreProductoTXT_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscarProductoBtn(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                if (ProductosStockLST.Items.Count > 0)
+                {
+                    ProductosStockLST.Focus();
+                    ProductosStockLST.Items[0].Selected = true;
+                    ProductosStockLST.Items[0].Focused = true;
+                }
+            }
+        } 
+        private void AgregarCantidadTXT_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AgregarProductoBtn_Click(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                if (ProductosStockLST.Items.Count > 0)
+                {
+                    ProductosStockLST.Focus();
+                    ProductosStockLST.Items[0].Selected = true;
+                    ProductosStockLST.Items[0].Focused = true;
+                }
+            }
+        }
+
+        private void CodigoClienteTXT_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscarProductoBtn(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                if (ProductosStockLST.Items.Count > 0)
+                {
+                    ProductosStockLST.Focus();
+                    ProductosStockLST.Items[0].Selected = true;
+                    ProductosStockLST.Items[0].Focused = true;
+                }
+            }
+        } 
+        private void RazonSocialClienteTXT_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscarProductoBtn(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                if (ProductosStockLST.Items.Count > 0)
+                {
+                    ProductosStockLST.Focus();
+                    ProductosStockLST.Items[0].Selected = true;
+                    ProductosStockLST.Items[0].Focused = true;
+                }
+            }
+        }
+        private void FechaSelecter_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+               
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                HorarioTextBox.Focus();
+            }
+        } 
+        private void HorarioTextBox_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+               
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                DniTransportistaCMB.Focus();
+            }
+        } 
+        private void DniTransportistaCMB_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+               
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                PrioridadCMB.Focus();
+            }
+        }
+        private void NombreTransportistaCMB_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+               
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                PrioridadCMB.Focus();
+            }
+        }
+        private void PrioridadCMB_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                Generar.Focus();
+            }
+        }
+        private void Generar_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GenerarOrderPreparacionBtn(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+        private void CancelarOrdenBtn_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                CancelarOrderBtn(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                
+            }
+        } 
+        private void SalirBTN_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                VolverBtn(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                
+            }
+        }
+
+        private void SKUProductoTXT_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscarProductoBtn(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                if (ProductosStockLST.Items.Count > 0)
+                {
+                    ProductosStockLST.Focus();
+                    ProductosStockLST.Items[0].Selected = true;
+                    ProductosStockLST.Items[0].Focused = true;
+                }
+            }
+        }
+
+        
         private void CodigoClienteTXT_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(CodigoClienteTXT.Text))
@@ -64,23 +240,8 @@ namespace Pampazon
             }
         }
 
-        private void GenerarOrdenPreparacionForm_Load(object sender, EventArgs e)
-        {
-            AjustarColumnas();
-        }
 
-        private void AjustarColumnas()
-        {
-            foreach (ColumnHeader column in ProductosStockLST.Columns)
-            {
-                ProductosStockLST.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-
-            foreach (ColumnHeader column in OrdenTempLista.Columns)
-            {
-                OrdenTempLista.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-        }
+       
 
         private void OrdenTempLista_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -116,12 +277,13 @@ namespace Pampazon
         private void LimpiarFiltros(object sender, EventArgs e)
         {
             ProductosStockLST.Items.Clear();
+            CodigoClienteTXT.Text = "";
             SKUProductoTXT.Text = "";
             NombreProductoTXT.Text = "";
             ProductoSeleccionadoTxt.Text = "";
             MaxCantidadTxt.Text = "";
             AgregarCantidadTXT.Text = "";
-            // Clear other filters if necessary
+            
         }
 
         private void BuscarProductoBtn(object sender, EventArgs e)
@@ -233,15 +395,16 @@ namespace Pampazon
                 {
                     model.cancelarOrden();
                     ActualizarListaOrden();
-                    cargarTransportistas();
-                    cargarNombreTransportistas();
+                    
                     PrioridadCMB.SelectedIndex = -1;
                     PrioridadCMB.Enabled = false;
                     CodigoClienteTXT.Enabled = true;
-                    RazonSocialClienteTXT.Enabled = true;
+                    OPDetalleMercaderiaGroupBox.Enabled = false;
+
+
 
                     MessageBox.Show("Orden Cancelada", "Info");
-
+                    LimpiarFiltros(this, new EventArgs());
                 }
             }
         }
@@ -277,23 +440,32 @@ namespace Pampazon
             if (model.Orden.Productos.Count == 0)
             {
                 DialogResult result = MessageBox.Show($"Ingrese Productos para generar Orden", "Confirmation");
+                return;
             }
-            else if (FechaSelecter.Value < DateTime.Today.AddDays(1))
+            if (FechaSelecter.Value < DateTime.Today.AddDays(1))
             {
                 DialogResult result = MessageBox.Show($"Selecciona una fecha de Retiro mayor a la actual", "Confirmation");
+                return;
+
             }
-            else if (!eshorarioNumero)
+            if (!eshorarioNumero)
             {
                 DialogResult result = MessageBox.Show($"Seleccione un horario de Retiro. Un valor entre el 0 y el 24", "Confirmation");
+                return;
+
             }
-            else if (string.IsNullOrEmpty(selectedPriority))
+            if (string.IsNullOrEmpty(selectedPriority))
             {
                 DialogResult result = MessageBox.Show($"Seleccione Prioridad Alta, Media o Baja", "Confirmation");
+                return;
+
             }
 
-            else if (string.IsNullOrEmpty(dniTransportista) || model.Orden.DNITransportista <= 0)
+            if (string.IsNullOrEmpty(dniTransportista) || model.Orden.DNITransportista <= 0)
             {
                 DialogResult result = MessageBox.Show($"Seleccione un transportista por DNI o por Nombre", "Confirmation");
+                return;
+
             }
 
             else
@@ -330,6 +502,9 @@ namespace Pampazon
                     FechaSelecter.Value = DateTime.Today;
                     CodigoClienteTXT.Enabled = true;
                     RazonSocialClienteTXT.Enabled = true;
+                    OPDetalleMercaderiaGroupBox.Enabled = false;
+                    LimpiarFiltros(this, new EventArgs());
+                    OPDetalleMercaderiaGroupBox.Enabled = false;
                 }
             }
         }
@@ -410,23 +585,23 @@ namespace Pampazon
                     prod.Stock = cantidadMax - cantidad;
                     MaxCantidadTxt.Text = (cantidadMax - cantidad).ToString();
                     model.Orden.AddProducto(ProductoSeleccionadoTxt.Text, cantidad);
-                    ActualizarListaOrden();
                     ProductosStockLST.Items.Clear();
+                    ActualizarListaOrden();
                     CodigoClienteTXT.Enabled = false;
                     RazonSocialClienteTXT.Enabled = false;
                     PrioridadCMB.Enabled = true;
+                    OPDetalleMercaderiaGroupBox.Enabled = true;
 
                     ProductoSeleccionadoTxt.Text = "";
                     MaxCantidadTxt.Text = "";
                     AgregarCantidadTXT.Text = "";
+
+                    ActualizarListaProductos(SKUProductoTXT.Text, NombreProductoTXT.Text);
                 }
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void FechaSelecter_ValueChanged(object sender, EventArgs e)
         {
@@ -435,7 +610,7 @@ namespace Pampazon
 
         public void cargarTransportistas()
         {
-            if (model.Orden.Productos.Count > 0)
+            /*if (model.Orden.Productos.Count > 0)
             {
                 DniTransportistaCMB.DisplayMember = "DNI"; // Show DNI in the ComboBox
                 DniTransportistaCMB.DataSource = new BindingSource(model.ObtenerTransportistas(), null);
@@ -445,13 +620,20 @@ namespace Pampazon
             {
                 DniTransportistaCMB.DataSource = null; // Clear the DataSource
                 DniTransportistaCMB.Items.Clear(); // Clear the Items (if needed)
-            }
+            }*/
+
+            var transportistas = GenerarOrdenPreparacionModel.obtenerTransportistasSolo();
+
+            DniTransportistaCMB.DataSource = transportistas;
+            DniTransportistaCMB.DisplayMember = "DNI"; // Mostrar solo el DNI
+            DniTransportistaCMB.ValueMember = "DNI";
+            DniTransportistaCMB.SelectedIndex = -1;
 
         }
         public void cargarNombreTransportistas()
         {
 
-            if (model.Orden.Productos.Count > 0)
+            /*if (model.Orden.Productos.Count > 0)
             {
                 NombreTransportistaCMB.DisplayMember = "NombreCompleto"; // Show combined Nombre and Apellido
                 NombreTransportistaCMB.DataSource = new BindingSource(model.ObtenerTransportistas(), null);
@@ -462,31 +644,37 @@ namespace Pampazon
                 NombreTransportistaCMB.DataSource = null; // Clear the DataSource
                 NombreTransportistaCMB.Items.Clear(); // Clear the Items (if needed)
 
-            }
+            }*/
 
+            var transportistas = GenerarOrdenPreparacionModel.obtenerTransportistasSolo();
+
+            NombreTransportistaCMB.DataSource = transportistas;
+            NombreTransportistaCMB.DisplayMember = "NombreCompleto";
+            NombreTransportistaCMB.ValueMember = "NombreCompleto";
+            NombreTransportistaCMB.SelectedIndex = -1;
         }
 
         private void DniTransportistaComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (DniTransportistaCMB.SelectedItem != null)
-            {
-                var selectedTransportista = (GenerarOrdenPreparacion.Transportista)DniTransportistaCMB.SelectedItem;
+        {       
+          if (DniTransportistaCMB.SelectedItem != null)
+          {
+              var selectedTransportista = (GenerarOrdenPreparacion.Transportista)DniTransportistaCMB.SelectedItem;
 
-                // Ensure that selectedTransportista is not null
-                if (selectedTransportista != null)
-                {
-                    // Now you can safely access properties like selectedTransportista.Nombre
-                    // For example:
-                    NombreTransportistaCMB.Text = selectedTransportista.Nombre + " " + selectedTransportista.Apellido;
-                    model.Orden.DNITransportista = selectedTransportista.DNI;
-                }
+              // Ensure that selectedTransportista is not null
+              if (selectedTransportista != null)
+              {
+                  // Now you can safely access properties like selectedTransportista.Nombre
+                  // For example:
+                  NombreTransportistaCMB.Text = selectedTransportista.Nombre + " " + selectedTransportista.Apellido;
+                  model.Orden.DNITransportista = selectedTransportista.DNI;
+              }
 
-            }
-            else
-            {
-                // Handle the case where no item is selected
-                DniTransportistaCMB.SelectedIndex = -1; // Clear selection // Clear the text or handle appropriately
-            }
+          }
+          else
+          {
+              // Handle the case where no item is selected
+              DniTransportistaCMB.SelectedIndex = -1; // Clear selection // Clear the text or handle appropriately
+          }
         }
 
         private void NombreTransportistaComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -522,20 +710,6 @@ namespace Pampazon
 
         }
 
-        private void PrioridadComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedPriority = PrioridadCMB.SelectedItem?.ToString();
-
-            if (!string.IsNullOrEmpty(selectedPriority))
-            {
-                model.Orden.Prioridad = selectedPriority.ToUpper();
-                cargarTransportistas();
-                cargarNombreTransportistas();
-                // Clear selections after loading transportistas
-                DniTransportistaCMB.SelectedIndex = -1; // Clear selection
-                NombreTransportistaCMB.SelectedIndex = -1; // Clear selection
-            }
-        }
 
         private void SKUProductoTXT_TextChanged(object sender, EventArgs e)
         {

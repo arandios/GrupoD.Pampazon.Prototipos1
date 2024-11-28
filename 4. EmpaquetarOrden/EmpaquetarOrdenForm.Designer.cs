@@ -48,7 +48,7 @@
             OrdenesGRP.Margin = new Padding(2);
             OrdenesGRP.Name = "OrdenesGRP";
             OrdenesGRP.Padding = new Padding(2);
-            OrdenesGRP.Size = new Size(904, 693);
+            OrdenesGRP.Size = new Size(856, 633);
             OrdenesGRP.TabIndex = 0;
             OrdenesGRP.TabStop = false;
             OrdenesGRP.Text = "Detalle productos a empaquetar";
@@ -56,7 +56,7 @@
             // SalirBTN
             // 
             SalirBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            SalirBTN.Location = new Point(713, 649);
+            SalirBTN.Location = new Point(665, 589);
             SalirBTN.Margin = new Padding(2);
             SalirBTN.Name = "SalirBTN";
             SalirBTN.Size = new Size(187, 40);
@@ -72,7 +72,7 @@
             OrdenesParaPrepararLST.Location = new Point(4, 26);
             OrdenesParaPrepararLST.Margin = new Padding(2);
             OrdenesParaPrepararLST.Name = "OrdenesParaPrepararLST";
-            OrdenesParaPrepararLST.Size = new Size(896, 619);
+            OrdenesParaPrepararLST.Size = new Size(848, 559);
             OrdenesParaPrepararLST.TabIndex = 0;
             OrdenesParaPrepararLST.UseCompatibleStateImageBehavior = false;
             OrdenesParaPrepararLST.View = View.Details;
@@ -98,10 +98,10 @@
             ConfirmarBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ConfirmarBTN.BackColor = Color.FromArgb(192, 255, 192);
             ConfirmarBTN.ForeColor = Color.Black;
-            ConfirmarBTN.Location = new Point(4, 649);
+            ConfirmarBTN.Location = new Point(4, 589);
             ConfirmarBTN.Margin = new Padding(2);
             ConfirmarBTN.Name = "ConfirmarBTN";
-            ConfirmarBTN.Size = new Size(705, 40);
+            ConfirmarBTN.Size = new Size(657, 40);
             ConfirmarBTN.TabIndex = 1;
             ConfirmarBTN.Text = "&Confirmar orden como preparada";
             ConfirmarBTN.UseVisualStyleBackColor = false;
@@ -109,12 +109,12 @@
             // 
             // EmpaquetarOrdenForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(932, 721);
+            AutoScaleMode = AutoScaleMode.None;
+            ClientSize = new Size(884, 661);
             Controls.Add(OrdenesGRP);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(2);
+            MinimumSize = new Size(900, 700);
             Name = "EmpaquetarOrdenForm";
             Padding = new Padding(3);
             Text = "Empaquetar Ordenes de Preparación";

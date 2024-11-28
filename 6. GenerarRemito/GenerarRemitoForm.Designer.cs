@@ -69,14 +69,13 @@
             DetalleRemitoLTV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DetalleRemitoLTV.BackColor = SystemColors.Window;
             DetalleRemitoLTV.BorderStyle = BorderStyle.FixedSingle;
-            DetalleRemitoLTV.CheckBoxes = true;
             DetalleRemitoLTV.Columns.AddRange(new ColumnHeader[] { OrdenConfirmadaColumna, IdClienteRColumna, RazonColumna, FechaRemitoColumna });
             DetalleRemitoLTV.FullRowSelect = true;
             DetalleRemitoLTV.Location = new Point(6, 32);
             DetalleRemitoLTV.MaximumSize = new Size(1500, 1000);
             DetalleRemitoLTV.MultiSelect = false;
             DetalleRemitoLTV.Name = "DetalleRemitoLTV";
-            DetalleRemitoLTV.Size = new Size(886, 197);
+            DetalleRemitoLTV.Size = new Size(1085, 197);
             DetalleRemitoLTV.Sorting = SortOrder.Ascending;
             DetalleRemitoLTV.TabIndex = 13;
             DetalleRemitoLTV.UseCompatibleStateImageBehavior = false;
@@ -118,10 +117,10 @@
             // 
             AgregarOrdenBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AgregarOrdenBTN.BackColor = SystemColors.Window;
-            AgregarOrdenBTN.Location = new Point(5, 190);
+            AgregarOrdenBTN.Location = new Point(5, 142);
             AgregarOrdenBTN.MaximumSize = new Size(1000, 40);
             AgregarOrdenBTN.Name = "AgregarOrdenBTN";
-            AgregarOrdenBTN.Size = new Size(644, 40);
+            AgregarOrdenBTN.Size = new Size(855, 40);
             AgregarOrdenBTN.TabIndex = 7;
             AgregarOrdenBTN.Text = "&Agregar Orden de Preparacion al remito";
             AgregarOrdenBTN.UseVisualStyleBackColor = false;
@@ -131,7 +130,7 @@
             // 
             QuitarOrdenBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             QuitarOrdenBTN.BackColor = Color.FromArgb(255, 192, 192);
-            QuitarOrdenBTN.Location = new Point(459, 235);
+            QuitarOrdenBTN.Location = new Point(658, 235);
             QuitarOrdenBTN.Name = "QuitarOrdenBTN";
             QuitarOrdenBTN.Size = new Size(433, 40);
             QuitarOrdenBTN.TabIndex = 15;
@@ -145,14 +144,13 @@
             TransportistasListV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TransportistasListV.AutoArrange = false;
             TransportistasListV.BackColor = SystemColors.Window;
-            TransportistasListV.CheckBoxes = true;
             TransportistasListV.Columns.AddRange(new ColumnHeader[] { IdOrdenColumna, idClienteColumna, RZColumna });
             TransportistasListV.FullRowSelect = true;
             TransportistasListV.Location = new Point(5, 22);
             TransportistasListV.MaximumSize = new Size(1000, 1000);
             TransportistasListV.MinimumSize = new Size(10, 10);
             TransportistasListV.Name = "TransportistasListV";
-            TransportistasListV.Size = new Size(644, 162);
+            TransportistasListV.Size = new Size(855, 114);
             TransportistasListV.Sorting = SortOrder.Ascending;
             TransportistasListV.TabIndex = 6;
             TransportistasListV.UseCompatibleStateImageBehavior = false;
@@ -186,7 +184,7 @@
             BuscarTransportistaGRP.Controls.Add(DNITransportistaLBL);
             BuscarTransportistaGRP.Location = new Point(0, 0);
             BuscarTransportistaGRP.Name = "BuscarTransportistaGRP";
-            BuscarTransportistaGRP.Size = new Size(909, 119);
+            BuscarTransportistaGRP.Size = new Size(1108, 119);
             BuscarTransportistaGRP.TabIndex = 1;
             BuscarTransportistaGRP.TabStop = false;
             BuscarTransportistaGRP.Text = "Seleccione filtros de búsqueda para Transportista: ";
@@ -194,10 +192,10 @@
             // BorrarBtn
             // 
             BorrarBtn.Anchor = AnchorStyles.Right;
-            BorrarBtn.Location = new Point(668, 73);
+            BorrarBtn.Location = new Point(879, 73);
             BorrarBtn.MaximumSize = new Size(229, 40);
             BorrarBtn.Name = "BorrarBtn";
-            BorrarBtn.Size = new Size(229, 40);
+            BorrarBtn.Size = new Size(217, 40);
             BorrarBtn.TabIndex = 4;
             BorrarBtn.Text = "Borrar";
             BorrarBtn.UseVisualStyleBackColor = true;
@@ -210,7 +208,7 @@
             TransportistasCBX.Location = new Point(7, 44);
             TransportistasCBX.MaximumSize = new Size(1000, 0);
             TransportistasCBX.Name = "TransportistasCBX";
-            TransportistasCBX.Size = new Size(642, 23);
+            TransportistasCBX.Size = new Size(853, 23);
             TransportistasCBX.TabIndex = 2;
             // 
             // NomApellTransportistaTXT
@@ -223,7 +221,7 @@
             NomApellTransportistaTXT.MaximumSize = new Size(1000, 23);
             NomApellTransportistaTXT.Name = "NomApellTransportistaTXT";
             NomApellTransportistaTXT.ReadOnly = true;
-            NomApellTransportistaTXT.Size = new Size(642, 23);
+            NomApellTransportistaTXT.Size = new Size(853, 23);
             NomApellTransportistaTXT.TabIndex = 66;
             // 
             // NombreTransportistaLBL
@@ -239,10 +237,10 @@
             // 
             BuscarTransportistaBtn.Anchor = AnchorStyles.Right;
             BuscarTransportistaBtn.BackColor = SystemColors.Window;
-            BuscarTransportistaBtn.Location = new Point(668, 27);
+            BuscarTransportistaBtn.Location = new Point(879, 27);
             BuscarTransportistaBtn.MaximumSize = new Size(229, 40);
             BuscarTransportistaBtn.Name = "BuscarTransportistaBtn";
-            BuscarTransportistaBtn.Size = new Size(229, 40);
+            BuscarTransportistaBtn.Size = new Size(217, 40);
             BuscarTransportistaBtn.TabIndex = 3;
             BuscarTransportistaBtn.Text = "&Buscar Transportista";
             BuscarTransportistaBtn.UseVisualStyleBackColor = false;
@@ -263,7 +261,7 @@
             GenerarRemitoBTN.BackColor = Color.FromArgb(192, 255, 192);
             GenerarRemitoBTN.Location = new Point(6, 235);
             GenerarRemitoBTN.Name = "GenerarRemitoBTN";
-            GenerarRemitoBTN.Size = new Size(433, 40);
+            GenerarRemitoBTN.Size = new Size(632, 40);
             GenerarRemitoBTN.TabIndex = 14;
             GenerarRemitoBTN.Text = "&Generar Remito";
             GenerarRemitoBTN.UseVisualStyleBackColor = false;
@@ -276,17 +274,17 @@
             OrdenesDelTransportistaGRP.Controls.Add(AgregarOrdenBTN);
             OrdenesDelTransportistaGRP.Controls.Add(TransportistasListV);
             OrdenesDelTransportistaGRP.Location = new Point(0, 127);
-            OrdenesDelTransportistaGRP.MaximumSize = new Size(1000, 1000);
             OrdenesDelTransportistaGRP.Name = "OrdenesDelTransportistaGRP";
-            OrdenesDelTransportistaGRP.Size = new Size(655, 236);
+            OrdenesDelTransportistaGRP.Size = new Size(866, 188);
             OrdenesDelTransportistaGRP.TabIndex = 5;
             OrdenesDelTransportistaGRP.TabStop = false;
             OrdenesDelTransportistaGRP.Text = "Ordenes del Transportista";
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(7, 92);
+            label2.Location = new Point(7, 77);
             label2.Name = "label2";
             label2.Size = new Size(73, 15);
             label2.TabIndex = 12;
@@ -294,6 +292,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Location = new Point(6, 28);
             label1.Name = "label1";
@@ -306,10 +305,10 @@
             RZCBX.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             RZCBX.BackColor = SystemColors.Window;
             RZCBX.FormattingEnabled = true;
-            RZCBX.Location = new Point(7, 110);
+            RZCBX.Location = new Point(7, 95);
             RZCBX.MaximumSize = new Size(1000, 0);
             RZCBX.Name = "RZCBX";
-            RZCBX.Size = new Size(229, 23);
+            RZCBX.Size = new Size(217, 23);
             RZCBX.TabIndex = 10;
             // 
             // IdCLienteCBX
@@ -320,7 +319,7 @@
             IdCLienteCBX.Location = new Point(6, 46);
             IdCLienteCBX.MaximumSize = new Size(1000, 0);
             IdCLienteCBX.Name = "IdCLienteCBX";
-            IdCLienteCBX.Size = new Size(228, 23);
+            IdCLienteCBX.Size = new Size(216, 23);
             IdCLienteCBX.TabIndex = 9;
             // 
             // DetalleRemitoGRP
@@ -330,10 +329,10 @@
             DetalleRemitoGRP.Controls.Add(QuitarOrdenBTN);
             DetalleRemitoGRP.Controls.Add(label4);
             DetalleRemitoGRP.Controls.Add(GenerarRemitoBTN);
-            DetalleRemitoGRP.Location = new Point(3, 369);
+            DetalleRemitoGRP.Location = new Point(3, 321);
             DetalleRemitoGRP.MaximumSize = new Size(1500, 1000);
             DetalleRemitoGRP.Name = "DetalleRemitoGRP";
-            DetalleRemitoGRP.Size = new Size(906, 292);
+            DetalleRemitoGRP.Size = new Size(1105, 292);
             DetalleRemitoGRP.TabIndex = 12;
             DetalleRemitoGRP.TabStop = false;
             DetalleRemitoGRP.Text = "Detalle del remito";
@@ -342,9 +341,9 @@
             // 
             SalirBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             SalirBTN.BackColor = SystemColors.Window;
-            SalirBTN.Location = new Point(667, 667);
+            SalirBTN.Location = new Point(878, 619);
             SalirBTN.Name = "SalirBTN";
-            SalirBTN.Size = new Size(230, 40);
+            SalirBTN.Size = new Size(216, 40);
             SalirBTN.TabIndex = 16;
             SalirBTN.Text = "&Salir";
             SalirBTN.UseVisualStyleBackColor = false;
@@ -358,10 +357,10 @@
             FiltrarOrdenesPorClienteGBX.Controls.Add(label1);
             FiltrarOrdenesPorClienteGBX.Controls.Add(IdCLienteCBX);
             FiltrarOrdenesPorClienteGBX.Controls.Add(RZCBX);
-            FiltrarOrdenesPorClienteGBX.Location = new Point(661, 127);
+            FiltrarOrdenesPorClienteGBX.Location = new Point(872, 127);
             FiltrarOrdenesPorClienteGBX.MaximumSize = new Size(600, 600);
             FiltrarOrdenesPorClienteGBX.Name = "FiltrarOrdenesPorClienteGBX";
-            FiltrarOrdenesPorClienteGBX.Size = new Size(248, 236);
+            FiltrarOrdenesPorClienteGBX.Size = new Size(236, 188);
             FiltrarOrdenesPorClienteGBX.TabIndex = 8;
             FiltrarOrdenesPorClienteGBX.TabStop = false;
             FiltrarOrdenesPorClienteGBX.Text = "Filtrar ordenes por cliente";
@@ -370,9 +369,9 @@
             // 
             BorrarFiltrosBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             BorrarFiltrosBTN.BackColor = SystemColors.Window;
-            BorrarFiltrosBTN.Location = new Point(7, 190);
+            BorrarFiltrosBTN.Location = new Point(7, 142);
             BorrarFiltrosBTN.Name = "BorrarFiltrosBTN";
-            BorrarFiltrosBTN.Size = new Size(229, 40);
+            BorrarFiltrosBTN.Size = new Size(217, 40);
             BorrarFiltrosBTN.TabIndex = 11;
             BorrarFiltrosBTN.Text = "Borrar filtros";
             BorrarFiltrosBTN.UseVisualStyleBackColor = false;
@@ -382,15 +381,14 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             AutoScroll = true;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(909, 711);
+            ClientSize = new Size(1120, 663);
             Controls.Add(FiltrarOrdenesPorClienteGBX);
             Controls.Add(SalirBTN);
             Controls.Add(DetalleRemitoGRP);
             Controls.Add(OrdenesDelTransportistaGRP);
             Controls.Add(BuscarTransportistaGRP);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "GenerarRemitoForm";
             StartPosition = FormStartPosition.CenterScreen;

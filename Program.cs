@@ -21,6 +21,7 @@ namespace Pampazon
             RemitoAlmacen.Leer();
             TransportistaAlmacen.Leer();
             ProductoAlmacen.Leer();
+          
 
             ApplicationConfiguration.Initialize();
             Application.Run(new MenuPrincipalForm());

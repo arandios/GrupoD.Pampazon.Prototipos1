@@ -39,7 +39,7 @@
             // SalirGenerarOEbtn
             // 
             SalirGenerarOEbtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            SalirGenerarOEbtn.Location = new Point(608, 605);
+            SalirGenerarOEbtn.Location = new Point(615, 466);
             SalirGenerarOEbtn.Margin = new Padding(2);
             SalirGenerarOEbtn.Name = "SalirGenerarOEbtn";
             SalirGenerarOEbtn.Size = new Size(240, 40);
@@ -52,10 +52,10 @@
             // 
             GenerarOrdenEntregabtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             GenerarOrdenEntregabtn.BackColor = Color.FromArgb(192, 255, 192);
-            GenerarOrdenEntregabtn.Location = new Point(10, 606);
+            GenerarOrdenEntregabtn.Location = new Point(10, 467);
             GenerarOrdenEntregabtn.Margin = new Padding(2);
             GenerarOrdenEntregabtn.Name = "GenerarOrdenEntregabtn";
-            GenerarOrdenEntregabtn.Size = new Size(594, 40);
+            GenerarOrdenEntregabtn.Size = new Size(601, 40);
             GenerarOrdenEntregabtn.TabIndex = 16;
             GenerarOrdenEntregabtn.Text = "&Generar/ Confirmar Orden de Entrega";
             GenerarOrdenEntregabtn.UseVisualStyleBackColor = false;
@@ -75,7 +75,7 @@
             OrdenDespachoCMB.Controls.Add(Orden_EntregaLST);
             OrdenDespachoCMB.Location = new Point(0, 6);
             OrdenDespachoCMB.Name = "OrdenDespachoCMB";
-            OrdenDespachoCMB.Size = new Size(854, 600);
+            OrdenDespachoCMB.Size = new Size(861, 461);
             OrdenDespachoCMB.TabIndex = 26;
             OrdenDespachoCMB.TabStop = false;
             OrdenDespachoCMB.Text = "Ordenes a despacho:";
@@ -85,7 +85,7 @@
             Orden_EntregaLST.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Orden_EntregaLST.Location = new Point(10, 21);
             Orden_EntregaLST.Name = "Orden_EntregaLST";
-            Orden_EntregaLST.Size = new Size(838, 573);
+            Orden_EntregaLST.Size = new Size(845, 434);
             Orden_EntregaLST.TabIndex = 22;
             Orden_EntregaLST.UseCompatibleStateImageBehavior = false;
             Orden_EntregaLST.View = View.Details;
@@ -94,7 +94,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(866, 651);
+            ClientSize = new Size(873, 512);
             Controls.Add(OrdenDespachoCMB);
             Controls.Add(GenerarOrdenEntregabtn);
             Controls.Add(label2);

@@ -39,7 +39,7 @@
             ProductoBuscarBTN = new Button();
             SalirBTN = new Button();
             Generar = new Button();
-            button2 = new Button();
+            CancelarOrdenBtn = new Button();
             NombreProductoTXT = new TextBox();
             BorrarFiltrosBTN = new Button();
             AgregarProductoBTN = new Button();
@@ -67,9 +67,9 @@
             OPDetalleMercaderiaGroupBox = new GroupBox();
             HorarioTextBox = new TextBox();
             label2 = new Label();
-            FechaSelecter = new DateTimePicker();
-            DniTransportistaCMB = new ComboBox();
             NombreTransportistaCMB = new ComboBox();
+            DniTransportistaCMB = new ComboBox();
+            FechaSelecter = new DateTimePicker();
             contextMenuStrip1 = new ContextMenuStrip(components);
             groupBox1.SuspendLayout();
             OPMercaderiaGRP.SuspendLayout();
@@ -82,8 +82,8 @@
             ProductosStockLST.Columns.AddRange(new ColumnHeader[] { SKUColumna, ProductosClienteColumna, CantColumna });
             ProductosStockLST.Location = new Point(10, 19);
             ProductosStockLST.Name = "ProductosStockLST";
-            ProductosStockLST.Size = new Size(539, 210);
-            ProductosStockLST.TabIndex = 32;
+            ProductosStockLST.Size = new Size(862, 224);
+            ProductosStockLST.TabIndex = 7;
             ProductosStockLST.UseCompatibleStateImageBehavior = false;
             ProductosStockLST.View = View.Details;
             ProductosStockLST.SelectedIndexChanged += ProductosStockLista_SelectedIndexChanged;
@@ -112,7 +112,7 @@
             OrdenTempLista.Location = new Point(10, 23);
             OrdenTempLista.Margin = new Padding(2);
             OrdenTempLista.Name = "OrdenTempLista";
-            OrdenTempLista.Size = new Size(539, 152);
+            OrdenTempLista.Size = new Size(317, 152);
             OrdenTempLista.TabIndex = 30;
             OrdenTempLista.UseCompatibleStateImageBehavior = false;
             OrdenTempLista.View = View.Details;
@@ -131,26 +131,27 @@
             // 
             // ProductoBuscarBTN
             // 
-            ProductoBuscarBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            ProductoBuscarBTN.Anchor = AnchorStyles.Right;
             ProductoBuscarBTN.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ProductoBuscarBTN.Location = new Point(10, 121);
+            ProductoBuscarBTN.Location = new Point(592, 77);
             ProductoBuscarBTN.Margin = new Padding(2);
+            ProductoBuscarBTN.MaximumSize = new Size(484, 40);
             ProductoBuscarBTN.Name = "ProductoBuscarBTN";
-            ProductoBuscarBTN.Size = new Size(433, 40);
-            ProductoBuscarBTN.TabIndex = 29;
+            ProductoBuscarBTN.Size = new Size(282, 40);
+            ProductoBuscarBTN.TabIndex = 5;
             ProductoBuscarBTN.Text = "&Buscar Productos";
             ProductoBuscarBTN.UseVisualStyleBackColor = true;
             ProductoBuscarBTN.Click += BuscarProductoBtn;
             // 
             // SalirBTN
             // 
-            SalirBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            SalirBTN.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             SalirBTN.BackColor = Color.White;
-            SalirBTN.Location = new Point(582, 184);
+            SalirBTN.Location = new Point(626, 185);
             SalirBTN.Margin = new Padding(2);
             SalirBTN.Name = "SalirBTN";
-            SalirBTN.Size = new Size(309, 40);
-            SalirBTN.TabIndex = 28;
+            SalirBTN.Size = new Size(247, 40);
+            SalirBTN.TabIndex = 17;
             SalirBTN.Text = "&Salir";
             SalirBTN.UseVisualStyleBackColor = false;
             SalirBTN.Click += VolverBtn;
@@ -159,58 +160,60 @@
             // 
             Generar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Generar.BackColor = Color.FromArgb(192, 255, 192);
-            Generar.Location = new Point(10, 185);
+            Generar.Location = new Point(9, 185);
             Generar.Margin = new Padding(2);
             Generar.Name = "Generar";
-            Generar.Size = new Size(328, 40);
-            Generar.TabIndex = 27;
+            Generar.Size = new Size(318, 40);
+            Generar.TabIndex = 15;
             Generar.Text = "&Generar Orden Preparacion";
             Generar.UseVisualStyleBackColor = false;
             Generar.Click += GenerarOrderPreparacionBtn;
             // 
-            // button2
+            // CancelarOrdenBtn
             // 
-            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button2.BackColor = Color.FromArgb(255, 192, 192);
-            button2.Location = new Point(342, 182);
-            button2.Margin = new Padding(2);
-            button2.Name = "button2";
-            button2.Size = new Size(207, 44);
-            button2.TabIndex = 22;
-            button2.Text = "&Cancelar Orden";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += CancelarOrderBtn;
+            CancelarOrdenBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            CancelarOrdenBtn.BackColor = Color.FromArgb(255, 192, 192);
+            CancelarOrdenBtn.Location = new Point(351, 185);
+            CancelarOrdenBtn.Margin = new Padding(2);
+            CancelarOrdenBtn.Name = "CancelarOrdenBtn";
+            CancelarOrdenBtn.Size = new Size(246, 41);
+            CancelarOrdenBtn.TabIndex = 16;
+            CancelarOrdenBtn.Text = "&Cancelar Orden";
+            CancelarOrdenBtn.UseVisualStyleBackColor = false;
+            CancelarOrdenBtn.Click += CancelarOrderBtn;
             // 
             // NombreProductoTXT
             // 
-            NombreProductoTXT.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            NombreProductoTXT.Location = new Point(459, 94);
+            NombreProductoTXT.Anchor = AnchorStyles.None;
+            NombreProductoTXT.Location = new Point(301, 94);
             NombreProductoTXT.Margin = new Padding(2);
+            NombreProductoTXT.MaximumSize = new Size(484, 23);
             NombreProductoTXT.Name = "NombreProductoTXT";
-            NombreProductoTXT.Size = new Size(433, 23);
-            NombreProductoTXT.TabIndex = 23;
+            NombreProductoTXT.Size = new Size(282, 23);
+            NombreProductoTXT.TabIndex = 4;
             // 
             // BorrarFiltrosBTN
             // 
-            BorrarFiltrosBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            BorrarFiltrosBTN.Anchor = AnchorStyles.Right;
             BorrarFiltrosBTN.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BorrarFiltrosBTN.Location = new Point(460, 121);
+            BorrarFiltrosBTN.Location = new Point(592, 27);
             BorrarFiltrosBTN.Margin = new Padding(2);
+            BorrarFiltrosBTN.MaximumSize = new Size(484, 40);
             BorrarFiltrosBTN.Name = "BorrarFiltrosBTN";
-            BorrarFiltrosBTN.Size = new Size(433, 40);
-            BorrarFiltrosBTN.TabIndex = 36;
+            BorrarFiltrosBTN.Size = new Size(282, 39);
+            BorrarFiltrosBTN.TabIndex = 6;
             BorrarFiltrosBTN.Text = "&Borrar Filtros";
             BorrarFiltrosBTN.UseVisualStyleBackColor = true;
             BorrarFiltrosBTN.Click += LimpiarFiltros;
             // 
             // AgregarProductoBTN
             // 
-            AgregarProductoBTN.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            AgregarProductoBTN.Location = new Point(582, 191);
+            AgregarProductoBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            AgregarProductoBTN.Location = new Point(336, 248);
             AgregarProductoBTN.Margin = new Padding(2);
             AgregarProductoBTN.Name = "AgregarProductoBTN";
-            AgregarProductoBTN.Size = new Size(309, 38);
-            AgregarProductoBTN.TabIndex = 39;
+            AgregarProductoBTN.Size = new Size(537, 38);
+            AgregarProductoBTN.TabIndex = 9;
             AgregarProductoBTN.Text = "&Agregar Productos a la Orden";
             AgregarProductoBTN.UseVisualStyleBackColor = true;
             AgregarProductoBTN.Click += AgregarProductoBtn_Click;
@@ -226,10 +229,10 @@
             // 
             // label8
             // 
-            label8.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
-            label8.Location = new Point(459, 77);
-            label8.MaximumSize = new Size(400, 40);
+            label8.Location = new Point(301, 77);
+            label8.MaximumSize = new Size(450, 40);
             label8.Name = "label8";
             label8.Size = new Size(103, 15);
             label8.TabIndex = 53;
@@ -248,30 +251,31 @@
             groupBox1.Controls.Add(SKUProductoTXT);
             groupBox1.Controls.Add(ProductoBuscarBTN);
             groupBox1.Controls.Add(BorrarFiltrosBTN);
-            groupBox1.Location = new Point(13, 12);
+            groupBox1.Location = new Point(11, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(896, 174);
-            groupBox1.TabIndex = 55;
+            groupBox1.Size = new Size(878, 134);
+            groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Seleccione filtros de búsqueda para sus productos en los depositos:";
             // 
             // CodigoClienteTXT
             // 
-            CodigoClienteTXT.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            CodigoClienteTXT.Location = new Point(10, 43);
+            CodigoClienteTXT.Anchor = AnchorStyles.Left;
+            CodigoClienteTXT.Location = new Point(8, 43);
             CodigoClienteTXT.Margin = new Padding(2);
+            CodigoClienteTXT.MaximumSize = new Size(484, 23);
             CodigoClienteTXT.Name = "CodigoClienteTXT";
-            CodigoClienteTXT.Size = new Size(433, 23);
-            CodigoClienteTXT.TabIndex = 63;
+            CodigoClienteTXT.Size = new Size(282, 23);
+            CodigoClienteTXT.TabIndex = 1;
             CodigoClienteTXT.TextChanged += CodigoClienteInput_TextChanged;
             // 
             // label11
             // 
-            label11.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label11.Anchor = AnchorStyles.Left;
             label11.AutoSize = true;
-            label11.Location = new Point(10, 26);
-            label11.MaximumSize = new Size(400, 40);
+            label11.Location = new Point(8, 26);
+            label11.MaximumSize = new Size(450, 40);
             label11.Name = "label11";
             label11.Size = new Size(56, 15);
             label11.TabIndex = 62;
@@ -280,10 +284,10 @@
             // 
             // label10
             // 
-            label10.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label10.Anchor = AnchorStyles.None;
             label10.AutoSize = true;
-            label10.Location = new Point(459, 26);
-            label10.MaximumSize = new Size(400, 40);
+            label10.Location = new Point(301, 26);
+            label10.MaximumSize = new Size(450, 40);
             label10.Name = "label10";
             label10.Size = new Size(111, 15);
             label10.TabIndex = 60;
@@ -291,19 +295,20 @@
             // 
             // RazonSocialClienteTXT
             // 
-            RazonSocialClienteTXT.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            RazonSocialClienteTXT.Location = new Point(459, 43);
+            RazonSocialClienteTXT.Anchor = AnchorStyles.None;
+            RazonSocialClienteTXT.Location = new Point(301, 43);
             RazonSocialClienteTXT.Margin = new Padding(2);
+            RazonSocialClienteTXT.MaximumSize = new Size(484, 23);
             RazonSocialClienteTXT.Name = "RazonSocialClienteTXT";
-            RazonSocialClienteTXT.Size = new Size(433, 23);
-            RazonSocialClienteTXT.TabIndex = 59;
+            RazonSocialClienteTXT.Size = new Size(282, 23);
+            RazonSocialClienteTXT.TabIndex = 2;
             // 
             // SKUProductoLBL
             // 
-            SKUProductoLBL.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            SKUProductoLBL.Anchor = AnchorStyles.Left;
             SKUProductoLBL.AutoSize = true;
-            SKUProductoLBL.Location = new Point(9, 77);
-            SKUProductoLBL.MaximumSize = new Size(400, 40);
+            SKUProductoLBL.Location = new Point(7, 77);
+            SKUProductoLBL.MaximumSize = new Size(450, 40);
             SKUProductoLBL.Name = "SKUProductoLBL";
             SKUProductoLBL.Size = new Size(80, 15);
             SKUProductoLBL.TabIndex = 60;
@@ -312,32 +317,32 @@
             // 
             // SKUProductoTXT
             // 
-            SKUProductoTXT.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            SKUProductoTXT.Location = new Point(10, 94);
+            SKUProductoTXT.Anchor = AnchorStyles.Left;
+            SKUProductoTXT.Location = new Point(8, 94);
             SKUProductoTXT.Margin = new Padding(2);
+            SKUProductoTXT.MaximumSize = new Size(484, 23);
             SKUProductoTXT.Name = "SKUProductoTXT";
-            SKUProductoTXT.Size = new Size(433, 23);
-            SKUProductoTXT.TabIndex = 59;
+            SKUProductoTXT.Size = new Size(282, 23);
+            SKUProductoTXT.TabIndex = 3;
             SKUProductoTXT.TextChanged += SKUProductoTXT_TextChanged;
             // 
             // OPMercaderiaGRP
             // 
-            OPMercaderiaGRP.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            OPMercaderiaGRP.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            OPMercaderiaGRP.Controls.Add(ProductosStockLST);
             OPMercaderiaGRP.Controls.Add(CantidadDisponibleLBL);
             OPMercaderiaGRP.Controls.Add(label1);
             OPMercaderiaGRP.Controls.Add(AgregarProductoBTN);
             OPMercaderiaGRP.Controls.Add(MaxCantidadTxt);
             OPMercaderiaGRP.Controls.Add(AgregarCantidadTXT);
-            OPMercaderiaGRP.Controls.Add(ProductosStockLST);
             OPMercaderiaGRP.Controls.Add(CantidadRetirarLBL);
             OPMercaderiaGRP.Controls.Add(ProductoSeleccionadoTxt);
             OPMercaderiaGRP.Controls.Add(ProductoSelecionadoLBL);
-            OPMercaderiaGRP.Location = new Point(13, 190);
+            OPMercaderiaGRP.Location = new Point(11, 154);
             OPMercaderiaGRP.Margin = new Padding(3, 2, 3, 2);
-            OPMercaderiaGRP.MinimumSize = new Size(869, 247);
             OPMercaderiaGRP.Name = "OPMercaderiaGRP";
-            OPMercaderiaGRP.Size = new Size(894, 247);
-            OPMercaderiaGRP.TabIndex = 57;
+            OPMercaderiaGRP.Size = new Size(878, 291);
+            OPMercaderiaGRP.TabIndex = 20;
             OPMercaderiaGRP.TabStop = false;
             OPMercaderiaGRP.Text = "Productos en deposito";
             // 
@@ -345,7 +350,7 @@
             // 
             CantidadDisponibleLBL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             CantidadDisponibleLBL.AutoSize = true;
-            CantidadDisponibleLBL.Location = new Point(658, 77);
+            CantidadDisponibleLBL.Location = new Point(630, 77);
             CantidadDisponibleLBL.Name = "CantidadDisponibleLBL";
             CantidadDisponibleLBL.Size = new Size(113, 15);
             CantidadDisponibleLBL.TabIndex = 71;
@@ -354,7 +359,7 @@
             // MaxCantidadTxt
             // 
             MaxCantidadTxt.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            MaxCantidadTxt.Location = new Point(583, 95);
+            MaxCantidadTxt.Location = new Point(555, 95);
             MaxCantidadTxt.Margin = new Padding(2);
             MaxCantidadTxt.Name = "MaxCantidadTxt";
             MaxCantidadTxt.ReadOnly = true;
@@ -363,20 +368,20 @@
             // 
             // AgregarCantidadTXT
             // 
-            AgregarCantidadTXT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            AgregarCantidadTXT.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             AgregarCantidadTXT.Enabled = false;
-            AgregarCantidadTXT.Location = new Point(583, 155);
+            AgregarCantidadTXT.Location = new Point(10, 263);
             AgregarCantidadTXT.Margin = new Padding(2);
             AgregarCantidadTXT.MaxLength = 50;
             AgregarCantidadTXT.Name = "AgregarCantidadTXT";
             AgregarCantidadTXT.Size = new Size(307, 23);
-            AgregarCantidadTXT.TabIndex = 69;
+            AgregarCantidadTXT.TabIndex = 8;
             // 
             // CantidadRetirarLBL
             // 
-            CantidadRetirarLBL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            CantidadRetirarLBL.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             CantidadRetirarLBL.AutoSize = true;
-            CantidadRetirarLBL.Location = new Point(653, 137);
+            CantidadRetirarLBL.Location = new Point(10, 246);
             CantidadRetirarLBL.Name = "CantidadRetirarLBL";
             CantidadRetirarLBL.Size = new Size(144, 15);
             CantidadRetirarLBL.TabIndex = 68;
@@ -385,7 +390,7 @@
             // ProductoSeleccionadoTxt
             // 
             ProductoSeleccionadoTxt.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            ProductoSeleccionadoTxt.Location = new Point(582, 41);
+            ProductoSeleccionadoTxt.Location = new Point(554, 41);
             ProductoSeleccionadoTxt.Margin = new Padding(2);
             ProductoSeleccionadoTxt.Name = "ProductoSeleccionadoTxt";
             ProductoSeleccionadoTxt.ReadOnly = true;
@@ -396,7 +401,7 @@
             // 
             ProductoSelecionadoLBL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             ProductoSelecionadoLBL.AutoSize = true;
-            ProductoSelecionadoLBL.Location = new Point(664, 23);
+            ProductoSelecionadoLBL.Location = new Point(636, 23);
             ProductoSelecionadoLBL.Name = "ProductoSelecionadoLBL";
             ProductoSelecionadoLBL.Size = new Size(129, 15);
             ProductoSelecionadoLBL.TabIndex = 65;
@@ -406,7 +411,7 @@
             // 
             label14.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             label14.AutoSize = true;
-            label14.Location = new Point(584, 98);
+            label14.Location = new Point(351, 73);
             label14.Name = "label14";
             label14.Size = new Size(100, 15);
             label14.TabIndex = 66;
@@ -416,7 +421,7 @@
             // 
             label12.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             label12.AutoSize = true;
-            label12.Location = new Point(584, 138);
+            label12.Location = new Point(626, 73);
             label12.Name = "label12";
             label12.Size = new Size(124, 15);
             label12.TabIndex = 62;
@@ -426,18 +431,17 @@
             // 
             PrioridadCMB.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             PrioridadCMB.FormattingEnabled = true;
-            PrioridadCMB.Location = new Point(582, 69);
+            PrioridadCMB.Location = new Point(351, 152);
             PrioridadCMB.Margin = new Padding(3, 2, 3, 2);
             PrioridadCMB.Name = "PrioridadCMB";
-            PrioridadCMB.Size = new Size(309, 23);
-            PrioridadCMB.TabIndex = 61;
-            PrioridadCMB.SelectedIndexChanged += PrioridadComboBox_SelectedIndexChanged;
+            PrioridadCMB.Size = new Size(246, 23);
+            PrioridadCMB.TabIndex = 14;
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             label4.AutoSize = true;
-            label4.Location = new Point(584, 53);
+            label4.Location = new Point(351, 135);
             label4.Name = "label4";
             label4.Size = new Size(58, 15);
             label4.TabIndex = 59;
@@ -448,7 +452,7 @@
             // 
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new Point(609, 8);
+            label3.Location = new Point(351, 16);
             label3.Name = "label3";
             label3.Size = new Size(84, 15);
             label3.TabIndex = 58;
@@ -459,82 +463,81 @@
             OPDetalleMercaderiaGroupBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             OPDetalleMercaderiaGroupBox.Controls.Add(HorarioTextBox);
             OPDetalleMercaderiaGroupBox.Controls.Add(SalirBTN);
-            OPDetalleMercaderiaGroupBox.Controls.Add(label2);
-            OPDetalleMercaderiaGroupBox.Controls.Add(FechaSelecter);
-            OPDetalleMercaderiaGroupBox.Controls.Add(button2);
+            OPDetalleMercaderiaGroupBox.Controls.Add(CancelarOrdenBtn);
             OPDetalleMercaderiaGroupBox.Controls.Add(Generar);
-            OPDetalleMercaderiaGroupBox.Controls.Add(DniTransportistaCMB);
-            OPDetalleMercaderiaGroupBox.Controls.Add(OrdenTempLista);
-            OPDetalleMercaderiaGroupBox.Controls.Add(label3);
-            OPDetalleMercaderiaGroupBox.Controls.Add(PrioridadCMB);
-            OPDetalleMercaderiaGroupBox.Controls.Add(label4);
-            OPDetalleMercaderiaGroupBox.Controls.Add(NombreTransportistaCMB);
-            OPDetalleMercaderiaGroupBox.Controls.Add(label14);
             OPDetalleMercaderiaGroupBox.Controls.Add(label12);
-            OPDetalleMercaderiaGroupBox.Location = new Point(13, 443);
+            OPDetalleMercaderiaGroupBox.Controls.Add(label2);
+            OPDetalleMercaderiaGroupBox.Controls.Add(NombreTransportistaCMB);
+            OPDetalleMercaderiaGroupBox.Controls.Add(DniTransportistaCMB);
+            OPDetalleMercaderiaGroupBox.Controls.Add(label14);
+            OPDetalleMercaderiaGroupBox.Controls.Add(OrdenTempLista);
+            OPDetalleMercaderiaGroupBox.Controls.Add(FechaSelecter);
+            OPDetalleMercaderiaGroupBox.Controls.Add(label3);
+            OPDetalleMercaderiaGroupBox.Controls.Add(label4);
+            OPDetalleMercaderiaGroupBox.Controls.Add(PrioridadCMB);
+            OPDetalleMercaderiaGroupBox.Location = new Point(11, 451);
             OPDetalleMercaderiaGroupBox.Margin = new Padding(3, 2, 3, 2);
-            OPDetalleMercaderiaGroupBox.MinimumSize = new Size(871, 237);
             OPDetalleMercaderiaGroupBox.Name = "OPDetalleMercaderiaGroupBox";
-            OPDetalleMercaderiaGroupBox.Size = new Size(896, 237);
-            OPDetalleMercaderiaGroupBox.TabIndex = 58;
+            OPDetalleMercaderiaGroupBox.Size = new Size(878, 237);
+            OPDetalleMercaderiaGroupBox.TabIndex = 22;
             OPDetalleMercaderiaGroupBox.TabStop = false;
             OPDetalleMercaderiaGroupBox.Text = "Orden:";
             // 
             // HorarioTextBox
             // 
             HorarioTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            HorarioTextBox.Location = new Point(795, 24);
+            HorarioTextBox.Location = new Point(626, 33);
             HorarioTextBox.Margin = new Padding(2);
             HorarioTextBox.MaxLength = 2;
             HorarioTextBox.Name = "HorarioTextBox";
-            HorarioTextBox.Size = new Size(96, 23);
-            HorarioTextBox.TabIndex = 64;
+            HorarioTextBox.Size = new Size(246, 23);
+            HorarioTextBox.TabIndex = 11;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(797, 8);
+            label2.Location = new Point(630, 17);
             label2.Name = "label2";
             label2.Size = new Size(96, 15);
             label2.TabIndex = 70;
             label2.Text = "Horario a Retirar:";
             // 
-            // FechaSelecter
+            // NombreTransportistaCMB
             // 
-            FechaSelecter.AllowDrop = true;
-            FechaSelecter.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            FechaSelecter.Location = new Point(582, 24);
-            FechaSelecter.Margin = new Padding(3, 2, 3, 2);
-            FechaSelecter.MaxDate = new DateTime(2025, 12, 31, 0, 0, 0, 0);
-            FechaSelecter.MinDate = new DateTime(2024, 10, 17, 0, 16, 31, 0);
-            FechaSelecter.Name = "FechaSelecter";
-            FechaSelecter.Size = new Size(210, 23);
-            FechaSelecter.TabIndex = 59;
-            FechaSelecter.Value = new DateTime(2024, 10, 18, 0, 0, 0, 0);
-            FechaSelecter.ValueChanged += FechaSelecter_ValueChanged;
+            NombreTransportistaCMB.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            NombreTransportistaCMB.FormattingEnabled = true;
+            NombreTransportistaCMB.Location = new Point(626, 90);
+            NombreTransportistaCMB.Margin = new Padding(3, 2, 3, 2);
+            NombreTransportistaCMB.Name = "NombreTransportistaCMB";
+            NombreTransportistaCMB.Size = new Size(246, 23);
+            NombreTransportistaCMB.TabIndex = 13;
+            NombreTransportistaCMB.SelectedIndexChanged += NombreTransportistaComboBox_SelectedIndexChanged;
             // 
             // DniTransportistaCMB
             // 
             DniTransportistaCMB.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             DniTransportistaCMB.FormattingEnabled = true;
-            DniTransportistaCMB.Location = new Point(582, 115);
+            DniTransportistaCMB.Location = new Point(351, 90);
             DniTransportistaCMB.Margin = new Padding(3, 2, 3, 2);
             DniTransportistaCMB.Name = "DniTransportistaCMB";
-            DniTransportistaCMB.Size = new Size(309, 23);
-            DniTransportistaCMB.TabIndex = 69;
+            DniTransportistaCMB.Size = new Size(246, 23);
+            DniTransportistaCMB.TabIndex = 12;
             DniTransportistaCMB.SelectedIndexChanged += DniTransportistaComboBox_SelectedIndexChanged;
             // 
-            // NombreTransportistaCMB
+            // FechaSelecter
             // 
-            NombreTransportistaCMB.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            NombreTransportistaCMB.FormattingEnabled = true;
-            NombreTransportistaCMB.Location = new Point(582, 154);
-            NombreTransportistaCMB.Margin = new Padding(3, 2, 3, 2);
-            NombreTransportistaCMB.Name = "NombreTransportistaCMB";
-            NombreTransportistaCMB.Size = new Size(309, 23);
-            NombreTransportistaCMB.TabIndex = 68;
-            NombreTransportistaCMB.SelectedIndexChanged += NombreTransportistaComboBox_SelectedIndexChanged;
+            FechaSelecter.AllowDrop = true;
+            FechaSelecter.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            FechaSelecter.Location = new Point(351, 33);
+            FechaSelecter.Margin = new Padding(3, 2, 3, 2);
+            FechaSelecter.MaxDate = new DateTime(2025, 12, 31, 0, 0, 0, 0);
+            FechaSelecter.MinDate = new DateTime(2024, 10, 17, 0, 16, 31, 0);
+            FechaSelecter.Name = "FechaSelecter";
+            FechaSelecter.Size = new Size(246, 23);
+            FechaSelecter.TabIndex = 10;
+            FechaSelecter.Value = new DateTime(2024, 10, 18, 0, 0, 0, 0);
+            FechaSelecter.ValueChanged += FechaSelecter_ValueChanged;
             // 
             // contextMenuStrip1
             // 
@@ -546,16 +549,16 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
-            ClientSize = new Size(915, 692);
+            ClientSize = new Size(900, 700);
             Controls.Add(OPMercaderiaGRP);
             Controls.Add(groupBox1);
             Controls.Add(OPDetalleMercaderiaGroupBox);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            FormBorderStyle = FormBorderStyle.None;
+            MinimumSize = new Size(900, 700);
             Name = "GenerarOrdenPreparacionForm";
             Padding = new Padding(10);
             SizeGripStyle = SizeGripStyle.Show;
-            Text = "Generar Orden Preparacion";
+            StartPosition = FormStartPosition.CenterScreen;
             Load += GenerarOrdenPreparacionForm_Load_1;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -576,7 +579,7 @@
         private Button ProductoBuscarBTN;
         private Button SalirBTN;
         private Button Generar;
-        private Button button2;
+        private Button CancelarOrdenBtn;
         private ColumnHeader CantidadColumna;
         private TextBox NombreProductoTXT;
         private Button BorrarFiltrosBTN;

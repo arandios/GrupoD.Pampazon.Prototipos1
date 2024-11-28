@@ -61,11 +61,10 @@ namespace Pampazon._8._ConsultarProductos
             // 
             ProductosLTV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ProductosLTV.Columns.AddRange(new ColumnHeader[] { SKUColumna, NombrePrdoColumna, idClienteColumna, ClienteRZColumna, UbicacionColumna, stockColumna });
-            ProductosLTV.Location = new Point(12, 200);
-            ProductosLTV.MaximumSize = new Size(1000, 1000);
+            ProductosLTV.Location = new Point(12, 253);
             ProductosLTV.MinimumSize = new Size(826, 192);
             ProductosLTV.Name = "ProductosLTV";
-            ProductosLTV.Size = new Size(900, 397);
+            ProductosLTV.Size = new Size(878, 278);
             ProductosLTV.TabIndex = 11;
             ProductosLTV.UseCompatibleStateImageBehavior = false;
             ProductosLTV.View = View.Details;
@@ -121,12 +120,13 @@ namespace Pampazon._8._ConsultarProductos
             FiltrosGRP.Controls.Add(StockMaximoTxt);
             FiltrosGRP.Controls.Add(CodigoClienteTxt);
             FiltrosGRP.Controls.Add(NombreProdTxt);
-            FiltrosGRP.Location = new Point(13, 15);
+            FiltrosGRP.Location = new Point(12, 15);
             FiltrosGRP.Margin = new Padding(3, 2, 3, 2);
-            FiltrosGRP.MaximumSize = new Size(1500, 180);
+            FiltrosGRP.MaximumSize = new Size(1500, 250);
+            FiltrosGRP.MinimumSize = new Size(826, 180);
             FiltrosGRP.Name = "FiltrosGRP";
             FiltrosGRP.Padding = new Padding(3, 2, 3, 2);
-            FiltrosGRP.Size = new Size(899, 180);
+            FiltrosGRP.Size = new Size(878, 233);
             FiltrosGRP.TabIndex = 21;
             FiltrosGRP.TabStop = false;
             FiltrosGRP.Text = "Seleccione filtros de búsqueda para los productos: ";
@@ -134,17 +134,18 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // CuitLBL
             // 
+            CuitLBL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             CuitLBL.AutoSize = true;
-            CuitLBL.Location = new Point(636, 22);
+            CuitLBL.Location = new Point(615, 21);
             CuitLBL.Margin = new Padding(2, 0, 2, 0);
             CuitLBL.Name = "CuitLBL";
-            CuitLBL.Size = new Size(29, 15);
+            CuitLBL.Size = new Size(32, 15);
             CuitLBL.TabIndex = 17;
-            CuitLBL.Text = "Cuit";
+            CuitLBL.Text = "CUIT";
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             label2.AutoSize = true;
             label2.Location = new Point(9, 123);
             label2.Margin = new Padding(2, 0, 2, 0);
@@ -156,7 +157,7 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // RazonSocialLBL
             // 
-            RazonSocialLBL.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            RazonSocialLBL.Anchor = AnchorStyles.None;
             RazonSocialLBL.AutoSize = true;
             RazonSocialLBL.Location = new Point(317, 21);
             RazonSocialLBL.Margin = new Padding(2, 0, 2, 0);
@@ -168,7 +169,8 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // CuitTXT
             // 
-            CuitTXT.Location = new Point(636, 39);
+            CuitTXT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            CuitTXT.Location = new Point(615, 39);
             CuitTXT.Margin = new Padding(2);
             CuitTXT.MaximumSize = new Size(280, 40);
             CuitTXT.MinimumSize = new Size(200, 23);
@@ -179,7 +181,7 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Location = new Point(318, 123);
             label1.Margin = new Padding(2, 0, 2, 0);
@@ -191,7 +193,7 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // SKUTxt
             // 
-            SKUTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            SKUTxt.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             SKUTxt.Location = new Point(9, 86);
             SKUTxt.Margin = new Padding(2);
             SKUTxt.MaximumSize = new Size(500, 23);
@@ -202,13 +204,14 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // BuscarBtn
             // 
+            BuscarBtn.Anchor = AnchorStyles.None;
             BuscarBtn.BackColor = Color.FromArgb(192, 255, 192);
-            BuscarBtn.Location = new Point(636, 69);
+            BuscarBtn.Location = new Point(314, 189);
             BuscarBtn.Margin = new Padding(2);
             BuscarBtn.MaximumSize = new Size(280, 40);
             BuscarBtn.MinimumSize = new Size(200, 40);
             BuscarBtn.Name = "BuscarBtn";
-            BuscarBtn.Size = new Size(258, 40);
+            BuscarBtn.Size = new Size(250, 40);
             BuscarBtn.TabIndex = 8;
             BuscarBtn.Text = "Buscar producto";
             BuscarBtn.UseVisualStyleBackColor = false;
@@ -216,7 +219,7 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // PrioridadLBL
             // 
-            PrioridadLBL.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            PrioridadLBL.Anchor = AnchorStyles.None;
             PrioridadLBL.AutoSize = true;
             PrioridadLBL.Location = new Point(317, 69);
             PrioridadLBL.Margin = new Padding(2, 0, 2, 0);
@@ -228,14 +231,15 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // BorrarFiltrosBTN
             // 
+            BorrarFiltrosBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             BorrarFiltrosBTN.BackColor = Color.FromArgb(255, 192, 192);
-            BorrarFiltrosBTN.Location = new Point(636, 123);
+            BorrarFiltrosBTN.Location = new Point(615, 189);
             BorrarFiltrosBTN.Margin = new Padding(2);
             BorrarFiltrosBTN.MaximumSize = new Size(280, 40);
             BorrarFiltrosBTN.MinimumSize = new Size(200, 40);
             BorrarFiltrosBTN.Name = "BorrarFiltrosBTN";
             BorrarFiltrosBTN.RightToLeft = RightToLeft.No;
-            BorrarFiltrosBTN.Size = new Size(258, 40);
+            BorrarFiltrosBTN.Size = new Size(250, 40);
             BorrarFiltrosBTN.TabIndex = 9;
             BorrarFiltrosBTN.Text = "&Borrar filtros";
             BorrarFiltrosBTN.UseVisualStyleBackColor = false;
@@ -243,7 +247,7 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // StockMinimoTxt
             // 
-            StockMinimoTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            StockMinimoTxt.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             StockMinimoTxt.Location = new Point(9, 140);
             StockMinimoTxt.Margin = new Padding(2);
             StockMinimoTxt.MaximumSize = new Size(500, 23);
@@ -254,7 +258,7 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // CodigoCLienteLBL
             // 
-            CodigoCLienteLBL.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            CodigoCLienteLBL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             CodigoCLienteLBL.AutoSize = true;
             CodigoCLienteLBL.Location = new Point(5, 21);
             CodigoCLienteLBL.Margin = new Padding(2, 0, 2, 0);
@@ -266,7 +270,7 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // RazonSocialTxt
             // 
-            RazonSocialTxt.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            RazonSocialTxt.Anchor = AnchorStyles.None;
             RazonSocialTxt.ImeMode = ImeMode.Off;
             RazonSocialTxt.Location = new Point(314, 39);
             RazonSocialTxt.Margin = new Padding(2);
@@ -278,7 +282,7 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // SKULBL
             // 
-            SKULBL.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            SKULBL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             SKULBL.AutoSize = true;
             SKULBL.Location = new Point(7, 69);
             SKULBL.Margin = new Padding(2, 0, 2, 0);
@@ -290,7 +294,7 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // StockMaximoTxt
             // 
-            StockMaximoTxt.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            StockMaximoTxt.Anchor = AnchorStyles.None;
             StockMaximoTxt.Location = new Point(314, 140);
             StockMaximoTxt.Margin = new Padding(2);
             StockMaximoTxt.MaximumSize = new Size(500, 23);
@@ -301,7 +305,7 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // CodigoClienteTxt
             // 
-            CodigoClienteTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            CodigoClienteTxt.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             CodigoClienteTxt.Location = new Point(9, 39);
             CodigoClienteTxt.Margin = new Padding(2);
             CodigoClienteTxt.MaximumSize = new Size(500, 23);
@@ -312,7 +316,7 @@ namespace Pampazon._8._ConsultarProductos
             // 
             // NombreProdTxt
             // 
-            NombreProdTxt.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            NombreProdTxt.Anchor = AnchorStyles.None;
             NombreProdTxt.Location = new Point(314, 86);
             NombreProdTxt.Margin = new Padding(2);
             NombreProdTxt.MaximumSize = new Size(500, 23);
@@ -324,7 +328,7 @@ namespace Pampazon._8._ConsultarProductos
             // SalirBTN
             // 
             SalirBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            SalirBTN.Location = new Point(662, 603);
+            SalirBTN.Location = new Point(640, 537);
             SalirBTN.MaximumSize = new Size(250, 40);
             SalirBTN.Name = "SalirBTN";
             SalirBTN.Size = new Size(250, 40);
@@ -337,10 +341,11 @@ namespace Pampazon._8._ConsultarProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(932, 651);
+            ClientSize = new Size(902, 589);
             Controls.Add(SalirBTN);
             Controls.Add(FiltrosGRP);
             Controls.Add(ProductosLTV);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "BuscarProductosForm";
             StartPosition = FormStartPosition.WindowsDefaultBounds;
             Text = "Consultar Productos";

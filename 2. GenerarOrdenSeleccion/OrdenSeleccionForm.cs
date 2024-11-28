@@ -53,17 +53,7 @@ namespace Pampazon.OrdenSeleccion
             ActualizarListaOrdenDePreparacion();
 
 
-            // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
-            foreach (ColumnHeader column in OrdenesDePrepracionAOrdenSeleccionLST.Columns)
-            {
-                OrdenesDePrepracionAOrdenSeleccionLST.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-
-            // Ajustar el ancho de las columnas automáticamente según el contenido del encabezado
-            foreach (ColumnHeader column in DetalleOrdenesDePreparacionPendientesLST.Columns)
-            {
-                DetalleOrdenesDePreparacionPendientesLST.AutoResizeColumn(column.Index, ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
+           
 
 
         }
@@ -386,21 +376,7 @@ namespace Pampazon.OrdenSeleccion
 
         }
 
-        private void ajusteDePosiciones()
-        {
-
-            if (FiltrosOPGRP.Width >= 945)
-            {
-                var ancho = FiltrosOPGRP.Width;
-                var nuevoAncho = (ancho/3) - 10;
-                ClienteOrdenSeleccionTXT.Width = nuevoAncho;
-                NumeroOrdenPreparacionOrdenSeleccionTXT.Width = nuevoAncho;
-                PrioridadOrdenSeleccionCMB.Width = nuevoAncho;
-                FechaFinalOrdenSeleccionDTP.Width = nuevoAncho;
-                FechaInicioOrdenSeleccionDTP.Width = nuevoAncho;
-
-            }
-        }
+       
 
     }
 }

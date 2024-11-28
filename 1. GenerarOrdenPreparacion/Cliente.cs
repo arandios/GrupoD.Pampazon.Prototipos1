@@ -14,7 +14,7 @@ namespace Pampazon._1._GenerarOrdenPreparacion
         public string Nombre { get; set; }
         public string RazonSocial { get; set; }
 
-        public List<Transportista> Transportistas = new List<Transportista>();
+       // public List<Transportista> Transportistas = new List<Transportista>();
 
     }
 }

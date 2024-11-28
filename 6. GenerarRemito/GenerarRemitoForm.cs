@@ -1,4 +1,5 @@
-﻿using Pampazon.Entidades;
+﻿
+using Pampazon.Entidades;
 using Pampazon.Remitos;
 using System.Data;
 using System.Net;
@@ -27,6 +28,8 @@ namespace Pampazon._6._GenerarRemito
             BuscarTransportistaGRP.Focus();
             TransportistasCBX.Focus();
             Gruposinicializados();
+            
+            
         }
 
         private void RegistrarEventos()
@@ -139,36 +142,43 @@ namespace Pampazon._6._GenerarRemito
             string? idClienteSeleccionado = IdCLienteCBX.SelectedItem?.ToString();
             string? razonSocialSeleccionada = RZCBX.SelectedItem?.ToString();
 
-            var ordenesListas = GenerarRemitoModelo.ObtenerOrdenes();
-            var ordenesFiltradas = ordenesListas.Where(o =>
-                (string.IsNullOrEmpty(idClienteSeleccionado) || o.IdCliente.ToString() == idClienteSeleccionado) &&
-                (string.IsNullOrEmpty(razonSocialSeleccionada) || GenerarRemitoModelo.obtenerClientes().FirstOrDefault(c => c.IdCliente == o.IdCliente)?.RazonSocial == razonSocialSeleccionada)
-            ).ToList();
-
-            TransportistasListV.Items.Clear();
-            foreach (var orden in ordenesFiltradas)
+            // Obtener el DNI del transportista actual
+            if (int.TryParse(TransportistasCBX.Text, out int dni))
             {
-                var cliente = GenerarRemitoModelo.obtenerClientes().FirstOrDefault(c => c.IdCliente == orden.IdCliente);
-                string razonSocial = cliente != null ? cliente.RazonSocial : "Desconocido";
-                string idCliente = cliente != null ? cliente.IdCliente.ToString() : "Desconocido";
+                var ordenesListas = GenerarRemitoModelo.ObtenerOrdenes();
+                var ordenesDelTransportista = GenerarRemitoModelo.ObtenerOrdenesDePreparacionPorDni(ordenesListas, dni);
 
-                // Verificar si la orden ya está en DetalleRemitoLTV
-                bool ordenYaEnDetalle = DetalleRemitoLTV.Items.Cast<ListViewItem>()
-                    .Any(item => item.SubItems[0].Text == orden.IdOrden);
+                var ordenesFiltradas = ordenesDelTransportista.Where(o =>
+                    (string.IsNullOrEmpty(idClienteSeleccionado) || o.IdCliente.ToString() == idClienteSeleccionado) &&
+                    (string.IsNullOrEmpty(razonSocialSeleccionada) || GenerarRemitoModelo.obtenerClientes().FirstOrDefault(c => c.IdCliente == o.IdCliente)?.RazonSocial == razonSocialSeleccionada)
+                ).ToList();
 
-                if (!ordenYaEnDetalle)
+                TransportistasListV.Items.Clear();
+                foreach (var orden in ordenesFiltradas)
                 {
-                    TransportistasListV.Items.Add(new ListViewItem(new[] { orden.IdOrden, idCliente, razonSocial }));
-                    TransportistasListV.Focus();
-                    TransportistasListV.Items[0].Selected = true;
-                    TransportistasListV.Items[0].Focused = true;
+                    var cliente = GenerarRemitoModelo.obtenerClientes().FirstOrDefault(c => c.IdCliente == orden.IdCliente);
+                    string razonSocial = cliente != null ? cliente.RazonSocial : "Desconocido";
+                    string idCliente = cliente != null ? cliente.IdCliente.ToString() : "Desconocido";
+
+                    // Verificar si la orden ya está en DetalleRemitoLTV
+                    bool ordenYaEnDetalle = DetalleRemitoLTV.Items.Cast<ListViewItem>()
+                        .Any(item => item.SubItems[0].Text == orden.IdOrden);
+
+                    if (!ordenYaEnDetalle)
+                    {
+                        TransportistasListV.Items.Add(new ListViewItem(new[] { orden.IdOrden, idCliente, razonSocial }));
+                        TransportistasListV.Focus();
+                        TransportistasListV.Items[0].Selected = true;
+                        TransportistasListV.Items[0].Focused = true;
+                    }
                 }
             }
         }
-        
 
 
-            private void CargarTransportistasEnComboBox()
+
+
+        private void CargarTransportistasEnComboBox()
         {
             var transportistas = GenerarRemitoModelo.obtenerTransportistas();
 
@@ -363,10 +373,7 @@ namespace Pampazon._6._GenerarRemito
 
         private List<OrdenesDePreparacionRemito> ObtenerOrdenesParaRemito()
         {
-            bool hayItemsSeleccionados = DetalleRemitoLTV.Items.Cast<ListViewItem>().Any(item => item.Checked);
-
             return DetalleRemitoLTV.Items.Cast<ListViewItem>()
-                .Where(item => !hayItemsSeleccionados || item.Checked)
                 .Select(item =>
                 {
                     string idOrden = item.SubItems[0].Text;
@@ -376,6 +383,8 @@ namespace Pampazon._6._GenerarRemito
                 .Cast<OrdenesDePreparacionRemito>()
                 .ToList();
         }
+
+
 
         private void MostrarMensajeRemitoGenerado(RemitoEnt nuevoRemito)
         {

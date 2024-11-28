@@ -88,5 +88,95 @@
     "RazonSocial": "Proyectos Industriales SA",
     "CUIT": "20-56780123-5",
     "Prioridad": 0
+  },
+  {
+    "IdCliente": 16,
+    "RazonSocial": "Transporte Marítimo Alfa",
+    "CUIT": "20-67891234-4",
+    "Prioridad": 2
+  },
+  {
+    "IdCliente": 17,
+    "RazonSocial": "Distribuidora del Norte",
+    "CUIT": "20-78902345-5",
+    "Prioridad": 1
+  },
+  {
+    "IdCliente": 18,
+    "RazonSocial": "Construcciones del Sur",
+    "CUIT": "20-89013456-6",
+    "Prioridad": 0
+  },
+  {
+    "IdCliente": 19,
+    "RazonSocial": "Tecnologías Innovadoras",
+    "CUIT": "20-90124567-7",
+    "Prioridad": 1
+  },
+  {
+    "IdCliente": 20,
+    "RazonSocial": "Grupo Comercial Epsilon",
+    "CUIT": "20-01235678-8",
+    "Prioridad": 2
+  },
+  {
+    "IdCliente": 21,
+    "RazonSocial": "Importadora Andina",
+    "CUIT": "20-12346789-9",
+    "Prioridad": 0
+  },
+  {
+    "IdCliente": 22,
+    "RazonSocial": "Exportaciones Globales",
+    "CUIT": "20-23457890-1",
+    "Prioridad": 1
+  },
+  {
+    "IdCliente": 23,
+    "RazonSocial": "Servicios y Logística Gamma",
+    "CUIT": "20-34568901-2",
+    "Prioridad": 2
+  },
+  {
+    "IdCliente": 24,
+    "RazonSocial": "Automotores Nacionales",
+    "CUIT": "20-45679012-3",
+    "Prioridad": 0
+  },
+  {
+    "IdCliente": 25,
+    "RazonSocial": "Industrias Metalúrgicas Delta",
+    "CUIT": "20-56780123-4",
+    "Prioridad": 1
+  },
+  {
+    "IdCliente": 26,
+    "RazonSocial": "Proyectos de Ingeniería Zeta",
+    "CUIT": "20-67891234-5",
+    "Prioridad": 2
+  },
+  {
+    "IdCliente": 27,
+    "RazonSocial": "Corporación de Transporte Bravo",
+    "CUIT": "20-78902345-6",
+    "Prioridad": 1
+  },
+  {
+    "IdCliente": 28,
+    "RazonSocial": "Soluciones Comerciales Lambda",
+    "CUIT": "20-89013456-7",
+    "Prioridad": 0
+  },
+  {
+    "IdCliente": 29,
+    "RazonSocial": "Energías Renovables Beta",
+    "CUIT": "20-90124567-8",
+    "Prioridad": 2
+  },
+  {
+    "IdCliente": 30,
+    "RazonSocial": "Logística Internacional Sigma",
+    "CUIT": "20-01235678-9",
+    "Prioridad": 0
   }
 ]

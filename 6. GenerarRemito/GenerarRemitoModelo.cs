@@ -102,6 +102,7 @@ public class GenerarRemitoModelo
     // Métodos para GENERAR REMITO
     // Crea un nuevo remito utilizando las órdenes seleccionadas y el DNI del transportista
     internal RemitoEnt GenerarRemito(List<OrdenesDePreparacionRemito> ordenesSeleccionadas, int dniTransportista)
+    
     {
 
         int nuevoIdRemito = RemitoAlmacen.Remitos.Any()
@@ -116,6 +117,11 @@ public class GenerarRemitoModelo
         );
 
         RemitoAlmacen.Agregar(nuevoRemito);
+
+        foreach (var orden in ordenesSeleccionadas)
+        {
+            OrdenPreparacionAlmacen.cambiarEstado(int.Parse(orden.IdOrden), EstadoOrdenPreparacionEnum.Entregada);
+        }
 
         var idsOrdenes = ordenesSeleccionadas.Select(o => int.Parse(o.IdOrden)).ToList();
         OrdenPreparacionAlmacen.cambiarVariosEstados(idsOrdenes, EstadoOrdenPreparacionEnum.Entregada);
